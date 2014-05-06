@@ -1,0 +1,10 @@
+libPharmML/definitions/*
+libPharmML/uncertweb/*
+libPharmML/src/eu/ddmore/libpharmml/impl/*.xsd
+/bin
+test_output.xml
+build
+ivy_libs
+jars
+/.classpath
+/.project

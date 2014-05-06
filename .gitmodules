@@ -1,0 +1,3 @@
+[submodule "pharmMlSpec"]
+	path = pharmMlSpec
+	url = git://git.code.sf.net/p/ddmore/pharmml/pharmmlspec
