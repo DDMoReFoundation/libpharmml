@@ -37,7 +37,7 @@ public class Example3Read {
 
 	public static void main(String[] args) throws Exception {
 		ILibPharmML libPml = PharmMlFactory.getInstance().createLibPharmML();
-		try (InputStream eg3Str = new FileInputStream("examples/example3.xml")) {
+		InputStream eg3Str = new FileInputStream("examples/example3.xml");
 			IPharmMLResource res = libPml.createDomFromResource(eg3Str);
 			PharmML dom = res.getDom();
 			for (ParameterModelType pmt : dom.getModelDefinition()
@@ -52,7 +52,5 @@ public class Example3Read {
 					}
 				}
 			}
-		}
 	}
-
 }
