@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
 /**
@@ -74,7 +74,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
     "washout"
 })
 public class ActivityType
-    extends PharmMLElement
+    extends PharmMLRootType
 {
 
     @XmlElement(name = "LookupTable")
