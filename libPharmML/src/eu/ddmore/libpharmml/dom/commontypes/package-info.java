@@ -23,5 +23,10 @@
 // Generated on: 2014.03.24 at 03:18:36 PM GMT 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.pharmml.org/2013/03/CommonTypes", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(
+		namespace = "http://www.pharmml.org/2013/03/CommonTypes", 
+		xmlns = {@javax.xml.bind.annotation.XmlNs(
+				namespaceURI = "http://www.pharmml.org/2013/03/CommonTypes", 
+				prefix = "ct")},
+		elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package eu.ddmore.libpharmml.dom.commontypes;

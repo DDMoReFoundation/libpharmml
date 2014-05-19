@@ -23,5 +23,9 @@
 // Generated on: 2014.03.24 at 03:18:36 PM GMT 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.pharmml.org/2013/08/Dataset", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.pharmml.org/2013/08/Dataset", 
+xmlns = {@javax.xml.bind.annotation.XmlNs(
+		namespaceURI = "http://www.pharmml.org/2013/08/Dataset", 
+		prefix = "ds")},
+elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package eu.ddmore.libpharmml.dom.dataset;
