@@ -48,14 +48,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="name">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *               &lt;pattern value="([a-zA-Z0-9])[a-zA-Z0-9\\_]*"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="path" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="format" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="delimiter">
  *           &lt;simpleType>
@@ -63,6 +56,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  *               &lt;enumeration value="TAB"/>
  *               &lt;enumeration value="SPACE"/>
  *               &lt;enumeration value="COMMA"/>
+ *               &lt;enumeration value="SEMICOLON"/>
  *             &lt;/restriction>
  *           &lt;/simpleType>
  *         &lt;/element>
@@ -79,6 +73,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlType(name = "ImportDataType", propOrder = {
     "name",
     "url",
+    "path",
     "format",
     "delimiter"
 })
@@ -86,10 +81,16 @@ public class ImportDataType
     extends PharmMLRootType
 {
 
-    @XmlElement(required = true)
+    @XmlElement
+    @Deprecated
     protected String name;
-    @XmlElement(required = true)
+    @XmlElement
+    @Deprecated
     protected String url;
+    
+    @XmlElement(required = true)
+    protected String path;
+    
     @XmlElement(required = true)
     protected String format;
     @XmlElement(required = true)
@@ -106,7 +107,9 @@ public class ImportDataType
      *     possible object is
      *     {@link String }
      *     
+     * @deprecated Path of the file is now accessed through {@link #getPath()}.
      */
+    @Deprecated
     public String getName() {
         return name;
     }
@@ -118,7 +121,9 @@ public class ImportDataType
      *     allowed object is
      *     {@link String }
      *     
+     * @deprecated Path of the file is now accessed through {@link #setPath(String)}.
      */
+    @Deprecated
     public void setName(String value) {
         this.name = value;
     }
@@ -130,7 +135,9 @@ public class ImportDataType
      *     possible object is
      *     {@link String }
      *     
+     * @deprecated Path of the file is now accessed through {@link #getPath()}.
      */
+    @Deprecated
     public String getUrl() {
         return url;
     }
@@ -142,9 +149,25 @@ public class ImportDataType
      *     allowed object is
      *     {@link String }
      *     
+     * @deprecated Path of the file is now accessed through {@link #setPath(String)}.
      */
     public void setUrl(String value) {
         this.url = value;
+    }
+    
+    /**
+     * Gets the relative path to data file from the current PharmML document.
+     * @return The value of the path property
+     */
+    public String getPath(){
+    	return path;
+    }
+    /**
+     * Sets the path to data file. It should always be relative from the current PharmML document.
+     * @param path
+     */
+    public void setPath(String path){
+    	this.path = path;
     }
 
     /**
@@ -225,7 +248,8 @@ public class ImportDataType
     public enum Delimiter{
     	COMMA("COMMA"),
     	SPACE("SPACE"),
-    	TAB("TAB");
+    	TAB("TAB"),
+    	SEMICOLON("SEMICOLON");
     	
     	private String value;
     	
