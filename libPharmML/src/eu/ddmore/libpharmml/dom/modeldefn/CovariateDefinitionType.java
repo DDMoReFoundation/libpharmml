@@ -78,7 +78,7 @@ public class CovariateDefinitionType
     @XmlElement(name = "Continuous")
     protected ContinuousCovariateType continuous;
     @XmlElement(name = "Categorical")
-    protected CategorialCovariateType categorical;
+    protected CategoricalCovariateType categorical;
     @XmlAttribute(name = "symbId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String symbId;
@@ -136,10 +136,10 @@ public class CovariateDefinitionType
      * 
      * @return
      *     possible object is
-     *     {@link CategorialCovariateType }
+     *     {@link CategoricalCovariateType }
      *     
      */
-    public CategorialCovariateType getCategorical() {
+    public CategoricalCovariateType getCategorical() {
         return categorical;
     }
 
@@ -148,10 +148,10 @@ public class CovariateDefinitionType
      * 
      * @param value
      *     allowed object is
-     *     {@link CategorialCovariateType }
+     *     {@link CategoricalCovariateType }
      *     
      */
-    public void setCategorical(CategorialCovariateType value) {
+    public void setCategorical(CategoricalCovariateType value) {
         this.categorical = value;
     }
 

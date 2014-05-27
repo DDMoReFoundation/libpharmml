@@ -61,7 +61,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "CategorialCovariateType", propOrder = {
     "category"
 })
-public class CategorialCovariateType {
+public class CategoricalCovariateType {
 
     @XmlElement(name = "Category", required = true)
     protected List<CategoryType> category;

@@ -275,11 +275,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CategorialCovariateType }
+     * Create an instance of {@link CategoricalCovariateType }
      * 
      */
-    public CategorialCovariateType createCategorialCovariateType() {
-        return new CategorialCovariateType();
+    public CategoricalCovariateType createCategorialCovariateType() {
+        return new CategoricalCovariateType();
     }
 
     /**
