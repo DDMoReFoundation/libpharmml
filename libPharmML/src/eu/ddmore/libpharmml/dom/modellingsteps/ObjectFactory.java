@@ -238,6 +238,15 @@ public class ObjectFactory {
     public MultipleDVMappingType createMultipleDVMappingType() {
         return new MultipleDVMappingType();
     }
+    
+    /**
+     * Create an instance of {@link NONMEMdataSetReferenceType }
+     * 
+     */
+    public NONMEMdataSetReferenceType createNONMEMdataSetReferenceType() {
+        return new NONMEMdataSetReferenceType();
+    }
+
 
 
     /**

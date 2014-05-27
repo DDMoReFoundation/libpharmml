@@ -61,7 +61,8 @@ import javax.xml.bind.annotation.XmlType;
 @SuppressWarnings("deprecation")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CommonModellingStepType", propOrder = {
-    "targetToolReference"
+    "targetToolReference",
+    "nonmeMdataSetReference",
 })
 @XmlSeeAlso({
     SimulationStepType.class,
@@ -73,6 +74,8 @@ public abstract class CommonModellingStepType
 
     @XmlElement(name = "TargetToolReference")
     protected TargetToolReferenceType targetToolReference;
+    @XmlElement(name = "NONMEMdataSetReference")
+    protected NONMEMdataSetReferenceType nonmeMdataSetReference;
     
 //    These attributes are stored in super class ModellingStepType for backwards compatibility.
     
@@ -104,6 +107,30 @@ public abstract class CommonModellingStepType
      */
     public void setTargetToolReference(TargetToolReferenceType value) {
         this.targetToolReference = value;
+    }
+    
+    /**
+     * Gets the value of the nonmeMdataSetReference property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link NONMEMdataSetReferenceType }
+     *     
+     */
+    public NONMEMdataSetReferenceType getNONMEMdataSetReference() {
+        return nonmeMdataSetReference;
+    }
+
+    /**
+     * Sets the value of the nonmeMdataSetReference property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NONMEMdataSetReferenceType }
+     *     
+     */
+    public void setNONMEMdataSetReference(NONMEMdataSetReferenceType value) {
+        this.nonmeMdataSetReference = value;
     }
 
 //    /**

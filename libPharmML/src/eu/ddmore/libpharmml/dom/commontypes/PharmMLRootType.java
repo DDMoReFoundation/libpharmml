@@ -65,6 +65,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.GenericCodeType;
 import eu.ddmore.libpharmml.dom.modellingsteps.MappingType;
 import eu.ddmore.libpharmml.dom.modellingsteps.ModellingStepsType;
 import eu.ddmore.libpharmml.dom.modellingsteps.MultipleDVMappingType;
+import eu.ddmore.libpharmml.dom.modellingsteps.NONMEMdataSetReferenceType;
 import eu.ddmore.libpharmml.dom.modellingsteps.NONMEMdataSetType;
 import eu.ddmore.libpharmml.dom.modellingsteps.ObservationsType;
 import eu.ddmore.libpharmml.dom.modellingsteps.OperationPropertyType;
@@ -209,7 +210,8 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     CorrelationType.class,
     CorrelatedRandomVarType.class,
     CovariateDefinitionType.class,
-    MultipleDVMappingType.class
+    MultipleDVMappingType.class,
+    NONMEMdataSetReferenceType.class,
 })
 public abstract class PharmMLRootType extends PharmMLElement{
 
