@@ -39,7 +39,7 @@ public interface ILibPharmML {
 	 * @throws RuntimeException if there is any error preventing the writing of the DOM to the output stream.
 	 * 			Note that another exception such as an IOException may be chained to the RuntimeException.
 	 */
-	void save(OutputStream opStr, IPharmMLResource DOM);
+	void save(OutputStream opStr, IPharmMLResource resource);
 	
 	/**
 	 * Create a new resource that is generated from the PharmML
