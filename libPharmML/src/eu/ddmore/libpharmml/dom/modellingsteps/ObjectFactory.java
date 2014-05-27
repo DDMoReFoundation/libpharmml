@@ -230,6 +230,15 @@ public class ObjectFactory {
     public TargetToolSymbolType createTargetToolSymbolType() {
         return new TargetToolSymbolType();
     }
+    
+    /**
+     * Create an instance of {@link MultipleDVMappingType }
+     * 
+     */
+    public MultipleDVMappingType createMultipleDVMappingType() {
+        return new MultipleDVMappingType();
+    }
+
 
     /**
      * Create an instance of {@link DatasetMappingType }

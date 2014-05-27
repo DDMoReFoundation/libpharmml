@@ -64,6 +64,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.EstimationOperationType;
 import eu.ddmore.libpharmml.dom.modellingsteps.GenericCodeType;
 import eu.ddmore.libpharmml.dom.modellingsteps.MappingType;
 import eu.ddmore.libpharmml.dom.modellingsteps.ModellingStepsType;
+import eu.ddmore.libpharmml.dom.modellingsteps.MultipleDVMappingType;
 import eu.ddmore.libpharmml.dom.modellingsteps.NONMEMdataSetType;
 import eu.ddmore.libpharmml.dom.modellingsteps.ObservationsType;
 import eu.ddmore.libpharmml.dom.modellingsteps.OperationPropertyType;
@@ -207,7 +208,8 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     CommonParameterModelType.class,
     CorrelationType.class,
     CorrelatedRandomVarType.class,
-    CovariateDefinitionType.class
+    CovariateDefinitionType.class,
+    MultipleDVMappingType.class
 })
 public abstract class PharmMLRootType extends PharmMLElement{
 

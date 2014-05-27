@@ -55,6 +55,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSetType;
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;element name="ColumnMapping" type="{http://www.pharmml.org/2013/08/Dataset}ColumnMappingType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="MultipleDVMapping" type="{http://www.pharmml.org/2013/03/ModellingSteps}MultipleDVMappingType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/08/Dataset}DataSet"/>
  *         &lt;element name="CodeInjection" type="{http://www.pharmml.org/2013/03/ModellingSteps}CodeInjectionType" minOccurs="0"/>
  *       &lt;/sequence>
@@ -69,6 +70,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSetType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "NONMEMdataSetType", propOrder = {
     "columnMapping",
+    "multipleDVMapping",
     "dataSet",
     "codeInjection"
 })
@@ -78,6 +80,8 @@ public class NONMEMdataSetType
 
     @XmlElement(name = "ColumnMapping")
     protected List<ColumnMappingType> columnMapping;
+    @XmlElement(name = "MultipleDVMapping")
+    protected List<MultipleDVMappingType> multipleDVMapping;
     @XmlElement(name = "DataSet", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
     protected DataSetType dataSet;
     @XmlElement(name = "CodeInjection")
@@ -113,6 +117,35 @@ public class NONMEMdataSetType
             columnMapping = new ArrayList<ColumnMappingType>();
         }
         return this.columnMapping;
+    }
+    
+    /**
+     * Gets the value of the multipleDVMapping property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the multipleDVMapping property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getMultipleDVMapping().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link MultipleDVMappingType }
+     * 
+     * 
+     */
+    public List<MultipleDVMappingType> getMultipleDVMapping() {
+        if (multipleDVMapping == null) {
+            multipleDVMapping = new ArrayList<MultipleDVMappingType>();
+        }
+        return this.multipleDVMapping;
     }
 
     /**
