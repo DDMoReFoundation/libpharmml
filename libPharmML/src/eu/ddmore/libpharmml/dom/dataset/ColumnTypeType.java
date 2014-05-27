@@ -43,12 +43,14 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="adm"/>
  *     &lt;enumeration value="arm"/>
  *     &lt;enumeration value="censoring"/>
+ *     &lt;enumeration value="cmt"/>
  *     &lt;enumeration value="covariate"/>
  *     &lt;enumeration value="demographic"/>
  *     &lt;enumeration value="dose"/>
  *     &lt;enumeration value="duration"/>
  *     &lt;enumeration value="dv"/>
  *     &lt;enumeration value="dvid"/>
+ *     &lt;enumeration value="ebe"/>
  *     &lt;enumeration value="epoch"/>
  *     &lt;enumeration value="evid"/>
  *     &lt;enumeration value="id"/>
@@ -82,6 +84,8 @@ public enum ColumnTypeType {
     ARM("arm"),
     @XmlEnumValue("censoring")
     CENSORING("censoring"),
+    @XmlEnumValue("cmt")
+    CMT("cmt"),
     @XmlEnumValue("covariate")
     COVARIATE("covariate"),
     @XmlEnumValue("demographic")
@@ -92,6 +96,8 @@ public enum ColumnTypeType {
     DURATION("duration"),
     @XmlEnumValue("dv")
     DV("dv"),
+    @XmlEnumValue("ebe")
+    EBE("ebe"),
     @XmlEnumValue("dvid")
     DVID("dvid"),
     @XmlEnumValue("epoch")
