@@ -65,6 +65,7 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
  *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Scalar"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Constant"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/08/Dataset}ColumnRef"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Binop"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Uniop"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}FunctionCall"/>
@@ -108,15 +109,16 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
 })
 public class LogicBinOpType {
 
-    @XmlElementRefs({
-        @XmlElementRef(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "FunctionCall", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
+	@XmlElementRefs({
         @XmlElementRef(name = "Uniop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "LogicBinop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Constant", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "FunctionCall", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "LogicUniop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Binop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Constant", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "LogicBinop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> content;
     @XmlAttribute(name = "op", required = true)
@@ -124,16 +126,6 @@ public class LogicBinOpType {
     protected String op;
 
     /**
-     * Gets the rest of the content model. 
-     * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "LogicBinop" is used by two different parts of a schema. See: 
-     * line 229 of file:/automount/nas17b_vol-vol_homes-homes/florent/workspace/libPharmML_0.3unmerged/libPharmML/definitions/maths.xsd
-     * line 216 of file:/automount/nas17b_vol-vol_homes-homes/florent/workspace/libPharmML_0.3unmerged/libPharmML/definitions/maths.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names: 
      * Gets the value of the content property.
      * 
      * <p>
@@ -151,23 +143,28 @@ public class LogicBinOpType {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}
-     * {@link JAXBElement }{@code <}{@link UniopType }{@code >}
-     * {@link JAXBElement }{@code <}{@link LogicUniOpType }{@code >}
-     * {@link JAXBElement }{@code <}{@link BinopType }{@code >}
-     * {@link JAXBElement }{@code <}{@link Object }{@code >}
-     * {@link JAXBElement }{@code <}{@link ConstantType }{@code >}
-     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link FunctionCallType }{@code >}
-     * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
      * {@link JAXBElement }{@code <}{@link LogicBinOpType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ColumnRefType }{@code >}
+     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link FunctionCallType }{@code >}
+     * {@link JAXBElement }{@code <}{@link LogicUniOpType }{@code >}
+     * {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Object }{@code >}
+     * {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link BinopType }{@code >}
+     * {@link JAXBElement }{@code <}{@link UniopType }{@code >}
+     * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
+     * {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ConstantType }{@code >}
      * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
      * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
      * 
-     * 
+     * <p>
+     * In order to be compliant with the PharmML specification (>= 0.3.1), only 1 {@link ColumnRefType } is allowed in the content,
+     * and should always be the 1st operand (i.e., the first element of this list). Anyway, this is checked only
+     * during the XSD-based validation process.
+     * </p>
      */
     public List<JAXBElement<?>> getContent() {
         if (content == null) {
