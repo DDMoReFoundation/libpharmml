@@ -67,7 +67,7 @@ public class SimulationStepType
     extends CommonModellingStepType
 {
 
-    @XmlElement(name = "Observations", required = true)
+    @XmlElement(name = "Observations")
     protected List<ObservationsType> observations;
     @XmlElement(name = "Operation")
     protected List<SimulationOperationType> operation;
