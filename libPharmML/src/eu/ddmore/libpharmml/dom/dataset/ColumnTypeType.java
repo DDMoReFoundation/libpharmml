@@ -50,7 +50,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="duration"/>
  *     &lt;enumeration value="dv"/>
  *     &lt;enumeration value="dvid"/>
- *     &lt;enumeration value="ebe"/>
  *     &lt;enumeration value="epoch"/>
  *     &lt;enumeration value="evid"/>
  *     &lt;enumeration value="id"/>
@@ -96,8 +95,6 @@ public enum ColumnTypeType {
     DURATION("duration"),
     @XmlEnumValue("dv")
     DV("dv"),
-    @XmlEnumValue("ebe")
-    EBE("ebe"),
     @XmlEnumValue("dvid")
     DVID("dvid"),
     @XmlEnumValue("epoch")
