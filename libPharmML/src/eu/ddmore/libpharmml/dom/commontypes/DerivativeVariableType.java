@@ -50,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="InitialCondition" type="{http://www.pharmml.org/2013/03/CommonTypes}InitialConditionType" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="symbolType" use="required" type="{http://www.pharmml.org/2013/03/CommonTypes}SymbolTypeType" fixed="real" />
+ *       &lt;attribute name="compartmentNo" type="{http://www.pharmml.org/2013/03/CommonTypes}CompartmentNoType" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -75,6 +76,8 @@ public class DerivativeVariableType
     protected InitialConditionType initialCondition;
     @XmlAttribute(name = "symbolType", required = true)
     protected SymbolTypeType symbolType;
+    @XmlAttribute(name = "compartmentNo")
+    protected Integer compartmentNo;
 
     /**
      * The symbol id used to define the variable.
@@ -174,6 +177,30 @@ public class DerivativeVariableType
      */
     public void setSymbolType(SymbolTypeType value) {
         this.symbolType = value;
+    }
+    
+    /**
+     * Gets the value of the compartmentNo property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public Integer getCompartmentNo() {
+        return compartmentNo;
+    }
+
+    /**
+     * Sets the value of the compartmentNo property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setCompartmentNo(Integer value) {
+        this.compartmentNo = value;
     }
 
 }

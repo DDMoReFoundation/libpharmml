@@ -53,7 +53,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Symbol" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="symbId" use="required" type="{http://www.pharmml.org/2013/03/CommonTypes}SymbolIdType" />
- *       &lt;attribute name="compartmentNo" type="{http://www.pharmml.org/2013/03/CommonTypes}CompartmentNoType" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -80,8 +79,6 @@ public abstract class CommonVariableDefinitionType
     @XmlAttribute(name = "symbId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String symbId;
-    @XmlAttribute(name = "compartmentNo")
-    protected Integer compartmentNo;
 
     /**
      * Gets the value of the symbol property.
@@ -129,30 +126,6 @@ public abstract class CommonVariableDefinitionType
      */
     public void setSymbId(String value) {
         this.symbId = value;
-    }
-    
-    /**
-     * Gets the value of the compartmentNo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public Integer getCompartmentNo() {
-        return compartmentNo;
-    }
-
-    /**
-     * Sets the value of the compartmentNo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setCompartmentNo(Integer value) {
-        this.compartmentNo = value;
     }
 
 }
