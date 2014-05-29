@@ -31,8 +31,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
 import eu.ddmore.libpharmml.dom.commontypes.NameType;
 import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
@@ -77,7 +76,6 @@ public class CategoryType {
     @XmlElement(name = "Probability")
     protected ScalarRhs probability;
     @XmlAttribute(name = "catId", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String catId;
 
     /**
