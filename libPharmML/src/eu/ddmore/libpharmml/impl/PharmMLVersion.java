@@ -26,12 +26,16 @@ public enum PharmMLVersion {
 	/**
 	 * PharmML 0.3
 	 */
-	V0_3("0.3","MarshallerImpl.xmlCatalogLocation.0.3");
+	V0_3("0.3","MarshallerImpl.xmlCatalogLocation.0.3"),
+	/**
+	 * PharmML 0.3.1
+	 */
+	V0_3_1("0.3.1","MarshallerImpl.xmlCatalogLocation.0.3.1");
 	
 	/**
-	 * The latest version of PharmML. Current is 0.3.
+	 * The latest version of PharmML. Current is 0.3.1.
 	 */
-	public static final PharmMLVersion DEFAULT = PharmMLVersion.V0_3;
+	public static final PharmMLVersion DEFAULT = PharmMLVersion.V0_3_1;
 	
 	private String version;
 	private String catalogLocation;
@@ -59,6 +63,8 @@ public enum PharmMLVersion {
 			return PharmMLVersion.V0_2_1;
 		} else if(version.equals("0.3")){
 			return PharmMLVersion.V0_3;
+		} else if(version.equals("0.3.1")){
+			return PharmMLVersion.V0_3_1;
 		} else {
 			return null;
 		}
