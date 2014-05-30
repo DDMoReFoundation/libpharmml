@@ -1,7 +1,7 @@
 # libPharmML
 
-This is the version 0.3 of libPharmML. It provides a convenient
-way to read and write PharmML (up to version 0.3) and it provides basic schema based
+This is the version 0.3.1 of libPharmML. It provides a convenient
+way to read and write PharmML (up to version 0.3.1) and it provides basic schema based
 validation.
 
 
