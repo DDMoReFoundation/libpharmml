@@ -26,6 +26,6 @@
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://www.pharmml.org/2013/03/ModellingSteps",
 xmlns = {@javax.xml.bind.annotation.XmlNs(
 		namespaceURI = "http://www.pharmml.org/2013/03/ModellingSteps", 
-		prefix = "mstep")},
+		prefix = "msteps")},
 elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package eu.ddmore.libpharmml.dom.modellingsteps;
