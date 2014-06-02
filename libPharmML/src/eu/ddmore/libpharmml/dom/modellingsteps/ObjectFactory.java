@@ -51,7 +51,6 @@ public class ObjectFactory {
 
     private final static QName _SimulationStep_QNAME = new QName("http://www.pharmml.org/2013/03/ModellingSteps", "SimulationStep");
     private final static QName _Property_QNAME = new QName("http://www.pharmml.org/2013/03/ModellingSteps", "Property");
-    private final static QName _CommonModellingStep_QNAME = new QName("http://www.pharmml.org/2013/03/ModellingSteps", "CommonModellingStep");
     private final static QName _ModellingSteps_QNAME = new QName("http://www.pharmml.org/2013/03/ModellingSteps", "ModellingSteps");
     private final static QName _VariableMapping_QNAME = new QName("http://www.pharmml.org/2013/03/ModellingSteps", "VariableMapping");
     private final static QName _IndividualMapping_QNAME = new QName("http://www.pharmml.org/2013/03/ModellingSteps", "IndividualMapping");
@@ -318,17 +317,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "Property")
     public JAXBElement<OperationPropertyType> createProperty(OperationPropertyType value) {
         return new JAXBElement<OperationPropertyType>(_Property_QNAME, OperationPropertyType.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModellingStepType }{@code >}}
-     * 
-     */
-    @SuppressWarnings("deprecation")
-	@XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "CommonModellingStep")
-    public JAXBElement<ModellingStepType> createCommonModellingStep(ModellingStepType value) {
-    	// TODO: use CommonModellingStepType JAXBElement instead of deprecated ModellingStepType
-        return new JAXBElement<ModellingStepType>(_CommonModellingStep_QNAME, ModellingStepType.class, null, value);
     }
 
     /**
