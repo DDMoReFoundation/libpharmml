@@ -45,7 +45,7 @@ import eu.ddmore.libpharmml.dom.commontypes.IdValueType;
 import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
-import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
+import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
@@ -350,7 +350,10 @@ public class EquationType extends PharmMLElement{
         			} else if (element.getDeclaredType().equals(UniopType.class)){
         				setUniop((UniopType)element.getValue());
         				firstElement = true;
-        			} else if (element.getDeclaredType().equals(ScalarRhs.class)){
+//        			} else if (element.getDeclaredType().equals(ScalarRhs.class)){
+//        				setScalar(element);
+//        				firstElement = true;
+        			} else if (element.getValue() instanceof Scalar){
         				setScalar(element);
         				firstElement = true;
         			}
