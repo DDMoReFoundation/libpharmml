@@ -72,8 +72,8 @@ and **target** from 1.6 to 1.7.
 libPharmML is available through the EBI Maven repository:
 url: http://www.ebi.ac.uk/~maven/m2repo/
 group: eu.ddmore.pharmml
-module: libPharmml
-version: 0.3
+module: libPharmML
+version: 0.3.1
 
 ## Getting Started
 
