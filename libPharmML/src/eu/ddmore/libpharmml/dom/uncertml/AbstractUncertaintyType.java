@@ -26,10 +26,12 @@
 
 package eu.ddmore.libpharmml.dom.uncertml;
 
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -59,9 +61,16 @@ import javax.xml.bind.annotation.XmlType;
     AbstractSummaryStatisticType.class
 })
 public abstract class AbstractUncertaintyType {
+	
+	@XmlTransient
+	public static java.lang.String DEFINITION_DOMAIN_URI = "http://www.uncertml.org/";
 
     @XmlAttribute(name = "definition", required = true)
     protected java.lang.String definition;
+    
+    public AbstractUncertaintyType(){
+    	definition = contructDefinition();
+    }
 
     /**
      * Gets the value of the definition property.
@@ -82,9 +91,24 @@ public abstract class AbstractUncertaintyType {
      *     allowed object is
      *     {@link java.lang.String }
      *     
+     * @deprecated The value of the "definition" attribute is automatically set 
+     * to be compliant with UncertML specification.
      */
+    @Deprecated
     public void setDefinition(java.lang.String value) {
         this.definition = value;
     }
+    
+    abstract protected java.lang.String getDefinitionCategoryURI();
+    abstract protected java.lang.String getDefinitionElementURI();
 
+    protected java.lang.String contructDefinition(){
+    	return DEFINITION_DOMAIN_URI + getDefinitionCategoryURI() + getDefinitionElementURI();
+    }
+    
+    protected void afterMarshal(Marshaller m){
+    	if(definition == null){
+    		definition = contructDefinition();
+    	}
+    }
 }

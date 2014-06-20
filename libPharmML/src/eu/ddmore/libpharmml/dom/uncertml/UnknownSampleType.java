@@ -28,10 +28,12 @@ package eu.ddmore.libpharmml.dom.uncertml;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -64,6 +66,13 @@ import javax.xml.bind.annotation.XmlType;
 public class UnknownSampleType
     extends AbstractSampleType
 {
+	@XmlTransient
+	public static java.lang.String DEFINITION_ELEMENT_URI = "unknown";
+
+	@Override
+	protected java.lang.String getDefinitionElementURI() {
+		return DEFINITION_ELEMENT_URI;
+	}
 
     @XmlElement(name = "Realisation", required = true)
     protected List<Realisation> realisation;

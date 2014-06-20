@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -66,6 +67,13 @@ import javax.xml.bind.annotation.XmlType;
 public class GeometricDistributionType
     extends AbstractDiscreteUnivariateDistributionType
 {
+	@XmlTransient
+	public java.lang.String DEFINITION_ELEMENT_URI = "geometric";
+
+	@Override
+	protected java.lang.String getDefinitionElementURI() {
+		return DEFINITION_ELEMENT_URI;
+	}
 
     @XmlElement(required = true)
     protected ProbabilityValueType probability;

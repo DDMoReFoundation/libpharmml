@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom.uncertml;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -60,6 +61,13 @@ import javax.xml.bind.annotation.XmlType;
 public class CategoricalProbabilityValueType
     extends AbstractSummaryStatisticType
 {
+	@XmlTransient
+	public static java.lang.String DEFINITION_ELEMENT_URI = "mixture-model";
+
+	@Override
+	protected java.lang.String getDefinitionElementURI() {
+		return DEFINITION_ELEMENT_URI;
+	}
 
     @XmlElement(required = true)
     protected java.lang.String name;
