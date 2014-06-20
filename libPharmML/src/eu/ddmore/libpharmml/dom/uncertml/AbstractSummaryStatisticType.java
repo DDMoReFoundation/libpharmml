@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom.uncertml;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -79,6 +80,13 @@ import javax.xml.bind.annotation.XmlType;
 public abstract class AbstractSummaryStatisticType
     extends AbstractUncertaintyType
 {
+	
+	@XmlTransient
+	public static java.lang.String DEFINITION_CATEGORY_URL = "statistics/";
 
+	@Override
+	protected java.lang.String getDefinitionCategoryURI() {
+		return DEFINITION_CATEGORY_URL;
+	}
 
 }

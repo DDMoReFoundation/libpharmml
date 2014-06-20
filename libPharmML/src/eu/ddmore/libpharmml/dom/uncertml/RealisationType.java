@@ -28,6 +28,7 @@ package eu.ddmore.libpharmml.dom.uncertml;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -36,6 +37,7 @@ import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -76,6 +78,19 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class RealisationType
     extends AbstractUncertaintyType
 {
+	@XmlTransient
+	public static java.lang.String DEFINITION_ELEMENT_URI = "realisation";
+	@XmlTransient
+	public static java.lang.String DEFINITION_CATEGORY_URI = "samples/";
+
+	@Override
+	protected java.lang.String getDefinitionElementURI() {
+		return DEFINITION_ELEMENT_URI;
+	}
+	@Override
+	protected java.lang.String getDefinitionCategoryURI() {
+		return DEFINITION_CATEGORY_URI;
+	}
 
     @XmlElement(required = true)
     protected Double weight;

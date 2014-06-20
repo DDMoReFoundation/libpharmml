@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -64,6 +65,14 @@ import javax.xml.bind.annotation.XmlType;
 public class CredibleIntervalType
     extends AbstractSummaryStatisticType
 {
+	
+	@XmlTransient
+	public static java.lang.String DEFINITION_ELEMENT_URI = "credible-interval";
+
+	@Override
+	protected java.lang.String getDefinitionElementURI() {
+		return DEFINITION_ELEMENT_URI;
+	}
 
     @XmlElement(required = true)
     protected QuantileType lower;
