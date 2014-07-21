@@ -18,14 +18,14 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml.dom.commontypes;
 
-import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * Interface for scalar values
  * @author florent
  *
  */
-@XmlTransient
-public interface Scalar {
+@XmlJavaTypeAdapter(ScalarAdapter.class)
+public interface Scalar extends VectorCellValue {
 
 }

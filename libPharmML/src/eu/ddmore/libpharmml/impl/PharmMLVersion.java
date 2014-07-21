@@ -22,15 +22,19 @@ public enum PharmMLVersion {
 	/**
 	 * PharmML 0.2.1
 	 */
-	V0_2_1("0.2.1","MarshallerImpl.xmlCatalogLocation.0.2.1"),
+	V0_2_1("0.2.1","MarshallerImpl.xmlCatalogLocation.0.2.1",1),
 	/**
 	 * PharmML 0.3
 	 */
-	V0_3("0.3","MarshallerImpl.xmlCatalogLocation.0.3"),
+	V0_3("0.3","MarshallerImpl.xmlCatalogLocation.0.3",2),
 	/**
 	 * PharmML 0.3.1
 	 */
-	V0_3_1("0.3.1","MarshallerImpl.xmlCatalogLocation.0.3.1");
+	V0_3_1("0.3.1","MarshallerImpl.xmlCatalogLocation.0.3.1",3),
+	/**
+	 * PharmML 0.3.2
+	 */
+	V0_3_2("0.3.2","MarshallerImpl.xmlCatalogLocation.0.3.2",4);
 	
 	/**
 	 * The latest version of PharmML. Current is 0.3.1.
@@ -39,10 +43,12 @@ public enum PharmMLVersion {
 	
 	private String version;
 	private String catalogLocation;
+	private int index;
 	
-	private PharmMLVersion(String version,String catalogMessage) {
+	private PharmMLVersion(String version,String catalogMessage,int index) {
 		this.version = version;
 		this.catalogLocation = Messages.getString(catalogMessage);
+		this.index = index;
 	}
 	
 	public String getValue(){
@@ -73,6 +79,10 @@ public enum PharmMLVersion {
 	@Override
 	public String toString(){
 		return getValue();
+	}
+	
+	public boolean isEqualOrLaterThan(PharmMLVersion version){
+		return (this.index >= version.index);
 	}
 	
 }

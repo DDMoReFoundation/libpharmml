@@ -73,7 +73,14 @@ public class ObjectFactory {
     private final static QName _Description_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "Description");
     private final static QName _Boolean_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "Boolean");
     private final static QName _SymbRef_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "SymbRef");
-
+    
+    // Vectors (0.3.2)
+    private final static QName _VectorElements_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "VectorElements");
+    private final static QName _VectorCell_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "VectorCell");
+    private final static QName _VectorSegment_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "VectorSegment");
+    private final static QName _VectorCellValue_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "VectorCellValue");
+    private final static QName _VectorValue_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "VectorValue");
+    
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.commontypes
      * 
@@ -237,6 +244,7 @@ public class ObjectFactory {
      * Create an instance of {@link VectorType }
      * 
      */
+    @Deprecated
     public VectorType createVectorType() {
         return new VectorType();
     }
@@ -396,7 +404,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Scalar")
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Scalar", substitutionHeadNamespace="http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName="VectorCellValue")
     public JAXBElement<Object> createScalar(Object value) {
         return new JAXBElement<Object>(_Scalar_QNAME, Object.class, null, value);
     }
@@ -540,9 +548,31 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "SymbRef")
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "SymbRef", substitutionHeadNamespace="http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName="VectorCellValue")
     public JAXBElement<SymbolRefType> createSymbRef(SymbolRefType value) {
         return new JAXBElement<SymbolRefType>(_SymbRef_QNAME, SymbolRefType.class, null, value);
+    }
+    
+    // 0.3.2
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "VectorElements")
+    JAXBElement<VectorType.VectorElements> createVectorElements(VectorType.VectorElements value){
+    	return new JAXBElement<VectorType.VectorElements>(_VectorElements_QNAME, VectorType.VectorElements.class, null, value);
+    }
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "VectorCell")
+    JAXBElement<VectorCell> createVectorCell(VectorCell value){
+    	return new JAXBElement<VectorCell>(_VectorCell_QNAME, VectorCell.class, null, value);
+    }
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "VectorSegment")
+    JAXBElement<VectorSegment> createVectorSegment(VectorSegment value){
+    	return new JAXBElement<VectorSegment>(_VectorSegment_QNAME, VectorSegment.class, null, value);
+    }
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "VectorCellValue", substitutionHeadNamespace="http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName="VectorValue")
+    JAXBElement<Object> createVectorCellValue(Object value) {
+        return new JAXBElement<Object>(_VectorCellValue_QNAME, Object.class, null, value);
+    }
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "VectorValue")
+    JAXBElement<Object> createVectorValue(Object value) {
+        return new JAXBElement<Object>(_VectorValue_QNAME, Object.class, null, value);
     }
 
 }

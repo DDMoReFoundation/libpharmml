@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom.commontypes;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -54,8 +55,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SymbolRefType")
+@XmlRootElement(name = "SymbRef")
 public class SymbolRefType
-    extends PharmMLRootType
+    extends PharmMLRootType implements VectorCellValue
 {
 
     @XmlAttribute(name = "blkIdRef")
@@ -112,5 +114,10 @@ public class SymbolRefType
     public void setSymbIdRef(String value) {
         this.symbIdRef = value;
     }
+
+	@Override
+	public String asString() {
+		return getSymbIdRef();
+	}
 
 }

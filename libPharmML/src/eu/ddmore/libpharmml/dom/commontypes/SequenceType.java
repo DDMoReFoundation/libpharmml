@@ -69,7 +69,7 @@ import javax.xml.bind.annotation.XmlType;
     "repetitions"
 })
 public class SequenceType
-    extends PharmMLRootType
+    extends PharmMLRootType implements VectorValue
 {
 
     @XmlElement(name = "Begin", required = true)
@@ -176,5 +176,10 @@ public class SequenceType
     public void setRepetitions(Rhs value) {
         this.repetitions = value;
     }
+
+	@Override
+	public String asString() {
+		return this.toString();
+	}
 
 }

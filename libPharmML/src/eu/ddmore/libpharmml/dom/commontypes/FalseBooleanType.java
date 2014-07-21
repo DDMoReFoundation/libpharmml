@@ -55,5 +55,10 @@ public class FalseBooleanType
     extends BooleanType
 {
 
+	@Override
+	public String asString() {
+		return "false";
+	}
+
 
 }

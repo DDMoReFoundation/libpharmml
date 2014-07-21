@@ -55,5 +55,10 @@ public class TrueBooleanType
     extends BooleanType
 {
 
+	@Override
+	public String asString() {
+		return "true";
+	}
+
 
 }

@@ -27,6 +27,7 @@
 package eu.ddmore.libpharmml.dom.commontypes;
 
 import java.math.BigInteger;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -114,5 +115,10 @@ public class IntValueType extends PharmMLElement implements Scalar{
     public void setId(String value) {
         this.id = value;
     }
+
+	@Override
+	public String asString() {
+		return String.valueOf(value);
+	}
 
 }

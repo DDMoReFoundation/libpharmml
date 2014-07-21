@@ -27,13 +27,24 @@
 package eu.ddmore.libpharmml.dom.commontypes;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAnyElement;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlMixed;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -64,17 +75,56 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VectorType", propOrder = {
-    "sequenceOrScalar"
+//	"vectorElements",
+	"vectorCellsAndSegments",
+    "sequenceOrScalar",
+    "elements"
 })
-public class VectorType
-    extends PharmMLRootType
-{
-
-    @XmlElementRefs({
-        @XmlElementRef(name = "Sequence", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+@XmlJavaTypeAdapter(VectorType.Adapter.class)
+@XmlSeeAlso({
+	Vector.class,
+	VectorSegment.class
+})
+public class VectorType extends PharmMLRootType {
+	
+	@XmlElementRefs({
+		@XmlElementRef(name = "Sequence", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+	})
+	protected List<JAXBElement<?>> sequenceOrScalar;
+    
+////    @XmlElement(name = "VectorElements", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = VectorElements.class, required = false)
+//	@XmlTransient
+//    protected VectorElements vectorElements;
+    
+    @XmlElementRefs({
+    	@XmlElementRef(name = "VectorCell", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+    	@XmlElementRef(name = "VectorSegment", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     })
-    protected List<JAXBElement<?>> sequenceOrScalar;
+    protected List<JAXBElement<?>> vectorCellsAndSegments;
+        
+    @XmlAttribute(name = "default")
+	protected Double defaultValue;
+    
+    @XmlAttribute(name = "length")
+    protected Integer length;
+    
+    @XmlElementRef(name = "VectorValue", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type=JAXBElement.class)
+	@XmlElementWrapper(name = "VectorElements")
+	protected List<VectorValue> elements;
+    
+    /**
+     * VectorType class is meant to be abstracted.
+     * Since 0.3.2, Vectors are either {@link VectorOfElements} or {@link Vector}
+     */
+    @Deprecated
+    public VectorType(){
+    	
+    }
+    
+    protected VectorType(Class<? extends VectorType> _class){
+
+    }
 
     /**
      * Gets the value of the sequenceOrScalar property.
@@ -106,11 +156,131 @@ public class VectorType
      * 
      * 
      */
+    @Deprecated
     public List<JAXBElement<?>> getSequenceOrScalar() {
         if (sequenceOrScalar == null) {
             sequenceOrScalar = new ArrayList<JAXBElement<?>>();
         }
         return this.sequenceOrScalar;
+//	      if (vectorElements == null) {
+//	    	  vectorElements = new VectorElements();
+//	      }
+//	      return this.vectorElements.getChildren();
+    }
+    
+    /**
+     * Adapter for unmarshalling from a generic vectorType to a casted vector
+     */
+    final static class Adapter extends XmlAdapter<VectorType, VectorType>{
+    	
+    	private static ObjectFactory of = new ObjectFactory();
+    	
+		@Override
+		public VectorType unmarshal(VectorType v) throws Exception {
+			if(v.isVectorOfElements()){
+				VectorOfElements ve = new VectorOfElements(v);
+				return ve;
+			} else if (v.isVectorWithDefault()){
+				Vector vector = new Vector(v);
+				return vector;
+			} else {
+				return v;
+			}
+		}
+
+		@Override
+		public VectorType marshal(VectorType v) throws Exception {
+			if(v instanceof VectorOfElements){
+//				v.getVectorElements().getChildren().clear();
+//				Iterator<VectorValue> it = ((VectorOfElements)v).getListOfElements().iterator();
+//				while(it.hasNext()){
+//					v.getVectorElements().getChildren().add(vectorValueToJaxb(it.next()));
+//				}
+//				v.getVectorElements().setListOfElements(((VectorOfElements)v).getListOfElements());
+				v.length = ((VectorOfElements)v).getListOfElements().size();
+				return v;
+			} else if (v instanceof Vector){
+				v.getVectorCellsAndSegments().clear();
+				for(VectorCell cell : ((Vector)v).getListOfVectorCells()){
+					v.getVectorCellsAndSegments().add(of.createVectorCell(cell));
+				}
+				for(VectorSegment segment : ((Vector)v).getListOfVectorSegments()){
+					v.getVectorCellsAndSegments().add(of.createVectorSegment(segment));
+				}
+				return v;
+			} else {
+				throw new RuntimeException();
+//				return v;
+			}
+		}
+		
+		private JAXBElement<? extends VectorValue> vectorValueToJaxb(VectorValue value){
+			if(value instanceof RealValueType){
+				return of.createReal((RealValueType) value);
+			} else if (value instanceof SymbolRefType){
+				return of.createSymbRef((SymbolRefType) value);
+			} else {
+				return null;
+			}
+		}
+    	
+    }
+    
+    private boolean isVectorOfElements(){
+//    	return (vectorElements != null || (sequenceOrScalar != null && sequenceOrScalar.size() > 0));
+    	return (elements != null || (sequenceOrScalar != null && sequenceOrScalar.size() > 0));
+
+    }
+    
+    private boolean isVectorWithDefault(){
+    	return (vectorCellsAndSegments != null);
+    }
+    
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "VectorElements", propOrder = {
+    	    "elements"
+    	})
+    final static class VectorElements {
+    	
+//    	@XmlElementRefs({
+//            @XmlElementRef(name = "Sequence", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+//            @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+//            @XmlElementRef(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+//        })
+//    	private List<JAXBElement<?>> elements;
+//    	
+//    	List<JAXBElement<?>> getChildren(){
+//    		if(elements == null){
+//    			elements = new ArrayList<JAXBElement<?>>();
+//    		}
+//    		return elements;
+//    	}
+//    	
+//    	void setChildren(List<JAXBElement<?>> children){
+//    		elements = children;
+//    	}
+    	
+    	@XmlElementRef(name = "VectorValue", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type=JAXBElement.class)
+    	private List<VectorValue> elements;
+    	
+    	List<VectorValue> getListOfElements(){
+    		if(elements == null){
+    			elements = new ArrayList<VectorValue>();
+    		}
+    		return elements;
+    	}
+    	
+    	void setListOfElements(List<VectorValue> elements){
+    		this.elements = elements;
+    	}
+    	
+    }
+    
+    protected List<JAXBElement<?>> getVectorCellsAndSegments(){
+    	if(vectorCellsAndSegments == null){
+    		vectorCellsAndSegments = new ArrayList<JAXBElement<?>>();
+    	}
+    	return vectorCellsAndSegments;
     }
 
 }

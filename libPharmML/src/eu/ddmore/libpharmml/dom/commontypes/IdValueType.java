@@ -119,4 +119,9 @@ public class IdValueType extends PharmMLElement implements Scalar {
         this.id = value;
     }
 
+	@Override
+	public String asString() {
+		return String.valueOf(value);
+	}
+
 }
