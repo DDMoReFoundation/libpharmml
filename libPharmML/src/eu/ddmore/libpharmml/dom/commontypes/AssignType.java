@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
+ * 
  * The type specifies an assignment of a value(s) or equation to another element in the PharmML document.
  * 
  * <p>Java class for AssignType complex type.
@@ -47,10 +48,12 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * @deprecated Use parent {@link Rhs} class instead.
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AssignType")
+@Deprecated
 public class AssignType
     extends Rhs
 {
