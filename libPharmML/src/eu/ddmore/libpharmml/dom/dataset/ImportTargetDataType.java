@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
@@ -48,14 +49,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="name">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *               &lt;pattern value="([a-zA-Z0-9])[a-zA-Z0-9\\_.]*"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="path" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="format" minOccurs="0">
  *           &lt;simpleType>
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
@@ -69,6 +63,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  *               &lt;enumeration value="TAB"/>
  *               &lt;enumeration value="SPACE"/>
  *               &lt;enumeration value="COMMA"/>
+ *               &lt;enumeration value="SEMICOLON"/>
  *             &lt;/restriction>
  *           &lt;/simpleType>
  *         &lt;/element>
@@ -83,6 +78,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ImportTargetDataType", propOrder = {
+	"path",
     "name",
     "url",
     "format",
@@ -92,9 +88,13 @@ public class ImportTargetDataType
     extends PharmMLRootType
 {
 
+	@XmlElement(required = true)
+    protected String path;
     @XmlElement(required = true)
+    @Deprecated
     protected String name;
     @XmlElement(required = true)
+    @Deprecated
     protected String url;
     protected String format;
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -102,6 +102,30 @@ public class ImportTargetDataType
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
+	
+	/**
+     * Gets the value of the path property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPath() {
+        return path;
+    }
+
+    /**
+     * Sets the value of the path property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPath(String value) {
+        this.path = value;
+    }
 
     /**
      * Gets the value of the name property.
@@ -110,7 +134,9 @@ public class ImportTargetDataType
      *     possible object is
      *     {@link String }
      *     
+     * @deprecated Path of the file is now accessed through {@link #getPath()}.
      */
+    @Deprecated
     public String getName() {
         return name;
     }
@@ -122,7 +148,9 @@ public class ImportTargetDataType
      *     allowed object is
      *     {@link String }
      *     
+     * @deprecated Path of the file is now accessed through {@link #setPath(String)}.
      */
+    @Deprecated
     public void setName(String value) {
         this.name = value;
     }
@@ -134,7 +162,9 @@ public class ImportTargetDataType
      *     possible object is
      *     {@link String }
      *     
+     * @deprecated Path of the file is now accessed through {@link #getPath()}.
      */
+    @Deprecated
     public String getUrl() {
         return url;
     }
@@ -146,6 +176,7 @@ public class ImportTargetDataType
      *     allowed object is
      *     {@link String }
      *     
+     * @deprecated Path of the file is now accessed through {@link #setPath(String)}.
      */
     public void setUrl(String value) {
         this.url = value;
