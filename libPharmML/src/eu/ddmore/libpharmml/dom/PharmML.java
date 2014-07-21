@@ -64,6 +64,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.TrialDesignType;
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://www.pharmml.org/2013/03/CommonTypes}RootAttributesGroup"/>
  *       &lt;attribute name="writtenVersion" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="implementedBy" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -100,6 +101,8 @@ public class PharmML {
     protected ModellingStepsType modellingSteps;
     @XmlAttribute(name = "writtenVersion", required = true)
     protected String writtenVersion;
+    @XmlAttribute(name = "implementedBy")
+    protected String implementedBy;
     @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String id;
@@ -301,6 +304,30 @@ public class PharmML {
      */
     public void setWrittenVersion(String value) {
         this.writtenVersion = value;
+    }
+
+    /**
+     * Gets the value of the implementedBy property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getImplementedBy() {
+        return implementedBy;
+    }
+
+    /**
+     * Sets the value of the implementedBy property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setImplementedBy(String value) {
+        this.implementedBy = value;
     }
 
     /**
