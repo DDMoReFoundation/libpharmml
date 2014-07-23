@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
 
 
@@ -43,7 +44,7 @@ import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
  * <pre>
  * &lt;complexType name="PairwiseType">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;element name="RandomVariable1" type="{http://www.pharmml.org/2013/03/ModelDefinition}CorrelatedRandomVarType"/>
  *         &lt;element name="RandomVariable2" type="{http://www.pharmml.org/2013/03/ModelDefinition}CorrelatedRandomVarType"/>
@@ -52,7 +53,7 @@ import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
  *           &lt;element name="Covariance" type="{http://www.pharmml.org/2013/03/CommonTypes}ScalarRhs"/>
  *         &lt;/choice>
  *       &lt;/sequence>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -66,7 +67,9 @@ import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
     "correlationCoefficient",
     "covariance"
 })
-public class PairwiseType {
+public class PairwiseType
+    extends PharmMLRootType
+{
 
     @XmlElement(name = "RandomVariable1", required = true)
     protected CorrelatedRandomVarType randomVariable1;

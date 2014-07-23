@@ -30,8 +30,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
 /**
@@ -44,9 +43,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <pre>
  * &lt;complexType name="CategoricalRelationType">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="catId" use="required" type="{http://www.pharmml.org/2013/03/CommonTypes}SymbolIdType" />
- *     &lt;/restriction>
+ *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *       &lt;attribute name="catId" use="required" type="{http://www.pharmml.org/2013/03/CommonTypes}CatIdType" />
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -55,10 +54,11 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CategoricalRelationType")
-public class CategoricalRelationType {
+public class CategoricalRelationType
+    extends PharmMLRootType
+{
 
     @XmlAttribute(name = "catId", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String catId;
 
     /**
