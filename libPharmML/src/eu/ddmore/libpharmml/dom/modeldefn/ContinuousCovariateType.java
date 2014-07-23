@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.InterpolationType;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractContinuousUnivariateDistributionType;
 import eu.ddmore.libpharmml.dom.uncertml.BetaDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.CauchyDistribution;
@@ -63,13 +64,13 @@ import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
  * <pre>
  * &lt;complexType name="ContinuousCovariateType">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;element ref="{http://www.uncertml.org/3.0}AbstractContinuousUnivariateDistribution" minOccurs="0"/>
  *         &lt;element name="Transformation" type="{http://www.pharmml.org/2013/03/ModelDefinition}CovariateTransformationType" minOccurs="0"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Interpolation" minOccurs="0"/>
  *       &lt;/sequence>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -82,7 +83,9 @@ import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
     "transformation",
     "interpolation"
 })
-public class ContinuousCovariateType {
+public class ContinuousCovariateType
+    extends PharmMLRootType
+{
 
     @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = "http://www.uncertml.org/3.0", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractContinuousUnivariateDistributionType> abstractContinuousUnivariateDistribution;

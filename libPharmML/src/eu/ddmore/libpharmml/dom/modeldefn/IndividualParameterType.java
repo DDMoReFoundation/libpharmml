@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 
 
@@ -60,47 +61,47 @@ import eu.ddmore.libpharmml.dom.commontypes.Rhs;
  *           &lt;element name="GaussianModel">
  *             &lt;complexType>
  *               &lt;complexContent>
- *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *                   &lt;sequence>
- *                     &lt;element name="Transformation" type="{http://www.pharmml.org/2013/03/ModelDefinition}LhsTransformationType" minOccurs="0"/>
+ *                     &lt;element name="Transformation" type="{http://www.pharmml.org/2013/03/ModelDefinition}LRHSTransformationType" minOccurs="0"/>
  *                     &lt;choice>
  *                       &lt;element name="LinearCovariate">
  *                         &lt;complexType>
  *                           &lt;complexContent>
- *                             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                             &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *                               &lt;sequence>
  *                                 &lt;element name="PopulationParameter">
  *                                   &lt;complexType>
  *                                     &lt;complexContent>
- *                                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                       &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *                                         &lt;sequence>
  *                                           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Assign"/>
  *                                         &lt;/sequence>
- *                                       &lt;/restriction>
+ *                                       &lt;/extension>
  *                                     &lt;/complexContent>
  *                                   &lt;/complexType>
  *                                 &lt;/element>
  *                                 &lt;element name="Covariate" type="{http://www.pharmml.org/2013/03/ModelDefinition}CovariateRelationType" maxOccurs="unbounded" minOccurs="0"/>
  *                               &lt;/sequence>
- *                             &lt;/restriction>
+ *                             &lt;/extension>
  *                           &lt;/complexContent>
  *                         &lt;/complexType>
  *                       &lt;/element>
  *                       &lt;element name="GeneralCovariate">
  *                         &lt;complexType>
  *                           &lt;complexContent>
- *                             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                             &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *                               &lt;sequence>
  *                                 &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Assign"/>
  *                               &lt;/sequence>
- *                             &lt;/restriction>
+ *                             &lt;/extension>
  *                           &lt;/complexContent>
  *                         &lt;/complexType>
  *                       &lt;/element>
  *                     &lt;/choice>
  *                     &lt;element name="RandomEffects" type="{http://www.pharmml.org/2013/03/ModelDefinition}ParameterRandomEffectType" maxOccurs="unbounded"/>
  *                   &lt;/sequence>
- *                 &lt;/restriction>
+ *                 &lt;/extension>
  *               &lt;/complexContent>
  *             &lt;/complexType>
  *           &lt;/element>
@@ -187,47 +188,47 @@ public class IndividualParameterType
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
      *       &lt;sequence>
-     *         &lt;element name="Transformation" type="{http://www.pharmml.org/2013/03/ModelDefinition}LhsTransformationType" minOccurs="0"/>
+     *         &lt;element name="Transformation" type="{http://www.pharmml.org/2013/03/ModelDefinition}LRHSTransformationType" minOccurs="0"/>
      *         &lt;choice>
      *           &lt;element name="LinearCovariate">
      *             &lt;complexType>
      *               &lt;complexContent>
-     *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
      *                   &lt;sequence>
      *                     &lt;element name="PopulationParameter">
      *                       &lt;complexType>
      *                         &lt;complexContent>
-     *                           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
      *                             &lt;sequence>
      *                               &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Assign"/>
      *                             &lt;/sequence>
-     *                           &lt;/restriction>
+     *                           &lt;/extension>
      *                         &lt;/complexContent>
      *                       &lt;/complexType>
      *                     &lt;/element>
      *                     &lt;element name="Covariate" type="{http://www.pharmml.org/2013/03/ModelDefinition}CovariateRelationType" maxOccurs="unbounded" minOccurs="0"/>
      *                   &lt;/sequence>
-     *                 &lt;/restriction>
+     *                 &lt;/extension>
      *               &lt;/complexContent>
      *             &lt;/complexType>
      *           &lt;/element>
      *           &lt;element name="GeneralCovariate">
      *             &lt;complexType>
      *               &lt;complexContent>
-     *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
      *                   &lt;sequence>
      *                     &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Assign"/>
      *                   &lt;/sequence>
-     *                 &lt;/restriction>
+     *                 &lt;/extension>
      *               &lt;/complexContent>
      *             &lt;/complexType>
      *           &lt;/element>
      *         &lt;/choice>
      *         &lt;element name="RandomEffects" type="{http://www.pharmml.org/2013/03/ModelDefinition}ParameterRandomEffectType" maxOccurs="unbounded"/>
      *       &lt;/sequence>
-     *     &lt;/restriction>
+     *     &lt;/extension>
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
@@ -241,7 +242,9 @@ public class IndividualParameterType
         "generalCovariate",
         "randomEffects"
     })
-    public static class GaussianModel {
+    public static class GaussianModel
+        extends PharmMLRootType
+    {
 
         @XmlElement(name = "Transformation")
         protected LhsTransformationType transformation;
@@ -362,11 +365,11 @@ public class IndividualParameterType
          * <pre>
          * &lt;complexType>
          *   &lt;complexContent>
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
          *       &lt;sequence>
          *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Assign"/>
          *       &lt;/sequence>
-         *     &lt;/restriction>
+         *     &lt;/extension>
          *   &lt;/complexContent>
          * &lt;/complexType>
          * </pre>
@@ -377,7 +380,9 @@ public class IndividualParameterType
         @XmlType(name = "", propOrder = {
             "assign"
         })
-        public static class GeneralCovariate {
+        public static class GeneralCovariate
+            extends PharmMLRootType
+        {
 
             @XmlElement(name = "Assign", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
             protected Rhs assign;
@@ -419,22 +424,22 @@ public class IndividualParameterType
          * <pre>
          * &lt;complexType>
          *   &lt;complexContent>
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
          *       &lt;sequence>
          *         &lt;element name="PopulationParameter">
          *           &lt;complexType>
          *             &lt;complexContent>
-         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *               &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
          *                 &lt;sequence>
          *                   &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Assign"/>
          *                 &lt;/sequence>
-         *               &lt;/restriction>
+         *               &lt;/extension>
          *             &lt;/complexContent>
          *           &lt;/complexType>
          *         &lt;/element>
          *         &lt;element name="Covariate" type="{http://www.pharmml.org/2013/03/ModelDefinition}CovariateRelationType" maxOccurs="unbounded" minOccurs="0"/>
          *       &lt;/sequence>
-         *     &lt;/restriction>
+         *     &lt;/extension>
          *   &lt;/complexContent>
          * &lt;/complexType>
          * </pre>
@@ -446,7 +451,9 @@ public class IndividualParameterType
             "populationParameter",
             "covariate"
         })
-        public static class LinearCovariate {
+        public static class LinearCovariate
+            extends PharmMLRootType
+        {
 
             @XmlElement(name = "PopulationParameter", required = true)
             protected IndividualParameterType.GaussianModel.LinearCovariate.PopulationParameter populationParameter;
@@ -515,11 +522,11 @@ public class IndividualParameterType
              * <pre>
              * &lt;complexType>
              *   &lt;complexContent>
-             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
              *       &lt;sequence>
              *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Assign"/>
              *       &lt;/sequence>
-             *     &lt;/restriction>
+             *     &lt;/extension>
              *   &lt;/complexContent>
              * &lt;/complexType>
              * </pre>
@@ -530,7 +537,9 @@ public class IndividualParameterType
             @XmlType(name = "", propOrder = {
                 "assign"
             })
-            public static class PopulationParameter {
+            public static class PopulationParameter
+                extends PharmMLRootType
+            {
 
                 @XmlElement(name = "Assign", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
                 protected Rhs assign;

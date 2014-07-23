@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 
 
@@ -43,11 +44,11 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
  * <pre>
  * &lt;complexType name="CovariateTransformationType">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Equation"/>
  *       &lt;/sequence>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -58,7 +59,9 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
 @XmlType(name = "CovariateTransformationType", propOrder = {
     "equation"
 })
-public class CovariateTransformationType {
+public class CovariateTransformationType
+    extends PharmMLRootType
+{
 
     @XmlElement(name = "Equation", namespace = "http://www.pharmml.org/2013/03/Maths", required = true)
     protected Equation equation;
