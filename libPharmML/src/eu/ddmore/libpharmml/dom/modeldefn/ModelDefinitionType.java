@@ -49,8 +49,8 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  *       &lt;sequence>
  *         &lt;element name="VariabilityModel" type="{http://www.pharmml.org/2013/03/ModelDefinition}VariabilityDefnBlock" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="CovariateModel" type="{http://www.pharmml.org/2013/03/ModelDefinition}CovariateModelType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="ParameterModel" type="{http://www.pharmml.org/2013/03/ModelDefinition}ParameterModelType" maxOccurs="unbounded"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}StructuralModel" maxOccurs="unbounded"/>
+ *         &lt;element name="ParameterModel" type="{http://www.pharmml.org/2013/03/ModelDefinition}ParameterModelType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}StructuralModel" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="ObservationModel" type="{http://www.pharmml.org/2013/03/ModelDefinition}ObservationModelType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -76,9 +76,9 @@ public class ModelDefinitionType
     protected List<VariabilityDefnBlock> variabilityModel;
     @XmlElement(name = "CovariateModel")
     protected List<CovariateModelType> covariateModel;
-    @XmlElement(name = "ParameterModel", required = true)
+    @XmlElement(name = "ParameterModel")
     protected List<ParameterModelType> parameterModel;
-    @XmlElement(name = "StructuralModel", required = true)
+    @XmlElement(name = "StructuralModel")
     protected List<StructuralModelType> structuralModel;
     @XmlElement(name = "ObservationModel")
     protected List<ObservationModelType> observationModel;
