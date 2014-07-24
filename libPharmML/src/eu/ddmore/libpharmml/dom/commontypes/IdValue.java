@@ -1,6 +1,5 @@
 package eu.ddmore.libpharmml.dom.commontypes;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @XmlTransient
