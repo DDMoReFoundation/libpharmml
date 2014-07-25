@@ -27,21 +27,16 @@
 package eu.ddmore.libpharmml.dom.commontypes;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -240,7 +235,7 @@ public class VectorType extends PharmMLRootType {
     @XmlType(name = "VectorElements", propOrder = {
     	    "elements"
     	})
-    final static class VectorElements {
+    final static class VectorElements extends PharmMLRootType {
     	
 //    	@XmlElementRefs({
 //            @XmlElementRef(name = "Sequence", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
