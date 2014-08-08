@@ -41,11 +41,16 @@ import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.IdValueType;
 import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
+import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
+import eu.ddmore.libpharmml.dom.commontypes.Product;
 import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
 import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
+import eu.ddmore.libpharmml.dom.commontypes.Sum;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolNameType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
+import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 
 
 /**
@@ -67,6 +72,11 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
  *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Scalar"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Constant"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Sum"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Product"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}VectorSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}MatrixSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}Probability"/>
  *         &lt;/choice>
  *       &lt;/sequence>
  *       &lt;attribute name="symbId" use="required" type="{http://www.pharmml.org/2013/03/CommonTypes}SymbolIdType" />
@@ -84,7 +94,12 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
     "equation",
     "scalar",
     "constant",
-    "symbRef"
+    "symbRef",
+    "sum",
+    "product",
+    "vectorSelector",
+    "matrixSelector",
+    "probability"
 })
 @XmlSeeAlso({
     eu.ddmore.libpharmml.dom.maths.FunctionCallType.FunctionArgument.class
@@ -103,6 +118,16 @@ public class FunctionArgumentType {
     protected ConstantType constant;
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected SymbolRefType symbRef;
+    @XmlElement(name = "Sum", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    protected Sum sum;
+    @XmlElement(name = "Product", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    protected Product product;
+    @XmlElement(name = "VectorSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    protected VectorSelector vectorSelector;
+    @XmlElement(name = "MatrixSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    protected MatrixSelector matrixSelector;
+    @XmlElement(name = "Probability", namespace = "http://www.pharmml.org/2013/03/ModelDefinition")
+    protected Probability probability;
     @XmlAttribute(name = "symbId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String symbId;
@@ -184,14 +209,14 @@ public class FunctionArgumentType {
      * 
      * @return
      *     possible object is
+     *     {@link JAXBElement }{@code <}{@link Object }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
      *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
      *     
      */
     public JAXBElement<?> getScalar() {
@@ -203,14 +228,14 @@ public class FunctionArgumentType {
      * 
      * @param value
      *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link Object }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
      *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
      *     
      */
     public void setScalar(JAXBElement<?> value) {
@@ -263,6 +288,126 @@ public class FunctionArgumentType {
      */
     public void setSymbRef(SymbolRefType value) {
         this.symbRef = value;
+    }
+
+    /**
+     * Gets the value of the sum property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SumType }
+     *     
+     */
+    public Sum getSum() {
+        return sum;
+    }
+
+    /**
+     * Sets the value of the sum property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SumType }
+     *     
+     */
+    public void setSum(Sum value) {
+        this.sum = value;
+    }
+
+    /**
+     * Gets the value of the product property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Product }
+     *     
+     */
+    public Product getProduct() {
+        return product;
+    }
+
+    /**
+     * Sets the value of the product property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Product }
+     *     
+     */
+    public void setProduct(Product value) {
+        this.product = value;
+    }
+
+    /**
+     * Gets the value of the vectorSelector property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VectorSelectorType }
+     *     
+     */
+    public VectorSelector getVectorSelector() {
+        return vectorSelector;
+    }
+
+    /**
+     * Sets the value of the vectorSelector property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link VectorSelectorType }
+     *     
+     */
+    public void setVectorSelector(VectorSelector value) {
+        this.vectorSelector = value;
+    }
+
+    /**
+     * Gets the value of the matrixSelector property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link MatrixSelector }
+     *     
+     */
+    public MatrixSelector getMatrixSelector() {
+        return matrixSelector;
+    }
+
+    /**
+     * Sets the value of the matrixSelector property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MatrixSelector }
+     *     
+     */
+    public void setMatrixSelector(MatrixSelector value) {
+        this.matrixSelector = value;
+    }
+
+    /**
+     * Gets the value of the probability property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Probability }
+     *     
+     */
+    public Probability getProbability() {
+        return probability;
+    }
+
+    /**
+     * Sets the value of the probability property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Probability }
+     *     
+     */
+    public void setProbability(Probability value) {
+        this.probability = value;
     }
 
     /**

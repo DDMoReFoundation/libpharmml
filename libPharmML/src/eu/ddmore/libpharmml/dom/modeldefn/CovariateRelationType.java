@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 
 
@@ -45,12 +46,12 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
  * <pre>
  * &lt;complexType name="CovariateRelationType">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
- *         &lt;element name="FixedEffect" type="{http://www.pharmml.org/2013/03/ModelDefinition}FixedEffectRelationType" maxOccurs="unbounded"/>
+ *         &lt;element name="FixedEffect" type="{http://www.pharmml.org/2013/03/ModelDefinition}FixedEffectRelationType"/>
  *       &lt;/sequence>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -62,7 +63,9 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
     "symbRef",
     "fixedEffect"
 })
-public class CovariateRelationType {
+public class CovariateRelationType
+    extends PharmMLRootType
+{
 
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
     protected SymbolRefType symbRef;

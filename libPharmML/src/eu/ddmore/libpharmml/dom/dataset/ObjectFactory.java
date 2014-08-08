@@ -129,6 +129,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CategoryMapping }
+     * 
+     */
+    public CategoryMapping createCategoryMappingType() {
+        return new CategoryMapping();
+    }
+
+    /**
      * Create an instance of {@link CommonColumnDefnType }
      * 
      */
@@ -151,14 +159,13 @@ public class ObjectFactory {
     public ColumnDefnType createColumnDefnType() {
         return new ColumnDefnType();
     }
-	
-	/**
-     * Create an instance of {@link DataSetTableDefnType }
-     * @deprecated No more used since version 0.3
+
+    /**
+     * Create an instance of {@link MapType }
+     * 
      */
-    @Deprecated
-	public DataSetTableDefnType createDataSetTableDefnType() {
-        return new DataSetTableDefnType();
+    public MapType createMapType() {
+        return new MapType();
     }
 
     /**

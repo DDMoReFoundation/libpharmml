@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
 
 
@@ -48,14 +49,14 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
  * <pre>
  * &lt;complexType name="LogicConditionType">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;choice>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/Maths}LogicBinop"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/Maths}LogicUniop"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Boolean"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Otherwise"/>
  *       &lt;/choice>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -72,7 +73,9 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
 @XmlSeeAlso({
     Condition.class
 })
-public class LogicConditionType {
+public class LogicConditionType
+    extends PharmMLRootType
+{
 
     @XmlElement(name = "LogicBinop")
     protected LogicBinOpType logicBinop;

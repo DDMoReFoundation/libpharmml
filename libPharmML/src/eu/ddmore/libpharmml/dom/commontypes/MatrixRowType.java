@@ -28,18 +28,21 @@ package eu.ddmore.libpharmml.dom.commontypes;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * 
- *                 This type specifies a row of values in a matrix. The row contains a cell which is
- *                 a scalar value, null.
- *             
+ * This type specifies a row of values in a matrix. The row can contain indexed cells or 
+ *                 scalars/symbols filling the whole row. Index of the matrix row is optoinal. If cells are defined inside rows, 
+ *                 the cells will be indexed relative to the row.
  * 
  * <p>Java class for MatrixRowType complex type.
  * 
@@ -49,10 +52,15 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="MatrixRowType">
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
- *       &lt;choice maxOccurs="unbounded">
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Real"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
- *       &lt;/choice>
+ *       &lt;sequence>
+ *         &lt;element name="RowIndex" type="{http://www.pharmml.org/2013/03/CommonTypes}MatrixVectorIndexType" minOccurs="0"/>
+ *         &lt;choice maxOccurs="unbounded" minOccurs="0">
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Scalar"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Sequence"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
+ *         &lt;/choice>
+ *       &lt;/sequence>
+ *       &lt;attribute name="default" type="{http://www.w3.org/2001/XMLSchema}double" default="0" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -62,46 +70,122 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MatrixRowType", propOrder = {
-    "realOrSymbRef"
+    "rowIndex",
+    "scalarOrSequenceOrSymbRef"
 })
 public class MatrixRowType
     extends PharmMLRootType
 {
 
-    @XmlElements({
-        @XmlElement(name = "Real", type = RealValueType.class),
-        @XmlElement(name = "SymbRef", type = SymbolRefType.class)
+    @XmlElement(name = "RowIndex")
+    protected MatrixVectorIndex rowIndex;
+    @XmlElementRefs({
+        @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Sequence", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     })
-    protected List<Object> realOrSymbRef;
+    protected List<VectorValue> scalarOrSequenceOrSymbRef;
+    @XmlAttribute(name = "default")
+    protected Double _default;
 
     /**
-     * Gets the value of the realOrSymbRef property.
+     * Gets the value of the rowIndex property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link MatrixVectorIndexType }
+     *     
+     */
+    public MatrixVectorIndex getRowIndex() {
+        return rowIndex;
+    }
+
+    /**
+     * Sets the value of the rowIndex property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MatrixVectorIndexType }
+     *     
+     */
+    public void setRowIndex(MatrixVectorIndex value) {
+        this.rowIndex = value;
+    }
+
+    /**
+     * Gets the value of the scalarOrSequenceOrSymbRef property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the realOrSymbRef property.
+     * This is why there is not a <CODE>set</CODE> method for the scalarOrSequenceOrSymbRef property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getRealOrSymbRef().add(newItem);
+     *    getScalarOrSequenceOrSymbRef().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link RealValueType }
-     * {@link SymbolRefType }
+     * {@link JAXBElement }{@code <}{@link Object }{@code >}
+     * {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link SequenceType }{@code >}
+     * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     * {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}
+     * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
+     * {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
      * 
      * 
      */
-    public List<Object> getRealOrSymbRef() {
-        if (realOrSymbRef == null) {
-            realOrSymbRef = new ArrayList<Object>();
+    public List<VectorValue> getListOfValues() {
+        if (scalarOrSequenceOrSymbRef == null) {
+            scalarOrSequenceOrSymbRef = new ArrayList<VectorValue>();
         }
-        return this.realOrSymbRef;
+        return this.scalarOrSequenceOrSymbRef;
+    }
+	
+    
+	/**
+	 * @deprecated The list of row values is now accessed through {@link #getListOfValues()}
+	 */
+    @SuppressWarnings("unchecked")
+	@Deprecated
+	public List<Object> getRealOrSymbRef() {
+        return (List<Object>) (List<?>) getListOfValues();
+    }
+
+    /**
+     * Gets the value of the default property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Double }
+     *     
+     */
+    public double getDefault() {
+        if (_default == null) {
+            return  0.0D;
+        } else {
+            return _default;
+        }
+    }
+
+    /**
+     * Sets the value of the default property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Double }
+     *     
+     */
+    public void setDefault(Double value) {
+        this._default = value;
     }
 
 }

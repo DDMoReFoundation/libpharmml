@@ -62,5 +62,17 @@ public abstract class BooleanType
     extends PharmMLRootType implements Scalar
 {
 
+	/**
+	 * Creates an instance of either a {@link TrueBooleanType} or a {@link FalseBooleanType}.
+	 * @param value Primitive boolean value.
+	 * @return A {@link BooleanType} that wraps the provided primitive variable.
+	 */
+	public static BooleanType fromBoolean(boolean value){
+		if(value){
+			return new TrueBooleanType();
+		} else {
+			return new FalseBooleanType();
+		}
+	}
 
 }

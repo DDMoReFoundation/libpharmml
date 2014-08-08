@@ -28,8 +28,11 @@ package eu.ddmore.libpharmml.dom.modeldefn;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.LevelReferenceType;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
@@ -54,6 +57,16 @@ import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
  *           &lt;element name="Matrix" type="{http://www.pharmml.org/2013/03/CommonTypes}MatrixType"/>
  *         &lt;/choice>
  *       &lt;/sequence>
+ *       &lt;attribute name="deviationMatrixType">
+ *         &lt;simpleType>
+ *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}Name">
+ *             &lt;enumeration value="CovMatrix"/>
+ *             &lt;enumeration value="CorrMatrix"/>
+ *             &lt;enumeration value="StDevCorrMatrix"/>
+ *             &lt;enumeration value="Cholesky"/>
+ *           &lt;/restriction>
+ *         &lt;/simpleType>
+ *       &lt;/attribute>
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -93,6 +106,9 @@ public class CorrelationType
     protected PairwiseType pairwise;
     @XmlElement(name = "Matrix")
     protected MatrixType matrix;
+    @XmlAttribute(name = "deviationMatrixType")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String deviationMatrixType;
 
     /**
      * Gets the value of the variabilityReference property.
@@ -289,5 +305,29 @@ public class CorrelationType
     public void setMatrix(MatrixType value) {
         this.matrix = value;
     }
-    
+
+    /**
+     * Gets the value of the deviationMatrixType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDeviationMatrixType() {
+        return deviationMatrixType;
+    }
+
+    /**
+     * Sets the value of the deviationMatrixType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDeviationMatrixType(String value) {
+        this.deviationMatrixType = value;
+    }
+
 }

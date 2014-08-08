@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 
 
@@ -60,6 +62,7 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
  * 
  * 
  */
+@SuppressWarnings("deprecation")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Rhs", propOrder = {
     "equation",
@@ -88,7 +91,34 @@ public class Rhs
     protected VectorType vector;
     @XmlElement(name = "Interpolation")
     protected InterpolationType interpolation;
+    
+    public Rhs(){}
+    
+    public Rhs(Equation equation){
+    	this.equation = equation;
+    }
+    
+    public Rhs(Scalar scalar){
+    	// TODO: remove JAXBElement use
+    	this.scalar = MasterObjectFactory.createScalar(scalar);
+    }
+    
+    public Rhs(SymbolRefType symbRef){
+    	this.symbRef = symbRef;
+    }
 
+    public Rhs(SequenceType sequence){
+    	this.sequence = sequence;
+    }
+    
+    public Rhs(VectorType vector){
+    	this.vector = vector;
+    }
+    
+    public Rhs(InterpolationType interpolation){
+    	this.interpolation = interpolation;
+    }
+    
     /**
      * A mathematical expression.
      * 

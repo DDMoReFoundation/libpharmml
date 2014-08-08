@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
 /**
@@ -46,11 +47,11 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="DataSetTableType">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;element name="Row" type="{http://www.pharmml.org/2013/08/Dataset}DatasetRowType" maxOccurs="unbounded"/>
  *       &lt;/sequence>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -61,7 +62,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "DataSetTableType", propOrder = {
     "row"
 })
-public class DataSetTableType {
+public class DataSetTableType
+    extends PharmMLRootType
+{
 
     @XmlElement(name = "Row", required = true)
     protected List<DatasetRowType> row;

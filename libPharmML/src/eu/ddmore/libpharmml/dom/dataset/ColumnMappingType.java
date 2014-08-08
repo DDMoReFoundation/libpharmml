@@ -26,6 +26,8 @@
 
 package eu.ddmore.libpharmml.dom.dataset;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -50,6 +52,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
  *       &lt;sequence>
  *         &lt;element ref="{http://www.pharmml.org/2013/08/Dataset}ColumnRef"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
+ *         &lt;element name="CategoryMapping" type="{http://www.pharmml.org/2013/08/Dataset}CategoryMappingType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -61,7 +64,8 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ColumnMappingType", propOrder = {
     "columnRef",
-    "symbRef"
+    "symbRef",
+    "categoryMapping"
 })
 public class ColumnMappingType
     extends PharmMLRootType
@@ -71,6 +75,8 @@ public class ColumnMappingType
     protected ColumnRefType columnRef;
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
     protected SymbolRefType symbRef;
+    @XmlElement(name = "CategoryMapping")
+    protected List<CategoryMapping> categoryMapping;
 
     /**
      * 
@@ -120,6 +126,35 @@ public class ColumnMappingType
      */
     public void setSymbRef(SymbolRefType value) {
         this.symbRef = value;
+    }
+
+    /**
+     * Gets the value of the categoryMapping property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the categoryMapping property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getCategoryMapping().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link CategoryMapping }
+     * 
+     * 
+     */
+    public List<CategoryMapping> getCategoryMapping() {
+        if (categoryMapping == null) {
+            categoryMapping = new ArrayList<CategoryMapping>();
+        }
+        return this.categoryMapping;
     }
 
 }

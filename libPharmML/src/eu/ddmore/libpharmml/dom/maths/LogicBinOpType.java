@@ -28,6 +28,7 @@ package eu.ddmore.libpharmml.dom.maths;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -37,14 +38,17 @@ import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.IdValueType;
 import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
 import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
 
 
 /**
@@ -57,7 +61,7 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
  * <pre>
  * &lt;complexType name="LogicBinOpType">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;choice>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}LogicBinop"/>
@@ -69,6 +73,11 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Binop"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Uniop"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}FunctionCall"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Sum"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Product"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}VectorSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}MatrixSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}Probability"/>
  *         &lt;/choice>
  *         &lt;choice>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}LogicBinop"/>
@@ -79,6 +88,11 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Binop"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Uniop"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}FunctionCall"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Sum"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Product"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}VectorSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}MatrixSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}Probability"/>
  *         &lt;/choice>
  *       &lt;/sequence>
  *       &lt;attribute name="op" use="required">
@@ -96,7 +110,7 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
  *           &lt;/restriction>
  *         &lt;/simpleType>
  *       &lt;/attribute>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -107,18 +121,25 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
 @XmlType(name = "LogicBinOpType", propOrder = {
     "content"
 })
-public class LogicBinOpType {
+public class LogicBinOpType
+    extends PharmMLRootType
+{
 
-	@XmlElementRefs({
-        @XmlElementRef(name = "Uniop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
+    @XmlElementRefs({
+        @XmlElementRef(name = "Sum", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "LogicBinop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Constant", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "FunctionCall", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "LogicUniop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Binop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "VectorSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "LogicUniop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Uniop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "MatrixSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "FunctionCall", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Probability", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Product", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> content;
     @XmlAttribute(name = "op", required = true)

@@ -51,12 +51,15 @@ public class ObjectFactory {
 
     private final static QName _Variable_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "Variable");
     private final static QName _Interpolation_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "Interpolation");
+    private final static QName _Delay_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "Delay");
     private final static QName _Int_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "Int");
     private final static QName _VariableAssignment_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "VariableAssignment");
-    private final static QName _FunctionDefinition_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "FunctionDefinition");
     private final static QName _Arrays_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "Arrays");
+    private final static QName _FunctionDefinition_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "FunctionDefinition");
     private final static QName _VariabilityReference_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "VariabilityReference");
+    private final static QName _Matrix_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "Matrix");
     private final static QName _Scalar_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "Scalar");
+    private final static QName _VectorSelector_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "VectorSelector");
     private final static QName _Symbol_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "Symbol");
     private final static QName _String_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "String");
     private final static QName _CommonVariable_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "CommonVariable");
@@ -65,6 +68,8 @@ public class ObjectFactory {
     private final static QName _True_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "True");
     private final static QName _Id_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "Id");
     private final static QName _Assign_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "Assign");
+    private final static QName _Product_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "Product");
+    private final static QName _MatrixSelector_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "MatrixSelector");
     private final static QName _Sequence_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "Sequence");
     private final static QName _OidRef_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "OidRef");
     private final static QName _DerivativeVariable_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "DerivativeVariable");
@@ -80,6 +85,10 @@ public class ObjectFactory {
     private final static QName _VectorSegment_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "VectorSegment");
     private final static QName _VectorCellValue_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "VectorCellValue");
     private final static QName _VectorValue_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "VectorValue");
+    private final static QName _Sum_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "Sum");
+    private final static QName _VectorSegmentSelectorTypeSegmentLength_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "SegmentLength");
+    private final static QName _VectorSegmentSelectorTypeStartIndex_QNAME = new QName("http://www.pharmml.org/2013/03/CommonTypes", "StartIndex");
+
     
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.commontypes
@@ -317,6 +326,7 @@ public class ObjectFactory {
      * Create an instance of {@link AssignType }
      * 
      */
+    @Deprecated
     public AssignType createAssignType() {
         return new AssignType();
     }
@@ -555,8 +565,8 @@ public class ObjectFactory {
     
     // 0.3.2
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "VectorElements")
-    JAXBElement<VectorType.VectorElements> createVectorElements(VectorType.VectorElements value){
-    	return new JAXBElement<VectorType.VectorElements>(_VectorElements_QNAME, VectorType.VectorElements.class, null, value);
+    JAXBElement<VectorElements> createVectorElements(VectorElements value){
+    	return new JAXBElement<VectorElements>(_VectorElements_QNAME, VectorElements.class, null, value);
     }
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "VectorCell")
     JAXBElement<VectorCell> createVectorCell(VectorCell value){
@@ -574,5 +584,68 @@ public class ObjectFactory {
     JAXBElement<Object> createVectorValue(Object value) {
         return new JAXBElement<Object>(_VectorValue_QNAME, Object.class, null, value);
     }
-
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SumType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Sum")
+    public JAXBElement<Sum> createSum(Sum value) {
+        return new JAXBElement<Sum>(_Sum_QNAME, Sum.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Product }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Product")
+    public JAXBElement<Product> createProduct(Product value) {
+        return new JAXBElement<Product>(_Product_QNAME, Product.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link MatrixSelectorType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "MatrixSelector")
+    public JAXBElement<MatrixSelector> createMatrixSelector(MatrixSelector value) {
+        return new JAXBElement<MatrixSelector>(_MatrixSelector_QNAME, MatrixSelector.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VectorSelectorType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "VectorSelector")
+    public JAXBElement<VectorSelector> createVectorSelector(VectorSelector value) {
+        return new JAXBElement<VectorSelector>(_VectorSelector_QNAME, VectorSelector.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link MatrixType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Matrix")
+    public JAXBElement<MatrixType> createMatrix(MatrixType value) {
+        return new JAXBElement<MatrixType>(_Matrix_QNAME, MatrixType.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Delay }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Delay")
+    public JAXBElement<Delay> createDelay(Delay value) {
+        return new JAXBElement<Delay>(_Delay_QNAME, Delay.class, null, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link MatrixVectorIndexType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "SegmentLength", scope = VectorSegmentSelector.class)
+    public JAXBElement<MatrixVectorIndex> createVectorSegmentSelectorTypeSegmentLength(MatrixVectorIndex value) {
+        return new JAXBElement<MatrixVectorIndex>(_VectorSegmentSelectorTypeSegmentLength_QNAME, MatrixVectorIndex.class, VectorSegmentSelector.class, value);
+    }
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link MatrixVectorIndexType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "StartIndex", scope = VectorSegmentSelector.class)
+    public JAXBElement<MatrixVectorIndex> createVectorSegmentSelectorTypeStartIndex(MatrixVectorIndex value) {
+        return new JAXBElement<MatrixVectorIndex>(_VectorSegmentSelectorTypeStartIndex_QNAME, MatrixVectorIndex.class, VectorSegmentSelector.class, value);
+    }
 }

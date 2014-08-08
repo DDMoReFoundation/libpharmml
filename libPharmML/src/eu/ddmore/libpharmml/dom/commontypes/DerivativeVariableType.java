@@ -48,9 +48,10 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Assign" minOccurs="0"/>
  *         &lt;element name="IndependentVariable" type="{http://www.pharmml.org/2013/03/CommonTypes}IndependentVariableReferenceType" minOccurs="0"/>
  *         &lt;element name="InitialCondition" type="{http://www.pharmml.org/2013/03/CommonTypes}InitialConditionType" minOccurs="0"/>
+ *         &lt;element name="History" type="{http://www.pharmml.org/2013/03/CommonTypes}HistoryType" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attribute name="symbolType" use="required" type="{http://www.pharmml.org/2013/03/CommonTypes}SymbolTypeType" fixed="real" />
  *       &lt;attribute name="compartmentNo" type="{http://www.pharmml.org/2013/03/CommonTypes}CompartmentNoType" />
+ *       &lt;attribute name="symbolType" use="required" type="{http://www.pharmml.org/2013/03/CommonTypes}SymbolTypeType" fixed="real" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -62,7 +63,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "DerivativeVariableType", propOrder = {
     "assign",
     "independentVariable",
-    "initialCondition"
+    "initialCondition",
+    "history"
 })
 public class DerivativeVariableType
     extends CommonVariableDefinitionType
@@ -74,10 +76,12 @@ public class DerivativeVariableType
     protected IndependentVariableReferenceType independentVariable;
     @XmlElement(name = "InitialCondition")
     protected InitialConditionType initialCondition;
-    @XmlAttribute(name = "symbolType", required = true)
-    protected SymbolTypeType symbolType;
+    @XmlElement(name = "History")
+    protected History history;
     @XmlAttribute(name = "compartmentNo")
     protected Integer compartmentNo;
+    @XmlAttribute(name = "symbolType", required = true)
+    protected SymbolTypeType symbolType;
 
     /**
      * The symbol id used to define the variable.
@@ -152,6 +156,54 @@ public class DerivativeVariableType
     }
 
     /**
+     * Gets the value of the history property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link History }
+     *     
+     */
+    public History getHistory() {
+        return history;
+    }
+
+    /**
+     * Sets the value of the history property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link History }
+     *     
+     */
+    public void setHistory(History value) {
+        this.history = value;
+    }
+
+    /**
+     * Gets the value of the compartmentNo property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public Integer getCompartmentNo() {
+        return compartmentNo;
+    }
+    
+    /**
+     * Sets the value of the compartmentNo property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setCompartmentNo(Integer value) {
+        this.compartmentNo = value;
+    }
+
+    /**
      * Gets the value of the symbolType property.
      * 
      * @return
@@ -177,30 +229,6 @@ public class DerivativeVariableType
      */
     public void setSymbolType(SymbolTypeType value) {
         this.symbolType = value;
-    }
-    
-    /**
-     * Gets the value of the compartmentNo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public Integer getCompartmentNo() {
-        return compartmentNo;
-    }
-
-    /**
-     * Sets the value of the compartmentNo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setCompartmentNo(Integer value) {
-        this.compartmentNo = value;
     }
 
 }

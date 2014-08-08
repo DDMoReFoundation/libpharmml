@@ -33,9 +33,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * The definition of a uniform sequence of numbers. Conceptually is has two forms. The first form takes an initial number, a step size and the last number. The sequence starts at the first
- * number and a new value, incremented by the step size, is added to the sequence until this value exceeds
- * the end value. In the second the step size is incremented r times, where r is the number of repetitions.                   
+ * The definition of a uniform sequence of numbers. It has two forms
+ *                 1. Begin:StepSize:End or
+ *                 2. Begin:StepSize:Repetitions
  *             
  * 
  * <p>Java class for SequenceType complex type.

@@ -33,8 +33,14 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.LevelReferenceType;
+import eu.ddmore.libpharmml.dom.uncertml.AbstractCategoricalMultivariateDistributionType;
+import eu.ddmore.libpharmml.dom.uncertml.AbstractCategoricalUnivariateDistributionType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractContinuousUnivariateDistributionType;
+import eu.ddmore.libpharmml.dom.uncertml.BernoulliDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.BetaDistribution;
+import eu.ddmore.libpharmml.dom.uncertml.CategoricalDistribution;
+import eu.ddmore.libpharmml.dom.uncertml.CategoricalMultivariateMixtureModel;
+import eu.ddmore.libpharmml.dom.uncertml.CategoricalUnivariateMixtureModel;
 import eu.ddmore.libpharmml.dom.uncertml.CauchyDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.ChiSquareDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.ContinuousUnivariateMixtureModel;
@@ -68,7 +74,11 @@ import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
  *     &lt;extension base="{http://www.pharmml.org/2013/03/ModelDefinition}CommonParameterType">
  *       &lt;sequence>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}VariabilityReference"/>
- *         &lt;element ref="{http://www.uncertml.org/3.0}AbstractContinuousUnivariateDistribution"/>
+ *         &lt;choice>
+ *           &lt;element ref="{http://www.uncertml.org/3.0}AbstractContinuousUnivariateDistribution"/>
+ *           &lt;element ref="{http://www.uncertml.org/3.0}AbstractCategoricalUnivariateDistribution"/>
+ *           &lt;element ref="{http://www.uncertml.org/3.0}AbstractCategoricalMultivariateDistribution"/>
+ *         &lt;/choice>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -80,7 +90,9 @@ import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ParameterRandomVariableType", propOrder = {
     "variabilityReference",
-    "abstractContinuousUnivariateDistribution"
+    "abstractContinuousUnivariateDistribution",
+    "abstractCategoricalUnivariateDistribution",
+    "abstractCategoricalMultivariateDistribution"
 })
 public class ParameterRandomVariableType
     extends CommonParameterType
@@ -88,8 +100,12 @@ public class ParameterRandomVariableType
 
     @XmlElement(name = "VariabilityReference", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
     protected LevelReferenceType variabilityReference;
-    @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = "http://www.uncertml.org/3.0", type = JAXBElement.class)
+    @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = "http://www.uncertml.org/3.0", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractContinuousUnivariateDistributionType> abstractContinuousUnivariateDistribution;
+    @XmlElementRef(name = "AbstractCategoricalUnivariateDistribution", namespace = "http://www.uncertml.org/3.0", type = JAXBElement.class, required = false)
+    protected JAXBElement<? extends AbstractCategoricalUnivariateDistributionType> abstractCategoricalUnivariateDistribution;
+    @XmlElementRef(name = "AbstractCategoricalMultivariateDistribution", namespace = "http://www.uncertml.org/3.0", type = JAXBElement.class, required = false)
+    protected JAXBElement<? extends AbstractCategoricalMultivariateDistributionType> abstractCategoricalMultivariateDistribution;
 
     /**
      * 
@@ -119,29 +135,29 @@ public class ParameterRandomVariableType
 
     /**
      * 
-     *                                 A continuous univariate probability distribution, defined by UncertML, that describes this random variable. 
-     *                             
+     *                                     A continuous univariate probability distribution, defined by UncertML. 
+     *                                 
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ParetoDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BetaDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StudentTDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ExponentialDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ContinuousUnivariateMixtureModel }{@code >}
      *     {@link JAXBElement }{@code <}{@link DiracDeltaDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link AbstractContinuousUnivariateDistributionType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CauchyDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link LogisticDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ChiSquareDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link LaplaceDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link UniformDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link WeibullDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link GammaDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link LogNormalDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link InverseGammaDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link ContinuousUnivariateMixtureModel }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BetaDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link NormalDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link LaplaceDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link ChiSquareDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link LogisticDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link ExponentialDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link GammaDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ParetoDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link InverseGammaDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link FDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link AbstractContinuousUnivariateDistributionType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StudentTDistribution }{@code >}
      *     
      */
     public JAXBElement<? extends AbstractContinuousUnivariateDistributionType> getAbstractContinuousUnivariateDistribution() {
@@ -153,28 +169,88 @@ public class ParameterRandomVariableType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ParetoDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BetaDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StudentTDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ExponentialDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ContinuousUnivariateMixtureModel }{@code >}
      *     {@link JAXBElement }{@code <}{@link DiracDeltaDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link AbstractContinuousUnivariateDistributionType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CauchyDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link LogisticDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ChiSquareDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link LaplaceDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link UniformDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link WeibullDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link GammaDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link LogNormalDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link InverseGammaDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link ContinuousUnivariateMixtureModel }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BetaDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link NormalDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link LaplaceDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link ChiSquareDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link LogisticDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link ExponentialDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link GammaDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ParetoDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link InverseGammaDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link FDistribution }{@code >}
-     *     {@link JAXBElement }{@code <}{@link AbstractContinuousUnivariateDistributionType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StudentTDistribution }{@code >}
      *     
      */
     public void setAbstractContinuousUnivariateDistribution(JAXBElement<? extends AbstractContinuousUnivariateDistributionType> value) {
         this.abstractContinuousUnivariateDistribution = value;
+    }
+
+    /**
+     * 
+     *                                     A continuous univariate probability distribution, defined by UncertML. 
+     *                                 
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link AbstractCategoricalUnivariateDistributionType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BernoulliDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link CategoricalUnivariateMixtureModel }{@code >}
+     *     
+     */
+    public JAXBElement<? extends AbstractCategoricalUnivariateDistributionType> getAbstractCategoricalUnivariateDistribution() {
+        return abstractCategoricalUnivariateDistribution;
+    }
+
+    /**
+     * Sets the value of the abstractCategoricalUnivariateDistribution property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link AbstractCategoricalUnivariateDistributionType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BernoulliDistribution }{@code >}
+     *     {@link JAXBElement }{@code <}{@link CategoricalUnivariateMixtureModel }{@code >}
+     *     
+     */
+    public void setAbstractCategoricalUnivariateDistribution(JAXBElement<? extends AbstractCategoricalUnivariateDistributionType> value) {
+        this.abstractCategoricalUnivariateDistribution = value;
+    }
+
+    /**
+     * 
+     *                                     A continuous multivariate probability distribution, defined by UncertML. 
+     *                                 
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link AbstractCategoricalMultivariateDistributionType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link CategoricalMultivariateMixtureModel }{@code >}
+     *     {@link JAXBElement }{@code <}{@link CategoricalDistribution }{@code >}
+     *     
+     */
+    public JAXBElement<? extends AbstractCategoricalMultivariateDistributionType> getAbstractCategoricalMultivariateDistribution() {
+        return abstractCategoricalMultivariateDistribution;
+    }
+
+    /**
+     * Sets the value of the abstractCategoricalMultivariateDistribution property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link AbstractCategoricalMultivariateDistributionType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link CategoricalMultivariateMixtureModel }{@code >}
+     *     {@link JAXBElement }{@code <}{@link CategoricalDistribution }{@code >}
+     *     
+     */
+    public void setAbstractCategoricalMultivariateDistribution(JAXBElement<? extends AbstractCategoricalMultivariateDistributionType> value) {
+        this.abstractCategoricalMultivariateDistribution = value;
     }
 
 }

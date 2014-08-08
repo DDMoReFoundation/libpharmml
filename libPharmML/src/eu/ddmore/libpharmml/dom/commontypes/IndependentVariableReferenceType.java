@@ -42,11 +42,11 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="IndependentVariableReferenceType">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
  *       &lt;/sequence>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -57,7 +57,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "IndependentVariableReferenceType", propOrder = {
     "symbRef"
 })
-public class IndependentVariableReferenceType {
+public class IndependentVariableReferenceType
+    extends PharmMLRootType
+{
 
     @XmlElement(name = "SymbRef", required = true)
     protected SymbolRefType symbRef;

@@ -52,6 +52,7 @@ public class ObjectFactory {
     private final static QName _StructuralModel_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "StructuralModel");
     private final static QName _ModelDefinition_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "ModelDefinition");
     private final static QName _General_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "General");
+    private final static QName _Probability_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "Probability");
     private final static QName _Standard_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "Standard");
     private final static QName _SimpleParameter_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "SimpleParameter");
     private final static QName _IndividualParameter_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "IndividualParameter");
@@ -107,6 +108,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Probability }
+     * 
+     */
+    public Probability createProbabilityType() {
+        return new Probability();
+    }
+
+    /**
      * Create an instance of {@link StructuralModelType }
      * 
      */
@@ -147,6 +156,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TransitionRate }
+     * 
+     */
+    public TransitionRate createTransitionRateType() {
+        return new TransitionRate();
+    }
+
+    /**
      * Create an instance of {@link CovariateTransformationType }
      * 
      */
@@ -163,11 +180,43 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ContinuousObservationModel }
+     * 
+     */
+    public ContinuousObservationModel createContinuousObservationModelType() {
+        return new ContinuousObservationModel();
+    }
+
+    /**
      * Create an instance of {@link VariabilityLevelDefnType }
      * 
      */
     public VariabilityLevelDefnType createVariabilityLevelDefnType() {
         return new VariabilityLevelDefnType();
+    }
+
+    /**
+     * Create an instance of {@link CountPMF }
+     * 
+     */
+    public CountPMF createCountPMFType() {
+        return new CountPMF();
+    }
+
+    /**
+     * Create an instance of {@link Discrete }
+     * 
+     */
+    public Discrete createDiscreteType() {
+        return new Discrete();
+    }
+
+    /**
+     * Create an instance of {@link TimeToEventData }
+     * 
+     */
+    public TimeToEventData createTimeToEventDataType() {
+        return new TimeToEventData();
     }
 
     /**
@@ -195,11 +244,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CategoricalCovariateType }
+     * 
+     */
+    public CategoricalCovariateType createCategoricalCovariateType() {
+        return new CategoricalCovariateType();
+    }
+
+    /**
      * Create an instance of {@link CovariateRelationType }
      * 
      */
     public CovariateRelationType createCovariateRelationType() {
         return new CovariateRelationType();
+    }
+
+    /**
+     * Create an instance of {@link CategoricalData }
+     * 
+     */
+    public CategoricalData createCategoricalDataType() {
+        return new CategoricalData();
     }
 
     /**
@@ -211,11 +276,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CountData }
+     * 
+     */
+    public CountData createCountDataType() {
+        return new CountData();
+    }
+
+    /**
+     * Create an instance of {@link Censoring }
+     * 
+     */
+    public Censoring createCensoringType() {
+        return new Censoring();
+    }
+
+    /**
      * Create an instance of {@link FixedEffectRelationType }
      * 
      */
     public FixedEffectRelationType createFixedEffectRelationType() {
         return new FixedEffectRelationType();
+    }
+
+    /**
+     * Create an instance of {@link CommonDiscreteState }
+     * 
+     */
+    public CommonDiscreteState createCommonDiscreteStateType() {
+        return new CommonDiscreteState();
     }
 
     /**
@@ -227,6 +316,38 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CensoringFeature }
+     * 
+     */
+    public CensoringFeature createCensoringFeatureType() {
+        return new CensoringFeature();
+    }
+
+    /**
+     * Create an instance of {@link DiscreteDataParameter }
+     * 
+     */
+    public DiscreteDataParameter createDiscreteDataParameterType() {
+        return new DiscreteDataParameter();
+    }
+
+    /**
+     * Create an instance of {@link ProbabilityAssignment }
+     * 
+     */
+    public ProbabilityAssignment createProbabilityAssignmentType() {
+        return new ProbabilityAssignment();
+    }
+
+    /**
+     * Create an instance of {@link ListOfCategories }
+     * 
+     */
+    public ListOfCategories createListOfCategoriesType() {
+        return new ListOfCategories();
+    }
+
+    /**
      * Create an instance of {@link CorrelationType }
      * 
      */
@@ -235,11 +356,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CommonDiscreteVariable }
+     * 
+     */
+    public CommonDiscreteVariable createCommonDiscreteVariableType() {
+        return new CommonDiscreteVariable();
+    }
+
+    /**
      * Create an instance of {@link CorrelatedRandomVarType }
      * 
      */
     public CorrelatedRandomVarType createCorrelatedRandomVarType() {
         return new CorrelatedRandomVarType();
+    }
+
+    /**
+     * Create an instance of {@link CategoricalPMF }
+     * 
+     */
+    public CategoricalPMF createCategoricalPMFType() {
+        return new CategoricalPMF();
+    }
+
+    /**
+     * Create an instance of {@link TTEFunction }
+     * 
+     */
+    public TTEFunction createTTEFunctionType() {
+        return new TTEFunction();
     }
 
     /**
@@ -256,6 +401,14 @@ public class ObjectFactory {
      */
     public ContinuousCovariateType createContinuousCovariateType() {
         return new ContinuousCovariateType();
+    }
+
+    /**
+     * Create an instance of {@link Dependance }
+     * 
+     */
+    public Dependance createDependanceType() {
+        return new Dependance();
     }
 
     /**
@@ -347,6 +500,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "General", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModelDefinition", substitutionHeadName = "ObservationError")
     public JAXBElement<GeneralObsError> createGeneral(GeneralObsError value) {
         return new JAXBElement<GeneralObsError>(_General_QNAME, GeneralObsError.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Probability }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "Probability")
+    public JAXBElement<Probability> createProbability(Probability value) {
+        return new JAXBElement<Probability>(_Probability_QNAME, Probability.class, null, value);
     }
 
     /**

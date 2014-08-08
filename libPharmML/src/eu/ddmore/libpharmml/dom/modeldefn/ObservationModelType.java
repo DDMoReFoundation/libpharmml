@@ -29,8 +29,14 @@ package eu.ddmore.libpharmml.dom.modeldefn;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
 /**
@@ -43,10 +49,12 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="ObservationModelType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/ModelDefinition}CommonParameterModelType">
- *       &lt;sequence>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}ObservationError"/>
- *       &lt;/sequence>
+ *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *       &lt;choice>
+ *         &lt;element name="ContinuousData" type="{http://www.pharmml.org/2013/03/ModelDefinition}ContinuousObservationModelType"/>
+ *         &lt;element name="Discrete" type="{http://www.pharmml.org/2013/03/ModelDefinition}DiscreteType"/>
+ *       &lt;/choice>
+ *       &lt;attGroup ref="{http://www.pharmml.org/2013/03/CommonTypes}BlockDefnGroup"/>
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -56,14 +64,25 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ObservationModelType", propOrder = {
+	"continuousData",
+    "discrete",
     "observationError"
 })
 public class ObservationModelType
-    extends CommonParameterModelType
+    extends PharmMLRootType
 {
 
     @XmlElementRef(name = "ObservationError", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class)
+    @Deprecated
     protected JAXBElement<? extends ObservationErrorType> observationError;
+	
+	@XmlElement(name = "ContinuousData")
+    protected ContinuousObservationModel continuousData;
+    @XmlElement(name = "Discrete")
+    protected Discrete discrete;
+    @XmlAttribute(name = "blkId", required = true)
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String blkId;
 
     /**
      * Gets the value of the observationError property.
@@ -74,7 +93,9 @@ public class ObservationModelType
      *     {@link JAXBElement }{@code <}{@link GeneralObsError }{@code >}
      *     {@link JAXBElement }{@code <}{@link GaussianObsError }{@code >}
      *     
+     * @deprecated The observation error has been deplaced into the continuous data element that can be accessed through {@link #getContinuousData()}
      */
+    @Deprecated
     public JAXBElement<? extends ObservationErrorType> getObservationError() {
         return observationError;
     }
@@ -88,9 +109,82 @@ public class ObservationModelType
      *     {@link JAXBElement }{@code <}{@link GeneralObsError }{@code >}
      *     {@link JAXBElement }{@code <}{@link GaussianObsError }{@code >}
      *     
+     * @deprecated The observation error has been deplaced into the continuous data element. It can be set through the class {@link ContinuousObservationModel}
      */
+    @Deprecated
     public void setObservationError(JAXBElement<? extends ObservationErrorType> value) {
         this.observationError = value;
     }
 
+	/**
+     * Gets the value of the continuousData property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ContinuousObservationModel }
+     *     
+     */
+    public ContinuousObservationModel getContinuousData() {
+        return continuousData;
+    }
+
+    /**
+     * Sets the value of the continuousData property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ContinuousObservationModel }
+     *     
+     */
+    public void setContinuousData(ContinuousObservationModel value) {
+        this.continuousData = value;
+    }
+
+    /**
+     * Gets the value of the discrete property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Discrete }
+     *     
+     */
+    public Discrete getDiscrete() {
+        return discrete;
+    }
+
+    /**
+     * Sets the value of the discrete property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Discrete }
+     *     
+     */
+    public void setDiscrete(Discrete value) {
+        this.discrete = value;
+    }
+
+    /**
+     * Gets the value of the blkId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getBlkId() {
+        return blkId;
+    }
+
+    /**
+     * Sets the value of the blkId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setBlkId(String value) {
+        this.blkId = value;
+    }
 }

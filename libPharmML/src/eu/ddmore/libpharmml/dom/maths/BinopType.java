@@ -28,6 +28,7 @@ package eu.ddmore.libpharmml.dom.maths;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -37,14 +38,21 @@ import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.Delay;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.IdValueType;
 import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
+import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.Product;
 import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
 import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
+import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 
 
 /**
@@ -59,7 +67,7 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
  * <pre>
  * &lt;complexType name="BinopType">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;choice>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Scalar"/>
@@ -68,6 +76,12 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Binop"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Uniop"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}FunctionCall"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Sum"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Product"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Delay"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}VectorSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}MatrixSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}Probability"/>
  *         &lt;/choice>
  *         &lt;choice>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Scalar"/>
@@ -76,6 +90,12 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Binop"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Uniop"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}FunctionCall"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Sum"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Product"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Delay"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}VectorSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}MatrixSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}Probability"/>
  *         &lt;/choice>
  *       &lt;/sequence>
  *       &lt;attribute name="op" use="required">
@@ -90,10 +110,11 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
  *             &lt;enumeration value="root"/>
  *             &lt;enumeration value="min"/>
  *             &lt;enumeration value="max"/>
+ *             &lt;enumeration value="rem"/>
  *           &lt;/restriction>
  *         &lt;/simpleType>
  *       &lt;/attribute>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -104,15 +125,23 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
 @XmlType(name = "BinopType", propOrder = {
     "content"
 })
-public class BinopType {
+public class BinopType
+    extends PharmMLRootType
+{
 
     @XmlElementRefs({
-        @XmlElementRef(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "FunctionCall", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Sum", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Uniop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Binop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "MatrixSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "FunctionCall", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Constant", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "Delay", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "VectorSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Binop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Probability", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Product", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> content;
     @XmlAttribute(name = "op", required = true)
@@ -125,8 +154,8 @@ public class BinopType {
      * <p>
      * You are getting this "catch-all" property because of the following reason: 
      * The field name "Scalar" is used by two different parts of a schema. See: 
-     * line 48 of file:/automount/nas17b_vol-vol_homes-homes/florent/workspace/libPharmML_0.3unmerged/libPharmML/definitions/maths.xsd
-     * line 37 of file:/automount/nas17b_vol-vol_homes-homes/florent/workspace/libPharmML_0.3unmerged/libPharmML/definitions/maths.xsd
+     * line 65 of file:/automount/nas17b_vol-vol_homes-homes/florent/git/libPharmML_2/libPharmML/definitions/maths.xsd
+     * line 48 of file:/automount/nas17b_vol-vol_homes-homes/florent/git/libPharmML_2/libPharmML/definitions/maths.xsd
      * <p>
      * To get rid of this property, apply a property customization to one 
      * of both of the following declarations to change their names: 
@@ -147,19 +176,25 @@ public class BinopType {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}
-     * {@link JAXBElement }{@code <}{@link UniopType }{@code >}
-     * {@link JAXBElement }{@code <}{@link BinopType }{@code >}
-     * {@link JAXBElement }{@code <}{@link Object }{@code >}
-     * {@link JAXBElement }{@code <}{@link ConstantType }{@code >}
-     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link FunctionCallType }{@code >}
-     * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link SumType }{@code >}
      * {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ConstantType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Delay }{@code >}
+     * {@link JAXBElement }{@code <}{@link BinopType }{@code >}
+     * {@link JAXBElement }{@code <}{@link VectorSelector }{@code >}
+     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
      * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     * {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link UniopType }{@code >}
+     * {@link JAXBElement }{@code <}{@link MatrixSelector }{@code >}
+     * {@link JAXBElement }{@code <}{@link Object }{@code >}
+     * {@link JAXBElement }{@code <}{@link FunctionCallType }{@code >}
+     * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Product }{@code >}
+     * {@link JAXBElement }{@code <}{@link Probability }{@code >}
+     * {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}
      * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
+     * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
      * 
      * 
      */

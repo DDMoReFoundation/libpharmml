@@ -40,15 +40,21 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.Delay;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.IdValueType;
 import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
-import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
+import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.Product;
 import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
+import eu.ddmore.libpharmml.dom.commontypes.Sum;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
+import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
@@ -63,7 +69,7 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
  * <pre>
  * &lt;complexType name="EquationType">
  *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;choice>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Scalar"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
@@ -71,8 +77,14 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
  *         &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Uniop"/>
  *         &lt;element name="Piecewise" type="{http://www.pharmml.org/2013/03/Maths}PiecewiseType"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/Maths}FunctionCall"/>
+ *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Sum"/>
+ *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Product"/>
+ *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Delay"/>
+ *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}VectorSelector"/>
+ *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}MatrixSelector"/>
+ *         &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}Probability"/>
  *       &lt;/choice>
- *     &lt;/restriction>
+ *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
@@ -87,12 +99,20 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
     "binop",
     "uniop",
     "piecewise",
-    "functionCall"
+    "functionCall",
+    "sum",
+    "product",
+    "delay",
+    "vectorSelector",
+    "matrixSelector",
+    "probability"
 })
 @XmlSeeAlso({
     Equation.class
 })
-public class EquationType extends PharmMLElement{
+public class EquationType
+    extends PharmMLRootType
+{
 
     @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     protected JAXBElement<?> scalar;
@@ -106,6 +126,18 @@ public class EquationType extends PharmMLElement{
     protected PiecewiseType piecewise;
     @XmlElement(name = "FunctionCall")
     protected FunctionCallType functionCall;
+	@XmlElement(name = "Sum", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    protected Sum sum;
+    @XmlElement(name = "Product", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    protected Product product;
+    @XmlElement(name = "Delay", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    protected Delay delay;
+    @XmlElement(name = "VectorSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    protected VectorSelector vectorSelector;
+    @XmlElement(name = "MatrixSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    protected MatrixSelector matrixSelector;
+    @XmlElement(name = "Probability", namespace = "http://www.pharmml.org/2013/03/ModelDefinition")
+    protected Probability probability;
 	
 	@XmlElementRefs({
         @XmlElementRef(name = "Piecewise", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
@@ -123,14 +155,14 @@ public class EquationType extends PharmMLElement{
      * 
      * @return
      *     possible object is
+     *     {@link JAXBElement }{@code <}{@link Object }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
      *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
      *     
      */
     public JAXBElement<?> getScalar() {
@@ -142,14 +174,14 @@ public class EquationType extends PharmMLElement{
      * 
      * @param value
      *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link Object }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
      *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
      *     
      */
     public void setScalar(JAXBElement<?> value) {
@@ -275,43 +307,151 @@ public class EquationType extends PharmMLElement{
     public void setFunctionCall(FunctionCallType value) {
         this.functionCall = value;
     }
-	
-	/**
-     * Gets the value of the scalarOrSymbRefOrBinop property.
+
+    /**
+     * Gets the value of the sum property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the scalarOrSymbRefOrBinop property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getScalarOrSymbRefOrBinop().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link PiecewiseType }{@code >}
-     * {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}
-     * {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
-     * {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link UniopType }{@code >}
-     * {@link JAXBElement }{@code <}{@link BinopType }{@code >}
-     * {@link JAXBElement }{@code <}{@link FunctionCallType }{@code >}
-     * {@link JAXBElement }{@code <}{@link Object }{@code >}
-     * 
-     * @deprecated Since version 0.3, an equation can only have 1 child element either scalar, binop, uniop, functionCall, piecewise or symbRef.
-     * This method should only be used with 0.2 PharmML documents. This attribute would remain empty for other versions. 
-     * The child element should be accessed through {@link #getScalar()}, {@link #getBinop()}, {@link #getUniop()}, {@link #getFunctionCall()}, {@link #getPiecewise()} or {@link #getSymbRef()}, and modified through the according setters.
+     * @return
+     *     possible object is
+     *     {@link SumType }
+     *     
      */
+    public Sum getSum() {
+        return sum;
+    }
+
+    /**
+     * Sets the value of the sum property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SumType }
+     *     
+     */
+    public void setSum(Sum value) {
+        this.sum = value;
+    }
+
+    /**
+     * Gets the value of the product property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Product }
+     *     
+     */
+    public Product getProduct() {
+        return product;
+    }
+
+    /**
+     * Sets the value of the product property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Product }
+     *     
+     */
+    public void setProduct(Product value) {
+        this.product = value;
+    }
+
+    /**
+     * Gets the value of the delay property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Delay }
+     *     
+     */
+    public Delay getDelay() {
+        return delay;
+    }
+
+    /**
+     * Sets the value of the delay property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Delay }
+     *     
+     */
+    public void setDelay(Delay value) {
+        this.delay = value;
+    }
+
+    /**
+     * Gets the value of the vectorSelector property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VectorSelectorType }
+     *     
+     */
+    public VectorSelector getVectorSelector() {
+        return vectorSelector;
+    }
+
+    /**
+     * Sets the value of the vectorSelector property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link VectorSelectorType }
+     *     
+     */
+    public void setVectorSelector(VectorSelector value) {
+        this.vectorSelector = value;
+    }
+
+    /**
+     * Gets the value of the matrixSelector property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link MatrixSelector }
+     *     
+     */
+    public MatrixSelector getMatrixSelector() {
+        return matrixSelector;
+    }
+
+    /**
+     * Sets the value of the matrixSelector property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MatrixSelector }
+     *     
+     */
+    public void setMatrixSelector(MatrixSelector value) {
+        this.matrixSelector = value;
+    }
+
+    /**
+     * Gets the value of the probability property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Probability }
+     *     
+     */
+    public Probability getProbability() {
+        return probability;
+    }
+
+    /**
+     * Sets the value of the probability property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Probability }
+     *     
+     */
+    public void setProbability(Probability value) {
+        this.probability = value;
+    }
+	
     @Deprecated
 	public List<JAXBElement<?>> getScalarOrSymbRefOrBinop() {
         if (scalarOrSymbRefOrBinop == null) {

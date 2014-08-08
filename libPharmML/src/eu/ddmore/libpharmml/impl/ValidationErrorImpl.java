@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 European Molecular Biology Laboratory,
+ * Copyright (c) 2013, 2014 European Molecular Biology Laboratory,
  * Heidelberg, Germany.
  *
  * Licensed under the Apache License, Version 2.0 (the
