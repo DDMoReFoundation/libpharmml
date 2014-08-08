@@ -26,6 +26,8 @@
 
 package eu.ddmore.libpharmml.dom.modeldefn;
 
+import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -36,15 +38,24 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.NameType;
 
 
 /**
  * Type defining the observation model.
  * 
- * <p>Java class for ObservationModelType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p><h3>Classification of continuous data models and discrete data models:</h3>
+ * Since PharmML 0.4, observation models are now classified within either continuous data models or
+ * discrete data models. To encode a model from the continuous category, one should create a
+ * {@link ContinuousObservationModel} and set it to this object. These models are accessible
+ * through {@link #getContinuousData()}. Discrete data models are accessible through {@link #getDiscrete()},
+ * and handled in the {@link Discrete} class.
+ * 
+ * 
+ * 
+ * <p><h3>Schema:</h3>
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="ObservationModelType">
@@ -69,8 +80,10 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "observationError"
 })
 public class ObservationModelType
-    extends PharmMLRootType
+    extends CommonParameterModelType
 {
+	//TODO: extends PharmMLRootType. still CommonParameterModelType for backward compatiblity.
+	// All inherited methods are @override and @deprecated
 
     @XmlElementRef(name = "ObservationError", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class)
     @Deprecated
@@ -187,4 +200,102 @@ public class ObservationModelType
     public void setBlkId(String value) {
         this.blkId = value;
     }
+    
+    
+    // inherited methods : DEPRECATED
+    // TODO: remove them
+    
+    /**
+     * Gets the value of the name property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link NameType }
+     *     
+     * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.
+     * See the documentation of {@link ObservationModelType}.
+     */
+    @Override
+    @Deprecated
+    public NameType getName() {
+        return super.getName();
+    }
+
+    /**
+     * Sets the value of the name property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NameType }
+     *     
+     * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.
+     * See the documentation of {@link ObservationModelType}.
+     */
+    @Override
+    @Deprecated
+    public void setName(NameType value) {
+        super.setName(value);
+    }
+
+    /**
+     * Gets the value of the commonParameterElement property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the commonParameterElement property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getCommonParameterElement().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link JAXBElement }{@code <}{@link SimpleParameterType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CommonParameterType }{@code >}
+     * {@link JAXBElement }{@code <}{@link IndividualParameterType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ParameterRandomVariableType }{@code >}
+     * 
+     * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.
+     * See the documentation of {@link ObservationModelType}.
+     */
+    @Override
+    @Deprecated
+    public List<JAXBElement<? extends CommonParameterType>> getCommonParameterElement() {
+        return super.getCommonParameterElement();
+    }
+
+    /**
+     * Gets the value of the correlation property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the correlation property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getCorrelation().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link CorrelationType }
+     * 
+     * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.
+     * See the documentation of {@link ObservationModelType}.
+     */
+    @Override
+    @Deprecated
+    public List<CorrelationType> getCorrelation() {
+        return super.getCorrelation();
+    }
+
 }
