@@ -1,15 +1,46 @@
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import java.math.BigInteger;
+
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * 
- *                 The type specifies the content of a matrix.
+ * The type specifies the content of a matrix.
+ * 
+ * 
+ * <p><h3>Encoding:</h3>
+ * The definition of matrixes is similar to the definition of vectors (see {@link Vector}).
+ * It is possible to define a matrix row-by-row using {@link MatrixRow} elements or to define
+ * a sparse matrix with a few elements such as {@link MatrixBlock} objects or {@link MatrixCell}
+ * objects.
+ * 
+ * <p>Some attributes allow to simplify the matrix encoding by only specifying explictly
+ * a few values:
+ * <p><ul>
+ * <li><b>matrixType</b> (see {@link MatrixType.Type}):
+ * 		<ul>
+ * 		<li><b>Any</b>: no requirement on the matrix.</li>
+ * 		<li><b>Diagonal</b>: only the diagonal values have to be specified, the rest is by definition zero.</li>
+ * 		<li><b>LowerTriangular/UpperTriangular</b>: only diagonal and off-diagonal matrix elements
+ * below or above the diagonal are non-zero and have to be specified, respectively.</li>
+ * 		<li><b>Symmetric</b>: due to simmetry only the off-diagonal matrix elements below or above
+ * the diagonal have to be specified.</li>
+ * 		</ul>
+ * </li>
+ * <li><b>diagDefault</b>: sets all the diagonal values to a given default value.</li>
+ * <li><b>offDiagDefault</b>: sets all the off-diagonal values to a given default value.</li>
+ * </ul> 
+ * 
+ * <p><h3>Reading:</h3>
+ * Any reference to the matrix can be done using a symbol reference (see {@link SymbolRefType}). It is
+ * then mandatory to specifify a symbolId to that matrix.
+ * It is also possible to refer to a subpart of a matrix using a {@link MatrixSelector} object. The
+ * selector must also refers to the symbol id of that matrix.
  *             
  * 
- * <p>Java class for MatrixType complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p><h3>Schema:</h3>
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="MatrixType">
@@ -49,6 +80,58 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @XmlTransient
 public class Matrix extends MatrixType {
+	
+	/**
+	 * Empty constructor
+	 */
+	public Matrix(){
+		super(0);
+	}
+	
+	/**
+	 * Constructs a matrix with the minimal required attributes
+	 * @param symbolId Symbol of the matrix (may be null).
+	 * @param type Matrix type.
+	 */
+	public Matrix(String symbolId, Matrix.Type type){
+		this();
+		this.setSymbId(symbolId);
+		this.setMatrixType(type);
+	}
+	
+	/**
+	 * Constructs a matrix with the minimal required attributes for a sparse matrix.
+	 * @param symbolId Symbol of the matrix (may be null).
+	 * @param type Matrix type.
+	 * @param numbCols Number of columns.
+	 * @param numbRows Number of rows.
+	 */
+	public Matrix(String symbolId, Matrix.Type type, int numbCols, int numbRows){
+		this(symbolId,type);
+		this.setNumbCols(BigInteger.valueOf(numbCols));
+		this.setNumbRows(BigInteger.valueOf(numbRows));
+	}
+	
+	/**
+	 * Constructs a matrix with the minimal required attributes for a sparse matrix that contains
+	 * matrix blocks and/or matrix cells.
+	 * @param symbolId Symbol of the matrix (may be null).
+	 * @param type Matrix type.
+	 * @param numbCols Number of columns.
+	 * @param numbRows Number of rows.
+	 * @param diagDefault Default value on the diagonal.
+	 * @param offDiagDefault Default off-diagonal value.
+	 */
+	public Matrix(String symbolId, Matrix.Type type, int numbCols, int numbRows, 
+			double diagDefault, double offDiagDefault){
+		this(symbolId,type,numbCols,numbRows);
+		this.setDiagDefault(diagDefault);
+		this.setOffDiagDefault(offDiagDefault);
+	}
+	
+	public void setMatrixType(Matrix.Type type){
+		setMatrixType(type.toString());
+	}
 
     public MatrixColumnRowNames createRowNames(){
     	MatrixColumnRowNames rowNames = new MatrixColumnRowNames();
@@ -106,7 +189,7 @@ public class Matrix extends MatrixType {
     	return row;
     }
     
-    public MatrixRow createRow(double defaultValue, MatrixVectorIndex index){
+    public MatrixRow createRow(MatrixVectorIndex index, double defaultValue){
     	MatrixRow row = createRow(defaultValue);
     	row.setRowIndex(index);
     	return row;
@@ -120,10 +203,56 @@ public class Matrix extends MatrixType {
     	return row;
     }
     
-    public MatrixRow createRow(VectorValue[] values, MatrixVectorIndex index){
+    public MatrixRow createRow(MatrixVectorIndex index, VectorValue[] values){
     	MatrixRow row = createRow(values);
     	row.setRowIndex(index);
     	return row;
+    }
+    
+    /**
+     * Enumerates the possible types of a matrix.
+     * @author F. Yvon
+     */
+    public static enum Type {
+    	/**
+    	 * "Any" - 
+    	 * No requirement on the matrix.
+    	 */
+    	ANY("Any"),
+    	/**
+    	 * "Diagonal" - 
+    	 * Only the diagonal values have to be specified, the rest is by definition zero.
+    	 */
+    	DIAGONAL("Diagonal"),
+    	/**
+    	 * "LowerTriangular" - 
+    	 * Only diagonal and off-diagonal matrix elements below the diagonal are non-zero and have to be specified.
+    	 */
+    	LOWER_TRIANGULAR("LowerTriangular"),
+    	/**
+    	 * "UpperTriangular" - 
+    	 * Only diagonal and off-diagonal matrix elements above the diagonal are non-zero and have to be specified.
+    	 */
+    	UPPER_TRIANGULAR("UpperTriangular"),
+    	/**
+    	 * "Symmetric" - 
+    	 * Due to simmetry only the off-diagonal matrix elements below or above the diagonal have to be specified.
+    	 */
+    	SYMMETRIC("Symmetric");
+    	
+    	private String type;
+    	
+    	Type(String type){
+    		this.type = type;
+    	}
+    	
+    	/**
+    	 * Converts the enum value to the string version that apperas in PharmML files.
+    	 */
+    	@Override
+    	public String toString() {
+    		return this.type;
+    	}
     }
     
 }

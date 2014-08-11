@@ -260,10 +260,19 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link MatrixType }
-     * 
+     * @deprecated Use {@link #createMatrix()} instead.
      */
+    @Deprecated
     public MatrixType createMatrixType() {
         return new MatrixType();
+    }
+    
+    /**
+     * Create an instance of {@link Matrix }
+     * 
+     */
+    public MatrixType createMatrix() {
+        return new Matrix();
     }
 
     /**

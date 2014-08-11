@@ -121,6 +121,19 @@ public class MatrixType
     @XmlAttribute(name = "symbId")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String symbId;
+    
+    /**
+     * @deprecated Use {@link Matrix} instead.
+     */
+    public MatrixType(){}
+    
+    /**
+     * Internal purpose only.
+     * @param a
+     */
+    protected MatrixType(int a){
+    	
+    }
 
     /**
      * Gets the value of the rowNames property.
@@ -358,10 +371,6 @@ public class MatrixType
     public void setMatrixType(String value) {
         this.matrixType = value;
     }
-    
-    public void setMatrixType(MatrixType.Type type){
-    	this.matrixType = type.toString();
-    }
 
     /**
      * Gets the value of the symbId property.
@@ -387,23 +396,4 @@ public class MatrixType
         this.symbId = value;
     }
         
-    public static enum Type {
-    	ANY("Any"),
-    	DIAGONAL("Diagonal"),
-    	LOWER_TRIANGULAR("LowerTriangular"),
-    	UPPER_TRIANGULAR("UpperTriangular"),
-    	SYMMETRIC("Symmetric");
-    	
-    	private String type;
-    	
-    	Type(String type){
-    		this.type = type;
-    	}
-    	
-    	@Override
-    	public String toString() {
-    		return this.type;
-    	}
-    }
-
 }
