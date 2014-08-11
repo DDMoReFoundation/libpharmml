@@ -71,7 +71,7 @@ public class MatrixColumnRowNames
         @XmlElement(name = "String", type = StringValueType.class),
         @XmlElement(name = "SymbRef", type = SymbolRefType.class)
     })
-    protected List<Object> stringOrSymbRef;
+    protected List<PharmMLElement> stringOrSymbRef;
 
     /**
      * Gets the value of the stringOrSymbRef property.
@@ -96,9 +96,9 @@ public class MatrixColumnRowNames
      * 
      * 
      */
-    public List<Object> getStringOrSymbRef() {
+    public List<PharmMLElement> getStringOrSymbRef() {
         if (stringOrSymbRef == null) {
-            stringOrSymbRef = new ArrayList<Object>();
+            stringOrSymbRef = new ArrayList<PharmMLElement>();
         }
         return this.stringOrSymbRef;
     }
