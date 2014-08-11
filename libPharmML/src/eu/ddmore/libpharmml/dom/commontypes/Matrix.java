@@ -133,78 +133,201 @@ public class Matrix extends MatrixType {
 		setMatrixType(type.toString());
 	}
 
+	/**
+	 * Creates an empty {@link MatrixColumnRowNames} element for row names in that matrix and returns it.
+	 * @return The created {@link MatrixColumnRowNames} object.
+	 */
     public MatrixColumnRowNames createRowNames(){
     	MatrixColumnRowNames rowNames = new MatrixColumnRowNames();
     	this.rowNames = rowNames;
     	return rowNames;
     }
     
+    /**
+     * Creates an empty {@link MatrixColumnRowNames} element for column names in that matrix and returns it.
+	 * @return The created {@link MatrixColumnRowNames} object.
+     */
     public MatrixColumnRowNames createColumnNames(){
     	MatrixColumnRowNames columnNames = new MatrixColumnRowNames();
     	this.columnNames = columnNames;
     	return columnNames;
     }
     
-    public MatrixCell createCell(){
+    /**
+     * Creates an empty matrix cell into that matrix and returns it.
+     * @return The create {@link MatrixCell} object.
+     */
+    public MatrixCell createMatrixCell(){
     	MatrixCell cell = new MatrixCell();
     	getListOfMatrixElements().add(cell);
     	return cell;
     }
     
-    public MatrixCell createCell(MatrixVectorIndex rowIndex, MatrixVectorIndex columnIndex){
-    	MatrixCell cell = createCell();
+    /**
+     * Creates a matrix cell into that matrix and returns it.
+     * @param rowIndex The row index of the cell within the parent matrix.
+     * @param columnIndex The column index of the cell within the parent matrix.
+     * @return The create {@link MatrixCell} object.
+     */
+    public MatrixCell createMatrixCell(int rowIndex, int columnIndex){
+    	return createMatrixCell(new MatrixVectorIndex(rowIndex), new MatrixVectorIndex(columnIndex));
+    }
+    
+    /**
+     * Creates a matrix cell into that matrix and returns it.
+     * @param rowIndex The row index of the cell within the parent matrix.
+     * @param columnIndex The column index of the cell within the parent matrix.
+     * @param value The value of the cell as real, that will be wrapped into a {@link RealValue}.
+     * @return The create {@link MatrixCell} object.
+     */
+    public MatrixCell createMatrixCell(int rowIndex, int columnIndex, double value){
+    	MatrixCell cell = createMatrixCell(rowIndex,columnIndex);
+    	cell.createRealValue(value);
+    	return cell;
+    }
+    
+    /**
+     * Creates a matrix cell into that matrix and returns it.
+     * @param rowIndex The row index of the cell within the parent matrix.
+     * @param columnIndex The column index of the cell within the parent matrix.
+     * @param value The value of the cell as integer, that will be wrapped into a {@link IntValue}.
+     * @return The create {@link MatrixCell} object.
+     */
+    public MatrixCell createMatrixCell(int rowIndex, int columnIndex, int value){
+    	MatrixCell cell = createMatrixCell(rowIndex,columnIndex);
+    	cell.createIntValue(value);
+    	return cell;
+    }
+    
+    /**
+     * Creates a matrix cell into that matrix and returns it.
+     * @param rowIndex The row index of the cell within the parent matrix.
+     * @param columnIndex The column index of the cell within the parent matrix.
+     * @param value The value of the cell as boolean, that will be wrapped into a {@link BooleanValue}.
+     * @return The create {@link MatrixCell} object.
+     */
+    public MatrixCell createMatrixCell(int rowIndex, int columnIndex, boolean value){
+    	MatrixCell cell = createMatrixCell(rowIndex,columnIndex);
+    	cell.createBooleanValue(value);
+    	return cell;
+    }
+    
+    /**
+     * Creates a matrix cell into that matrix and returns it.
+     * @param rowIndex The row index of the cell within the parent matrix.
+     * @param columnIndex The column index of the cell within the parent matrix.
+     * @param value The value of the cell as string, that will be wrapped into a {@link StringValue}.
+     * @return The create {@link MatrixCell} object.
+     */
+    public MatrixCell createMatrixCell(int rowIndex, int columnIndex, String value){
+    	MatrixCell cell = createMatrixCell(rowIndex,columnIndex);
+    	cell.createStringValue(value);
+    	return cell;
+    }
+    
+    /**
+     * Creates a matrix cell into that matrix and returns it.
+     * @param rowIndex The row index of the cell within the parent matrix.
+     * @param columnIndex The column index of the cell within the parent matrix.
+     * @return The create {@link MatrixCell} object.
+     */
+    public MatrixCell createMatrixCell(MatrixVectorIndex rowIndex, MatrixVectorIndex columnIndex){
+    	MatrixCell cell = createMatrixCell();
     	cell.setCellRow(rowIndex);
     	cell.setCellColumn(columnIndex);
     	return cell;
     }
     
-    public MatrixCell createCell(MatrixVectorIndex rowIndex, MatrixVectorIndex columnIndex, VectorCellValue value){
-    	MatrixCell cell = createCell(rowIndex,columnIndex);
+    /**
+     * Creates a matrix cell into that matrix and returns it.
+     * @param rowIndex The row index of the cell within the parent matrix.
+     * @param columnIndex The column index of the cell within the parent matrix.
+     * @param value The abstracted value of the cell. May be {@link Scalar} or {@link SymbolRefType}.
+     * @return The create {@link MatrixCell} object.
+     */
+    public MatrixCell createMatrixCell(MatrixVectorIndex rowIndex, MatrixVectorIndex columnIndex, VectorCellValue value){
+    	MatrixCell cell = createMatrixCell(rowIndex,columnIndex);
     	cell.setValue(value);
     	return cell;
     }
     
-    public MatrixBlock createBlock(){
+    /**
+     * Creates an empty {@link MatrixBlock} element into that matrix and returns it.
+     * @return The created {@link MatrixBlock} object.
+     */
+    public MatrixBlock createMatrixBlock(){
     	MatrixBlock block = new MatrixBlock();
     	getListOfMatrixElements().add(block);
     	return block;
     }
     
-    public MatrixBlock createBlock(MatrixVectorIndex rowStartIndex, MatrixVectorIndex columnStartIndex){
-    	MatrixBlock block = createBlock();
+    /**
+     * Creates a {@link MatrixBlock} element into that matrix and returns it.
+     * @param rowStartIndex The start row index of this block within the parent matrix.
+     * @param columnStartIndex The start column index of this block within the parant matrix.
+     * @return The created {@link MatrixBlock} object.
+     */
+    public MatrixBlock createMatrixBlock(MatrixVectorIndex rowStartIndex, MatrixVectorIndex columnStartIndex){
+    	MatrixBlock block = createMatrixBlock();
     	block.setBlockStartRow(rowStartIndex);
     	block.setBlockStartColumn(columnStartIndex);
     	return block;
     }
     
-    public MatrixRow createRow(){
+    /**
+     * Creates an empty {@link MatrixRow} element into that matrix and returns it.
+     * @return The created {@link MatrixRow} element.
+     */
+    public MatrixRow createMatrixRow(){
     	MatrixRow row = new MatrixRow();
     	getListOfMatrixElements().add(row);
     	return row;
     }
     
-    public MatrixRow createRow(double defaultValue){
-    	MatrixRow row = createRow();
+    /**
+     * Creates a {@link MatrixRow} element with default value into that matrix and returns it.
+     * @param defaultValue Default value of the row elements.
+     * @return The created {@link MatrixRow} element.
+     */
+    public MatrixRow createMatrixRow(double defaultValue){
+    	MatrixRow row = createMatrixRow();
     	row.setDefault(defaultValue);
     	return row;
     }
     
-    public MatrixRow createRow(MatrixVectorIndex index, double defaultValue){
-    	MatrixRow row = createRow(defaultValue);
+    /**
+     * Creates a {@link MatrixRow} element with default value at the given index and returns it.
+     * @param index Index of that row within the parent matrix.
+     * @param defaultValue Default value of the row elements.
+     * @return The created {@link MatrixRow} element.
+     */
+    public MatrixRow createMatrixRow(MatrixVectorIndex index, double defaultValue){
+    	MatrixRow row = createMatrixRow(defaultValue);
     	row.setRowIndex(index);
     	return row;
     }
     
-    public MatrixRow createRow(VectorValue[] values){
-    	MatrixRow row = createRow();
+    /**
+     * Creates a {@link MatrixRow} element with specified elements and returns it.
+     * @param values Elements of the row.
+     * @return The created {@link MatrixRow} element.
+     */
+    public MatrixRow createMatrixRow(VectorValue[] values){
+    	MatrixRow row = createMatrixRow();
     	for(VectorValue value : values){
     		row.getListOfValues().add(value);
     	}
     	return row;
     }
     
-    public MatrixRow createRow(MatrixVectorIndex index, VectorValue[] values){
-    	MatrixRow row = createRow(values);
+    /**
+     * Creates a {@link MatrixRow} element with specified elements at the given index and returns it.
+     * @param index Index of that row within the parent matrix.
+     * @param values Elements of the row.
+     * @return The created {@link MatrixRow} element.
+     */
+    public MatrixRow createMatrixRow(MatrixVectorIndex index, VectorValue[] values){
+    	MatrixRow row = createMatrixRow(values);
     	row.setRowIndex(index);
     	return row;
     }
