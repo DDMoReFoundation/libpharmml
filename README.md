@@ -1,7 +1,7 @@
 # libPharmML
 
-This is the version 0.3.1 of libPharmML. It provides a convenient
-way to read and write PharmML (up to version 0.3.1) and it provides basic schema based
+This is the version 0.3.2 of libPharmML. It provides a convenient
+way to read and write PharmML (up to version 0.4) and it provides basic schema based
 validation.
 
 
@@ -171,7 +171,7 @@ Stuart Moodie.
 Mihai Glont.
 Florent Yvon.
 
-9 Apr 2014.
+11 Aug 2014.
 
 Copyright EMBL-EBI 2014.
 
