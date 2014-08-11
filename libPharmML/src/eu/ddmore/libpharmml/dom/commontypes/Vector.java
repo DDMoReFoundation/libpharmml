@@ -211,6 +211,25 @@ public class Vector extends VectorType {
 	}
 	
 	/**
+	 * Creates a new vector cell into the vector at the specified index with a value.
+	 * This is the most abstracted method for creating a cell.
+	 * @param index The index of the cell as {@link MatrixVectorIndex}
+	 * @param value The value of the cell which can be {@link Scalar} or {@link SymbolRefType}
+	 * @return The created cell.
+	 */
+	public VectorCell createVectorCell(MatrixVectorIndex index, VectorCellValue value){
+		VectorCell cell = new VectorCell();
+		if(value instanceof Scalar){
+			cell.setValue((Scalar) value);
+		} else if(value instanceof SymbolRefType){
+			cell.setValue((SymbolRefType) value);
+		}
+		cell.setVectorIndex(index);
+		addVectorCell(cell);
+		return cell;
+	}
+	
+	/**
 	 * Creates an empty vector segment into the vector and returns it.
 	 * @return The created {@link VectorSegment} object.
 	 */
