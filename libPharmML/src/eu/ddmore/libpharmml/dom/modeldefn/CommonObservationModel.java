@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.JAXBElement;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -37,8 +39,6 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.NameType;
@@ -84,7 +84,7 @@ import eu.ddmore.libpharmml.dom.commontypes.VariableDefinitionType;
     CategoricalData.class,
     CountData.class
 })
-@XmlJavaTypeAdapter(CommonObservationModel.Adapter.class)
+//@XmlJavaTypeAdapter(CommonObservationModel.Adapter.class)
 public abstract class CommonObservationModel
     extends PharmMLRootType
 {
@@ -296,36 +296,58 @@ public abstract class CommonObservationModel
             return el;
     }
     
-    protected static class Adapter extends XmlAdapter<CommonObservationModel,CommonObservationModel>{
-
-		@Override
-		public CommonObservationModel unmarshal(CommonObservationModel v)
-				throws Exception {
-			if(v.commonParameterElement != null){
-				v.listOfCommonParameterElement = new ArrayList<CommonParameterType>();
-				for(JAXBElement<? extends CommonParameterType> el : v.commonParameterElement){
-					v.listOfCommonParameterElement.add(el.getValue());
-				}
+    protected void afterUnmarshal(Unmarshaller u, Object parent){
+    	if(commonParameterElement != null){
+			listOfCommonParameterElement = new ArrayList<CommonParameterType>();
+			for(JAXBElement<? extends CommonParameterType> el : commonParameterElement){
+				listOfCommonParameterElement.add(el.getValue());
 			}
-			return v;
+		} else {
+			listOfCommonParameterElement = null;
 		}
-
-		@Override
-		public CommonObservationModel marshal(CommonObservationModel v)
-				throws Exception {
-			if(v == null){
-				return v;
-			}
-			if(v.listOfCommonParameterElement != null){
-				v.commonParameterElement = new ArrayList<JAXBElement<? extends CommonParameterType>>();
-				for(CommonParameterType param : v.listOfCommonParameterElement){
-					v.commonParameterElement.add(MasterObjectFactory.createParameter(param));
-				}
-			}
-			return v;
-		}
-    	
     }
+    
+    protected void beforeMarshal(Marshaller m){
+    	if(listOfCommonParameterElement != null){
+			commonParameterElement = new ArrayList<JAXBElement<? extends CommonParameterType>>();
+			for(CommonParameterType param : listOfCommonParameterElement){
+				commonParameterElement.add(MasterObjectFactory.createParameter(param));
+			}
+		} else {
+			commonParameterElement = null;
+		}
+    }
+    
+//    protected static class Adapter extends XmlAdapter<CommonObservationModel,CommonObservationModel>{
+//
+//		@Override
+//		public CommonObservationModel unmarshal(CommonObservationModel v)
+//				throws Exception {
+//			if(v.commonParameterElement != null){
+//				v.listOfCommonParameterElement = new ArrayList<CommonParameterType>();
+//				for(JAXBElement<? extends CommonParameterType> el : v.commonParameterElement){
+//					v.listOfCommonParameterElement.add(el.getValue());
+//				}
+//			}
+//			return v;
+//		}
+//
+//		@Override
+//		public CommonObservationModel marshal(CommonObservationModel v)
+//				throws Exception {
+//			if(v == null){
+//				return v;
+//			}
+//			if(v.listOfCommonParameterElement != null){
+//				v.commonParameterElement = new ArrayList<JAXBElement<? extends CommonParameterType>>();
+//				for(CommonParameterType param : v.listOfCommonParameterElement){
+//					v.commonParameterElement.add(MasterObjectFactory.createParameter(param));
+//				}
+//			}
+//			return v;
+//		}
+//    	
+//    }
 
 
 }

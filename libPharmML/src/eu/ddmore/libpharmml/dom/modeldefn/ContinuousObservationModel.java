@@ -27,13 +27,13 @@
 package eu.ddmore.libpharmml.dom.modeldefn;
 
 import javax.xml.bind.JAXBElement;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 
@@ -63,7 +63,7 @@ import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 @XmlType(name = "ContinuousObservationModelType", propOrder = {
     "jaxbObservationError"
 })
-@XmlJavaTypeAdapter(ContinuousObservationModel.Adapter.class)
+//@XmlJavaTypeAdapter(ContinuousObservationModel.Adapter.class)
 public class ContinuousObservationModel
     extends CommonObservationModel
 {
@@ -153,29 +153,47 @@ public class ContinuousObservationModel
     	return obsError;
     }
     
-    protected static class Adapter extends XmlAdapter<ContinuousObservationModel, ContinuousObservationModel>{
-
-		@Override
-		public ContinuousObservationModel unmarshal(ContinuousObservationModel v)
-				throws Exception {
-			if(v.jaxbObservationError != null){
-				v.observationError = v.jaxbObservationError.getValue();
-			}
-			return v;
+    protected void afterUnmarshal(Unmarshaller u, Object parent){
+    	if(jaxbObservationError != null){
+			observationError = jaxbObservationError.getValue();
+		} else {
+			observationError = null;
 		}
-
-		@Override
-		public ContinuousObservationModel marshal(ContinuousObservationModel v)
-				throws Exception {
-			if(v == null){
-				return null;
-			}
-			if(v.observationError != null){
-				v.jaxbObservationError = MasterObjectFactory.createObservationError(v.observationError);
-			}
-			return v;
-		}
-    	
+    	super.afterUnmarshal(u, parent);
     }
+    
+    protected void beforeMarshal(Marshaller m){
+    	if(observationError != null){
+			jaxbObservationError = MasterObjectFactory.createObservationError(observationError);
+		} else {
+			jaxbObservationError = null;
+		}
+    	super.beforeMarshal(m);
+    }
+    
+//    protected static class Adapter extends XmlAdapter<ContinuousObservationModel, ContinuousObservationModel>{
+//
+//		@Override
+//		public ContinuousObservationModel unmarshal(ContinuousObservationModel v)
+//				throws Exception {
+//			if(v.jaxbObservationError != null){
+//				v.observationError = v.jaxbObservationError.getValue();
+//			}
+//			return v;
+//		}
+//
+//		@Override
+//		public ContinuousObservationModel marshal(ContinuousObservationModel v)
+//				throws Exception {
+//			if(v == null){
+//				return null;
+//			}
+//			if(v.observationError != null){
+//				v.jaxbObservationError = MasterObjectFactory.createObservationError(v.observationError);
+//			}
+//			return (ContinuousObservationModel) new CommonObservationModel.Adapter().marshal(v);
+//		}
+//    	
+//    }
 
 }
