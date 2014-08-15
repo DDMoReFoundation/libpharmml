@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * and an other one where the elements that are not explicitly specified have a default value (Type B).
  * The possible values in a vector are {@link Scalar}, {@link SymbolRefType} and {@link SequenceType}.
  * 
- * <p><h3>Type A:</h3>
+ * <p><h3>Type A (complete):</h3>
  * This is the most simple representation of a vector.
  * All the elements within the vector have to be explicitly specified. These elements are wrapped
  * into a {@link VectorElements} object within the vector. In this case, the {@link VectorElements}
@@ -51,7 +51,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * of the vector cannot be found automatically when a {@link SequenceType} or a {@link SymbolRefType}
  * object is in the list, as it can refer to multiple values.
  * 
- * <p><h3>Type B:</h3>
+ * <p><h3>Type B (sparse):</h3>
  * It is possible to specify only a few elements within the vector. The value of the other ones equals
  * the default value of the vector. In this form, the "default" attribute is mandatory.   
  * To specify some values, one can include {@link VectorCell} elements or {@link VectorSegment} elements. 
