@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.commontypes.DependanceAttribute;
 import eu.ddmore.libpharmml.dom.commontypes.OrderedAttribute;
 
 
@@ -338,6 +339,17 @@ public class CategoricalData
             this.categoryVariable = el;
             return el;
     }
+    
+    /**
+     * Creates a new {@link CommonDiscreteVariable} element, adds it to the current {@link CategoricalData} object and returns it.
+     * @param symbId The symbol id of the category variable
+     * @return The created {@link CommonDiscreteVariable} object.
+     */
+    public CommonDiscreteVariable createCategoryVariable(String symbId){
+            CommonDiscreteVariable el = createCategoryVariable();
+            el.setSymbId(symbId);
+            return el;
+    }
 
     /**
      * Creates a new empty {@link CommonDiscreteVariable} element, adds it to the current {@link CategoricalData} object and returns it.
@@ -346,6 +358,17 @@ public class CategoricalData
     public CommonDiscreteVariable createInitialStateVariable(){
             CommonDiscreteVariable el = new CommonDiscreteVariable();
             this.initialStateVariable = el;
+            return el;
+    }
+    
+    /**
+     * Creates a new {@link CommonDiscreteVariable} element, adds it to the current {@link CategoricalData} object and returns it.
+     * @param symbId Symbol id of the variable.
+     * @return The created {@link CommonDiscreteVariable} object.
+     */
+    public CommonDiscreteVariable createInitialStateVariable(String symbId){
+            CommonDiscreteVariable el = createInitialStateVariable();
+            el.setSymbId(symbId);
             return el;
     }
 
@@ -358,6 +381,18 @@ public class CategoricalData
             getListOfPreviousStateVariable().add(el);
             return el;
     }
+    
+    /**
+     * Creates a new {@link CommonDiscreteVariable} element, adds it to the current {@link CategoricalData} object and returns it.
+     * @param symbId The symbol id of the variable.
+     * @return The created {@link CommonDiscreteVariable} object.
+     */
+    public CommonDiscreteVariable createPreviousStateVariable(String symbId){
+            CommonDiscreteVariable el = createPreviousStateVariable();
+            el.setSymbId(symbId);
+            return el;
+    }
+
 
     /**
      * Creates a new empty {@link Dependance} element, adds it to the current {@link CategoricalData} object and returns it.
@@ -366,6 +401,17 @@ public class CategoricalData
     public Dependance createDependance(){
             Dependance el = new Dependance();
             this.dependance = el;
+            return el;
+    }
+    
+    /**
+     * Creates a {@link Dependance} element, adds it to the current {@link CategoricalData} object and returns it.
+     * @param dependanceAttribute Type of dependance.
+     * @return The created {@link Dependance} object.
+     */
+    public Dependance createDependance(DependanceAttribute dependanceAttribute){
+            Dependance el = createDependance();
+            el.setType(dependanceAttribute);
             return el;
     }
 
