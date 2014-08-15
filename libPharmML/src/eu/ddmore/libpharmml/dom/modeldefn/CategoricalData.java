@@ -312,11 +312,22 @@ public class CategoricalData
      * Creates a new empty {@link CommonDiscreteVariable} element, adds it to the current {@link CategoricalData} object and returns it.
      * @return The created {@link CommonDiscreteVariable} object.                                                                       
      */                                                                                                                                 
-    public CommonDiscreteVariable createCategorie(){                                                                             
+    public CommonDiscreteVariable createCategory(){                                                                             
             CommonDiscreteVariable el = new CommonDiscreteVariable();                                                                   
             getListOfCategories().add(el);                                                                                        
             return el;                                                                                                                  
-    }                                                                                                                                   
+    }
+    
+    /**                                                                             
+     * Creates a new {@link CommonDiscreteVariable} element, adds it to the current {@link CategoricalData} object and returns it.
+     * @param symbId The symbol id of the category
+     * @return The created category as a {@link CommonDiscreteVariable} object.                                                                       
+     */                                                                                                                                 
+    public CommonDiscreteVariable createCategory(String symbId){                                                                             
+            CommonDiscreteVariable el = createCategory();
+            el.setSymbId(symbId);
+            return el;                                                                                                                  
+    }
 
     /**
      * Creates a new empty {@link CommonDiscreteVariable} element, adds it to the current {@link CategoricalData} object and returns it.
