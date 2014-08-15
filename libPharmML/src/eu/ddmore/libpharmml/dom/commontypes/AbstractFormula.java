@@ -112,7 +112,18 @@ public abstract class AbstractFormula extends PharmMLRootType {
     	this.setLowLimit(lowLimit);
     	return lowLimit;
     }
+    public LowUpLimit createLowLimit(SymbolRefType limit){
+    	LowUpLimit lowLimit = new LowUpLimit(limit);
+    	this.setLowLimit(lowLimit);
+    	return lowLimit;
+    }
+    
     public LowUpLimit createUpLimit(int limit){
+    	LowUpLimit upLimit = new LowUpLimit(limit);
+    	this.setUpLimit(upLimit);
+    	return upLimit;
+    }
+    public LowUpLimit createUpLimit(SymbolRefType limit){
     	LowUpLimit upLimit = new LowUpLimit(limit);
     	this.setUpLimit(upLimit);
     	return upLimit;
