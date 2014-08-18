@@ -159,6 +159,25 @@ definition. Addition rules such as type checking, checking for
 duplicate symbols or dangling symbol references are not yet
 checked.
 
+## API versions and corresponding support for PharmML
+
+<table border=1>
+	<tr>
+		<th>libPharmML version</th><th>Release date</th><th>Availability</th><th>PharmML versions supported</th>
+	</tr>
+	<tr>
+		<td>0.3.2-b2</td><td>18/08/14</td><td>Internal</td><td>0.4, 0.3.1, 0.3, 0.2.1</td>
+	</tr>
+	<tr>
+		<td>0.3.1-b2</td><td>04/06/14</td><td>Internal</td><td>0.3.1, 0.3, 0.2.1</td>
+	</tr>
+	<tr>
+		<td>0.3</td><td>15/04/14</td><td>Internal</td><td>0.3, 0.2.1</td>
+	</tr>
+	<tr>
+		<td>0.2.1</td><td>01/03/14</td><td>Public</td><td>0.2.1</td>
+	</tr>
+</table>
 
 ## Acknowledgements
 
