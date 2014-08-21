@@ -31,12 +31,9 @@ import java.util.List;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.NameType;
 
@@ -93,9 +90,9 @@ public class ObservationModelType
     protected ContinuousObservationModel continuousData;
     @XmlElement(name = "Discrete")
     protected Discrete discrete;
-    @XmlAttribute(name = "blkId", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String blkId;
+//    @XmlAttribute(name = "blkId", required = true)
+//    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+//    protected String blkId;
 
     /**
      * Gets the value of the observationError property.
