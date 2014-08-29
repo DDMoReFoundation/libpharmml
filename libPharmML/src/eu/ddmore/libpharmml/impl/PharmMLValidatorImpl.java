@@ -19,6 +19,7 @@
 package eu.ddmore.libpharmml.impl;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -32,8 +33,10 @@ import org.xml.sax.SAXParseException;
 
 import eu.ddmore.libpharmml.IPharmMLResource;
 import eu.ddmore.libpharmml.IPharmMLValidator;
+import eu.ddmore.libpharmml.IValidationError;
 import eu.ddmore.libpharmml.IValidationReport;
 import eu.ddmore.libpharmml.dom.PharmML;
+import eu.ddmore.libpharmml.validation.SymbolResolver;
 
 public class PharmMLValidatorImpl implements IPharmMLValidator {
 	private static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
@@ -77,6 +80,18 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 				}
 			});
 			validator.validate(source);
+			
+			// symbol resolution
+			SymbolResolver resolver = new SymbolResolver(dom);
+			List<IValidationError> resolvErrors = resolver.resolveSymbols();
+			for(IValidationError error : resolvErrors){
+				rptFact.addError(error);
+			}
+			List<IValidationError> unicityErrors = resolver.checkUnicity();
+			for(IValidationError error : unicityErrors){
+				rptFact.addError(error);
+			}
+			
 			return rptFact.createReport();
 		}
 		catch (IOException e) {

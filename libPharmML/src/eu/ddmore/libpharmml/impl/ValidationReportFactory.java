@@ -68,5 +68,9 @@ public class ValidationReportFactory implements IErrorHandler {
 			}
 		};
 	}
+	
+	public boolean addError(IValidationError error){
+		return errors.add(error);
+	}
 
 }
