@@ -39,6 +39,8 @@ import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -77,6 +79,7 @@ import javax.xml.bind.annotation.XmlType;
 	Vector.class,
 	VectorSegment.class
 })
+@XmlJavaTypeAdapter(VectorType.Adapter.class)
 public class VectorType extends AbstractVector {
 	
 	// deprecated since 0.3.2
@@ -163,6 +166,32 @@ public class VectorType extends AbstractVector {
     
     public void setLength(int length){
     	this.length = length;
+    }
+    
+    /**
+     * For marshalling a VectorType as a Vector.
+     */
+    protected static class Adapter extends XmlAdapter<VectorType, VectorType>{
+
+		@Override
+		public VectorType unmarshal(VectorType vt) throws Exception {
+			Vector v = new Vector();
+			v.defaultValue = vt.defaultValue;
+			v.description = vt.description;
+			v.id = vt.id;
+			v.length = vt.length;
+			v.sequenceOrScalar = vt.sequenceOrScalar;
+			v.vectorCellOrVectorSegment = vt.vectorCellOrVectorSegment;
+			v.vectorElements = vt.vectorElements;
+			return v;
+		}
+
+		@Override
+		public VectorType marshal(VectorType v) throws Exception {
+			return v;
+		}
+
+    	
     }
 
 }
