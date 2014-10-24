@@ -55,7 +55,7 @@ public enum PharmMLVersion {
 		return version;
 	}
 	
-	String getCatalogLocation(){
+	public String getCatalogLocation(){
 		return catalogLocation;
 	}
 	
