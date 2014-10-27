@@ -79,6 +79,7 @@ public class DerivativeVariableType
     @XmlElement(name = "History")
     protected History history;
     @XmlAttribute(name = "compartmentNo")
+    @Deprecated
     protected Integer compartmentNo;
     @XmlAttribute(name = "symbolType", required = true)
     protected SymbolTypeType symbolType;
@@ -186,6 +187,8 @@ public class DerivativeVariableType
      *     possible object is
      *     {@link BigInteger }
      *     
+     * @deprecated Since PharmML 0.4.1
+     *     
      */
     public Integer getCompartmentNo() {
         return compartmentNo;
@@ -198,6 +201,8 @@ public class DerivativeVariableType
      *     allowed object is
      *     {@link BigInteger }
      *     
+     *     
+     * @deprecated Since PharmML 0.4.1
      */
     public void setCompartmentNo(Integer value) {
         this.compartmentNo = value;
