@@ -31,6 +31,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.maths.Equation;
+
 
 /**
  * <p>Java class for LowUpLimitType complex type.
@@ -54,6 +56,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LowUpLimitType", propOrder = {
+    "equation",
     "_int",
     "symbRef"
 })
@@ -71,10 +74,38 @@ public class LowUpLimit
 		this.symbRef = value;
 	}
 
+    @XmlElement(name = "Equation", namespace = "http://www.pharmml.org/2013/03/Maths")
+    protected Equation equation;
     @XmlElement(name = "Int")
     protected IntValueType _int;
     @XmlElement(name = "SymbRef")
     protected SymbolRefType symbRef;
+
+    /**
+     * A mathematical expression.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Equation }
+     *     
+     * @since PharmML 0.4.1
+     */
+    public Equation getEquation() {
+        return equation;
+    }
+
+    /**
+     * Sets the value of the equation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Equation }
+     *     
+     * @since PharmML 0.4.1
+     */
+    public void setEquation(Equation value) {
+        this.equation = value;
+    }
 
     /**
      * An integer value.
