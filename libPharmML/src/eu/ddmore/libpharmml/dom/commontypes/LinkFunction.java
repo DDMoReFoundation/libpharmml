@@ -43,6 +43,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="log"/>
  *     &lt;enumeration value="logit"/>
  *     &lt;enumeration value="probit"/>
+ *     &lt;enumeration value="loglog"/>
+ *     &lt;enumeration value="comploglog"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -59,7 +61,11 @@ public enum LinkFunction {
     @XmlEnumValue("logit")
     LOGIT("logit"),
     @XmlEnumValue("probit")
-    PROBIT("probit");
+    PROBIT("probit"),
+    @XmlEnumValue("loglog")
+    LOGLOG("loglog"),
+    @XmlEnumValue("comploglog")
+    COMPLOGLOG("comploglog");
     private final String value;
 
     LinkFunction(String v) {
