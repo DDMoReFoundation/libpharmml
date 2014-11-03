@@ -57,7 +57,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "SymbolRefType")
 @XmlRootElement(name = "SymbRef")
 public class SymbolRefType
-    extends PharmMLRootType implements VectorCellValue
+    extends PharmMLRootType implements VectorCellValue, MatrixCellValue
 {
 
     @XmlAttribute(name = "blkIdRef")

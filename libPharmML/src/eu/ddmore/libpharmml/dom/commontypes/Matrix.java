@@ -245,7 +245,7 @@ public class Matrix extends MatrixType {
      * @param value The abstracted value of the cell. May be {@link Scalar} or {@link SymbolRefType}.
      * @return The create {@link MatrixCell} object.
      */
-    public MatrixCell createMatrixCell(MatrixVectorIndex rowIndex, MatrixVectorIndex columnIndex, VectorCellValue value){
+    public MatrixCell createMatrixCell(MatrixVectorIndex rowIndex, MatrixVectorIndex columnIndex, MatrixCellValue value){
     	MatrixCell cell = createMatrixCell(rowIndex,columnIndex);
     	cell.setValue(value);
     	return cell;

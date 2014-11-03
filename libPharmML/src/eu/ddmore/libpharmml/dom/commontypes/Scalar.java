@@ -26,6 +26,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *
  */
 @XmlJavaTypeAdapter(ScalarAdapter.class)
-public interface Scalar extends VectorCellValue {
+public interface Scalar extends VectorCellValue, MatrixCellValue {
 
 }

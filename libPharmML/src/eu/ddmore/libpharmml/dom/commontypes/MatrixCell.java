@@ -77,7 +77,7 @@ public class MatrixCell
     @XmlElement(name = "CellColumn", required = true)
     protected MatrixVectorIndex cellColumn;
     @XmlElementRef(name = "VectorCellValue", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class)
-    protected VectorCellValue value;
+    protected MatrixCellValue value;
     
     /**
      * Empty constructor
@@ -100,7 +100,7 @@ public class MatrixCell
      * @param columnIndex The column index within the matrix
      * @param value The value of the cell
      */
-    public MatrixCell(MatrixVectorIndex rowIndex, MatrixVectorIndex columnIndex, VectorCellValue value){
+    public MatrixCell(MatrixVectorIndex rowIndex, MatrixVectorIndex columnIndex, MatrixCellValue value){
     	this(rowIndex, columnIndex);
     	this.value = value;
     }
@@ -169,7 +169,7 @@ public class MatrixCell
      * 
      * 
      */
-    public VectorCellValue getValue() {
+    public MatrixCellValue getValue() {
         return this.value;
     }
     
@@ -188,7 +188,7 @@ public class MatrixCell
      * {@link FalseBooleanType }
      * 
      */
-    public void setValue(VectorCellValue value){
+    public void setValue(MatrixCellValue value){
     	this.value = value;
     }
     
