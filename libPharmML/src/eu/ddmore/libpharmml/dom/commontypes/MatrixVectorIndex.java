@@ -22,13 +22,40 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import eu.ddmore.libpharmml.dom.maths.Equation;
 
+
+/**
+ * <p>Java class for MatrixVectorIndexType complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType name="MatrixVectorIndexType">
+ *   &lt;complexContent>
+ *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *       &lt;choice>
+ *         &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Equation"/>
+ *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Int"/>
+ *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
+ *       &lt;/choice>
+ *     &lt;/extension>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ * 
+ * 
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MatrixVectorIndex", propOrder = {
-	    "intValue",
+	    "equation",
+	    "_int",
 	    "symbRef"
 	})
 public class MatrixVectorIndex extends PharmMLRootType {
+	
+	@XmlElement(name = "Equation", namespace = "http://www.pharmml.org/2013/03/Maths")
+    protected Equation equation;
 	
 	@XmlElement(name = "Int")
 	protected IntValueType intValue;
@@ -51,6 +78,34 @@ public class MatrixVectorIndex extends PharmMLRootType {
 	public MatrixVectorIndex(SymbolRefType symbolRef){
 		symbRef = symbolRef;
 	}
+	
+	public MatrixVectorIndex(Equation equation){
+		this.equation = equation;
+	}
+	
+	/**
+     * A mathematical expression.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Equation }
+     *     
+     */
+    public Equation getEquation() {
+        return equation;
+    }
+
+    /**
+     * Sets the value of the equation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Equation }
+     *     
+     */
+    public void setEquation(Equation value) {
+        this.equation = value;
+    }
 	
 	public IntValueType getIntValue(){
 		return intValue;
