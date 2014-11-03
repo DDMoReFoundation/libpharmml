@@ -84,7 +84,7 @@ public class MatrixRowType
         @XmlElementRef(name = "Sequence", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     })
-    protected List<VectorValue> scalarOrSequenceOrSymbRef;
+    protected List<MatrixRowValue> listOfValues;
     @XmlAttribute(name = "default")
     protected Double _default;
 
@@ -143,11 +143,11 @@ public class MatrixRowType
      * 
      * 
      */
-    public List<VectorValue> getListOfValues() {
-        if (scalarOrSequenceOrSymbRef == null) {
-            scalarOrSequenceOrSymbRef = new ArrayList<VectorValue>();
+    public List<MatrixRowValue> getListOfValues() {
+        if (listOfValues == null) {
+        	listOfValues = new ArrayList<MatrixRowValue>();
         }
-        return this.scalarOrSequenceOrSymbRef;
+        return this.listOfValues;
     }
 	
     

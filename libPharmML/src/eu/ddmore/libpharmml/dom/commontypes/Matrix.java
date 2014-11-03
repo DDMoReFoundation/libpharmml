@@ -312,9 +312,9 @@ public class Matrix extends MatrixType {
      * @param values Elements of the row.
      * @return The created {@link MatrixRow} element.
      */
-    public MatrixRow createMatrixRow(VectorValue[] values){
+    public MatrixRow createMatrixRow(MatrixRowValue[] values){
     	MatrixRow row = createMatrixRow();
-    	for(VectorValue value : values){
+    	for(MatrixRowValue value : values){
     		row.getListOfValues().add(value);
     	}
     	return row;
@@ -326,7 +326,7 @@ public class Matrix extends MatrixType {
      * @param values Elements of the row.
      * @return The created {@link MatrixRow} element.
      */
-    public MatrixRow createMatrixRow(MatrixVectorIndex index, VectorValue[] values){
+    public MatrixRow createMatrixRow(MatrixVectorIndex index, MatrixRowValue[] values){
     	MatrixRow row = createMatrixRow(values);
     	row.setRowIndex(index);
     	return row;
