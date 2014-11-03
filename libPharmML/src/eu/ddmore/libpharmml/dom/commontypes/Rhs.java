@@ -70,7 +70,8 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
     "symbRef",
     "sequence",
     "vector",
-    "interpolation"
+    "interpolation",
+    "matrix"
 })
 @XmlSeeAlso({
     AssignType.class
@@ -91,6 +92,8 @@ public class Rhs
     protected VectorType vector;
     @XmlElement(name = "Interpolation")
     protected InterpolationType interpolation;
+    @XmlElement(name = "Matrix")
+    protected Matrix matrix;
     
     public Rhs(){}
     
@@ -117,6 +120,10 @@ public class Rhs
     
     public Rhs(InterpolationType interpolation){
     	this.interpolation = interpolation;
+    }
+    
+    public Rhs(Matrix matrix){
+    	this.matrix = matrix;
     }
     
     /**
@@ -275,6 +282,32 @@ public class Rhs
      */
     public void setInterpolation(InterpolationType value) {
         this.interpolation = value;
+    }
+    
+    /**
+     * Gets the value of the matrix property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Matrix }
+     *     
+     * @since PharmML 0.4.1
+     */
+    public Matrix getMatrix() {
+        return matrix;
+    }
+
+    /**
+     * Sets the value of the matrix property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Matrix }
+     *     
+     * @since PharmML 0.4.1
+     */
+    public void setMatrix(Matrix value) {
+        this.matrix = value;
     }
 
 }
