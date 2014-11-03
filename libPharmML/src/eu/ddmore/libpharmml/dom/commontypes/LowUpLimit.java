@@ -73,6 +73,10 @@ public class LowUpLimit
 	public LowUpLimit(SymbolRefType value){
 		this.symbRef = value;
 	}
+	
+	public LowUpLimit(Equation value){
+		this.equation = value;
+	}
 
     @XmlElement(name = "Equation", namespace = "http://www.pharmml.org/2013/03/Maths")
     protected Equation equation;
