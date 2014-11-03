@@ -53,8 +53,21 @@ public class MarshallerImpl implements IMarshaller {
 	public void marshall(PharmML dom, OutputStream os) {
 		try {
 			JAXBContext context = JAXBContext.newInstance(CONTEXT_NAME);
+			
+			if(dom.getWrittenVersion() == null){
+				throw new RuntimeException("writtenVersion attribute must be set to the root element.");
+			}
+			
+			PharmMLVersion version = PharmMLVersion.getEnum(dom.getWrittenVersion());
+			MarshalListener mListener;
+			if(version != null){
+				mListener = new MarshalListener(version);
+			} else {
+				throw new RuntimeException("Unknown or unsupported PharmML written version ("+dom.getWrittenVersion()+")");
+			}
 			Marshaller m = context.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+			m.setListener(mListener);
 			m.marshal(dom, os);
 		} catch (JAXBException e) {
 			throw new RuntimeException(e);

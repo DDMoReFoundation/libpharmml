@@ -19,15 +19,26 @@
 package eu.ddmore.libpharmml.dom.commontypes;
 
 import javax.xml.bind.JAXBElement;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Marshaller.Listener;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.impl.MarshalListener;
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 /**
  * 
  * VectorCell class for specifying a single value within a type-B {@link Vector}.
+ * 
+ * <b>Important</b>:
+ * The index of the cell, accessible through {@link #getIndex()}
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
@@ -36,7 +47,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="VectorIndex" type="{http://www.pharmml.org/2013/03/CommonTypes}MatrixVectorIndexType"/>
+ *         &lt;element name="CellIndex" type="{http://www.pharmml.org/2013/03/CommonTypes}MatrixVectorIndexType"/>
  *         &lt;choice maxOccurs="unbounded">
  *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Scalar"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
@@ -51,12 +62,26 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
+@XmlType(propOrder = {
+	    "cellIndex",
+	    "vectorIndex",
+	    "value"
+	})
 public class VectorCell extends PharmMLRootType implements ScalarContainer {
 	
 	// Mapped attributes
 	
+	@XmlElement(name = "CellIndex", required = true)
+	protected MatrixVectorIndex cellIndex;
 	@XmlElement(name = "VectorIndex")
+	// not used since PharmML 0.4.1. Replaced by cellIndex.
 	protected MatrixVectorIndex vectorIndex;
+	
+	@XmlTransient
+	// Attribute used for index in software side. Will be copied to either cellIndex or
+	// vectorIndex according to the document written version. See beforeMarshal and afterUnmarshal
+	// in this class.
+	protected MatrixVectorIndex index;
 	
 	@XmlElementRef(name = "VectorCellValue", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class)
 	protected VectorCellValue value;
@@ -74,7 +99,7 @@ public class VectorCell extends PharmMLRootType implements ScalarContainer {
 	 * @param value Value of the cell as a symbol reference.
 	 */
 	public VectorCell(MatrixVectorIndex index, SymbolRefType value){
-		this.vectorIndex = index;
+		this.index = index;
 		this.value = value;
 	}
 	
@@ -84,17 +109,35 @@ public class VectorCell extends PharmMLRootType implements ScalarContainer {
 	 * @param value Value of the cell as a scalar.
 	 */
 	public VectorCell(MatrixVectorIndex index, Scalar value){
-		this.vectorIndex = index;
+		this.index = index;
 		this.value = value;
 	}
 	
-	
+	/**
+	 * Set the value of the index of the cell within the parent vector.
+	 * @param index A {@link MatrixVectorIndex} object.
+	 */
 	public void setVectorIndex(MatrixVectorIndex index){
-		vectorIndex = index;
+		this.index = index;
 	}
 	
+	/**
+	 * @deprecated Use {@link #getIndex()} instead.
+	 * 
+	 * Gets the index of the cell within the vector.
+	 * @return The index as a {@link MatrixVectorIndex} object.
+	 */
+	@Deprecated
 	public MatrixVectorIndex getVectorIndex(){
-		return vectorIndex;
+		return getIndex();
+	}
+	
+	/**
+	 * Gets the index of the cell within the vector.
+	 * @return The index as a {@link MatrixVectorIndex} object.
+	 */
+	public MatrixVectorIndex getIndex(){
+		return this.index;
 	}
 	
 	/**
@@ -115,13 +158,13 @@ public class VectorCell extends PharmMLRootType implements ScalarContainer {
 	}
 	
 	public MatrixVectorIndex createIndex(SymbolRefType index){
-		this.vectorIndex = new MatrixVectorIndex(index);
-		return this.vectorIndex;
+		this.index = new MatrixVectorIndex(index);
+		return this.index;
 	}
 	
 	public MatrixVectorIndex createIndex(int index){
-		this.vectorIndex = new MatrixVectorIndex(index);
-		return this.vectorIndex;
+		this.index = new MatrixVectorIndex(index);
+		return this.index;
 	}
 
 	public SymbolRefType createSymbolRef(String symbId){
@@ -178,5 +221,36 @@ public class VectorCell extends PharmMLRootType implements ScalarContainer {
 		return wValue;
 	}
 	
+	/**
+	 * Method used to deal with the name change of the element "cellIndex". This child element
+	 * was formerly "vectorIndex" in PharmML 0.4. This element will therefore be marshalled
+	 * as "VectorIndex" for PharmML 0.4 documents, otherwise it will be marshalled as
+	 * "CellIndex".
+	 * @param marshaller
+	 */
+	void beforeMarshal(Marshaller marshaller){
+		Listener listener = marshaller.getListener();
+		if(listener instanceof MarshalListener){
+			PharmMLVersion version = ((MarshalListener) listener).getMarshalVersion();
+			if(version.isEqualOrLaterThan(PharmMLVersion.V0_4_1)){
+				this.vectorIndex = null;
+				this.cellIndex = this.index;
+			} else {
+				this.vectorIndex = this.index;
+				this.cellIndex = null;
+			}
+		}
+	}
+
+	/**
+	 * See {@link #beforeMarshal(Marshaller)} documentation.
+	 */
+	void afterUnmarshal(Unmarshaller u, Object parent) {
+		  if(cellIndex != null){
+			  index = cellIndex;
+		  } else if (vectorIndex != null){
+			  index = vectorIndex;
+		  }
+	}
 
 }
