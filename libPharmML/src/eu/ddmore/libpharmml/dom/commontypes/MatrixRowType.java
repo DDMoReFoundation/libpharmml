@@ -71,7 +71,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MatrixRowType", propOrder = {
     "rowIndex",
-    "scalarOrSequenceOrSymbRef"
+    "listOfValues"
 })
 public class MatrixRowType
     extends PharmMLRootType

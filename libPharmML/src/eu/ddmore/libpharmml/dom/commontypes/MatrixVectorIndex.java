@@ -49,7 +49,7 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MatrixVectorIndex", propOrder = {
 	    "equation",
-	    "_int",
+	    "intValue",
 	    "symbRef"
 	})
 public class MatrixVectorIndex extends PharmMLRootType {
