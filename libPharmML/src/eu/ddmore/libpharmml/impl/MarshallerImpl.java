@@ -28,7 +28,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.bind.Unmarshaller.Listener;
 import javax.xml.bind.ValidationEvent;
 import javax.xml.bind.ValidationEventHandler;
 import javax.xml.stream.XMLInputFactory;
@@ -40,7 +39,6 @@ import javax.xml.validation.Schema;
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.IMarshaller;
 import eu.ddmore.libpharmml.dom.PharmML;
-import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 
 public class MarshallerImpl implements IMarshaller {
 	private static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
@@ -110,16 +108,7 @@ public class MarshallerImpl implements IMarshaller {
 			Schema mySchema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(currentDocVersion);
 			u.setSchema(mySchema);
 			
-			// Store version info into each element
-			Listener listener = new Listener() {
-				@Override
-				public void beforeUnmarshal(Object target, Object parent) {
-					if(target instanceof PharmMLElement){
-						((PharmMLElement)target).setUnmarshalVersion(currentDocVersion);
-					}
-				}
-			};
-			u.setListener(listener);
+			u.setListener(new UnmarshalListener(currentDocVersion));
 			
 			PharmML doc = (PharmML)u.unmarshal(bais);
 			return doc;

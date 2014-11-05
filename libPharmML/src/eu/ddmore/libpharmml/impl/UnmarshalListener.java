@@ -1,8 +1,5 @@
 package eu.ddmore.libpharmml.impl;
 
-import static eu.ddmore.libpharmml.impl.Utils.copyField;
-import static eu.ddmore.libpharmml.impl.Utils.eraseField;
-
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,33 +7,38 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.bind.Marshaller.Listener;
+import javax.xml.bind.Unmarshaller.Listener;
 
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.exceptions.AnnotationException;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
+import static eu.ddmore.libpharmml.impl.Utils.*;
 
-public class MarshalListener extends Listener {
+public class UnmarshalListener extends Listener {
 	
-	PharmMLVersion marshalVersion;
+	private PharmMLVersion docVersion;
 	
-	public MarshalListener(PharmMLVersion version){
-		this.marshalVersion = version;
-	}
-	
-	public PharmMLVersion getMarshalVersion(){
-		return this.marshalVersion;
+	public UnmarshalListener(PharmMLVersion docVersion){
+		this.docVersion = docVersion;
 	}
 
 	@Override
-	public void beforeMarshal(Object source) {
-		Class<?> _class = source.getClass();
+	public void beforeUnmarshal(Object target, Object parent) {
+		if(target instanceof PharmMLElement){
+			((PharmMLElement)target).setUnmarshalVersion(docVersion);
+		}
+	}
+
+	@Override
+	public void afterUnmarshal(Object target, Object parent) {
+		Class<?> _class = target.getClass();
 		
 		// Checking for renamed elements
 		if(_class.isAnnotationPresent(HasElementRenamed.class)){
 			
 			try {
-				
+			
 				Annotation annotation = _class.getAnnotation(HasElementRenamed.class);
 				HasElementRenamed hasElRenamedAnnot = (HasElementRenamed) annotation;
 				String transientField = hasElRenamedAnnot.transientField();
@@ -47,33 +49,25 @@ public class MarshalListener extends Listener {
 				for(RenamedElement renamedEl : hasElRenamedAnnot.mappedFields()){
 					versionList.add(renamedEl.since());
 					versionToField.put(renamedEl.since(), renamedEl.field());
-					eraseField(source, renamedEl.field());
 				}
 				
 				Collections.sort(versionList, Collections.reverseOrder());
 				for(PharmMLVersion version : versionList){
-					if(marshalVersion.isEqualOrLaterThan(version)){
-
+					if(docVersion.isEqualOrLaterThan(version)){
+	
 							String mappedField = versionToField.get(version);
-							copyField(source, transientField, mappedField, false);
-							LoggerWrapper.getLogger().info("Using "+mappedField+" as "+ transientField+" in "+source);
+							copyField(target, mappedField, transientField, true);
+							LoggerWrapper.getLogger().info("Using "+mappedField+" as "+ transientField+" in "+target);
 							break;
 	
 					}
 				}
-				
+			
 			} catch (NoSuchFieldException e) {
-				throw new AnnotationException(source, "1 field does not exist.");
+				throw new AnnotationException(target, "1 field does not exist.");
 			}
 			
 		}
-		
 	}
-
-	@Override
-	public void afterMarshal(Object source) {
-		super.afterMarshal(source);
-	}
-	
 
 }
