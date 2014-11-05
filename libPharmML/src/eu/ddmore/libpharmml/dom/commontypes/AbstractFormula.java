@@ -19,7 +19,10 @@
 package eu.ddmore.libpharmml.dom.commontypes;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlTransient;
+
+import eu.ddmore.libpharmml.dom.maths.Equation;
 
 /**
  * Abstract class for regrouping common properties in formulas.
@@ -28,8 +31,15 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlTransient
 public abstract class AbstractFormula extends PharmMLRootType {
 	
-	@XmlElement(name = "SymbRef", required = true)
-    protected SymbolRefType symbRef;
+//	@XmlElement(name = "SymbRef", required = true)
+//    protected SymbolRefType symbRef;
+	
+	@XmlElements({ 
+		@XmlElement(name = "SymbRef", type = SymbolRefType.class),
+		@XmlElement(name = "Equation", namespace = "http://www.pharmml.org/2013/03/Maths" ,type = Equation.class)
+		})
+	public OperationVariable variable;
+	
 	@XmlElement(name = "LowLimit", required = true)
     protected LowUpLimit lowLimit;
     @XmlElement(name = "UpLimit", required = true)
@@ -42,9 +52,16 @@ public abstract class AbstractFormula extends PharmMLRootType {
      *     possible object is
      *     {@link SymbolRefType }
      *     
+     * @deprecated
+     * 
      */
+    @Deprecated
     public SymbolRefType getSymbRef() {
-        return symbRef;
+        if(variable != null && variable instanceof SymbolRefType){
+        	return (SymbolRefType) variable;
+        } else {
+        	return null;
+        }
     }
 
     /**
@@ -55,8 +72,35 @@ public abstract class AbstractFormula extends PharmMLRootType {
      *     {@link SymbolRefType }
      *     
      */
+    @Deprecated
     public void setSymbRef(SymbolRefType value) {
-        this.symbRef = value;
+        this.variable = value;
+    }
+    
+    /**
+     * Gets the value of the variable property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SymbolRefType },
+     *     {@link Equation }
+     * 
+     */
+    public OperationVariable getVariable() {
+        return variable;
+    }
+
+    /**
+     * Sets the value of the symbRef property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SymbolRefType },
+     *     {@link Equation}
+     *     
+     */
+    public void setSymbRef(OperationVariable value) {
+        this.variable = value;
     }
     
     /**

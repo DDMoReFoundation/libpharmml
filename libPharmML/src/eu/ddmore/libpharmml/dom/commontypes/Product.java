@@ -85,7 +85,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProductType", propOrder = {
-    "symbRef",
+    "variable",
     "productIndex",
     "lowLimit",
     "upLimit"
@@ -106,8 +106,8 @@ public class Product
 	 * @param n The lower bound
 	 * @param N The upper bound
 	 */
-	public Product(SymbolRefType V, SymbolRefType i, int n, int N){
-		this.symbRef = V;
+	public Product(OperationVariable V, SymbolRefType i, int n, int N){
+		this.variable = V;
 		createProductIndex(i);
 		createLowLimit(n);
 		createUpLimit(N);
