@@ -195,4 +195,13 @@ public class PharmMLElementWrapper {
 		return classList;
 	}
 
+	public String getId() {
+		for(Field field : getAllFields()){
+			if(isAttrName(field, "id")){
+				return getStringFieldValue(field);
+			}
+		}
+		return null;
+	}
+
 }

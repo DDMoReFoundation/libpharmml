@@ -36,6 +36,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinitionType;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterModelType;
 import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameterType;
 import eu.ddmore.libpharmml.dom.modeldefn.StructuralModelType;
+import eu.ddmore.libpharmml.validation.PharmMLElementWrapper;
 
 public class LibPharmMLImpl implements ILibPharmML {
 	private static final String DEFAULT_NAME = "Stub Model";
@@ -65,6 +66,16 @@ public class LibPharmMLImpl implements ILibPharmML {
 			@Override
 			public IValidationReport getCreationReport() {
 				return repFact.createReport();
+			}
+			@Override
+			public Object find(String id) {
+				PharmMLElementWrapper wrappedDom = new PharmMLElementWrapper(getDom());
+				PharmMLElementWrapper foundWrappedEl = Utils.findById(wrappedDom, id);
+				if(foundWrappedEl != null){
+					return foundWrappedEl.getElement();
+				} else {
+					return null;
+				}
 			}
 		};
 		return retVal;
@@ -115,6 +126,17 @@ public class LibPharmMLImpl implements ILibPharmML {
 			@Override
 			public IValidationReport getCreationReport() {
 				return repFact.createReport();
+			}
+			
+			@Override
+			public Object find(String id) {
+				PharmMLElementWrapper wrappedDom = new PharmMLElementWrapper(getDom());
+				PharmMLElementWrapper foundWrappedEl = Utils.findById(wrappedDom, id);
+				if(foundWrappedEl != null){
+					return foundWrappedEl.getElement();
+				} else {
+					return null;
+				}
 			}
 		};
 	}
