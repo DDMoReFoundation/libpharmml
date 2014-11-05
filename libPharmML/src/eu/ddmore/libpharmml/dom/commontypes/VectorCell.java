@@ -19,9 +19,6 @@
 package eu.ddmore.libpharmml.dom.commontypes;
 
 import javax.xml.bind.JAXBElement;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Marshaller.Listener;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -30,8 +27,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
-import eu.ddmore.libpharmml.impl.MarshalListener;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
+import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
+import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 
 /**
  * 
@@ -67,6 +65,10 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
 	    "vectorIndex",
 	    "value"
 	})
+@HasElementRenamed(mappedFields = { 
+		@RenamedElement(field = "cellIndex", since = PharmMLVersion.V0_4_1),
+		@RenamedElement(field = "vectorIndex")
+}, transientField = "index")
 public class VectorCell extends PharmMLRootType implements ScalarContainer {
 	
 	// Mapped attributes
@@ -219,38 +221,6 @@ public class VectorCell extends PharmMLRootType implements ScalarContainer {
 		}
 		setValue(wValue);
 		return wValue;
-	}
-	
-	/**
-	 * Method used to deal with the name change of the element "cellIndex". This child element
-	 * was formerly "vectorIndex" in PharmML 0.4. This element will therefore be marshalled
-	 * as "VectorIndex" for PharmML 0.4 documents, otherwise it will be marshalled as
-	 * "CellIndex".
-	 * @param marshaller
-	 */
-	void beforeMarshal(Marshaller marshaller){
-		Listener listener = marshaller.getListener();
-		if(listener instanceof MarshalListener){
-			PharmMLVersion version = ((MarshalListener) listener).getMarshalVersion();
-			if(version.isEqualOrLaterThan(PharmMLVersion.V0_4_1)){
-				this.vectorIndex = null;
-				this.cellIndex = this.index;
-			} else {
-				this.vectorIndex = this.index;
-				this.cellIndex = null;
-			}
-		}
-	}
-
-	/**
-	 * See {@link #beforeMarshal(Marshaller)} documentation.
-	 */
-	void afterUnmarshal(Unmarshaller u, Object parent) {
-		  if(cellIndex != null){
-			  index = cellIndex;
-		  } else if (vectorIndex != null){
-			  index = vectorIndex;
-		  }
 	}
 
 }
