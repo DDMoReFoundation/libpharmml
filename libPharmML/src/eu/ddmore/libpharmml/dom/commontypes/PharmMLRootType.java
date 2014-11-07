@@ -49,7 +49,7 @@ import eu.ddmore.libpharmml.dom.dataset.ImportDataType;
 import eu.ddmore.libpharmml.dom.dataset.ImportTargetDataType;
 import eu.ddmore.libpharmml.dom.dataset.MapType;
 import eu.ddmore.libpharmml.dom.dataset.TargetToolDataSetType;
-import eu.ddmore.libpharmml.dom.maths.BinopType;
+import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.EquationType;
 import eu.ddmore.libpharmml.dom.maths.ExprType;
 import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
@@ -170,7 +170,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     TrialDesignType.class,
     ModellingStepsType.class,
     LogicBinOpType.class,
-    BinopType.class,
+    Binop.class,
     SymbolRefType.class,
     FunctionCallType.class,
     Sum.class,

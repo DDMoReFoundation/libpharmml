@@ -119,7 +119,7 @@ public class EquationType
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected SymbolRefType symbRef;
     @XmlElement(name = "Binop")
-    protected BinopType binop;
+    protected Binop binop;
     @XmlElement(name = "Uniop")
     protected UniopType uniop;
     @XmlElement(name = "Piecewise")
@@ -217,10 +217,10 @@ public class EquationType
      * 
      * @return
      *     possible object is
-     *     {@link BinopType }
+     *     {@link Binop }
      *     
      */
-    public BinopType getBinop() {
+    public Binop getBinop() {
         return binop;
     }
 
@@ -229,10 +229,10 @@ public class EquationType
      * 
      * @param value
      *     allowed object is
-     *     {@link BinopType }
+     *     {@link Binop }
      *     
      */
-    public void setBinop(BinopType value) {
+    public void setBinop(Binop value) {
         this.binop = value;
     }
 
@@ -478,8 +478,8 @@ public class EquationType
         			if(element.getDeclaredType().equals(SymbolRefType.class)){
         				setSymbRef((SymbolRefType)element.getValue()); 
         				firstElement = true;
-        			} else if (element.getDeclaredType().equals(BinopType.class)){
-        				setBinop((BinopType)element.getValue());
+        			} else if (element.getDeclaredType().equals(Binop.class)){
+        				setBinop((Binop)element.getValue());
         				firstElement = true;
         			} else if (element.getDeclaredType().equals(FunctionCallType.class)){
         				setFunctionCall((FunctionCallType)element.getValue());

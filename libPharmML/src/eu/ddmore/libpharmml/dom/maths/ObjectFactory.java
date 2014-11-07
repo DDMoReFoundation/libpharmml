@@ -106,11 +106,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link BinopType }
+     * Create an instance of {@link Binop }
      * 
      */
-    public BinopType createBinopType() {
-        return new BinopType();
+    public Binop createBinopType() {
+        return new Binop();
     }
 
     /**
@@ -248,12 +248,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BinopType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Binop }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Binop")
-    public JAXBElement<BinopType> createBinop(BinopType value) {
-        return new JAXBElement<BinopType>(_Binop_QNAME, BinopType.class, null, value);
+    public JAXBElement<Binop> createBinop(Binop value) {
+        return new JAXBElement<Binop>(_Binop_QNAME, Binop.class, null, value);
     }
 
     /**

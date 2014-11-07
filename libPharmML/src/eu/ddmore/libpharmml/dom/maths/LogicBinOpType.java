@@ -173,7 +173,7 @@ public class LogicBinOpType
      * {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link BinopType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Binop }{@code >}
      * {@link JAXBElement }{@code <}{@link UniopType }{@code >}
      * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
      * {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}

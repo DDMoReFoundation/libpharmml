@@ -72,6 +72,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
  *         &lt;choice>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Scalar"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/08/Dataset}ColumnRef"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Constant"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Binop"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Uniop"/>
@@ -86,6 +87,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
  *         &lt;choice>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Scalar"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/08/Dataset}ColumnRef"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Constant"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Binop"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Uniop"/>
@@ -125,12 +127,13 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 @XmlType(name = "BinopType", propOrder = {
     "content"
 })
-public class BinopType
+public class Binop
     extends PharmMLRootType
 {
 
     @XmlElementRefs({
         @XmlElementRef(name = "Sum", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
+		@XmlElementRef(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Uniop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "MatrixSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
@@ -180,7 +183,7 @@ public class BinopType
      * {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
      * {@link JAXBElement }{@code <}{@link ConstantType }{@code >}
      * {@link JAXBElement }{@code <}{@link Delay }{@code >}
-     * {@link JAXBElement }{@code <}{@link BinopType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Binop }{@code >}
      * {@link JAXBElement }{@code <}{@link VectorSelector }{@code >}
      * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
      * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
@@ -200,7 +203,7 @@ public class BinopType
      */
     public List<JAXBElement<?>> getContent() {
         if (content == null) {
-            content = new ArrayList<JAXBElement<?>>();
+            content = new ArrayList<JAXBElement<?>>(2);
         }
         return this.content;
     }

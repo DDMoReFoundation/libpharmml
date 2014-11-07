@@ -116,7 +116,7 @@ public class LogicExprType
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected SymbolRefType symbRef;
     @XmlElement(name = "Binop")
-    protected BinopType binop;
+    protected Binop binop;
     @XmlElement(name = "Uniop")
     protected UniopType uniop;
     @XmlElement(name = "FunctionCall")
@@ -271,10 +271,10 @@ public class LogicExprType
      * 
      * @return
      *     possible object is
-     *     {@link BinopType }
+     *     {@link Binop }
      *     
      */
-    public BinopType getBinop() {
+    public Binop getBinop() {
         return binop;
     }
 
@@ -283,10 +283,10 @@ public class LogicExprType
      * 
      * @param value
      *     allowed object is
-     *     {@link BinopType }
+     *     {@link Binop }
      *     
      */
-    public void setBinop(BinopType value) {
+    public void setBinop(Binop value) {
         this.binop = value;
     }
 

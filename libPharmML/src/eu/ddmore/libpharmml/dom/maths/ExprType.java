@@ -109,7 +109,7 @@ public class ExprType
     @XmlElement(name = "Constant")
     protected ConstantType constant;
     @XmlElement(name = "Binop")
-    protected BinopType binop;
+    protected Binop binop;
     @XmlElement(name = "Uniop")
     protected UniopType uniop;
     @XmlElement(name = "FunctionCall")
@@ -216,10 +216,10 @@ public class ExprType
      * 
      * @return
      *     possible object is
-     *     {@link BinopType }
+     *     {@link Binop }
      *     
      */
-    public BinopType getBinop() {
+    public Binop getBinop() {
         return binop;
     }
 
@@ -228,10 +228,10 @@ public class ExprType
      * 
      * @param value
      *     allowed object is
-     *     {@link BinopType }
+     *     {@link Binop }
      *     
      */
-    public void setBinop(BinopType value) {
+    public void setBinop(Binop value) {
         this.binop = value;
     }
 
