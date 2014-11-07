@@ -53,6 +53,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  *         &lt;element ref="{http://www.pharmml.org/2013/08/Dataset}ColumnRef" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="columnIdRef" use="required" type="{http://www.pharmml.org/2013/03/CommonTypes}SymbolIdType" />
+ *       &lt;attribute name="transformIdRef" type="{http://www.pharmml.org/2013/03/CommonTypes}SymbolIdType" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -73,6 +74,9 @@ public class ColumnRefType
     @XmlAttribute(name = "columnIdRef", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String columnIdRef;
+    @XmlAttribute(name = "transformIdRef")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String transformIdRef;
 
     /**
      * 
@@ -122,6 +126,32 @@ public class ColumnRefType
      */
     public void setColumnIdRef(String value) {
         this.columnIdRef = value;
+    }
+
+    /**
+     * Gets the value of the transformIdRef property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     * @since PharmML 0.4.1
+     */
+    public String getTransformIdRef() {
+        return transformIdRef;
+    }
+
+    /**
+     * Sets the value of the transformIdRef property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     * @since PharmML 0.4.1
+     */
+    public void setTransformIdRef(String value) {
+        this.transformIdRef = value;
     }
 
 }
