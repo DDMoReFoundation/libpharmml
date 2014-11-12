@@ -91,7 +91,7 @@ public abstract class AbstractFormula extends PharmMLRootType {
     }
 
     /**
-     * Sets the value of the symbRef property.
+     * Sets the value of the variable property.
      * 
      * @param value
      *     allowed object is
@@ -99,7 +99,7 @@ public abstract class AbstractFormula extends PharmMLRootType {
      *     {@link Equation}
      *     
      */
-    public void setSymbRef(OperationVariable value) {
+    public void setVariable(OperationVariable value) {
         this.variable = value;
     }
     
