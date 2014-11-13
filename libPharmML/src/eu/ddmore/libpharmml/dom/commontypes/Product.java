@@ -26,10 +26,14 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.maths.Operand;
 
 
 /**
@@ -91,7 +95,7 @@ import javax.xml.bind.annotation.XmlType;
     "upLimit"
 })
 public class Product
-    extends AbstractFormula
+    extends AbstractFormula implements Operand
 {
 	
 	/**
@@ -146,5 +150,10 @@ public class Product
     	this.setProductIndex(index);
     	return index;
     }
+
+	@Override
+	public JAXBElement<Product> toJAXBElement() {
+		return MasterObjectFactory.COMMONTYPES_OF.createProduct(this);
+	}
 
 }

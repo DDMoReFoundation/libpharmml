@@ -26,9 +26,12 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 
 
 /**
@@ -60,5 +63,9 @@ public class TrueBooleanType
 		return "true";
 	}
 
+	@Override
+	public JAXBElement<? extends Scalar> toJAXBElement() {
+		return MasterObjectFactory.createScalar(this);
+	}
 
 }

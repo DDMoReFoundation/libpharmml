@@ -28,10 +28,14 @@ package eu.ddmore.libpharmml.dom.maths;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 
@@ -71,7 +75,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
     "functionArgument"
 })
 public class FunctionCallType
-    extends PharmMLRootType
+    extends PharmMLRootType implements Operand
 {
 
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
@@ -157,5 +161,11 @@ public class FunctionCallType
 
 
     }
+
+
+	@Override
+	public JAXBElement<FunctionCallType> toJAXBElement() {
+		return MasterObjectFactory.MATHS_OF.createFunctionCall(this);
+	}
 
 }

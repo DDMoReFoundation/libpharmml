@@ -26,12 +26,15 @@
 
 package eu.ddmore.libpharmml.dom.maths;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 
 
 /**
@@ -66,7 +69,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConstantType")
-public class ConstantType {
+public class ConstantType implements Operand{
 
     @XmlAttribute(name = "op", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -95,5 +98,10 @@ public class ConstantType {
     public void setOp(String value) {
         this.op = value;
     }
+
+	@Override
+	public JAXBElement<? extends Operand> toJAXBElement() {
+		return MasterObjectFactory.MATHS_OF.createConstant(this);
+	}
 
 }

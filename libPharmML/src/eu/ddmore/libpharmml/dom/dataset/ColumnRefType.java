@@ -26,6 +26,7 @@
 
 package eu.ddmore.libpharmml.dom.dataset;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -33,7 +34,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.maths.Operand;
 
 
 /**
@@ -66,7 +70,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "columnRef"
 })
 public class ColumnRefType
-    extends PharmMLRootType
+    extends PharmMLRootType implements Operand
 {
 
     @XmlElement(name = "ColumnRef")
@@ -153,5 +157,10 @@ public class ColumnRefType
     public void setTransformIdRef(String value) {
         this.transformIdRef = value;
     }
+
+	@Override
+	public JAXBElement<ColumnRefType> toJAXBElement() {
+		return MasterObjectFactory.DATASET_OF.createColumnRef(this);
+	}
 
 }

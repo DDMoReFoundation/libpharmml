@@ -30,37 +30,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.JAXBElement;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.Delay;
-import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.IdValueType;
-import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
-import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.Product;
-import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
-import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
-import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
-import eu.ddmore.libpharmml.dom.modeldefn.Probability;
+import eu.ddmore.libpharmml.impl.LoggerWrapper;
 
 
 /**
  * 
- *                 A binary operator describing a numerical operation. Takes two operands (as you would expect).
+ * A binary operator describing a numerical operation. Takes two operands (as you would expect).
  *             
- * 
- * <p>Java class for BinopType complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
@@ -128,10 +118,10 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
     "content"
 })
 public class Binop
-    extends PharmMLRootType
+    extends PharmMLRootType implements Operand
 {
-
-    @XmlElementRefs({
+    
+	@XmlElementRefs({
         @XmlElementRef(name = "Sum", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
 		@XmlElementRef(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Uniop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
@@ -150,86 +140,189 @@ public class Binop
     @XmlAttribute(name = "op", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String op;
-
+    
+    @XmlTransient
+    protected Operand operand1;
+    @XmlTransient
+    protected Operand operand2;
+    @XmlTransient
+    protected Binoperator operator;
+    
     /**
-     * Gets the rest of the content model. 
-     * 
-     * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Scalar" is used by two different parts of a schema. See: 
-     * line 65 of file:/automount/nas17b_vol-vol_homes-homes/florent/git/libPharmML_2/libPharmML/definitions/maths.xsd
-     * line 48 of file:/automount/nas17b_vol-vol_homes-homes/florent/git/libPharmML_2/libPharmML/definitions/maths.xsd
-     * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names: 
-     * Gets the value of the content property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the content property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getContent().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link SumType }{@code >}
-     * {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link ConstantType }{@code >}
-     * {@link JAXBElement }{@code <}{@link Delay }{@code >}
-     * {@link JAXBElement }{@code <}{@link Binop }{@code >}
-     * {@link JAXBElement }{@code <}{@link VectorSelector }{@code >}
-     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
-     * {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link UniopType }{@code >}
-     * {@link JAXBElement }{@code <}{@link MatrixSelector }{@code >}
-     * {@link JAXBElement }{@code <}{@link Object }{@code >}
-     * {@link JAXBElement }{@code <}{@link FunctionCallType }{@code >}
-     * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link Product }{@code >}
-     * {@link JAXBElement }{@code <}{@link Probability }{@code >}
-     * {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}
-     * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     * 
-     * 
+     * Empty constructor.
      */
-    public List<JAXBElement<?>> getContent() {
-        if (content == null) {
-            content = new ArrayList<JAXBElement<?>>(2);
-        }
-        return this.content;
+    public Binop(){
+    	init();
+    }
+    
+    /**
+     * Creates a new binop element with the provided operands and operator.
+     * @param operator
+     * @param operand1
+     * @param operand2
+     */
+    public Binop(Binoperator operator, Operand operand1, Operand operand2){
+    	this();
+    	this.operator = operator;
+    	this.operand1 = operand1;
+    	this.operand2 = operand2;
     }
 
     /**
-     * Gets the value of the op property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Clears the mapped attributes before setting their values for marshalling.
      */
-    public String getOp() {
-        return op;
+    private void init(){
+    	content = new ArrayList<JAXBElement<?>>();
+    	content.add(null);
+    	content.add(null);
+    	op = null;
+    }
+    
+    /**
+     * Gets the operator value of the binop.
+     * @return The operator as {@link Binoperator} enum.
+     */
+    public Binoperator getOperator(){
+    	return operator;
+    }
+    
+    /**
+     * Sets the operator of the binop.
+     * @param operator 
+     */
+    public void setOperator(Binoperator operator){
+    	this.operator = operator;
+    }
+    
+    /**
+     * Gets the 1st operand.
+     * @return Possible return types are:
+     *   {@link Delay},
+     *   {@link MatrixSelector},
+     *   {@link Product},
+     *   {@link Scalar},
+     *   {@link Sum},
+     *   {@link SymbolRef},
+     *   {@link VectorSelector},
+     *   {@link ColumnRef},
+     *   {@link Binop},
+     *   {@link Constant},
+     *   {@link FunctionCall},
+     *   {@link Uniop},
+     *   {@link Probability}
+     */
+    public Operand getOperand1(){
+    	return operand1;
+    }
+    
+    /**
+     * Gets the 2nd operand.
+     * @return Possible return types are:
+     *   {@link Delay},
+     *   {@link MatrixSelector},
+     *   {@link Product},
+     *   {@link Scalar},
+     *   {@link Sum},
+     *   {@link SymbolRef},
+     *   {@link VectorSelector},
+     *   {@link ColumnRef},
+     *   {@link Binop},
+     *   {@link Constant},
+     *   {@link FunctionCall},
+     *   {@link Uniop},
+     *   {@link Probability}
+     */
+    public Operand getOperand2(){
+    	return operand2;
+    }
+    
+    /**
+     * Sets the 1st operand.
+     * Possible types are:
+     *   {@link Delay},
+     *   {@link MatrixSelector},
+     *   {@link Product},
+     *   {@link Scalar},
+     *   {@link Sum},
+     *   {@link SymbolRef},
+     *   {@link VectorSelector},
+     *   {@link ColumnRef},
+     *   {@link Binop},
+     *   {@link Constant},
+     *   {@link FunctionCall},
+     *   {@link Uniop},
+     *   {@link Probability}
+     */
+    public void setOperand1(Operand operand){
+    	this.operand1 = operand;
+    }
+    
+    /**
+     * Sets the 2nd operand.
+     * Possible types are:
+     *   {@link Delay},
+     *   {@link MatrixSelector},
+     *   {@link Product},
+     *   {@link Scalar},
+     *   {@link Sum},
+     *   {@link SymbolRef},
+     *   {@link VectorSelector},
+     *   {@link ColumnRef},
+     *   {@link Binop},
+     *   {@link Constant},
+     *   {@link FunctionCall},
+     *   {@link Uniop},
+     *   {@link Probability}
+     */
+    public void setOperand2(Operand operand){
+    	this.operand2 = operand;
+    }
+    
+    public <T extends Operand> T createOperand1(T operand1){
+    	setOperand1(operand1);
+    	return operand1;
     }
 
-    /**
-     * Sets the value of the op property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setOp(String value) {
-        this.op = value;
-    }
+	@Override
+	public JAXBElement<Binop> toJAXBElement() {
+		return MasterObjectFactory.MATHS_OF.createBinop(this);
+	}
+	
+	protected void beforeMarshal(Marshaller m){
+		init();
+		if(operand1 != null){
+			content.set(0, operand1.toJAXBElement());
+		}
+		if(operand2 != null){
+			content.set(1, operand2.toJAXBElement());
+		}
+		if(operator != null){
+			op = operator.getOperator();
+		}
+	}
+	
+	protected void afterUnmarshal(Unmarshaller u, Object parent) {
+		  if(content != null){
+			  if(content.size() >= 1){
+				  Object _operand = content.get(0).getValue();
+				  if(_operand instanceof Operand){
+					  operand1 = (Operand) _operand;
+				  } else {
+					  LoggerWrapper.getLogger().warning(_operand+" is not unmarshalled as it is not an Operand type.");
+				  }
+			  }
+			  if(content.size() >= 2){
+				  Object _operand = content.get(1).getValue();
+				  if(_operand instanceof Operand){
+					  operand2 = (Operand) _operand;
+				  } else {
+					  LoggerWrapper.getLogger().warning(_operand+" is not unmarshalled as it is not an Operand type.");
+				  }
+			  }
+		  }
+		  if(op != null){
+			  operator = Binoperator.fromString(op);
+		  }
+	}
 
 }

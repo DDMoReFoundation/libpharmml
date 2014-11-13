@@ -26,10 +26,14 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.maths.Operand;
 
 
 /**
@@ -120,14 +124,13 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SumType", propOrder = {
     "variable",
-    "probability",
     "sumIndex",
     "lowLimit",
     "upLimit",
     "sumIndexSet"
 })
 public class Sum
-    extends AbstractFormula
+    extends AbstractFormula implements Operand
 {
 	
 	/**
@@ -239,5 +242,10 @@ public class Sum
     	this.setSumIndex(index);
     	return index;
     }
+
+	@Override
+	public JAXBElement<Sum> toJAXBElement() {
+		return MasterObjectFactory.COMMONTYPES_OF.createSum(this);
+	}
 
 }

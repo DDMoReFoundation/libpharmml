@@ -26,12 +26,15 @@
 
 package eu.ddmore.libpharmml.dom.maths;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 
 
 /**
@@ -106,7 +109,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "UniopType")
 public class UniopType
-    extends ExprType
+    extends ExprType implements Operand
 {
 
     @XmlAttribute(name = "op", required = true)
@@ -136,5 +139,10 @@ public class UniopType
     public void setOp(String value) {
         this.op = value;
     }
+
+	@Override
+	public JAXBElement<UniopType> toJAXBElement() {
+		return MasterObjectFactory.MATHS_OF.createUniop(this);
+	}
 
 }

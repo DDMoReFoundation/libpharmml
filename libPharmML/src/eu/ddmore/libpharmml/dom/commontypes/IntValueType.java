@@ -28,6 +28,7 @@ package eu.ddmore.libpharmml.dom.commontypes;
 
 import java.math.BigInteger;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -35,6 +36,8 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 
 
 /**
@@ -119,6 +122,11 @@ public class IntValueType extends PharmMLElement implements Scalar{
 	@Override
 	public String asString() {
 		return String.valueOf(value);
+	}
+	
+	@Override
+	public JAXBElement<? extends Scalar> toJAXBElement() {
+		return MasterObjectFactory.createScalar(this);
 	}
 
 }

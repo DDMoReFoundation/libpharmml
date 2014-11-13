@@ -28,15 +28,20 @@ package eu.ddmore.libpharmml.dom.modeldefn;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.LinkFunction;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOpType;
 import eu.ddmore.libpharmml.dom.maths.LogicUniOpType;
+import eu.ddmore.libpharmml.dom.maths.Operand;
 
 
 /**
@@ -76,7 +81,7 @@ import eu.ddmore.libpharmml.dom.maths.LogicUniOpType;
     "condition"
 })
 public class Probability
-    extends PharmMLRootType
+    extends PharmMLRootType implements Operand
 {
 
     @XmlElement(name = "LogicBinop", namespace = "http://www.pharmml.org/2013/03/Maths")
@@ -295,6 +300,11 @@ public class Probability
             getListOfCondition().add(el);
             return el;
     }
+
+	@Override
+	public JAXBElement<Probability> toJAXBElement() {
+		return MasterObjectFactory.MODELDEFN_OF.createProbability(this);
+	}
 
 
 }

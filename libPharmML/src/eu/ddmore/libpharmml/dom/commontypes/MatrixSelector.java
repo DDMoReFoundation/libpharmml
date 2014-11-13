@@ -26,10 +26,14 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.maths.Operand;
 
 
 /**
@@ -70,7 +74,7 @@ import javax.xml.bind.annotation.XmlType;
     "column"
 })
 public class MatrixSelector
-    extends PharmMLRootType
+    extends PharmMLRootType implements Operand
 {
 
     @XmlElement(name = "SymbRef", required = true)
@@ -266,6 +270,11 @@ public class MatrixSelector
             this.column = el;
             return el;
     }
+
+	@Override
+	public JAXBElement<MatrixSelector> toJAXBElement() {
+		return MasterObjectFactory.COMMONTYPES_OF.createMatrixSelector(this);
+	}
 
 
 }
