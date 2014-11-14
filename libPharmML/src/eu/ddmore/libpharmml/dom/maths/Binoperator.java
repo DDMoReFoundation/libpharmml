@@ -49,7 +49,7 @@ public enum Binoperator {
 	/**
 	 * Converts a string representation of a binoperator to a {@link Binoperator} object.
 	 * @param operator The operator as {@link String}, as it is written in a PharmML document.
-	 * @return The corresponding {@link Binoperator} object.
+	 * @return The corresponding {@link Binoperator} object. null if the operator does not exist.
 	 */
 	public static Binoperator fromString(String operator){
 		if(operator != null){
