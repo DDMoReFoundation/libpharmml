@@ -46,6 +46,7 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
+ *         &lt;element name="TransformedCovariate" type="{http://www.pharmml.org/2013/03/ModelDefinition}TransformedCovariateType"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Equation"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -57,19 +58,46 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CovariateTransformationType", propOrder = {
+    "transformedCovariate",
     "equation"
 })
 public class CovariateTransformationType
     extends PharmMLRootType
 {
 
+    @XmlElement(name = "TransformedCovariate", required = true)
+    protected TransformedCovariate transformedCovariate;
     @XmlElement(name = "Equation", namespace = "http://www.pharmml.org/2013/03/Maths", required = true)
     protected Equation equation;
 
     /**
+     * Gets the value of the transformedCovariate property.
      * 
-     *                         The transformation is defined as an equation that must include a reference to the covariate variable, defined by the parent of this element.  
-     *                     
+     * @return
+     *     possible object is
+     *     {@link TransformedCovariateType }
+     *     
+     */
+    public TransformedCovariate getTransformedCovariate() {
+        return transformedCovariate;
+    }
+
+    /**
+     * Sets the value of the transformedCovariate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TransformedCovariateType }
+     *     
+     */
+    public void setTransformedCovariate(TransformedCovariate value) {
+        this.transformedCovariate = value;
+    }
+
+    /**
+     * 
+     *                                 The transformation is defined as an equation that must include a reference to the covariate variable, defined by the parent of this element.  
+     *                             
      * 
      * @return
      *     possible object is
