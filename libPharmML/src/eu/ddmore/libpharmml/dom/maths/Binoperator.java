@@ -38,14 +38,6 @@ public enum Binoperator {
 		this.operator = operator;
 	}
 	
-	@Override
-	/**
-	 * Return the PharmML valid string value of the operator.
-	 */
-	public String toString() {
-		return super.toString(); //TODO: test
-	}
-	
 	/**
 	 * Gets the PharmML string representation of the current operator.
 	 * @return The operator as {@link String}, as it is written in the PharmML document.
