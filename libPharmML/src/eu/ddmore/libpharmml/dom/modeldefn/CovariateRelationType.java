@@ -26,8 +26,6 @@
 
 package eu.ddmore.libpharmml.dom.modeldefn;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -49,7 +47,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
- *         &lt;element name="FixedEffect" type="{http://www.pharmml.org/2013/03/ModelDefinition}FixedEffectRelationType"/>
+ *         &lt;element name="FixedEffect" type="{http://www.pharmml.org/2013/03/ModelDefinition}FixedEffectRelationType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -69,8 +67,8 @@ public class CovariateRelationType
 
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
     protected SymbolRefType symbRef;
-    @XmlElement(name = "FixedEffect", required = true)
-    protected List<FixedEffectRelationType> fixedEffect;
+    @XmlElement(name = "FixedEffect")
+    protected FixedEffectRelationType fixedEffect;
 
     /**
      * The covariate to be related.
@@ -99,30 +97,25 @@ public class CovariateRelationType
     /**
      * Gets the value of the fixedEffect property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the fixedEffect property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getFixedEffect().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link FixedEffectRelationType }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link FixedEffectRelationType }
+     *     
      */
-    public List<FixedEffectRelationType> getFixedEffect() {
-        if (fixedEffect == null) {
-            fixedEffect = new ArrayList<FixedEffectRelationType>();
-        }
-        return this.fixedEffect;
+    public FixedEffectRelationType getFixedEffect() {
+        return fixedEffect;
+    }
+
+    /**
+     * Sets the value of the fixedEffect property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FixedEffectRelationType }
+     *     
+     */
+    public void setFixedEffect(FixedEffectRelationType value) {
+        this.fixedEffect = value;
     }
 
 }
