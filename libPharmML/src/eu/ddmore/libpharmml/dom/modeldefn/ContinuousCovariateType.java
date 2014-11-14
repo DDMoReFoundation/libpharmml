@@ -26,6 +26,8 @@
 
 package eu.ddmore.libpharmml.dom.modeldefn;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -67,7 +69,7 @@ import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;element ref="{http://www.uncertml.org/3.0}AbstractContinuousUnivariateDistribution" minOccurs="0"/>
- *         &lt;element name="Transformation" type="{http://www.pharmml.org/2013/03/ModelDefinition}CovariateTransformationType" minOccurs="0"/>
+ *         &lt;element name="Transformation" type="{http://www.pharmml.org/2013/03/ModelDefinition}CovariateTransformationType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Interpolation" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -80,7 +82,7 @@ import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ContinuousCovariateType", propOrder = {
     "abstractContinuousUnivariateDistribution",
-    "transformation",
+    "listOfTransformation",
     "interpolation"
 })
 public class ContinuousCovariateType
@@ -90,7 +92,7 @@ public class ContinuousCovariateType
     @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = "http://www.uncertml.org/3.0", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractContinuousUnivariateDistributionType> abstractContinuousUnivariateDistribution;
     @XmlElement(name = "Transformation")
-    protected CovariateTransformationType transformation;
+    protected List<CovariateTransformationType> listOfTransformation;
     @XmlElement(name = "Interpolation", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected InterpolationType interpolation;
 
@@ -159,9 +161,16 @@ public class ContinuousCovariateType
      *     possible object is
      *     {@link CovariateTransformationType }
      *     
+     * @deprecated This attribute is now a list (since PharmML 0.4.1).
+     * Use {@link #getListOfTransformation()} instead.
      */
+    @Deprecated
     public CovariateTransformationType getTransformation() {
-        return transformation;
+        if(getListOfTransformation().size() >= 1){
+        	return getListOfTransformation().get(0);
+        } else {
+        	return null;
+        }
     }
 
     /**
@@ -170,11 +179,44 @@ public class ContinuousCovariateType
      * @param value
      *     allowed object is
      *     {@link CovariateTransformationType }
-     *     
+     * 
+     * @deprecated This attribute is now a list (since PharmML 0.4.1).
+     * Add an element to the list {@link #getListOfTransformation()} instead.
      */
+    @Deprecated
     public void setTransformation(CovariateTransformationType value) {
-        this.transformation = value;
+        getListOfTransformation().clear();
+        getListOfTransformation().add(value);
     }
+    
+    /**
+     * Gets the value of the transformation property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the transformation property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListOfTransformation().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link CovariateTransformationType }
+     * 
+     * 
+     */
+    public List<CovariateTransformationType> getListOfTransformation() {
+        if (listOfTransformation == null) {
+            listOfTransformation = new ArrayList<CovariateTransformationType>();
+        }
+        return listOfTransformation;
+     }
 
     /**
      * Gets the value of the interpolation property.
