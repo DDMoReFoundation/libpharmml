@@ -50,9 +50,78 @@ import eu.ddmore.libpharmml.impl.LoggerWrapper;
 /**
  * 
  * A binary operator describing a numerical operation. Takes two operands (as you would expect).
- *             
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p><h3>Binary operator semantics:</h3>
+ * Possible operators are listed within the {@link Binoperator} enum. Their semantics are described
+ * in the following table:
+ * 
+ * <p><table border=1>
+ * <tr><th>Operator</th><th>Definition</th><th>Operand 1</th><th>Operand 2</th></tr>
+ * <tr>
+ * 	<td>{@link Binoperator#PLUS}</td>
+ * 	<td>a + b</td>
+ * 	<td>a</td>
+ * 	<td>b</td>
+ * </tr>
+ * <tr>
+ * 	<td>{@link Binoperator#MINUS}</td>
+ * 	<td>a - b</td>
+ * 	<td>a</td>
+ * 	<td>b</td>
+ * </tr>
+ * <tr>
+ * 	<td>{@link Binoperator#TIMES}</td>
+ * 	<td>a * b</td>
+ * 	<td>a</td>
+ * 	<td>b</td>
+ * </tr>
+ * <tr>
+ * 	<td>{@link Binoperator#DIVIDE}</td>
+ * 	<td>a / b</td>
+ * 	<td>a</td>
+ * 	<td>b</td>
+ * </tr>
+ * <tr>
+ * 	<td>{@link Binoperator#POWER}</td>
+ * 	<td>x<sup>y</sup></td>
+ * 	<td>base (x)</td>
+ * 	<td>exponent (y)</td>
+ * </tr>
+ * <tr>
+ * 	<td>{@link Binoperator#ROOT}</td>
+ * 	<td><math xmlns="http://www.w3.org/1998/Math/MathML"><mroot><mrow>x</mrow><mn>y</mn></mroot></math></td>
+ * 	<td>radicand (x)</td>
+ * 	<td>degree (y)</td>
+ * </tr>
+ * <tr>
+ * 	<td>{@link Binoperator#LOGX}</td>
+ * 	<td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>log</mi><mi>y</mi></msub><mi>x</mi></mrow></math></td>
+ * 	<td>power (x)</td>
+ * 	<td>base (y)</td>
+ * </tr>
+ * <tr>
+ * 	<td>{@link Binoperator#MAX}</td>
+ * 	<td>max {a b}</td>
+ * 	<td>a</td>
+ * 	<td>b</td>
+ * </tr>
+ * <tr>
+ * 	<td>{@link Binoperator#MIN}</td>
+ * 	<td>min {a b}</td>
+ * 	<td>a</td>
+ * 	<td>b</td>
+ * </tr>
+ * <tr>
+ * 	<td>{@link Binoperator#REM}</td>
+ * 	<td>a % b</td>
+ * 	<td>dividend (a)</td>
+ * 	<td>divisor (b)</td>
+ * </tr>
+ * </table>
+ * 
+ * 
+ * <p><h3>Schema:</h3>
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="BinopType">
@@ -195,7 +264,8 @@ public class Binop
     }
     
     /**
-     * Gets the 1st operand.
+     * Gets the 1st operand. See {@link Binop} documentation for the exact role of this operand 
+     * following the operator.
      * @return Possible return types are:
      *   {@link Delay},
      *   {@link MatrixSelector},
@@ -216,7 +286,8 @@ public class Binop
     }
     
     /**
-     * Gets the 2nd operand.
+     * Gets the 2nd operand. See {@link Binop} documentation for the exact role of this operand 
+     * following the operator.
      * @return Possible return types are:
      *   {@link Delay},
      *   {@link MatrixSelector},
@@ -237,7 +308,8 @@ public class Binop
     }
     
     /**
-     * Sets the 1st operand.
+     * Sets the 1st operand. See {@link Binop} documentation for the exact role of this operand 
+     * following the operator.
      * Possible types are:
      *   {@link Delay},
      *   {@link MatrixSelector},
@@ -258,7 +330,8 @@ public class Binop
     }
     
     /**
-     * Sets the 2nd operand.
+     * Sets the 2nd operand. See {@link Binop} documentation for the exact role of this operand 
+     * following the operator.
      * Possible types are:
      *   {@link Delay},
      *   {@link MatrixSelector},
@@ -276,11 +349,6 @@ public class Binop
      */
     public void setOperand2(Operand operand){
     	this.operand2 = operand;
-    }
-    
-    public <T extends Operand> T createOperand1(T operand1){
-    	setOperand1(operand1);
-    	return operand1;
     }
 
 	@Override
