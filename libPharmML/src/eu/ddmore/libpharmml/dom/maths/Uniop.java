@@ -27,9 +27,12 @@
 package eu.ddmore.libpharmml.dom.maths;
 
 import javax.xml.bind.JAXBElement;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -115,6 +118,9 @@ public class Uniop
     @XmlAttribute(name = "op", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String op;
+    
+    @XmlTransient
+    protected Unioperator operator;
 
     /**
      * Gets the value of the op property.
@@ -122,10 +128,16 @@ public class Uniop
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *  
+     * @deprecated Operator must now be accessed through {@link #getOperator()} (since libPharmML 0.4).
      */
+    @Deprecated
     public String getOp() {
-        return op;
+        if(this.operator != null){
+        	return this.operator.getOperator();
+        } else {
+        	return null;
+        }
     }
 
     /**
@@ -134,15 +146,71 @@ public class Uniop
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     * 
+     * @deprecated Operator must now be accessed through {@link #setOperator()} (since libPharmML 0.4).
      */
+    @Deprecated
     public void setOp(String value) {
-        this.op = value;
+        setOperator(Unioperator.fromString(value));
     }
+    
+    
+
+	public Unioperator getOperator() {
+		return operator;
+	}
+
+	public void setOperator(Unioperator operator) {
+		this.operator = operator;
+	}
 
 	@Override
 	public JAXBElement<Uniop> toJAXBElement() {
 		return MasterObjectFactory.MATHS_OF.createUniop(this);
+	}
+	
+	/**
+     * Clears the mapped attributes before setting their values for marshalling.
+     */
+    private void init(){
+    	op = null;
+    }
+	
+	protected void beforeMarshal(Marshaller m){
+		init();
+//		if(operand1 != null){
+//			content.set(0, operand1.toJAXBElement());
+//		}
+//		if(operand2 != null){
+//			content.set(1, operand2.toJAXBElement());
+//		}
+		if(operator != null){
+			op = operator.getOperator();
+		}
+	}
+	
+	protected void afterUnmarshal(Unmarshaller u, Object parent) {
+//		  if(content != null){
+//			  if(content.size() >= 1){
+//				  Object _operand = content.get(0).getValue();
+//				  if(_operand instanceof Operand){
+//					  operand1 = (Operand) _operand;
+//				  } else {
+//					  LoggerWrapper.getLogger().warning(_operand+" is not unmarshalled as it is not an Operand type.");
+//				  }
+//			  }
+//			  if(content.size() >= 2){
+//				  Object _operand = content.get(1).getValue();
+//				  if(_operand instanceof Operand){
+//					  operand2 = (Operand) _operand;
+//				  } else {
+//					  LoggerWrapper.getLogger().warning(_operand+" is not unmarshalled as it is not an Operand type.");
+//				  }
+//			  }
+//		  }
+		  if(op != null){
+			  operator = Unioperator.fromString(op);
+		  }
 	}
 
 }
