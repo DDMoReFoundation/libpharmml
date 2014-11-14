@@ -108,7 +108,7 @@ import eu.ddmore.libpharmml.dom.MasterObjectFactory;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "UniopType")
-public class UniopType
+public class Uniop
     extends ExprType implements Operand
 {
 
@@ -141,7 +141,7 @@ public class UniopType
     }
 
 	@Override
-	public JAXBElement<UniopType> toJAXBElement() {
+	public JAXBElement<Uniop> toJAXBElement() {
 		return MasterObjectFactory.MATHS_OF.createUniop(this);
 	}
 

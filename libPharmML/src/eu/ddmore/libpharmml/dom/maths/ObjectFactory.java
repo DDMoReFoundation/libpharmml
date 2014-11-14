@@ -130,11 +130,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UniopType }
+     * Create an instance of {@link Uniop }
      * 
      */
-    public UniopType createUniopType() {
-        return new UniopType();
+    public Uniop createUniopType() {
+        return new Uniop();
     }
 
     /**
@@ -239,12 +239,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UniopType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Uniop }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Uniop")
-    public JAXBElement<UniopType> createUniop(UniopType value) {
-        return new JAXBElement<UniopType>(_Uniop_QNAME, UniopType.class, null, value);
+    public JAXBElement<Uniop> createUniop(Uniop value) {
+        return new JAXBElement<Uniop>(_Uniop_QNAME, Uniop.class, null, value);
     }
 
     /**

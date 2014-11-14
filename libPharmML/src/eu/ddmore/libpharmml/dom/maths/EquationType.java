@@ -121,7 +121,7 @@ public class EquationType
     @XmlElement(name = "Binop")
     protected Binop binop;
     @XmlElement(name = "Uniop")
-    protected UniopType uniop;
+    protected Uniop uniop;
     @XmlElement(name = "Piecewise")
     protected PiecewiseType piecewise;
     @XmlElement(name = "FunctionCall")
@@ -241,10 +241,10 @@ public class EquationType
      * 
      * @return
      *     possible object is
-     *     {@link UniopType }
+     *     {@link Uniop }
      *     
      */
-    public UniopType getUniop() {
+    public Uniop getUniop() {
         return uniop;
     }
 
@@ -253,10 +253,10 @@ public class EquationType
      * 
      * @param value
      *     allowed object is
-     *     {@link UniopType }
+     *     {@link Uniop }
      *     
      */
-    public void setUniop(UniopType value) {
+    public void setUniop(Uniop value) {
         this.uniop = value;
     }
 
@@ -487,8 +487,8 @@ public class EquationType
         			} else if (element.getDeclaredType().equals(PiecewiseType.class)){
         				setPiecewise((PiecewiseType)element.getValue());
         				firstElement = true;
-        			} else if (element.getDeclaredType().equals(UniopType.class)){
-        				setUniop((UniopType)element.getValue());
+        			} else if (element.getDeclaredType().equals(Uniop.class)){
+        				setUniop((Uniop)element.getValue());
         				firstElement = true;
 //        			} else if (element.getDeclaredType().equals(ScalarRhs.class)){
 //        				setScalar(element);
