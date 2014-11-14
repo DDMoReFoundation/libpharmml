@@ -350,6 +350,39 @@ public class Binop
     public void setOperand2(Operand operand){
     	this.operand2 = operand;
     }
+    
+    /**
+    * Gets the value of the op property.
+    *
+    * @return
+    * possible object is
+    * {@link String }
+    *
+    * @deprecated Operator must now be get through {@link #getOperator()} (since libPharmML 0.4).
+    */
+    @Deprecated
+    public String getOp() {
+    	if(this.operator != null){
+    		return this.operator.getOperator();
+    	} else {
+    		return null;
+    	}
+    }
+    
+    /**
+    * Sets the value of the op property.
+    *
+    * @param value
+    * allowed object is
+    * {@link String }
+    *
+    * @deprecated Operator must now be set through {@link #setOperator(Binoperator)}
+    * (since libPharmML 0.4).
+    */
+    @Deprecated
+    public void setOp(String value) {
+    	setOperator(Binoperator.fromString(value));
+    }
 
 	@Override
 	public JAXBElement<Binop> toJAXBElement() {
