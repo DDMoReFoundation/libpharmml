@@ -85,6 +85,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
  *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Scalar"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Constant"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/08/Dataset}ColumnRef"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Binop"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Uniop"/>
  *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}FunctionCall"/>
@@ -132,6 +133,7 @@ public class LogicBinOpType
         @XmlElementRef(name = "Binop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "VectorSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "LogicUniop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
+		@XmlElementRef(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Uniop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "MatrixSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
