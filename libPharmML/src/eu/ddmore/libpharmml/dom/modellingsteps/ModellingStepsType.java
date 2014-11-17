@@ -51,6 +51,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
+ *         &lt;element name="MONOLIXdataSet" type="{http://www.pharmml.org/2013/03/ModellingSteps}MONOLIXdataSetType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="NONMEMdataSet" type="{http://www.pharmml.org/2013/03/ModellingSteps}NONMEMdataSetType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="TargetTool" type="{http://www.pharmml.org/2013/03/ModellingSteps}TargetToolType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/ModellingSteps}CommonModellingStep" maxOccurs="unbounded" minOccurs="0"/>
@@ -65,6 +66,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ModellingStepsType", propOrder = {
+    "listOfMonoliXdataSet",
     "nonmeMdataSet",
     "targetTool",
     "commonModellingStep",
@@ -74,6 +76,8 @@ public class ModellingStepsType
     extends PharmMLRootType
 {
 
+    @XmlElement(name = "MONOLIXdataSet")
+    protected List<MONOLIXdataSet> listOfMonoliXdataSet;
     @XmlElement(name = "NONMEMdataSet")
     protected List<NONMEMdataSetType> nonmeMdataSet;
     @XmlElement(name = "TargetTool")
@@ -82,6 +86,35 @@ public class ModellingStepsType
     protected List<JAXBElement<? extends CommonModellingStepType>> commonModellingStep;
     @XmlElement(name = "StepDependencies")
     protected StepDependencyType stepDependencies;
+
+    /**
+     * Gets the value of the monoliXdataSet property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the monoliXdataSet property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getMONOLIXdataSet().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link MONOLIXdataSetType }
+     * 
+     * 
+     */
+    public List<MONOLIXdataSet> getListOfMONOLIXdataSet() {
+        if (listOfMonoliXdataSet == null) {
+        	listOfMonoliXdataSet = new ArrayList<MONOLIXdataSet>();
+        }
+        return this.listOfMonoliXdataSet;
+    }
 
     /**
      * Gets the value of the nonmeMdataSet property.

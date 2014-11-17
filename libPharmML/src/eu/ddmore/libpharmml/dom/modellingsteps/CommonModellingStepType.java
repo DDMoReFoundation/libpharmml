@@ -57,6 +57,8 @@ import eu.ddmore.libpharmml.dom.commontypes.VariableAssignmentType;
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;element name="TargetToolReference" type="{http://www.pharmml.org/2013/03/ModellingSteps}TargetToolReferenceType" minOccurs="0"/>
+ *         &lt;element name="MONOLIXdataSetReference" type="{http://www.pharmml.org/2013/03/ModellingSteps}MONOLIXdataSetReferenceType" minOccurs="0"/>
+ *         &lt;element name="NONMEMdataSetReference" type="{http://www.pharmml.org/2013/03/ModellingSteps}NONMEMdataSetReferenceType" minOccurs="0"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}VariableAssignment" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://www.pharmml.org/2013/03/CommonTypes}OidDefnGroup"/>
@@ -69,9 +71,10 @@ import eu.ddmore.libpharmml.dom.commontypes.VariableAssignmentType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CommonModellingStepType", propOrder = {
-		"targetToolReference",
-	    "nonmeMdataSetReference",
-	    "variableAssignment"
+    "targetToolReference",
+    "monoliXdataSetReference",
+    "nonmeMdataSetReference",
+    "variableAssignment"
 })
 @XmlSeeAlso({
     SimulationStepType.class,
@@ -83,6 +86,8 @@ public abstract class CommonModellingStepType
 
     @XmlElement(name = "TargetToolReference")
     protected TargetToolReferenceType targetToolReference;
+    @XmlElement(name = "MONOLIXdataSetReference")
+    protected MONOLIXdataSetReference monoliXdataSetReference;
     @XmlElement(name = "NONMEMdataSetReference")
     protected NONMEMdataSetReferenceType nonmeMdataSetReference;
     @XmlElement(name = "VariableAssignment", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
@@ -114,7 +119,31 @@ public abstract class CommonModellingStepType
     public void setTargetToolReference(TargetToolReferenceType value) {
         this.targetToolReference = value;
     }
-    
+
+    /**
+     * Gets the value of the monoliXdataSetReference property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link MONOLIXdataSetReferenceType }
+     *     
+     */
+    public MONOLIXdataSetReference getMONOLIXdataSetReference() {
+        return monoliXdataSetReference;
+    }
+
+    /**
+     * Sets the value of the monoliXdataSetReference property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MONOLIXdataSetReferenceType }
+     *     
+     */
+    public void setMONOLIXdataSetReference(MONOLIXdataSetReference value) {
+        this.monoliXdataSetReference = value;
+    }
+
     /**
      * Gets the value of the nonmeMdataSetReference property.
      * 
