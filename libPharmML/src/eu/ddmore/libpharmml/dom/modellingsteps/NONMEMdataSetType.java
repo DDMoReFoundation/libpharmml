@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMappingType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
 import eu.ddmore.libpharmml.dom.dataset.DataSetType;
 
 
@@ -55,6 +56,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSetType;
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;element name="ColumnMapping" type="{http://www.pharmml.org/2013/08/Dataset}ColumnMappingType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="ColumnTransformation" type="{http://www.pharmml.org/2013/08/Dataset}ColumnTransformationType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="MultipleDVMapping" type="{http://www.pharmml.org/2013/03/ModellingSteps}MultipleDVMappingType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/08/Dataset}DataSet"/>
  *         &lt;element name="CodeInjection" type="{http://www.pharmml.org/2013/03/ModellingSteps}CodeInjectionType" minOccurs="0"/>
@@ -70,6 +72,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSetType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "NONMEMdataSetType", propOrder = {
     "columnMapping",
+    "listOfColumnTransformation",
     "multipleDVMapping",
     "dataSet",
     "codeInjection"
@@ -80,6 +83,8 @@ public class NONMEMdataSetType
 
     @XmlElement(name = "ColumnMapping")
     protected List<ColumnMappingType> columnMapping;
+    @XmlElement(name = "ColumnTransformation")
+    protected List<ColumnTransformation> listOfColumnTransformation;
     @XmlElement(name = "MultipleDVMapping")
     protected List<MultipleDVMappingType> multipleDVMapping;
     @XmlElement(name = "DataSet", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
@@ -118,7 +123,36 @@ public class NONMEMdataSetType
         }
         return this.columnMapping;
     }
-    
+
+    /**
+     * Gets the value of the columnTransformation property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the columnTransformation property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getColumnTransformation().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ColumnTransformationType }
+     * 
+     * 
+     */
+    public List<ColumnTransformation> getListOfColumnTransformation() {
+        if (listOfColumnTransformation == null) {
+        	listOfColumnTransformation = new ArrayList<ColumnTransformation>();
+        }
+        return this.listOfColumnTransformation;
+    }
+
     /**
      * Gets the value of the multipleDVMapping property.
      * 
