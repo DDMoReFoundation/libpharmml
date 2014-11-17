@@ -26,12 +26,23 @@
 
 package eu.ddmore.libpharmml.dom.modeldefn;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.IdValueType;
+import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
+import eu.ddmore.libpharmml.dom.commontypes.Scalar;
+import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
+import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
 
 
 /**
@@ -46,7 +57,10 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
+ *         &lt;choice>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Scalar"/>
+ *         &lt;/choice>
  *         &lt;element name="Category" type="{http://www.pharmml.org/2013/03/ModelDefinition}CategoricalRelationType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -59,16 +73,45 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FixedEffectRelationType", propOrder = {
     "symbRef",
+    "scalar",
     "category"
 })
 public class FixedEffectRelationType
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
+    @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected SymbolRefType symbRef;
+    @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+    protected Scalar scalar;
+    
+    /**
+     * Specifies the category value of the covariate that must apply when this fixed effect is to be used in the parameter equation. 
+       This is equivalent to specifying the following: 1_cov=cat . beta. 
+     */
     @XmlElement(name = "Category")
     protected CategoricalRelationType category;
+    
+    /**
+     * Empty constructor.
+     */
+    public FixedEffectRelationType(){};
+    
+    /**
+     * Creates a new fixed effect relation with a given value.
+     * @param value The value of the fixed effect as a {@link Scalar} object.
+     */
+    public FixedEffectRelationType(Scalar value){
+    	this.scalar = value;
+    }
+    
+    /**
+     * Creates a new fixed effect relation with a given value.
+     * @param value The value of the fixed effect as a {@link SymbolRefType} object.
+     */
+    public FixedEffectRelationType(SymbolRefType value){
+    	this.symbRef = value;
+    }
 
     /**
      * A reference to the variable defining the fixed effect value.
@@ -95,7 +138,47 @@ public class FixedEffectRelationType
     }
 
     /**
-     * Gets the value of the category property.
+     * A scalar value.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Object }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     *     
+     */
+    public Scalar getScalar() {
+        return scalar;
+    }
+
+    /**
+     * Sets the value of the scalar property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Object }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     *     
+     */
+    public void setScalar(Scalar value) {
+        this.scalar = value;
+    }
+
+    /**
+     * Specifies the category value of the covariate that must apply when
+     * this fixed effect is to be used in the parameter equation. 
+     * This is equivalent to specifying the following: 1_cov=cat . beta. 
      * 
      * @return
      *     possible object is
@@ -107,7 +190,9 @@ public class FixedEffectRelationType
     }
 
     /**
-     * Sets the value of the category property.
+     * Specifies the category value of the covariate that must apply when
+     * this fixed effect is to be used in the parameter equation. 
+     * This is equivalent to specifying the following: 1_cov=cat . beta. 
      * 
      * @param value
      *     allowed object is
