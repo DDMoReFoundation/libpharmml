@@ -42,6 +42,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="parameter"/>
  *     &lt;enumeration value="derivativeVariable"/>
  *     &lt;enumeration value="variable"/>
+ *     &lt;enumeration value="admType"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -77,7 +78,16 @@ public enum DoseInputTargetType {
      * 
      */
     @XmlEnumValue("variable")
-    VARIABLE("variable");
+    VARIABLE("variable"),
+
+    /**
+     * 
+     *                         Dose is an input to a system via a admin type defined in a macro.
+     *                     
+     * 
+     */
+    @XmlEnumValue("admType")
+    ADM_TYPE("admType");
     private final String value;
 
     DoseInputTargetType(String v) {
