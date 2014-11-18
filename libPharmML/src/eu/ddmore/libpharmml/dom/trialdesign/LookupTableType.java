@@ -34,12 +34,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMappingType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
 import eu.ddmore.libpharmml.dom.dataset.DataSetType;
 
 
 /**
  * 
- *                 A type defining the NONMEM type data and task settings.                
+ *                 A type defining the lookup table type data.                
  *             
  * 
  * <p>Java class for LookupTableType complex type.
@@ -52,7 +53,8 @@ import eu.ddmore.libpharmml.dom.dataset.DataSetType;
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;element name="ColumnMapping" type="{http://www.pharmml.org/2013/08/Dataset}ColumnMappingType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Target" type="{http://www.pharmml.org/2013/03/TrialDesign}TargetMappingType" maxOccurs="unbounded"/>
+ *         &lt;element name="Target" type="{http://www.pharmml.org/2013/03/TrialDesign}TargetType" maxOccurs="unbounded"/>
+ *         &lt;element name="ColumnTransformation" type="{http://www.pharmml.org/2013/08/Dataset}ColumnTransformationType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/08/Dataset}DataSet"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -66,6 +68,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSetType;
 @XmlType(name = "LookupTableType", propOrder = {
     "columnMapping",
     "target",
+    "listOfColumnTransformation",
     "dataSet"
 })
 public class LookupTableType
@@ -75,7 +78,9 @@ public class LookupTableType
     @XmlElement(name = "ColumnMapping")
     protected List<ColumnMappingType> columnMapping;
     @XmlElement(name = "Target", required = true)
-    protected List<TargetMappingType> target;
+    protected List<TargetType> target;
+    @XmlElement(name = "ColumnTransformation")
+    protected List<ColumnTransformation> listOfColumnTransformation;
     @XmlElement(name = "DataSet", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
     protected DataSetType dataSet;
 
@@ -126,15 +131,44 @@ public class LookupTableType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link TargetMappingType }
+     * {@link TargetType }
      * 
      * 
      */
-    public List<TargetMappingType> getTarget() {
+    public List<TargetType> getTarget() {
         if (target == null) {
-            target = new ArrayList<TargetMappingType>();
+            target = new ArrayList<TargetType>();
         }
         return this.target;
+    }
+
+    /**
+     * Gets the value of the columnTransformation property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the columnTransformation property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getColumnTransformation().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ColumnTransformationType }
+     * 
+     * 
+     */
+    public List<ColumnTransformation> getColumnTransformation() {
+        if (listOfColumnTransformation == null) {
+        	listOfColumnTransformation = new ArrayList<ColumnTransformation>();
+        }
+        return this.listOfColumnTransformation;
     }
 
     /**

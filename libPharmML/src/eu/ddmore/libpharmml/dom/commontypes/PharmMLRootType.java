@@ -134,7 +134,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.SteadyStateType;
 import eu.ddmore.libpharmml.dom.trialdesign.StudyEventType;
 import eu.ddmore.libpharmml.dom.trialdesign.StudyPeriodType;
 import eu.ddmore.libpharmml.dom.trialdesign.StudyTimePointType;
-import eu.ddmore.libpharmml.dom.trialdesign.TargetMappingType;
+import eu.ddmore.libpharmml.dom.trialdesign.TargetType;
 import eu.ddmore.libpharmml.dom.trialdesign.TrialDesignType;
 import eu.ddmore.libpharmml.dom.trialdesign.TrialStructureType;
 import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
@@ -280,7 +280,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     ObservationsGroupType.class,
     PopulationMappingType.class,
     DemographicType.class,
-    TargetMappingType.class,
+    TargetType.class,
     StudyPeriodType.class,
     DosingTimesPointsType.class,
     TimepointsType.class,
