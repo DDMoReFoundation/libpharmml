@@ -86,7 +86,7 @@ public class EstimationOperationType
     @XmlSchemaType(name = "positiveInteger")
     protected BigInteger order;
     @XmlAttribute(name = "opType", required = true)
-    protected EstimationOpTypeType opType;
+    protected String opType;
 
     /**
      * Gets the value of the name property.
@@ -196,10 +196,10 @@ public class EstimationOperationType
      * 
      * @return
      *     possible object is
-     *     {@link EstimationOpTypeType }
+     *     {@link String }
      *     
      */
-    public EstimationOpTypeType getOpType() {
+    public String getOpType() {
         return opType;
     }
 
@@ -208,11 +208,25 @@ public class EstimationOperationType
      * 
      * @param value
      *     allowed object is
-     *     {@link EstimationOpTypeType }
+     *     {@link String }
      *     
      */
-    public void setOpType(EstimationOpTypeType value) {
+    public void setOpType(String value) {
         this.opType = value;
+    }
+    
+    /**
+     * Sets the value of the opType property.
+     * 
+     * @param value
+     *     
+     */
+    public void setOpType(EstimationOpTypeType value){
+    	if(value == null){
+    		this.opType = null;
+    	} else {
+    		this.opType = value.value();
+    	}
     }
 
 }

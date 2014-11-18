@@ -86,7 +86,7 @@ public class SimulationOperationType
     @XmlSchemaType(name = "positiveInteger")
     protected BigInteger order;
     @XmlAttribute(name = "opType", required = true)
-    protected SimulationOpTypeType opType;
+    protected String opType;
 
     /**
      * Gets the value of the name property.
@@ -196,10 +196,10 @@ public class SimulationOperationType
      * 
      * @return
      *     possible object is
-     *     {@link SimulationOpTypeType }
+     *     {@link String }
      *     
      */
-    public SimulationOpTypeType getOpType() {
+    public String getOpType() {
         return opType;
     }
 
@@ -208,11 +208,25 @@ public class SimulationOperationType
      * 
      * @param value
      *     allowed object is
-     *     {@link SimulationOpTypeType }
+     *     {@link String }
+     *     
+     */
+    public void setOpType(String value) {
+        this.opType = value;
+    }
+    
+    /**
+     * Sets the value of the opType property.
+     * 
+     * @param value
      *     
      */
     public void setOpType(SimulationOpTypeType value) {
-        this.opType = value;
+    	if(value == null){
+    		this.opType = null;
+    	} else {
+    		this.opType = value.value();
+    	}
     }
 
 }
