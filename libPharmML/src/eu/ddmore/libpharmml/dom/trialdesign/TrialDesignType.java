@@ -49,8 +49,8 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="Structure" type="{http://www.pharmml.org/2013/03/TrialDesign}TrialStructureType"/>
- *         &lt;element name="Population" type="{http://www.pharmml.org/2013/03/TrialDesign}PopulationType"/>
+ *         &lt;element name="Structure" type="{http://www.pharmml.org/2013/03/TrialDesign}TrialStructureType" minOccurs="0"/>
+ *         &lt;element name="Population" type="{http://www.pharmml.org/2013/03/TrialDesign}PopulationType" minOccurs="0"/>
  *         &lt;element name="IndividualDosing" type="{http://www.pharmml.org/2013/03/TrialDesign}IndividualDosingType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -70,9 +70,9 @@ public class TrialDesignType
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Structure", required = true)
+    @XmlElement(name = "Structure")
     protected TrialStructureType structure;
-    @XmlElement(name = "Population", required = true)
+    @XmlElement(name = "Population")
     protected PopulationType population;
     @XmlElement(name = "IndividualDosing")
     protected List<IndividualDosingType> individualDosing;
