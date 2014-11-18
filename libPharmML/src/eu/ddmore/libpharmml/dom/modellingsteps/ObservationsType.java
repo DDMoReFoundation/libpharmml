@@ -48,7 +48,10 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/ModellingSteps}Timepoints"/>
- *         &lt;element name="Continuous" type="{http://www.pharmml.org/2013/03/ModellingSteps}ContinuousObservationType"/>
+ *         &lt;choice>
+ *           &lt;element name="Continuous" type="{http://www.pharmml.org/2013/03/ModellingSteps}ContinuousObservationType"/>
+ *           &lt;element name="Discrete" type="{http://www.pharmml.org/2013/03/ModellingSteps}DiscreteObservationType"/>
+ *         &lt;/choice>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -60,7 +63,8 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ObservationsType", propOrder = {
     "timepoints",
-    "continuous"
+    "continuous",
+    "discrete"
 })
 public class ObservationsType
     extends PharmMLRootType
@@ -68,8 +72,10 @@ public class ObservationsType
 
     @XmlElement(name = "Timepoints", required = true)
     protected TimepointsType timepoints;
-    @XmlElement(name = "Continuous", required = true)
+    @XmlElement(name = "Continuous")
     protected ContinuousObservationType continuous;
+    @XmlElement(name = "Discrete")
+    protected DiscreteObservation discrete;
 
     /**
      * 
@@ -119,6 +125,30 @@ public class ObservationsType
      */
     public void setContinuous(ContinuousObservationType value) {
         this.continuous = value;
+    }
+
+    /**
+     * Gets the value of the discrete property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DiscreteObservationType }
+     *     
+     */
+    public DiscreteObservation getDiscrete() {
+        return discrete;
+    }
+
+    /**
+     * Sets the value of the discrete property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DiscreteObservationType }
+     *     
+     */
+    public void setDiscrete(DiscreteObservation value) {
+        this.discrete = value;
     }
 
 }
