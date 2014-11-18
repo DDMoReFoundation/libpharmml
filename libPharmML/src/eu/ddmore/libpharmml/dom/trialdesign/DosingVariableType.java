@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
+import eu.ddmore.libpharmml.dom.dataset.TargetMapping;
 
 
 /**
@@ -51,7 +52,10 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
+ *         &lt;choice>
+ *           &lt;element name="TargetMapping" type="{http://www.pharmml.org/2013/08/Dataset}TargetMappingType" minOccurs="0"/>
+ *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef" minOccurs="0"/>
+ *         &lt;/choice>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Assign" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://www.pharmml.org/2013/03/TrialDesign}doseVarAttGroup"/>
@@ -64,6 +68,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DosingVariableType", propOrder = {
+    "targetMapping",
     "symbRef",
     "assign"
 })
@@ -74,20 +79,46 @@ public class DosingVariableType
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
+    @XmlElement(name = "TargetMapping")
+    protected TargetMapping targetMapping;
+    @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected SymbolRefType symbRef;
     @XmlElement(name = "Assign", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected Rhs assign;
-	@XmlAttribute(name = "inputType", required = true)
+	@XmlAttribute(name = "inputType")
 	@Deprecated
     protected DoseInputTypeType inputType;
     @XmlAttribute(name = "inputTarget", required = true)
     protected DoseInputTargetType inputTarget;
 
     /**
+     * Gets the value of the targetMapping property.
      * 
-     *                                 The name of the variable that is the dose administered to.
-     *                             
+     * @return
+     *     possible object is
+     *     {@link TargetMapping }
+     *     
+     */
+    public TargetMapping getTargetMapping() {
+        return targetMapping;
+    }
+
+    /**
+     * Sets the value of the targetMapping property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TargetMapping }
+     *     
+     */
+    public void setTargetMapping(TargetMapping value) {
+        this.targetMapping = value;
+    }
+
+    /**
+     * 
+     *                                     The name of the variable that is the dose administered to.
+     *                                 
      * 
      * @return
      *     possible object is
