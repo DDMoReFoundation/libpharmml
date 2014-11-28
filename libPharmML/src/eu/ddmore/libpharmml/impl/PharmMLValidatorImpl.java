@@ -36,6 +36,7 @@ import eu.ddmore.libpharmml.IPharmMLValidator;
 import eu.ddmore.libpharmml.IValidationError;
 import eu.ddmore.libpharmml.IValidationReport;
 import eu.ddmore.libpharmml.dom.PharmML;
+import eu.ddmore.libpharmml.validation.PharmMLValidator;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
 
 public class PharmMLValidatorImpl implements IPharmMLValidator {
@@ -89,6 +90,11 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 			}
 			List<IValidationError> unicityErrors = resolver.checkUnicity();
 			for(IValidationError error : unicityErrors){
+				rptFact.addError(error);
+			}
+			
+			List<IValidationError> specErrors = PharmMLValidator.validate(dom);
+			for(IValidationError error : specErrors){
 				rptFact.addError(error);
 			}
 			

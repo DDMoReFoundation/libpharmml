@@ -54,23 +54,42 @@ import javax.xml.bind.annotation.XmlType;
 public enum SymbolTypeType {
 
     @XmlEnumValue("int")
-    INT("int"),
+    INT("int",IntValueType.class),
     @XmlEnumValue("real")
-    REAL("real"),
+    REAL("real",RealValueType.class),
     @XmlEnumValue("boolean")
-    BOOLEAN("boolean"),
+    BOOLEAN("boolean",BooleanType.class),
     @XmlEnumValue("string")
-    STRING("string"),
+    STRING("string",StringValueType.class),
     @XmlEnumValue("id")
-    ID("id");
+    ID("id",IdValueType.class);
     private final String value;
+    private final Class<?> dataType;
 
-    SymbolTypeType(String v) {
-        value = v;
+    SymbolTypeType(String v, Class<?> dataType) {
+        this.value = v;
+        this.dataType = dataType;
     }
 
+    /**
+     * Gets the string value of this enum as it is displayed in the PharmML document.
+     * @return A {@link String} representation of this enum.
+     */
     public String value() {
         return value;
+    }
+    
+    /**
+     * Gets the corresponding PharmML data type of the enum. Possible types are:
+     * {@link IntValueType},
+     * {@link RealValueType},
+     * {@link BooleanType},
+     * {@link StringValueType},
+     * {@link IdValueType}.
+     * @return The corresponding mapped class to the PharmML type.
+     */
+    public Class<?> getDataType(){
+    	return this.dataType;
     }
 
     public static SymbolTypeType fromValue(String v) {

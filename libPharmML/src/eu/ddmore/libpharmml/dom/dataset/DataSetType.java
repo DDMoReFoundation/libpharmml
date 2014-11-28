@@ -26,11 +26,21 @@
 
 package eu.ddmore.libpharmml.dom.dataset;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.IValidationError;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolTypeType;
+import eu.ddmore.libpharmml.impl.ValidationErrorImpl;
+import eu.ddmore.libpharmml.validation.Validatable;
 
 
 /**
@@ -67,7 +77,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "table"
 })
 public class DataSetType
-    extends PharmMLRootType
+    extends PharmMLRootType implements Validatable
 {
 
     @XmlElement(name = "Definition", required = true)
@@ -152,5 +162,89 @@ public class DataSetType
     public void setTable(DataSetTableType value) {
         this.table = value;
     }
+
+	@Override
+	public List<IValidationError> validate() {
+		List<IValidationError> errors = new ArrayList<IValidationError>();
+		
+		boolean DS1 = false;
+		boolean DS2 = false;
+//		boolean DS6 = false; added for each cell
+		boolean DS8 = false;
+		
+		// DS1 & DS2
+		ColumnsDefinitionType colDef = getDefinition();
+		if(colDef != null){
+			List<ColumnDefnType> columns = colDef.getColumn();
+			if(columns != null && columns.size() > 0){
+				for(int i=0;i<columns.size();i++){
+					ColumnDefnType column = columns.get(i);
+					if(i == 0){
+						if(!column.getColumnNum().equals(BigInteger.valueOf(1))){
+							DS2 = true;
+						}
+					} else {
+						BigInteger previousNum = columns.get(i-1).getColumnNum();
+						if(previousNum != null && !column.getColumnNum().equals(previousNum.add(BigInteger.valueOf(1)))){
+							DS2 = true;
+						}
+						if(previousNum != null && (column.getColumnNum().compareTo(previousNum) == -1)){
+							DS1 = true;
+						}
+					}
+				}
+			}
+		}
+		
+		// DS6 cell.type = column.type
+		// DS8 row.size() = columns.size()
+		int colNum = colDef.getColumn().size();
+		if(getTable() != null && getTable().getRow() != null){
+			for(DatasetRowType row : getTable().getRow()){
+				if(row.size() != colNum){
+					DS8 = true;
+				}
+				for(int i=0;i<colNum;i++){
+					try{
+						JAXBElement<?> cell = row.getScalar().get(i);
+						SymbolTypeType columnDataType = colDef.getColumn().get(i).getValueType();
+						if(!cell.getDeclaredType().equals(columnDataType.getDataType())){
+//							DS6 = true;
+							errors.add(new ValidationErrorImpl("DS6",
+									"Cell value "+cell.getValue()+" ("+cell.getDeclaredType()+
+									") is not type compatible with the column definition ("+
+											columnDataType.value()+")", this));
+						}
+					} catch (IndexOutOfBoundsException e) {
+						DS8 = true;
+						break;
+					}
+				}
+			}
+		}
+		
+		if(DS1){
+			errors.add(new ValidationErrorImpl("DS1",
+					"Columns must be ordered. The order is specified by the columnNum attribute.",
+					this));
+		}
+		if(DS2){
+			errors.add(new ValidationErrorImpl("DS2",
+					"Columns must be numbered sequentially from 1, with no gaps in the sequence.",
+					this));
+		}
+//		if(DS6){
+//			errors.add(new ValidationErrorImpl("DS6",
+//					"Each cell must contain a value that is type compatible with the column definition.",
+//					this));
+//		}
+		if(DS8){
+			errors.add(new ValidationErrorImpl("DS8",
+					"Each row must define a cell for each column.",
+					this));
+		}
+		
+		return errors;
+	}
 
 }

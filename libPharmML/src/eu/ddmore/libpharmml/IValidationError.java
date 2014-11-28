@@ -18,9 +18,14 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml;
 
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
+
 public interface IValidationError {
 
 	String getRuleId();
 	
 	String getErrorMsg();
+	
+	PharmMLElement getInvalidObject();
+	
 }

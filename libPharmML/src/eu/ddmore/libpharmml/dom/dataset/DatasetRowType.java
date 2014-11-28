@@ -166,6 +166,18 @@ public class DatasetRowType extends PharmMLElement{
         return this.scalar;
     }
     
+    /**
+     * Gets the number of elements within that row.
+     * @return The number of elements as an integer within that row.
+     */
+    public int size(){
+    	if(getUnmarshalVersion().equals(PharmMLVersion.V0_2_1)){
+    		return getScalarOrTable().size();
+    	} else {
+    		return getScalar().size();
+    	}
+    }
+    
     protected void afterUnmarshal(Unmarshaller unmarshaller, Object parent){
     	PharmMLVersion version = getUnmarshalVersion();
     	switch(version){
