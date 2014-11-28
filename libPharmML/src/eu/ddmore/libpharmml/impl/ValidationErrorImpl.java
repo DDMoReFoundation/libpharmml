@@ -85,9 +85,9 @@ public class ValidationErrorImpl implements IValidationError {
 	@Override
 	public String toString() {
 		if(invalidObject == null){
-			return "ValidationErrorImpl [ruleId=" + ruleId + ", msg=" + msg + "]";
+			return "ValidationErrorImpl [ruleId=" + ruleId + ", msg=\"" + msg + "\"]";
 		} else {
-			return "ValidationErrorImpl [ruleId=" + ruleId + ", msg=" + msg + ", object="+invalidObject+"]";
+			return "ValidationErrorImpl [ruleId=" + ruleId + ", msg=\"" + msg + "\", object="+invalidObject+"]";
 		}
 	}
 
