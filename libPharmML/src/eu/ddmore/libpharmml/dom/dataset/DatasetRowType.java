@@ -41,7 +41,7 @@ import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.IdValueType;
 import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
-import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
@@ -79,7 +79,7 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
 	"scalarOrTable",
     "scalar"
 })
-public class DatasetRowType extends PharmMLElement{
+public class DatasetRowType extends PharmMLRootType{
 
 	@XmlElementRefs({
         @XmlElementRef(name = "Table", namespace = "http://www.pharmml.org/2013/08/Dataset", type = JAXBElement.class, required = false),
