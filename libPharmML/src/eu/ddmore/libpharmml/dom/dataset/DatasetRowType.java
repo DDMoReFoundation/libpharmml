@@ -77,7 +77,7 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DatasetRowType", propOrder = {
 	"scalarOrTable",
-    "scalar"
+    "listOfValues"
 })
 public class DatasetRowType extends PharmMLRootType{
 
@@ -87,8 +87,11 @@ public class DatasetRowType extends PharmMLRootType{
     })
     protected List<JAXBElement<?>> scalarOrTable;
 
-    @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
-    protected List<JAXBElement<?>> scalar;
+//    @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+//    protected List<JAXBElement<?>> scalar;
+	
+	@XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+	protected List<Scalar> listOfValues;
 
 
 	/**
@@ -129,42 +132,49 @@ public class DatasetRowType extends PharmMLRootType{
         }
         return this.scalarOrTable;
     }
-
-    /**
-     * Gets the value of the scalar property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the scalar property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getScalar().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link Object }{@code >}
-     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
-     * 
-     * 
-     */
-    public List<JAXBElement<?>> getScalar() {
-        if (scalar == null) {
-            scalar = new ArrayList<JAXBElement<?>>();
-        }
-        return this.scalar;
+    
+    public List<Scalar> getListOfValue(){
+    	if(listOfValues == null){
+    		listOfValues = new ArrayList<Scalar>();
+    	}
+    	return this.listOfValues;
     }
+
+//    /**
+//     * Gets the value of the scalar property.
+//     * 
+//     * <p>
+//     * This accessor method returns a reference to the live list,
+//     * not a snapshot. Therefore any modification you make to the
+//     * returned list will be present inside the JAXB object.
+//     * This is why there is not a <CODE>set</CODE> method for the scalar property.
+//     * 
+//     * <p>
+//     * For example, to add a new item, do as follows:
+//     * <pre>
+//     *    getScalar().add(newItem);
+//     * </pre>
+//     * 
+//     * 
+//     * <p>
+//     * Objects of the following type(s) are allowed in the list
+//     * {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
+//     * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
+//     * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+//     * {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+//     * {@link JAXBElement }{@code <}{@link Object }{@code >}
+//     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+//     * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
+//     * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+//     * 
+//     * 
+//     */
+//    public List<JAXBElement<?>> getScalar() {
+//        if (scalar == null) {
+//            scalar = new ArrayList<JAXBElement<?>>();
+//        }
+//        return this.scalar;
+//    }
     
     /**
      * Gets the number of elements within that row.
@@ -174,7 +184,7 @@ public class DatasetRowType extends PharmMLRootType{
     	if(getUnmarshalVersion().equals(PharmMLVersion.V0_2_1)){
     		return getScalarOrTable().size();
     	} else {
-    		return getScalar().size();
+    		return getListOfValue().size();
     	}
     }
     
@@ -188,7 +198,7 @@ public class DatasetRowType extends PharmMLRootType{
     		if(getScalarOrTable().size() > 0){
     			for(JAXBElement<?> scalOrTab : getScalarOrTable()){
         			if(scalOrTab.getValue() instanceof Scalar){
-        				getScalar().add(scalOrTab);
+        				getListOfValue().add((Scalar) scalOrTab.getValue());
         				LoggerWrapper.getLogger().info("Moved 1 scalar from scalarOrTable attribute to scalar attribute in "+this);
         			} else {
         				LoggerWrapper.getLogger().warning("Skipping 1 element of type \""+scalOrTab.getName()+" in the element "+this+". No more used in version "+version);

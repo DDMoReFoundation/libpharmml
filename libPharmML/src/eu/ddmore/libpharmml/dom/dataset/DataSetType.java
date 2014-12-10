@@ -30,16 +30,29 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.JAXBElement;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.IValidationError;
+import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.IdValue;
+import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.RealValue;
+import eu.ddmore.libpharmml.dom.commontypes.Scalar;
+import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolTypeType;
+import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
+import eu.ddmore.libpharmml.dom.dataset.ImportDataType.Delimiter;
 import eu.ddmore.libpharmml.impl.ValidationErrorImpl;
+import eu.ddmore.libpharmml.util.Util;
+import eu.ddmore.libpharmml.util.WrappedList;
 import eu.ddmore.libpharmml.validation.Validatable;
 
 
@@ -72,45 +85,144 @@ import eu.ddmore.libpharmml.validation.Validatable;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DataSetType", propOrder = {
-    "definition",
+    "wrappedListOfColumn",
     "importData",
-    "table"
+    "wrappedListOfRow"
 })
 public class DataSetType
     extends PharmMLRootType implements Validatable
 {
 
-    @XmlElement(name = "Definition", required = true)
-    protected ColumnsDefinitionType definition;
+//    @XmlElement(name = "Definition", required = true)
+//    protected ColumnsDefinitionType definition;
+	
+	@XmlElement(name = "Definition", required = true)
+	@XmlJavaTypeAdapter(DataSetType.ColumnDefinitionAdapter.class)
+	protected WrappedList<ColumnDefnType> wrappedListOfColumn;
+	
     @XmlElement(name = "ImportData")
     protected ImportDataType importData;
+    
     @XmlElement(name = "Table")
-    protected DataSetTableType table;
-
+    @XmlJavaTypeAdapter(DataSetType.RowDefinitionAdapter.class)
+    protected WrappedList<DatasetRowType> wrappedListOfRow;
+    
     /**
-     * Gets the value of the definition property.
+     * Gets the list of rows in this dataset. The row definitions are wrapped into a &lt;Table>
+     * element.
      * 
-     * @return
-     *     possible object is
-     *     {@link ColumnsDefinitionType }
-     *     
+     * <p>This methods returns a {@link WrappedList} instance. It is possible to add an id or a 
+     * description to the wrapper (i.e. the &lt;Table> element) using this class. However, using
+     * the {@link List} interface may be more clear.
+     * 
+     * @return A {@link WrappedList} object that contains instances of {@link DatasetRowType}.
      */
-    public ColumnsDefinitionType getDefinition() {
-        return definition;
+    public WrappedList<DatasetRowType> getListOfRow(){
+    	if(wrappedListOfRow == null){
+    		wrappedListOfRow = new WrappedList<DatasetRowType>();
+    	}
+    	return wrappedListOfRow;
     }
-
+    
     /**
-     * Sets the value of the definition property.
+     * Gets the list of column definitions in this dataset. The definitions are wrapped in a 
+     * &lt;Definition> element.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link ColumnsDefinitionType }
-     *     
+     * <p>This methods returns a {@link WrappedList} instance. It is possible to add an id or a 
+     * description to the wrapper (i.e. the &lt;Definition> element) using this class. However, using
+     * the {@link List} interface may be more clear.
+     * 
+     * @return  A {@link WrappedList} object that contains instances of {@link ColumnDefnType}.
      */
-    public void setDefinition(ColumnsDefinitionType value) {
-        this.definition = value;
+    public WrappedList<ColumnDefnType> getListOfColumnDefinition(){
+    	if(wrappedListOfColumn == null){
+    		wrappedListOfColumn = new WrappedList<ColumnDefnType>();
+    	}
+    	return wrappedListOfColumn;
     }
-
+    
+    /**
+     * Creates a new column in this table and returns it.
+     * 
+     * <p>The columnNum attribute cannot be set with this method, as it will correspond the position of the column
+     * within the list ({@link #getListOfColumnDefinition()}) during the marshalling process.
+     * 
+     * @param columnId The id of the column.
+     * @param columnType The type of the column.
+     * @param valueType The type of value in this column.
+     * @return The created column as a {@link ColumnDefnType} object.
+     */
+    public ColumnDefnType createColumnDefinition(String columnId, ColumnTypeType columnType, SymbolTypeType valueType){
+    	ColumnDefnType column = new ColumnDefnType();
+    	column.setColumnId(columnId);
+    	column.setColumnType(columnType);
+    	column.setValueType(valueType);
+    	
+    	getListOfColumnDefinition().add(column);
+    	
+    	return column;
+    }
+    
+    /**
+     * Creates a new row in this table with heterogeneous values. The actual type of each value is set
+     * according to the valueType attribute of the corresponding column. The conversion is made during
+     * the execution of this method. Therefore the reassignment of the valueType attribute of a column
+     * after the execution of this method can lead to an inconsistency.
+     * 
+     * <p>Concerning booleans, only the string "true" (ignoring case) is converted to the DOM true boolean 
+     * type. Any other string value equals "false". For example, the string "True" is converted to
+     * {@link TrueBooleanType}, whereas the string "1" is converted to {@link FalseBooleanType}.
+     * 
+     * <p>If the length of the provided array does not match the number of columns, or if the valueType
+     * attribute of one of these columns is undefined, an {@link IllegalStateException} is thrown. 
+     * 
+     * <p>An exception such as a {@link NumberFormatException} may also be thrown if the string value cannot
+     * be converted to the type of the column.
+     * 
+     * @param values A {@link String} array of values.
+     * @return The created row as a {@link DatasetRowType} object. All the values may be accessed in their
+     * DOM version within that object.
+     */
+    public DatasetRowType createRow(String[] values){
+    	DatasetRowType row = new DatasetRowType();
+    	
+    	int size = values.length;
+    	if(size != getListOfColumnDefinition().size()){
+    		throw new IllegalStateException("Size of the array of values does not match the number of columns");
+    	}
+    	
+    	for(int i=0;i<size;i++){
+    		SymbolTypeType symbolType = getListOfColumnDefinition().get(i).getValueType();
+    		if(symbolType == null){
+    			throw new IllegalStateException("valueType attribute is undefined for column "+i+".");
+    		}
+    		Scalar value = stringToScalar(symbolType, values[i]);
+    		row.getListOfValue().add(value);
+    	}
+    	
+    	getListOfRow().add(row);
+    	
+    	return row;
+    }
+    
+    /**
+     * Creates a new import data, adds it to the current dataset and returns it.
+     * @param path The URL of the import data file.
+     * @param format Format of the file such as "CSV".
+     * @param delimiter Delimiter in the csv file.
+     * @param oid Object id of the import data element.
+     * @return The created import data as a {@link ImportDataType} object.
+     */
+    public ImportDataType createImportData(String path, String format, Delimiter delimiter, String oid){
+    	ImportDataType data = new ImportDataType();
+    	data.setPath(path);
+    	data.setFormat(format);
+    	data.setDelimiter(delimiter);
+    	data.setOid(oid);
+    	setImportData(data);
+    	return data;
+    }
+    
     /**
      * 
      *                                     Import datafile
@@ -137,32 +249,6 @@ public class DataSetType
         this.importData = value;
     }
 
-    /**
-     * 
-     *                                     Defines a data table.
-     *                                 
-     * 
-     * @return
-     *     possible object is
-     *     {@link DataSetTableType }
-     *     
-     */
-    public DataSetTableType getTable() {
-        return table;
-    }
-
-    /**
-     * Sets the value of the table property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DataSetTableType }
-     *     
-     */
-    public void setTable(DataSetTableType value) {
-        this.table = value;
-    }
-
 	@Override
 	public List<IValidationError> validate() {
 		List<IValidationError> errors = new ArrayList<IValidationError>();
@@ -173,9 +259,10 @@ public class DataSetType
 		boolean DS8 = false;
 		
 		// DS1 & DS2
-		ColumnsDefinitionType colDef = getDefinition();
-		if(colDef != null){
-			List<ColumnDefnType> columns = colDef.getColumn();
+//		ColumnsDefinitionType colDef = getDefinition();
+//		if(colDef != null){
+//			List<ColumnDefnType> columns = colDef.getColumn();
+			List<ColumnDefnType> columns = getListOfColumnDefinition();
 			if(columns != null && columns.size() > 0){
 				for(int i=0;i<columns.size();i++){
 					ColumnDefnType column = columns.get(i);
@@ -194,24 +281,26 @@ public class DataSetType
 					}
 				}
 			}
-		}
+//		}
 		
 		// DS6 cell.type = column.type
 		// DS8 row.size() = columns.size()
-		int colNum = colDef.getColumn().size();
-		if(getTable() != null && getTable().getRow() != null){
-			for(DatasetRowType row : getTable().getRow()){
+//		int colNum = colDef.getColumn().size();
+		int colNum = getListOfColumnDefinition().size();
+//		if(getTable() != null && getTable().getRow() != null){
+			for(DatasetRowType row : getListOfRow()){
 				if(row.size() != colNum){
 					DS8 = true;
 				}
 				for(int i=0;i<colNum;i++){
 					try{
-						JAXBElement<?> cell = row.getScalar().get(i);
-						SymbolTypeType columnDataType = colDef.getColumn().get(i).getValueType();
-						if(!cell.getDeclaredType().equals(columnDataType.getDataType())){
+						Scalar cell = row.getListOfValue().get(i);
+//						SymbolTypeType columnDataType = colDef.getColumn().get(i).getValueType();
+						SymbolTypeType columnDataType = getListOfColumnDefinition().get(i).getValueType();
+						if(!cell.getClass().equals(columnDataType.getDataType())){
 //							DS6 = true;
 							errors.add(new ValidationErrorImpl("DS6",
-									"Cell value "+cell.getValue()+" ("+cell.getDeclaredType()+
+									"Cell value "+cell+" ("+cell.getClass()+
 									") is not type compatible with the column definition ("+
 											columnDataType.value()+")", this));
 						}
@@ -221,7 +310,7 @@ public class DataSetType
 					}
 				}
 			}
-		}
+//		}
 		
 		if(DS1){
 			errors.add(new ValidationErrorImpl("DS1",
@@ -246,5 +335,128 @@ public class DataSetType
 		
 		return errors;
 	}
+	
+	/**
+	 * Updates the DOM types of all the values stored in this dataset, following the valueType of each
+	 * column definition. This method should be executed if the valueType of one of the column defitinio
+	 * has been modified.
+	 * 
+	 * <p>An exception such as a {@link NumberFormatException} may be thrown if one value cannot
+     * be converted to the type of the column.
+	 */
+	public void updateTypes(){
+		int columnSize = getListOfColumnDefinition().size();
+		for(DatasetRowType row : getListOfRow()){
+			int size = Math.min(columnSize, row.getListOfValue().size());
+			for(int i=0;i<size;i++){
+				Scalar preValue = row.getListOfValue().get(i);
+				SymbolTypeType symbolType = getListOfColumnDefinition().get(i).getValueType();
+				Scalar newValue = stringToScalar(symbolType, preValue.asString());
+				row.getListOfValue().set(i, newValue);
+			}
+		}
+	}
+	
+	/**
+	 * Convert a string value to a scalar, following the given symbol type.
+	 * @param type 
+	 * @param value
+	 * @return Possible types are {@link IdValue}, {@link RealValue}, {@link StringValue},
+	 * {@link IntValue} or {@link BooleanType}.
+	 */
+	private static Scalar stringToScalar(SymbolTypeType type, String value){
+		Scalar scalar;
+		switch (type) {
+			case ID:
+				scalar = new IdValue(value);
+				break;
+			case REAL:
+				scalar = new RealValue(Double.valueOf(value));
+				break;
+			case STRING:
+				scalar = new StringValue(value);
+				break;
+			case INT:
+				scalar = new IntValue(Integer.valueOf(value));
+				break;
+			case BOOLEAN:
+				scalar = BooleanType.fromBoolean(Boolean.parseBoolean(value));
+				break;
+			default:
+				scalar = null;
+				break;
+		}
+		return scalar;
+	}
 
+	static class ColumnDefinitionAdapter extends XmlAdapter<ColumnsDefinitionType, WrappedList<ColumnDefnType>>{
+
+		@Override
+		public WrappedList<ColumnDefnType> unmarshal(ColumnsDefinitionType v) throws Exception {
+			if(v == null){
+				return null;
+			} else {
+				WrappedList<ColumnDefnType> wrappedList = new WrappedList<ColumnDefnType>();
+				Util.cloneRoot(v, wrappedList);
+				wrappedList.addAll(v.getColumn());
+				return wrappedList;
+			}
+		}
+
+		@Override
+		public ColumnsDefinitionType marshal(WrappedList<ColumnDefnType> v) throws Exception {
+			if(v == null){
+				return null;
+			} else {
+				ColumnsDefinitionType columnDef = new ColumnsDefinitionType();
+				Util.cloneRoot(v, columnDef);
+				columnDef.getColumn().addAll(v);
+				return columnDef;
+			}
+		}
+		
+	}
+	
+	static class RowDefinitionAdapter extends XmlAdapter<DataSetTableType, WrappedList<DatasetRowType>>{
+
+		@Override
+		public WrappedList<DatasetRowType> unmarshal(DataSetTableType v) throws Exception {
+			if(v == null){
+				return null;
+			} else {
+				WrappedList<DatasetRowType> wrappedList = new WrappedList<DatasetRowType>();
+				Util.cloneRoot(v, wrappedList);
+				wrappedList.addAll(v.getRow());
+				return wrappedList;
+			}
+		}
+
+		@Override
+		public DataSetTableType marshal(WrappedList<DatasetRowType> v) throws Exception {
+			if(v == null){
+				return null;
+			} else {
+				DataSetTableType table = new DataSetTableType();
+				Util.cloneRoot(v, table);
+				table.getRow().addAll(v);
+				return table;
+			}
+		}
+		
+	}
+	
+	/**
+	 * Contains some routines for setting the columnNum attribute of the column definitions.
+	 * @param marshaller
+	 */
+	protected void beforeMarshal(Marshaller marshaller){
+		// Setting columnNum values to column definitions
+		BigInteger columnNum = BigInteger.ZERO;
+		for(ColumnDefnType columnDef : getListOfColumnDefinition()){
+			if(columnDef != null){
+				columnNum = columnNum.add(BigInteger.ONE);
+				columnDef.setColumnNum(columnNum);
+			}
+		}
+	}
 }
