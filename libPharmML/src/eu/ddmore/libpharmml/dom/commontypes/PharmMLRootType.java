@@ -43,7 +43,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnsDefinitionType;
 import eu.ddmore.libpharmml.dom.dataset.CommonColumnDefnType;
 import eu.ddmore.libpharmml.dom.dataset.DataSetTableType;
-import eu.ddmore.libpharmml.dom.dataset.DataSetType;
+import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.dataset.DatasetRowType;
 import eu.ddmore.libpharmml.dom.dataset.ImportDataType;
 import eu.ddmore.libpharmml.dom.dataset.ImportTargetDataType;
@@ -252,7 +252,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     MatrixBlockSelector.class,
     ImportTargetDataType.class,
     TargetToolDataSetType.class,
-    DataSetType.class,
+    DataSet.class,
     DataSetTableType.class,
     ImportDataType.class,
     ColumnsDefinitionType.class,

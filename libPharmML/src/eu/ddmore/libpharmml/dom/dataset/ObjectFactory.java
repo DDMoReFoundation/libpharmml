@@ -81,11 +81,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataSetType }
+     * Create an instance of {@link DataSet }
      * 
      */
-    public DataSetType createDataSetType() {
-        return new DataSetType();
+    public DataSet createDataSetType() {
+        return new DataSet();
     }
 
     /**
@@ -214,12 +214,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DataSetType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/08/Dataset", name = "DataSet")
-    public JAXBElement<DataSetType> createDataSet(DataSetType value) {
-        return new JAXBElement<DataSetType>(_DataSet_QNAME, DataSetType.class, null, value);
+    public JAXBElement<DataSet> createDataSet(DataSet value) {
+        return new JAXBElement<DataSet>(_DataSet_QNAME, DataSet.class, null, value);
     }
 
     /**

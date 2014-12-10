@@ -89,7 +89,7 @@ import eu.ddmore.libpharmml.validation.Validatable;
     "importData",
     "wrappedListOfRow"
 })
-public class DataSetType
+public class DataSet
     extends PharmMLRootType implements Validatable
 {
 
@@ -97,14 +97,14 @@ public class DataSetType
 //    protected ColumnsDefinitionType definition;
 	
 	@XmlElement(name = "Definition", required = true)
-	@XmlJavaTypeAdapter(DataSetType.ColumnDefinitionAdapter.class)
+	@XmlJavaTypeAdapter(DataSet.ColumnDefinitionAdapter.class)
 	protected WrappedList<ColumnDefnType> wrappedListOfColumn;
 	
     @XmlElement(name = "ImportData")
     protected ImportDataType importData;
     
     @XmlElement(name = "Table")
-    @XmlJavaTypeAdapter(DataSetType.RowDefinitionAdapter.class)
+    @XmlJavaTypeAdapter(DataSet.RowDefinitionAdapter.class)
     protected WrappedList<DatasetRowType> wrappedListOfRow;
     
     /**

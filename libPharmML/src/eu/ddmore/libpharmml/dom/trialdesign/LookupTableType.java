@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMappingType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
-import eu.ddmore.libpharmml.dom.dataset.DataSetType;
+import eu.ddmore.libpharmml.dom.dataset.DataSet;
 
 
 /**
@@ -82,7 +82,7 @@ public class LookupTableType
     @XmlElement(name = "ColumnTransformation")
     protected List<ColumnTransformation> listOfColumnTransformation;
     @XmlElement(name = "DataSet", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
-    protected DataSetType dataSet;
+    protected DataSet dataSet;
 
     /**
      * Gets the value of the columnMapping property.
@@ -179,10 +179,10 @@ public class LookupTableType
      * 
      * @return
      *     possible object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public DataSetType getDataSet() {
+    public DataSet getDataSet() {
         return dataSet;
     }
 
@@ -191,10 +191,10 @@ public class LookupTableType
      * 
      * @param value
      *     allowed object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public void setDataSet(DataSetType value) {
+    public void setDataSet(DataSet value) {
         this.dataSet = value;
     }
 

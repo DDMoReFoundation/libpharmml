@@ -38,7 +38,7 @@ import eu.ddmore.libpharmml.dom.commontypes.OidRefType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMappingType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
-import eu.ddmore.libpharmml.dom.dataset.DataSetType;
+import eu.ddmore.libpharmml.dom.dataset.DataSet;
 
 
 /**
@@ -84,7 +84,7 @@ public class IndividualDosingType
     @XmlElement(name = "ColumnMapping", required = true)
     protected List<ColumnMappingType> columnMapping;
     @XmlElement(name = "DataSet", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
-    protected DataSetType dataSet;
+    protected DataSet dataSet;
 	@XmlElement(name = "IndividualRef", required = true)
 	@Deprecated
     protected ColumnRefType individualRef;
@@ -167,10 +167,10 @@ public class IndividualDosingType
      * 
      * @return
      *     possible object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public DataSetType getDataSet() {
+    public DataSet getDataSet() {
         return dataSet;
     }
 
@@ -179,10 +179,10 @@ public class IndividualDosingType
      * 
      * @param value
      *     allowed object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public void setDataSet(DataSetType value) {
+    public void setDataSet(DataSet value) {
         this.dataSet = value;
     }
 	
