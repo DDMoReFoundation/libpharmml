@@ -105,7 +105,7 @@ public class DataSet
     
     @XmlElement(name = "Table")
     @XmlJavaTypeAdapter(DataSet.RowDefinitionAdapter.class)
-    protected WrappedList<DatasetRowType> wrappedListOfRow;
+    protected WrappedList<DatasetRow> wrappedListOfRow;
     
     /**
      * Gets the list of rows in this dataset. The row definitions are wrapped into a &lt;Table>
@@ -115,11 +115,11 @@ public class DataSet
      * description to the wrapper (i.e. the &lt;Table> element) using this class. However, using
      * the {@link List} interface may be more clear.
      * 
-     * @return A {@link WrappedList} object that contains instances of {@link DatasetRowType}.
+     * @return A {@link WrappedList} object that contains instances of {@link DatasetRow}.
      */
-    public WrappedList<DatasetRowType> getListOfRow(){
+    public WrappedList<DatasetRow> getListOfRow(){
     	if(wrappedListOfRow == null){
-    		wrappedListOfRow = new WrappedList<DatasetRowType>();
+    		wrappedListOfRow = new WrappedList<DatasetRow>();
     	}
     	return wrappedListOfRow;
     }
@@ -180,11 +180,11 @@ public class DataSet
      * be converted to the type of the column.
      * 
      * @param values A {@link String} array of values.
-     * @return The created row as a {@link DatasetRowType} object. All the values may be accessed in their
+     * @return The created row as a {@link DatasetRow} object. All the values may be accessed in their
      * DOM version within that object.
      */
-    public DatasetRowType createRow(String[] values){
-    	DatasetRowType row = new DatasetRowType();
+    public DatasetRow createRow(String[] values){
+    	DatasetRow row = new DatasetRow();
     	
     	int size = values.length;
     	if(size != getListOfColumnDefinition().size()){
@@ -288,7 +288,7 @@ public class DataSet
 //		int colNum = colDef.getColumn().size();
 		int colNum = getListOfColumnDefinition().size();
 //		if(getTable() != null && getTable().getRow() != null){
-			for(DatasetRowType row : getListOfRow()){
+			for(DatasetRow row : getListOfRow()){
 				if(row.size() != colNum){
 					DS8 = true;
 				}
@@ -346,7 +346,7 @@ public class DataSet
 	 */
 	public void updateTypes(){
 		int columnSize = getListOfColumnDefinition().size();
-		for(DatasetRowType row : getListOfRow()){
+		for(DatasetRow row : getListOfRow()){
 			int size = Math.min(columnSize, row.getListOfValue().size());
 			for(int i=0;i<size;i++){
 				Scalar preValue = row.getListOfValue().get(i);
@@ -417,14 +417,14 @@ public class DataSet
 		
 	}
 	
-	static class RowDefinitionAdapter extends XmlAdapter<DataSetTableType, WrappedList<DatasetRowType>>{
+	static class RowDefinitionAdapter extends XmlAdapter<DataSetTableType, WrappedList<DatasetRow>>{
 
 		@Override
-		public WrappedList<DatasetRowType> unmarshal(DataSetTableType v) throws Exception {
+		public WrappedList<DatasetRow> unmarshal(DataSetTableType v) throws Exception {
 			if(v == null){
 				return null;
 			} else {
-				WrappedList<DatasetRowType> wrappedList = new WrappedList<DatasetRowType>();
+				WrappedList<DatasetRow> wrappedList = new WrappedList<DatasetRow>();
 				Util.cloneRoot(v, wrappedList);
 				wrappedList.addAll(v.getRow());
 				return wrappedList;
@@ -432,7 +432,7 @@ public class DataSet
 		}
 
 		@Override
-		public DataSetTableType marshal(WrappedList<DatasetRowType> v) throws Exception {
+		public DataSetTableType marshal(WrappedList<DatasetRow> v) throws Exception {
 			if(v == null){
 				return null;
 			} else {

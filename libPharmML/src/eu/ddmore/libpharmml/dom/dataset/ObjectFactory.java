@@ -121,11 +121,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DatasetRowType }
+     * Create an instance of {@link DatasetRow }
      * 
      */
-    public DatasetRowType createDatasetRowType() {
-        return new DatasetRowType();
+    public DatasetRow createDatasetRowType() {
+        return new DatasetRow();
     }
 
     /**

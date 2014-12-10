@@ -79,7 +79,7 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
 	"scalarOrTable",
     "listOfValues"
 })
-public class DatasetRowType extends PharmMLRootType{
+public class DatasetRow extends PharmMLRootType{
 
 	@XmlElementRefs({
         @XmlElementRef(name = "Table", namespace = "http://www.pharmml.org/2013/08/Dataset", type = JAXBElement.class, required = false),
