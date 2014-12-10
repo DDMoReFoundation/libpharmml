@@ -38,19 +38,7 @@ public class ScalarAdapter extends XmlAdapter<JAXBElement<?>, Scalar>{
 
 	@Override
 	public JAXBElement<?> marshal(Scalar v) throws Exception {
-		if(v instanceof IntValueType){
-			return MasterObjectFactory.COMMONTYPES_OF.createInt((IntValueType) v);
-		} else if(v instanceof RealValueType){
-			return MasterObjectFactory.COMMONTYPES_OF.createReal((RealValueType) v);
-		} else if(v instanceof StringValueType){
-			return MasterObjectFactory.COMMONTYPES_OF.createString((StringValueType) v);
-		} else if(v instanceof IdValueType){
-			return MasterObjectFactory.COMMONTYPES_OF.createId((IdValueType) v);
-		} else if(v instanceof BooleanType){
-			return MasterObjectFactory.COMMONTYPES_OF.createBoolean((BooleanType) v);
-		} else {
-			return MasterObjectFactory.COMMONTYPES_OF.createScalar(v);
-		}
+		return MasterObjectFactory.createScalar(v);
 	}
 
 	
