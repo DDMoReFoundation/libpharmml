@@ -51,7 +51,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "SymbolTypeType")
 @XmlEnum
-public enum SymbolTypeType {
+public enum SymbolType {
 
     @XmlEnumValue("int")
     INT("int",IntValue.class),
@@ -66,7 +66,7 @@ public enum SymbolTypeType {
     private final String value;
     private final Class<?> dataType;
 
-    SymbolTypeType(String v, Class<?> dataType) {
+    SymbolType(String v, Class<?> dataType) {
         this.value = v;
         this.dataType = dataType;
     }
@@ -92,8 +92,8 @@ public enum SymbolTypeType {
     	return this.dataType;
     }
 
-    public static SymbolTypeType fromValue(String v) {
-        for (SymbolTypeType c: SymbolTypeType.values()) {
+    public static SymbolType fromValue(String v) {
+        for (SymbolType c: SymbolType.values()) {
             if (c.value.equals(v)) {
                 return c;
             }

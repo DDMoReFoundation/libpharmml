@@ -82,7 +82,7 @@ public class DerivativeVariableType
     @Deprecated
     protected Integer compartmentNo;
     @XmlAttribute(name = "symbolType", required = true)
-    protected SymbolTypeType symbolType;
+    protected SymbolType symbolType;
 
     /**
      * The symbol id used to define the variable.
@@ -213,12 +213,12 @@ public class DerivativeVariableType
      * 
      * @return
      *     possible object is
-     *     {@link SymbolTypeType }
+     *     {@link SymbolType }
      *     
      */
-    public SymbolTypeType getSymbolType() {
+    public SymbolType getSymbolType() {
         if (symbolType == null) {
-            return SymbolTypeType.REAL;
+            return SymbolType.REAL;
         } else {
             return symbolType;
         }
@@ -229,10 +229,10 @@ public class DerivativeVariableType
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolTypeType }
+     *     {@link SymbolType }
      *     
      */
-    public void setSymbolType(SymbolTypeType value) {
+    public void setSymbolType(SymbolType value) {
         this.symbolType = value;
     }
 

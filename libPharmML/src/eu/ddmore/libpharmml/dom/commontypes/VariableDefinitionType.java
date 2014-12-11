@@ -68,7 +68,7 @@ public class VariableDefinitionType
     @XmlElement(name = "Assign")
     protected Rhs assign;
     @XmlAttribute(name = "symbolType", required = true)
-    protected SymbolTypeType symbolType;
+    protected SymbolType symbolType;
 
     /**
      * Initialise the variable.
@@ -99,10 +99,10 @@ public class VariableDefinitionType
      * 
      * @return
      *     possible object is
-     *     {@link SymbolTypeType }
+     *     {@link SymbolType }
      *     
      */
-    public SymbolTypeType getSymbolType() {
+    public SymbolType getSymbolType() {
         return symbolType;
     }
 
@@ -111,10 +111,10 @@ public class VariableDefinitionType
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolTypeType }
+     *     {@link SymbolType }
      *     
      */
-    public void setSymbolType(SymbolTypeType value) {
+    public void setSymbolType(SymbolType value) {
         this.symbolType = value;
     }
 

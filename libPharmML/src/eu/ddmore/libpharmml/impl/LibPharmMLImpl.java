@@ -30,7 +30,7 @@ import eu.ddmore.libpharmml.IPharmMLValidator;
 import eu.ddmore.libpharmml.IValidationReport;
 import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.dom.commontypes.NameType;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolTypeType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableDefinitionType;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinitionType;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterModelType;
@@ -108,7 +108,7 @@ public class LibPharmMLImpl implements ILibPharmML {
 		structModel.setBlkId(DEFAULT_STRUCT_MDL_NAME);
 		VariableDefinitionType varType = commonFact.createVariableDefinitionType();
 		varType.setSymbId("x");
-		varType.setSymbolType(SymbolTypeType.REAL);
+		varType.setSymbolType(SymbolType.REAL);
 		JAXBElement<VariableDefinitionType> var1 = commonFact.createVariable(varType);
 		structModel.getCommonVariable().add(var1);
 		mdt.getParameterModel().add(pm);

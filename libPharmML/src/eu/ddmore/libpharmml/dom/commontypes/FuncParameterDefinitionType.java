@@ -58,17 +58,17 @@ public class FuncParameterDefinitionType
 {
 
     @XmlAttribute(name = "symbolType", required = true)
-    protected SymbolTypeType symbolType;
+    protected SymbolType symbolType;
 
     /**
      * Gets the value of the symbolType property.
      * 
      * @return
      *     possible object is
-     *     {@link SymbolTypeType }
+     *     {@link SymbolType }
      *     
      */
-    public SymbolTypeType getSymbolType() {
+    public SymbolType getSymbolType() {
         return symbolType;
     }
 
@@ -77,10 +77,10 @@ public class FuncParameterDefinitionType
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolTypeType }
+     *     {@link SymbolType }
      *     
      */
-    public void setSymbolType(SymbolTypeType value) {
+    public void setSymbolType(SymbolType value) {
         this.symbolType = value;
     }
 

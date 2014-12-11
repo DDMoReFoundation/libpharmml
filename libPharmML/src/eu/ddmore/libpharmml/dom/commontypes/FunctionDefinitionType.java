@@ -74,7 +74,7 @@ public class FunctionDefinitionType
     @XmlElement(name = "Definition")
     protected ScalarRhs definition;
     @XmlAttribute(name = "symbolType", required = true)
-    protected SymbolTypeType symbolType;
+    protected SymbolType symbolType;
 
     /**
      * Gets the value of the functionArgument property.
@@ -134,10 +134,10 @@ public class FunctionDefinitionType
      * 
      * @return
      *     possible object is
-     *     {@link SymbolTypeType }
+     *     {@link SymbolType }
      *     
      */
-    public SymbolTypeType getSymbolType() {
+    public SymbolType getSymbolType() {
         return symbolType;
     }
 
@@ -146,10 +146,10 @@ public class FunctionDefinitionType
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolTypeType }
+     *     {@link SymbolType }
      *     
      */
-    public void setSymbolType(SymbolTypeType value) {
+    public void setSymbolType(SymbolType value) {
         this.symbolType = value;
     }
 

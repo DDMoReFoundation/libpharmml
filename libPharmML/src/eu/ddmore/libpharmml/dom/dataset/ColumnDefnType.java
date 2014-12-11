@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolTypeType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 
 
 /**
@@ -66,7 +66,7 @@ public class ColumnDefnType
     @XmlAttribute(name = "columnType", required = true)
     protected ColumnType columnType;
     @XmlAttribute(name = "valueType", required = true)
-    protected SymbolTypeType valueType;
+    protected SymbolType valueType;
 
     /**
      * Gets the value of the columnId property.
@@ -121,10 +121,10 @@ public class ColumnDefnType
      * 
      * @return
      *     possible object is
-     *     {@link SymbolTypeType }
+     *     {@link SymbolType }
      *     
      */
-    public SymbolTypeType getValueType() {
+    public SymbolType getValueType() {
         return valueType;
     }
 
@@ -133,10 +133,10 @@ public class ColumnDefnType
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolTypeType }
+     *     {@link SymbolType }
      *     
      */
-    public void setValueType(SymbolTypeType value) {
+    public void setValueType(SymbolType value) {
         this.valueType = value;
     }
 

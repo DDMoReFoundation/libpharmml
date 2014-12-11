@@ -47,7 +47,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolTypeType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.dataset.ImportDataType.Delimiter;
 import eu.ddmore.libpharmml.impl.ValidationErrorImpl;
@@ -152,7 +152,7 @@ public class DataSet
      * @param valueType The type of value in this column.
      * @return The created column as a {@link ColumnDefnType} object.
      */
-    public ColumnDefnType createColumnDefinition(String columnId, ColumnType columnType, SymbolTypeType valueType){
+    public ColumnDefnType createColumnDefinition(String columnId, ColumnType columnType, SymbolType valueType){
     	ColumnDefnType column = new ColumnDefnType();
     	column.setColumnId(columnId);
     	column.setColumnType(columnType);
@@ -192,7 +192,7 @@ public class DataSet
     	}
     	
     	for(int i=0;i<size;i++){
-    		SymbolTypeType symbolType = getListOfColumnDefinition().get(i).getValueType();
+    		SymbolType symbolType = getListOfColumnDefinition().get(i).getValueType();
     		if(symbolType == null){
     			throw new IllegalStateException("valueType attribute is undefined for column "+i+".");
     		}
@@ -296,7 +296,7 @@ public class DataSet
 					try{
 						Scalar cell = row.getListOfValue().get(i);
 //						SymbolTypeType columnDataType = colDef.getColumn().get(i).getValueType();
-						SymbolTypeType columnDataType = getListOfColumnDefinition().get(i).getValueType();
+						SymbolType columnDataType = getListOfColumnDefinition().get(i).getValueType();
 						if(!cell.getClass().equals(columnDataType.getDataType())){
 //							DS6 = true;
 							errors.add(new ValidationErrorImpl("DS6",
@@ -350,7 +350,7 @@ public class DataSet
 			int size = Math.min(columnSize, row.getListOfValue().size());
 			for(int i=0;i<size;i++){
 				Scalar preValue = row.getListOfValue().get(i);
-				SymbolTypeType symbolType = getListOfColumnDefinition().get(i).getValueType();
+				SymbolType symbolType = getListOfColumnDefinition().get(i).getValueType();
 				Scalar newValue = stringToScalar(symbolType, preValue.asString());
 				row.getListOfValue().set(i, newValue);
 			}
@@ -364,7 +364,7 @@ public class DataSet
 	 * @return Possible types are {@link IdValue}, {@link RealValue}, {@link StringValue},
 	 * {@link IntValue} or {@link BooleanValue}.
 	 */
-	private static Scalar stringToScalar(SymbolTypeType type, String value){
+	private static Scalar stringToScalar(SymbolType type, String value){
 		Scalar scalar;
 		switch (type) {
 			case ID:

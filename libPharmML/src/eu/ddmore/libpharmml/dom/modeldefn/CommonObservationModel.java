@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.NameType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolTypeType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableDefinitionType;
 
 
@@ -278,7 +278,7 @@ public abstract class CommonObservationModel
      * @param type The symbol type
      * @return The created {@link VariableDefinitionType} object.
      */
-    public VariableDefinitionType createVariable(String symbolId, SymbolTypeType type){
+    public VariableDefinitionType createVariable(String symbolId, SymbolType type){
             VariableDefinitionType el = new VariableDefinitionType();
             getListOfVariable().add(el);
             el.setSymbId(symbolId);
