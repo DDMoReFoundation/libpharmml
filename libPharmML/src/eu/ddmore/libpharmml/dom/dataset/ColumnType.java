@@ -73,7 +73,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "ColumnTypeType")
 @XmlEnum
-public enum ColumnTypeType {
+public enum ColumnType {
 
     @XmlEnumValue("addl")
     ADDL("addl"),
@@ -131,7 +131,7 @@ public enum ColumnTypeType {
     UNDEFINED("undefined");
     private final String value;
 
-    ColumnTypeType(String v) {
+    ColumnType(String v) {
         value = v;
     }
 
@@ -139,8 +139,8 @@ public enum ColumnTypeType {
         return value;
     }
 
-    public static ColumnTypeType fromValue(String v) {
-        for (ColumnTypeType c: ColumnTypeType.values()) {
+    public static ColumnType fromValue(String v) {
+        for (ColumnType c: ColumnType.values()) {
             if (c.value.equals(v)) {
                 return c;
             }

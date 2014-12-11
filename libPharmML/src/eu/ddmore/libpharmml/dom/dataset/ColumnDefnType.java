@@ -64,7 +64,7 @@ public class ColumnDefnType
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String columnId;
     @XmlAttribute(name = "columnType", required = true)
-    protected ColumnTypeType columnType;
+    protected ColumnType columnType;
     @XmlAttribute(name = "valueType", required = true)
     protected SymbolTypeType valueType;
 
@@ -97,10 +97,10 @@ public class ColumnDefnType
      * 
      * @return
      *     possible object is
-     *     {@link ColumnTypeType }
+     *     {@link ColumnType }
      *     
      */
-    public ColumnTypeType getColumnType() {
+    public ColumnType getColumnType() {
         return columnType;
     }
 
@@ -109,10 +109,10 @@ public class ColumnDefnType
      * 
      * @param value
      *     allowed object is
-     *     {@link ColumnTypeType }
+     *     {@link ColumnType }
      *     
      */
-    public void setColumnType(ColumnTypeType value) {
+    public void setColumnType(ColumnType value) {
         this.columnType = value;
     }
 

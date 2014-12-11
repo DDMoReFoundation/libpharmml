@@ -152,7 +152,7 @@ public class DataSet
      * @param valueType The type of value in this column.
      * @return The created column as a {@link ColumnDefnType} object.
      */
-    public ColumnDefnType createColumnDefinition(String columnId, ColumnTypeType columnType, SymbolTypeType valueType){
+    public ColumnDefnType createColumnDefinition(String columnId, ColumnType columnType, SymbolTypeType valueType){
     	ColumnDefnType column = new ColumnDefnType();
     	column.setColumnId(columnId);
     	column.setColumnType(columnType);
