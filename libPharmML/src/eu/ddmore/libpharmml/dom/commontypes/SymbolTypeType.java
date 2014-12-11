@@ -54,7 +54,7 @@ import javax.xml.bind.annotation.XmlType;
 public enum SymbolTypeType {
 
     @XmlEnumValue("int")
-    INT("int",IntValueType.class),
+    INT("int",IntValue.class),
     @XmlEnumValue("real")
     REAL("real",RealValueType.class),
     @XmlEnumValue("boolean")
@@ -81,7 +81,7 @@ public enum SymbolTypeType {
     
     /**
      * Gets the corresponding PharmML data type of the enum. Possible types are:
-     * {@link IntValueType},
+     * {@link IntValue},
      * {@link RealValueType},
      * {@link BooleanType},
      * {@link StringValueType},

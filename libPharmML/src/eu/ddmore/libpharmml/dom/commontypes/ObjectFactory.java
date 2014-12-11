@@ -242,11 +242,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IntValueType }
+     * Create an instance of {@link IntValue }
      * 
      */
-    public IntValueType createIntValueType() {
-        return new IntValueType();
+    public IntValue createIntValueType() {
+        return new IntValue();
     }
 
     /**
@@ -375,12 +375,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IntValueType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link IntValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Int", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Scalar")
-    public JAXBElement<IntValueType> createInt(IntValueType value) {
-        return new JAXBElement<IntValueType>(_Int_QNAME, IntValueType.class, null, value);
+    public JAXBElement<IntValue> createInt(IntValue value) {
+        return new JAXBElement<IntValue>(_Int_QNAME, IntValue.class, null, value);
     }
 
     /**

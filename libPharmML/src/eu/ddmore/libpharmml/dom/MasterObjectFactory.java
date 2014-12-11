@@ -23,7 +23,7 @@ import javax.xml.bind.JAXBElement;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
-import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
+import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.SequenceType;
@@ -80,8 +80,8 @@ public class MasterObjectFactory {
 	 */
 	public static JAXBElement<? extends Scalar> createScalar(Scalar scalar){
 		JAXBElement<? extends Scalar> element;
-		if(scalar instanceof IntValueType){
-			element = COMMONTYPES_OF.createInt((IntValueType) scalar);
+		if(scalar instanceof IntValue){
+			element = COMMONTYPES_OF.createInt((IntValue) scalar);
 		} else if(scalar instanceof RealValueType){
 			element = COMMONTYPES_OF.createReal((RealValueType) scalar);
 		} else if(scalar instanceof StringValueType){

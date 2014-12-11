@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
-import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
+import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Product;
@@ -186,7 +186,7 @@ public class LogicExprType
      * @return
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
@@ -205,7 +205,7 @@ public class LogicExprType
      * @param value
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}

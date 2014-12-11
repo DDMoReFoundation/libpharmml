@@ -115,7 +115,7 @@ public class Delay
 	 * <mo>)</mo>
 	 * </math>" whith <mi>&tau;</mi> as a scalar.
      * @param y The model variable
-     * @param tau The discrete delay as a scalar, either {@link IntValueType },
+     * @param tau The discrete delay as a scalar, either {@link IntValue },
      *     {@link StringValueType },
      *     {@link RealValueType },
      *     {@link TrueBooleanType },

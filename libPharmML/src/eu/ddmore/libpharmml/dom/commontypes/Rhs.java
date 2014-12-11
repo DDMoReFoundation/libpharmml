@@ -158,7 +158,7 @@ public class Rhs
      *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
      *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
      *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
@@ -177,7 +177,7 @@ public class Rhs
      *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
      *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
      *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}

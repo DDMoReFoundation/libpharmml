@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
+import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 
 
 /**
@@ -69,7 +69,7 @@ public class EpochDefnType
 {
 
     @XmlElement(name = "Order", required = true)
-    protected IntValueType order;
+    protected IntValue order;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
@@ -81,10 +81,10 @@ public class EpochDefnType
      * 
      * @return
      *     possible object is
-     *     {@link IntValueType }
+     *     {@link IntValue }
      *     
      */
-    public IntValueType getOrder() {
+    public IntValue getOrder() {
         return order;
     }
 
@@ -93,10 +93,10 @@ public class EpochDefnType
      * 
      * @param value
      *     allowed object is
-     *     {@link IntValueType }
+     *     {@link IntValue }
      *     
      */
-    public void setOrder(IntValueType value) {
+    public void setOrder(IntValue value) {
         this.order = value;
     }
 

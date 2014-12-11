@@ -30,7 +30,7 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
-import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
+import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 
 
 /**
@@ -362,12 +362,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IntValueType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link IntValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "Order")
-    public JAXBElement<IntValueType> createOrder(IntValueType value) {
-        return new JAXBElement<IntValueType>(_Order_QNAME, IntValueType.class, null, value);
+    public JAXBElement<IntValue> createOrder(IntValue value) {
+        return new JAXBElement<IntValue>(_Order_QNAME, IntValue.class, null, value);
     }
 
     /**

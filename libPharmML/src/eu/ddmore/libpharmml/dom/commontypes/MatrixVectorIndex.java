@@ -58,7 +58,7 @@ public class MatrixVectorIndex extends PharmMLRootType {
     protected Equation equation;
 	
 	@XmlElement(name = "Int")
-	protected IntValueType intValue;
+	protected IntValue intValue;
 	
 	@XmlElement(name = "SymbRef")
 	protected SymbolRefType symbRef;
@@ -71,7 +71,7 @@ public class MatrixVectorIndex extends PharmMLRootType {
 		this(new IntValue(value));
 	}
 	
-	public MatrixVectorIndex(IntValueType value){
+	public MatrixVectorIndex(IntValue value){
 		intValue = value;
 	}
 	
@@ -107,10 +107,10 @@ public class MatrixVectorIndex extends PharmMLRootType {
         this.equation = value;
     }
 	
-	public IntValueType getIntValue(){
+	public IntValue getIntValue(){
 		return intValue;
 	}
-	public void setIntValue(IntValueType value){
+	public void setIntValue(IntValue value){
 		this.intValue = value;
 	}
 	

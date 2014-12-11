@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
-import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
+import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
@@ -119,7 +119,7 @@ public class DatasetRow extends PharmMLRootType{
      * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
      * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
      * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
-     * {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * 
      * @deprecated Since version 0.3. This method should only be used with 0.2 PharmML documents. 

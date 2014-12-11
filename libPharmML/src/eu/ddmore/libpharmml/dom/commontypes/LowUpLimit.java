@@ -81,7 +81,7 @@ public class LowUpLimit
     @XmlElement(name = "Equation", namespace = "http://www.pharmml.org/2013/03/Maths")
     protected Equation equation;
     @XmlElement(name = "Int")
-    protected IntValueType _int;
+    protected IntValue _int;
     @XmlElement(name = "SymbRef")
     protected SymbolRefType symbRef;
 
@@ -116,10 +116,10 @@ public class LowUpLimit
      * 
      * @return
      *     possible object is
-     *     {@link IntValueType }
+     *     {@link IntValue }
      *     
      */
-    public IntValueType getInt() {
+    public IntValue getInt() {
         return _int;
     }
 
@@ -128,10 +128,10 @@ public class LowUpLimit
      * 
      * @param value
      *     allowed object is
-     *     {@link IntValueType }
+     *     {@link IntValue }
      *     
      */
-    public void setInt(IntValueType value) {
+    public void setInt(IntValue value) {
         this._int = value;
     }
 

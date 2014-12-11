@@ -42,7 +42,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
-import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
+import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.LevelReferenceType;
 import eu.ddmore.libpharmml.dom.commontypes.NameType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
@@ -178,7 +178,7 @@ public class DemographicType
      * {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
      * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
