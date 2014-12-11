@@ -44,7 +44,7 @@ import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
+import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
@@ -168,7 +168,7 @@ public class LogicBinOpType
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link LogicBinOpType }{@code >}
      * {@link JAXBElement }{@code <}{@link ColumnRefType }{@code >}
-     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
      * {@link JAXBElement }{@code <}{@link FunctionCallType }{@code >}
      * {@link JAXBElement }{@code <}{@link LogicUniOpType }{@code >}

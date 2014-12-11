@@ -178,11 +178,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RealValueType }
+     * Create an instance of {@link RealValue }
      * 
      */
-    public RealValueType createRealValueType() {
-        return new RealValueType();
+    public RealValue createRealValueType() {
+        return new RealValue();
     }
 
     /**
@@ -456,12 +456,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RealValueType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RealValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Real", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Scalar")
-    public JAXBElement<RealValueType> createReal(RealValueType value) {
-        return new JAXBElement<RealValueType>(_Real_QNAME, RealValueType.class, null, value);
+    public JAXBElement<RealValue> createReal(RealValue value) {
+        return new JAXBElement<RealValue>(_Real_QNAME, RealValue.class, null, value);
     }
 
     /**

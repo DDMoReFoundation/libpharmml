@@ -46,7 +46,7 @@ import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.LevelReferenceType;
 import eu.ddmore.libpharmml.dom.commontypes.NameType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
+import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
@@ -180,7 +180,7 @@ public class DemographicType
      * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
      * {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
-     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
      * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
      * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
      * 

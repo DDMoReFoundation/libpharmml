@@ -134,7 +134,7 @@ public class MatrixRowType
      * {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      * {@link JAXBElement }{@code <}{@link SequenceType }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
      * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
      * {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}
      * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}

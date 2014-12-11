@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
+import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 
 
 /**
@@ -66,17 +66,17 @@ public class StudyTimePointType
 {
 
     @XmlElement(name = "Real", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
-    protected RealValueType real;
+    protected RealValue real;
 
     /**
      * Gets the value of the real property.
      * 
      * @return
      *     possible object is
-     *     {@link RealValueType }
+     *     {@link RealValue }
      *     
      */
-    public RealValueType getReal() {
+    public RealValue getReal() {
         return real;
     }
 
@@ -85,10 +85,10 @@ public class StudyTimePointType
      * 
      * @param value
      *     allowed object is
-     *     {@link RealValueType }
+     *     {@link RealValue }
      *     
      */
-    public void setReal(RealValueType value) {
+    public void setReal(RealValue value) {
         this.real = value;
     }
 

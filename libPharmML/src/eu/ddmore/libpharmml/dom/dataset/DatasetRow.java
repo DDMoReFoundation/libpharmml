@@ -42,7 +42,7 @@ import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
+import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
@@ -117,7 +117,7 @@ public class DatasetRow extends PharmMLRootType{
      * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
      * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
      * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
      * {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}

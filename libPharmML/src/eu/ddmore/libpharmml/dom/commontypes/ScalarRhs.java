@@ -112,7 +112,7 @@ public class ScalarRhs
      *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RealValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
      *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
      *     
@@ -131,7 +131,7 @@ public class ScalarRhs
      *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RealValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
      *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
      *     

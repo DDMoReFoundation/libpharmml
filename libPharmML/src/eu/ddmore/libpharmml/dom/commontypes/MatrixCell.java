@@ -160,7 +160,7 @@ public class MatrixCell
      * Objects of the following type(s) are allowed:
      * {@link IntValue }
      * {@link StringValueType }
-     * {@link RealValueType }
+     * {@link RealValue }
      * {@link TrueBooleanType }
      * {@link SymbolRefType }
      * {@link BooleanType }
@@ -180,7 +180,7 @@ public class MatrixCell
      * Objects of the following type(s) are allowed:
      * {@link IntValue }
      * {@link StringValueType }
-     * {@link RealValueType }
+     * {@link RealValue }
      * {@link TrueBooleanType }
      * {@link SymbolRefType }
      * {@link BooleanType }
