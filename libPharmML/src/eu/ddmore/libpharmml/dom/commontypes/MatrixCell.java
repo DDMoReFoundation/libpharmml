@@ -164,7 +164,7 @@ public class MatrixCell
      * {@link TrueBooleanType }
      * {@link SymbolRefType }
      * {@link BooleanType }
-     * {@link IdValueType }
+     * {@link IdValue }
      * {@link FalseBooleanType }
      * 
      * 
@@ -184,7 +184,7 @@ public class MatrixCell
      * {@link TrueBooleanType }
      * {@link SymbolRefType }
      * {@link BooleanType }
-     * {@link IdValueType }
+     * {@link IdValue }
      * {@link FalseBooleanType }
      * 
      */

@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.IdValueType;
+import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
@@ -172,7 +172,7 @@ public class LogicBinOpType
      * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
      * {@link JAXBElement }{@code <}{@link FunctionCallType }{@code >}
      * {@link JAXBElement }{@code <}{@link LogicUniOpType }{@code >}
-     * {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
      * {@link JAXBElement }{@code <}{@link Binop }{@code >}

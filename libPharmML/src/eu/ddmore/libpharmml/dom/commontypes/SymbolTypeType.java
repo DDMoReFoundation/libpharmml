@@ -62,7 +62,7 @@ public enum SymbolTypeType {
     @XmlEnumValue("string")
     STRING("string",StringValueType.class),
     @XmlEnumValue("id")
-    ID("id",IdValueType.class);
+    ID("id",IdValue.class);
     private final String value;
     private final Class<?> dataType;
 
@@ -85,7 +85,7 @@ public enum SymbolTypeType {
      * {@link RealValueType},
      * {@link BooleanType},
      * {@link StringValueType},
-     * {@link IdValueType}.
+     * {@link IdValue}.
      * @return The corresponding mapped class to the PharmML type.
      */
     public Class<?> getDataType(){

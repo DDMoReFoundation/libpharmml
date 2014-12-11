@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.IdValueType;
+import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
@@ -112,7 +112,7 @@ public class DatasetRow extends PharmMLRootType{
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      * {@link JAXBElement }{@code <}{@link DataSetTableType }{@code >}
      * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
      * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}

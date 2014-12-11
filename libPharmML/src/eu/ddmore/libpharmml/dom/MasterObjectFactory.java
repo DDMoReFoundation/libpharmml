@@ -22,7 +22,7 @@ import javax.xml.bind.JAXBElement;
 
 import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.IdValueType;
+import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
@@ -86,8 +86,8 @@ public class MasterObjectFactory {
 			element = COMMONTYPES_OF.createReal((RealValueType) scalar);
 		} else if(scalar instanceof StringValueType){
 			element = COMMONTYPES_OF.createString((StringValueType) scalar);
-		} else if(scalar instanceof IdValueType){
-			element = COMMONTYPES_OF.createId((IdValueType) scalar);
+		} else if(scalar instanceof IdValue){
+			element = COMMONTYPES_OF.createId((IdValue) scalar);
 		} else if(scalar instanceof BooleanType){
 			if(scalar instanceof TrueBooleanType){
 				element = COMMONTYPES_OF.createTrue((TrueBooleanType) scalar);

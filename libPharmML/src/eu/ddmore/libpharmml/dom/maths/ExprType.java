@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.IdValueType;
+import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
@@ -136,7 +136,7 @@ public class ExprType
      *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
      *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
      *     
      */
@@ -155,7 +155,7 @@ public class ExprType
      *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
      *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
      *     
      */

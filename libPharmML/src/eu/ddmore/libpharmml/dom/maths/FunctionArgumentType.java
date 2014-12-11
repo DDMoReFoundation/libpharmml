@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.IdValueType;
+import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
 import eu.ddmore.libpharmml.dom.commontypes.Product;
@@ -215,7 +215,7 @@ public class FunctionArgumentType {
      *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
      *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
      *     
      */
@@ -234,7 +234,7 @@ public class FunctionArgumentType {
      *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
      *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
      *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
      *     
      */

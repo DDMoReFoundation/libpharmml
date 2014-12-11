@@ -218,11 +218,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IdValueType }
+     * Create an instance of {@link IdValue }
      * 
      */
-    public IdValueType createIdValueType() {
-        return new IdValueType();
+    public IdValue createIdValueType() {
+        return new IdValue();
     }
 
     /**
@@ -483,12 +483,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IdValueType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link IdValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Id", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Scalar")
-    public JAXBElement<IdValueType> createId(IdValueType value) {
-        return new JAXBElement<IdValueType>(_Id_QNAME, IdValueType.class, null, value);
+    public JAXBElement<IdValue> createId(IdValue value) {
+        return new JAXBElement<IdValue>(_Id_QNAME, IdValue.class, null, value);
     }
 
     /**

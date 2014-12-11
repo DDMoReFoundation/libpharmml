@@ -119,7 +119,7 @@ public class Delay
      *     {@link StringValueType },
      *     {@link RealValueType },
      *     {@link TrueBooleanType },
-     *     {@link IdValueType } or
+     *     {@link IdValue } or
      *     {@link FalseBooleanType }
      */
     public Delay(SymbolRefType y, Scalar tau){

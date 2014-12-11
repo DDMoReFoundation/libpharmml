@@ -85,7 +85,7 @@ public class DelayVariable
      *     {@link StringValueType }
      *     {@link RealValueType }
      *     {@link TrueBooleanType }
-     *     {@link IdValueType }
+     *     {@link IdValue }
      *     {@link FalseBooleanType }
      * @param scalar
      */
@@ -110,7 +110,7 @@ public class DelayVariable
      *     {@link StringValueType }
      *     {@link RealValueType }
      *     {@link TrueBooleanType }
-     *     {@link IdValueType }
+     *     {@link IdValue }
      *     {@link FalseBooleanType }
      *     
      */
@@ -127,7 +127,7 @@ public class DelayVariable
      *     {@link StringValueType }
      *     {@link RealValueType }
      *     {@link TrueBooleanType }
-     *     {@link IdValueType }
+     *     {@link IdValue }
      *     {@link FalseBooleanType }
      *     
      */
