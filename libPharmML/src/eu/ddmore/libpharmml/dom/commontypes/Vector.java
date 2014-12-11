@@ -201,7 +201,7 @@ public class Vector extends VectorType {
 	
 	/**
 	 * Creates a new vector cell into the vector at the specified index with a string value.
-	 * A {@link StringValueType} object is constructed from the provided primitive variable.
+	 * A {@link StringValue} object is constructed from the provided primitive variable.
 	 * @param index Index of the cell within the vector.
 	 * @param value Primitive value of the cell.
 	 * @return The created {@link VectorCell} instance.

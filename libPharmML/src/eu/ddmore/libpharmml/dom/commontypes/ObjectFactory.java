@@ -186,11 +186,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StringValueType }
+     * Create an instance of {@link StringValue }
      * 
      */
-    public StringValueType createStringValueType() {
-        return new StringValueType();
+    public StringValue createStringValueType() {
+        return new StringValue();
     }
 
     /**
@@ -438,12 +438,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StringValueType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link StringValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "String", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Scalar")
-    public JAXBElement<StringValueType> createString(StringValueType value) {
-        return new JAXBElement<StringValueType>(_String_QNAME, StringValueType.class, null, value);
+    public JAXBElement<StringValue> createString(StringValue value) {
+        return new JAXBElement<StringValue>(_String_QNAME, StringValue.class, null, value);
     }
 
     /**

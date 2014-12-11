@@ -45,7 +45,7 @@ import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
-import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
+import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
@@ -169,7 +169,7 @@ public class LogicBinOpType
      * {@link JAXBElement }{@code <}{@link LogicBinOpType }{@code >}
      * {@link JAXBElement }{@code <}{@link ColumnRefType }{@code >}
      * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
-     * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link StringValue }{@code >}
      * {@link JAXBElement }{@code <}{@link FunctionCallType }{@code >}
      * {@link JAXBElement }{@code <}{@link LogicUniOpType }{@code >}
      * {@link JAXBElement }{@code <}{@link IdValue }{@code >}

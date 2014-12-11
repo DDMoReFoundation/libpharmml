@@ -109,7 +109,7 @@ public class ScalarRhs
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StringValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
      *     {@link JAXBElement }{@code <}{@link RealValue }{@code >}
@@ -128,7 +128,7 @@ public class ScalarRhs
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StringValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
      *     {@link JAXBElement }{@code <}{@link RealValue }{@code >}

@@ -47,7 +47,7 @@ import eu.ddmore.libpharmml.dom.commontypes.LevelReferenceType;
 import eu.ddmore.libpharmml.dom.commontypes.NameType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
-import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
+import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
 
@@ -177,7 +177,7 @@ public class DemographicType
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link StringValue }{@code >}
      * {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * {@link JAXBElement }{@code <}{@link RealValue }{@code >}

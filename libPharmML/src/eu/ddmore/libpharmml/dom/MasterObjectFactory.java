@@ -27,7 +27,7 @@ import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.SequenceType;
-import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
+import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
 import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
@@ -84,8 +84,8 @@ public class MasterObjectFactory {
 			element = COMMONTYPES_OF.createInt((IntValue) scalar);
 		} else if(scalar instanceof RealValue){
 			element = COMMONTYPES_OF.createReal((RealValue) scalar);
-		} else if(scalar instanceof StringValueType){
-			element = COMMONTYPES_OF.createString((StringValueType) scalar);
+		} else if(scalar instanceof StringValue){
+			element = COMMONTYPES_OF.createString((StringValue) scalar);
 		} else if(scalar instanceof IdValue){
 			element = COMMONTYPES_OF.createId((IdValue) scalar);
 		} else if(scalar instanceof BooleanType){

@@ -82,7 +82,7 @@ public class DelayVariable
     /**
      * Creates a new DelayVariable and set its value with the provided scalar. Possible scalar type is 
      * 	   {@link IntValue }
-     *     {@link StringValueType }
+     *     {@link StringValue }
      *     {@link RealValue }
      *     {@link TrueBooleanType }
      *     {@link IdValue }
@@ -107,7 +107,7 @@ public class DelayVariable
      * @return
      *     possible object is
      *     {@link IntValue }
-     *     {@link StringValueType }
+     *     {@link StringValue }
      *     {@link RealValue }
      *     {@link TrueBooleanType }
      *     {@link IdValue }
@@ -124,7 +124,7 @@ public class DelayVariable
      * @param value
      *     allowed object is
      *     {@link IntValue }
-     *     {@link StringValueType }
+     *     {@link StringValue }
      *     {@link RealValue }
      *     {@link TrueBooleanType }
      *     {@link IdValue }
