@@ -162,11 +162,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FalseBooleanType }
+     * Create an instance of {@link FalseBoolean }
      * 
      */
-    public FalseBooleanType createFalseBooleanType() {
-        return new FalseBooleanType();
+    public FalseBoolean createFalseBooleanType() {
+        return new FalseBoolean();
     }
 
     /**
@@ -202,11 +202,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TrueBooleanType }
+     * Create an instance of {@link TrueBoolean }
      * 
      */
-    public TrueBooleanType createTrueBooleanType() {
-        return new TrueBooleanType();
+    public TrueBoolean createTrueBooleanType() {
+        return new TrueBoolean();
     }
 
     /**
@@ -474,12 +474,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "True", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Boolean")
-    public JAXBElement<TrueBooleanType> createTrue(TrueBooleanType value) {
-        return new JAXBElement<TrueBooleanType>(_True_QNAME, TrueBooleanType.class, null, value);
+    public JAXBElement<TrueBoolean> createTrue(TrueBoolean value) {
+        return new JAXBElement<TrueBoolean>(_True_QNAME, TrueBoolean.class, null, value);
     }
 
     /**
@@ -528,12 +528,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "False", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Boolean")
-    public JAXBElement<FalseBooleanType> createFalse(FalseBooleanType value) {
-        return new JAXBElement<FalseBooleanType>(_False_QNAME, FalseBooleanType.class, null, value);
+    public JAXBElement<FalseBoolean> createFalse(FalseBoolean value) {
+        return new JAXBElement<FalseBoolean>(_False_QNAME, FalseBoolean.class, null, value);
     }
 
     /**
@@ -555,12 +555,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BooleanType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Boolean", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Scalar")
-    public JAXBElement<BooleanType> createBoolean(BooleanType value) {
-        return new JAXBElement<BooleanType>(_Boolean_QNAME, BooleanType.class, null, value);
+    public JAXBElement<BooleanValue> createBoolean(BooleanValue value) {
+        return new JAXBElement<BooleanValue>(_Boolean_QNAME, BooleanValue.class, null, value);
     }
 
     /**

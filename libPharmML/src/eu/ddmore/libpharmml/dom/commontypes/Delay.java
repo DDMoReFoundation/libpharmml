@@ -118,9 +118,9 @@ public class Delay
      * @param tau The discrete delay as a scalar, either {@link IntValue },
      *     {@link StringValue },
      *     {@link RealValue },
-     *     {@link TrueBooleanType },
+     *     {@link TrueBoolean },
      *     {@link IdValue } or
-     *     {@link FalseBooleanType }
+     *     {@link FalseBoolean }
      */
     public Delay(SymbolRefType y, Scalar tau){
     	this.symbRef = y;

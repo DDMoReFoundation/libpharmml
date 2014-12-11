@@ -33,10 +33,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
-import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
+import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 
 
 /**
@@ -82,7 +82,7 @@ public class LogicConditionType
     @XmlElement(name = "LogicUniop")
     protected LogicUniOpType logicUniop;
     @XmlElementRef(name = "Boolean", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
-    protected JAXBElement<? extends BooleanType> _boolean;
+    protected JAXBElement<? extends BooleanValue> _boolean;
     @XmlElement(name = "Otherwise")
     protected Object otherwise;
 
@@ -139,12 +139,12 @@ public class LogicConditionType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
      *     
      */
-    public JAXBElement<? extends BooleanType> getBoolean() {
+    public JAXBElement<? extends BooleanValue> getBoolean() {
         return _boolean;
     }
 
@@ -153,12 +153,12 @@ public class LogicConditionType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
      *     
      */
-    public void setBoolean(JAXBElement<? extends BooleanType> value) {
+    public void setBoolean(JAXBElement<? extends BooleanValue> value) {
         this._boolean = value;
     }
 

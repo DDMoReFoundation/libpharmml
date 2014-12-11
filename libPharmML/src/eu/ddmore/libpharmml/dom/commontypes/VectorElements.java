@@ -77,12 +77,12 @@ public class VectorElements extends PharmMLRootType implements ScalarContainer {
 	}
 
 	@Override
-	public BooleanType createBooleanValue(boolean value) {
-		BooleanType wValue;
+	public BooleanValue createBooleanValue(boolean value) {
+		BooleanValue wValue;
 		if(value){
-			wValue = new TrueBooleanType();
+			wValue = new TrueBoolean();
 		} else {
-			wValue = new FalseBooleanType();
+			wValue = new FalseBoolean();
 		}
 		getListOfElements().add(wValue);
 		return wValue;

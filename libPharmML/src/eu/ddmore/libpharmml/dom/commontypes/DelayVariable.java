@@ -84,9 +84,9 @@ public class DelayVariable
      * 	   {@link IntValue }
      *     {@link StringValue }
      *     {@link RealValue }
-     *     {@link TrueBooleanType }
+     *     {@link TrueBoolean }
      *     {@link IdValue }
-     *     {@link FalseBooleanType }
+     *     {@link FalseBoolean }
      * @param scalar
      */
     public DelayVariable(Scalar scalar){
@@ -109,9 +109,9 @@ public class DelayVariable
      *     {@link IntValue }
      *     {@link StringValue }
      *     {@link RealValue }
-     *     {@link TrueBooleanType }
+     *     {@link TrueBoolean }
      *     {@link IdValue }
-     *     {@link FalseBooleanType }
+     *     {@link FalseBoolean }
      *     
      */
     public Scalar getScalar() {
@@ -126,9 +126,9 @@ public class DelayVariable
      *     {@link IntValue }
      *     {@link StringValue }
      *     {@link RealValue }
-     *     {@link TrueBooleanType }
+     *     {@link TrueBoolean }
      *     {@link IdValue }
-     *     {@link FalseBooleanType }
+     *     {@link FalseBoolean }
      *     
      */
     public void setScalar(Scalar value) {

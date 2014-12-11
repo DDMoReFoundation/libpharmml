@@ -135,11 +135,11 @@ public class MatrixRowType
      * {@link JAXBElement }{@code <}{@link SequenceType }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValue }{@code >}
      * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
-     * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     * {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
      * {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}
-     * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
+     * {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
      * {@link JAXBElement }{@code <}{@link IdValue }{@code >}
-     * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
+     * {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
      * 
      * 
      */

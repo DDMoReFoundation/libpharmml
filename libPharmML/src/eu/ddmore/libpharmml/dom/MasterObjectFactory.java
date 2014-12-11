@@ -20,8 +20,8 @@ package eu.ddmore.libpharmml.dom;
 
 import javax.xml.bind.JAXBElement;
 
-import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
+import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
@@ -29,7 +29,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.SequenceType;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
-import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonParameterType;
 import eu.ddmore.libpharmml.dom.modeldefn.GaussianObsError;
@@ -88,11 +88,11 @@ public class MasterObjectFactory {
 			element = COMMONTYPES_OF.createString((StringValue) scalar);
 		} else if(scalar instanceof IdValue){
 			element = COMMONTYPES_OF.createId((IdValue) scalar);
-		} else if(scalar instanceof BooleanType){
-			if(scalar instanceof TrueBooleanType){
-				element = COMMONTYPES_OF.createTrue((TrueBooleanType) scalar);
+		} else if(scalar instanceof BooleanValue){
+			if(scalar instanceof TrueBoolean){
+				element = COMMONTYPES_OF.createTrue((TrueBoolean) scalar);
 			} else {
-				element = COMMONTYPES_OF.createFalse((FalseBooleanType) scalar);
+				element = COMMONTYPES_OF.createFalse((FalseBoolean) scalar);
 			}
 		} else {
 			throw new IllegalArgumentException("Unknown scalar type");

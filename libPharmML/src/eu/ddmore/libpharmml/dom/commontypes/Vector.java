@@ -190,13 +190,13 @@ public class Vector extends VectorType {
 	
 	/**
 	 * Creates a new vector cell into the vector at the specified index with a boolean value.
-	 * A {@link BooleanType} object is constructed from the provided primitive variable.
+	 * A {@link BooleanValue} object is constructed from the provided primitive variable.
 	 * @param index Index of the cell within the vector.
 	 * @param value Primitive value of the cell.
 	 * @return The created {@link VectorCell} instance.
 	 */
 	public VectorCell createVectorCell(int index, boolean value){
-		return createVectorCell(index, BooleanType.fromBoolean(value));
+		return createVectorCell(index, BooleanValue.fromBoolean(value));
 	}
 	
 	/**

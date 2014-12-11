@@ -226,7 +226,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     SequenceType.class,
     Rhs.class,
     InterpolationType.class,
-    BooleanType.class,
+    BooleanValue.class,
     VectorType.class,
     History.class,
     SumIndexSet.class,

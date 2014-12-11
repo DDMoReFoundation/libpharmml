@@ -58,7 +58,7 @@ public enum SymbolTypeType {
     @XmlEnumValue("real")
     REAL("real",RealValue.class),
     @XmlEnumValue("boolean")
-    BOOLEAN("boolean",BooleanType.class),
+    BOOLEAN("boolean",BooleanValue.class),
     @XmlEnumValue("string")
     STRING("string",StringValue.class),
     @XmlEnumValue("id")
@@ -83,7 +83,7 @@ public enum SymbolTypeType {
      * Gets the corresponding PharmML data type of the enum. Possible types are:
      * {@link IntValue},
      * {@link RealValue},
-     * {@link BooleanType},
+     * {@link BooleanValue},
      * {@link StringValue},
      * {@link IdValue}.
      * @return The corresponding mapped class to the PharmML type.

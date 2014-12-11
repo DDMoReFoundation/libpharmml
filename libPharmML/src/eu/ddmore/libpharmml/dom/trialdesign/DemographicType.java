@@ -39,8 +39,8 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
+import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.LevelReferenceType;
@@ -48,7 +48,7 @@ import eu.ddmore.libpharmml.dom.commontypes.NameType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
-import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
 
 
@@ -176,13 +176,13 @@ public class DemographicType
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link IdValue }{@code >}
-     * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
+     * {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValue }{@code >}
      * {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
-     * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     * {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
+     * {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
      * 
      * 
      */

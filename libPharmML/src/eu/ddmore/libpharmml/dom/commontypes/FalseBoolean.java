@@ -54,8 +54,8 @@ import eu.ddmore.libpharmml.dom.MasterObjectFactory;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FalseBooleanType")
-public class FalseBooleanType
-    extends BooleanType
+public class FalseBoolean
+    extends BooleanValue
 {
 
 	@Override

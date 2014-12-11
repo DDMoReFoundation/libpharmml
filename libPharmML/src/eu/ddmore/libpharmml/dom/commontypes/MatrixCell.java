@@ -161,11 +161,11 @@ public class MatrixCell
      * {@link IntValue }
      * {@link StringValue }
      * {@link RealValue }
-     * {@link TrueBooleanType }
+     * {@link TrueBoolean }
      * {@link SymbolRefType }
-     * {@link BooleanType }
+     * {@link BooleanValue }
      * {@link IdValue }
-     * {@link FalseBooleanType }
+     * {@link FalseBoolean }
      * 
      * 
      */
@@ -181,11 +181,11 @@ public class MatrixCell
      * {@link IntValue }
      * {@link StringValue }
      * {@link RealValue }
-     * {@link TrueBooleanType }
+     * {@link TrueBoolean }
      * {@link SymbolRefType }
-     * {@link BooleanType }
+     * {@link BooleanValue }
      * {@link IdValue }
-     * {@link FalseBooleanType }
+     * {@link FalseBoolean }
      * 
      */
     public void setValue(MatrixCellValue value){
@@ -284,12 +284,12 @@ public class MatrixCell
 	}
 
 	@Override
-	public BooleanType createBooleanValue(boolean value) {
-		BooleanType wValue;
+	public BooleanValue createBooleanValue(boolean value) {
+		BooleanValue wValue;
 		if(value){
-			wValue = new TrueBooleanType();
+			wValue = new TrueBoolean();
 		} else {
-			wValue = new FalseBooleanType();
+			wValue = new FalseBoolean();
 		}
 		return wValue;
 	}

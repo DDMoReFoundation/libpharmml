@@ -39,15 +39,15 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
+import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
-import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
 
 
@@ -177,11 +177,11 @@ public class LogicBinOpType
      * {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      * {@link JAXBElement }{@code <}{@link Binop }{@code >}
      * {@link JAXBElement }{@code <}{@link Uniop }{@code >}
-     * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
+     * {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
      * {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}
      * {@link JAXBElement }{@code <}{@link ConstantType }{@code >}
-     * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     * {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
+     * {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
      * 
      * <p>
      * In order to be compliant with the PharmML specification (>= 0.3.1), only 1 {@link ColumnRefType } is allowed in the content,

@@ -133,14 +133,14 @@ public class VectorType extends AbstractVector {
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link IdValue }{@code >}
-     * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
+     * {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
      * {@link JAXBElement }{@code <}{@link SequenceType }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValue }{@code >}
      * {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
-     * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     * {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
+     * {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
      * 
      * 
      */

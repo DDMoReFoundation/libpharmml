@@ -39,8 +39,8 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.IValidationError;
-import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
+import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
@@ -48,7 +48,7 @@ import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolTypeType;
-import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.dataset.ImportDataType.Delimiter;
 import eu.ddmore.libpharmml.impl.ValidationErrorImpl;
 import eu.ddmore.libpharmml.util.Util;
@@ -171,7 +171,7 @@ public class DataSet
      * 
      * <p>Concerning booleans, only the string "true" (ignoring case) is converted to the DOM true boolean 
      * type. Any other string value equals "false". For example, the string "True" is converted to
-     * {@link TrueBooleanType}, whereas the string "1" is converted to {@link FalseBooleanType}.
+     * {@link TrueBoolean}, whereas the string "1" is converted to {@link FalseBoolean}.
      * 
      * <p>If the length of the provided array does not match the number of columns, or if the valueType
      * attribute of one of these columns is undefined, an {@link IllegalStateException} is thrown. 
@@ -362,7 +362,7 @@ public class DataSet
 	 * @param type 
 	 * @param value
 	 * @return Possible types are {@link IdValue}, {@link RealValue}, {@link StringValue},
-	 * {@link IntValue} or {@link BooleanType}.
+	 * {@link IntValue} or {@link BooleanValue}.
 	 */
 	private static Scalar stringToScalar(SymbolTypeType type, String value){
 		Scalar scalar;
@@ -380,7 +380,7 @@ public class DataSet
 				scalar = new IntValue(Integer.valueOf(value));
 				break;
 			case BOOLEAN:
-				scalar = BooleanType.fromBoolean(Boolean.parseBoolean(value));
+				scalar = BooleanValue.fromBoolean(Boolean.parseBoolean(value));
 				break;
 			default:
 				scalar = null;

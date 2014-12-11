@@ -26,25 +26,25 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
-
-import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 
 
 /**
- * A literal Boolean value for true.
  * 
- * <p>Java class for TrueBooleanType complex type.
+ *                 A Boolean type.
+ *             
+ * 
+ * <p>Java class for BooleanType complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="TrueBooleanType">
+ * &lt;complexType name="BooleanType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}BooleanType">
+ *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -53,19 +53,26 @@ import eu.ddmore.libpharmml.dom.MasterObjectFactory;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TrueBooleanType")
-public class TrueBooleanType
-    extends BooleanType
+@XmlType(name = "BooleanType")
+@XmlSeeAlso({
+    FalseBoolean.class,
+    TrueBoolean.class
+})
+public abstract class BooleanValue
+    extends PharmMLRootType implements Scalar
 {
 
-	@Override
-	public String asString() {
-		return "true";
-	}
-
-	@Override
-	public JAXBElement<? extends Scalar> toJAXBElement() {
-		return MasterObjectFactory.createScalar(this);
+	/**
+	 * Creates an instance of either a {@link TrueBoolean} or a {@link FalseBoolean}.
+	 * @param value Primitive boolean value.
+	 * @return A {@link BooleanValue} that wraps the provided primitive variable.
+	 */
+	public static BooleanValue fromBoolean(boolean value){
+		if(value){
+			return new TrueBoolean();
+		} else {
+			return new FalseBoolean();
+		}
 	}
 
 }
