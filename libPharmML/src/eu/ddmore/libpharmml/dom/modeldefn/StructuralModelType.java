@@ -28,6 +28,7 @@ package eu.ddmore.libpharmml.dom.modeldefn;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -37,11 +38,13 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import eu.ddmore.libpharmml.dom.commontypes.CommonVariableDefinitionType;
 import eu.ddmore.libpharmml.dom.commontypes.DerivativeVariableType;
 import eu.ddmore.libpharmml.dom.commontypes.NameType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableDefinitionType;
+import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKmacroList;
 
 
 /**
@@ -61,6 +64,7 @@ import eu.ddmore.libpharmml.dom.commontypes.VariableDefinitionType;
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Name" minOccurs="0"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}SimpleParameter" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}CommonVariable" maxOccurs="unbounded"/>
+ *         &lt;element name="PKmacros" type="{http://www.pharmml.org/2013/03/ModelDefinition}PKmacroType" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://www.pharmml.org/2013/03/CommonTypes}BlockDefnGroup"/>
  *     &lt;/extension>
@@ -74,7 +78,8 @@ import eu.ddmore.libpharmml.dom.commontypes.VariableDefinitionType;
 @XmlType(name = "StructuralModelType", propOrder = {
     "name",
     "simpleParameter",
-    "commonVariable"
+    "commonVariable",
+    "pKmacros"
 })
 public class StructuralModelType
     extends PharmMLRootType
@@ -86,6 +91,8 @@ public class StructuralModelType
     protected List<SimpleParameterType> simpleParameter;
     @XmlElementRef(name = "CommonVariable", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class)
     protected List<JAXBElement<? extends CommonVariableDefinitionType>> commonVariable;
+    @XmlElement(name = "PKmacros")
+    protected PKmacroList pKmacros;
     @XmlAttribute(name = "blkId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String blkId;
@@ -172,6 +179,30 @@ public class StructuralModelType
             commonVariable = new ArrayList<JAXBElement<? extends CommonVariableDefinitionType>>();
         }
         return this.commonVariable;
+    }
+
+    /**
+     * Gets the value of the pKmacros property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link PKmacroType }
+     *     
+     */
+    public PKmacroList getPKmacros() {
+        return pKmacros;
+    }
+
+    /**
+     * Sets the value of the pKmacros property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link PKmacroType }
+     *     
+     */
+    public void setPKmacros(PKmacroList value) {
+        this.pKmacros = value;
     }
 
     /**

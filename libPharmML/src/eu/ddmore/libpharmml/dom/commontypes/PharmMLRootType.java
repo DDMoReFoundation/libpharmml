@@ -92,6 +92,9 @@ import eu.ddmore.libpharmml.dom.modeldefn.TTEFunction;
 import eu.ddmore.libpharmml.dom.modeldefn.TransitionRate;
 import eu.ddmore.libpharmml.dom.modeldefn.VariabilityDefnBlock;
 import eu.ddmore.libpharmml.dom.modeldefn.VariabilityLevelDefnType;
+import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.AbsorptionOralMacro;
+import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.OralMacro;
+import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKmacroList;
 import eu.ddmore.libpharmml.dom.modellingsteps.AlgorithmType;
 import eu.ddmore.libpharmml.dom.modellingsteps.CodeInjectionType;
 import eu.ddmore.libpharmml.dom.modellingsteps.CommonModellingStepType;
@@ -308,7 +311,10 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     ToEstimateType.class,
     EstimationOperationType.class,
     EquationType.class,
-    LogicConditionType.class
+    LogicConditionType.class,
+    AbsorptionOralMacro.class,
+    OralMacro.class,
+    PKmacroList.class
 })
 public abstract class PharmMLRootType extends PharmMLElement {
 
