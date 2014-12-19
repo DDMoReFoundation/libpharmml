@@ -33,12 +33,20 @@ public class ScalarAdapter extends XmlAdapter<JAXBElement<?>, Scalar>{
 	
 	@Override
 	public Scalar unmarshal(JAXBElement<?> v) throws Exception {
-		return (Scalar) v.getValue();
+		if(v == null){
+			return null;
+		} else {
+			return (Scalar) v.getValue();
+		}
 	}
 
 	@Override
 	public JAXBElement<?> marshal(Scalar v) throws Exception {
-		return MasterObjectFactory.createScalar(v);
+		if(v == null){
+			return null;
+		} else {
+			return MasterObjectFactory.createScalar(v);
+		}
 	}
 
 	
