@@ -29,9 +29,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public interface VectorValue {
 
 	/**
-	 * Gets a human readable representation of the value. This is different
-	 * from the toString() method as there is no reference to the current object but only
-	 * its value.
+	 * Gets a human readable representation of the value.
 	 * @return The vector value as a {@link String}.
 	 */
 	public String asString();
