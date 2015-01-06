@@ -309,5 +309,23 @@ public class Rhs
     public void setMatrix(Matrix value) {
         this.matrix = value;
     }
+    
+    /**
+     * Gets the unique content of this Rhs. Each mapped attribute is checked and the first checked one
+     * that is not null is returned. Only one is returned even if 2 or more attributes have been set.
+     * If there is no content, this method returns null.
+     * @return Possible return types are {@link Equation}, {@link Scalar}, {@link SymbolRefType}, 
+     * {@link VectorType}, {@link Matrix}, {@link InterpolationType} and {@link SequenceType}.
+     */
+    public Object getContent(){
+    	if(equation != null) return equation;
+    	if(scalar != null) return scalar.getValue();
+    	if(symbRef != null) return symbRef;
+    	if(vector != null) return vector;
+    	if(matrix != null) return matrix;
+    	if(interpolation != null) return interpolation;
+    	if(sequence != null) return sequence;
+    	else return null;
+    }
 
 }
