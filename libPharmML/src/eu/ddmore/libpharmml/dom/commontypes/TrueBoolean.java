@@ -62,6 +62,11 @@ public class TrueBoolean
 	public String asString() {
 		return "true";
 	}
+	
+	@Override
+	public String toString() {
+		return "true";
+	}
 
 	@Override
 	public JAXBElement<? extends Scalar> toJAXBElement() {

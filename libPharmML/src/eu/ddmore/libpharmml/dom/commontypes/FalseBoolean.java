@@ -62,6 +62,11 @@ public class FalseBoolean
 	public String asString() {
 		return "false";
 	}
+	
+	@Override
+	public String toString() {
+		return "false";
+	}
 
 	@Override
 	public JAXBElement<? extends Scalar> toJAXBElement() {

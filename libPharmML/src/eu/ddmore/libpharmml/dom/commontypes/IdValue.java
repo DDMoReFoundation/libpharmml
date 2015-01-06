@@ -141,6 +141,11 @@ public class IdValue extends PharmMLElement implements Scalar {
 	}
 	
 	@Override
+	public String toString() {
+		return String.valueOf(value);
+	}
+	
+	@Override
 	public JAXBElement<? extends Scalar> toJAXBElement() {
 		return MasterObjectFactory.createScalar(this);
 	}

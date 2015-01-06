@@ -124,6 +124,11 @@ public class RealValue extends PharmMLElement implements Scalar, VectorValue {
     public String asString(){
     	return String.valueOf(value);
     }
+    
+    @Override
+    public String toString() {
+    	return String.valueOf(value);
+    }
 
 	@Override
 	public JAXBElement<? extends Scalar> toJAXBElement() {

@@ -135,6 +135,11 @@ public class StringValue extends PharmMLElement implements Scalar {
 	}
 	
 	@Override
+	public String toString() {
+		return value;
+	}
+	
+	@Override
 	public JAXBElement<? extends Scalar> toJAXBElement() {
 		return MasterObjectFactory.createScalar(this);
 	}
