@@ -52,7 +52,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlType(name = "PKmacroType", propOrder = {
     "listOfMacro"
 })
-public class PKmacroList
+public class PKMacroList
     extends PharmMLRootType
 {
 

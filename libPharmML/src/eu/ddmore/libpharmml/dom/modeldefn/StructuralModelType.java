@@ -44,7 +44,7 @@ import eu.ddmore.libpharmml.dom.commontypes.DerivativeVariableType;
 import eu.ddmore.libpharmml.dom.commontypes.NameType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableDefinitionType;
-import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKmacroList;
+import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKMacroList;
 
 
 /**
@@ -92,7 +92,7 @@ public class StructuralModelType
     @XmlElementRef(name = "CommonVariable", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class)
     protected List<JAXBElement<? extends CommonVariableDefinitionType>> commonVariable;
     @XmlElement(name = "PKmacros")
-    protected PKmacroList pKmacros;
+    protected PKMacroList pKmacros;
     @XmlAttribute(name = "blkId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String blkId;
@@ -189,7 +189,7 @@ public class StructuralModelType
      *     {@link PKmacroType }
      *     
      */
-    public PKmacroList getPKmacros() {
+    public PKMacroList getPKmacros() {
         return pKmacros;
     }
 
@@ -201,7 +201,7 @@ public class StructuralModelType
      *     {@link PKmacroType }
      *     
      */
-    public void setPKmacros(PKmacroList value) {
+    public void setPKmacros(PKMacroList value) {
         this.pKmacros = value;
     }
 
