@@ -67,7 +67,7 @@ public class PKmacroList
         @XmlElement(name = "Peripheral", type=PeripheralMacro.class, required = false),
         @XmlElement(name = "Absorption", type=AbsorptionMacro.class, required = false)
     })
-    protected List<Macro> listOfMacro;
+    protected List<PKMacro> listOfMacro;
 
     /**
      * Gets the value of the absorptionAndCompartmentAndDepot property.
@@ -99,9 +99,9 @@ public class PKmacroList
      * 
      * 
      */
-    public List<Macro> getListOfMacro() {
+    public List<PKMacro> getListOfMacro() {
         if (listOfMacro == null) {
-            listOfMacro = new ArrayList<Macro>();
+            listOfMacro = new ArrayList<PKMacro>();
         }
         return this.listOfMacro;
     }

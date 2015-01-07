@@ -8,13 +8,9 @@
 
 package eu.ddmore.libpharmml.dom.modeldefn.pkmacro;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
 /**
@@ -41,8 +37,13 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IVMacroType")
 public class IVMacro
-    extends Macro
+    extends PKMacro
 {
+
+	@Override
+	public String getName() {
+		return "iv";
+	}
 
 
 }

@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "AbsorptionOralMacroType")
 @XmlSeeAlso({OralMacro.class, AbsorptionMacro.class})
 public abstract class AbsorptionOralMacro
-    extends Macro
+    extends PKMacro
 {
 
 //    @XmlElement(name = "Value", required = true)
