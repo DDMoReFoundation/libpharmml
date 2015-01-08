@@ -36,12 +36,14 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.commontypes.Product;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
@@ -104,7 +106,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 @XmlSeeAlso({
     eu.ddmore.libpharmml.dom.maths.FunctionCallType.FunctionArgument.class
 })
-public class FunctionArgumentType {
+public class FunctionArgumentType extends PharmMLElement {
 
     @XmlElement(name = "Symbol", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected SymbolNameType symbol;

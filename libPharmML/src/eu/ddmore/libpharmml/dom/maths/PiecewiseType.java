@@ -28,10 +28,13 @@ package eu.ddmore.libpharmml.dom.maths;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 
 
 /**
@@ -59,7 +62,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "PiecewiseType", propOrder = {
     "piece"
 })
-public class PiecewiseType {
+public class PiecewiseType extends PharmMLElement {
 
     @XmlElement(name = "Piece", required = true)
     protected List<PieceType> piece;
