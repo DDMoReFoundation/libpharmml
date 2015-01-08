@@ -13,6 +13,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.commontypes.Rhs;
+
 
 /**
  * Type defines an absorption/oral macro.
@@ -42,36 +44,39 @@ public abstract class AbsorptionOralMacro
     extends PKMacro
 {
 
-//    @XmlElement(name = "Value", required = true)
-//    protected List<AbsorptionOralMacroValue> value;
-//
-//    /**
-//     * Gets the value of the value property.
-//     * 
-//     * <p>
-//     * This accessor method returns a reference to the live list,
-//     * not a snapshot. Therefore any modification you make to the
-//     * returned list will be present inside the JAXB object.
-//     * This is why there is not a <CODE>set</CODE> method for the value property.
-//     * 
-//     * <p>
-//     * For example, to add a new item, do as follows:
-//     * <pre>
-//     *    getValue().add(newItem);
-//     * </pre>
-//     * 
-//     * 
-//     * <p>
-//     * Objects of the following type(s) are allowed in the list
-//     * {@link AbsorptionOralMacroValue }
-//     * 
-//     * 
-//     */
-//    public List<AbsorptionOralMacroValue> getValue() {
-//        if (value == null) {
-//            value = new ArrayList<AbsorptionOralMacroValue>();
-//        }
-//        return this.value;
-//    }
-
+	/**
+	 * Creates a new value for this macro with an assignment.
+	 * @param argument The name of the argument.
+	 * @param assignment The value that is assigned to the argument.
+	 * @return The created {@link MacroValue} object.
+	 */
+	public MacroValue createValue(Arg argument, Rhs assignment){
+		MacroValue value = new MacroValue(argument.toString(), assignment);
+		getListOfValue().add(value);
+		return value;
+	}
+	
+	public static enum Arg {
+		CMT("cmt"),
+		TYPE("type"),
+		ADM("adm"),
+		TLAG("Tlag"),
+		P("p"),
+		TK0("Tk0"),
+		KA("ka"),
+		KTR("Ktr"),
+		MTT("Mtt");
+		
+		private String value;
+		
+		private Arg(String value){
+			this.value = value;
+		}
+		
+		@Override
+		public String toString() {
+			return value;
+		}
+	}
+	
 }

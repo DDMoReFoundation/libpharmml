@@ -8,30 +8,19 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.BooleanType;
-
 import eu.ddmore.libpharmml.dom.commontypes.Assignable;
-import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
-import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
-import eu.ddmore.libpharmml.dom.commontypes.IdValue;
-import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.InterpolationType;
 import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.SequenceType;
-import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
-import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.VectorType;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 
 public class MacroValue extends PharmMLRootType implements Assignable {
-	
-	// TODO: scalar under assignment, afterUnmarshal
-	
+		
 	@XmlElement(name = "Assign", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected Rhs assign;
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
@@ -243,8 +232,24 @@ public class MacroValue extends PharmMLRootType implements Assignable {
 		return sb.toString();
 	}
 	
+	/**
+	 * Executed after the unmarshalling process. The signature of this method is standardised by
+	 * the JAXB library.
+	 * 
+	 * <p>
+	 * This implementation is meant to deal with the ambiguity of scalar assignment to macro
+	 * arguments. If the macro argument is assigned to a scalar without using a assign element,
+	 * the value of the scalar attribute is wrapped and moved to the assign attribute. Therefore,
+	 * whatever the type of the assignment is, the value is accessed via {@link #getAssign()}.
+	 * 
+	 * @param u
+	 * @param parent
+	 */
 	protected void afterUnmarshal(Unmarshaller u, Object parent) {
-		
+		if(this.scalar != null && this.assign == null){
+			this.assign = new Rhs(scalar);
+			this.scalar = null;
+		}
 	}
 
 }

@@ -12,6 +12,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.commontypes.Rhs;
+
 
 /**
  * Type defines a compartment macro.
@@ -45,4 +47,33 @@ public class CompartmentMacro
 		return "compartment";
 	}
 
+	/**
+	 * Creates a new value for this macro with an assignment.
+	 * @param argument The name of the argument.
+	 * @param assignment The value that is assigned to the argument.
+	 * @return The created {@link MacroValue} object.
+	 */
+	public MacroValue createValue(Arg argument, Rhs assignment){
+		MacroValue value = new MacroValue(argument.toString(), assignment);
+		getListOfValue().add(value);
+		return value;
+	}
+	
+	public static enum Arg {
+		CMT("cmt"),
+		AMOUNT("amount"),
+		VOLUME("volume"),
+		CONCENTRATION("concentration");
+		
+		private String value;
+		
+		private Arg(String value){
+			this.value = value;
+		}
+		
+		@Override
+		public String toString() {
+			return value;
+		}
+	}
 }
