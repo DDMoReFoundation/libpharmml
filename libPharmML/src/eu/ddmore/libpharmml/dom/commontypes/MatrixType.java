@@ -120,6 +120,7 @@ public class MatrixType
     protected String matrixType;
     @XmlAttribute(name = "symbId")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @Deprecated
     protected String symbId;
     
     /**
@@ -379,7 +380,10 @@ public class MatrixType
      *     possible object is
      *     {@link String }
      *     
+     * @deprecated Since PharmML 0.5.1. Symbol id must be accessed via the variable
+     * this matrix is assigned to.
      */
+    @Deprecated
     public String getSymbId() {
         return symbId;
     }
@@ -391,7 +395,10 @@ public class MatrixType
      *     allowed object is
      *     {@link String }
      *     
+     * @deprecated Since PharmML 0.5.1. Symbol id must be accessed via the variable
+     * this matrix is assigned to.
      */
+    @Deprecated
     public void setSymbId(String value) {
         this.symbId = value;
     }
