@@ -266,9 +266,6 @@ public class MacroValue extends PharmMLRootType implements Assignable {
 		if(this.scalar != null && this.assign == null){
 			this.assign = new Rhs(scalar);
 			this.scalar = null;
-		} else if(this.symbRef != null && this.assign == null){
-			this.assign = new Rhs(symbRef);
-			this.symbRef = null;
 		}
 	}
 
