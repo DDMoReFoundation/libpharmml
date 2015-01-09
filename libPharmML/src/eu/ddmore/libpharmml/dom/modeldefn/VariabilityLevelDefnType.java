@@ -53,6 +53,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  *         &lt;element name="ParentLevel" type="{http://www.pharmml.org/2013/03/ModelDefinition}ParentLevelType" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbolDefinitionGroup"/>
+ *       &lt;attribute name="referenceLevel" type="{http://www.pharmml.org/2013/03/ModelDefinition}ReferenceLevelType" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -73,6 +74,8 @@ public class VariabilityLevelDefnType
     protected NameType name;
     @XmlElement(name = "ParentLevel")
     protected ParentLevelType parentLevel;
+    @XmlAttribute(name = "referenceLevel")
+    protected Boolean referenceLevel; // since PharmML 0.5.1
     @XmlAttribute(name = "symbId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String symbId;
@@ -123,6 +126,32 @@ public class VariabilityLevelDefnType
      */
     public void setParentLevel(ParentLevelType value) {
         this.parentLevel = value;
+    }
+
+    /**
+     * Gets the value of the referenceLevel property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     * @since PharmML 0.5.1
+     */
+    public Boolean isReferenceLevel() {
+        return referenceLevel;
+    }
+
+    /**
+     * Sets the value of the referenceLevel property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     * @since PharmML 0.5.1
+     */
+    public void setReferenceLevel(Boolean value) {
+        this.referenceLevel = value;
     }
 
     /**
