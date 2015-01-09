@@ -18,6 +18,11 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml.impl;
 
+/**
+ * Enum for handling various PharmML versions.
+ * 
+ * @author F. Yvon
+ */
 public enum PharmMLVersion {
 	/**
 	 * PharmML 0.2.1
@@ -38,7 +43,15 @@ public enum PharmMLVersion {
 	/**
 	 * PharmML 0.4.1
 	 */
-	V0_4_1("0.4.1","MarshallerImpl.xmlCatalogLocation.0.4.1",5);
+	V0_4_1("0.4.1","MarshallerImpl.xmlCatalogLocation.0.4.1",5),
+	/**
+	 * PharmML 0.5
+	 */
+	V0_5("0.5","MarshallerImpl.xmlCatalogLocation.0.5",6),
+	/**
+	 * PharmML 0.5.1
+	 */
+	V0_5_1("0.5.1","MarshallerImpl.xmlCatalogLocation.0.5.1",7);
 	
 	/**
 	 * The latest version of PharmML. Current is 0.4.1.
@@ -55,10 +68,20 @@ public enum PharmMLVersion {
 		this.index = index;
 	}
 	
+	/**
+	 * Gets a string representation of the version. For instance, for the enum value V0_5, this method
+	 * returns "0.5".
+	 * @return The string representation of this version.
+	 */
 	public String getValue(){
 		return version;
 	}
 	
+	/**
+	 * Catalog location in the messages.properties file. This method should not be needed for
+	 * the majority of times.
+	 * @return Catalog location
+	 */
 	public String getCatalogLocation(){
 		return catalogLocation;
 	}
@@ -79,16 +102,28 @@ public enum PharmMLVersion {
 			return PharmMLVersion.V0_4;
 		} else if(version.equals("0.4.1")){
 			return PharmMLVersion.V0_4_1;
+		} else if(version.equals("0.5")){
+			return PharmMLVersion.V0_5;
+		} else if(version.equals("0.5.1")){
+			return PharmMLVersion.V0_5_1;
 		} else {
 			return null;
 		}
 	}
 	
+	/**
+	 * Gets a string representation of this instance. This methods is equivalent to {@link #getValue()}.
+	 */
 	@Override
 	public String toString(){
 		return getValue();
 	}
 	
+	/**
+	 * Tests if this instantiated version equals or is later than the provided one.
+	 * @param version The version that the instantiated one is compared to.
+	 * @return true if this version is superior or equal to the argument, else false.
+	 */
 	public boolean isEqualOrLaterThan(PharmMLVersion version){
 		return (this.index >= version.index);
 	}
