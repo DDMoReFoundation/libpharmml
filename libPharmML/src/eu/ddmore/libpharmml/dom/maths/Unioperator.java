@@ -22,10 +22,15 @@ public enum Unioperator {
 	PROBIT("probit"),
 	MINUS("minus"),
 	SQRT("sqrt"),
+	HEAVISIDE("heaviside"),
+	SIGN("sign"),
 	SIN("sin"),
 	COS("cos"),
 	TAN("tan"),
 	COT("cot"),
+	/**
+	 * @deprecated Since PharmML 0.5.1, moved to {@link Binoperator}.
+	 */
 	ATAN2("atan2"),
 	SEC("sec"),
 	CSC("csc"),
