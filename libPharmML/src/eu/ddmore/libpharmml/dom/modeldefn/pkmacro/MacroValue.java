@@ -19,6 +19,23 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 import eu.ddmore.libpharmml.dom.commontypes.VectorType;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 
+/**
+ * Class for PK macro values.
+ * 
+ * <p>There are two types of macro values. The 1st type is a value without an explicit assignment.
+ * This kind of value must contain only a symbol reference to the proper variable. The symbol
+ * id must be compliant with the parent macro definition. One may use the constructor
+ * {@link #MacroValue(SymbolRefType)} in order to create a value of this type.
+ * 
+ * <p>The 2nd type is a value with an explicit assignment. The argument name and its value must
+ * be specified. The argument name must be compliant with the parent macro definition. One may 
+ * use the constructor {@link #MacroValue(String, Rhs)} in order to create a value of this type.
+ * 
+ * <p>No control of the argument name is made at this level. The validity of each macro is
+ * checked during the validation process.
+ * 
+ * @author F. Yvon
+ */
 public class MacroValue extends PharmMLRootType implements Assignable {
 		
 	@XmlElement(name = "Assign", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
@@ -249,6 +266,9 @@ public class MacroValue extends PharmMLRootType implements Assignable {
 		if(this.scalar != null && this.assign == null){
 			this.assign = new Rhs(scalar);
 			this.scalar = null;
+		} else if(this.symbRef != null && this.assign == null){
+			this.assign = new Rhs(symbRef);
+			this.symbRef = null;
 		}
 	}
 
