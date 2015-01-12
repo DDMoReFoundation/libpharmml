@@ -9,15 +9,21 @@ import javax.xml.bind.annotation.XmlTransient;
  * Class providing convenience for dealing with transfer rates.
  * 
  * <p>In PharmML, tranfer rates are formatted following the format <tt>kij</tt> or <tt>k_i_j</tt>, when
- * the transfer occurs from a compartment <tt>j</tt> (output) to a compartment <tt>i</tt> (input).
+ * the transfer occurs from a compartment <tt>i</tt> (origin) to a compartment <tt>j</tt> (destination).
+ * 
+ * <p>The most robust way to create a TransferRate object is to use the construct {@link #TransferRate(Integer, Integer)}.
+ * However it is also possible to construct a TransferRate from a string with {@link #TransferRate(String)}.
+ * 
+ * <p>The method {@link #toString()} is implemented in this class and may be used to translate the
+ * transfer rate to a format compliant with PharmML definition (kij or k_i_j).
  * 
  * @author F. Yvon
  */
 @XmlTransient
 public class TransferRate {
 
-	private Integer inbound;
-	private Integer outbound;
+	private Integer from;
+	private Integer to;
 	
 	/**
 	 * Patterns of valid transfer rates. These patterns correspond to the ones in the PharmML-0.5
@@ -33,12 +39,12 @@ public class TransferRate {
 	/**
 	 * Creates a transfer rate from the given inbound compartment number and the given
 	 * outbound compartment number.
-	 * @param inbound Number of the inbound compartment (i).
-	 * @param outbound Number of the outbound compartment (j).
+	 * @param from Number of the inbound compartment (i).
+	 * @param to Number of the outbound compartment (j).
 	 */
-	public TransferRate(Integer inbound, Integer outbound){
-		this.inbound = inbound;
-		this.outbound = outbound;
+	public TransferRate(Integer from, Integer to){
+		this.from = from;
+		this.to = to;
 	}
 	
 	/**
@@ -47,18 +53,19 @@ public class TransferRate {
 	 * any risk, one should use the static method {@link #isValid(String)} to test the validity of the
 	 * input string before.
 	 * @param transferRate The transfer rate as a {@link String}.
+	 * @throws IllegalArgumentException If the format of the transfer rate is incorrect.
 	 */
 	public TransferRate(String transferRate){
 		for(String stringPattern : stringPatterns){
 			Pattern p = Pattern.compile(stringPattern);
 			Matcher m = p.matcher(transferRate);
 			if(m.find()){
-				this.inbound = Integer.valueOf(m.group(1));
-				this.outbound = Integer.valueOf(m.group(2));
+				this.from = Integer.valueOf(m.group(1));
+				this.to = Integer.valueOf(m.group(2));
 				break;
 			}
 		}
-		if(this.inbound == null || this.outbound == null){
+		if(this.from == null || this.to == null){
 			throw new IllegalArgumentException("String \""+transferRate+"\" is not a valid transfer rate");
 		}
 	}
@@ -88,53 +95,53 @@ public class TransferRate {
 	}
 	
 	/**
-	 * Gets the number of the inbound compartment of this transfer rate.
-	 * @return The inbound compartment number as an {@link Integer}.
+	 * Gets the number of the origin compartment of this transfer rate.
+	 * @return The origin compartment number as an {@link Integer}.
 	 */
-	public Integer getInbound() {
-		return inbound;
+	public Integer getFrom() {
+		return from;
 	}
 	
 	/**
-	 * Sets the inbound compartment number value.
-	 * @param outbound The value must be between 0 and 99.
+	 * Sets the origin compartment number value.
+	 * @param from The value must be between 0 and 99.
 	 */
-	public void setInbound(Integer inbound) {
-		this.inbound = inbound;
+	public void setFrom(Integer from) {
+		this.from = from;
 	}
 	
 	/**
-	 * Gets the number of the outbound compartment of this transfer rate.
-	 * @return The outbound compartment number as an {@link Integer}.
+	 * Gets the number of the destination compartment of this transfer rate.
+	 * @return The destination compartment number as an {@link Integer}.
 	 */
-	public Integer getOutbound() {
-		return outbound;
+	public Integer getTo() {
+		return to;
 	}
 	
 	/**
-	 * Sets the outbound compartment number value.
-	 * @param outbound The value must be between 0 and 99.
+	 * Sets the destination compartment number value.
+	 * @param to The value must be between 0 and 99.
 	 */
-	public void setOutbound(Integer outbound) {
-		this.outbound = outbound;
+	public void setTo(Integer to) {
+		this.to = to;
 	}
 	
 	/**
-	 * Gets a standardised representation of the transfer rate, following the <tt>kij</tt> or <tt>k_i_j</tt> 
-	 * format. If both inbound and outbound compartment numbers are only 1 digit, the <tt>kij</tt> form is used. 
-	 * Otherwise, the <tt>k_i_j</tt> form is used.
+	 * Gets a standardised representation of the transfer rate, following the <tt>kij</tt> or 
+	 * <tt>k_i_j</tt> format. If both origin and destination compartment numbers are only 1 digit,
+	 * the <tt>kij</tt> format is used. Otherwise, the <tt>k_i_j</tt> format is used.
 	 */
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder("k");
-		if(inbound > 9 || outbound > 9){
+		if(from > 9 || to > 9){
 			sb.append("_");
-			sb.append(String.format("%02d", inbound));
+			sb.append(String.format("%02d", from));
 			sb.append("_");
-			sb.append(String.format("%02d", outbound)); 
+			sb.append(String.format("%02d", to)); 
 		} else {
-			sb.append(inbound);
-			sb.append(outbound);
+			sb.append(from);
+			sb.append(to);
 		}
 		return sb.toString();
 	}
