@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 
 /**
@@ -60,17 +61,17 @@ public abstract class PKMacro extends PharmMLRootType {
 		return value;
 	}
 	
-//	/**
-//	 * Creates a new value for this macro with an assignment.
-//	 * @param argument The name of the argument. It must be compliant with the macro definition.
-//	 * @param assignment The value that is assigned to the argument.
-//	 * @return The created {@link MacroValue} object.
-//	 */
-//	public MacroValue createValue(String argument, Rhs assignment){
-//		MacroValue value = new MacroValue(argument, assignment);
-//		getListOfValue().add(value);
-//		return value;
-//	}
+	/**
+	 * Creates a new value for this macro with an assignment.
+	 * @param argument The name of the argument. It must be compliant with the macro definition.
+	 * @param assignment The value that is assigned to the argument.
+	 * @return The created {@link MacroValue} object.
+	 */
+	public MacroValue createValue(String argument, Rhs assignment){
+		MacroValue value = new MacroValue(argument, assignment);
+		getListOfValue().add(value);
+		return value;
+	}
 	
 	/**
 	 * Gets the name representation of this macro. It is generally the same than the XML element in lowercase.
