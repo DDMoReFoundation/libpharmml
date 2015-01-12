@@ -15,6 +15,7 @@ package eu.ddmore.libpharmml.dom.maths;
  * <li>MIN ("min")</li>
  * <li>MAX ("max")</li>
  * <li>REM ("rem")</li>
+ * <li>ATAN2 ("atan2")</li>
  * </ul>
  * 
  * @author Florent Yvon
@@ -30,7 +31,8 @@ public enum Binoperator {
 	ROOT("root"),
 	MIN("min"),
 	MAX("max"),
-	REM("rem");
+	REM("rem"),
+	ATAN2("atan2");
 	
 	private String operator;
 	
@@ -73,6 +75,8 @@ public enum Binoperator {
 				return Binoperator.MAX;
 			} else if(operator.equals("rem")){
 				return Binoperator.REM;
+			} else if(operator.equals("atan2")){
+				return Binoperator.ATAN2;
 			} else {
 				return null;
 			}

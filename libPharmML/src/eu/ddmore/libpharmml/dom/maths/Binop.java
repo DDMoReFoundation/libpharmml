@@ -117,6 +117,12 @@ import eu.ddmore.libpharmml.impl.LoggerWrapper;
  * 	<td>dividend (a)</td>
  * 	<td>divisor (b)</td>
  * </tr>
+ * <tr>
+ * 	<td>{@link Binoperator#ATAN2}</td>
+ * 	<td>atan2(a,b)</td>
+ * 	<td>a</td>
+ * 	<td>b</td>
+ * </tr>
  * </table>
  * 
  * 
@@ -172,6 +178,7 @@ import eu.ddmore.libpharmml.impl.LoggerWrapper;
  *             &lt;enumeration value="min"/>
  *             &lt;enumeration value="max"/>
  *             &lt;enumeration value="rem"/>
+ *             &lt;enumeration value="atan2"/>
  *           &lt;/restriction>
  *         &lt;/simpleType>
  *       &lt;/attribute>
