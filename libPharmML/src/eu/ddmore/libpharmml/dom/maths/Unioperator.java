@@ -158,6 +158,10 @@ public enum Unioperator {
 			    return Unioperator.FLOOR;
 			} else if(operator.equals("ceiling")){
 			    return Unioperator.CEILING;
+			} else if(operator.equals("heaviside")){
+			    return Unioperator.HEAVISIDE;
+			} else if(operator.equals("sign")){
+			    return Unioperator.SIGN;
 			} else {
 				return null;
 			}
