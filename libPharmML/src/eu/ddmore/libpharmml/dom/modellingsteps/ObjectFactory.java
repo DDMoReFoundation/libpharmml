@@ -393,6 +393,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "Mapping")
+    @Deprecated
     public JAXBElement<MappingType> createMapping(MappingType value) {
         return new JAXBElement<MappingType>(_Mapping_QNAME, MappingType.class, null, value);
     }

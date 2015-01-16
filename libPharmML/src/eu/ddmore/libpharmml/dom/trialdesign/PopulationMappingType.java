@@ -31,7 +31,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
 
 
@@ -56,7 +58,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated Since PharmML 0.5.1. Mapping is now supported with {@link ColumnMapping}.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PopulationMappingType", propOrder = {
@@ -65,6 +67,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
 @XmlSeeAlso({
     IndependentVariableMappingType.class
 })
+@Deprecated
 public abstract class PopulationMappingType
     extends PharmMLRootType
 {
