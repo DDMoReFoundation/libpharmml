@@ -92,10 +92,23 @@ public class Matrix extends MatrixType {
 	 * Constructs a matrix with the minimal required attributes
 	 * @param symbolId Symbol of the matrix (may be null).
 	 * @param type Matrix type.
+	 * 
+	 * @deprecated Since PharmML 0.5.1. The id of a matrix is now located within the variable
+	 * this matrix is assigned to. Use {@link #Matrix(Type)} instead.
 	 */
+	@Deprecated
 	public Matrix(String symbolId, Matrix.Type type){
 		this();
 		this.setSymbId(symbolId);
+		this.setMatrixType(type);
+	}
+	/**
+	 * Constructs a matrix with a given type.
+	 * @param type Matrix type.
+	 * 
+	 */
+	public Matrix(Matrix.Type type){
+		this();
 		this.setMatrixType(type);
 	}
 	
@@ -105,9 +118,24 @@ public class Matrix extends MatrixType {
 	 * @param type Matrix type.
 	 * @param numbCols Number of columns.
 	 * @param numbRows Number of rows.
+	 * 
+	 * @deprecated Since PharmML 0.5.1. The id of a matrix is now located within the variable
+	 * this matrix is assigned to. Use {@link #Matrix(Type, int, int)} instead.
 	 */
+	@Deprecated
 	public Matrix(String symbolId, Matrix.Type type, int numbCols, int numbRows){
 		this(symbolId,type);
+		this.setNumbCols(BigInteger.valueOf(numbCols));
+		this.setNumbRows(BigInteger.valueOf(numbRows));
+	}
+	/**
+	 * Constructs a matrix with the minimal required attributes for a sparse matrix.
+	 * @param type Matrix type.
+	 * @param numbCols Number of columns.
+	 * @param numbRows Number of rows.
+	 */
+	public Matrix(Matrix.Type type, int numbCols, int numbRows){
+		this(type);
 		this.setNumbCols(BigInteger.valueOf(numbCols));
 		this.setNumbRows(BigInteger.valueOf(numbRows));
 	}
