@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
+import eu.ddmore.libpharmml.dom.maths.PiecewiseType;
 
 
 /**
@@ -50,9 +51,17 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.pharmml.org/2013/08/Dataset}ColumnRef"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
- *         &lt;element name="CategoryMapping" type="{http://www.pharmml.org/2013/08/Dataset}CategoryMappingType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;choice>
+ *           &lt;element ref="{http://www.pharmml.org/2013/08/Dataset}ColumnRef"/>
+ *         &lt;/choice>
+ *         &lt;choice>
+ *           &lt;sequence>
+ *             &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef" minOccurs="0"/>
+ *             &lt;element name="Piecewise" type="{http://www.pharmml.org/2013/03/Maths}PiecewiseType" minOccurs="0"/>
+ *             &lt;element name="CategoryMapping" type="{http://www.pharmml.org/2013/08/Dataset}CategoryMappingType" maxOccurs="unbounded" minOccurs="0"/>
+ *           &lt;/sequence>
+ *           &lt;element name="TargetMapping" type="{http://www.pharmml.org/2013/08/Dataset}TargetMappingType" maxOccurs="unbounded"/>
+ *         &lt;/choice>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -65,18 +74,24 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 @XmlType(name = "ColumnMappingType", propOrder = {
     "columnRef",
     "symbRef",
-    "categoryMapping"
+    "piecewise",
+    "categoryMapping",
+    "targetMapping"
 })
 public class ColumnMappingType
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "ColumnRef", required = true)
+    @XmlElement(name = "ColumnRef")
     protected ColumnRefType columnRef;
-    @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
+    @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected SymbolRefType symbRef;
+    @XmlElement(name = "Piecewise")
+    protected PiecewiseType piecewise;
     @XmlElement(name = "CategoryMapping")
     protected List<CategoryMapping> categoryMapping;
+    @XmlElement(name = "TargetMapping")
+    protected List<TargetMapping> targetMapping;
 
     /**
      * 
@@ -129,33 +144,29 @@ public class ColumnMappingType
     }
 
     /**
-     * Gets the value of the categoryMapping property.
+     * Gets the value of the piecewise property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the categoryMapping property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCategoryMapping().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link CategoryMapping }
-     * 
-     * @deprecated Use {@link #getListOfCategoryMapping()}.
+     * @return
+     *     possible object is
+     *     {@link PiecewiseType }
+     *     
+     * @since PharmML 0.5
      */
-    @Deprecated
-    public List<CategoryMapping> getCategoryMapping() {
-        if (categoryMapping == null) {
-            categoryMapping = new ArrayList<CategoryMapping>();
-        }
-        return this.categoryMapping;
+    public PiecewiseType getPiecewise() {
+        return piecewise;
+    }
+
+    /**
+     * Sets the value of the piecewise property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link PiecewiseType }
+     *     
+     * @since PharmML 0.5
+     */
+    public void setPiecewise(PiecewiseType value) {
+        this.piecewise = value;
     }
     
     /**
@@ -170,7 +181,7 @@ public class ColumnMappingType
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getCategoryMapping().add(newItem);
+     *    getListOfCategoryMapping().add(newItem);
      * </pre>
      * 
      * 
@@ -185,6 +196,35 @@ public class ColumnMappingType
             categoryMapping = new ArrayList<CategoryMapping>();
         }
         return this.categoryMapping;
+    }
+
+    /**
+     * Gets the value of the targetMapping property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the targetMapping property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListOfTargetMapping().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link TargetMappingType }
+     * 
+     * @since PharmML 0.5
+     */
+    public List<TargetMapping> getListOfTargetMapping() {
+        if (targetMapping == null) {
+            targetMapping = new ArrayList<TargetMapping>();
+        }
+        return this.targetMapping;
     }
 
 }
