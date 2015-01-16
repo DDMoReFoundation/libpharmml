@@ -226,5 +226,94 @@ public class ColumnMapping
         }
         return this.targetMapping;
     }
+    
+    /**
+     * Creates a new empty {@link ColumnRefType} columnRef element, adds it to the current object and returns it.
+     * @return The created {@link ColumnRefType} object.
+     */
+    public ColumnRefType createColumnRef(){
+            ColumnRefType el = new ColumnRefType();
+            this.columnRef = el;
+            return el;
+    }
+    /**
+     * Creates a new reference to the provided column, adds it to the current object
+     * and returns it.
+     * @param columnId The id of the column this object refers to.
+     * @return The created {@link ColumnRefType} object.
+     */
+    public ColumnRefType createColumnRef(String columnId){
+            ColumnRefType el = new ColumnRefType();
+            el.setColumnIdRef(columnId);
+            this.columnRef = el;
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link SymbolRefType} symbRef element, adds it to the current object and returns it.
+     * @return The created {@link SymbolRefType} object.
+     */
+    public SymbolRefType createSymbRef(){
+            SymbolRefType el = new SymbolRefType();
+            this.symbRef = el;
+            return el;
+    }
+    /**
+     * Creates a new {@link SymbolRefType} symbRef element to the provided symbol id, 
+     * adds it to the current object and returns it.
+     * @param symbolId The symbol id this refers to.
+     * @return The created {@link SymbolRefType} object.
+     */
+    public SymbolRefType createSymbRef(String symbolId){
+            SymbolRefType el = new SymbolRefType();
+            el.setId(symbolId);
+            this.symbRef = el;
+            return el;
+    }
+    /**
+     * Creates a new {@link SymbolRefType} symbRef element to the provided symbol id within 
+     * the provided block id, adds it to the current object and returns it.
+     * @param symbolId The symbol id this refers to
+     * @param blkId The block id of the refered symbol.
+     * @return The created {@link SymbolRefType} object.
+     */
+    public SymbolRefType createSymbRef(String symbolId, String blkId){
+            SymbolRefType el = new SymbolRefType();
+            el.setId(symbolId);
+            el.setBlkIdRef(blkId);
+            this.symbRef = el;
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link PiecewiseType} piecewise element, adds it to the current object and returns it.
+     * @return The created {@link PiecewiseType} object.
+     */
+    public PiecewiseType createPiecewise(){
+            PiecewiseType el = new PiecewiseType();
+            this.piecewise = el;
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link CategoryMapping} categoryMapping element, adds it to the current object and returns it.
+     * @return The created {@link CategoryMapping} object.
+     */
+    public CategoryMapping createCategoryMapping(){
+            CategoryMapping el = new CategoryMapping();
+            getListOfCategoryMapping().add(el);
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link TargetMapping} targetMapping element, adds it to the current object and returns it.
+     * @return The created {@link TargetMapping} object.
+     */
+    public TargetMapping createTargetMapping(){
+            TargetMapping el = new TargetMapping();
+            getListOfTargetMapping().add(el);
+            return el;
+    }
+
 
 }
