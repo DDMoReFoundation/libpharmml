@@ -145,11 +145,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ColumnMappingType }
+     * Create an instance of {@link ColumnMapping }
      * 
      */
-    public ColumnMappingType createColumnMappingType() {
-        return new ColumnMappingType();
+    public ColumnMapping createColumnMappingType() {
+        return new ColumnMapping();
     }
 
     /**

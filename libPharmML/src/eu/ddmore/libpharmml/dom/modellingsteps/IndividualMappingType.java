@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-import eu.ddmore.libpharmml.dom.dataset.ColumnMappingType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 
 
 /**
@@ -52,7 +52,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnMappingType;
  * </pre>
  * 
  * 
- * @deprecated Since PharmML 0.5.1. Use {@link ColumnMappingType} instead.
+ * @deprecated Since PharmML 0.5.1. Use {@link ColumnMapping} instead.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IndividualMappingType")

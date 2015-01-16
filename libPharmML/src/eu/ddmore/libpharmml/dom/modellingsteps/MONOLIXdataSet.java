@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.dataset.ColumnMappingType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 
@@ -64,7 +64,7 @@ public class MONOLIXdataSet
 {
 
     @XmlElement(name = "ColumnMapping")
-    protected List<ColumnMappingType> listOfColumnMapping;
+    protected List<ColumnMapping> listOfColumnMapping;
     @XmlElement(name = "ColumnTransformation")
     protected List<ColumnTransformation> listOfColumnTransformation;
     @XmlElement(name = "MultipleDVMapping")
@@ -108,13 +108,13 @@ public class MONOLIXdataSet
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ColumnMappingType }
+     * {@link ColumnMapping }
      * 
      * 
      */
-    public List<ColumnMappingType> getListOfColumnMapping() {
+    public List<ColumnMapping> getListOfColumnMapping() {
         if (listOfColumnMapping == null) {
-        	listOfColumnMapping = new ArrayList<ColumnMappingType>();
+        	listOfColumnMapping = new ArrayList<ColumnMapping>();
         }
         return this.listOfColumnMapping;
     }
@@ -253,11 +253,11 @@ public class MONOLIXdataSet
     }
     
     /**
-     * Creates a new empty {@link ColumnMappingType} ColumnMapping element, adds it to the current object and returns it.
-     * @return The created {@link ColumnMappingType} object.
+     * Creates a new empty {@link ColumnMapping} ColumnMapping element, adds it to the current object and returns it.
+     * @return The created {@link ColumnMapping} object.
      */
-    public ColumnMappingType createColumnMapping(){
-            ColumnMappingType el = new ColumnMappingType();
+    public ColumnMapping createColumnMapping(){
+            ColumnMapping el = new ColumnMapping();
             getListOfColumnMapping().add(el);
             return el;
     }

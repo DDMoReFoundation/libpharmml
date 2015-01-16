@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.dataset.ColumnMappingType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 
@@ -82,7 +82,7 @@ public class NONMEMdataSetType
 {
 
     @XmlElement(name = "ColumnMapping")
-    protected List<ColumnMappingType> columnMapping;
+    protected List<ColumnMapping> columnMapping;
     @XmlElement(name = "ColumnTransformation")
     protected List<ColumnTransformation> listOfColumnTransformation;
     @XmlElement(name = "MultipleDVMapping")
@@ -113,13 +113,13 @@ public class NONMEMdataSetType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ColumnMappingType }
+     * {@link ColumnMapping }
      * 
      * 
      */
-    public List<ColumnMappingType> getColumnMapping() {
+    public List<ColumnMapping> getColumnMapping() {
         if (columnMapping == null) {
-            columnMapping = new ArrayList<ColumnMappingType>();
+            columnMapping = new ArrayList<ColumnMapping>();
         }
         return this.columnMapping;
     }

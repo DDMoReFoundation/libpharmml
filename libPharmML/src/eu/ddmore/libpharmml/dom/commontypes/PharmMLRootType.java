@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.IndependentVariableType;
 import eu.ddmore.libpharmml.dom.commontypes.VectorElements;
 import eu.ddmore.libpharmml.dom.dataset.CategoryMapping;
-import eu.ddmore.libpharmml.dom.dataset.ColumnMappingType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnsDefinitionType;
 import eu.ddmore.libpharmml.dom.dataset.CommonColumnDefnType;
@@ -262,7 +262,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     ColumnRefType.class,
     DatasetRow.class,
     CategoryMapping.class,
-    ColumnMappingType.class,
+    ColumnMapping.class,
     CommonColumnDefnType.class,
     MapType.class,
     LookupTableType.class,

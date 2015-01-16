@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.dataset.ColumnMappingType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 
@@ -76,7 +76,7 @@ public class LookupTableType
 {
 
     @XmlElement(name = "ColumnMapping")
-    protected List<ColumnMappingType> columnMapping;
+    protected List<ColumnMapping> columnMapping;
     @XmlElement(name = "Target", required = true)
     protected List<TargetType> target;
     @XmlElement(name = "ColumnTransformation")
@@ -102,13 +102,13 @@ public class LookupTableType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ColumnMappingType }
+     * {@link ColumnMapping }
      * 
      * 
      */
-    public List<ColumnMappingType> getColumnMapping() {
+    public List<ColumnMapping> getColumnMapping() {
         if (columnMapping == null) {
-            columnMapping = new ArrayList<ColumnMappingType>();
+            columnMapping = new ArrayList<ColumnMapping>();
         }
         return this.columnMapping;
     }

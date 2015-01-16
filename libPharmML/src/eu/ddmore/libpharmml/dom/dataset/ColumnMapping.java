@@ -78,7 +78,7 @@ import eu.ddmore.libpharmml.dom.maths.PiecewiseType;
     "categoryMapping",
     "targetMapping"
 })
-public class ColumnMappingType
+public class ColumnMapping
     extends PharmMLRootType
 {
 

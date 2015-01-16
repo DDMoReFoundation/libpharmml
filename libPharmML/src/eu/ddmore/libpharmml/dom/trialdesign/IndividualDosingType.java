@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.OidRefType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.dataset.ColumnMappingType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 
@@ -82,7 +82,7 @@ public class IndividualDosingType
     @XmlElement(name = "ActivityRef", required = true)
     protected OidRefType activityRef;
     @XmlElement(name = "ColumnMapping", required = true)
-    protected List<ColumnMappingType> columnMapping;
+    protected List<ColumnMapping> columnMapping;
     @XmlElement(name = "DataSet", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
     protected DataSet dataSet;
 	@XmlElement(name = "IndividualRef", required = true)
@@ -149,13 +149,13 @@ public class IndividualDosingType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ColumnMappingType }
+     * {@link ColumnMapping }
      * 
      * 
      */
-    public List<ColumnMappingType> getColumnMapping() {
+    public List<ColumnMapping> getColumnMapping() {
         if (columnMapping == null) {
-            columnMapping = new ArrayList<ColumnMappingType>();
+            columnMapping = new ArrayList<ColumnMapping>();
         }
         return this.columnMapping;
     }
