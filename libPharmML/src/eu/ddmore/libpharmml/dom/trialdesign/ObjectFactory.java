@@ -299,6 +299,7 @@ public class ObjectFactory {
      * Create an instance of {@link IndependentVariableMappingType }
      * 
      */
+    @Deprecated
     public IndependentVariableMappingType createIndependentVariableMappingType() {
         return new IndependentVariableMappingType();
     }

@@ -88,6 +88,7 @@ public class ObjectFactory {
      * Create an instance of {@link IndividualMappingType }
      * 
      */
+    @Deprecated
     public IndividualMappingType createIndividualMappingType() {
         return new IndividualMappingType();
     }
@@ -104,6 +105,7 @@ public class ObjectFactory {
      * Create an instance of {@link VariableMappingType }
      * 
      */
+    @Deprecated
     public VariableMappingType createVariableMappingType() {
         return new VariableMappingType();
     }
@@ -343,6 +345,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "VariableMapping", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModellingSteps", substitutionHeadName = "Mapping")
+    @Deprecated
     public JAXBElement<VariableMappingType> createVariableMapping(VariableMappingType value) {
         return new JAXBElement<VariableMappingType>(_VariableMapping_QNAME, VariableMappingType.class, null, value);
     }
@@ -352,6 +355,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "IndividualMapping", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModellingSteps", substitutionHeadName = "Mapping")
+    @Deprecated
     public JAXBElement<IndividualMappingType> createIndividualMapping(IndividualMappingType value) {
         return new JAXBElement<IndividualMappingType>(_IndividualMapping_QNAME, IndividualMappingType.class, null, value);
     }
