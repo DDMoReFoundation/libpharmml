@@ -316,11 +316,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MatrixRowType }
+     * Create an instance of {@link MatrixRow }
      * 
      */
-    public MatrixRowType createMatrixRowType() {
-        return new MatrixRowType();
+    public MatrixRow createMatrixRowType() {
+        return new MatrixRow();
     }
 
     /**

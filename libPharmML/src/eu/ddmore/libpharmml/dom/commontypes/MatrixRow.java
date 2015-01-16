@@ -73,7 +73,7 @@ import javax.xml.bind.annotation.XmlType;
     "rowIndex",
     "listOfValues"
 })
-public class MatrixRowType
+public class MatrixRow
     extends PharmMLRootType
 {
 

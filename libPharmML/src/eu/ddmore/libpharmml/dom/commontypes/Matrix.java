@@ -131,7 +131,7 @@ public class Matrix
     @XmlElement(name = "ColumnNames")
     protected MatrixColumnRowNames columnNames;
     @XmlElements({
-        @XmlElement(name = "MatrixRow", type = MatrixRowType.class),
+        @XmlElement(name = "MatrixRow", type = MatrixRow.class),
         @XmlElement(name = "MatrixCell", type = MatrixCell.class),
         @XmlElement(name = "MatrixBlock", type = MatrixBlock.class)
     })
@@ -293,16 +293,16 @@ public class Matrix
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link MatrixRowType }
+     * {@link MatrixRow }
      * 
      * @deprecated
      */
-    public List<MatrixRowType> getMatrixRow() {
+    public List<MatrixRow> getMatrixRow() {
 //        if (matrixRow == null) {
 //            matrixRow = new ArrayList<MatrixRowType>();
 //        }
 //        return this.matrixRow;
-    	return new SubList<MatrixRowType>(getListOfMatrixElements(), MatrixRowType.class);
+    	return new SubList<MatrixRow>(getListOfMatrixElements(), MatrixRow.class);
     }
 
     /**
@@ -323,7 +323,7 @@ public class Matrix
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link MatrixRowType }
+     * {@link MatrixRow }
      * {@link MatrixCell }
      * {@link MatrixBlock }
      * 
