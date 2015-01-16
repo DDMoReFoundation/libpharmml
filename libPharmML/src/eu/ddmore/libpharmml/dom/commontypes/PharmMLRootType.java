@@ -223,7 +223,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     ParameterRandomEffectType.class,
     CovariateDefinitionType.class,
     LevelReferenceType.class,
-    MatrixType.class,
+    Matrix.class,
     VariableAssignmentType.class,
     OidRefType.class,
     SequenceType.class,

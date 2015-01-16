@@ -259,19 +259,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MatrixType }
+     * Create an instance of {@link Matrix }
      * @deprecated Use {@link #createMatrix()} instead.
      */
     @Deprecated
-    public MatrixType createMatrixType() {
-        return new MatrixType();
+    public Matrix createMatrixType() {
+        return new Matrix();
     }
     
     /**
      * Create an instance of {@link Matrix }
      * 
      */
-    public MatrixType createMatrix() {
+    public Matrix createMatrix() {
         return new Matrix();
     }
 
@@ -626,12 +626,12 @@ public class ObjectFactory {
         return new JAXBElement<VectorSelector>(_VectorSelector_QNAME, VectorSelector.class, null, value);
     }
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MatrixType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Matrix }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Matrix")
-    public JAXBElement<MatrixType> createMatrix(MatrixType value) {
-        return new JAXBElement<MatrixType>(_Matrix_QNAME, MatrixType.class, null, value);
+    public JAXBElement<Matrix> createMatrix(Matrix value) {
+        return new JAXBElement<Matrix>(_Matrix_QNAME, Matrix.class, null, value);
     }
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Delay }{@code >}}

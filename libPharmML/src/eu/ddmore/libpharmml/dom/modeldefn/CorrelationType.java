@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.LevelReferenceType;
-import eu.ddmore.libpharmml.dom.commontypes.MatrixType;
+import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
 
@@ -105,7 +105,7 @@ public class CorrelationType
     @XmlElement(name = "Pairwise")
     protected PairwiseType pairwise;
     @XmlElement(name = "Matrix")
-    protected MatrixType matrix;
+    protected Matrix matrix;
     @XmlAttribute(name = "deviationMatrixType")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String deviationMatrixType;
@@ -285,11 +285,11 @@ public class CorrelationType
      * 
      * @return
      *     possible object is
-     *     {@link MatrixType }
+     *     {@link Matrix }
      *     
      * @since libPharmML 0.3
      */
-    public MatrixType getMatrix() {
+    public Matrix getMatrix() {
         return matrix;
     }
 
@@ -298,11 +298,11 @@ public class CorrelationType
      * 
      * @param value
      *     allowed object is
-     *     {@link MatrixType }
+     *     {@link Matrix }
      *     
      * @since libPharmML 0.3
      */
-    public void setMatrix(MatrixType value) {
+    public void setMatrix(Matrix value) {
         this.matrix = value;
     }
 
