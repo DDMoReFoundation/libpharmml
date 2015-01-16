@@ -163,6 +163,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
  * 
  * 
  */
+@SuppressWarnings("deprecation")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PharmMLRootType", propOrder = {
     "description"
