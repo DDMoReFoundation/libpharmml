@@ -30,6 +30,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.dataset.ColumnMappingType;
+
 
 /**
  * 
@@ -49,10 +51,11 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated Since PharmML 0.5.1. Use {@link ColumnMappingType} instead.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IndependentVariableMappingType")
+@Deprecated
 public class IndependentVariableMappingType
     extends PopulationMappingType
 {
