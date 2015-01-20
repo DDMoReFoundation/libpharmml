@@ -55,7 +55,7 @@ import eu.ddmore.libpharmml.dom.maths.Expression;
 import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.dom.maths.LogicCondition;
-import eu.ddmore.libpharmml.dom.maths.LogicExprType;
+import eu.ddmore.libpharmml.dom.maths.LogicExpression;
 import eu.ddmore.libpharmml.dom.modeldefn.CategoricalCovariateType;
 import eu.ddmore.libpharmml.dom.modeldefn.CategoricalPMF;
 import eu.ddmore.libpharmml.dom.modeldefn.CategoricalRelationType;
@@ -183,7 +183,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     VectorSelector.class,
     MatrixSelector.class,
     Probability.class,
-    LogicExprType.class,
+    LogicExpression.class,
     Expression.class,
     StructuralModelType.class,
     ObservationErrorType.class,

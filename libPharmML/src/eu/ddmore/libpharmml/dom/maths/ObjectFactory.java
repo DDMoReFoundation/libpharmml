@@ -162,11 +162,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LogicExprType }
+     * Create an instance of {@link LogicExpression }
      * 
      */
-    public LogicExprType createLogicExprType() {
-        return new LogicExprType();
+    public LogicExpression createLogicExprType() {
+        return new LogicExpression();
     }
 
     /**

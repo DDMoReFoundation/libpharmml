@@ -101,7 +101,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 @XmlSeeAlso({
     LogicUniOpType.class
 })
-public class LogicExprType
+public class LogicExpression
     extends PharmMLRootType
 {
 
