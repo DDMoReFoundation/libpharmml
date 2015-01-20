@@ -75,7 +75,7 @@ public abstract class CommonVariableDefinition
 {
 
     @XmlElement(name = "Symbol")
-    protected SymbolNameType symbol;
+    protected SymbolName symbol;
     @XmlAttribute(name = "symbId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String symbId;
@@ -85,10 +85,10 @@ public abstract class CommonVariableDefinition
      * 
      * @return
      *     possible object is
-     *     {@link SymbolNameType }
+     *     {@link SymbolName }
      *     
      */
-    public SymbolNameType getSymbol() {
+    public SymbolName getSymbol() {
         return symbol;
     }
 
@@ -97,10 +97,10 @@ public abstract class CommonVariableDefinition
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolNameType }
+     *     {@link SymbolName }
      *     
      */
-    public void setSymbol(SymbolNameType value) {
+    public void setSymbol(SymbolName value) {
         this.symbol = value;
     }
 

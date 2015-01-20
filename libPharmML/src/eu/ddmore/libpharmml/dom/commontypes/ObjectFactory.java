@@ -194,11 +194,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SymbolNameType }
+     * Create an instance of {@link SymbolName }
      * 
      */
-    public SymbolNameType createSymbolNameType() {
-        return new SymbolNameType();
+    public SymbolName createSymbolNameType() {
+        return new SymbolName();
     }
 
     /**
@@ -429,12 +429,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SymbolNameType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link SymbolName }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Symbol")
-    public JAXBElement<SymbolNameType> createSymbol(SymbolNameType value) {
-        return new JAXBElement<SymbolNameType>(_Symbol_QNAME, SymbolNameType.class, null, value);
+    public JAXBElement<SymbolName> createSymbol(SymbolName value) {
+        return new JAXBElement<SymbolName>(_Symbol_QNAME, SymbolName.class, null, value);
     }
 
     /**

@@ -58,7 +58,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "SymbolNameType", propOrder = {
     "value"
 })
-public class SymbolNameType {
+public class SymbolName {
 
     @XmlValue
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

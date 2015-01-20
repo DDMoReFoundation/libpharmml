@@ -48,7 +48,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Product;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.Sum;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolNameType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolName;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
@@ -109,7 +109,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 public class FunctionArgumentType extends PharmMLElement {
 
     @XmlElement(name = "Symbol", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected SymbolNameType symbol;
+    protected SymbolName symbol;
     @XmlElement(name = "Description", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected AnnotationType description;
     @XmlElement(name = "Equation")
@@ -139,10 +139,10 @@ public class FunctionArgumentType extends PharmMLElement {
      * 
      * @return
      *     possible object is
-     *     {@link SymbolNameType }
+     *     {@link SymbolName }
      *     
      */
-    public SymbolNameType getSymbol() {
+    public SymbolName getSymbol() {
         return symbol;
     }
 
@@ -151,10 +151,10 @@ public class FunctionArgumentType extends PharmMLElement {
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolNameType }
+     *     {@link SymbolName }
      *     
      */
-    public void setSymbol(SymbolNameType value) {
+    public void setSymbol(SymbolName value) {
         this.symbol = value;
     }
 

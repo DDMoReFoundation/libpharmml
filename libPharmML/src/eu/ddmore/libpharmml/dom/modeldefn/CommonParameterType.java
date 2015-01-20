@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolNameType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolName;
 
 
 /**
@@ -74,7 +74,7 @@ public abstract class CommonParameterType
 {
 
     @XmlElement(name = "Symbol", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected SymbolNameType symbol;
+    protected SymbolName symbol;
     @XmlAttribute(name = "symbId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String symbId;
@@ -84,10 +84,10 @@ public abstract class CommonParameterType
      * 
      * @return
      *     possible object is
-     *     {@link SymbolNameType }
+     *     {@link SymbolName }
      *     
      */
-    public SymbolNameType getSymbol() {
+    public SymbolName getSymbol() {
         return symbol;
     }
 
@@ -96,10 +96,10 @@ public abstract class CommonParameterType
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolNameType }
+     *     {@link SymbolName }
      *     
      */
-    public void setSymbol(SymbolNameType value) {
+    public void setSymbol(SymbolName value) {
         this.symbol = value;
     }
 
