@@ -31,6 +31,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.IndependentVariable;
+
 
 /**
  * References the independent variable.
@@ -63,6 +65,31 @@ public class IndependentVariableReference
 
     @XmlElement(name = "SymbRef", required = true)
     protected SymbolRefType symbRef;
+    
+    /**
+     * Empty constructor.
+     */
+    public IndependentVariableReference(){}
+    
+    /**
+     * Creates an independant variable reference with a symbol reference.
+     * @param symbRef Symbol reference to the independant variable.
+     */
+    public IndependentVariableReference(SymbolRefType symbRef){
+    	this.symbRef = symbRef;
+    }
+    
+    /**
+     * Creates a new reference to the provided independent variable. This will create a
+     * symbol reference with the symbol id of the independant variable when this method is
+     * called. Any further update of the independant variable symbol id may lead to a
+     * dangling reference.
+     * @param variable {@link IndependentVariable} this object refers to.
+     */
+    public IndependentVariableReference(IndependentVariable variable){
+    	this.symbRef = new SymbolRefType();
+    	this.symbRef.setId(variable.getSymbId());
+    }
 
     /**
      * References the independent variable symbol.
