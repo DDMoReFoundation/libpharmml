@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import eu.ddmore.libpharmml.dom.commontypes.NameType;
+import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
@@ -80,7 +80,7 @@ public abstract class CommonParameterModelType
 {
 
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected NameType name;
+    protected Name name;
     @XmlElementRef(name = "CommonParameterElement", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class, required = false)
     protected List<JAXBElement<? extends CommonParameterType>> commonParameterElement;
     @XmlElement(name = "Correlation")
@@ -94,10 +94,10 @@ public abstract class CommonParameterModelType
      * 
      * @return
      *     possible object is
-     *     {@link NameType }
+     *     {@link Name }
      *     
      */
-    public NameType getName() {
+    public Name getName() {
         return name;
     }
 
@@ -106,10 +106,10 @@ public abstract class CommonParameterModelType
      * 
      * @param value
      *     allowed object is
-     *     {@link NameType }
+     *     {@link Name }
      *     
      */
-    public void setName(NameType value) {
+    public void setName(Name value) {
         this.name = value;
     }
 

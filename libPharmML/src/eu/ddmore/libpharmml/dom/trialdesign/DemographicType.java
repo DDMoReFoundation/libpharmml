@@ -44,7 +44,7 @@ import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.LevelReference;
-import eu.ddmore.libpharmml.dom.commontypes.NameType;
+import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
@@ -91,7 +91,7 @@ public class DemographicType
 {
 
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected NameType name;
+    protected Name name;
     @XmlElement(name = "VariabilityReference", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
     protected LevelReference variabilityReference;
     @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class)
@@ -107,10 +107,10 @@ public class DemographicType
      * 
      * @return
      *     possible object is
-     *     {@link NameType }
+     *     {@link Name }
      *     
      */
-    public NameType getName() {
+    public Name getName() {
         return name;
     }
 
@@ -119,10 +119,10 @@ public class DemographicType
      * 
      * @param value
      *     allowed object is
-     *     {@link NameType }
+     *     {@link Name }
      *     
      */
-    public void setName(NameType value) {
+    public void setName(Name value) {
         this.name = value;
     }
 

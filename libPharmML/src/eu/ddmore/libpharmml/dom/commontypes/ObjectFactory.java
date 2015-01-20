@@ -98,11 +98,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link NameType }
+     * Create an instance of {@link Name }
      * 
      */
-    public NameType createNameType() {
-        return new NameType();
+    public Name createNameType() {
+        return new Name();
     }
 
     /**
@@ -537,12 +537,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NameType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Name }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Name")
-    public JAXBElement<NameType> createName(NameType value) {
-        return new JAXBElement<NameType>(_Name_QNAME, NameType.class, null, value);
+    public JAXBElement<Name> createName(Name value) {
+        return new JAXBElement<Name>(_Name_QNAME, Name.class, null, value);
     }
 
     /**

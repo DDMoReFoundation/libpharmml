@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
-import eu.ddmore.libpharmml.dom.commontypes.NameType;
+import eu.ddmore.libpharmml.dom.commontypes.Name;
 
 
 /**
@@ -108,7 +108,7 @@ public class TreatmentType
      * {@link JAXBElement }{@code <}{@link AnnotationType }{@code >}
      * {@link JAXBElement }{@code <}{@link BolusType }{@code >}
      * {@link JAXBElement }{@code <}{@link DosingRegimenType }{@code >}
-     * {@link JAXBElement }{@code <}{@link NameType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Name }{@code >}
      * {@link JAXBElement }{@code <}{@link InfusionType }{@code >}
      * 
      * 

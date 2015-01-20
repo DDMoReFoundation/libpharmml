@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
-import eu.ddmore.libpharmml.dom.commontypes.NameType;
+import eu.ddmore.libpharmml.dom.commontypes.Name;
 
 
 /**
@@ -207,14 +207,14 @@ public class ObservationModelType
      * 
      * @return
      *     possible object is
-     *     {@link NameType }
+     *     {@link Name }
      *     
      * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.
      * See the documentation of {@link ObservationModelType}.
      */
     @Override
     @Deprecated
-    public NameType getName() {
+    public Name getName() {
         return super.getName();
     }
 
@@ -223,14 +223,14 @@ public class ObservationModelType
      * 
      * @param value
      *     allowed object is
-     *     {@link NameType }
+     *     {@link Name }
      *     
      * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.
      * See the documentation of {@link ObservationModelType}.
      */
     @Override
     @Deprecated
-    public void setName(NameType value) {
+    public void setName(Name value) {
         super.setName(value);
     }
 

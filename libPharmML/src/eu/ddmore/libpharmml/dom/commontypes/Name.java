@@ -59,7 +59,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "NameType", propOrder = {
     "value"
 })
-public class NameType {
+public class Name {
 
     @XmlValue
     protected String value;

@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
 import eu.ddmore.libpharmml.dom.commontypes.FunctionDefinitionType;
-import eu.ddmore.libpharmml.dom.commontypes.NameType;
+import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinitionType;
 import eu.ddmore.libpharmml.dom.modellingsteps.ModellingStepsType;
 import eu.ddmore.libpharmml.dom.trialdesign.TrialDesignType;
@@ -86,7 +86,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.TrialDesignType;
 public class PharmML {
 
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
-    protected NameType name;
+    protected Name name;
     @XmlElement(name = "Description", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected AnnotationType description;
     @XmlElement(name = "IndependentVariable")
@@ -112,10 +112,10 @@ public class PharmML {
      * 
      * @return
      *     possible object is
-     *     {@link NameType }
+     *     {@link Name }
      *     
      */
-    public NameType getName() {
+    public Name getName() {
         return name;
     }
 
@@ -124,10 +124,10 @@ public class PharmML {
      * 
      * @param value
      *     allowed object is
-     *     {@link NameType }
+     *     {@link Name }
      *     
      */
-    public void setName(NameType value) {
+    public void setName(Name value) {
         this.name = value;
     }
 

@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
-import eu.ddmore.libpharmml.dom.commontypes.NameType;
+import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableDefinitionType;
@@ -90,7 +90,7 @@ public abstract class CommonObservationModel
 {
 
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected NameType name;
+    protected Name name;
     
     // -----------
     @XmlElementRef(name = "CommonParameterElement", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class, required = false)
@@ -109,10 +109,10 @@ public abstract class CommonObservationModel
      * 
      * @return
      *     possible object is
-     *     {@link NameType }
+     *     {@link Name }
      *     
      */
-    public NameType getName() {
+    public Name getName() {
         return name;
     }
 
@@ -121,10 +121,10 @@ public abstract class CommonObservationModel
      * 
      * @param value
      *     allowed object is
-     *     {@link NameType }
+     *     {@link Name }
      *     
      */
-    public void setName(NameType value) {
+    public void setName(Name value) {
         this.name = value;
     }
 
@@ -251,12 +251,12 @@ public abstract class CommonObservationModel
     }
     
     /**
-     * Creates a new {@link NameType} name element, adds it to the current object and returns it.
+     * Creates a new {@link Name} name element, adds it to the current object and returns it.
      * @param name The value of the name
-     * @return The created {@link NameType} object.
+     * @return The created {@link Name} object.
      */
-    public NameType createName(String name){
-            NameType el = new NameType();
+    public Name createName(String name){
+            Name el = new Name();
             this.name = el;
             el.setValue(name);
             return el;

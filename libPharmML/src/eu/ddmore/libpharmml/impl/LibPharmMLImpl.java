@@ -29,7 +29,7 @@ import eu.ddmore.libpharmml.IPharmMLResource;
 import eu.ddmore.libpharmml.IPharmMLValidator;
 import eu.ddmore.libpharmml.IValidationReport;
 import eu.ddmore.libpharmml.dom.PharmML;
-import eu.ddmore.libpharmml.dom.commontypes.NameType;
+import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableDefinitionType;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinitionType;
@@ -93,7 +93,7 @@ public class LibPharmMLImpl implements ILibPharmML {
 		eu.ddmore.libpharmml.dom.commontypes.ObjectFactory commonFact = new eu.ddmore.libpharmml.dom.commontypes.ObjectFactory();
 		final PharmML dom = fact.createPharmML();
 		dom.setWrittenVersion(version.getValue());
-		NameType name = commonFact.createNameType();
+		Name name = commonFact.createNameType();
 		name.setValue(DEFAULT_NAME);
 		dom.setName(name);
 		eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory mdefnFact = new eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory();
