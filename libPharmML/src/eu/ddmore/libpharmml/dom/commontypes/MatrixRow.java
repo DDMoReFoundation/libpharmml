@@ -132,7 +132,7 @@ public class MatrixRow
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * {@link JAXBElement }{@code <}{@link IntValue }{@code >}
-     * {@link JAXBElement }{@code <}{@link SequenceType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Sequence }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValue }{@code >}
      * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
      * {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}

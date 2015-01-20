@@ -36,8 +36,8 @@ public class VectorValueAdapter extends XmlAdapter<JAXBElement<?>, VectorValue>{
 	public JAXBElement<?> marshal(VectorValue v) throws Exception {
 		if(v instanceof VectorCellValue){
 			return new VectorCellValueAdapter().marshal((VectorCellValue) v);
-		} else if (v instanceof SequenceType){
-			return of.createSequence((SequenceType) v);
+		} else if (v instanceof Sequence){
+			return of.createSequence((Sequence) v);
 		} else {
 			throw new UndeclaredInterfaceImplementer(this, v);
 		}

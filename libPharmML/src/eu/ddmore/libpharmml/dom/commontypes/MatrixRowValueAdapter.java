@@ -26,8 +26,8 @@ public class MatrixRowValueAdapter extends XmlAdapter<JAXBElement<?>, MatrixRowV
 		if(v != null){
 			if(v instanceof Scalar){
 				jaxbEl = MasterObjectFactory.createScalar((Scalar) v);
-			} else if (v instanceof SequenceType){
-				jaxbEl = MasterObjectFactory.COMMONTYPES_OF.createSequence((SequenceType) v);
+			} else if (v instanceof Sequence){
+				jaxbEl = MasterObjectFactory.COMMONTYPES_OF.createSequence((Sequence) v);
 			} else if (v instanceof SymbolRefType){
 				jaxbEl = MasterObjectFactory.COMMONTYPES_OF.createSymbRef((SymbolRefType) v);
 			} else if (v instanceof Equation){

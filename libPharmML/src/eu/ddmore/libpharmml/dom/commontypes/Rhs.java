@@ -87,7 +87,7 @@ public class Rhs
     @XmlElement(name = "SymbRef")
     protected SymbolRefType symbRef;
     @XmlElement(name = "Sequence")
-    protected SequenceType sequence;
+    protected Sequence sequence;
     @XmlElement(name = "Vector")
     protected VectorType vector;
     @XmlElement(name = "Interpolation")
@@ -110,7 +110,7 @@ public class Rhs
     	this.symbRef = symbRef;
     }
 
-    public Rhs(SequenceType sequence){
+    public Rhs(Sequence sequence){
     	this.sequence = sequence;
     }
     
@@ -217,10 +217,10 @@ public class Rhs
      * 
      * @return
      *     possible object is
-     *     {@link SequenceType }
+     *     {@link Sequence }
      *     
      */
-    public SequenceType getSequence() {
+    public Sequence getSequence() {
         return sequence;
     }
 
@@ -229,10 +229,10 @@ public class Rhs
      * 
      * @param value
      *     allowed object is
-     *     {@link SequenceType }
+     *     {@link Sequence }
      *     
      */
-    public void setSequence(SequenceType value) {
+    public void setSequence(Sequence value) {
         this.sequence = value;
     }
 
@@ -315,7 +315,7 @@ public class Rhs
      * that is not null is returned. Only one is returned even if 2 or more attributes have been set.
      * If there is no content, this method returns null.
      * @return Possible return types are {@link Equation}, {@link Scalar}, {@link SymbolRefType}, 
-     * {@link VectorType}, {@link Matrix}, {@link Interpolation} and {@link SequenceType}.
+     * {@link VectorType}, {@link Matrix}, {@link Interpolation} and {@link Sequence}.
      */
     public Object getContent(){
     	if(equation != null) return equation;

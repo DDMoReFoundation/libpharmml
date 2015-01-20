@@ -26,7 +26,7 @@ import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
-import eu.ddmore.libpharmml.dom.commontypes.SequenceType;
+import eu.ddmore.libpharmml.dom.commontypes.Sequence;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
@@ -224,8 +224,8 @@ public class MasterObjectFactory {
 			element = createScalar((Scalar) value);
 		} else if(value instanceof SymbolRefType){
 			element = COMMONTYPES_OF.createSymbRef((SymbolRefType) value);
-		} else if(value instanceof SequenceType){
-			element = COMMONTYPES_OF.createSequence((SequenceType) value);
+		} else if(value instanceof Sequence){
+			element = COMMONTYPES_OF.createSequence((Sequence) value);
 		} else {
 			throw new RuntimeException("Unknown VectorValue type");
 		}

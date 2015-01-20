@@ -68,7 +68,7 @@ import javax.xml.bind.annotation.XmlType;
     "end",
     "repetitions"
 })
-public class SequenceType
+public class Sequence
     extends PharmMLRootType implements VectorValue, MatrixRowValue
 {
 

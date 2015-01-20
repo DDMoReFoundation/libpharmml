@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
  *             
  * <p>Vectors can have 2 different forms. A first one where all the elements of the vector are specified (Type A),
  * and an other one where the elements that are not explicitly specified have a default value (Type B).
- * The possible values in a vector are {@link Scalar}, {@link SymbolRefType} and {@link SequenceType}.
+ * The possible values in a vector are {@link Scalar}, {@link SymbolRefType} and {@link Sequence}.
  * 
  * <p><h3>Type A (complete):</h3>
  * This is the most simple representation of a vector.
@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * vector.setLength(values.length);<br>
  * </code>
  * <p>It is mandatory to specify manually the length of the vector. This is because the length
- * of the vector cannot be found automatically when a {@link SequenceType} or a {@link SymbolRefType}
+ * of the vector cannot be found automatically when a {@link Sequence} or a {@link SymbolRefType}
  * object is in the list, as it can refer to multiple values.
  * 
  * <p><h3>Type B (sparse):</h3>

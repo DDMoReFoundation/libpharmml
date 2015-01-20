@@ -134,7 +134,7 @@ public class VectorType extends AbstractVector {
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      * {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
-     * {@link JAXBElement }{@code <}{@link SequenceType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Sequence }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValue }{@code >}
      * {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}

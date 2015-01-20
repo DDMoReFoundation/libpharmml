@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.SequenceType;
+import eu.ddmore.libpharmml.dom.commontypes.Sequence;
 import eu.ddmore.libpharmml.dom.commontypes.VectorType;
 
 
@@ -76,7 +76,7 @@ public class TimepointsType
      * @return
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link SequenceType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Sequence }{@code >}
      *     {@link JAXBElement }{@code <}{@link VectorType }{@code >}
      *     
      */
@@ -90,7 +90,7 @@ public class TimepointsType
      * @param value
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link SequenceType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Sequence }{@code >}
      *     {@link JAXBElement }{@code <}{@link VectorType }{@code >}
      *     
      */

@@ -101,8 +101,8 @@ public class VectorElements extends PharmMLRootType implements ScalarContainer {
 		return symbRef;
 	}
 	
-	public SequenceType createSequence(){
-		SequenceType seq = new SequenceType();
+	public Sequence createSequence(){
+		Sequence seq = new Sequence();
 		getListOfElements().add(seq);
 		return seq;
 	}

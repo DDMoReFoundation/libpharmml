@@ -234,11 +234,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SequenceType }
+     * Create an instance of {@link Sequence }
      * 
      */
-    public SequenceType createSequenceType() {
-        return new SequenceType();
+    public Sequence createSequenceType() {
+        return new Sequence();
     }
 
     /**
@@ -501,12 +501,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SequenceType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Sequence }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Sequence", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Arrays")
-    public JAXBElement<SequenceType> createSequence(SequenceType value) {
-        return new JAXBElement<SequenceType>(_Sequence_QNAME, SequenceType.class, null, value);
+    public JAXBElement<Sequence> createSequence(Sequence value) {
+        return new JAXBElement<Sequence>(_Sequence_QNAME, Sequence.class, null, value);
     }
 
     /**

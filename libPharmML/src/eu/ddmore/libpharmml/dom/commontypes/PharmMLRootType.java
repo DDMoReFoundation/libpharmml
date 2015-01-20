@@ -227,7 +227,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     Matrix.class,
     VariableAssignmentType.class,
     OidRef.class,
-    SequenceType.class,
+    Sequence.class,
     Rhs.class,
     Interpolation.class,
     BooleanValue.class,

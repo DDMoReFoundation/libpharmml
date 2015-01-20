@@ -35,10 +35,10 @@ public interface Assignable {
 	
 	/**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param sequence The value of the assignment as a {@link SequenceType}.
+	 * @param sequence The value of the assignment as a {@link Sequence}.
 	 * @return The created {@link Rhs} assign element.
 	 */
-	public Rhs assign(SequenceType sequence);
+	public Rhs assign(Sequence sequence);
 	
 	/**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
