@@ -60,7 +60,7 @@ import javax.xml.bind.annotation.XmlType;
     "initialValue",
     "initialTime"
 })
-public class InitialConditionType
+public class InitialCondition
     extends PharmMLRootType
 {
 

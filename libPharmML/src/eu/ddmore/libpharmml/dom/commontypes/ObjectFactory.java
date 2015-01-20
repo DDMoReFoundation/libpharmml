@@ -324,11 +324,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link InitialConditionType }
+     * Create an instance of {@link InitialCondition }
      * 
      */
-    public InitialConditionType createInitialConditionType() {
-        return new InitialConditionType();
+    public InitialCondition createInitialConditionType() {
+        return new InitialCondition();
     }
 
     /**

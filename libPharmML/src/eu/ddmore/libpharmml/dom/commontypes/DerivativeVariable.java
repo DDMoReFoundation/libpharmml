@@ -75,7 +75,7 @@ public class DerivativeVariable
     @XmlElement(name = "IndependentVariable")
     protected IndependentVariableReference independentVariable;
     @XmlElement(name = "InitialCondition")
-    protected InitialConditionType initialCondition;
+    protected InitialCondition initialCondition;
     @XmlElement(name = "History")
     protected History history;
     @XmlAttribute(name = "compartmentNo")
@@ -152,10 +152,10 @@ public class DerivativeVariable
      * 
      * @return
      *     possible object is
-     *     {@link InitialConditionType }
+     *     {@link InitialCondition }
      *     
      */
-    public InitialConditionType getInitialCondition() {
+    public InitialCondition getInitialCondition() {
         return initialCondition;
     }
 
@@ -164,10 +164,10 @@ public class DerivativeVariable
      * 
      * @param value
      *     allowed object is
-     *     {@link InitialConditionType }
+     *     {@link InitialCondition }
      *     
      */
-    public void setInitialCondition(InitialConditionType value) {
+    public void setInitialCondition(InitialCondition value) {
         this.initialCondition = value;
     }
 

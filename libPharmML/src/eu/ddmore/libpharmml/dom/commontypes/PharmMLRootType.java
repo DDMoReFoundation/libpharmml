@@ -239,7 +239,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     VectorElements.class,
     MatrixRow.class,
     VectorSegmentSelector.class,
-    InitialConditionType.class,
+    InitialCondition.class,
     MatrixCellSelector.class,
     MatrixVectorIndex.class,
     CommonVariableDefinition.class,
