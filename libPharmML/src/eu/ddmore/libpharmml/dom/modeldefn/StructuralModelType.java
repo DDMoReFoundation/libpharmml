@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.CommonVariableDefinition;
-import eu.ddmore.libpharmml.dom.commontypes.DerivativeVariableType;
+import eu.ddmore.libpharmml.dom.commontypes.DerivativeVariable;
 import eu.ddmore.libpharmml.dom.commontypes.NameType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableDefinitionType;
@@ -170,7 +170,7 @@ public class StructuralModelType
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link CommonVariableDefinition }{@code >}
      * {@link JAXBElement }{@code <}{@link VariableDefinitionType }{@code >}
-     * {@link JAXBElement }{@code <}{@link DerivativeVariableType }{@code >}
+     * {@link JAXBElement }{@code <}{@link DerivativeVariable }{@code >}
      * 
      * 
      */

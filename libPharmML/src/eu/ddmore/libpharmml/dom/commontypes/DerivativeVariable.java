@@ -66,7 +66,7 @@ import javax.xml.bind.annotation.XmlType;
     "initialCondition",
     "history"
 })
-public class DerivativeVariableType
+public class DerivativeVariable
     extends CommonVariableDefinition
 {
 

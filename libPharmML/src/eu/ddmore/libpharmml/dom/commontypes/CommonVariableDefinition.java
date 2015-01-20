@@ -67,7 +67,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlSeeAlso({
     FunctionDefinitionType.class,
     VariableDefinitionType.class,
-    DerivativeVariableType.class,
+    DerivativeVariable.class,
     FuncParameterDefinitionType.class
 })
 public abstract class CommonVariableDefinition

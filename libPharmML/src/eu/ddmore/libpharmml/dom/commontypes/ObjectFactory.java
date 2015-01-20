@@ -154,11 +154,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DerivativeVariableType }
+     * Create an instance of {@link DerivativeVariable }
      * 
      */
-    public DerivativeVariableType createDerivativeVariableType() {
-        return new DerivativeVariableType();
+    public DerivativeVariable createDerivativeVariableType() {
+        return new DerivativeVariable();
     }
 
     /**
@@ -519,12 +519,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DerivativeVariableType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DerivativeVariable }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "DerivativeVariable", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "CommonVariable")
-    public JAXBElement<DerivativeVariableType> createDerivativeVariable(DerivativeVariableType value) {
-        return new JAXBElement<DerivativeVariableType>(_DerivativeVariable_QNAME, DerivativeVariableType.class, null, value);
+    public JAXBElement<DerivativeVariable> createDerivativeVariable(DerivativeVariable value) {
+        return new JAXBElement<DerivativeVariable>(_DerivativeVariable_QNAME, DerivativeVariable.class, null, value);
     }
 
     /**
