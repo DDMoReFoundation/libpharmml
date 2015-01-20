@@ -229,7 +229,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     OidRefType.class,
     SequenceType.class,
     Rhs.class,
-    InterpolationType.class,
+    Interpolation.class,
     BooleanValue.class,
     VectorType.class,
     History.class,

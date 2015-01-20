@@ -72,7 +72,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "algorithm",
     "interpIndepVar"
 })
-public class InterpolationType
+public class Interpolation
     extends PharmMLRootType
 {
 

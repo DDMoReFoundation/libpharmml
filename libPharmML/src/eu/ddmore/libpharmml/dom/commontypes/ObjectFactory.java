@@ -170,11 +170,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link InterpolationType }
+     * Create an instance of {@link Interpolation }
      * 
      */
-    public InterpolationType createInterpolationType() {
-        return new InterpolationType();
+    public Interpolation createInterpolationType() {
+        return new Interpolation();
     }
 
     /**
@@ -366,12 +366,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link InterpolationType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Interpolation }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Interpolation")
-    public JAXBElement<InterpolationType> createInterpolation(InterpolationType value) {
-        return new JAXBElement<InterpolationType>(_Interpolation_QNAME, InterpolationType.class, null, value);
+    public JAXBElement<Interpolation> createInterpolation(Interpolation value) {
+        return new JAXBElement<Interpolation>(_Interpolation_QNAME, Interpolation.class, null, value);
     }
 
     /**

@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.Assignable;
-import eu.ddmore.libpharmml.dom.commontypes.InterpolationType;
+import eu.ddmore.libpharmml.dom.commontypes.Interpolation;
 import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
@@ -220,7 +220,7 @@ public class MacroValue extends PharmMLRootType implements Assignable {
 	}
 
 	@Override
-	public Rhs assign(InterpolationType interpolation) {
+	public Rhs assign(Interpolation interpolation) {
 		Rhs assign = new Rhs(interpolation);
 		setAssign(assign);
 		return assign;

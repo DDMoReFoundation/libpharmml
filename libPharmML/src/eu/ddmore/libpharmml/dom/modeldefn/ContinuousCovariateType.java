@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
-import eu.ddmore.libpharmml.dom.commontypes.InterpolationType;
+import eu.ddmore.libpharmml.dom.commontypes.Interpolation;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractContinuousUnivariateDistributionType;
 import eu.ddmore.libpharmml.dom.uncertml.BetaDistribution;
@@ -94,7 +94,7 @@ public class ContinuousCovariateType
     @XmlElement(name = "Transformation")
     protected List<CovariateTransformationType> listOfTransformation;
     @XmlElement(name = "Interpolation", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected InterpolationType interpolation;
+    protected Interpolation interpolation;
 
     /**
      * The distribution that the continuous covariate follows.
@@ -223,10 +223,10 @@ public class ContinuousCovariateType
      * 
      * @return
      *     possible object is
-     *     {@link InterpolationType }
+     *     {@link Interpolation }
      *     
      */
-    public InterpolationType getInterpolation() {
+    public Interpolation getInterpolation() {
         return interpolation;
     }
 
@@ -235,10 +235,10 @@ public class ContinuousCovariateType
      * 
      * @param value
      *     allowed object is
-     *     {@link InterpolationType }
+     *     {@link Interpolation }
      *     
      */
-    public void setInterpolation(InterpolationType value) {
+    public void setInterpolation(Interpolation value) {
         this.interpolation = value;
     }
 

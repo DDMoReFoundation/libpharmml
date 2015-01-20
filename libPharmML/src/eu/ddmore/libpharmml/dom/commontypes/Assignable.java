@@ -49,10 +49,10 @@ public interface Assignable {
 	
 	/**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param interpolation The value of the assignment as a {@link InterpolationType}.
+	 * @param interpolation The value of the assignment as a {@link Interpolation}.
 	 * @return The created {@link Rhs} assign element.
 	 */
-	public Rhs assign(InterpolationType interpolation);
+	public Rhs assign(Interpolation interpolation);
 	
 	/**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
