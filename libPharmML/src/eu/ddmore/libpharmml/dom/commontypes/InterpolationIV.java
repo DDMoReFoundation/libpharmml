@@ -59,7 +59,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "InterpolationIVType", propOrder = {
     "symbRef"
 })
-public class InterpolationIVType
+public class InterpolationIV
     extends PharmMLRootType
 {
 

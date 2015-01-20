@@ -300,11 +300,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link InterpolationIVType }
+     * Create an instance of {@link InterpolationIV }
      * 
      */
-    public InterpolationIVType createInterpolationIVType() {
-        return new InterpolationIVType();
+    public InterpolationIV createInterpolationIVType() {
+        return new InterpolationIV();
     }
 
     /**

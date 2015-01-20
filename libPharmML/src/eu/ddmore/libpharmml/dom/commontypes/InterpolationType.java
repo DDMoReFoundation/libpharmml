@@ -80,7 +80,7 @@ public class InterpolationType
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String algorithm;
     @XmlElement(name = "InterpIndepVar", required = true)
-    protected InterpolationIVType interpIndepVar;
+    protected InterpolationIV interpIndepVar;
 
     /**
      * Gets the value of the algorithm property.
@@ -111,10 +111,10 @@ public class InterpolationType
      * 
      * @return
      *     possible object is
-     *     {@link InterpolationIVType }
+     *     {@link InterpolationIV }
      *     
      */
-    public InterpolationIVType getInterpIndepVar() {
+    public InterpolationIV getInterpIndepVar() {
         return interpIndepVar;
     }
 
@@ -123,10 +123,10 @@ public class InterpolationType
      * 
      * @param value
      *     allowed object is
-     *     {@link InterpolationIVType }
+     *     {@link InterpolationIV }
      *     
      */
-    public void setInterpIndepVar(InterpolationIVType value) {
+    public void setInterpIndepVar(InterpolationIV value) {
         this.interpIndepVar = value;
     }
 

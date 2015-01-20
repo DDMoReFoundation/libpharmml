@@ -248,7 +248,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     InitialTime.class,
     IndependentVariableReference.class,
     DelayVariable.class,
-    InterpolationIVType.class,
+    InterpolationIV.class,
     MatrixColumnRowNames.class,
     LowUpLimit.class,
     VectorSegment.class,
