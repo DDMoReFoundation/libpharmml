@@ -59,7 +59,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CommonColumnDefnType")
 @XmlSeeAlso({
-    ColumnDefnType.class,
+    ColumnDefinition.class,
     DataSetTableDefnType.class
 })
 public class CommonColumnDefnType

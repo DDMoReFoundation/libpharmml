@@ -153,11 +153,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ColumnDefnType }
+     * Create an instance of {@link ColumnDefinition }
      * 
      */
-    public ColumnDefnType createColumnDefnType() {
-        return new ColumnDefnType();
+    public ColumnDefinition createColumnDefnType() {
+        return new ColumnDefinition();
     }
 
     /**

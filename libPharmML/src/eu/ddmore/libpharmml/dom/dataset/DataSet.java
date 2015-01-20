@@ -98,7 +98,7 @@ public class DataSet
 	
 	@XmlElement(name = "Definition", required = true)
 	@XmlJavaTypeAdapter(DataSet.ColumnDefinitionAdapter.class)
-	protected WrappedList<ColumnDefnType> wrappedListOfColumn;
+	protected WrappedList<ColumnDefinition> wrappedListOfColumn;
 	
     @XmlElement(name = "ImportData")
     protected ImportDataType importData;
@@ -132,11 +132,11 @@ public class DataSet
      * description to the wrapper (i.e. the &lt;Definition> element) using this class. However, using
      * the {@link List} interface may be more clear.
      * 
-     * @return  A {@link WrappedList} object that contains instances of {@link ColumnDefnType}.
+     * @return  A {@link WrappedList} object that contains instances of {@link ColumnDefinition}.
      */
-    public WrappedList<ColumnDefnType> getListOfColumnDefinition(){
+    public WrappedList<ColumnDefinition> getListOfColumnDefinition(){
     	if(wrappedListOfColumn == null){
-    		wrappedListOfColumn = new WrappedList<ColumnDefnType>();
+    		wrappedListOfColumn = new WrappedList<ColumnDefinition>();
     	}
     	return wrappedListOfColumn;
     }
@@ -150,10 +150,10 @@ public class DataSet
      * @param columnId The id of the column.
      * @param columnType The type of the column.
      * @param valueType The type of value in this column.
-     * @return The created column as a {@link ColumnDefnType} object.
+     * @return The created column as a {@link ColumnDefinition} object.
      */
-    public ColumnDefnType createColumnDefinition(String columnId, ColumnType columnType, SymbolType valueType){
-    	ColumnDefnType column = new ColumnDefnType();
+    public ColumnDefinition createColumnDefinition(String columnId, ColumnType columnType, SymbolType valueType){
+    	ColumnDefinition column = new ColumnDefinition();
     	column.setColumnId(columnId);
     	column.setColumnType(columnType);
     	column.setValueType(valueType);
@@ -262,10 +262,10 @@ public class DataSet
 //		ColumnsDefinitionType colDef = getDefinition();
 //		if(colDef != null){
 //			List<ColumnDefnType> columns = colDef.getColumn();
-			List<ColumnDefnType> columns = getListOfColumnDefinition();
+			List<ColumnDefinition> columns = getListOfColumnDefinition();
 			if(columns != null && columns.size() > 0){
 				for(int i=0;i<columns.size();i++){
-					ColumnDefnType column = columns.get(i);
+					ColumnDefinition column = columns.get(i);
 					if(i == 0){
 						if(!column.getColumnNum().equals(BigInteger.valueOf(1))){
 							DS2 = true;
@@ -389,14 +389,14 @@ public class DataSet
 		return scalar;
 	}
 
-	static class ColumnDefinitionAdapter extends XmlAdapter<ColumnsDefinitionType, WrappedList<ColumnDefnType>>{
+	static class ColumnDefinitionAdapter extends XmlAdapter<ColumnsDefinitionType, WrappedList<ColumnDefinition>>{
 
 		@Override
-		public WrappedList<ColumnDefnType> unmarshal(ColumnsDefinitionType v) throws Exception {
+		public WrappedList<ColumnDefinition> unmarshal(ColumnsDefinitionType v) throws Exception {
 			if(v == null){
 				return null;
 			} else {
-				WrappedList<ColumnDefnType> wrappedList = new WrappedList<ColumnDefnType>();
+				WrappedList<ColumnDefinition> wrappedList = new WrappedList<ColumnDefinition>();
 				Util.cloneRoot(v, wrappedList);
 				wrappedList.addAll(v.getColumn());
 				return wrappedList;
@@ -404,7 +404,7 @@ public class DataSet
 		}
 
 		@Override
-		public ColumnsDefinitionType marshal(WrappedList<ColumnDefnType> v) throws Exception {
+		public ColumnsDefinitionType marshal(WrappedList<ColumnDefinition> v) throws Exception {
 			if(v == null){
 				return null;
 			} else {
@@ -452,7 +452,7 @@ public class DataSet
 	protected void beforeMarshal(Marshaller marshaller){
 		// Setting columnNum values to column definitions
 		BigInteger columnNum = BigInteger.ZERO;
-		for(ColumnDefnType columnDef : getListOfColumnDefinition()){
+		for(ColumnDefinition columnDef : getListOfColumnDefinition()){
 			if(columnDef != null){
 				columnNum = columnNum.add(BigInteger.ONE);
 				columnDef.setColumnNum(columnNum);

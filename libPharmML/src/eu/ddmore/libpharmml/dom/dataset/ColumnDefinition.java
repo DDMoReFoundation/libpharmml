@@ -56,7 +56,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ColumnDefnType")
-public class ColumnDefnType
+public class ColumnDefinition
     extends CommonColumnDefnType
 {
 
