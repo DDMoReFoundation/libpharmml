@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.VariableAssignmentType;
+import eu.ddmore.libpharmml.dom.commontypes.VariableAssignment;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 
@@ -79,7 +79,7 @@ public class DatasetMappingType
 
 	@XmlElement(name = "VariableAssignment", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
 	@Deprecated
-    protected List<VariableAssignmentType> variableAssignment;
+    protected List<VariableAssignment> variableAssignment;
 	@XmlElementRef(name = "Mapping", namespace = "http://www.pharmml.org/2013/03/ModellingSteps", type = JAXBElement.class)
 	@Deprecated
     protected List<JAXBElement<? extends MappingType>> mapping;
@@ -108,14 +108,14 @@ public class DatasetMappingType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link VariableAssignmentType }
+     * {@link VariableAssignment }
      * 
      * @deprecated Since PharmML 0.3
      */
     @Deprecated
-    public List<VariableAssignmentType> getVariableAssignment() {
+    public List<VariableAssignment> getVariableAssignment() {
         if (variableAssignment == null) {
-            variableAssignment = new ArrayList<VariableAssignmentType>();
+            variableAssignment = new ArrayList<VariableAssignment>();
         }
         return this.variableAssignment;
     }

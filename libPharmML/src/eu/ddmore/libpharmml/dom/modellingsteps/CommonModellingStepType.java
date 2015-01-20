@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.VariableAssignmentType;
+import eu.ddmore.libpharmml.dom.commontypes.VariableAssignment;
 
 
 /**
@@ -91,7 +91,7 @@ public abstract class CommonModellingStepType
     @XmlElement(name = "NONMEMdataSetReference")
     protected NONMEMdataSetReferenceType nonmeMdataSetReference;
     @XmlElement(name = "VariableAssignment", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected List<VariableAssignmentType> variableAssignment;
+    protected List<VariableAssignment> variableAssignment;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
@@ -186,13 +186,13 @@ public abstract class CommonModellingStepType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link VariableAssignmentType }
+     * {@link VariableAssignment }
      * 
      * 
      */
-    public List<VariableAssignmentType> getVariableAssignment() {
+    public List<VariableAssignment> getVariableAssignment() {
         if (variableAssignment == null) {
-            variableAssignment = new ArrayList<VariableAssignmentType>();
+            variableAssignment = new ArrayList<VariableAssignment>();
         }
         return this.variableAssignment;
     }

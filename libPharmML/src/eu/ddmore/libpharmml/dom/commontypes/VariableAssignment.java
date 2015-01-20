@@ -59,7 +59,7 @@ import javax.xml.bind.annotation.XmlType;
     "symbRef",
     "assign"
 })
-public class VariableAssignmentType
+public class VariableAssignment
     extends PharmMLRootType
 {
 

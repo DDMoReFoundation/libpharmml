@@ -210,11 +210,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VariableAssignmentType }
+     * Create an instance of {@link VariableAssignment }
      * 
      */
-    public VariableAssignmentType createVariableAssignmentType() {
-        return new VariableAssignmentType();
+    public VariableAssignment createVariableAssignmentType() {
+        return new VariableAssignment();
     }
 
     /**
@@ -384,12 +384,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VariableAssignmentType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link VariableAssignment }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "VariableAssignment")
-    public JAXBElement<VariableAssignmentType> createVariableAssignment(VariableAssignmentType value) {
-        return new JAXBElement<VariableAssignmentType>(_VariableAssignment_QNAME, VariableAssignmentType.class, null, value);
+    public JAXBElement<VariableAssignment> createVariableAssignment(VariableAssignment value) {
+        return new JAXBElement<VariableAssignment>(_VariableAssignment_QNAME, VariableAssignment.class, null, value);
     }
 
     /**
