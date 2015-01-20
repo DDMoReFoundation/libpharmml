@@ -26,12 +26,15 @@
 
 package eu.ddmore.libpharmml.dom.dataset;
 
+import java.math.BigInteger;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 
 
@@ -67,7 +70,27 @@ public class ColumnDefinition
     protected ColumnType columnType;
     @XmlAttribute(name = "valueType", required = true)
     protected SymbolType valueType;
+    
+    /**
+     * Empty constructor
+     */
+    public ColumnDefinition(){}
 
+    /**
+     * Creates a new column definition with all the required attributes.
+     * @param columnId Identifier of the column.
+     * @param columnType Type of the column.
+     * @param valueType Type of the values within this column. The scalar elements within
+     * this column must fit with this value type.
+     * @param columnNum The column number. Needed to map the column into the dataset.
+     */
+    public ColumnDefinition(String columnId, ColumnType columnType, SymbolType valueType, Integer columnNum){
+    	this.columnId = columnId;
+    	this.columnType = columnType;
+    	this.valueType = valueType;
+    	this.columnNum = BigInteger.valueOf(columnNum);
+    }
+    
     /**
      * Gets the value of the columnId property.
      * 
