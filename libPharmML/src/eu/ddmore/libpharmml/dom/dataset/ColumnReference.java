@@ -81,6 +81,27 @@ public class ColumnReference
     @XmlAttribute(name = "transformIdRef")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String transformIdRef;
+    
+    /**
+     * Empty constructor
+     */
+    public ColumnReference(){}
+    
+    /**
+     * Creates a new reference to a given column.
+     * @param columnIdRef The id of the referred column.
+     */
+    public ColumnReference(String columnIdRef){
+    	this.columnIdRef = columnIdRef;
+    }
+    
+    /**
+     * Creates a new reference to a given column.
+     * @param column The referred column.
+     */
+    public ColumnReference(ColumnDefinition column){
+    	this(column.getColumnId());
+    }
 
     /**
      * 
