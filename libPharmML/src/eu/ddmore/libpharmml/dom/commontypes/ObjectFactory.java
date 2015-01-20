@@ -276,11 +276,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link InitialTimeType }
+     * Create an instance of {@link InitialTime }
      * 
      */
-    public InitialTimeType createInitialTimeType() {
-        return new InitialTimeType();
+    public InitialTime createInitialTimeType() {
+        return new InitialTime();
     }
 
     /**

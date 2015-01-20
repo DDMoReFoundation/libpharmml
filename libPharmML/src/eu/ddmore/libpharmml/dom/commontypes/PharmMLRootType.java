@@ -245,7 +245,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     CommonVariableDefinition.class,
     MatrixBlock.class,
     MatrixCell.class,
-    InitialTimeType.class,
+    InitialTime.class,
     IndependentVariableReference.class,
     DelayVariable.class,
     InterpolationIVType.class,
