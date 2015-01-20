@@ -61,7 +61,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "VariableDefinitionType", propOrder = {
     "assign"
 })
-public class VariableDefinitionType
+public class VariableDefinition
     extends CommonVariableDefinition
 {
 

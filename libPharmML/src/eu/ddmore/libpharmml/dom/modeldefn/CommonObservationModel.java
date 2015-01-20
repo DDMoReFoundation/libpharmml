@@ -44,7 +44,7 @@ import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
-import eu.ddmore.libpharmml.dom.commontypes.VariableDefinitionType;
+import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
 
 
 /**
@@ -100,7 +100,7 @@ public abstract class CommonObservationModel
     // ------------
     
     @XmlElement(name = "Variable", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected List<VariableDefinitionType> variable;
+    protected List<VariableDefinition> variable;
     @XmlElement(name = "Correlation")
     protected List<CorrelationType> correlation;
 
@@ -210,13 +210,13 @@ public abstract class CommonObservationModel
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link VariableDefinitionType }
+     * {@link VariableDefinition }
      * 
      * 
      */
-    public List<VariableDefinitionType> getListOfVariable() {
+    public List<VariableDefinition> getListOfVariable() {
         if (variable == null) {
-            variable = new ArrayList<VariableDefinitionType>();
+            variable = new ArrayList<VariableDefinition>();
         }
         return this.variable;
     }
@@ -263,23 +263,23 @@ public abstract class CommonObservationModel
     }
 
     /**
-     * Creates a new empty {@link VariableDefinitionType} variable element, adds it to the current object and returns it.
-     * @return The created {@link VariableDefinitionType} object.
+     * Creates a new empty {@link VariableDefinition} variable element, adds it to the current object and returns it.
+     * @return The created {@link VariableDefinition} object.
      */
-    public VariableDefinitionType createVariable(){
-            VariableDefinitionType el = new VariableDefinitionType();
+    public VariableDefinition createVariable(){
+            VariableDefinition el = new VariableDefinition();
             getListOfVariable().add(el);
             return el;
     }
     
     /**
-     * Creates a new {@link VariableDefinitionType} variable element, adds it to the current object and returns it.
+     * Creates a new {@link VariableDefinition} variable element, adds it to the current object and returns it.
      * @param symbolId The identifier of the symbol
      * @param type The symbol type
-     * @return The created {@link VariableDefinitionType} object.
+     * @return The created {@link VariableDefinition} object.
      */
-    public VariableDefinitionType createVariable(String symbolId, SymbolType type){
-            VariableDefinitionType el = new VariableDefinitionType();
+    public VariableDefinition createVariable(String symbolId, SymbolType type){
+            VariableDefinition el = new VariableDefinition();
             getListOfVariable().add(el);
             el.setSymbId(symbolId);
             el.setSymbolType(type);

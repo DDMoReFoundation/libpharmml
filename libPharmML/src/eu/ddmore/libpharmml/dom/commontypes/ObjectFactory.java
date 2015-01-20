@@ -138,11 +138,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VariableDefinitionType }
+     * Create an instance of {@link VariableDefinition }
      * 
      */
-    public VariableDefinitionType createVariableDefinitionType() {
-        return new VariableDefinitionType();
+    public VariableDefinition createVariableDefinitionType() {
+        return new VariableDefinition();
     }
 
     /**
@@ -357,12 +357,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VariableDefinitionType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link VariableDefinition }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Variable", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "CommonVariable")
-    public JAXBElement<VariableDefinitionType> createVariable(VariableDefinitionType value) {
-        return new JAXBElement<VariableDefinitionType>(_Variable_QNAME, VariableDefinitionType.class, null, value);
+    public JAXBElement<VariableDefinition> createVariable(VariableDefinition value) {
+        return new JAXBElement<VariableDefinition>(_Variable_QNAME, VariableDefinition.class, null, value);
     }
 
     /**

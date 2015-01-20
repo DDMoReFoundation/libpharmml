@@ -43,7 +43,7 @@ import eu.ddmore.libpharmml.dom.commontypes.CommonVariableDefinition;
 import eu.ddmore.libpharmml.dom.commontypes.DerivativeVariable;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.VariableDefinitionType;
+import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKMacroList;
 
 
@@ -169,7 +169,7 @@ public class StructuralModelType
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link CommonVariableDefinition }{@code >}
-     * {@link JAXBElement }{@code <}{@link VariableDefinitionType }{@code >}
+     * {@link JAXBElement }{@code <}{@link VariableDefinition }{@code >}
      * {@link JAXBElement }{@code <}{@link DerivativeVariable }{@code >}
      * 
      * 
