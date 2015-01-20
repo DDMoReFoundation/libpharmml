@@ -59,7 +59,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "LevelReferenceType", propOrder = {
     "symbRef"
 })
-public class LevelReferenceType
+public class LevelReference
     extends PharmMLRootType
 {
 

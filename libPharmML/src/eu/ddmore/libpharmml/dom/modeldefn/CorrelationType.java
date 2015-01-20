@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import eu.ddmore.libpharmml.dom.commontypes.LevelReferenceType;
+import eu.ddmore.libpharmml.dom.commontypes.LevelReference;
 import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
@@ -89,7 +89,7 @@ public class CorrelationType
 {
 
     @XmlElement(name = "VariabilityReference", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
-    protected LevelReferenceType variabilityReference;
+    protected LevelReference variabilityReference;
 	@XmlElement(name = "RandomVariable1", required = true)
 	@Deprecated
     protected CorrelatedRandomVarType randomVariable1;
@@ -115,10 +115,10 @@ public class CorrelationType
      * 
      * @return
      *     possible object is
-     *     {@link LevelReferenceType }
+     *     {@link LevelReference }
      *     
      */
-    public LevelReferenceType getVariabilityReference() {
+    public LevelReference getVariabilityReference() {
         return variabilityReference;
     }
 
@@ -127,10 +127,10 @@ public class CorrelationType
      * 
      * @param value
      *     allowed object is
-     *     {@link LevelReferenceType }
+     *     {@link LevelReference }
      *     
      */
-    public void setVariabilityReference(LevelReferenceType value) {
+    public void setVariabilityReference(LevelReference value) {
         this.variabilityReference = value;
     }
 

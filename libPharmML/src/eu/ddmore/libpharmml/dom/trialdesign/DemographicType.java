@@ -43,7 +43,7 @@ import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
-import eu.ddmore.libpharmml.dom.commontypes.LevelReferenceType;
+import eu.ddmore.libpharmml.dom.commontypes.LevelReference;
 import eu.ddmore.libpharmml.dom.commontypes.NameType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
@@ -93,7 +93,7 @@ public class DemographicType
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected NameType name;
     @XmlElement(name = "VariabilityReference", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
-    protected LevelReferenceType variabilityReference;
+    protected LevelReference variabilityReference;
     @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class)
     protected List<JAXBElement<?>> scalar;
     @XmlElement(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
@@ -136,10 +136,10 @@ public class DemographicType
      * 
      * @return
      *     possible object is
-     *     {@link LevelReferenceType }
+     *     {@link LevelReference }
      *     
      */
-    public LevelReferenceType getVariabilityReference() {
+    public LevelReference getVariabilityReference() {
         return variabilityReference;
     }
 
@@ -148,10 +148,10 @@ public class DemographicType
      * 
      * @param value
      *     allowed object is
-     *     {@link LevelReferenceType }
+     *     {@link LevelReference }
      *     
      */
-    public void setVariabilityReference(LevelReferenceType value) {
+    public void setVariabilityReference(LevelReference value) {
         this.variabilityReference = value;
     }
 

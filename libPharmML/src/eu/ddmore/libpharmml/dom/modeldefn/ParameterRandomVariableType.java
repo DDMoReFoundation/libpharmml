@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
-import eu.ddmore.libpharmml.dom.commontypes.LevelReferenceType;
+import eu.ddmore.libpharmml.dom.commontypes.LevelReference;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractCategoricalMultivariateDistributionType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractCategoricalUnivariateDistributionType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractContinuousMultivariateDistributionType;
@@ -107,7 +107,7 @@ public class ParameterRandomVariableType
 {
 
     @XmlElement(name = "VariabilityReference", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
-    protected LevelReferenceType variabilityReference;
+    protected LevelReference variabilityReference;
     @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = "http://www.uncertml.org/3.0", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractContinuousUnivariateDistributionType> abstractContinuousUnivariateDistribution;
     @XmlElementRef(name = "AbstractContinuousMultivariateDistribution", namespace = "http://www.uncertml.org/3.0", type = JAXBElement.class, required = false)
@@ -124,10 +124,10 @@ public class ParameterRandomVariableType
      * 
      * @return
      *     possible object is
-     *     {@link LevelReferenceType }
+     *     {@link LevelReference }
      *     
      */
-    public LevelReferenceType getVariabilityReference() {
+    public LevelReference getVariabilityReference() {
         return variabilityReference;
     }
 
@@ -136,10 +136,10 @@ public class ParameterRandomVariableType
      * 
      * @param value
      *     allowed object is
-     *     {@link LevelReferenceType }
+     *     {@link LevelReference }
      *     
      */
-    public void setVariabilityReference(LevelReferenceType value) {
+    public void setVariabilityReference(LevelReference value) {
         this.variabilityReference = value;
     }
 

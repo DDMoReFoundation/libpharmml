@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import eu.ddmore.libpharmml.dom.commontypes.LevelReferenceType;
+import eu.ddmore.libpharmml.dom.commontypes.LevelReference;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
@@ -79,7 +79,7 @@ public class PopulationType
 {
 
     @XmlElement(name = "VariabilityReference", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected LevelReferenceType variabilityReference;
+    protected LevelReference variabilityReference;
     @XmlElement(name = "Demographic")
     protected List<DemographicType> demographic;
     @XmlElement(name = "ColumnMapping")
@@ -98,10 +98,10 @@ public class PopulationType
      * 
      * @return
      *     possible object is
-     *     {@link LevelReferenceType }
+     *     {@link LevelReference }
      *     
      */
-    public LevelReferenceType getVariabilityReference() {
+    public LevelReference getVariabilityReference() {
         return variabilityReference;
     }
 
@@ -110,10 +110,10 @@ public class PopulationType
      * 
      * @param value
      *     allowed object is
-     *     {@link LevelReferenceType }
+     *     {@link LevelReference }
      *     
      */
-    public void setVariabilityReference(LevelReferenceType value) {
+    public void setVariabilityReference(LevelReference value) {
         this.variabilityReference = value;
     }
 

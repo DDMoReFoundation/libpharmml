@@ -146,11 +146,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LevelReferenceType }
+     * Create an instance of {@link LevelReference }
      * 
      */
-    public LevelReferenceType createLevelReferenceType() {
-        return new LevelReferenceType();
+    public LevelReference createLevelReferenceType() {
+        return new LevelReference();
     }
 
     /**
@@ -411,12 +411,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LevelReferenceType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LevelReference }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "VariabilityReference")
-    public JAXBElement<LevelReferenceType> createVariabilityReference(LevelReferenceType value) {
-        return new JAXBElement<LevelReferenceType>(_VariabilityReference_QNAME, LevelReferenceType.class, null, value);
+    public JAXBElement<LevelReference> createVariabilityReference(LevelReference value) {
+        return new JAXBElement<LevelReference>(_VariabilityReference_QNAME, LevelReference.class, null, value);
     }
 
     /**
