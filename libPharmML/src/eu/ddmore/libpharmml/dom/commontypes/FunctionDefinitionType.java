@@ -70,7 +70,7 @@ public class FunctionDefinitionType
 {
 
     @XmlElement(name = "FunctionArgument")
-    protected List<FuncParameterDefinitionType> functionArgument;
+    protected List<FunctionParameter> functionArgument;
     @XmlElement(name = "Definition")
     protected ScalarRhs definition;
     @XmlAttribute(name = "symbolType", required = true)
@@ -94,13 +94,13 @@ public class FunctionDefinitionType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link FuncParameterDefinitionType }
+     * {@link FunctionParameter }
      * 
      * 
      */
-    public List<FuncParameterDefinitionType> getFunctionArgument() {
+    public List<FunctionParameter> getFunctionArgument() {
         if (functionArgument == null) {
-            functionArgument = new ArrayList<FuncParameterDefinitionType>();
+            functionArgument = new ArrayList<FunctionParameter>();
         }
         return this.functionArgument;
     }

@@ -349,11 +349,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FuncParameterDefinitionType }
+     * Create an instance of {@link FunctionParameter }
      * 
      */
-    public FuncParameterDefinitionType createFuncParameterDefinitionType() {
-        return new FuncParameterDefinitionType();
+    public FunctionParameter createFuncParameterDefinitionType() {
+        return new FunctionParameter();
     }
 
     /**

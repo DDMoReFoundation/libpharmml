@@ -53,7 +53,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FuncParameterDefinitionType")
-public class FuncParameterDefinitionType
+public class FunctionParameter
     extends CommonVariableDefinition
 {
 
