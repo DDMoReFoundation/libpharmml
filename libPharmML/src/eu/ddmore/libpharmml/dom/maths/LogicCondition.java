@@ -73,7 +73,7 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 @XmlSeeAlso({
     Condition.class
 })
-public class LogicConditionType
+public class LogicCondition
     extends PharmMLRootType
 {
 

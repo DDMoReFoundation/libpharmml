@@ -52,7 +52,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "")
 @XmlRootElement(name = "Condition")
 public class Condition
-    extends LogicConditionType
+    extends LogicCondition
 {
 
 

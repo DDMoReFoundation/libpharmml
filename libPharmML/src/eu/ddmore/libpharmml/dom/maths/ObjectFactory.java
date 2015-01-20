@@ -82,11 +82,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LogicConditionType }
+     * Create an instance of {@link LogicCondition }
      * 
      */
-    public LogicConditionType createLogicConditionType() {
-        return new LogicConditionType();
+    public LogicCondition createLogicConditionType() {
+        return new LogicCondition();
     }
 
     /**

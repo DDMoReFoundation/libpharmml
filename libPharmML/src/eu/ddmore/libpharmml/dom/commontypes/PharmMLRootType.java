@@ -54,7 +54,7 @@ import eu.ddmore.libpharmml.dom.maths.EquationType;
 import eu.ddmore.libpharmml.dom.maths.Expression;
 import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
-import eu.ddmore.libpharmml.dom.maths.LogicConditionType;
+import eu.ddmore.libpharmml.dom.maths.LogicCondition;
 import eu.ddmore.libpharmml.dom.maths.LogicExprType;
 import eu.ddmore.libpharmml.dom.modeldefn.CategoricalCovariateType;
 import eu.ddmore.libpharmml.dom.modeldefn.CategoricalPMF;
@@ -312,7 +312,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     ToEstimateType.class,
     EstimationOperationType.class,
     EquationType.class,
-    LogicConditionType.class,
+    LogicCondition.class,
     AbsorptionOralMacro.class,
     OralMacro.class,
     PKMacroList.class
