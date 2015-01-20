@@ -28,7 +28,7 @@ import eu.ddmore.libpharmml.IPharmMLResource;
 import eu.ddmore.libpharmml.PharmMlFactory;
 import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
-import eu.ddmore.libpharmml.dom.modeldefn.CommonParameterType;
+import eu.ddmore.libpharmml.dom.modeldefn.CommonParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameterType;
 import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameterType.GaussianModel;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterModelType;
@@ -43,7 +43,7 @@ public class Example3Read {
 			for (ParameterModelType pmt : dom.getModelDefinition()
 					.getParameterModel()) {
 				System.out.println("Parameter Model: " + pmt.getBlkId());
-				for (JAXBElement<? extends CommonParameterType> cpt : pmt.getCommonParameterElement()) {
+				for (JAXBElement<? extends CommonParameter> cpt : pmt.getCommonParameterElement()) {
 					if(cpt.getDeclaredType().equals(IndividualParameterType.class)){
 						IndividualParameterType ipt = (IndividualParameterType)cpt.getValue();
 						System.out.println("individual Parameter SymbId="	+ ipt.getSymbId());

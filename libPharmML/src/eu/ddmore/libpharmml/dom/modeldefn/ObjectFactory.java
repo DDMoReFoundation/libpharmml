@@ -548,12 +548,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CommonParameterType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CommonParameter }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "CommonParameterElement")
-    public JAXBElement<CommonParameterType> createCommonParameterElement(CommonParameterType value) {
-        return new JAXBElement<CommonParameterType>(_CommonParameterElement_QNAME, CommonParameterType.class, null, value);
+    public JAXBElement<CommonParameter> createCommonParameterElement(CommonParameter value) {
+        return new JAXBElement<CommonParameter>(_CommonParameterElement_QNAME, CommonParameter.class, null, value);
     }
 
     /**

@@ -121,7 +121,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Rhs;
     "assign"
 })
 public class IndividualParameterType
-    extends CommonParameterType
+    extends CommonParameter
 {
 
     @XmlElement(name = "GaussianModel")

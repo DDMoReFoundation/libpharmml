@@ -253,7 +253,7 @@ public class ObservationModelType
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link SimpleParameterType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CommonParameterType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CommonParameter }{@code >}
      * {@link JAXBElement }{@code <}{@link IndividualParameterType }{@code >}
      * {@link JAXBElement }{@code <}{@link ParameterRandomVariableType }{@code >}
      * 
@@ -262,7 +262,7 @@ public class ObservationModelType
      */
     @Override
     @Deprecated
-    public List<JAXBElement<? extends CommonParameterType>> getCommonParameterElement() {
+    public List<JAXBElement<? extends CommonParameter>> getCommonParameterElement() {
         return super.getCommonParameterElement();
     }
 

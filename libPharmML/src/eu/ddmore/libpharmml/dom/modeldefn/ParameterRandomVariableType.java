@@ -103,7 +103,7 @@ import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
     "abstractCategoricalMultivariateDistribution"
 })
 public class ParameterRandomVariableType
-    extends CommonParameterType
+    extends CommonParameter
 {
 
     @XmlElement(name = "VariabilityReference", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)

@@ -94,9 +94,9 @@ public abstract class CommonObservationModel
     
     // -----------
     @XmlElementRef(name = "CommonParameterElement", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class, required = false)
-    protected List<JAXBElement<? extends CommonParameterType>> commonParameterElement;
+    protected List<JAXBElement<? extends CommonParameter>> commonParameterElement;
     @XmlTransient
-    protected List<CommonParameterType> listOfCommonParameterElement;
+    protected List<CommonParameter> listOfCommonParameterElement;
     // ------------
     
     @XmlElement(name = "Variable", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
@@ -178,16 +178,16 @@ public abstract class CommonObservationModel
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CommonParameterType }
+     * {@link CommonParameter }
      * {@link SimpleParameterType }
      * {@link IndividualParameterType }
      * {@link ParameterRandomVariableType }
      * 
      * 
      */
-    public List<CommonParameterType> getListOfCommonParameterElement() {
+    public List<CommonParameter> getListOfCommonParameterElement() {
         if (listOfCommonParameterElement == null) {
-        	listOfCommonParameterElement = new ArrayList<CommonParameterType>();
+        	listOfCommonParameterElement = new ArrayList<CommonParameter>();
         }
         return this.listOfCommonParameterElement;
     }
@@ -298,8 +298,8 @@ public abstract class CommonObservationModel
     
     protected void afterUnmarshal(Unmarshaller u, Object parent){
     	if(commonParameterElement != null){
-			listOfCommonParameterElement = new ArrayList<CommonParameterType>();
-			for(JAXBElement<? extends CommonParameterType> el : commonParameterElement){
+			listOfCommonParameterElement = new ArrayList<CommonParameter>();
+			for(JAXBElement<? extends CommonParameter> el : commonParameterElement){
 				listOfCommonParameterElement.add(el.getValue());
 			}
 		} else {
@@ -309,8 +309,8 @@ public abstract class CommonObservationModel
     
     protected void beforeMarshal(Marshaller m){
     	if(listOfCommonParameterElement != null){
-			commonParameterElement = new ArrayList<JAXBElement<? extends CommonParameterType>>();
-			for(CommonParameterType param : listOfCommonParameterElement){
+			commonParameterElement = new ArrayList<JAXBElement<? extends CommonParameter>>();
+			for(CommonParameter param : listOfCommonParameterElement){
 				commonParameterElement.add(MasterObjectFactory.createParameter(param));
 			}
 		} else {

@@ -82,7 +82,7 @@ public abstract class CommonParameterModelType
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected Name name;
     @XmlElementRef(name = "CommonParameterElement", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class, required = false)
-    protected List<JAXBElement<? extends CommonParameterType>> commonParameterElement;
+    protected List<JAXBElement<? extends CommonParameter>> commonParameterElement;
     @XmlElement(name = "Correlation")
     protected List<CorrelationType> correlation;
     @XmlAttribute(name = "blkId", required = true)
@@ -132,15 +132,15 @@ public abstract class CommonParameterModelType
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link SimpleParameterType }{@code >}
-     * {@link JAXBElement }{@code <}{@link CommonParameterType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CommonParameter }{@code >}
      * {@link JAXBElement }{@code <}{@link IndividualParameterType }{@code >}
      * {@link JAXBElement }{@code <}{@link ParameterRandomVariableType }{@code >}
      * 
      * 
      */
-    public List<JAXBElement<? extends CommonParameterType>> getCommonParameterElement() {
+    public List<JAXBElement<? extends CommonParameter>> getCommonParameterElement() {
         if (commonParameterElement == null) {
-            commonParameterElement = new ArrayList<JAXBElement<? extends CommonParameterType>>();
+            commonParameterElement = new ArrayList<JAXBElement<? extends CommonParameter>>();
         }
         return this.commonParameterElement;
     }

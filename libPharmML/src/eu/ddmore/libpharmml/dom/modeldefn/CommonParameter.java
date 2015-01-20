@@ -69,7 +69,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolName;
     SimpleParameterType.class,
     IndividualParameterType.class
 })
-public abstract class CommonParameterType
+public abstract class CommonParameter
     extends PharmMLRootType
 {
 

@@ -31,7 +31,7 @@ import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
-import eu.ddmore.libpharmml.dom.modeldefn.CommonParameterType;
+import eu.ddmore.libpharmml.dom.modeldefn.CommonParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.GaussianObsError;
 import eu.ddmore.libpharmml.dom.modeldefn.GeneralObsError;
 import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameterType;
@@ -204,8 +204,8 @@ public class MasterObjectFactory {
 		return element;
 	}
 	
-	public static JAXBElement<? extends CommonParameterType> createParameter(CommonParameterType param){
-		JAXBElement<? extends CommonParameterType> element;
+	public static JAXBElement<? extends CommonParameter> createParameter(CommonParameter param){
+		JAXBElement<? extends CommonParameter> element;
 		if(param instanceof ParameterRandomVariableType){
 			element = MODELDEFN_OF.createRandomVariable((ParameterRandomVariableType) param);
 		} else if(param instanceof SimpleParameterType){

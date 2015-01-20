@@ -62,7 +62,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Rhs;
     "assign"
 })
 public class SimpleParameterType
-    extends CommonParameterType
+    extends CommonParameter
 {
 
     @XmlElement(name = "Assign", namespace = "http://www.pharmml.org/2013/03/CommonTypes")

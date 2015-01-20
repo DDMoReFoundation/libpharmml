@@ -65,7 +65,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.CommonDiscreteState;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonDiscreteVariable;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonObservationModel;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonParameterModelType;
-import eu.ddmore.libpharmml.dom.modeldefn.CommonParameterType;
+import eu.ddmore.libpharmml.dom.modeldefn.CommonParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.ContinuousCovariateType;
 import eu.ddmore.libpharmml.dom.modeldefn.CorrelatedRandomVarType;
 import eu.ddmore.libpharmml.dom.modeldefn.CorrelationType;
@@ -191,7 +191,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     eu.ddmore.libpharmml.dom.modeldefn.IndividualParameterType.GaussianModel.LinearCovariate.class,
     eu.ddmore.libpharmml.dom.modeldefn.IndividualParameterType.GaussianModel.GeneralCovariate.class,
     eu.ddmore.libpharmml.dom.modeldefn.IndividualParameterType.GaussianModel.class,
-    CommonParameterType.class,
+    CommonParameter.class,
     ParentLevelType.class,
     TransitionRate.class,
     CovariateTransformationType.class,
