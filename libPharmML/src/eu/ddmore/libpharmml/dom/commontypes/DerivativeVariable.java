@@ -83,7 +83,22 @@ public class DerivativeVariable
     protected Integer compartmentNo;
     @XmlAttribute(name = "symbolType", required = true)
     protected SymbolType symbolType;
+    
+    /**
+     * Empty constructor.
+     */
+    public DerivativeVariable(){}
 
+    /**
+     * Creates a new derivative variable, with the given symbol id and symbol type.
+     * @param symbId
+     * @param symbolType
+     */
+    public DerivativeVariable(String symbId, SymbolType symbolType){
+    	this.symbId = symbId;
+    	this.symbolType = symbolType;
+    }
+    
     /**
      * The symbol id used to define the variable.
      * 
