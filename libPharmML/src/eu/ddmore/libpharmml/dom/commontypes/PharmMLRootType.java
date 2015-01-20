@@ -56,7 +56,7 @@ import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.dom.maths.LogicCondition;
 import eu.ddmore.libpharmml.dom.maths.LogicExpression;
-import eu.ddmore.libpharmml.dom.modeldefn.CategoricalCovariateType;
+import eu.ddmore.libpharmml.dom.modeldefn.CategoricalCovariate;
 import eu.ddmore.libpharmml.dom.modeldefn.CategoricalPMF;
 import eu.ddmore.libpharmml.dom.modeldefn.CategoricalRelationType;
 import eu.ddmore.libpharmml.dom.modeldefn.CensoringFeature;
@@ -201,7 +201,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     Discrete.class,
     VariabilityDefnBlock.class,
     CommonParameterModelType.class,
-    CategoricalCovariateType.class,
+    CategoricalCovariate.class,
     CovariateRelationType.class,
     CovariateModelType.class,
     CommonObservationModel.class,

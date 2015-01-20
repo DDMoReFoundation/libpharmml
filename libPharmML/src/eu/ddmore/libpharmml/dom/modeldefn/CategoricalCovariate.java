@@ -62,7 +62,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlType(name = "CategoricalCovariateType", propOrder = {
     "category"
 })
-public class CategoricalCovariateType
+public class CategoricalCovariate
     extends PharmMLRootType
 {
 
