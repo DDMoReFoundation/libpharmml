@@ -90,11 +90,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LogicBinOpType }
+     * Create an instance of {@link LogicBinOp }
      * 
      */
-    public LogicBinOpType createLogicBinOpType() {
-        return new LogicBinOpType();
+    public LogicBinOp createLogicBinOpType() {
+        return new LogicBinOp();
     }
 
     /**
@@ -221,12 +221,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LogicBinOpType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LogicBinOp }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "LogicBinop")
-    public JAXBElement<LogicBinOpType> createLogicBinop(LogicBinOpType value) {
-        return new JAXBElement<LogicBinOpType>(_LogicBinop_QNAME, LogicBinOpType.class, null, value);
+    public JAXBElement<LogicBinOp> createLogicBinop(LogicBinOp value) {
+        return new JAXBElement<LogicBinOp>(_LogicBinop_QNAME, LogicBinOp.class, null, value);
     }
 
     /**

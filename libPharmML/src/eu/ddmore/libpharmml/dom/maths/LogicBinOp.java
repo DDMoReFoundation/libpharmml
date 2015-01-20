@@ -122,7 +122,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 @XmlType(name = "LogicBinOpType", propOrder = {
     "content"
 })
-public class LogicBinOpType
+public class LogicBinOp
     extends PharmMLRootType
 {
 
@@ -166,7 +166,7 @@ public class LogicBinOpType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link LogicBinOpType }{@code >}
+     * {@link JAXBElement }{@code <}{@link LogicBinOp }{@code >}
      * {@link JAXBElement }{@code <}{@link ColumnReference }{@code >}
      * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValue }{@code >}

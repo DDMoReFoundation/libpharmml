@@ -78,7 +78,7 @@ public class LogicConditionType
 {
 
     @XmlElement(name = "LogicBinop")
-    protected LogicBinOpType logicBinop;
+    protected LogicBinOp logicBinop;
     @XmlElement(name = "LogicUniop")
     protected LogicUniOpType logicUniop;
     @XmlElementRef(name = "Boolean", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
@@ -91,10 +91,10 @@ public class LogicConditionType
      * 
      * @return
      *     possible object is
-     *     {@link LogicBinOpType }
+     *     {@link LogicBinOp }
      *     
      */
-    public LogicBinOpType getLogicBinop() {
+    public LogicBinOp getLogicBinop() {
         return logicBinop;
     }
 
@@ -103,10 +103,10 @@ public class LogicConditionType
      * 
      * @param value
      *     allowed object is
-     *     {@link LogicBinOpType }
+     *     {@link LogicBinOp }
      *     
      */
-    public void setLogicBinop(LogicBinOpType value) {
+    public void setLogicBinop(LogicBinOp value) {
         this.logicBinop = value;
     }
 

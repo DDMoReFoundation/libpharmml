@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
-import eu.ddmore.libpharmml.dom.maths.LogicBinOpType;
+import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 
 
 /**
@@ -75,7 +75,7 @@ public class ProbabilityAssignment
 {
 
     @XmlElement(name = "LogicBinop", namespace = "http://www.pharmml.org/2013/03/Maths")
-    protected LogicBinOpType logicBinop;
+    protected LogicBinOp logicBinop;
     @XmlElement(name = "Probability")
     protected List<Probability> probability;
     @XmlElement(name = "TransitionRate")
@@ -88,10 +88,10 @@ public class ProbabilityAssignment
      * 
      * @return
      *     possible object is
-     *     {@link LogicBinOpType }
+     *     {@link LogicBinOp }
      *     
      */
-    public LogicBinOpType getLogicBinop() {
+    public LogicBinOp getLogicBinop() {
         return logicBinop;
     }
 
@@ -100,10 +100,10 @@ public class ProbabilityAssignment
      * 
      * @param value
      *     allowed object is
-     *     {@link LogicBinOpType }
+     *     {@link LogicBinOp }
      *     
      */
-    public void setLogicBinop(LogicBinOpType value) {
+    public void setLogicBinop(LogicBinOp value) {
         this.logicBinop = value;
     }
 
@@ -190,11 +190,11 @@ public class ProbabilityAssignment
     }
     
     /**
-     * Creates a new empty {@link LogicBinOpType} element, adds it to the current {@link ProbabilityAssignment} object and returns it.
-     * @return The created {@link LogicBinOpType} object.
+     * Creates a new empty {@link LogicBinOp} element, adds it to the current {@link ProbabilityAssignment} object and returns it.
+     * @return The created {@link LogicBinOp} object.
      */
-    public LogicBinOpType createLogicBinop(){
-            LogicBinOpType el = new LogicBinOpType();
+    public LogicBinOp createLogicBinop(){
+            LogicBinOp el = new LogicBinOp();
             this.logicBinop = el;
             return el;
     }

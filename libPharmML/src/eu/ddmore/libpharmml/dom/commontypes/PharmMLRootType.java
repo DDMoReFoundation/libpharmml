@@ -53,7 +53,7 @@ import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.EquationType;
 import eu.ddmore.libpharmml.dom.maths.Expression;
 import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
-import eu.ddmore.libpharmml.dom.maths.LogicBinOpType;
+import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.dom.maths.LogicConditionType;
 import eu.ddmore.libpharmml.dom.maths.LogicExprType;
 import eu.ddmore.libpharmml.dom.modeldefn.CategoricalCovariateType;
@@ -173,7 +173,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     ModelDefinitionType.class,
     TrialDesignType.class,
     ModellingStepsType.class,
-    LogicBinOpType.class,
+    LogicBinOp.class,
     Binop.class,
     SymbolRef.class,
     FunctionCallType.class,
