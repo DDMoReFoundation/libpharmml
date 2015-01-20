@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import eu.ddmore.libpharmml.dom.commontypes.OidRefType;
+import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
@@ -76,7 +76,7 @@ public abstract class StudyEventType
 {
 
     @XmlElement(name = "ArmRef", required = true)
-    protected List<OidRefType> armRef;
+    protected List<OidRef> armRef;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
@@ -99,13 +99,13 @@ public abstract class StudyEventType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link OidRefType }
+     * {@link OidRef }
      * 
      * 
      */
-    public List<OidRefType> getArmRef() {
+    public List<OidRef> getArmRef() {
         if (armRef == null) {
-            armRef = new ArrayList<OidRefType>();
+            armRef = new ArrayList<OidRef>();
         }
         return this.armRef;
     }

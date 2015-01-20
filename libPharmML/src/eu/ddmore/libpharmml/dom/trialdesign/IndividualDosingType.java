@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import eu.ddmore.libpharmml.dom.commontypes.OidRefType;
+import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
@@ -80,7 +80,7 @@ public class IndividualDosingType
 {
 
     @XmlElement(name = "ActivityRef", required = true)
-    protected OidRefType activityRef;
+    protected OidRef activityRef;
     @XmlElement(name = "ColumnMapping", required = true)
     protected List<ColumnMapping> columnMapping;
     @XmlElement(name = "DataSet", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
@@ -112,10 +112,10 @@ public class IndividualDosingType
      * 
      * @return
      *     possible object is
-     *     {@link OidRefType }
+     *     {@link OidRef }
      *     
      */
-    public OidRefType getActivityRef() {
+    public OidRef getActivityRef() {
         return activityRef;
     }
 
@@ -124,10 +124,10 @@ public class IndividualDosingType
      * 
      * @param value
      *     allowed object is
-     *     {@link OidRefType }
+     *     {@link OidRef }
      *     
      */
-    public void setActivityRef(OidRefType value) {
+    public void setActivityRef(OidRef value) {
         this.activityRef = value;
     }
 

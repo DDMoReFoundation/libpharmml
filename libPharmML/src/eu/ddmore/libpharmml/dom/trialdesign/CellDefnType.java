@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import eu.ddmore.libpharmml.dom.commontypes.OidRefType;
+import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
@@ -76,11 +76,11 @@ public class CellDefnType
 {
 
     @XmlElement(name = "EpochRef", required = true)
-    protected OidRefType epochRef;
+    protected OidRef epochRef;
     @XmlElement(name = "ArmRef", required = true)
-    protected List<OidRefType> armRef;
+    protected List<OidRef> armRef;
     @XmlElement(name = "SegmentRef", required = true)
-    protected List<OidRefType> segmentRef;
+    protected List<OidRef> segmentRef;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
@@ -90,10 +90,10 @@ public class CellDefnType
      * 
      * @return
      *     possible object is
-     *     {@link OidRefType }
+     *     {@link OidRef }
      *     
      */
-    public OidRefType getEpochRef() {
+    public OidRef getEpochRef() {
         return epochRef;
     }
 
@@ -102,10 +102,10 @@ public class CellDefnType
      * 
      * @param value
      *     allowed object is
-     *     {@link OidRefType }
+     *     {@link OidRef }
      *     
      */
-    public void setEpochRef(OidRefType value) {
+    public void setEpochRef(OidRef value) {
         this.epochRef = value;
     }
 
@@ -127,13 +127,13 @@ public class CellDefnType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link OidRefType }
+     * {@link OidRef }
      * 
      * 
      */
-    public List<OidRefType> getArmRef() {
+    public List<OidRef> getArmRef() {
         if (armRef == null) {
-            armRef = new ArrayList<OidRefType>();
+            armRef = new ArrayList<OidRef>();
         }
         return this.armRef;
     }
@@ -156,13 +156,13 @@ public class CellDefnType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link OidRefType }
+     * {@link OidRef }
      * 
      * 
      */
-    public List<OidRefType> getSegmentRef() {
+    public List<OidRef> getSegmentRef() {
         if (segmentRef == null) {
-            segmentRef = new ArrayList<OidRefType>();
+            segmentRef = new ArrayList<OidRef>();
         }
         return this.segmentRef;
     }

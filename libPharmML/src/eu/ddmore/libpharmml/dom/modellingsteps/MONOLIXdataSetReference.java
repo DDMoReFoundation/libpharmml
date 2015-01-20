@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import eu.ddmore.libpharmml.dom.commontypes.OidRefType;
+import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
@@ -48,7 +48,7 @@ public class MONOLIXdataSetReference
 {
 
     @XmlElement(name = "OidRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
-    protected OidRefType oidRef;
+    protected OidRef oidRef;
     
     /**
      * Empty constructor.
@@ -60,7 +60,7 @@ public class MONOLIXdataSetReference
      * @param oidRef
      */
     public MONOLIXdataSetReference(String oidRef){
-    	OidRefType oidRefObject = new OidRefType();
+    	OidRef oidRefObject = new OidRef();
     	oidRefObject.setOidRef(oidRef);
     	this.setOidRef(oidRefObject);
     }
@@ -70,10 +70,10 @@ public class MONOLIXdataSetReference
      * 
      * @return
      *     possible object is
-     *     {@link OidRefType }
+     *     {@link OidRef }
      *     
      */
-    public OidRefType getOidRef() {
+    public OidRef getOidRef() {
         return oidRef;
     }
 
@@ -82,10 +82,10 @@ public class MONOLIXdataSetReference
      * 
      * @param value
      *     allowed object is
-     *     {@link OidRefType }
+     *     {@link OidRef }
      *     
      */
-    public void setOidRef(OidRefType value) {
+    public void setOidRef(OidRef value) {
         this.oidRef = value;
     }
 

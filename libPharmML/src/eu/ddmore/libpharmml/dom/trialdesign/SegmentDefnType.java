@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import eu.ddmore.libpharmml.dom.commontypes.OidRefType;
+import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
@@ -72,7 +72,7 @@ public class SegmentDefnType
 {
 
     @XmlElement(name = "ActivityRef", required = true)
-    protected List<OidRefType> activityRef;
+    protected List<OidRef> activityRef;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
@@ -95,13 +95,13 @@ public class SegmentDefnType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link OidRefType }
+     * {@link OidRef }
      * 
      * 
      */
-    public List<OidRefType> getActivityRef() {
+    public List<OidRef> getActivityRef() {
         if (activityRef == null) {
-            activityRef = new ArrayList<OidRefType>();
+            activityRef = new ArrayList<OidRef>();
         }
         return this.activityRef;
     }

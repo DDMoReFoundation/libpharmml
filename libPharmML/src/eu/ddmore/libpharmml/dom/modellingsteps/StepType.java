@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import eu.ddmore.libpharmml.dom.commontypes.OidRefType;
+import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
@@ -70,7 +70,7 @@ public class StepType
 {
 
     @XmlElement(name = "OidRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
-    protected OidRefType oidRef;
+    protected OidRef oidRef;
     @XmlElement(name = "Dependents")
     protected List<DependentsType> dependents;
 
@@ -79,10 +79,10 @@ public class StepType
      * 
      * @return
      *     possible object is
-     *     {@link OidRefType }
+     *     {@link OidRef }
      *     
      */
-    public OidRefType getOidRef() {
+    public OidRef getOidRef() {
         return oidRef;
     }
 
@@ -91,10 +91,10 @@ public class StepType
      * 
      * @param value
      *     allowed object is
-     *     {@link OidRefType }
+     *     {@link OidRef }
      *     
      */
-    public void setOidRef(OidRefType value) {
+    public void setOidRef(OidRef value) {
         this.oidRef = value;
     }
 

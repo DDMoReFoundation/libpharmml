@@ -55,7 +55,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OidRefType")
-public class OidRefType
+public class OidRef
     extends PharmMLRootType
 {
 

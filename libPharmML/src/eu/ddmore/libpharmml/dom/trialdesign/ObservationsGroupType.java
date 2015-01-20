@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import eu.ddmore.libpharmml.dom.commontypes.OidRefType;
+import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
@@ -74,7 +74,7 @@ public class ObservationsGroupType
 {
 
     @XmlElement(name = "EpochRef")
-    protected OidRefType epochRef;
+    protected OidRef epochRef;
     @XmlElement(name = "Period")
     protected StudyPeriodType period;
     @XmlAttribute(name = "oid", required = true)
@@ -86,10 +86,10 @@ public class ObservationsGroupType
      * 
      * @return
      *     possible object is
-     *     {@link OidRefType }
+     *     {@link OidRef }
      *     
      */
-    public OidRefType getEpochRef() {
+    public OidRef getEpochRef() {
         return epochRef;
     }
 
@@ -98,10 +98,10 @@ public class ObservationsGroupType
      * 
      * @param value
      *     allowed object is
-     *     {@link OidRefType }
+     *     {@link OidRef }
      *     
      */
-    public void setEpochRef(OidRefType value) {
+    public void setEpochRef(OidRef value) {
         this.epochRef = value;
     }
 

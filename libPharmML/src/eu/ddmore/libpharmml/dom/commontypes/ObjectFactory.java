@@ -226,11 +226,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link OidRefType }
+     * Create an instance of {@link OidRef }
      * 
      */
-    public OidRefType createOidRefType() {
-        return new OidRefType();
+    public OidRef createOidRefType() {
+        return new OidRef();
     }
 
     /**
@@ -510,12 +510,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OidRefType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link OidRef }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "OidRef")
-    public JAXBElement<OidRefType> createOidRef(OidRefType value) {
-        return new JAXBElement<OidRefType>(_OidRef_QNAME, OidRefType.class, null, value);
+    public JAXBElement<OidRef> createOidRef(OidRef value) {
+        return new JAXBElement<OidRef>(_OidRef_QNAME, OidRef.class, null, value);
     }
 
     /**
