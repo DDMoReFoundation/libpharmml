@@ -58,7 +58,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IndependentVariableType")
-public class IndependentVariableType
+public class IndependentVariable
     extends PharmMLRootType
 {
 

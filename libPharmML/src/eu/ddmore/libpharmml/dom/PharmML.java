@@ -90,7 +90,7 @@ public class PharmML {
     @XmlElement(name = "Description", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected AnnotationType description;
     @XmlElement(name = "IndependentVariable")
-    protected IndependentVariableType independentVariable;
+    protected IndependentVariable independentVariable;
     @XmlElement(name = "FunctionDefinition", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected List<FunctionDefinitionType> functionDefinition;
     @XmlElement(name = "ModelDefinition", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", required = true)
@@ -160,10 +160,10 @@ public class PharmML {
      * 
      * @return
      *     possible object is
-     *     {@link IndependentVariableType }
+     *     {@link IndependentVariable }
      *     
      */
-    public IndependentVariableType getIndependentVariable() {
+    public IndependentVariable getIndependentVariable() {
         return independentVariable;
     }
 
@@ -172,10 +172,10 @@ public class PharmML {
      * 
      * @param value
      *     allowed object is
-     *     {@link IndependentVariableType }
+     *     {@link IndependentVariable }
      *     
      */
-    public void setIndependentVariable(IndependentVariableType value) {
+    public void setIndependentVariable(IndependentVariable value) {
         this.independentVariable = value;
     }
 

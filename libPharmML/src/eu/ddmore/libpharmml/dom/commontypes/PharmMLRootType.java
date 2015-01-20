@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import eu.ddmore.libpharmml.dom.IndependentVariableType;
+import eu.ddmore.libpharmml.dom.IndependentVariable;
 import eu.ddmore.libpharmml.dom.commontypes.VectorElements;
 import eu.ddmore.libpharmml.dom.dataset.CategoryMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
@@ -169,7 +169,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     "description"
 })
 @XmlSeeAlso({
-    IndependentVariableType.class,
+    IndependentVariable.class,
     ModelDefinitionType.class,
     TrialDesignType.class,
     ModellingStepsType.class,
