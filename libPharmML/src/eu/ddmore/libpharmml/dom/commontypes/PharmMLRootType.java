@@ -48,7 +48,7 @@ import eu.ddmore.libpharmml.dom.dataset.DatasetRow;
 import eu.ddmore.libpharmml.dom.dataset.ImportDataType;
 import eu.ddmore.libpharmml.dom.dataset.ImportTargetDataType;
 import eu.ddmore.libpharmml.dom.dataset.MapType;
-import eu.ddmore.libpharmml.dom.dataset.TargetToolDataSetType;
+import eu.ddmore.libpharmml.dom.dataset.TargetToolDataSet;
 import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.EquationType;
 import eu.ddmore.libpharmml.dom.maths.ExprType;
@@ -255,7 +255,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     InitialValue.class,
     MatrixBlockSelector.class,
     ImportTargetDataType.class,
-    TargetToolDataSetType.class,
+    TargetToolDataSet.class,
     DataSet.class,
     DataSetTableType.class,
     ImportDataType.class,

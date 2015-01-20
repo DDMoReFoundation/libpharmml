@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
-import eu.ddmore.libpharmml.dom.dataset.TargetToolDataSetType;
+import eu.ddmore.libpharmml.dom.dataset.TargetToolDataSet;
 
 
 /**
@@ -89,7 +89,7 @@ public class TargetToolType
     @XmlElement(name = "ColumnMapping")
     protected List<ColumnMapping> columnMapping;
     @XmlElement(name = "TargetToolData", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
-    protected TargetToolDataSetType targetToolData;
+    protected TargetToolDataSet targetToolData;
     @XmlElement(name = "CodeInjection")
     protected CodeInjectionType codeInjection;
     @XmlAttribute(name = "oid", required = true)
@@ -157,10 +157,10 @@ public class TargetToolType
      * 
      * @return
      *     possible object is
-     *     {@link TargetToolDataSetType }
+     *     {@link TargetToolDataSet }
      *     
      */
-    public TargetToolDataSetType getTargetToolData() {
+    public TargetToolDataSet getTargetToolData() {
         return targetToolData;
     }
 
@@ -169,10 +169,10 @@ public class TargetToolType
      * 
      * @param value
      *     allowed object is
-     *     {@link TargetToolDataSetType }
+     *     {@link TargetToolDataSet }
      *     
      */
-    public void setTargetToolData(TargetToolDataSetType value) {
+    public void setTargetToolData(TargetToolDataSet value) {
         this.targetToolData = value;
     }
 

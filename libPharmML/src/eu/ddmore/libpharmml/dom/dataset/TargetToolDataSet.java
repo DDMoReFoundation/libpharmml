@@ -66,7 +66,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "importTargetData",
     "table"
 })
-public class TargetToolDataSetType
+public class TargetToolDataSet
     extends PharmMLRootType
 {
 

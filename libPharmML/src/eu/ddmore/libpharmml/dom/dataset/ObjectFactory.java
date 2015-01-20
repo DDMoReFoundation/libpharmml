@@ -73,11 +73,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TargetToolDataSetType }
+     * Create an instance of {@link TargetToolDataSet }
      * 
      */
-    public TargetToolDataSetType createTargetToolDataSetType() {
-        return new TargetToolDataSetType();
+    public TargetToolDataSet createTargetToolDataSetType() {
+        return new TargetToolDataSet();
     }
 
     /**
@@ -187,12 +187,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TargetToolDataSetType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link TargetToolDataSet }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/08/Dataset", name = "TargetToolData")
-    public JAXBElement<TargetToolDataSetType> createTargetToolData(TargetToolDataSetType value) {
-        return new JAXBElement<TargetToolDataSetType>(_TargetToolData_QNAME, TargetToolDataSetType.class, null, value);
+    public JAXBElement<TargetToolDataSet> createTargetToolData(TargetToolDataSet value) {
+        return new JAXBElement<TargetToolDataSet>(_TargetToolData_QNAME, TargetToolDataSet.class, null, value);
     }
 
     /**
