@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import eu.ddmore.libpharmml.dom.commontypes.CommonVariableDefinitionType;
+import eu.ddmore.libpharmml.dom.commontypes.CommonVariableDefinition;
 import eu.ddmore.libpharmml.dom.commontypes.DerivativeVariableType;
 import eu.ddmore.libpharmml.dom.commontypes.NameType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
@@ -90,7 +90,7 @@ public class StructuralModelType
     @XmlElement(name = "SimpleParameter")
     protected List<SimpleParameterType> simpleParameter;
     @XmlElementRef(name = "CommonVariable", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class)
-    protected List<JAXBElement<? extends CommonVariableDefinitionType>> commonVariable;
+    protected List<JAXBElement<? extends CommonVariableDefinition>> commonVariable;
     @XmlElement(name = "PKmacros")
     protected PKMacroList pKmacros;
     @XmlAttribute(name = "blkId", required = true)
@@ -168,15 +168,15 @@ public class StructuralModelType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link CommonVariableDefinitionType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CommonVariableDefinition }{@code >}
      * {@link JAXBElement }{@code <}{@link VariableDefinitionType }{@code >}
      * {@link JAXBElement }{@code <}{@link DerivativeVariableType }{@code >}
      * 
      * 
      */
-    public List<JAXBElement<? extends CommonVariableDefinitionType>> getCommonVariable() {
+    public List<JAXBElement<? extends CommonVariableDefinition>> getCommonVariable() {
         if (commonVariable == null) {
-            commonVariable = new ArrayList<JAXBElement<? extends CommonVariableDefinitionType>>();
+            commonVariable = new ArrayList<JAXBElement<? extends CommonVariableDefinition>>();
         }
         return this.commonVariable;
     }

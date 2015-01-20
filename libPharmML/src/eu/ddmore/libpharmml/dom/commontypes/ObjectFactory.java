@@ -447,12 +447,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CommonVariableDefinitionType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CommonVariableDefinition }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "CommonVariable")
-    public JAXBElement<CommonVariableDefinitionType> createCommonVariable(CommonVariableDefinitionType value) {
-        return new JAXBElement<CommonVariableDefinitionType>(_CommonVariable_QNAME, CommonVariableDefinitionType.class, null, value);
+    public JAXBElement<CommonVariableDefinition> createCommonVariable(CommonVariableDefinition value) {
+        return new JAXBElement<CommonVariableDefinition>(_CommonVariable_QNAME, CommonVariableDefinition.class, null, value);
     }
 
     /**

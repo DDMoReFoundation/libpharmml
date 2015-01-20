@@ -67,7 +67,7 @@ import javax.xml.bind.annotation.XmlType;
     "history"
 })
 public class DerivativeVariableType
-    extends CommonVariableDefinitionType
+    extends CommonVariableDefinition
 {
 
     @XmlElement(name = "Assign")

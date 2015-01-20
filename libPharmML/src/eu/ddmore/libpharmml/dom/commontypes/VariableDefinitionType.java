@@ -62,7 +62,7 @@ import javax.xml.bind.annotation.XmlType;
     "assign"
 })
 public class VariableDefinitionType
-    extends CommonVariableDefinitionType
+    extends CommonVariableDefinition
 {
 
     @XmlElement(name = "Assign")

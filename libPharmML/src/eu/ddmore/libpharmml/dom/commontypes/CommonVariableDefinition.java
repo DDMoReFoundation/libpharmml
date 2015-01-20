@@ -70,7 +70,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     DerivativeVariableType.class,
     FuncParameterDefinitionType.class
 })
-public abstract class CommonVariableDefinitionType
+public abstract class CommonVariableDefinition
     extends PharmMLRootType
 {
 

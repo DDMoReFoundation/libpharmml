@@ -66,7 +66,7 @@ import javax.xml.bind.annotation.XmlType;
     "definition"
 })
 public class FunctionDefinitionType
-    extends CommonVariableDefinitionType
+    extends CommonVariableDefinition
 {
 
     @XmlElement(name = "FunctionArgument")
