@@ -58,7 +58,7 @@ import javax.xml.bind.annotation.XmlType;
     "condition"
 })
 public class PieceType
-    extends ExprType
+    extends Expression
 {
 
     @XmlElement(name = "Condition", required = true)

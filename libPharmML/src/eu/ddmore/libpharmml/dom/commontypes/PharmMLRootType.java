@@ -51,7 +51,7 @@ import eu.ddmore.libpharmml.dom.dataset.MapType;
 import eu.ddmore.libpharmml.dom.dataset.TargetToolDataSet;
 import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.EquationType;
-import eu.ddmore.libpharmml.dom.maths.ExprType;
+import eu.ddmore.libpharmml.dom.maths.Expression;
 import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOpType;
 import eu.ddmore.libpharmml.dom.maths.LogicConditionType;
@@ -184,7 +184,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     MatrixSelector.class,
     Probability.class,
     LogicExprType.class,
-    ExprType.class,
+    Expression.class,
     StructuralModelType.class,
     ObservationErrorType.class,
     eu.ddmore.libpharmml.dom.modeldefn.IndividualParameterType.GaussianModel.LinearCovariate.PopulationParameter.class,

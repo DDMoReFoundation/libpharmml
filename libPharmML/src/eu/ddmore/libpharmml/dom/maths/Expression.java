@@ -98,7 +98,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
     Uniop.class,
     PieceType.class
 })
-public class ExprType
+public class Expression
     extends PharmMLRootType
 {
 

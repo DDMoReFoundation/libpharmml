@@ -112,7 +112,7 @@ import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "UniopType")
 public class Uniop
-    extends ExprType implements Operand
+    extends Expression implements Operand
 {
 
     @XmlAttribute(name = "op", required = true)

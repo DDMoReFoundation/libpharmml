@@ -154,11 +154,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ExprType }
+     * Create an instance of {@link Expression }
      * 
      */
-    public ExprType createExprType() {
-        return new ExprType();
+    public Expression createExprType() {
+        return new Expression();
     }
 
     /**
