@@ -70,6 +70,29 @@ public class SymbolRef
     @XmlAttribute(name = "symbIdRef", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String symbIdRef;
+    
+    /**
+     * Empty constructor.
+     */
+    public SymbolRef(){}
+    
+    /**
+     * Creates a new reference to the given symbol.
+     * @param symbIdRef Id of the refered symbol.
+     */
+    public SymbolRef(String symbIdRef){
+    	this.symbIdRef = symbIdRef;
+    }
+    
+    /**
+     * Creates a new reference to the given symbol.
+     * @param symbIdRef Id of the refered symbol.
+     * @param blkIdRef Id of the block where the refered symbol is located.
+     */
+    public SymbolRef(String symbIdRef, String blkIdRef){
+    	this.symbIdRef = symbIdRef;
+    	this.blkIdRef = blkIdRef;
+    }
 
     /**
      * Gets the value of the blkIdRef property.
