@@ -37,7 +37,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlElements;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -49,8 +48,47 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *             For example, take the vector (the [] brackets denote a sequence): 0, 4, [0:1:3], 33. Inserting the 
  *             sequence gives us the vector of values: 0, 4, 0, 1, 2, 3, 33. 
  *             
+ * <p>Vectors can have 2 different forms. A first one where all the elements of the vector are specified (Type A),
+ * and an other one where the elements that are not explicitly specified have a default value (Type B).
+ * The possible values in a vector are {@link Scalar}, {@link SymbolRef} and {@link Sequence}.
  * 
- * <p>Java class for VectorType complex type.
+ * <p><h3>Type A (complete):</h3>
+ * This is the most simple representation of a vector.
+ * All the elements within the vector have to be explicitly specified. These elements are wrapped
+ * into a {@link VectorElements} object within the vector. In this case, the {@link VectorElements}
+ * object is the only child element authorized in the {@link Vector}.
+ * <p>For example, if one wants to encode a vector with the following values:
+ * <p>{0,0,1,5,6,4,2,0}
+ * <p>then one can proceed as follows:
+ * <p><code>
+ * Integer[] values = {0,0,1,5,6,4,2,0};<br>
+ * Vector vector = new Vector();<br>
+ * VectorElements vectorElements = vector.createVectorElements();<br>
+ * for(Integer value : values){<br>
+ * &nbsp;&nbsp;&nbsp;vectorElements.createIntValue(value);<br>
+ * }<br>
+ * vector.setLength(values.length);<br>
+ * </code>
+ * <p>It is mandatory to specify manually the length of the vector. This is because the length
+ * of the vector cannot be found automatically when a {@link Sequence} or a {@link SymbolRef}
+ * object is in the list, as it can refer to multiple values.
+ * 
+ * <p><h3>Type B (sparse):</h3>
+ * It is possible to specify only a few elements within the vector. The value of the other ones equals
+ * the default value of the vector. In this form, the "default" attribute is mandatory.   
+ * To specify some values, one can include {@link VectorCell} elements or {@link VectorSegment} elements. 
+ * 
+ * <p>Example:
+ * <p>Vector to encode: {0,0,0,1,0,0,0,1,1,1,1,1,0,0,0,0}
+ * <p><code>
+ * Vector vector = new Vector();<br>
+ * vector.setDefaultValue(0);<br>
+ * vector.setLength(16);<br>
+ * vector.createVectorCell(4,1); // index, value<br>
+ * vector.createVectorSegment(8,5,1); // startIndex, length, defaultValue<br>
+ * </code>
+ * 
+ * <p><h3>Schema:</h3>
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
@@ -58,10 +96,15 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * &lt;complexType name="VectorType">
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
- *       &lt;choice maxOccurs="unbounded">
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Sequence"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Scalar"/>
+ *       &lt;choice>
+ *         &lt;element name="VectorElements" type="{http://www.pharmml.org/2013/03/CommonTypes}VectorElementsType"/>
+ *         &lt;choice maxOccurs="unbounded">
+ *           &lt;element name="VectorCell" type="{http://www.pharmml.org/2013/03/CommonTypes}VectorCellType" maxOccurs="unbounded"/>
+ *           &lt;element name="VectorSegment" type="{http://www.pharmml.org/2013/03/CommonTypes}VectorSegmentType" maxOccurs="unbounded"/>
+ *         &lt;/choice>
  *       &lt;/choice>
+ *       &lt;attribute name="length" type="{http://www.w3.org/2001/XMLSchema}integer" />
+ *       &lt;attribute name="default" type="{http://www.w3.org/2001/XMLSchema}double" default="0" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -74,10 +117,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 	"vectorElements",
 	"vectorCellOrVectorSegment",
     "sequenceOrScalar"
-})
-@XmlSeeAlso({
-	Vector.class,
-	VectorSegment.class
 })
 @XmlJavaTypeAdapter(VectorType.Adapter.class)
 public class VectorType extends AbstractVector {
@@ -100,19 +139,39 @@ public class VectorType extends AbstractVector {
     protected Integer length;
     
     /**
-     * Empty constructor
-     * 
-     * @deprecated Construct a {@link Vector} instead.
-     */
-    @Deprecated
-    public VectorType(){
-    	
-    }
-    
-    /**
-     * For internal purpose
-     */
-    protected VectorType(int a){}
+	 * Creates an empty vector.
+	 */
+	public VectorType(){
+	}
+	
+	/**
+	 * Constructs a type-A vector from provided values.
+	 * @param values An array of {@link VectorValue} elements.
+	 * @param length Length of the vector.
+	 */
+	public VectorType(VectorValue []values, int length){
+		this.vectorElements = new VectorElements(values);
+		this.length = length;
+	}
+	
+	/**
+	 * Constructs a type-B vector with a default value. This type of vector is meant to be filled
+	 * by {@link VectorCell} elements or {@link VectorSegment} elements.
+	 * @param defaultValue The value of the vector cells that are not explicitly specified.
+	 * @param length Length of the vector.
+	 */
+	public VectorType(double defaultValue,int length){
+		this.defaultValue = defaultValue;
+		this.length = length;
+	}
+	
+	public boolean addVectorCell(VectorCell cell){
+		return getListOfVectorCellAndSegment().add(cell);
+	}
+	
+	public boolean addVectorSegment(VectorSegment segment) {
+		return getListOfVectorCellAndSegment().add(segment);
+	}
     
     /**
      * Gets the value of the sequenceOrScalar property.
@@ -167,6 +226,149 @@ public class VectorType extends AbstractVector {
     public void setLength(int length){
     	this.length = length;
     }
+    
+    /**
+	 * Creates a new vector cell into the vector at the specified index without any value.
+	 * @param index Index of the cell within the vector.
+	 * @return The created {@link VectorCell} instance.
+	 */
+	public VectorCell createVectorCell(int index){
+		VectorCell cell = new VectorCell();
+		cell.setVectorIndex(new MatrixVectorIndex(index));
+		addVectorCell(cell);
+		return cell;
+	}
+	
+	/**
+	 * Creates a new vector cell into the vector at the specified index with a symbol as value.
+	 * @param index Index of the cell within the vector.
+	 * @param value Symbol value of the cell.
+	 * @return The created {@link VectorCell} instance.
+	 */
+	public VectorCell createVectorCell(int index, SymbolRef value){
+		VectorCell cell = createVectorCell(index);
+		cell.setValue(value);
+		return cell;
+	}
+	
+	/**
+	 * Creates a new vector cell into the vector at the specified index with a scalar as value.
+	 * @param index Index of the cell within the vector.
+	 * @param value {@link Scalar} value of the cell.
+	 * @return The created {@link VectorCell} instance.
+	 */
+	public VectorCell createVectorCell(int index, Scalar value){
+		VectorCell cell = createVectorCell(index);
+		cell.setValue(value);
+		return cell;
+	}
+	
+	/**
+	 * Creates a new vector cell into the vector at the specified index with a real value.
+	 * A {@link RealValue} object is constructed from the provided primitive variable.
+	 * @param index Index of the cell within the vector.
+	 * @param value Primitive value of the cell.
+	 * @return The created {@link VectorCell} instance.
+	 */
+	public VectorCell createVectorCell(int index, double value){
+		return createVectorCell(index, new RealValue(value));
+	}
+	
+	/**
+	 * Creates a new vector cell into the vector at the specified index with a integer value.
+	 * A {@link IntValue} object is constructed from the provided primitive variable.
+	 * @param index Index of the cell within the vector.
+	 * @param value Primitive value of the cell.
+	 * @return The created {@link VectorCell} instance.
+	 */
+	public VectorCell createVectorCell(int index, int value){
+		return createVectorCell(index, new IntValue(value));
+	}
+	
+	/**
+	 * Creates a new vector cell into the vector at the specified index with a boolean value.
+	 * A {@link BooleanValue} object is constructed from the provided primitive variable.
+	 * @param index Index of the cell within the vector.
+	 * @param value Primitive value of the cell.
+	 * @return The created {@link VectorCell} instance.
+	 */
+	public VectorCell createVectorCell(int index, boolean value){
+		return createVectorCell(index, BooleanValue.fromBoolean(value));
+	}
+	
+	/**
+	 * Creates a new vector cell into the vector at the specified index with a string value.
+	 * A {@link StringValue} object is constructed from the provided primitive variable.
+	 * @param index Index of the cell within the vector.
+	 * @param value Primitive value of the cell.
+	 * @return The created {@link VectorCell} instance.
+	 */
+	public VectorCell createVectorCell(int index, String value){
+		return createVectorCell(index, new StringValue(value));
+	}
+	
+	/**
+	 * Creates a new vector cell into the vector at the specified index with a value.
+	 * This is the most abstracted method for creating a cell.
+	 * @param index The index of the cell as {@link MatrixVectorIndex}
+	 * @param value The value of the cell which can be {@link Scalar} or {@link SymbolRef}
+	 * @return The created cell.
+	 */
+	public VectorCell createVectorCell(MatrixVectorIndex index, VectorCellValue value){
+		VectorCell cell = new VectorCell();
+		if(value instanceof Scalar){
+			cell.setValue((Scalar) value);
+		} else if(value instanceof SymbolRef){
+			cell.setValue((SymbolRef) value);
+		}
+		cell.setVectorIndex(index);
+		addVectorCell(cell);
+		return cell;
+	}
+	
+	/**
+	 * Creates an empty vector segment into the vector and returns it.
+	 * @return The created {@link VectorSegment} object.
+	 */
+	public VectorSegment createVectorSegment(){
+		VectorSegment segment = new VectorSegment();
+		addVectorSegment(segment);
+		return segment;
+	}
+	
+	/**
+	 * Creates a vector segment into the vector and returns it. 
+	 * @param startIndex Start index of the segment within the parent vector.
+	 * @param segmentLength Length of the segment.
+	 * @param defaultValue Value of the vector elements that are explictly specified.
+	 * @param values Values of the segment.
+	 * @return The created {@link VectorSegment} object.
+	 */
+	public VectorSegment createVectorSegment(int startIndex, int segmentLength, double defaultValue, VectorValue values[]){
+		VectorSegment segment = new VectorSegment(
+				new MatrixVectorIndex(startIndex), 
+				new MatrixVectorIndex(segmentLength), 
+				defaultValue, 
+				values);
+		addVectorSegment(segment);
+		return segment;
+	}
+	
+	/**
+	 * Creates a vector segment into the vector and returns it. 
+	 * @param startIndex Start index of the segment within the parent vector.
+	 * @param segmentLength Length of the segment.
+	 * @param defaultValue Value of the vector elements that are explictly specified.
+	 * @return The created {@link VectorSegment} object.
+	 */
+	public VectorSegment createVectorSegment(int startIndex, int segmentLength, double defaultValue){
+		VectorSegment segment = new VectorSegment(
+				new MatrixVectorIndex(startIndex), 
+				new MatrixVectorIndex(segmentLength), 
+				defaultValue);
+		addVectorSegment(segment);
+		return segment;
+	}
     
     /**
      * For marshalling a VectorType as a Vector.
