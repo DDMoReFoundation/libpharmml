@@ -138,11 +138,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PiecewiseType }
+     * Create an instance of {@link Piecewise }
      * 
      */
-    public PiecewiseType createPiecewiseType() {
-        return new PiecewiseType();
+    public Piecewise createPiecewiseType() {
+        return new Piecewise();
     }
 
     /**
@@ -257,13 +257,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PiecewiseType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Piecewise }{@code >}}
      * 
      */
 	@Deprecated
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Piecewise", scope = EquationType.class)
-    public JAXBElement<PiecewiseType> createEquationTypePiecewise(PiecewiseType value) {
-        return new JAXBElement<PiecewiseType>(_EquationTypePiecewise_QNAME, PiecewiseType.class, EquationType.class, value);
+    public JAXBElement<Piecewise> createEquationTypePiecewise(Piecewise value) {
+        return new JAXBElement<Piecewise>(_EquationTypePiecewise_QNAME, Piecewise.class, EquationType.class, value);
     }
 
 }

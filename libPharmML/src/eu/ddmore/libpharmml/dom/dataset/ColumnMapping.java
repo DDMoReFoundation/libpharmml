@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
-import eu.ddmore.libpharmml.dom.maths.PiecewiseType;
+import eu.ddmore.libpharmml.dom.maths.Piecewise;
 
 
 /**
@@ -87,7 +87,7 @@ public class ColumnMapping
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected SymbolRef symbRef;
     @XmlElement(name = "Piecewise")
-    protected PiecewiseType piecewise;
+    protected Piecewise piecewise;
     @XmlElement(name = "CategoryMapping")
     protected List<CategoryMapping> categoryMapping;
     @XmlElement(name = "TargetMapping")
@@ -148,11 +148,11 @@ public class ColumnMapping
      * 
      * @return
      *     possible object is
-     *     {@link PiecewiseType }
+     *     {@link Piecewise }
      *     
      * @since PharmML 0.5
      */
-    public PiecewiseType getPiecewise() {
+    public Piecewise getPiecewise() {
         return piecewise;
     }
 
@@ -161,11 +161,11 @@ public class ColumnMapping
      * 
      * @param value
      *     allowed object is
-     *     {@link PiecewiseType }
+     *     {@link Piecewise }
      *     
      * @since PharmML 0.5
      */
-    public void setPiecewise(PiecewiseType value) {
+    public void setPiecewise(Piecewise value) {
         this.piecewise = value;
     }
     
@@ -286,11 +286,11 @@ public class ColumnMapping
     }
 
     /**
-     * Creates a new empty {@link PiecewiseType} piecewise element, adds it to the current object and returns it.
-     * @return The created {@link PiecewiseType} object.
+     * Creates a new empty {@link Piecewise} piecewise element, adds it to the current object and returns it.
+     * @return The created {@link Piecewise} object.
      */
-    public PiecewiseType createPiecewise(){
-            PiecewiseType el = new PiecewiseType();
+    public Piecewise createPiecewise(){
+            Piecewise el = new Piecewise();
             this.piecewise = el;
             return el;
     }

@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
-import eu.ddmore.libpharmml.dom.maths.PiecewiseType;
+import eu.ddmore.libpharmml.dom.maths.Piecewise;
 
 
 /**
@@ -71,7 +71,7 @@ public class MultipleDVMappingType
     @XmlElement(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
     protected ColumnReference columnRef;
     @XmlElement(name = "Piecewise", required = true)
-    protected PiecewiseType piecewise;
+    protected Piecewise piecewise;
 
     /**
      * 
@@ -104,10 +104,10 @@ public class MultipleDVMappingType
      * 
      * @return
      *     possible object is
-     *     {@link PiecewiseType }
+     *     {@link Piecewise }
      *     
      */
-    public PiecewiseType getPiecewise() {
+    public Piecewise getPiecewise() {
         return piecewise;
     }
 
@@ -116,10 +116,10 @@ public class MultipleDVMappingType
      * 
      * @param value
      *     allowed object is
-     *     {@link PiecewiseType }
+     *     {@link Piecewise }
      *     
      */
-    public void setPiecewise(PiecewiseType value) {
+    public void setPiecewise(Piecewise value) {
         this.piecewise = value;
     }
 

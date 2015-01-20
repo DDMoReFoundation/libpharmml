@@ -62,7 +62,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 @XmlType(name = "PiecewiseType", propOrder = {
     "piece"
 })
-public class PiecewiseType extends PharmMLElement {
+public class Piecewise extends PharmMLElement {
 
     @XmlElement(name = "Piece", required = true)
     protected List<Piece> piece;

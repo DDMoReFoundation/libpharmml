@@ -123,7 +123,7 @@ public class EquationType
     @XmlElement(name = "Uniop")
     protected Uniop uniop;
     @XmlElement(name = "Piecewise")
-    protected PiecewiseType piecewise;
+    protected Piecewise piecewise;
     @XmlElement(name = "FunctionCall")
     protected FunctionCallType functionCall;
 	@XmlElement(name = "Sum", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
@@ -265,10 +265,10 @@ public class EquationType
      * 
      * @return
      *     possible object is
-     *     {@link PiecewiseType }
+     *     {@link Piecewise }
      *     
      */
-    public PiecewiseType getPiecewise() {
+    public Piecewise getPiecewise() {
         return piecewise;
     }
 
@@ -277,10 +277,10 @@ public class EquationType
      * 
      * @param value
      *     allowed object is
-     *     {@link PiecewiseType }
+     *     {@link Piecewise }
      *     
      */
-    public void setPiecewise(PiecewiseType value) {
+    public void setPiecewise(Piecewise value) {
         this.piecewise = value;
     }
 
@@ -484,8 +484,8 @@ public class EquationType
         			} else if (element.getDeclaredType().equals(FunctionCallType.class)){
         				setFunctionCall((FunctionCallType)element.getValue());
         				firstElement = true;
-        			} else if (element.getDeclaredType().equals(PiecewiseType.class)){
-        				setPiecewise((PiecewiseType)element.getValue());
+        			} else if (element.getDeclaredType().equals(Piecewise.class)){
+        				setPiecewise((Piecewise)element.getValue());
         				firstElement = true;
         			} else if (element.getDeclaredType().equals(Uniop.class)){
         				setUniop((Uniop)element.getValue());
