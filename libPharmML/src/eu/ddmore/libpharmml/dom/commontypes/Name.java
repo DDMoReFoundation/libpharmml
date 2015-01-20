@@ -66,6 +66,12 @@ public class Name {
     @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String id;
+    
+    public Name(){}
+    
+    public Name(String value){
+    	this.value = value;
+    }
 
     /**
      * Gets the value of the value property.
