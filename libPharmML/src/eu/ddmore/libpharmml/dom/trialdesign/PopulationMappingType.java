@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
-import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 
 
 /**
@@ -73,7 +73,7 @@ public abstract class PopulationMappingType
 {
 
     @XmlElement(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
-    protected ColumnRefType columnRef;
+    protected ColumnReference columnRef;
 
     /**
      * 
@@ -83,10 +83,10 @@ public abstract class PopulationMappingType
      * 
      * @return
      *     possible object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      */
-    public ColumnRefType getColumnRef() {
+    public ColumnReference getColumnRef() {
         return columnRef;
     }
 
@@ -95,10 +95,10 @@ public abstract class PopulationMappingType
      * 
      * @param value
      *     allowed object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      */
-    public void setColumnRef(ColumnRefType value) {
+    public void setColumnRef(ColumnReference value) {
         this.columnRef = value;
     }
 

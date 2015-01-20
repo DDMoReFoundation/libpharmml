@@ -48,7 +48,7 @@ import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
-import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 
 
 /**
@@ -167,7 +167,7 @@ public class LogicBinOpType
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link LogicBinOpType }{@code >}
-     * {@link JAXBElement }{@code <}{@link ColumnRefType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ColumnReference }{@code >}
      * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValue }{@code >}
      * {@link JAXBElement }{@code <}{@link FunctionCallType }{@code >}
@@ -184,7 +184,7 @@ public class LogicBinOpType
      * {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
      * 
      * <p>
-     * In order to be compliant with the PharmML specification (>= 0.3.1), only 1 {@link ColumnRefType } is allowed in the content,
+     * In order to be compliant with the PharmML specification (>= 0.3.1), only 1 {@link ColumnReference } is allowed in the content,
      * and should always be the 1st operand (i.e., the first element of this list). Anyway, this is checked only
      * during the XSD-based validation process.
      * </p>

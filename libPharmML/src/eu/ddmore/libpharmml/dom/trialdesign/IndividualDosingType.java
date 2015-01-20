@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
-import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 
 
@@ -87,25 +87,25 @@ public class IndividualDosingType
     protected DataSet dataSet;
 	@XmlElement(name = "IndividualRef", required = true)
 	@Deprecated
-    protected ColumnRefType individualRef;
+    protected ColumnReference individualRef;
     @XmlElement(name = "DoseAmount")
     @Deprecated
-    protected ColumnRefType doseAmount;
+    protected ColumnReference doseAmount;
     @XmlElement(name = "DosingTime")
     @Deprecated
-    protected ColumnRefType dosingTime;
+    protected ColumnReference dosingTime;
     @XmlElement(name = "Rate")
     @Deprecated
-    protected ColumnRefType rate;
+    protected ColumnReference rate;
     @XmlElement(name = "Duration")
     @Deprecated
-    protected ColumnRefType duration;
+    protected ColumnReference duration;
     @XmlElement(name = "SSEndTime")
     @Deprecated
-    protected ColumnRefType ssEndTime;
+    protected ColumnReference ssEndTime;
     @XmlElement(name = "SSPeriod")
     @Deprecated
-    protected ColumnRefType ssPeriod;
+    protected ColumnReference ssPeriod;
 
     /**
      * Gets the value of the activityRef property.
@@ -191,12 +191,12 @@ public class IndividualDosingType
      * 
      * @return
      *     possible object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      * @deprecated Since PharmML 0.3. Column mapping should be done through {@link #getColumnMapping()}.
      */
     @Deprecated
-    public ColumnRefType getIndividualRef() {
+    public ColumnReference getIndividualRef() {
         return individualRef;
     }
 
@@ -205,12 +205,12 @@ public class IndividualDosingType
      * 
      * @param value
      *     allowed object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      * @deprecated Since PharmML 0.3. Column mapping should be done through {@link #getColumnMapping()}.
      */
     @Deprecated
-    public void setIndividualRef(ColumnRefType value) {
+    public void setIndividualRef(ColumnReference value) {
         this.individualRef = value;
     }
 
@@ -219,12 +219,12 @@ public class IndividualDosingType
      * 
      * @return
      *     possible object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      * @deprecated Since PharmML 0.3. Column mapping should be done through {@link #getColumnMapping()}.
      */
     @Deprecated
-    public ColumnRefType getDoseAmount() {
+    public ColumnReference getDoseAmount() {
         return doseAmount;
     }
 
@@ -233,12 +233,12 @@ public class IndividualDosingType
      * 
      * @param value
      *     allowed object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      * @deprecated Since PharmML 0.3. Column mapping should be done through {@link #getColumnMapping()}.
      */
     @Deprecated
-    public void setDoseAmount(ColumnRefType value) {
+    public void setDoseAmount(ColumnReference value) {
         this.doseAmount = value;
     }
 
@@ -247,12 +247,12 @@ public class IndividualDosingType
      * 
      * @return
      *     possible object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      * @deprecated Since PharmML 0.3. Column mapping should be done through {@link #getColumnMapping()}.
      */
     @Deprecated
-    public ColumnRefType getDosingTime() {
+    public ColumnReference getDosingTime() {
         return dosingTime;
     }
 
@@ -261,12 +261,12 @@ public class IndividualDosingType
      * 
      * @param value
      *     allowed object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      * @deprecated Since PharmML 0.3. Column mapping should be done through {@link #getColumnMapping()}.
      */
     @Deprecated
-    public void setDosingTime(ColumnRefType value) {
+    public void setDosingTime(ColumnReference value) {
         this.dosingTime = value;
     }
 
@@ -275,12 +275,12 @@ public class IndividualDosingType
      * 
      * @return
      *     possible object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      * @deprecated Since PharmML 0.3. Column mapping should be done through {@link #getColumnMapping()}.
      */
     @Deprecated
-    public ColumnRefType getRate() {
+    public ColumnReference getRate() {
         return rate;
     }
 
@@ -289,12 +289,12 @@ public class IndividualDosingType
      * 
      * @param value
      *     allowed object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      * @deprecated Since PharmML 0.3. Column mapping should be done through {@link #getColumnMapping()}.
      */
     @Deprecated
-    public void setRate(ColumnRefType value) {
+    public void setRate(ColumnReference value) {
         this.rate = value;
     }
 
@@ -303,12 +303,12 @@ public class IndividualDosingType
      * 
      * @return
      *     possible object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      * @deprecated Since PharmML 0.3. Column mapping should be done through {@link #getColumnMapping()}.
      */
     @Deprecated
-    public ColumnRefType getDuration() {
+    public ColumnReference getDuration() {
         return duration;
     }
 
@@ -317,12 +317,12 @@ public class IndividualDosingType
      * 
      * @param value
      *     allowed object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      * @deprecated Since PharmML 0.3. Column mapping should be done through {@link #getColumnMapping()}.
      */
     @Deprecated
-    public void setDuration(ColumnRefType value) {
+    public void setDuration(ColumnReference value) {
         this.duration = value;
     }
 
@@ -331,12 +331,12 @@ public class IndividualDosingType
      * 
      * @return
      *     possible object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      * @deprecated Since PharmML 0.3. Column mapping should be done through {@link #getColumnMapping()}.
      */
     @Deprecated
-    public ColumnRefType getSSEndTime() {
+    public ColumnReference getSSEndTime() {
         return ssEndTime;
     }
 
@@ -345,12 +345,12 @@ public class IndividualDosingType
      * 
      * @param value
      *     allowed object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      * @deprecated Since PharmML 0.3. Column mapping should be done through {@link #getColumnMapping()}.
      */
     @Deprecated
-    public void setSSEndTime(ColumnRefType value) {
+    public void setSSEndTime(ColumnReference value) {
         this.ssEndTime = value;
     }
 
@@ -359,12 +359,12 @@ public class IndividualDosingType
      * 
      * @return
      *     possible object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      * @deprecated Since PharmML 0.3. Column mapping should be done through {@link #getColumnMapping()}.
      */
     @Deprecated
-    public ColumnRefType getSSPeriod() {
+    public ColumnReference getSSPeriod() {
         return ssPeriod;
     }
 
@@ -373,12 +373,12 @@ public class IndividualDosingType
      * 
      * @param value
      *     allowed object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      * @deprecated Since PharmML 0.3. Column mapping should be done through {@link #getColumnMapping()}.
      */
     @Deprecated
-    public void setSSPeriod(ColumnRefType value) {
+    public void setSSPeriod(ColumnReference value) {
         this.ssPeriod = value;
     }
 }

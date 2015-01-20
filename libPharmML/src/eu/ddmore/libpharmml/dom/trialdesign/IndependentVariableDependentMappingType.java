@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
-import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 
 
 /**
@@ -76,7 +76,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
 public class IndependentVariableDependentMappingType {
 
     @XmlElement(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
-    protected ColumnRefType columnRef;
+    protected ColumnReference columnRef;
     @XmlElement(name = "IndependentVariableMapping")
     protected IndependentVariableMappingType independentVariableMapping;
     @XmlElement(name = "EpochMapping")
@@ -89,10 +89,10 @@ public class IndependentVariableDependentMappingType {
      * 
      * @return
      *     possible object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      */
-    public ColumnRefType getColumnRef() {
+    public ColumnReference getColumnRef() {
         return columnRef;
     }
 
@@ -101,10 +101,10 @@ public class IndependentVariableDependentMappingType {
      * 
      * @param value
      *     allowed object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      */
-    public void setColumnRef(ColumnRefType value) {
+    public void setColumnRef(ColumnReference value) {
         this.columnRef = value;
     }
 

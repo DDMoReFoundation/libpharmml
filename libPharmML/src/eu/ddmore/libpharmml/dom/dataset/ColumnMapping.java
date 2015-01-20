@@ -83,7 +83,7 @@ public class ColumnMapping
 {
 
     @XmlElement(name = "ColumnRef")
-    protected ColumnRefType columnRef;
+    protected ColumnReference columnRef;
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected SymbolRef symbRef;
     @XmlElement(name = "Piecewise")
@@ -100,10 +100,10 @@ public class ColumnMapping
      * 
      * @return
      *     possible object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      */
-    public ColumnRefType getColumnRef() {
+    public ColumnReference getColumnRef() {
         return columnRef;
     }
 
@@ -112,10 +112,10 @@ public class ColumnMapping
      * 
      * @param value
      *     allowed object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      */
-    public void setColumnRef(ColumnRefType value) {
+    public void setColumnRef(ColumnReference value) {
         this.columnRef = value;
     }
 
@@ -228,11 +228,11 @@ public class ColumnMapping
     }
     
     /**
-     * Creates a new empty {@link ColumnRefType} columnRef element, adds it to the current object and returns it.
-     * @return The created {@link ColumnRefType} object.
+     * Creates a new empty {@link ColumnReference} columnRef element, adds it to the current object and returns it.
+     * @return The created {@link ColumnReference} object.
      */
-    public ColumnRefType createColumnRef(){
-            ColumnRefType el = new ColumnRefType();
+    public ColumnReference createColumnRef(){
+            ColumnReference el = new ColumnReference();
             this.columnRef = el;
             return el;
     }
@@ -240,10 +240,10 @@ public class ColumnMapping
      * Creates a new reference to the provided column, adds it to the current object
      * and returns it.
      * @param columnId The id of the column this object refers to.
-     * @return The created {@link ColumnRefType} object.
+     * @return The created {@link ColumnReference} object.
      */
-    public ColumnRefType createColumnRef(String columnId){
-            ColumnRefType el = new ColumnRefType();
+    public ColumnReference createColumnRef(String columnId){
+            ColumnReference el = new ColumnReference();
             el.setColumnIdRef(columnId);
             this.columnRef = el;
             return el;

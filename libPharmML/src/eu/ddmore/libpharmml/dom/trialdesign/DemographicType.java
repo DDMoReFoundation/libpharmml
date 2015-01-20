@@ -49,7 +49,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
-import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 
 
 /**
@@ -97,7 +97,7 @@ public class DemographicType
     @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class)
     protected List<JAXBElement<?>> scalar;
     @XmlElement(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
-    protected ColumnRefType columnRef;
+    protected ColumnReference columnRef;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
@@ -201,11 +201,11 @@ public class DemographicType
      * 
      * @return
      *     possible object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      * @since PharmML 0.3
      */
-    public ColumnRefType getColumnRef() {
+    public ColumnReference getColumnRef() {
         return columnRef;
     }
 
@@ -214,11 +214,11 @@ public class DemographicType
      * 
      * @param value
      *     allowed object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      * @since PharmML 0.3
      */
-    public void setColumnRef(ColumnRefType value) {
+    public void setColumnRef(ColumnReference value) {
         this.columnRef = value;
     }
 

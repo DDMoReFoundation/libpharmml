@@ -39,7 +39,7 @@ import eu.ddmore.libpharmml.dom.IndependentVariable;
 import eu.ddmore.libpharmml.dom.commontypes.VectorElements;
 import eu.ddmore.libpharmml.dom.dataset.CategoryMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
-import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.dom.dataset.ColumnsDefinitionType;
 import eu.ddmore.libpharmml.dom.dataset.CommonColumnDefnType;
 import eu.ddmore.libpharmml.dom.dataset.DataSetTableType;
@@ -260,7 +260,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     DataSetTableType.class,
     ImportDataType.class,
     ColumnsDefinitionType.class,
-    ColumnRefType.class,
+    ColumnReference.class,
     DatasetRow.class,
     CategoryMapping.class,
     ColumnMapping.class,

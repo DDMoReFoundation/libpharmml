@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
-import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 
 
 /**
@@ -109,7 +109,7 @@ public class SymbolMappingType
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link SymbolRef }{@code >}
-     * {@link JAXBElement }{@code <}{@link ColumnRefType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ColumnReference }{@code >}
      * 
      * 
      */

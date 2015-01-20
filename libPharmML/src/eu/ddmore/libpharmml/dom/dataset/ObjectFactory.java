@@ -113,11 +113,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ColumnRefType }
+     * Create an instance of {@link ColumnReference }
      * 
      */
-    public ColumnRefType createColumnRefType() {
-        return new ColumnRefType();
+    public ColumnReference createColumnRefType() {
+        return new ColumnReference();
     }
 
     /**
@@ -196,12 +196,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ColumnRefType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ColumnReference }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/08/Dataset", name = "ColumnRef")
-    public JAXBElement<ColumnRefType> createColumnRef(ColumnRefType value) {
-        return new JAXBElement<ColumnRefType>(_ColumnRef_QNAME, ColumnRefType.class, null, value);
+    public JAXBElement<ColumnReference> createColumnRef(ColumnReference value) {
+        return new JAXBElement<ColumnReference>(_ColumnRef_QNAME, ColumnReference.class, null, value);
     }
 
     /**

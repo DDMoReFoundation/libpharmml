@@ -69,12 +69,12 @@ import eu.ddmore.libpharmml.dom.maths.Operand;
 @XmlType(name = "ColumnRefType", propOrder = {
     "columnRef"
 })
-public class ColumnRefType
+public class ColumnReference
     extends PharmMLRootType implements Operand
 {
 
     @XmlElement(name = "ColumnRef")
-    protected ColumnRefType columnRef;
+    protected ColumnReference columnRef;
     @XmlAttribute(name = "columnIdRef", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String columnIdRef;
@@ -89,10 +89,10 @@ public class ColumnRefType
      * 
      * @return
      *     possible object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      */
-    public ColumnRefType getColumnRef() {
+    public ColumnReference getColumnRef() {
         return columnRef;
     }
 
@@ -101,10 +101,10 @@ public class ColumnRefType
      * 
      * @param value
      *     allowed object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      */
-    public void setColumnRef(ColumnRefType value) {
+    public void setColumnRef(ColumnReference value) {
         this.columnRef = value;
     }
 
@@ -159,7 +159,7 @@ public class ColumnRefType
     }
 
 	@Override
-	public JAXBElement<ColumnRefType> toJAXBElement() {
+	public JAXBElement<ColumnReference> toJAXBElement() {
 		return MasterObjectFactory.DATASET_OF.createColumnRef(this);
 	}
 
