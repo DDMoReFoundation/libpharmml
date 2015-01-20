@@ -137,11 +137,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CommonColumnDefnType }
+     * Create an instance of {@link CommonColumnDefinition }
      * 
      */
-    public CommonColumnDefnType createCommonColumnDefnType() {
-        return new CommonColumnDefnType();
+    public CommonColumnDefinition createCommonColumnDefnType() {
+        return new CommonColumnDefinition();
     }
 
     /**

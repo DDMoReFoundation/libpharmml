@@ -76,7 +76,7 @@ public class ColumnsDefinitionType
         @XmlElement(name = "Column", type = ColumnDefinition.class),
         @XmlElement(name = "Table", type = DataSetTableDefnType.class)
     })
-    protected List<CommonColumnDefnType> columnOrTable;
+    protected List<CommonColumnDefinition> columnOrTable;
 	
     @XmlElement(name = "Column")
     protected List<ColumnDefinition> column;
@@ -106,9 +106,9 @@ public class ColumnsDefinitionType
      * This attribute would remain empty for other versions. Use {@link #getColumn()} instead.
      */
     @Deprecated
-	public List<CommonColumnDefnType> getColumnOrTable() {
+	public List<CommonColumnDefinition> getColumnOrTable() {
         if (columnOrTable == null) {
-            columnOrTable = new ArrayList<CommonColumnDefnType>();
+            columnOrTable = new ArrayList<CommonColumnDefinition>();
         }
         return this.columnOrTable;
     }
@@ -150,7 +150,7 @@ public class ColumnsDefinitionType
     		break;
     	default :
     		if(getColumnOrTable().size() > 0){
-    			for(CommonColumnDefnType colOrTab : getColumnOrTable()){
+    			for(CommonColumnDefinition colOrTab : getColumnOrTable()){
         			if(colOrTab instanceof ColumnDefinition){
         				getColumn().add((ColumnDefinition)colOrTab);
         				LoggerWrapper.getLogger().info("Moved 1 column from columnOrTable attribute to column attribute in "+this);

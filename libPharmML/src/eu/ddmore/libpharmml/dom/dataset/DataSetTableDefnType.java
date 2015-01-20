@@ -65,7 +65,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 })
 @Deprecated
 public class DataSetTableDefnType
-    extends CommonColumnDefnType
+    extends CommonColumnDefinition
 {
 
     @XmlElement(name = "Definition", required = true)

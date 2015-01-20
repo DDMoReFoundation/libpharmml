@@ -62,7 +62,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     ColumnDefinition.class,
     DataSetTableDefnType.class
 })
-public class CommonColumnDefnType
+public class CommonColumnDefinition
     extends PharmMLRootType
 {
 
