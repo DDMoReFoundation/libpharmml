@@ -67,7 +67,7 @@ public class CategoricalCovariate
 {
 
     @XmlElement(name = "Category", required = true)
-    protected List<CategoryType> category;
+    protected List<Category> category;
 
     /**
      * Gets the value of the category property.
@@ -87,13 +87,13 @@ public class CategoricalCovariate
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CategoryType }
+     * {@link Category }
      * 
      * 
      */
-    public List<CategoryType> getCategory() {
+    public List<Category> getCategory() {
         if (category == null) {
-            category = new ArrayList<CategoryType>();
+            category = new ArrayList<Category>();
         }
         return this.category;
     }

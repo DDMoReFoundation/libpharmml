@@ -67,7 +67,7 @@ import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
     "description",
     "probability"
 })
-public class CategoryType {
+public class Category {
 
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected Name name;

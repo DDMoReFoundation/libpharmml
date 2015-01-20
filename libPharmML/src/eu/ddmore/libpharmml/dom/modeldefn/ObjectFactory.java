@@ -228,11 +228,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CategoryType }
+     * Create an instance of {@link Category }
      * 
      */
-    public CategoryType createCategoryType() {
-        return new CategoryType();
+    public Category createCategoryType() {
+        return new Category();
     }
 
     /**
