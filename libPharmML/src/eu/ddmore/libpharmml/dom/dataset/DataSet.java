@@ -30,7 +30,6 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.Marshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -144,19 +143,18 @@ public class DataSet
     /**
      * Creates a new column in this table and returns it.
      * 
-     * <p>The columnNum attribute cannot be set with this method, as it will correspond the position of the column
-     * within the list ({@link #getListOfColumnDefinition()}) during the marshalling process.
-     * 
      * @param columnId The id of the column.
      * @param columnType The type of the column.
      * @param valueType The type of value in this column.
+     * @param columnNum The column number. Needed to map the column into the dataset.
      * @return The created column as a {@link ColumnDefinition} object.
      */
-    public ColumnDefinition createColumnDefinition(String columnId, ColumnType columnType, SymbolType valueType){
+    public ColumnDefinition createColumnDefinition(String columnId, ColumnType columnType, SymbolType valueType, Integer columnNum){
     	ColumnDefinition column = new ColumnDefinition();
     	column.setColumnId(columnId);
     	column.setColumnType(columnType);
     	column.setValueType(valueType);
+    	column.setColumnNum(BigInteger.valueOf(columnNum));
     	
     	getListOfColumnDefinition().add(column);
     	
@@ -445,18 +443,18 @@ public class DataSet
 		
 	}
 	
-	/**
-	 * Contains some routines for setting the columnNum attribute of the column definitions.
-	 * @param marshaller
-	 */
-	protected void beforeMarshal(Marshaller marshaller){
-		// Setting columnNum values to column definitions
-		BigInteger columnNum = BigInteger.ZERO;
-		for(ColumnDefinition columnDef : getListOfColumnDefinition()){
-			if(columnDef != null){
-				columnNum = columnNum.add(BigInteger.ONE);
-				columnDef.setColumnNum(columnNum);
-			}
-		}
-	}
+//	/**
+//	 * Contains some routines for setting the columnNum attribute of the column definitions.
+//	 * @param marshaller
+//	 */
+//	protected void beforeMarshal(Marshaller marshaller){
+//		// Setting columnNum values to column definitions
+//		BigInteger columnNum = BigInteger.ZERO;
+//		for(ColumnDefinition columnDef : getListOfColumnDefinition()){
+//			if(columnDef != null){
+//				columnNum = columnNum.add(BigInteger.ONE);
+//				columnDef.setColumnNum(columnNum);
+//			}
+//		}
+//	}
 }
