@@ -65,7 +65,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 public class PiecewiseType extends PharmMLElement {
 
     @XmlElement(name = "Piece", required = true)
-    protected List<PieceType> piece;
+    protected List<Piece> piece;
 
     /**
      * Gets the value of the piece property.
@@ -85,13 +85,13 @@ public class PiecewiseType extends PharmMLElement {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link PieceType }
+     * {@link Piece }
      * 
      * 
      */
-    public List<PieceType> getPiece() {
+    public List<Piece> getPiece() {
         if (piece == null) {
-            piece = new ArrayList<PieceType>();
+            piece = new ArrayList<Piece>();
         }
         return this.piece;
     }

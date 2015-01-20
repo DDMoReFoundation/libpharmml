@@ -96,7 +96,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 })
 @XmlSeeAlso({
     Uniop.class,
-    PieceType.class
+    Piece.class
 })
 public class Expression
     extends PharmMLRootType

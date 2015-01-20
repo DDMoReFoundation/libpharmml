@@ -57,7 +57,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "PieceType", propOrder = {
     "condition"
 })
-public class PieceType
+public class Piece
     extends Expression
 {
 

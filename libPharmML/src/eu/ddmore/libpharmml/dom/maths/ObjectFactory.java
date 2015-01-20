@@ -170,11 +170,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PieceType }
+     * Create an instance of {@link Piece }
      * 
      */
-    public PieceType createPieceType() {
-        return new PieceType();
+    public Piece createPieceType() {
+        return new Piece();
     }
 
     /**
