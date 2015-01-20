@@ -252,7 +252,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     MatrixColumnRowNames.class,
     LowUpLimit.class,
     VectorSegment.class,
-    InitialValueType.class,
+    InitialValue.class,
     MatrixBlockSelector.class,
     ImportTargetDataType.class,
     TargetToolDataSetType.class,

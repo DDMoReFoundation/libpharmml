@@ -57,7 +57,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "InitialValueType", propOrder = {
     "assign"
 })
-public class InitialValueType
+public class InitialValue
     extends PharmMLRootType
 {
 

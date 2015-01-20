@@ -64,7 +64,7 @@ public class History
 {
 
     @XmlElement(name = "HistoryValue")
-    protected InitialValueType historyValue;
+    protected InitialValue historyValue;
     @XmlElement(name = "HistoryTime")
     protected InitialTime historyTime;
     
@@ -75,7 +75,7 @@ public class History
     
     /**
      * Create a History element with assignment to value and time.
-     * This creates a {@link InitialValueType} for value and a {@link InitialTime} for time
+     * This creates a {@link InitialValue} for value and a {@link InitialTime} for time
      * each one containing the {@link Rhs} historyValue amd historyTime elements respectively.
      * @param historyValue The assignment to value
      * @param historyTime The assignment to time
@@ -90,10 +90,10 @@ public class History
      * 
      * @return
      *     possible object is
-     *     {@link InitialValueType }
+     *     {@link InitialValue }
      *     
      */
-    public InitialValueType getHistoryValue() {
+    public InitialValue getHistoryValue() {
         return historyValue;
     }
 
@@ -102,10 +102,10 @@ public class History
      * 
      * @param value
      *     allowed object is
-     *     {@link InitialValueType }
+     *     {@link InitialValue }
      *     
      */
-    public void setHistoryValue(InitialValueType value) {
+    public void setHistoryValue(InitialValue value) {
         this.historyValue = value;
     }
 
@@ -133,13 +133,13 @@ public class History
         this.historyTime = value;
     }
     
-    public InitialValueType createHistoryValue(){
-    	InitialValueType value = new InitialValueType();
+    public InitialValue createHistoryValue(){
+    	InitialValue value = new InitialValue();
     	this.historyValue = value;
     	return value;
     }
-    public InitialValueType createHistoryValue(Rhs assign){
-    	InitialValueType value = createHistoryValue();
+    public InitialValue createHistoryValue(Rhs assign){
+    	InitialValue value = createHistoryValue();
     	value.setAssign(assign);
     	return value;
     }

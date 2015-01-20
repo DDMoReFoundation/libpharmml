@@ -67,7 +67,7 @@ public class InitialCondition
     @XmlElement(name = "Assign")
     protected Rhs assign;
 	@XmlElement(name = "InitialValue")
-    protected InitialValueType initialValue;
+    protected InitialValue initialValue;
     @XmlElement(name = "InitialTime")
     protected InitialTime initialTime;
 	
@@ -88,7 +88,7 @@ public class InitialCondition
     /**
      * @deprecated
      * Sets the value of the assign property.
-     * Since version 0.3, PharmML supports additionally the storage of initial time t0 and not only the initial value. Use now {@link #setInitialTime(InitialTime)} and {@link #setInitialValue(InitialValueType)} instead.
+     * Since version 0.3, PharmML supports additionally the storage of initial time t0 and not only the initial value. Use now {@link #setInitialTime(InitialTime)} and {@link #setInitialValue(InitialValue)} instead.
      * @param value
      *     allowed object is
      *     {@link Rhs }
@@ -104,10 +104,10 @@ public class InitialCondition
      * 
      * @return
      *     possible object is
-     *     {@link InitialValueType }
+     *     {@link InitialValue }
      *     
      */
-    public InitialValueType getInitialValue() {
+    public InitialValue getInitialValue() {
         return initialValue;
     }
 
@@ -116,10 +116,10 @@ public class InitialCondition
      * 
      * @param value
      *     allowed object is
-     *     {@link InitialValueType }
+     *     {@link InitialValue }
      *     
      */
-    public void setInitialValue(InitialValueType value) {
+    public void setInitialValue(InitialValue value) {
         this.initialValue = value;
     }
 

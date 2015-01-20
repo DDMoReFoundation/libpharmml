@@ -341,11 +341,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link InitialValueType }
+     * Create an instance of {@link InitialValue }
      * 
      */
-    public InitialValueType createInitialValueType() {
-        return new InitialValueType();
+    public InitialValue createInitialValueType() {
+        return new InitialValue();
     }
 
     /**
