@@ -62,6 +62,19 @@ public class OidRef
     @XmlAttribute(name = "oidRef", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oidRef;
+    
+    /**
+     * Empty constructor
+     */
+    public OidRef(){}
+    
+    /**
+     * Creates a new reference to an object with the given id.
+     * @param oidRef Id of the refered object.
+     */
+    public OidRef(String oidRef){
+    	this.oidRef = oidRef;
+    }
 
     /**
      * Gets the value of the oidRef property.
