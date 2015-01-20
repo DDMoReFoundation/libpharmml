@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
-import eu.ddmore.libpharmml.dom.maths.LogicUniOpType;
+import eu.ddmore.libpharmml.dom.maths.LogicUniOp;
 
 
 /**
@@ -72,7 +72,7 @@ public class CommonDiscreteState
     @XmlElement(name = "LogicBinop", namespace = "http://www.pharmml.org/2013/03/Maths")
     protected LogicBinOp logicBinop;
     @XmlElement(name = "LogicUniop", namespace = "http://www.pharmml.org/2013/03/Maths")
-    protected LogicUniOpType logicUniop;
+    protected LogicUniOp logicUniop;
     @XmlAttribute(name = "MarkovOrder")
     protected BigInteger markovOrder;
 
@@ -105,10 +105,10 @@ public class CommonDiscreteState
      * 
      * @return
      *     possible object is
-     *     {@link LogicUniOpType }
+     *     {@link LogicUniOp }
      *     
      */
-    public LogicUniOpType getLogicUniop() {
+    public LogicUniOp getLogicUniop() {
         return logicUniop;
     }
 
@@ -117,10 +117,10 @@ public class CommonDiscreteState
      * 
      * @param value
      *     allowed object is
-     *     {@link LogicUniOpType }
+     *     {@link LogicUniOp }
      *     
      */
-    public void setLogicUniop(LogicUniOpType value) {
+    public void setLogicUniop(LogicUniOp value) {
         this.logicUniop = value;
     }
 
@@ -159,11 +159,11 @@ public class CommonDiscreteState
     }
 
     /**
-     * Creates a new empty {@link LogicUniOpType} element, adds it to the current {@link CommonDiscreteState} object and returns it.
-     * @return The created {@link LogicUniOpType} object.
+     * Creates a new empty {@link LogicUniOp} element, adds it to the current {@link CommonDiscreteState} object and returns it.
+     * @return The created {@link LogicUniOp} object.
      */
-    public LogicUniOpType createLogicUniop(){
-            LogicUniOpType el = new LogicUniOpType();
+    public LogicUniOp createLogicUniop(){
+            LogicUniOp el = new LogicUniOp();
             this.logicUniop = el;
             return el;
     }

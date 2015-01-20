@@ -99,7 +99,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
     "probability"
 })
 @XmlSeeAlso({
-    LogicUniOpType.class
+    LogicUniOp.class
 })
 public class LogicExpression
     extends PharmMLRootType
@@ -108,7 +108,7 @@ public class LogicExpression
     @XmlElement(name = "LogicBinop")
     protected LogicBinOp logicBinop;
     @XmlElement(name = "LogicUniop")
-    protected LogicUniOpType logicUniop;
+    protected LogicUniOp logicUniop;
     @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     protected JAXBElement<?> scalar;
     @XmlElement(name = "Constant")
@@ -161,10 +161,10 @@ public class LogicExpression
      * 
      * @return
      *     possible object is
-     *     {@link LogicUniOpType }
+     *     {@link LogicUniOp }
      *     
      */
-    public LogicUniOpType getLogicUniop() {
+    public LogicUniOp getLogicUniop() {
         return logicUniop;
     }
 
@@ -173,10 +173,10 @@ public class LogicExpression
      * 
      * @param value
      *     allowed object is
-     *     {@link LogicUniOpType }
+     *     {@link LogicUniOp }
      *     
      */
-    public void setLogicUniop(LogicUniOpType value) {
+    public void setLogicUniop(LogicUniOp value) {
         this.logicUniop = value;
     }
 

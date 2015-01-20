@@ -171,7 +171,7 @@ public class LogicBinOp
      * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValue }{@code >}
      * {@link JAXBElement }{@code <}{@link FunctionCallType }{@code >}
-     * {@link JAXBElement }{@code <}{@link LogicUniOpType }{@code >}
+     * {@link JAXBElement }{@code <}{@link LogicUniOp }{@code >}
      * {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * {@link JAXBElement }{@code <}{@link IntValue }{@code >}

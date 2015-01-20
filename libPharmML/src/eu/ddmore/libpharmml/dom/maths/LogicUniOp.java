@@ -60,7 +60,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LogicUniOpType")
-public class LogicUniOpType
+public class LogicUniOp
     extends LogicExpression
 {
 

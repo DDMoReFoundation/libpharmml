@@ -98,11 +98,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LogicUniOpType }
+     * Create an instance of {@link LogicUniOp }
      * 
      */
-    public LogicUniOpType createLogicUniOpType() {
-        return new LogicUniOpType();
+    public LogicUniOp createLogicUniOpType() {
+        return new LogicUniOp();
     }
 
     /**
@@ -212,12 +212,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LogicUniOpType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LogicUniOp }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "LogicUniop")
-    public JAXBElement<LogicUniOpType> createLogicUniop(LogicUniOpType value) {
-        return new JAXBElement<LogicUniOpType>(_LogicUniop_QNAME, LogicUniOpType.class, null, value);
+    public JAXBElement<LogicUniOp> createLogicUniop(LogicUniOp value) {
+        return new JAXBElement<LogicUniOp>(_LogicUniop_QNAME, LogicUniOp.class, null, value);
     }
 
     /**
