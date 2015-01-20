@@ -28,10 +28,10 @@ public interface Assignable {
 	
 	/**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param symbolRef The value of the assignment as a {@link SymbolRefType}.
+	 * @param symbolRef The value of the assignment as a {@link SymbolRef}.
 	 * @return The created {@link Rhs} assign element.
 	 */
-	public Rhs assign(SymbolRefType symbolRef);
+	public Rhs assign(SymbolRef symbolRef);
 	
 	/**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.

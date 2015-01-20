@@ -64,17 +64,17 @@ public class LevelReference
 {
 
     @XmlElement(name = "SymbRef", required = true)
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
 
     /**
      * Gets the value of the symbRef property.
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -83,10 +83,10 @@ public class LevelReference
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 

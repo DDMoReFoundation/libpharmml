@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 
 
 /**
@@ -50,7 +50,7 @@ public class DiscreteObservation
 {
 
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
-    protected List<SymbolRefType> listOfSymbRef;
+    protected List<SymbolRef> listOfSymbRef;
 
     /**
      * 
@@ -72,13 +72,13 @@ public class DiscreteObservation
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link SymbolRefType }
+     * {@link SymbolRef }
      * 
      * 
      */
-    public List<SymbolRefType> getListOfSymbRef() {
+    public List<SymbolRef> getListOfSymbRef() {
         if (listOfSymbRef == null) {
-        	listOfSymbRef = new ArrayList<SymbolRefType>();
+        	listOfSymbRef = new ArrayList<SymbolRef>();
         }
         return this.listOfSymbRef;
     }
@@ -86,10 +86,10 @@ public class DiscreteObservation
     /**
      * Creates a new symbol reference, adds it to the current discrete observation and returns it.
      * @param symbId Id of the refered symbol,
-     * @return The created {@link SymbolRefType} object.
+     * @return The created {@link SymbolRef} object.
      */
-    public SymbolRefType createSymbolRef(String symbId){
-    	SymbolRefType symbRef = new SymbolRefType();
+    public SymbolRef createSymbolRef(String symbId){
+    	SymbolRef symbRef = new SymbolRef();
     	symbRef.setId(symbId);
     	getListOfSymbRef().add(symbRef);
     	return symbRef;
@@ -99,10 +99,10 @@ public class DiscreteObservation
      * Creates a new symbol reference, adds it to the current discrete observation and returns it.
      * @param symbId Id of the refered symbol,
      * @param blkId Id of the blk of the refered symbol.
-     * @return The created {@link SymbolRefType} object.
+     * @return The created {@link SymbolRef} object.
      */
-    public SymbolRefType createSymbolRef(String symbId, String blkId){
-    	SymbolRefType symbRef = new SymbolRefType();
+    public SymbolRef createSymbolRef(String symbId, String blkId){
+    	SymbolRef symbRef = new SymbolRef();
     	symbRef.setId(symbId);
     	symbRef.setBlkIdRef(blkId);
     	getListOfSymbRef().add(symbRef);

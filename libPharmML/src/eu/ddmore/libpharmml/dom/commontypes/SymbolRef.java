@@ -60,7 +60,7 @@ import eu.ddmore.libpharmml.dom.maths.Operand;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SymbolRefType")
 @XmlRootElement(name = "SymbRef")
-public class SymbolRefType
+public class SymbolRef
     extends PharmMLRootType implements VectorCellValue, MatrixCellValue, MatrixRowValue, OperationVariable, Operand
 {
 
@@ -125,7 +125,7 @@ public class SymbolRefType
 	}
 
 	@Override
-	public JAXBElement<SymbolRefType> toJAXBElement() {
+	public JAXBElement<SymbolRef> toJAXBElement() {
 		return MasterObjectFactory.COMMONTYPES_OF.createSymbRef(this);
 	}
 

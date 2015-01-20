@@ -78,7 +78,7 @@ public class MatrixSelector
 {
 
     @XmlElement(name = "SymbRef", required = true)
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
     @XmlElement(name = "Cell")
     protected MatrixCellSelector cell;
     @XmlElement(name = "Block")
@@ -97,7 +97,7 @@ public class MatrixSelector
      * Constructs a selector for the given matrix.
      * @param matrixRef A reference to the selected matrix
      */
-    public MatrixSelector(SymbolRefType matrixRef){
+    public MatrixSelector(SymbolRef matrixRef){
     	this.symbRef = matrixRef;
     }
     
@@ -106,10 +106,10 @@ public class MatrixSelector
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -118,10 +118,10 @@ public class MatrixSelector
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 
@@ -222,11 +222,11 @@ public class MatrixSelector
     }
     
     /**
-     * Creates a new empty {@link SymbolRefType} symbRef element, adds it to the current object and returns it.
-     * @return The created {@link SymbolRefType} object.
+     * Creates a new empty {@link SymbolRef} symbRef element, adds it to the current object and returns it.
+     * @return The created {@link SymbolRef} object.
      */
-    public SymbolRefType createSymbRef(){
-            SymbolRefType el = new SymbolRefType();
+    public SymbolRef createSymbRef(){
+            SymbolRef el = new SymbolRef();
             this.symbRef = el;
             return el;
     }

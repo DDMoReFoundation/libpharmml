@@ -60,17 +60,17 @@ public class SumProductIndex
 {
 
     @XmlElement(name = "SymbRef")
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
 
     /**
      * A variable reference.
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -79,10 +79,10 @@ public class SumProductIndex
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 

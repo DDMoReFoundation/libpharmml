@@ -64,7 +64,7 @@ public class VariableAssignmentType
 {
 
     @XmlElement(name = "SymbRef", required = true)
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
     @XmlElement(name = "Assign", required = true)
     protected Rhs assign;
 
@@ -73,10 +73,10 @@ public class VariableAssignmentType
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -85,10 +85,10 @@ public class VariableAssignmentType
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 

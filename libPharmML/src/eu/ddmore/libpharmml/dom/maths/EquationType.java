@@ -51,7 +51,7 @@ import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.Sum;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
@@ -117,7 +117,7 @@ public class EquationType
     @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     protected JAXBElement<?> scalar;
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
     @XmlElement(name = "Binop")
     protected Binop binop;
     @XmlElement(name = "Uniop")
@@ -193,10 +193,10 @@ public class EquationType
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -205,10 +205,10 @@ public class EquationType
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 
@@ -475,8 +475,8 @@ public class EquationType
     		boolean firstElement = false;
     		for(JAXBElement<?> element : getScalarOrSymbRefOrBinop()){
     			if(!firstElement){
-        			if(element.getDeclaredType().equals(SymbolRefType.class)){
-        				setSymbRef((SymbolRefType)element.getValue()); 
+        			if(element.getDeclaredType().equals(SymbolRef.class)){
+        				setSymbRef((SymbolRef)element.getValue()); 
         				firstElement = true;
         			} else if (element.getDeclaredType().equals(Binop.class)){
         				setBinop((Binop)element.getValue());

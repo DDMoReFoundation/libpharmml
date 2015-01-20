@@ -145,7 +145,7 @@ public class Sum
 	 * @param n The lower bound
 	 * @param N The upper bound
 	 */
-	public Sum(OperationVariable V, SymbolRefType i, int n, int N){
+	public Sum(OperationVariable V, SymbolRef i, int n, int N){
 		this.variable = V;
 		createSumIndex(i);
 		createLowLimit(n);
@@ -158,7 +158,7 @@ public class Sum
 	 * @param i The index of summation
 	 * @param indexSet The set of values for the index
 	 */
-	public Sum(OperationVariable V, SymbolRefType i, VectorType indexSet){
+	public Sum(OperationVariable V, SymbolRef i, VectorType indexSet){
 		this.variable = V;
 		createSumIndex(i);
 		createSumIndexSet(indexSet);
@@ -236,7 +236,7 @@ public class Sum
      * @param i The index as a symbol reference.
      * @return The created {@link SumProductIndex} object.
      */
-    public SumProductIndex createSumIndex(SymbolRefType i){
+    public SumProductIndex createSumIndex(SymbolRef i){
     	SumProductIndex index = new SumProductIndex();
     	index.setSymbRef(i);
     	this.setSumIndex(index);

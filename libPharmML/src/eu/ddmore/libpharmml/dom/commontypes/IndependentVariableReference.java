@@ -64,7 +64,7 @@ public class IndependentVariableReference
 {
 
     @XmlElement(name = "SymbRef", required = true)
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
     
     /**
      * Empty constructor.
@@ -75,7 +75,7 @@ public class IndependentVariableReference
      * Creates an independant variable reference with a symbol reference.
      * @param symbRef Symbol reference to the independant variable.
      */
-    public IndependentVariableReference(SymbolRefType symbRef){
+    public IndependentVariableReference(SymbolRef symbRef){
     	this.symbRef = symbRef;
     }
     
@@ -87,7 +87,7 @@ public class IndependentVariableReference
      * @param variable {@link IndependentVariable} this object refers to.
      */
     public IndependentVariableReference(IndependentVariable variable){
-    	this.symbRef = new SymbolRefType();
+    	this.symbRef = new SymbolRef();
     	this.symbRef.setId(variable.getSymbId());
     }
 
@@ -96,10 +96,10 @@ public class IndependentVariableReference
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -108,10 +108,10 @@ public class IndependentVariableReference
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 

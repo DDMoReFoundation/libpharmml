@@ -70,7 +70,7 @@ public class LowUpLimit
 		this._int = new IntValue(value);
 	}
 	
-	public LowUpLimit(SymbolRefType value){
+	public LowUpLimit(SymbolRef value){
 		this.symbRef = value;
 	}
 	
@@ -83,7 +83,7 @@ public class LowUpLimit
     @XmlElement(name = "Int")
     protected IntValue _int;
     @XmlElement(name = "SymbRef")
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
 
     /**
      * A mathematical expression.
@@ -140,10 +140,10 @@ public class LowUpLimit
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -152,10 +152,10 @@ public class LowUpLimit
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 

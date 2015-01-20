@@ -85,7 +85,7 @@ public class Rhs
     @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     protected JAXBElement<?> scalar;
     @XmlElement(name = "SymbRef")
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
     @XmlElement(name = "Sequence")
     protected Sequence sequence;
     @XmlElement(name = "Vector")
@@ -106,7 +106,7 @@ public class Rhs
     	this.scalar = MasterObjectFactory.createScalar(scalar);
     }
     
-    public Rhs(SymbolRefType symbRef){
+    public Rhs(SymbolRef symbRef){
     	this.symbRef = symbRef;
     }
 
@@ -193,10 +193,10 @@ public class Rhs
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -205,10 +205,10 @@ public class Rhs
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 
@@ -314,7 +314,7 @@ public class Rhs
      * Gets the unique content of this Rhs. Each mapped attribute is checked and the first checked one
      * that is not null is returned. Only one is returned even if 2 or more attributes have been set.
      * If there is no content, this method returns null.
-     * @return Possible return types are {@link Equation}, {@link Scalar}, {@link SymbolRefType}, 
+     * @return Possible return types are {@link Equation}, {@link Scalar}, {@link SymbolRef}, 
      * {@link VectorType}, {@link Matrix}, {@link Interpolation} and {@link Sequence}.
      */
     public Object getContent(){

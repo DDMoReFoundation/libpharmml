@@ -28,7 +28,7 @@ import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.Sequence;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonParameterType;
@@ -222,8 +222,8 @@ public class MasterObjectFactory {
 		JAXBElement<? extends VectorValue> element;
 		if(value instanceof Scalar){
 			element = createScalar((Scalar) value);
-		} else if(value instanceof SymbolRefType){
-			element = COMMONTYPES_OF.createSymbRef((SymbolRefType) value);
+		} else if(value instanceof SymbolRef){
+			element = COMMONTYPES_OF.createSymbRef((SymbolRef) value);
 		} else if(value instanceof Sequence){
 			element = COMMONTYPES_OF.createSequence((Sequence) value);
 		} else {

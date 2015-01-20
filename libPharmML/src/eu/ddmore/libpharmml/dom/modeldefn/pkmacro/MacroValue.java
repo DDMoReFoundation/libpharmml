@@ -15,7 +15,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.Sequence;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.VectorType;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 
@@ -25,7 +25,7 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
  * <p>There are two types of macro values. The 1st type is a value without an explicit assignment.
  * This kind of value must contain only a symbol reference to the proper variable. The symbol
  * id must be compliant with the parent macro definition. One may use the constructor
- * {@link #MacroValue(SymbolRefType)} in order to create a value of this type.
+ * {@link #MacroValue(SymbolRef)} in order to create a value of this type.
  * 
  * <p>The 2nd type is a value with an explicit assignment. The argument name and its value must
  * be specified. The argument name must be compliant with the parent macro definition. One may 
@@ -41,7 +41,7 @@ public class MacroValue extends PharmMLRootType implements Assignable {
 	@XmlElement(name = "Assign", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected Rhs assign;
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
     @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     protected Scalar scalar;
     @XmlAttribute(name = "argument")
@@ -58,7 +58,7 @@ public class MacroValue extends PharmMLRootType implements Assignable {
      * with the macro definition which this value belongs to.
      * @param symbolRef
      */
-    public MacroValue(SymbolRefType symbolRef){
+    public MacroValue(SymbolRef symbolRef){
     	this.symbRef = symbolRef;
     }
     
@@ -103,10 +103,10 @@ public class MacroValue extends PharmMLRootType implements Assignable {
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -115,10 +115,10 @@ public class MacroValue extends PharmMLRootType implements Assignable {
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 
@@ -199,7 +199,7 @@ public class MacroValue extends PharmMLRootType implements Assignable {
 	}
 
 	@Override
-	public Rhs assign(SymbolRefType symbolRef) {
+	public Rhs assign(SymbolRef symbolRef) {
 		Rhs assign = new Rhs(symbolRef);
 		setAssign(assign);
 		return assign;

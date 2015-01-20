@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.maths.PiecewiseType;
 
 
@@ -85,7 +85,7 @@ public class ColumnMapping
     @XmlElement(name = "ColumnRef")
     protected ColumnRefType columnRef;
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
     @XmlElement(name = "Piecewise")
     protected PiecewiseType piecewise;
     @XmlElement(name = "CategoryMapping")
@@ -124,10 +124,10 @@ public class ColumnMapping
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -136,10 +136,10 @@ public class ColumnMapping
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 
@@ -250,35 +250,35 @@ public class ColumnMapping
     }
 
     /**
-     * Creates a new empty {@link SymbolRefType} symbRef element, adds it to the current object and returns it.
-     * @return The created {@link SymbolRefType} object.
+     * Creates a new empty {@link SymbolRef} symbRef element, adds it to the current object and returns it.
+     * @return The created {@link SymbolRef} object.
      */
-    public SymbolRefType createSymbRef(){
-            SymbolRefType el = new SymbolRefType();
+    public SymbolRef createSymbRef(){
+            SymbolRef el = new SymbolRef();
             this.symbRef = el;
             return el;
     }
     /**
-     * Creates a new {@link SymbolRefType} symbRef element to the provided symbol id, 
+     * Creates a new {@link SymbolRef} symbRef element to the provided symbol id, 
      * adds it to the current object and returns it.
      * @param symbolId The symbol id this refers to.
-     * @return The created {@link SymbolRefType} object.
+     * @return The created {@link SymbolRef} object.
      */
-    public SymbolRefType createSymbRef(String symbolId){
-            SymbolRefType el = new SymbolRefType();
+    public SymbolRef createSymbRef(String symbolId){
+            SymbolRef el = new SymbolRef();
             el.setId(symbolId);
             this.symbRef = el;
             return el;
     }
     /**
-     * Creates a new {@link SymbolRefType} symbRef element to the provided symbol id within 
+     * Creates a new {@link SymbolRef} symbRef element to the provided symbol id within 
      * the provided block id, adds it to the current object and returns it.
      * @param symbolId The symbol id this refers to
      * @param blkId The block id of the refered symbol.
-     * @return The created {@link SymbolRefType} object.
+     * @return The created {@link SymbolRef} object.
      */
-    public SymbolRefType createSymbRef(String symbolId, String blkId){
-            SymbolRefType el = new SymbolRefType();
+    public SymbolRef createSymbRef(String symbolId, String blkId){
+            SymbolRef el = new SymbolRef();
             el.setId(symbolId);
             el.setBlkIdRef(blkId);
             this.symbRef = el;

@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 
 
 /**
@@ -66,7 +66,7 @@ public class ParameterRandomEffectType
 {
 
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
-    protected List<SymbolRefType> symbRef;
+    protected List<SymbolRef> symbRef;
 
     /**
      * The reference to the Random Variable.Gets the value of the symbRef property.
@@ -86,13 +86,13 @@ public class ParameterRandomEffectType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link SymbolRefType }
+     * {@link SymbolRef }
      * 
      * 
      */
-    public List<SymbolRefType> getSymbRef() {
+    public List<SymbolRef> getSymbRef() {
         if (symbRef == null) {
-            symbRef = new ArrayList<SymbolRefType>();
+            symbRef = new ArrayList<SymbolRef>();
         }
         return this.symbRef;
     }

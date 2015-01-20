@@ -175,7 +175,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     ModellingStepsType.class,
     LogicBinOpType.class,
     Binop.class,
-    SymbolRefType.class,
+    SymbolRef.class,
     FunctionCallType.class,
     Sum.class,
     Product.class,

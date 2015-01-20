@@ -110,7 +110,7 @@ public class Product
 	 * @param n The lower bound
 	 * @param N The upper bound
 	 */
-	public Product(OperationVariable V, SymbolRefType i, int n, int N){
+	public Product(OperationVariable V, SymbolRef i, int n, int N){
 		this.variable = V;
 		createProductIndex(i);
 		createLowLimit(n);
@@ -144,7 +144,7 @@ public class Product
         this.productIndex = value;
     }
     
-    public SumProductIndex createProductIndex(SymbolRefType i){
+    public SumProductIndex createProductIndex(SymbolRef i){
     	SumProductIndex index = new SumProductIndex();
     	index.setSymbRef(i);
     	this.setProductIndex(index);

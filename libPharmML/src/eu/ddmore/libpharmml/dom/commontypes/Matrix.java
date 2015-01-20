@@ -71,7 +71,7 @@ import eu.ddmore.libpharmml.util.SubList;
  * </ul> 
  * 
  * <p><h3>Reading:</h3>
- * Any reference to the matrix can be done using a symbol reference (see {@link SymbolRefType}).
+ * Any reference to the matrix can be done using a symbol reference (see {@link SymbolRef}).
  * It must refer to the symbId of the variable the matrix is assigned to.
  * It is also possible to refer to a subpart of a matrix using a {@link MatrixSelector} object. The
  * selector must also refers to the symbol id of the corresponding variable.
@@ -607,7 +607,7 @@ public class Matrix
      * Creates a matrix cell into that matrix and returns it.
      * @param rowIndex The row index of the cell within the parent matrix.
      * @param columnIndex The column index of the cell within the parent matrix.
-     * @param value The abstracted value of the cell. May be {@link Scalar} or {@link SymbolRefType}.
+     * @param value The abstracted value of the cell. May be {@link Scalar} or {@link SymbolRef}.
      * @return The create {@link MatrixCell} object.
      */
     public MatrixCell createMatrixCell(MatrixVectorIndex rowIndex, MatrixVectorIndex columnIndex, MatrixCellValue value){

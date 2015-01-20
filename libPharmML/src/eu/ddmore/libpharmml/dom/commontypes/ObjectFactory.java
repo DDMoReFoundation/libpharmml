@@ -122,11 +122,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SymbolRefType }
+     * Create an instance of {@link SymbolRef }
      * 
      */
-    public SymbolRefType createSymbolRefType() {
-        return new SymbolRefType();
+    public SymbolRef createSymbolRefType() {
+        return new SymbolRef();
     }
 
     /**
@@ -564,12 +564,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link SymbolRef }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "SymbRef", substitutionHeadNamespace="http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName="VectorCellValue")
-    public JAXBElement<SymbolRefType> createSymbRef(SymbolRefType value) {
-        return new JAXBElement<SymbolRefType>(_SymbRef_QNAME, SymbolRefType.class, null, value);
+    public JAXBElement<SymbolRef> createSymbRef(SymbolRef value) {
+        return new JAXBElement<SymbolRef>(_SymbRef_QNAME, SymbolRef.class, null, value);
     }
     
     // 0.3.2

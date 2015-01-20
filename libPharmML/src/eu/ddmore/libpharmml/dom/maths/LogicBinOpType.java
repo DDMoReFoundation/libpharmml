@@ -46,7 +46,7 @@ import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
 
@@ -178,7 +178,7 @@ public class LogicBinOpType
      * {@link JAXBElement }{@code <}{@link Binop }{@code >}
      * {@link JAXBElement }{@code <}{@link Uniop }{@code >}
      * {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
-     * {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}
+     * {@link JAXBElement }{@code <}{@link SymbolRef }{@code >}
      * {@link JAXBElement }{@code <}{@link ConstantType }{@code >}
      * {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
      * {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}

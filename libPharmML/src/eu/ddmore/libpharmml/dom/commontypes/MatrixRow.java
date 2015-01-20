@@ -136,7 +136,7 @@ public class MatrixRow
      * {@link JAXBElement }{@code <}{@link StringValue }{@code >}
      * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
      * {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
-     * {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}
+     * {@link JAXBElement }{@code <}{@link SymbolRef }{@code >}
      * {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
      * {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      * {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}

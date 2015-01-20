@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
  *             
  * <p>Vectors can have 2 different forms. A first one where all the elements of the vector are specified (Type A),
  * and an other one where the elements that are not explicitly specified have a default value (Type B).
- * The possible values in a vector are {@link Scalar}, {@link SymbolRefType} and {@link Sequence}.
+ * The possible values in a vector are {@link Scalar}, {@link SymbolRef} and {@link Sequence}.
  * 
  * <p><h3>Type A (complete):</h3>
  * This is the most simple representation of a vector.
@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * vector.setLength(values.length);<br>
  * </code>
  * <p>It is mandatory to specify manually the length of the vector. This is because the length
- * of the vector cannot be found automatically when a {@link Sequence} or a {@link SymbolRefType}
+ * of the vector cannot be found automatically when a {@link Sequence} or a {@link SymbolRef}
  * object is in the list, as it can refer to multiple values.
  * 
  * <p><h3>Type B (sparse):</h3>
@@ -148,7 +148,7 @@ public class Vector extends VectorType {
 	 * @param value Symbol value of the cell.
 	 * @return The created {@link VectorCell} instance.
 	 */
-	public VectorCell createVectorCell(int index, SymbolRefType value){
+	public VectorCell createVectorCell(int index, SymbolRef value){
 		VectorCell cell = createVectorCell(index);
 		cell.setValue(value);
 		return cell;
@@ -214,15 +214,15 @@ public class Vector extends VectorType {
 	 * Creates a new vector cell into the vector at the specified index with a value.
 	 * This is the most abstracted method for creating a cell.
 	 * @param index The index of the cell as {@link MatrixVectorIndex}
-	 * @param value The value of the cell which can be {@link Scalar} or {@link SymbolRefType}
+	 * @param value The value of the cell which can be {@link Scalar} or {@link SymbolRef}
 	 * @return The created cell.
 	 */
 	public VectorCell createVectorCell(MatrixVectorIndex index, VectorCellValue value){
 		VectorCell cell = new VectorCell();
 		if(value instanceof Scalar){
 			cell.setValue((Scalar) value);
-		} else if(value instanceof SymbolRefType){
-			cell.setValue((SymbolRefType) value);
+		} else if(value instanceof SymbolRef){
+			cell.setValue((SymbolRef) value);
 		}
 		cell.setVectorIndex(index);
 		addVectorCell(cell);

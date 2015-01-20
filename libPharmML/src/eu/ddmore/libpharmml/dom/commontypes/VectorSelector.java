@@ -81,7 +81,7 @@ public class VectorSelector
 {
 
     @XmlElement(name = "SymbRef", required = true)
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
     @XmlElement(name = "Head")
     protected MatrixVectorIndex head;
     @XmlElements({
@@ -101,7 +101,7 @@ public class VectorSelector
      * Constructs a selector for the specified vector.
      * @param vectorRef A symbol reference to the selected vector
      */
-    public VectorSelector(SymbolRefType vectorRef){
+    public VectorSelector(SymbolRef vectorRef){
     	this.symbRef = vectorRef;
     }
 
@@ -110,10 +110,10 @@ public class VectorSelector
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -122,10 +122,10 @@ public class VectorSelector
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 
@@ -224,7 +224,7 @@ public class VectorSelector
      * @param n Length of the head element
      * @return The created {@link MatrixVectorIndex} object.
      */
-    public MatrixVectorIndex createHead(SymbolRefType n){
+    public MatrixVectorIndex createHead(SymbolRef n){
     	MatrixVectorIndex head = new MatrixVectorIndex();
     	head.setSymbolRef(n);
     	this.head = head;
@@ -248,7 +248,7 @@ public class VectorSelector
      * @param n Length of the tail element
      * @return The created {@link MatrixVectorIndex} object.
      */
-    public MatrixVectorIndex createTail(SymbolRefType n){
+    public MatrixVectorIndex createTail(SymbolRef n){
     	MatrixVectorIndex tail = new MatrixVectorIndex();
     	tail.setSymbolRef(n);
     	this.tail = tail;
@@ -271,7 +271,7 @@ public class VectorSelector
     	return cell;
     }
     
-    public VectorCell createVectorCell(SymbolRefType index){
+    public VectorCell createVectorCell(SymbolRef index){
     	VectorCell cell = createVectorCell();
     	cell.createIndex(index);
     	return cell;

@@ -79,7 +79,7 @@ public class Delay
 {
 
     @XmlElement(name = "SymbRef", required = true)
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
     @XmlElement(name = "DelayVariable", required = true)
     protected DelayVariable delayVariable;
     
@@ -100,7 +100,7 @@ public class Delay
      * @param y The model variable
      * @param tau The discrete delay as a reference to the according symbol 
      */
-    public Delay(SymbolRefType y, SymbolRefType tau){
+    public Delay(SymbolRef y, SymbolRef tau){
     	this.symbRef = y;
     	createDelayVariable(tau);
     }
@@ -122,7 +122,7 @@ public class Delay
      *     {@link IdValue } or
      *     {@link FalseBoolean }
      */
-    public Delay(SymbolRefType y, Scalar tau){
+    public Delay(SymbolRef y, Scalar tau){
     	this.symbRef = y;
     	createDelayVariable(tau);
     }
@@ -132,10 +132,10 @@ public class Delay
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -144,10 +144,10 @@ public class Delay
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 
@@ -180,7 +180,7 @@ public class Delay
      * @param symbRef The delay variable <mi>&tau;</mi>
      * @return the created {@link DelayVariable} element
      */
-    public DelayVariable createDelayVariable(SymbolRefType symbRef){
+    public DelayVariable createDelayVariable(SymbolRef symbRef){
     	DelayVariable var = new DelayVariable();
     	var.setSymbRef(symbRef);
     	delayVariable = var;

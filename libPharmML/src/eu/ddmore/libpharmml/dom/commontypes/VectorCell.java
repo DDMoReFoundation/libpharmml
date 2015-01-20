@@ -100,7 +100,7 @@ public class VectorCell extends PharmMLRootType implements ScalarContainer {
 	 * @param index Index of the cell within the parent vector.
 	 * @param value Value of the cell as a symbol reference.
 	 */
-	public VectorCell(MatrixVectorIndex index, SymbolRefType value){
+	public VectorCell(MatrixVectorIndex index, SymbolRef value){
 		this.index = index;
 		this.value = value;
 	}
@@ -144,14 +144,14 @@ public class VectorCell extends PharmMLRootType implements ScalarContainer {
 	
 	/**
 	 * Gets the value of the cell.
-	 * Possible types are {@link Scalar} and {@link SymbolRefType}.
+	 * Possible types are {@link Scalar} and {@link SymbolRef}.
 	 * @return The value of the cell.
 	 */
 	public VectorCellValue getValue(){
 		return value;
 	}
 	
-	public void setValue(SymbolRefType value){
+	public void setValue(SymbolRef value){
 		this.value = value;
 	}
 	
@@ -159,7 +159,7 @@ public class VectorCell extends PharmMLRootType implements ScalarContainer {
 		this.value = value;
 	}
 	
-	public MatrixVectorIndex createIndex(SymbolRefType index){
+	public MatrixVectorIndex createIndex(SymbolRef index){
 		this.index = new MatrixVectorIndex(index);
 		return this.index;
 	}
@@ -169,15 +169,15 @@ public class VectorCell extends PharmMLRootType implements ScalarContainer {
 		return this.index;
 	}
 
-	public SymbolRefType createSymbolRef(String symbId){
-		SymbolRefType symb = new SymbolRefType();
+	public SymbolRef createSymbolRef(String symbId){
+		SymbolRef symb = new SymbolRef();
 		symb.setSymbIdRef(symbId);
 		setValue(symb);
 		return symb;
 	}
 	
-	public SymbolRefType createSymbolRef(String symbId, String blkId){
-		SymbolRefType symb = createSymbolRef(symbId);
+	public SymbolRef createSymbolRef(String symbId, String blkId){
+		SymbolRef symb = createSymbolRef(symbId);
 		symb.setBlkIdRef(blkId);
 		return symb;
 	}

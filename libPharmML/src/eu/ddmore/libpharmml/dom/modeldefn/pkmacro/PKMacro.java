@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 
 /**
  * Abstract class for PK macros.
@@ -55,7 +55,7 @@ public abstract class PKMacro extends PharmMLRootType {
 	 * the macro definition.
 	 * @return The created {@link MacroValue} object.
 	 */
-	public MacroValue createValue(SymbolRefType symbRef){
+	public MacroValue createValue(SymbolRef symbRef){
 		MacroValue value = new MacroValue(symbRef);
 		getListOfValue().add(value);
 		return value;

@@ -41,7 +41,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 
 
@@ -81,7 +81,7 @@ public class FixedEffectRelationType
 {
 
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
     @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     protected Scalar scalar;
     
@@ -107,9 +107,9 @@ public class FixedEffectRelationType
     
     /**
      * Creates a new fixed effect relation with a given value.
-     * @param value The value of the fixed effect as a {@link SymbolRefType} object.
+     * @param value The value of the fixed effect as a {@link SymbolRef} object.
      */
-    public FixedEffectRelationType(SymbolRefType value){
+    public FixedEffectRelationType(SymbolRef value){
     	this.symbRef = value;
     }
 
@@ -118,10 +118,10 @@ public class FixedEffectRelationType
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -130,10 +130,10 @@ public class FixedEffectRelationType
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 

@@ -61,7 +61,7 @@ public class MatrixVectorIndex extends PharmMLRootType {
 	protected IntValue intValue;
 	
 	@XmlElement(name = "SymbRef")
-	protected SymbolRefType symbRef;
+	protected SymbolRef symbRef;
 	
 	public MatrixVectorIndex(){
 		
@@ -75,7 +75,7 @@ public class MatrixVectorIndex extends PharmMLRootType {
 		intValue = value;
 	}
 	
-	public MatrixVectorIndex(SymbolRefType symbolRef){
+	public MatrixVectorIndex(SymbolRef symbolRef){
 		symbRef = symbolRef;
 	}
 	
@@ -114,10 +114,10 @@ public class MatrixVectorIndex extends PharmMLRootType {
 		this.intValue = value;
 	}
 	
-	public SymbolRefType getSymbolRef(){
+	public SymbolRef getSymbolRef(){
 		return symbRef;
 	}
-	public void setSymbolRef(SymbolRefType symbRef){
+	public void setSymbolRef(SymbolRef symbRef){
 		this.symbRef = symbRef;
 	}
 

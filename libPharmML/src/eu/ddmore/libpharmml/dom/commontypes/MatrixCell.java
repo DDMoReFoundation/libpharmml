@@ -162,7 +162,7 @@ public class MatrixCell
      * {@link StringValue }
      * {@link RealValue }
      * {@link TrueBoolean }
-     * {@link SymbolRefType }
+     * {@link SymbolRef }
      * {@link BooleanValue }
      * {@link IdValue }
      * {@link FalseBoolean }
@@ -182,7 +182,7 @@ public class MatrixCell
      * {@link StringValue }
      * {@link RealValue }
      * {@link TrueBoolean }
-     * {@link SymbolRefType }
+     * {@link SymbolRef }
      * {@link BooleanValue }
      * {@link IdValue }
      * {@link FalseBoolean }
@@ -218,7 +218,7 @@ public class MatrixCell
      * @param index The row index of the cell, as a symbol.
      * @return The created {@link MatrixVectorIndex} object.
      */
-    public MatrixVectorIndex createCellRowIndex(SymbolRefType index){
+    public MatrixVectorIndex createCellRowIndex(SymbolRef index){
             MatrixVectorIndex el = createCellRowIndex();
             el.setSymbolRef(index);
             return el;
@@ -250,7 +250,7 @@ public class MatrixCell
      * @param index The column index of the cell, as an symbol.
      * @return The created {@link MatrixVectorIndex} object.
      */
-    public MatrixVectorIndex createCellColumnIndex(SymbolRefType index){
+    public MatrixVectorIndex createCellColumnIndex(SymbolRef index){
             MatrixVectorIndex el = createCellColumnIndex();
             el.setSymbolRef(index);
             return el;

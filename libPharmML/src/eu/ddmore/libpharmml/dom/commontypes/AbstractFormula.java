@@ -35,7 +35,7 @@ public abstract class AbstractFormula extends PharmMLRootType {
 //    protected SymbolRefType symbRef;
 	
 	@XmlElements({ 
-		@XmlElement(name = "SymbRef", type = SymbolRefType.class),
+		@XmlElement(name = "SymbRef", type = SymbolRef.class),
 		@XmlElement(name = "Equation", namespace = "http://www.pharmml.org/2013/03/Maths" ,type = Equation.class)
 		})
 	public OperationVariable variable;
@@ -50,15 +50,15 @@ public abstract class AbstractFormula extends PharmMLRootType {
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      * @deprecated
      * 
      */
     @Deprecated
-    public SymbolRefType getSymbRef() {
-        if(variable != null && variable instanceof SymbolRefType){
-        	return (SymbolRefType) variable;
+    public SymbolRef getSymbRef() {
+        if(variable != null && variable instanceof SymbolRef){
+        	return (SymbolRef) variable;
         } else {
         	return null;
         }
@@ -69,11 +69,11 @@ public abstract class AbstractFormula extends PharmMLRootType {
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
     @Deprecated
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.variable = value;
     }
     
@@ -82,7 +82,7 @@ public abstract class AbstractFormula extends PharmMLRootType {
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType },
+     *     {@link SymbolRef },
      *     {@link Equation }
      * 
      */
@@ -95,7 +95,7 @@ public abstract class AbstractFormula extends PharmMLRootType {
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType },
+     *     {@link SymbolRef },
      *     {@link Equation}
      *     
      */
@@ -156,7 +156,7 @@ public abstract class AbstractFormula extends PharmMLRootType {
     	this.setLowLimit(lowLimit);
     	return lowLimit;
     }
-    public LowUpLimit createLowLimit(SymbolRefType limit){
+    public LowUpLimit createLowLimit(SymbolRef limit){
     	LowUpLimit lowLimit = new LowUpLimit(limit);
     	this.setLowLimit(lowLimit);
     	return lowLimit;
@@ -167,7 +167,7 @@ public abstract class AbstractFormula extends PharmMLRootType {
     	this.setUpLimit(upLimit);
     	return upLimit;
     }
-    public LowUpLimit createUpLimit(SymbolRefType limit){
+    public LowUpLimit createUpLimit(SymbolRef limit){
     	LowUpLimit upLimit = new LowUpLimit(limit);
     	this.setUpLimit(upLimit);
     	return upLimit;

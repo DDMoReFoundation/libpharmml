@@ -88,15 +88,15 @@ public class VectorElements extends PharmMLRootType implements ScalarContainer {
 		return wValue;
 	}
 	
-	public SymbolRefType createSymbolRef(String symbId){
-		SymbolRefType symbRef = new SymbolRefType();
+	public SymbolRef createSymbolRef(String symbId){
+		SymbolRef symbRef = new SymbolRef();
 		symbRef.setId(symbId);
 		getListOfElements().add(symbRef);
 		return symbRef;
 	}
 	
-	public SymbolRefType createSymbolRef(String symbId, String blkId){
-		SymbolRefType symbRef = createSymbolRef(symbId);
+	public SymbolRef createSymbolRef(String symbId, String blkId){
+		SymbolRef symbRef = createSymbolRef(symbId);
 		symbRef.setBlkIdRef(blkId);
 		return symbRef;
 	}

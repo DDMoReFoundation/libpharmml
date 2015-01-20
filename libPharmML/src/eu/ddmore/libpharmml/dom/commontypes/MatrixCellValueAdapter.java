@@ -26,8 +26,8 @@ public class MatrixCellValueAdapter extends XmlAdapter<JAXBElement<?>, MatrixCel
 		if(v != null){
 			if(v instanceof Scalar){
 				jaxbEl = MasterObjectFactory.createScalar((Scalar) v);
-			} else if (v instanceof SymbolRefType){
-				jaxbEl = MasterObjectFactory.COMMONTYPES_OF.createSymbRef((SymbolRefType) v);
+			} else if (v instanceof SymbolRef){
+				jaxbEl = MasterObjectFactory.COMMONTYPES_OF.createSymbRef((SymbolRef) v);
 			} else if (v instanceof Equation){
 				jaxbEl = new JAXBElement<Equation>(new QName("http://www.pharmml.org/2013/03/Maths", "Equation"), Equation.class, (Equation) v);
 			} else {

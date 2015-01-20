@@ -10,7 +10,7 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
  * Possible implementations:
  * 		{@link Scalar},
  * 		{@link Sequence},
- * 		{@link SymbolRefType},
+ * 		{@link SymbolRef},
  * 		{@link Equation}
  * 
  * @author F. Yvon
