@@ -59,6 +59,21 @@ public class FunctionParameter
 
     @XmlAttribute(name = "symbolType", required = true)
     protected SymbolType symbolType;
+    
+    /**
+     * Empty constructor.
+     */
+    public FunctionParameter(){}
+    
+    /**
+     * Creates a new function parameter with the given symbol id and symbol type.
+     * @param symbolId
+     * @param symbolType
+     */
+    public FunctionParameter(String symbolId, SymbolType symbolType){
+    	this.symbId = symbolId;
+    	this.symbolType = symbolType;
+    }
 
     /**
      * Gets the value of the symbolType property.
