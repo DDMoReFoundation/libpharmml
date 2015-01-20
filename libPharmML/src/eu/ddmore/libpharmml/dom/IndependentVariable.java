@@ -65,6 +65,19 @@ public class IndependentVariable
     @XmlAttribute(name = "symbId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String symbId;
+    
+    /**
+     * Empty constructor
+     */
+    public IndependentVariable(){}
+    
+    /**
+     * Creates a new independant variable with the given symbol id.
+     * @param symbId Symbol of the independant variable
+     */
+    public IndependentVariable(String symbId){
+    	this.symbId = symbId;
+    }
 
     /**
      * Gets the value of the symbId property.
