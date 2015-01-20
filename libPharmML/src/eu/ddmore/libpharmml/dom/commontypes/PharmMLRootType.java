@@ -58,7 +58,7 @@ import eu.ddmore.libpharmml.dom.maths.LogicCondition;
 import eu.ddmore.libpharmml.dom.maths.LogicExpression;
 import eu.ddmore.libpharmml.dom.modeldefn.CategoricalCovariate;
 import eu.ddmore.libpharmml.dom.modeldefn.CategoricalPMF;
-import eu.ddmore.libpharmml.dom.modeldefn.CategoricalRelationType;
+import eu.ddmore.libpharmml.dom.modeldefn.CategoricalRelation;
 import eu.ddmore.libpharmml.dom.modeldefn.CensoringFeature;
 import eu.ddmore.libpharmml.dom.modeldefn.Censoring;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonDiscreteState;
@@ -218,7 +218,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     CorrelatedRandomVarType.class,
     CategoricalPMF.class,
     TTEFunction.class,
-    CategoricalRelationType.class,
+    CategoricalRelation.class,
     ContinuousCovariateType.class,
     Dependance.class,
     ParameterRandomEffectType.class,

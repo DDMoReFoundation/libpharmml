@@ -54,7 +54,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CategoricalRelationType")
-public class CategoricalRelationType
+public class CategoricalRelation
     extends PharmMLRootType
 {
 

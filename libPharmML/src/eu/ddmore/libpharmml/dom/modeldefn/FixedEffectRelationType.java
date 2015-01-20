@@ -90,7 +90,7 @@ public class FixedEffectRelationType
        This is equivalent to specifying the following: 1_cov=cat . beta. 
      */
     @XmlElement(name = "Category")
-    protected CategoricalRelationType category;
+    protected CategoricalRelation category;
     
     /**
      * Empty constructor.
@@ -182,10 +182,10 @@ public class FixedEffectRelationType
      * 
      * @return
      *     possible object is
-     *     {@link CategoricalRelationType }
+     *     {@link CategoricalRelation }
      *     
      */
-    public CategoricalRelationType getCategory() {
+    public CategoricalRelation getCategory() {
         return category;
     }
 
@@ -196,10 +196,10 @@ public class FixedEffectRelationType
      * 
      * @param value
      *     allowed object is
-     *     {@link CategoricalRelationType }
+     *     {@link CategoricalRelation }
      *     
      */
-    public void setCategory(CategoricalRelationType value) {
+    public void setCategory(CategoricalRelation value) {
         this.category = value;
     }
 

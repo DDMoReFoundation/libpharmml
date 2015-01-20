@@ -388,11 +388,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CategoricalRelationType }
+     * Create an instance of {@link CategoricalRelation }
      * 
      */
-    public CategoricalRelationType createCategoricalRelationType() {
-        return new CategoricalRelationType();
+    public CategoricalRelation createCategoricalRelationType() {
+        return new CategoricalRelation();
     }
 
     /**
