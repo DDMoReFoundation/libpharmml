@@ -250,12 +250,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VectorType }
+     * Create an instance of {@link Vector }
      * 
      */
     @Deprecated
-    public VectorType createVectorType() {
-        return new VectorType();
+    public Vector createVectorType() {
+        return new Vector();
     }
 
     /**
@@ -465,12 +465,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VectorType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Vector }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Vector", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Arrays")
-    public JAXBElement<VectorType> createVector(VectorType value) {
-        return new JAXBElement<VectorType>(_Vector_QNAME, VectorType.class, null, value);
+    public JAXBElement<Vector> createVector(Vector value) {
+        return new JAXBElement<Vector>(_Vector_QNAME, Vector.class, null, value);
     }
 
     /**

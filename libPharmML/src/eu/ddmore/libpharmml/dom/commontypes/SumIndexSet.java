@@ -63,22 +63,22 @@ public class SumIndexSet
 	
 	public SumIndexSet(){}
 	
-	public SumIndexSet(VectorType vector){
+	public SumIndexSet(Vector vector){
 		this.vector = vector;
 	}
 
     @XmlElement(name = "Vector", required = true)
-    protected VectorType vector;
+    protected Vector vector;
 
     /**
      * Sum index is defined by a vector
      * 
      * @return
      *     possible object is
-     *     {@link VectorType }
+     *     {@link Vector }
      *     
      */
-    public VectorType getVector() {
+    public Vector getVector() {
         return vector;
     }
 
@@ -87,10 +87,10 @@ public class SumIndexSet
      * 
      * @param value
      *     allowed object is
-     *     {@link VectorType }
+     *     {@link Vector }
      *     
      */
-    public void setVector(VectorType value) {
+    public void setVector(Vector value) {
         this.vector = value;
     }
 

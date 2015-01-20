@@ -16,7 +16,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.Sequence;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
-import eu.ddmore.libpharmml.dom.commontypes.VectorType;
+import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 
 /**
@@ -213,7 +213,7 @@ public class MacroValue extends PharmMLRootType implements Assignable {
 	}
 
 	@Override
-	public Rhs assign(VectorType vector) {
+	public Rhs assign(Vector vector) {
 		Rhs assign = new Rhs(vector);
 		setAssign(assign);
 		return assign;

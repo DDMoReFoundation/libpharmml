@@ -28,7 +28,6 @@ package eu.ddmore.libpharmml.dom.commontypes;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -117,7 +116,7 @@ import javax.xml.bind.annotation.XmlType;
 	"vectorCellOrVectorSegment",
     "sequenceOrScalar"
 })
-public class VectorType extends AbstractVector {
+public class Vector extends AbstractVector {
 	
 	// deprecated since 0.3.2
 	@XmlElementRefs({
@@ -139,7 +138,7 @@ public class VectorType extends AbstractVector {
     /**
 	 * Creates an empty vector.
 	 */
-	public VectorType(){
+	public Vector(){
 	}
 	
 	/**
@@ -147,7 +146,7 @@ public class VectorType extends AbstractVector {
 	 * @param values An array of {@link VectorValue} elements.
 	 * @param length Length of the vector.
 	 */
-	public VectorType(VectorValue []values, int length){
+	public Vector(VectorValue []values, int length){
 		this.vectorElements = new VectorElements(values);
 		this.length = length;
 	}
@@ -158,7 +157,7 @@ public class VectorType extends AbstractVector {
 	 * @param defaultValue The value of the vector cells that are not explicitly specified.
 	 * @param length Length of the vector.
 	 */
-	public VectorType(double defaultValue,int length){
+	public Vector(double defaultValue,int length){
 		this.defaultValue = defaultValue;
 		this.length = length;
 	}

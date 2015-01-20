@@ -89,7 +89,7 @@ public class Rhs
     @XmlElement(name = "Sequence")
     protected Sequence sequence;
     @XmlElement(name = "Vector")
-    protected VectorType vector;
+    protected Vector vector;
     @XmlElement(name = "Interpolation")
     protected Interpolation interpolation;
     @XmlElement(name = "Matrix")
@@ -114,7 +114,7 @@ public class Rhs
     	this.sequence = sequence;
     }
     
-    public Rhs(VectorType vector){
+    public Rhs(Vector vector){
     	this.vector = vector;
     }
     
@@ -241,10 +241,10 @@ public class Rhs
      * 
      * @return
      *     possible object is
-     *     {@link VectorType }
+     *     {@link Vector }
      *     
      */
-    public VectorType getVector() {
+    public Vector getVector() {
         return vector;
     }
 
@@ -253,10 +253,10 @@ public class Rhs
      * 
      * @param value
      *     allowed object is
-     *     {@link VectorType }
+     *     {@link Vector }
      *     
      */
-    public void setVector(VectorType value) {
+    public void setVector(Vector value) {
         this.vector = value;
     }
 
@@ -315,7 +315,7 @@ public class Rhs
      * that is not null is returned. Only one is returned even if 2 or more attributes have been set.
      * If there is no content, this method returns null.
      * @return Possible return types are {@link Equation}, {@link Scalar}, {@link SymbolRef}, 
-     * {@link VectorType}, {@link Matrix}, {@link Interpolation} and {@link Sequence}.
+     * {@link Vector}, {@link Matrix}, {@link Interpolation} and {@link Sequence}.
      */
     public Object getContent(){
     	if(equation != null) return equation;

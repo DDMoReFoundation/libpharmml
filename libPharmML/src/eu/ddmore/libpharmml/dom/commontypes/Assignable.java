@@ -42,10 +42,10 @@ public interface Assignable {
 	
 	/**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param vector The value of the assignment as a {@link VectorType}.
+	 * @param vector The value of the assignment as a {@link Vector}.
 	 * @return The created {@link Rhs} assign element.
 	 */
-	public Rhs assign(VectorType vector);
+	public Rhs assign(Vector vector);
 	
 	/**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.

@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Sequence;
-import eu.ddmore.libpharmml.dom.commontypes.VectorType;
+import eu.ddmore.libpharmml.dom.commontypes.Vector;
 
 
 /**
@@ -77,7 +77,7 @@ public class TimepointsType
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
      *     {@link JAXBElement }{@code <}{@link Sequence }{@code >}
-     *     {@link JAXBElement }{@code <}{@link VectorType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Vector }{@code >}
      *     
      */
     public JAXBElement<?> getArrays() {
@@ -91,7 +91,7 @@ public class TimepointsType
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
      *     {@link JAXBElement }{@code <}{@link Sequence }{@code >}
-     *     {@link JAXBElement }{@code <}{@link VectorType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Vector }{@code >}
      *     
      */
     public void setArrays(JAXBElement<?> value) {

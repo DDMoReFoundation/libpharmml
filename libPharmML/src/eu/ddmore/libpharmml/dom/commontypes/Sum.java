@@ -158,7 +158,7 @@ public class Sum
 	 * @param i The index of summation
 	 * @param indexSet The set of values for the index
 	 */
-	public Sum(OperationVariable V, SymbolRef i, VectorType indexSet){
+	public Sum(OperationVariable V, SymbolRef i, Vector indexSet){
 		this.variable = V;
 		createSumIndex(i);
 		createSumIndexSet(indexSet);
@@ -221,10 +221,10 @@ public class Sum
     
     /**
      * Creates a new {@link SumIndexSet} (S), adds it to the current sum and returns it.
-     * @param vector The {@link VectorType} object used as a sum index set.
+     * @param vector The {@link Vector} object used as a sum index set.
      * @return The created {@link SumIndexSet} object.
      */
-    public SumIndexSet createSumIndexSet(VectorType vector){
+    public SumIndexSet createSumIndexSet(Vector vector){
     	SumIndexSet indexSet = new SumIndexSet();
     	indexSet.setVector(vector);
     	this.setSumIndexSet(indexSet);
