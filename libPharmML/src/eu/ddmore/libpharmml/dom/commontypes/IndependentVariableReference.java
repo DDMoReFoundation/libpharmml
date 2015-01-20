@@ -57,7 +57,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "IndependentVariableReferenceType", propOrder = {
     "symbRef"
 })
-public class IndependentVariableReferenceType
+public class IndependentVariableReference
     extends PharmMLRootType
 {
 

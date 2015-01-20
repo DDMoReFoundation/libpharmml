@@ -73,7 +73,7 @@ public class DerivativeVariable
     @XmlElement(name = "Assign")
     protected Rhs assign;
     @XmlElement(name = "IndependentVariable")
-    protected IndependentVariableReferenceType independentVariable;
+    protected IndependentVariableReference independentVariable;
     @XmlElement(name = "InitialCondition")
     protected InitialConditionType initialCondition;
     @XmlElement(name = "History")
@@ -128,10 +128,10 @@ public class DerivativeVariable
      * 
      * @return
      *     possible object is
-     *     {@link IndependentVariableReferenceType }
+     *     {@link IndependentVariableReference }
      *     
      */
-    public IndependentVariableReferenceType getIndependentVariable() {
+    public IndependentVariableReference getIndependentVariable() {
         return independentVariable;
     }
 
@@ -140,10 +140,10 @@ public class DerivativeVariable
      * 
      * @param value
      *     allowed object is
-     *     {@link IndependentVariableReferenceType }
+     *     {@link IndependentVariableReference }
      *     
      */
-    public void setIndependentVariable(IndependentVariableReferenceType value) {
+    public void setIndependentVariable(IndependentVariableReference value) {
         this.independentVariable = value;
     }
 

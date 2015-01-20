@@ -292,11 +292,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IndependentVariableReferenceType }
+     * Create an instance of {@link IndependentVariableReference }
      * 
      */
-    public IndependentVariableReferenceType createIndependentVariableReferenceType() {
-        return new IndependentVariableReferenceType();
+    public IndependentVariableReference createIndependentVariableReferenceType() {
+        return new IndependentVariableReference();
     }
 
     /**
