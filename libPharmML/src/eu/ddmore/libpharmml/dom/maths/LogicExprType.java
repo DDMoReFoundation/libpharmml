@@ -112,7 +112,7 @@ public class LogicExprType
     @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     protected JAXBElement<?> scalar;
     @XmlElement(name = "Constant")
-    protected ConstantType constant;
+    protected Constant constant;
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected SymbolRef symbRef;
     @XmlElement(name = "Binop")
@@ -223,10 +223,10 @@ public class LogicExprType
      * 
      * @return
      *     possible object is
-     *     {@link ConstantType }
+     *     {@link Constant }
      *     
      */
-    public ConstantType getConstant() {
+    public Constant getConstant() {
         return constant;
     }
 
@@ -235,10 +235,10 @@ public class LogicExprType
      * 
      * @param value
      *     allowed object is
-     *     {@link ConstantType }
+     *     {@link Constant }
      *     
      */
-    public void setConstant(ConstantType value) {
+    public void setConstant(Constant value) {
         this.constant = value;
     }
 

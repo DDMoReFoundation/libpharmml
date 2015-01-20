@@ -69,11 +69,25 @@ import eu.ddmore.libpharmml.dom.MasterObjectFactory;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConstantType")
-public class ConstantType implements Operand{
+public class Constant implements Operand{
 
     @XmlAttribute(name = "op", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String op;
+    
+    public static final Constant NOTANUMBER = new Constant("notanumber");
+    public static final Constant PI = new Constant("pi");
+    public static final Constant EXPONENTIALE = new Constant("exponentiale");
+    public static final Constant INFINITY = new Constant("infinity");
+    
+    /**
+     * Empty constructor.
+     */
+    protected Constant(){}
+    
+    private Constant(String op){
+    	this.op = op;
+    }
 
     /**
      * Gets the value of the op property.
@@ -87,21 +101,26 @@ public class ConstantType implements Operand{
         return op;
     }
 
-    /**
-     * Sets the value of the op property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setOp(String value) {
-        this.op = value;
-    }
+//    /**
+//     * Sets the value of the op property.
+//     * 
+//     * @param value
+//     *     allowed object is
+//     *     {@link String }
+//     *     
+//     */
+//    public void setOp(String value) {
+//        this.op = value;
+//    }
 
 	@Override
 	public JAXBElement<? extends Operand> toJAXBElement() {
 		return MasterObjectFactory.MATHS_OF.createConstant(this);
+	}
+	
+	@Override
+	public String toString(){
+		return this.getOp();
 	}
 
 }

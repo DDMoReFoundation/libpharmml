@@ -107,7 +107,7 @@ public class ExprType
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected SymbolRef symbRef;
     @XmlElement(name = "Constant")
-    protected ConstantType constant;
+    protected Constant constant;
     @XmlElement(name = "Binop")
     protected Binop binop;
     @XmlElement(name = "Uniop")
@@ -192,10 +192,10 @@ public class ExprType
      * 
      * @return
      *     possible object is
-     *     {@link ConstantType }
+     *     {@link Constant }
      *     
      */
-    public ConstantType getConstant() {
+    public Constant getConstant() {
         return constant;
     }
 
@@ -204,10 +204,10 @@ public class ExprType
      * 
      * @param value
      *     allowed object is
-     *     {@link ConstantType }
+     *     {@link Constant }
      *     
      */
-    public void setConstant(ConstantType value) {
+    public void setConstant(Constant value) {
         this.constant = value;
     }
 

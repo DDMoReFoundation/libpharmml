@@ -146,11 +146,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConstantType }
+     * Create an instance of {@link Constant }
      * 
      */
-    public ConstantType createConstantType() {
-        return new ConstantType();
+    public Constant createConstantType() {
+        return new Constant();
     }
 
     /**
@@ -203,12 +203,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ConstantType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Constant }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Constant")
-    public JAXBElement<ConstantType> createConstant(ConstantType value) {
-        return new JAXBElement<ConstantType>(_Constant_QNAME, ConstantType.class, null, value);
+    public JAXBElement<Constant> createConstant(Constant value) {
+        return new JAXBElement<Constant>(_Constant_QNAME, Constant.class, null, value);
     }
 
     /**

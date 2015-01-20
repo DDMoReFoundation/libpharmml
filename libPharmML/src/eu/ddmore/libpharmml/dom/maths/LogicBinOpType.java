@@ -179,7 +179,7 @@ public class LogicBinOpType
      * {@link JAXBElement }{@code <}{@link Uniop }{@code >}
      * {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
      * {@link JAXBElement }{@code <}{@link SymbolRef }{@code >}
-     * {@link JAXBElement }{@code <}{@link ConstantType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Constant }{@code >}
      * {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
      * {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
      * 
