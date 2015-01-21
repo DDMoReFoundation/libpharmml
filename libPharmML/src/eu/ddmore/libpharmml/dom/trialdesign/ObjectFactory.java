@@ -239,12 +239,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IndividualDefinitionType }
+     * Create an instance of {@link IndividualDefinition }
      * 
      */
 	@Deprecated
-    public IndividualDefinitionType createIndividualDefinitionType() {
-        return new IndividualDefinitionType();
+    public IndividualDefinition createIndividualDefinitionType() {
+        return new IndividualDefinition();
     }
 
     /**

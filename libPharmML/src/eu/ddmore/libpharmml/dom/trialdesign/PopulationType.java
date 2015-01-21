@@ -88,7 +88,7 @@ public class PopulationType
     protected DataSet dataSet;
 	@XmlElement(name = "IndividualTemplate")
 	@Deprecated
-    protected IndividualDefinitionType individualTemplate;
+    protected IndividualDefinition individualTemplate;
 
     /**
      * 
@@ -180,11 +180,11 @@ public class PopulationType
      * 
      * @return
      *     possible object is
-     *     {@link IndividualDefinitionType }
+     *     {@link IndividualDefinition }
      *     
      */
 	 @Deprecated
-    public IndividualDefinitionType getIndividualTemplate() {
+    public IndividualDefinition getIndividualTemplate() {
         return individualTemplate;
     }
 
@@ -193,11 +193,11 @@ public class PopulationType
      * 
      * @param value
      *     allowed object is
-     *     {@link IndividualDefinitionType }
+     *     {@link IndividualDefinition }
      *     
      */
 	 @Deprecated
-    public void setIndividualTemplate(IndividualDefinitionType value) {
+    public void setIndividualTemplate(IndividualDefinition value) {
         this.individualTemplate = value;
     }
 

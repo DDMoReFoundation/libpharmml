@@ -76,7 +76,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "replicateMapping"
 })
 @Deprecated
-public class IndividualDefinitionType
+public class IndividualDefinition
     extends PharmMLRootType
 {
 
