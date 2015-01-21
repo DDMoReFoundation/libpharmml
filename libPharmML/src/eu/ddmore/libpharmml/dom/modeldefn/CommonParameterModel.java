@@ -75,7 +75,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlSeeAlso({
     ParameterModelType.class
 })
-public abstract class CommonParameterModelType
+public abstract class CommonParameterModel
     extends PharmMLRootType
 {
 

@@ -64,7 +64,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.Censoring;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonDiscreteState;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonDiscreteVariable;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonObservationModel;
-import eu.ddmore.libpharmml.dom.modeldefn.CommonParameterModelType;
+import eu.ddmore.libpharmml.dom.modeldefn.CommonParameterModel;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.ContinuousCovariateType;
 import eu.ddmore.libpharmml.dom.modeldefn.CorrelatedRandomVarType;
@@ -200,7 +200,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     CountPMF.class,
     Discrete.class,
     VariabilityDefnBlock.class,
-    CommonParameterModelType.class,
+    CommonParameterModel.class,
     CategoricalCovariate.class,
     CovariateRelationType.class,
     CovariateModelType.class,

@@ -77,7 +77,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Name;
     "observationError"
 })
 public class ObservationModelType
-    extends CommonParameterModelType
+    extends CommonParameterModel
 {
 	//TODO: extends PharmMLRootType. still CommonParameterModelType for backward compatiblity.
 	// All inherited methods are @override and @deprecated
