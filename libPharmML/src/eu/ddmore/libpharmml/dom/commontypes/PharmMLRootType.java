@@ -71,7 +71,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.CorrelatedRandomVariable;
 import eu.ddmore.libpharmml.dom.modeldefn.Correlation;
 import eu.ddmore.libpharmml.dom.modeldefn.CountPMF;
 import eu.ddmore.libpharmml.dom.modeldefn.CovariateDefinition;
-import eu.ddmore.libpharmml.dom.modeldefn.CovariateModelType;
+import eu.ddmore.libpharmml.dom.modeldefn.CovariateModel;
 import eu.ddmore.libpharmml.dom.modeldefn.CovariateRelationType;
 import eu.ddmore.libpharmml.dom.modeldefn.CovariateTransformationType;
 import eu.ddmore.libpharmml.dom.modeldefn.Dependance;
@@ -203,7 +203,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     CommonParameterModel.class,
     CategoricalCovariate.class,
     CovariateRelationType.class,
-    CovariateModelType.class,
+    CovariateModel.class,
     CommonObservationModel.class,
     Censoring.class,
     FixedEffectRelationType.class,

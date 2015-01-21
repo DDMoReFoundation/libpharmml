@@ -268,11 +268,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CovariateModelType }
+     * Create an instance of {@link CovariateModel }
      * 
      */
-    public CovariateModelType createCovariateModelType() {
-        return new CovariateModelType();
+    public CovariateModel createCovariateModelType() {
+        return new CovariateModel();
     }
 
     /**

@@ -71,7 +71,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "simpleParameter",
     "covariate"
 })
-public class CovariateModelType
+public class CovariateModel
     extends PharmMLRootType
 {
 

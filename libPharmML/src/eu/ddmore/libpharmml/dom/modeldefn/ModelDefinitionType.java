@@ -75,7 +75,7 @@ public class ModelDefinitionType
     @XmlElement(name = "VariabilityModel")
     protected List<VariabilityDefnBlock> variabilityModel;
     @XmlElement(name = "CovariateModel")
-    protected List<CovariateModelType> covariateModel;
+    protected List<CovariateModel> covariateModel;
     @XmlElement(name = "ParameterModel")
     protected List<ParameterModelType> parameterModel;
     @XmlElement(name = "StructuralModel")
@@ -130,13 +130,13 @@ public class ModelDefinitionType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CovariateModelType }
+     * {@link CovariateModel }
      * 
      * 
      */
-    public List<CovariateModelType> getCovariateModel() {
+    public List<CovariateModel> getCovariateModel() {
         if (covariateModel == null) {
-            covariateModel = new ArrayList<CovariateModelType>();
+            covariateModel = new ArrayList<CovariateModel>();
         }
         return this.covariateModel;
     }
