@@ -50,7 +50,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "DoseInputTargetType")
 @XmlEnum
-public enum DoseInputTargetType {
+public enum DoseInputTarget {
 
 
     /**
@@ -90,7 +90,7 @@ public enum DoseInputTargetType {
     ADM_TYPE("admType");
     private final String value;
 
-    DoseInputTargetType(String v) {
+    DoseInputTarget(String v) {
         value = v;
     }
 
@@ -98,8 +98,8 @@ public enum DoseInputTargetType {
         return value;
     }
 
-    public static DoseInputTargetType fromValue(String v) {
-        for (DoseInputTargetType c: DoseInputTargetType.values()) {
+    public static DoseInputTarget fromValue(String v) {
+        for (DoseInputTarget c: DoseInputTarget.values()) {
             if (c.value.equals(v)) {
                 return c;
             }

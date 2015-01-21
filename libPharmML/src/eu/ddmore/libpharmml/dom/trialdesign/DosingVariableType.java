@@ -89,7 +89,7 @@ public class DosingVariableType
 	@Deprecated
     protected DoseInputTypeType inputType;
     @XmlAttribute(name = "inputTarget", required = true)
-    protected DoseInputTargetType inputTarget;
+    protected DoseInputTarget inputTarget;
 
     /**
      * Gets the value of the targetMapping property.
@@ -186,7 +186,7 @@ public class DosingVariableType
      *     allowed object is
      *     {@link DoseInputTypeType }
      *     
-     * @deprecated Since PharmML 0.3. See {@link #setInputTarget(DoseInputTargetType)}.
+     * @deprecated Since PharmML 0.3. See {@link #setInputTarget(DoseInputTarget)}.
      */
     @Deprecated
 	public void setInputType(DoseInputTypeType value) {
@@ -198,10 +198,10 @@ public class DosingVariableType
      * 
      * @return
      *     possible object is
-     *     {@link DoseInputTargetType }
+     *     {@link DoseInputTarget }
      *     
      */
-    public DoseInputTargetType getInputTarget() {
+    public DoseInputTarget getInputTarget() {
         return inputTarget;
     }
 
@@ -210,10 +210,10 @@ public class DosingVariableType
      * 
      * @param value
      *     allowed object is
-     *     {@link DoseInputTargetType }
+     *     {@link DoseInputTarget }
      *     
      */
-    public void setInputTarget(DoseInputTargetType value) {
+    public void setInputTarget(DoseInputTarget value) {
         this.inputTarget = value;
     }
 

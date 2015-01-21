@@ -74,7 +74,7 @@ public class TargetType
     @XmlElement(name = "ColumnMapping", required = true)
     protected List<ColumnMapping> columnMapping;
     @XmlAttribute(name = "inputTarget", required = true)
-    protected DoseInputTargetType inputTarget;
+    protected DoseInputTarget inputTarget;
 
     /**
      * Gets the value of the columnMapping property.
@@ -110,10 +110,10 @@ public class TargetType
      * 
      * @return
      *     possible object is
-     *     {@link DoseInputTargetType }
+     *     {@link DoseInputTarget }
      *     
      */
-    public DoseInputTargetType getInputTarget() {
+    public DoseInputTarget getInputTarget() {
         return inputTarget;
     }
 
@@ -122,10 +122,10 @@ public class TargetType
      * 
      * @param value
      *     allowed object is
-     *     {@link DoseInputTargetType }
+     *     {@link DoseInputTarget }
      *     
      */
-    public void setInputTarget(DoseInputTargetType value) {
+    public void setInputTarget(DoseInputTarget value) {
         this.inputTarget = value;
     }
 
