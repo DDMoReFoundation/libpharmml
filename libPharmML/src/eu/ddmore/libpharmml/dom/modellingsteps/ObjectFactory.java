@@ -69,11 +69,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ModellingStepsType }
+     * Create an instance of {@link ModellingSteps }
      * 
      */
-    public ModellingStepsType createModellingStepsType() {
-        return new ModellingStepsType();
+    public ModellingSteps createModellingStepsType() {
+        return new ModellingSteps();
     }
 
     /**
@@ -332,12 +332,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModellingStepsType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ModellingSteps }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "ModellingSteps")
-    public JAXBElement<ModellingStepsType> createModellingSteps(ModellingStepsType value) {
-        return new JAXBElement<ModellingStepsType>(_ModellingSteps_QNAME, ModellingStepsType.class, null, value);
+    public JAXBElement<ModellingSteps> createModellingSteps(ModellingSteps value) {
+        return new JAXBElement<ModellingSteps>(_ModellingSteps_QNAME, ModellingSteps.class, null, value);
     }
 
     /**

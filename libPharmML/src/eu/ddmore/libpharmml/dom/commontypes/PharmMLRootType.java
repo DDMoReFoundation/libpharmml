@@ -103,7 +103,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.DependentsType;
 import eu.ddmore.libpharmml.dom.modellingsteps.EstimationOperation;
 import eu.ddmore.libpharmml.dom.modellingsteps.GenericCode;
 import eu.ddmore.libpharmml.dom.modellingsteps.MappingType;
-import eu.ddmore.libpharmml.dom.modellingsteps.ModellingStepsType;
+import eu.ddmore.libpharmml.dom.modellingsteps.ModellingSteps;
 import eu.ddmore.libpharmml.dom.modellingsteps.MultipleDVMappingType;
 import eu.ddmore.libpharmml.dom.modellingsteps.NONMEMdataSetReferenceType;
 import eu.ddmore.libpharmml.dom.modellingsteps.NONMEMdataSetType;
@@ -172,7 +172,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     IndependentVariable.class,
     ModelDefinition.class,
     TrialDesignType.class,
-    ModellingStepsType.class,
+    ModellingSteps.class,
     LogicBinOp.class,
     Binop.class,
     SymbolRef.class,

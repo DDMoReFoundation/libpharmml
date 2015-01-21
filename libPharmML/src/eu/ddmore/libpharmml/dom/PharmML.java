@@ -40,7 +40,7 @@ import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
 import eu.ddmore.libpharmml.dom.commontypes.FunctionDefinitionType;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
-import eu.ddmore.libpharmml.dom.modellingsteps.ModellingStepsType;
+import eu.ddmore.libpharmml.dom.modellingsteps.ModellingSteps;
 import eu.ddmore.libpharmml.dom.trialdesign.TrialDesignType;
 
 
@@ -98,7 +98,7 @@ public class PharmML {
     @XmlElement(name = "TrialDesign", namespace = "http://www.pharmml.org/2013/03/TrialDesign")
     protected TrialDesignType trialDesign;
     @XmlElement(name = "ModellingSteps", namespace = "http://www.pharmml.org/2013/03/ModellingSteps")
-    protected ModellingStepsType modellingSteps;
+    protected ModellingSteps modellingSteps;
     @XmlAttribute(name = "writtenVersion", required = true)
     protected String writtenVersion;
     @XmlAttribute(name = "implementedBy")
@@ -263,10 +263,10 @@ public class PharmML {
      * 
      * @return
      *     possible object is
-     *     {@link ModellingStepsType }
+     *     {@link ModellingSteps }
      *     
      */
-    public ModellingStepsType getModellingSteps() {
+    public ModellingSteps getModellingSteps() {
         return modellingSteps;
     }
 
@@ -275,10 +275,10 @@ public class PharmML {
      * 
      * @param value
      *     allowed object is
-     *     {@link ModellingStepsType }
+     *     {@link ModellingSteps }
      *     
      */
-    public void setModellingSteps(ModellingStepsType value) {
+    public void setModellingSteps(ModellingSteps value) {
         this.modellingSteps = value;
     }
 

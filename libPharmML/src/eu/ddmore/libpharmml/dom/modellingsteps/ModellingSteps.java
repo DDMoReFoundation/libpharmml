@@ -72,7 +72,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "commonModellingStep",
     "stepDependencies"
 })
-public class ModellingStepsType
+public class ModellingSteps
     extends PharmMLRootType
 {
 
