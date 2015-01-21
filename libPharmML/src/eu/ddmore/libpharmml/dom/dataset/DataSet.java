@@ -48,7 +48,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
-import eu.ddmore.libpharmml.dom.dataset.ImportDataType.Delimiter;
+import eu.ddmore.libpharmml.dom.dataset.ImportData.Delimiter;
 import eu.ddmore.libpharmml.impl.ValidationErrorImpl;
 import eu.ddmore.libpharmml.util.Util;
 import eu.ddmore.libpharmml.util.WrappedList;
@@ -100,7 +100,7 @@ public class DataSet
 	protected WrappedList<ColumnDefinition> wrappedListOfColumn;
 	
     @XmlElement(name = "ImportData")
-    protected ImportDataType importData;
+    protected ImportData importData;
     
     @XmlElement(name = "Table")
     @XmlJavaTypeAdapter(DataSet.RowDefinitionAdapter.class)
@@ -209,10 +209,10 @@ public class DataSet
      * @param format Format of the file such as "CSV".
      * @param delimiter Delimiter in the csv file.
      * @param oid Object id of the import data element.
-     * @return The created import data as a {@link ImportDataType} object.
+     * @return The created import data as a {@link ImportData} object.
      */
-    public ImportDataType createImportData(String path, String format, Delimiter delimiter, String oid){
-    	ImportDataType data = new ImportDataType();
+    public ImportData createImportData(String path, String format, Delimiter delimiter, String oid){
+    	ImportData data = new ImportData();
     	data.setPath(path);
     	data.setFormat(format);
     	data.setDelimiter(delimiter);
@@ -228,10 +228,10 @@ public class DataSet
      * 
      * @return
      *     possible object is
-     *     {@link ImportDataType }
+     *     {@link ImportData }
      *     
      */
-    public ImportDataType getImportData() {
+    public ImportData getImportData() {
         return importData;
     }
 
@@ -240,10 +240,10 @@ public class DataSet
      * 
      * @param value
      *     allowed object is
-     *     {@link ImportDataType }
+     *     {@link ImportData }
      *     
      */
-    public void setImportData(ImportDataType value) {
+    public void setImportData(ImportData value) {
         this.importData = value;
     }
 
