@@ -142,7 +142,7 @@ public class DatasetMapping
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link VariableMappingType }{@code >}
      * {@link JAXBElement }{@code <}{@link MappingType }{@code >}
-     * {@link JAXBElement }{@code <}{@link IndividualMappingType }{@code >}
+     * {@link JAXBElement }{@code <}{@link IndividualMapping }{@code >}
      * 
      * @deprecated Since PharmML 0.3
      */

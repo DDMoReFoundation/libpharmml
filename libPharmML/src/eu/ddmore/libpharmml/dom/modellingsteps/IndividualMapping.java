@@ -57,7 +57,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IndividualMappingType")
 @Deprecated
-public class IndividualMappingType
+public class IndividualMapping
     extends MappingType
 {
 

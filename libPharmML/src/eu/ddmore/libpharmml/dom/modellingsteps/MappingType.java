@@ -65,7 +65,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
     "columnRef"
 })
 @XmlSeeAlso({
-    IndividualMappingType.class,
+    IndividualMapping.class,
     VariableMappingType.class
 })
 @Deprecated
