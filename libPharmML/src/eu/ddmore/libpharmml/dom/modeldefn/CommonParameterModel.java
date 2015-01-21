@@ -84,7 +84,7 @@ public abstract class CommonParameterModel
     @XmlElementRef(name = "CommonParameterElement", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class, required = false)
     protected List<JAXBElement<? extends CommonParameter>> commonParameterElement;
     @XmlElement(name = "Correlation")
-    protected List<CorrelationType> correlation;
+    protected List<Correlation> correlation;
     @XmlAttribute(name = "blkId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String blkId;
@@ -163,13 +163,13 @@ public abstract class CommonParameterModel
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CorrelationType }
+     * {@link Correlation }
      * 
      * 
      */
-    public List<CorrelationType> getCorrelation() {
+    public List<Correlation> getCorrelation() {
         if (correlation == null) {
-            correlation = new ArrayList<CorrelationType>();
+            correlation = new ArrayList<Correlation>();
         }
         return this.correlation;
     }

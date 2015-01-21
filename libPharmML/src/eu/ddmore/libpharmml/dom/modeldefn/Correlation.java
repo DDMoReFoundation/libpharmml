@@ -84,7 +84,7 @@ import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
     "pairwise",
     "matrix"
 })
-public class CorrelationType
+public class Correlation
     extends PharmMLRootType
 {
 

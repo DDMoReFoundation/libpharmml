@@ -348,11 +348,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CorrelationType }
+     * Create an instance of {@link Correlation }
      * 
      */
-    public CorrelationType createCorrelationType() {
-        return new CorrelationType();
+    public Correlation createCorrelationType() {
+        return new Correlation();
     }
 
     /**

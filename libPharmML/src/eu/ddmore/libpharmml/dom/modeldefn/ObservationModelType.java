@@ -284,14 +284,14 @@ public class ObservationModelType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CorrelationType }
+     * {@link Correlation }
      * 
      * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.
      * See the documentation of {@link ObservationModelType}.
      */
     @Override
     @Deprecated
-    public List<CorrelationType> getCorrelation() {
+    public List<Correlation> getCorrelation() {
         return super.getCorrelation();
     }
 

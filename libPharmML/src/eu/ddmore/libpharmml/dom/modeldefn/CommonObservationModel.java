@@ -102,7 +102,7 @@ public abstract class CommonObservationModel
     @XmlElement(name = "Variable", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected List<VariableDefinition> variable;
     @XmlElement(name = "Correlation")
-    protected List<CorrelationType> correlation;
+    protected List<Correlation> correlation;
 
     /**
      * Gets the value of the name property.
@@ -239,13 +239,13 @@ public abstract class CommonObservationModel
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CorrelationType }
+     * {@link Correlation }
      * 
      * 
      */
-    public List<CorrelationType> getListOfCorrelation() {
+    public List<Correlation> getListOfCorrelation() {
         if (correlation == null) {
-            correlation = new ArrayList<CorrelationType>();
+            correlation = new ArrayList<Correlation>();
         }
         return this.correlation;
     }
@@ -287,11 +287,11 @@ public abstract class CommonObservationModel
     }
 
     /**
-     * Creates a new empty {@link CorrelationType} correlation element, adds it to the current object and returns it.
-     * @return The created {@link CorrelationType} object.
+     * Creates a new empty {@link Correlation} correlation element, adds it to the current object and returns it.
+     * @return The created {@link Correlation} object.
      */
-    public CorrelationType createCorrelation(){
-            CorrelationType el = new CorrelationType();
+    public Correlation createCorrelation(){
+            Correlation el = new Correlation();
             getListOfCorrelation().add(el);
             return el;
     }
