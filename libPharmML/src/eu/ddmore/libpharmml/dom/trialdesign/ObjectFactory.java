@@ -346,12 +346,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IndependentVariableDependentMappingType }
+     * Create an instance of {@link IndependentVariableDependentMapping }
      * 
      */
 	@Deprecated
-    public IndependentVariableDependentMappingType createIndependentVariableDependentMappingType() {
-        return new IndependentVariableDependentMappingType();
+    public IndependentVariableDependentMapping createIndependentVariableDependentMappingType() {
+        return new IndependentVariableDependentMapping();
     }
 
     /**

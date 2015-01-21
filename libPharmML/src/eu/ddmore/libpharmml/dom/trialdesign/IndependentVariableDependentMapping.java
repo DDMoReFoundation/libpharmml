@@ -73,7 +73,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
     "attributeMapping"
 })
 @Deprecated
-public class IndependentVariableDependentMappingType {
+public class IndependentVariableDependentMapping {
 
     @XmlElement(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
     protected ColumnReference columnRef;

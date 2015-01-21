@@ -89,7 +89,7 @@ public class IndividualDefinitionType
     @XmlElementRef(name = "AttributeMapping", namespace = "http://www.pharmml.org/2013/03/TrialDesign", type = JAXBElement.class, required = false)
     protected List<JAXBElement<?>> attributeMapping;
     @XmlElement(name = "IVDependentMapping")
-    protected List<IndependentVariableDependentMappingType> ivDependentMapping;
+    protected List<IndependentVariableDependentMapping> ivDependentMapping;
     @XmlElement(name = "ReplicateMapping")
     protected ReplicateMappingType replicateMapping;
 
@@ -220,13 +220,13 @@ public class IndividualDefinitionType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link IndependentVariableDependentMappingType }
+     * {@link IndependentVariableDependentMapping }
      * 
      * 
      */
-    public List<IndependentVariableDependentMappingType> getIVDependentMapping() {
+    public List<IndependentVariableDependentMapping> getIVDependentMapping() {
         if (ivDependentMapping == null) {
-            ivDependentMapping = new ArrayList<IndependentVariableDependentMappingType>();
+            ivDependentMapping = new ArrayList<IndependentVariableDependentMapping>();
         }
         return this.ivDependentMapping;
     }
