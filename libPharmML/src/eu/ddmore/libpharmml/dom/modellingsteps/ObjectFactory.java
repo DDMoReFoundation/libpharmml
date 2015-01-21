@@ -102,12 +102,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VariableMappingType }
+     * Create an instance of {@link VariableMapping }
      * 
      */
     @Deprecated
-    public VariableMappingType createVariableMappingType() {
-        return new VariableMappingType();
+    public VariableMapping createVariableMappingType() {
+        return new VariableMapping();
     }
 
     /**
@@ -341,13 +341,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VariableMappingType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link VariableMapping }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "VariableMapping", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModellingSteps", substitutionHeadName = "Mapping")
     @Deprecated
-    public JAXBElement<VariableMappingType> createVariableMapping(VariableMappingType value) {
-        return new JAXBElement<VariableMappingType>(_VariableMapping_QNAME, VariableMappingType.class, null, value);
+    public JAXBElement<VariableMapping> createVariableMapping(VariableMapping value) {
+        return new JAXBElement<VariableMapping>(_VariableMapping_QNAME, VariableMapping.class, null, value);
     }
 
     /**

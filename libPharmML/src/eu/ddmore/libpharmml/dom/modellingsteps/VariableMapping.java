@@ -63,7 +63,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
     "symbRef"
 })
 @Deprecated
-public class VariableMappingType
+public class VariableMapping
     extends MappingType
 {
 

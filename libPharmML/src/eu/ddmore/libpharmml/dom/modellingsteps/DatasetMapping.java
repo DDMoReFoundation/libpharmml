@@ -140,7 +140,7 @@ public class DatasetMapping
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link VariableMappingType }{@code >}
+     * {@link JAXBElement }{@code <}{@link VariableMapping }{@code >}
      * {@link JAXBElement }{@code <}{@link MappingType }{@code >}
      * {@link JAXBElement }{@code <}{@link IndividualMapping }{@code >}
      * 
