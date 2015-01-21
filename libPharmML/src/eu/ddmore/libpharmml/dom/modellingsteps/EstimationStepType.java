@@ -70,7 +70,7 @@ public class EstimationStepType
 {
 
     @XmlElement(name = "ObjectiveDataSet")
-    protected List<DatasetMappingType> objectiveDataSet;
+    protected List<DatasetMapping> objectiveDataSet;
     @XmlElement(name = "ParametersToEstimate", required = true)
     protected ToEstimateType parametersToEstimate;
     @XmlElement(name = "Operation", required = true)
@@ -94,13 +94,13 @@ public class EstimationStepType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link DatasetMappingType }
+     * {@link DatasetMapping }
      * 
      * 
      */
-    public List<DatasetMappingType> getObjectiveDataSet() {
+    public List<DatasetMapping> getObjectiveDataSet() {
         if (objectiveDataSet == null) {
-            objectiveDataSet = new ArrayList<DatasetMappingType>();
+            objectiveDataSet = new ArrayList<DatasetMapping>();
         }
         return this.objectiveDataSet;
     }

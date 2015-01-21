@@ -252,12 +252,12 @@ public class ObjectFactory {
 
 
     /**
-     * Create an instance of {@link DatasetMappingType }
+     * Create an instance of {@link DatasetMapping }
      * 
 	 * @since PharmML0.3
      */
-    public DatasetMappingType createDatasetMappingType() {
-        return new DatasetMappingType();
+    public DatasetMapping createDatasetMappingType() {
+        return new DatasetMapping();
     }
 
     /**

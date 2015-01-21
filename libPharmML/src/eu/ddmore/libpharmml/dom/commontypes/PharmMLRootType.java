@@ -98,7 +98,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKMacroList;
 import eu.ddmore.libpharmml.dom.modellingsteps.Algorithm;
 import eu.ddmore.libpharmml.dom.modellingsteps.CodeInjection;
 import eu.ddmore.libpharmml.dom.modellingsteps.CommonModellingStep;
-import eu.ddmore.libpharmml.dom.modellingsteps.DatasetMappingType;
+import eu.ddmore.libpharmml.dom.modellingsteps.DatasetMapping;
 import eu.ddmore.libpharmml.dom.modellingsteps.DependentsType;
 import eu.ddmore.libpharmml.dom.modellingsteps.EstimationOperationType;
 import eu.ddmore.libpharmml.dom.modellingsteps.GenericCodeType;
@@ -305,7 +305,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     ScalarRhs.class,
     TargetToolSymbolType.class,
     MultipleDVMappingType.class,
-    DatasetMappingType.class,
+    DatasetMapping.class,
     StepType.class,
     GenericCodeType.class,
     SymbolMappingType.class,

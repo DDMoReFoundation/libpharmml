@@ -73,7 +73,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
 	"columnMapping",
     "dataSet"
 })
-public class DatasetMappingType
+public class DatasetMapping
     extends PharmMLRootType
 {
 
