@@ -139,7 +139,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.StudyPeriod;
 import eu.ddmore.libpharmml.dom.trialdesign.StudyTimePoint;
 import eu.ddmore.libpharmml.dom.trialdesign.Target;
 import eu.ddmore.libpharmml.dom.trialdesign.TrialDesign;
-import eu.ddmore.libpharmml.dom.trialdesign.TrialStructureType;
+import eu.ddmore.libpharmml.dom.trialdesign.TrialStructure;
 import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
 
 
@@ -271,7 +271,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     WashoutType.class,
     DosingRegimen.class,
     StudyEvent.class,
-    TrialStructureType.class,
+    TrialStructure.class,
     DosingVariable.class,
     SteadyStateParameter.class,
     ArmDefinition.class,

@@ -182,11 +182,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TrialStructureType }
+     * Create an instance of {@link TrialStructure }
      * 
      */
-    public TrialStructureType createTrialStructureType() {
-        return new TrialStructureType();
+    public TrialStructure createTrialStructureType() {
+        return new TrialStructure();
     }
 
     /**

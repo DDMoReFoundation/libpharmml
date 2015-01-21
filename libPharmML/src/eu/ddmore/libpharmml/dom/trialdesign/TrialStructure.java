@@ -74,7 +74,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "activity",
     "studyEvent"
 })
-public class TrialStructureType
+public class TrialStructure
     extends PharmMLRootType
 {
 
