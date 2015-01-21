@@ -258,7 +258,7 @@ public class TrialStructureType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link ObservationsType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Observations }{@code >}
      * {@link JAXBElement }{@code <}{@link StudyEventType }{@code >}
      * 
      * 

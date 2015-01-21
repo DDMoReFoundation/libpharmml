@@ -67,7 +67,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Name;
     "variabilityReference",
     "observationGroup"
 })
-public class ObservationsType
+public class Observations
     extends StudyEventType
 {
 

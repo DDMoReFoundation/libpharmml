@@ -165,11 +165,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ObservationsType }
+     * Create an instance of {@link Observations }
      * 
      */
-    public ObservationsType createObservationsType() {
-        return new ObservationsType();
+    public Observations createObservationsType() {
+        return new Observations();
     }
 	
 	/**
@@ -480,8 +480,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "ObservationsEvent", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/TrialDesign", substitutionHeadName = "StudyEvent")
-    public JAXBElement<ObservationsType> createObservationsEvent(ObservationsType value) {
-        return new JAXBElement<ObservationsType>(_ObservationsEvent_QNAME, ObservationsType.class, null, value);
+    public JAXBElement<Observations> createObservationsEvent(Observations value) {
+        return new JAXBElement<Observations>(_ObservationsEvent_QNAME, Observations.class, null, value);
     }
 	
 	/**
