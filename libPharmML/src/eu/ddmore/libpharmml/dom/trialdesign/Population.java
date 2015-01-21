@@ -74,7 +74,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
     "individualTemplate",
     "dataSet"
 })
-public class PopulationType
+public class Population
     extends PharmMLRootType
 {
 

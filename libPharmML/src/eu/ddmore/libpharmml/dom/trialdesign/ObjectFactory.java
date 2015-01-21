@@ -231,11 +231,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PopulationType }
+     * Create an instance of {@link Population }
      * 
      */
-    public PopulationType createPopulationType() {
-        return new PopulationType();
+    public Population createPopulationType() {
+        return new Population();
     }
 
     /**

@@ -73,7 +73,7 @@ public class TrialDesignType
     @XmlElement(name = "Structure")
     protected TrialStructureType structure;
     @XmlElement(name = "Population")
-    protected PopulationType population;
+    protected Population population;
     @XmlElement(name = "IndividualDosing")
     protected List<IndividualDosing> individualDosing;
 
@@ -106,10 +106,10 @@ public class TrialDesignType
      * 
      * @return
      *     possible object is
-     *     {@link PopulationType }
+     *     {@link Population }
      *     
      */
-    public PopulationType getPopulation() {
+    public Population getPopulation() {
         return population;
     }
 
@@ -118,10 +118,10 @@ public class TrialDesignType
      * 
      * @param value
      *     allowed object is
-     *     {@link PopulationType }
+     *     {@link Population }
      *     
      */
-    public void setPopulation(PopulationType value) {
+    public void setPopulation(Population value) {
         this.population = value;
     }
 
