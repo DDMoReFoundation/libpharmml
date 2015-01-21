@@ -67,7 +67,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 @XmlType(name = "TargetMappingType", propOrder = {
     "columnMapping"
 })
-public class TargetType
+public class Target
     extends PharmMLRootType
 {
 

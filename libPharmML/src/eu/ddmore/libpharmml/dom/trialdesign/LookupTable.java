@@ -78,7 +78,7 @@ public class LookupTable
     @XmlElement(name = "ColumnMapping")
     protected List<ColumnMapping> columnMapping;
     @XmlElement(name = "Target", required = true)
-    protected List<TargetType> target;
+    protected List<Target> target;
     @XmlElement(name = "ColumnTransformation")
     protected List<ColumnTransformation> listOfColumnTransformation;
     @XmlElement(name = "DataSet", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
@@ -131,13 +131,13 @@ public class LookupTable
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link TargetType }
+     * {@link Target }
      * 
      * 
      */
-    public List<TargetType> getTarget() {
+    public List<Target> getTarget() {
         if (target == null) {
-            target = new ArrayList<TargetType>();
+            target = new ArrayList<Target>();
         }
         return this.target;
     }

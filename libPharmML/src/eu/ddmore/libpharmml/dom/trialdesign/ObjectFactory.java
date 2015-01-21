@@ -313,11 +313,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TargetType }
+     * Create an instance of {@link Target }
      * 
      */
-    public TargetType createTargetMappingType() {
-        return new TargetType();
+    public Target createTargetMappingType() {
+        return new Target();
     }
 
     /**
