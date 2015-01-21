@@ -89,7 +89,7 @@ public abstract class CommonModellingStep
     @XmlElement(name = "MONOLIXdataSetReference")
     protected MONOLIXdataSetReference monoliXdataSetReference;
     @XmlElement(name = "NONMEMdataSetReference")
-    protected NONMEMdataSetReferenceType nonmeMdataSetReference;
+    protected NONMEMdataSetReference nonmeMdataSetReference;
     @XmlElement(name = "VariableAssignment", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected List<VariableAssignment> variableAssignment;
     @XmlAttribute(name = "oid", required = true)
@@ -149,10 +149,10 @@ public abstract class CommonModellingStep
      * 
      * @return
      *     possible object is
-     *     {@link NONMEMdataSetReferenceType }
+     *     {@link NONMEMdataSetReference }
      *     
      */
-    public NONMEMdataSetReferenceType getNONMEMdataSetReference() {
+    public NONMEMdataSetReference getNONMEMdataSetReference() {
         return nonmeMdataSetReference;
     }
 
@@ -161,10 +161,10 @@ public abstract class CommonModellingStep
      * 
      * @param value
      *     allowed object is
-     *     {@link NONMEMdataSetReferenceType }
+     *     {@link NONMEMdataSetReference }
      *     
      */
-    public void setNONMEMdataSetReference(NONMEMdataSetReferenceType value) {
+    public void setNONMEMdataSetReference(NONMEMdataSetReference value) {
         this.nonmeMdataSetReference = value;
     }
 

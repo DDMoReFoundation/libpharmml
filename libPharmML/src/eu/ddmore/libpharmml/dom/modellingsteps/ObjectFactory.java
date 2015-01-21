@@ -242,11 +242,11 @@ public class ObjectFactory {
     }
     
     /**
-     * Create an instance of {@link NONMEMdataSetReferenceType }
+     * Create an instance of {@link NONMEMdataSetReference }
      * 
      */
-    public NONMEMdataSetReferenceType createNONMEMdataSetReferenceType() {
-        return new NONMEMdataSetReferenceType();
+    public NONMEMdataSetReference createNONMEMdataSetReferenceType() {
+        return new NONMEMdataSetReference();
     }
 
 

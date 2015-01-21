@@ -61,7 +61,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlType(name = "NONMEMdataSetReferenceType", propOrder = {
     "oidRef"
 })
-public class NONMEMdataSetReferenceType
+public class NONMEMdataSetReference
     extends PharmMLRootType
 {
 
