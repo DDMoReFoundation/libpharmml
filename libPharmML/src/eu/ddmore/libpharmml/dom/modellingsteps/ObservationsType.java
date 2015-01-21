@@ -73,7 +73,7 @@ public class ObservationsType
     @XmlElement(name = "Timepoints", required = true)
     protected TimepointsType timepoints;
     @XmlElement(name = "Continuous")
-    protected ContinuousObservationType continuous;
+    protected ContinuousObservation continuous;
     @XmlElement(name = "Discrete")
     protected DiscreteObservation discrete;
 
@@ -108,10 +108,10 @@ public class ObservationsType
      * 
      * @return
      *     possible object is
-     *     {@link ContinuousObservationType }
+     *     {@link ContinuousObservation }
      *     
      */
-    public ContinuousObservationType getContinuous() {
+    public ContinuousObservation getContinuous() {
         return continuous;
     }
 
@@ -120,10 +120,10 @@ public class ObservationsType
      * 
      * @param value
      *     allowed object is
-     *     {@link ContinuousObservationType }
+     *     {@link ContinuousObservation }
      *     
      */
-    public void setContinuous(ContinuousObservationType value) {
+    public void setContinuous(ContinuousObservation value) {
         this.continuous = value;
     }
 

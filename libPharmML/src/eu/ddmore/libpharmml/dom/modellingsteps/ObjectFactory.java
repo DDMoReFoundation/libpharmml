@@ -127,11 +127,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ContinuousObservationType }
+     * Create an instance of {@link ContinuousObservation }
      * 
      */
-    public ContinuousObservationType createContinuousObservationType() {
-        return new ContinuousObservationType();
+    public ContinuousObservation createContinuousObservationType() {
+        return new ContinuousObservation();
     }
 
     /**

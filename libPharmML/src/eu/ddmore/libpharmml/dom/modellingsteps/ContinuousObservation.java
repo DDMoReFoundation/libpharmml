@@ -63,7 +63,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 @XmlType(name = "ContinuousObservationType", propOrder = {
     "symbRef"
 })
-public class ContinuousObservationType
+public class ContinuousObservation
     extends PharmMLRootType
 {
 
