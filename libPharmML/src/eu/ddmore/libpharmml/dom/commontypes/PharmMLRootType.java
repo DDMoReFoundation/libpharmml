@@ -107,7 +107,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.ModellingSteps;
 import eu.ddmore.libpharmml.dom.modellingsteps.MultipleDVMapping;
 import eu.ddmore.libpharmml.dom.modellingsteps.NONMEMdataSetReference;
 import eu.ddmore.libpharmml.dom.modellingsteps.NONMEMdataSet;
-import eu.ddmore.libpharmml.dom.modellingsteps.ObservationsType;
+import eu.ddmore.libpharmml.dom.modellingsteps.Observations;
 import eu.ddmore.libpharmml.dom.modellingsteps.OperationProperty;
 import eu.ddmore.libpharmml.dom.modellingsteps.ParameterEstimate;
 import eu.ddmore.libpharmml.dom.modellingsteps.SimulationOperationType;
@@ -298,7 +298,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     CodeInjection.class,
     TargetTool.class,
     ParameterEstimate.class,
-    ObservationsType.class,
+    Observations.class,
     StepDependency.class,
     DependentsType.class,
     NONMEMdataSet.class,

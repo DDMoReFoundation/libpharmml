@@ -68,7 +68,7 @@ public class SimulationStepType
 {
 
     @XmlElement(name = "Observations")
-    protected List<ObservationsType> observations;
+    protected List<Observations> observations;
     @XmlElement(name = "Operation")
     protected List<SimulationOperationType> operation;
 
@@ -90,13 +90,13 @@ public class SimulationStepType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ObservationsType }
+     * {@link Observations }
      * 
      * 
      */
-    public List<ObservationsType> getObservations() {
+    public List<Observations> getObservations() {
         if (observations == null) {
-            observations = new ArrayList<ObservationsType>();
+            observations = new ArrayList<Observations>();
         }
         return this.observations;
     }

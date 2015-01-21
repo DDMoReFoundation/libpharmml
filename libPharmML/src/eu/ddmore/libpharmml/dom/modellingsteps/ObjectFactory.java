@@ -184,11 +184,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ObservationsType }
+     * Create an instance of {@link Observations }
      * 
      */
-    public ObservationsType createObservationsType() {
-        return new ObservationsType();
+    public Observations createObservationsType() {
+        return new Observations();
     }
 
     /**

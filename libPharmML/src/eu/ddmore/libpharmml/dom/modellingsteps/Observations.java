@@ -66,7 +66,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "continuous",
     "discrete"
 })
-public class ObservationsType
+public class Observations
     extends PharmMLRootType
 {
 
