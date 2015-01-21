@@ -80,7 +80,7 @@ public class IndependentVariableDependentMappingType {
     @XmlElement(name = "IndependentVariableMapping")
     protected IndependentVariableMappingType independentVariableMapping;
     @XmlElement(name = "EpochMapping")
-    protected EpochMappingType epochMapping;
+    protected EpochMapping epochMapping;
     @XmlElementRef(name = "AttributeMapping", namespace = "http://www.pharmml.org/2013/03/TrialDesign", type = JAXBElement.class)
     protected List<JAXBElement<?>> attributeMapping;
 
@@ -137,10 +137,10 @@ public class IndependentVariableDependentMappingType {
      * 
      * @return
      *     possible object is
-     *     {@link EpochMappingType }
+     *     {@link EpochMapping }
      *     
      */
-    public EpochMappingType getEpochMapping() {
+    public EpochMapping getEpochMapping() {
         return epochMapping;
     }
 
@@ -149,10 +149,10 @@ public class IndependentVariableDependentMappingType {
      * 
      * @param value
      *     allowed object is
-     *     {@link EpochMappingType }
+     *     {@link EpochMapping }
      *     
      */
-    public void setEpochMapping(EpochMappingType value) {
+    public void setEpochMapping(EpochMapping value) {
         this.epochMapping = value;
     }
 

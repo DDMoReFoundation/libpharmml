@@ -329,12 +329,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EpochMappingType }
+     * Create an instance of {@link EpochMapping }
      * 
      */
 	@Deprecated
-    public EpochMappingType createEpochMappingType() {
-        return new EpochMappingType();
+    public EpochMapping createEpochMappingType() {
+        return new EpochMapping();
     }
 
     /**
