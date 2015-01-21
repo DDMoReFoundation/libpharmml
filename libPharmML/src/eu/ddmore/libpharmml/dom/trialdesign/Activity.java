@@ -119,7 +119,7 @@ public class Activity
      * @return
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link DosingRegimenType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BolusType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Bolus }{@code >}
      *     {@link JAXBElement }{@code <}{@link InfusionType }{@code >}
      *     
      */
@@ -133,7 +133,7 @@ public class Activity
      * @param value
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link DosingRegimenType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BolusType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Bolus }{@code >}
      *     {@link JAXBElement }{@code <}{@link InfusionType }{@code >}
      *     
      */

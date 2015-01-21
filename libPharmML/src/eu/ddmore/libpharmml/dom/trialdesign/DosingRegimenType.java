@@ -57,7 +57,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlType(name = "DosingRegimenType")
 @XmlSeeAlso({
     InfusionType.class,
-    BolusType.class
+    Bolus.class
 })
 public abstract class DosingRegimenType
     extends PharmMLRootType

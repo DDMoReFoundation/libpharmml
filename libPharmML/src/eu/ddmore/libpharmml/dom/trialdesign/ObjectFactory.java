@@ -157,11 +157,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link BolusType }
+     * Create an instance of {@link Bolus }
      * 
      */
-    public BolusType createBolusType() {
-        return new BolusType();
+    public Bolus createBolusType() {
+        return new Bolus();
     }
 
     /**
@@ -439,12 +439,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BolusType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Bolus }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "Bolus", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/TrialDesign", substitutionHeadName = "DosingRegimen")
-    public JAXBElement<BolusType> createBolus(BolusType value) {
-        return new JAXBElement<BolusType>(_Bolus_QNAME, BolusType.class, null, value);
+    public JAXBElement<Bolus> createBolus(Bolus value) {
+        return new JAXBElement<Bolus>(_Bolus_QNAME, Bolus.class, null, value);
     }
 
     /**

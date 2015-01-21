@@ -65,7 +65,7 @@ import javax.xml.bind.annotation.XmlType;
     "steadyState",
     "dosingTimes"
 })
-public class BolusType
+public class Bolus
     extends DosingRegimenType
 {
 
