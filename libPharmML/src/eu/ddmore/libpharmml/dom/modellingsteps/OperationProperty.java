@@ -65,7 +65,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 @XmlType(name = "OperationPropertyType", propOrder = {
     "assign"
 })
-public class OperationPropertyType
+public class OperationProperty
     extends PharmMLRootType
 {
 

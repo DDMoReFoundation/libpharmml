@@ -119,11 +119,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link OperationPropertyType }
+     * Create an instance of {@link OperationProperty }
      * 
      */
-    public OperationPropertyType createOperationPropertyType() {
-        return new OperationPropertyType();
+    public OperationProperty createOperationPropertyType() {
+        return new OperationProperty();
     }
 
     /**
@@ -314,12 +314,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OperationPropertyType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link OperationProperty }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "Property")
-    public JAXBElement<OperationPropertyType> createProperty(OperationPropertyType value) {
-        return new JAXBElement<OperationPropertyType>(_Property_QNAME, OperationPropertyType.class, null, value);
+    public JAXBElement<OperationProperty> createProperty(OperationProperty value) {
+        return new JAXBElement<OperationProperty>(_Property_QNAME, OperationProperty.class, null, value);
     }
 
     /**

@@ -75,7 +75,7 @@ public class Algorithm
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected Name name;
     @XmlElement(name = "Property")
-    protected List<OperationPropertyType> property;
+    protected List<OperationProperty> property;
     @XmlAttribute(name = "definition", required = true)
     @XmlSchemaType(name = "anyURI")
     protected String definition;
@@ -124,13 +124,13 @@ public class Algorithm
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link OperationPropertyType }
+     * {@link OperationProperty }
      * 
      * 
      */
-    public List<OperationPropertyType> getProperty() {
+    public List<OperationProperty> getProperty() {
         if (property == null) {
-            property = new ArrayList<OperationPropertyType>();
+            property = new ArrayList<OperationProperty>();
         }
         return this.property;
     }

@@ -108,7 +108,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.MultipleDVMapping;
 import eu.ddmore.libpharmml.dom.modellingsteps.NONMEMdataSetReference;
 import eu.ddmore.libpharmml.dom.modellingsteps.NONMEMdataSet;
 import eu.ddmore.libpharmml.dom.modellingsteps.ObservationsType;
-import eu.ddmore.libpharmml.dom.modellingsteps.OperationPropertyType;
+import eu.ddmore.libpharmml.dom.modellingsteps.OperationProperty;
 import eu.ddmore.libpharmml.dom.modellingsteps.ParameterEstimateType;
 import eu.ddmore.libpharmml.dom.modellingsteps.SimulationOperationType;
 import eu.ddmore.libpharmml.dom.modellingsteps.StepDependencyType;
@@ -290,7 +290,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     TimepointsType.class,
     MappingType.class,
     CommonModellingStep.class,
-    OperationPropertyType.class,
+    OperationProperty.class,
     NONMEMdataSetReference.class,
     SimulationOperationType.class,
     Algorithm.class,
