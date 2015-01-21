@@ -85,7 +85,7 @@ import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
     "listOfTransformation",
     "interpolation"
 })
-public class ContinuousCovariateType
+public class ContinuousCovariate
     extends PharmMLRootType
 {
 

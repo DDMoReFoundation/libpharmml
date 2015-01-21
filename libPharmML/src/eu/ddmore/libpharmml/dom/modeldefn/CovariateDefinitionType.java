@@ -76,7 +76,7 @@ public class CovariateDefinitionType
     @XmlElement(name = "Symbol", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected SymbolName symbol;
     @XmlElement(name = "Continuous")
-    protected ContinuousCovariateType continuous;
+    protected ContinuousCovariate continuous;
     @XmlElement(name = "Categorical")
     protected CategoricalCovariate categorical;
     @XmlAttribute(name = "symbId", required = true)
@@ -112,10 +112,10 @@ public class CovariateDefinitionType
      * 
      * @return
      *     possible object is
-     *     {@link ContinuousCovariateType }
+     *     {@link ContinuousCovariate }
      *     
      */
-    public ContinuousCovariateType getContinuous() {
+    public ContinuousCovariate getContinuous() {
         return continuous;
     }
 
@@ -124,10 +124,10 @@ public class CovariateDefinitionType
      * 
      * @param value
      *     allowed object is
-     *     {@link ContinuousCovariateType }
+     *     {@link ContinuousCovariate }
      *     
      */
-    public void setContinuous(ContinuousCovariateType value) {
+    public void setContinuous(ContinuousCovariate value) {
         this.continuous = value;
     }
 

@@ -396,11 +396,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ContinuousCovariateType }
+     * Create an instance of {@link ContinuousCovariate }
      * 
      */
-    public ContinuousCovariateType createContinuousCovariateType() {
-        return new ContinuousCovariateType();
+    public ContinuousCovariate createContinuousCovariateType() {
+        return new ContinuousCovariate();
     }
 
     /**
