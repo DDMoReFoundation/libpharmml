@@ -120,7 +120,7 @@ public class Activity
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link DosingRegimen }{@code >}
      *     {@link JAXBElement }{@code <}{@link Bolus }{@code >}
-     *     {@link JAXBElement }{@code <}{@link InfusionType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Infusion }{@code >}
      *     
      */
     public JAXBElement<? extends DosingRegimen> getDosingRegimen() {
@@ -134,7 +134,7 @@ public class Activity
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link DosingRegimen }{@code >}
      *     {@link JAXBElement }{@code <}{@link Bolus }{@code >}
-     *     {@link JAXBElement }{@code <}{@link InfusionType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Infusion }{@code >}
      *     
      */
     public void setDosingRegimen(JAXBElement<? extends DosingRegimen> value) {

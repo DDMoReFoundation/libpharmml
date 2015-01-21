@@ -73,7 +73,7 @@ import eu.ddmore.libpharmml.dom.dataset.TargetMapping;
     "assign"
 })
 @XmlSeeAlso({
-    eu.ddmore.libpharmml.dom.trialdesign.InfusionType.DoseAmount.class
+    eu.ddmore.libpharmml.dom.trialdesign.Infusion.DoseAmount.class
 })
 public class DosingVariable
     extends PharmMLRootType

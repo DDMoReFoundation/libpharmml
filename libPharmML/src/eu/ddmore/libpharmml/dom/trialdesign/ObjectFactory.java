@@ -81,11 +81,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link InfusionType }
+     * Create an instance of {@link Infusion }
      * 
      */
-    public InfusionType createInfusionType() {
-        return new InfusionType();
+    public Infusion createInfusionType() {
+        return new Infusion();
     }
 
     /**
@@ -355,11 +355,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link InfusionType.DoseAmount }
+     * Create an instance of {@link Infusion.DoseAmount }
      * 
      */
-    public InfusionType.DoseAmount createInfusionTypeDoseAmount() {
-        return new InfusionType.DoseAmount();
+    public Infusion.DoseAmount createInfusionTypeDoseAmount() {
+        return new Infusion.DoseAmount();
     }
 
     /**
@@ -457,12 +457,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link InfusionType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Infusion }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "Infusion", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/TrialDesign", substitutionHeadName = "DosingRegimen")
-    public JAXBElement<InfusionType> createInfusion(InfusionType value) {
-        return new JAXBElement<InfusionType>(_Infusion_QNAME, InfusionType.class, null, value);
+    public JAXBElement<Infusion> createInfusion(Infusion value) {
+        return new JAXBElement<Infusion>(_Infusion_QNAME, Infusion.class, null, value);
     }
 
     /**

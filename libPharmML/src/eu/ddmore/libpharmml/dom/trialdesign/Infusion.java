@@ -78,12 +78,12 @@ import javax.xml.bind.annotation.XmlType;
     "duration",
     "rate"
 })
-public class InfusionType
+public class Infusion
     extends DosingRegimen
 {
 
     @XmlElement(name = "DoseAmount", required = true)
-    protected InfusionType.DoseAmount doseAmount;
+    protected Infusion.DoseAmount doseAmount;
     @XmlElement(name = "SteadyState")
     protected SteadyStateType steadyState;
     @XmlElement(name = "DosingTimes")
@@ -98,10 +98,10 @@ public class InfusionType
      * 
      * @return
      *     possible object is
-     *     {@link InfusionType.DoseAmount }
+     *     {@link Infusion.DoseAmount }
      *     
      */
-    public InfusionType.DoseAmount getDoseAmount() {
+    public Infusion.DoseAmount getDoseAmount() {
         return doseAmount;
     }
 
@@ -110,10 +110,10 @@ public class InfusionType
      * 
      * @param value
      *     allowed object is
-     *     {@link InfusionType.DoseAmount }
+     *     {@link Infusion.DoseAmount }
      *     
      */
-    public void setDoseAmount(InfusionType.DoseAmount value) {
+    public void setDoseAmount(Infusion.DoseAmount value) {
         this.doseAmount = value;
     }
 

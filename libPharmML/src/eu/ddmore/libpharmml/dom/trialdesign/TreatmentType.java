@@ -109,7 +109,7 @@ public class TreatmentType
      * {@link JAXBElement }{@code <}{@link Bolus }{@code >}
      * {@link JAXBElement }{@code <}{@link DosingRegimen }{@code >}
      * {@link JAXBElement }{@code <}{@link Name }{@code >}
-     * {@link JAXBElement }{@code <}{@link InfusionType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Infusion }{@code >}
      * 
      * 
      */
