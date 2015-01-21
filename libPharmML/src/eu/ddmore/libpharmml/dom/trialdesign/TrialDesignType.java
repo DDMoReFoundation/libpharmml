@@ -75,7 +75,7 @@ public class TrialDesignType
     @XmlElement(name = "Population")
     protected PopulationType population;
     @XmlElement(name = "IndividualDosing")
-    protected List<IndividualDosingType> individualDosing;
+    protected List<IndividualDosing> individualDosing;
 
     /**
      * Gets the value of the structure property.
@@ -143,13 +143,13 @@ public class TrialDesignType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link IndividualDosingType }
+     * {@link IndividualDosing }
      * 
      * 
      */
-    public List<IndividualDosingType> getIndividualDosing() {
+    public List<IndividualDosing> getIndividualDosing() {
         if (individualDosing == null) {
-            individualDosing = new ArrayList<IndividualDosingType>();
+            individualDosing = new ArrayList<IndividualDosing>();
         }
         return this.individualDosing;
     }

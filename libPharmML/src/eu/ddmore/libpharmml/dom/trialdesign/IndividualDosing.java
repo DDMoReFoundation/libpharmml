@@ -75,7 +75,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
     "ssPeriod",
 	"dataSet"
 })
-public class IndividualDosingType
+public class IndividualDosing
     extends PharmMLRootType
 {
 

@@ -264,11 +264,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IndividualDosingType }
+     * Create an instance of {@link IndividualDosing }
      * 
      */
-    public IndividualDosingType createIndividualDosingType() {
-        return new IndividualDosingType();
+    public IndividualDosing createIndividualDosingType() {
+        return new IndividualDosing();
     }
 
     /**
