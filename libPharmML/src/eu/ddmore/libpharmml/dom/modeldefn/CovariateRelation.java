@@ -61,7 +61,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
     "symbRef",
     "fixedEffect"
 })
-public class CovariateRelationType
+public class CovariateRelation
     extends PharmMLRootType
 {
 

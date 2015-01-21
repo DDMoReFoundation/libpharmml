@@ -458,7 +458,7 @@ public class IndividualParameterType
             @XmlElement(name = "PopulationParameter", required = true)
             protected IndividualParameterType.GaussianModel.LinearCovariate.PopulationParameter populationParameter;
             @XmlElement(name = "Covariate")
-            protected List<CovariateRelationType> covariate;
+            protected List<CovariateRelation> covariate;
 
             /**
              * Gets the value of the populationParameter property.
@@ -502,13 +502,13 @@ public class IndividualParameterType
              * 
              * <p>
              * Objects of the following type(s) are allowed in the list
-             * {@link CovariateRelationType }
+             * {@link CovariateRelation }
              * 
              * 
              */
-            public List<CovariateRelationType> getCovariate() {
+            public List<CovariateRelation> getCovariate() {
                 if (covariate == null) {
-                    covariate = new ArrayList<CovariateRelationType>();
+                    covariate = new ArrayList<CovariateRelation>();
                 }
                 return this.covariate;
             }
