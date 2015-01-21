@@ -55,7 +55,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "EpochMappingType")
 @Deprecated
 public class EpochMapping
-    extends PopulationMappingType
+    extends PopulationMapping
 {
 
 

@@ -62,7 +62,7 @@ import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 })
 @Deprecated
 public class DemographicMapping
-    extends PopulationMappingType
+    extends PopulationMapping
 {
 
     @XmlElement(name = "OidRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)

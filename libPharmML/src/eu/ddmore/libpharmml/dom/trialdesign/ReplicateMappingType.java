@@ -57,7 +57,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "ReplicateMappingType")
 @Deprecated
 public class ReplicateMappingType
-    extends PopulationMappingType
+    extends PopulationMapping
 {
 
 

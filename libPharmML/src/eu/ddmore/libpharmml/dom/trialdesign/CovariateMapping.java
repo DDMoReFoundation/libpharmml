@@ -62,7 +62,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 })
 @Deprecated
 public class CovariateMapping
-    extends PopulationMappingType
+    extends PopulationMapping
 {
 
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)

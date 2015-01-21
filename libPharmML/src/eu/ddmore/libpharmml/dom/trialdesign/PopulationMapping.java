@@ -68,7 +68,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
     IndependentVariableMapping.class
 })
 @Deprecated
-public abstract class PopulationMappingType
+public abstract class PopulationMapping
     extends PharmMLRootType
 {
 

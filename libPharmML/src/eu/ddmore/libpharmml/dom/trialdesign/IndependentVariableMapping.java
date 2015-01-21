@@ -57,7 +57,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 @XmlType(name = "IndependentVariableMappingType")
 @Deprecated
 public class IndependentVariableMapping
-    extends PopulationMappingType
+    extends PopulationMapping
 {
 
 

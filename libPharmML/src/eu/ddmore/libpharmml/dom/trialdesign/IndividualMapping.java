@@ -55,7 +55,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "IndividualMappingType")
 @Deprecated
 public class IndividualMapping
-    extends PopulationMappingType
+    extends PopulationMapping
 {
 
 
