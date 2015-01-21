@@ -225,12 +225,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TargetToolSymbolType }
+     * Create an instance of {@link TargetToolSymbol }
      * 
 	 * @since PharmML0.3
      */
-    public TargetToolSymbolType createTargetToolSymbolType() {
-        return new TargetToolSymbolType();
+    public TargetToolSymbol createTargetToolSymbolType() {
+        return new TargetToolSymbol();
     }
     
     /**

@@ -69,7 +69,7 @@ public class GenericCode
 {
 
     @XmlElement(name = "Symbol")
-    protected List<TargetToolSymbolType> symbol;
+    protected List<TargetToolSymbol> symbol;
     @XmlElement(name = "Code", required = true)
     protected String code;
 
@@ -91,13 +91,13 @@ public class GenericCode
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link TargetToolSymbolType }
+     * {@link TargetToolSymbol }
      * 
      * 
      */
-    public List<TargetToolSymbolType> getSymbol() {
+    public List<TargetToolSymbol> getSymbol() {
         if (symbol == null) {
-            symbol = new ArrayList<TargetToolSymbolType>();
+            symbol = new ArrayList<TargetToolSymbol>();
         }
         return this.symbol;
     }

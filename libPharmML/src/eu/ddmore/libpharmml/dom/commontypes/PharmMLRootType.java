@@ -115,7 +115,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.StepDependencyType;
 import eu.ddmore.libpharmml.dom.modellingsteps.StepType;
 import eu.ddmore.libpharmml.dom.modellingsteps.SymbolMappingType;
 import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolReferenceType;
-import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolSymbolType;
+import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolSymbol;
 import eu.ddmore.libpharmml.dom.modellingsteps.TargetTool;
 import eu.ddmore.libpharmml.dom.modellingsteps.Timepoints;
 import eu.ddmore.libpharmml.dom.modellingsteps.ToEstimate;
@@ -303,7 +303,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     DependentsType.class,
     NONMEMdataSet.class,
     ScalarRhs.class,
-    TargetToolSymbolType.class,
+    TargetToolSymbol.class,
     MultipleDVMapping.class,
     DatasetMapping.class,
     StepType.class,

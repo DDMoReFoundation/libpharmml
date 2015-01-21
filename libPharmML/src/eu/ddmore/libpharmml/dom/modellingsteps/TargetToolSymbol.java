@@ -58,7 +58,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TargetToolSymbolType")
-public class TargetToolSymbolType
+public class TargetToolSymbol
     extends PharmMLRootType
 {
 
