@@ -68,7 +68,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Name;
     "observationGroup"
 })
 public class Observations
-    extends StudyEventType
+    extends StudyEvent
 {
 
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")

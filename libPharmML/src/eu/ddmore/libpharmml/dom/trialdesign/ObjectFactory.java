@@ -430,12 +430,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StudyEventType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link StudyEvent }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "StudyEvent")
-    public JAXBElement<StudyEventType> createStudyEvent(StudyEventType value) {
-        return new JAXBElement<StudyEventType>(_StudyEvent_QNAME, StudyEventType.class, null, value);
+    public JAXBElement<StudyEvent> createStudyEvent(StudyEvent value) {
+        return new JAXBElement<StudyEvent>(_StudyEvent_QNAME, StudyEvent.class, null, value);
     }
 
     /**

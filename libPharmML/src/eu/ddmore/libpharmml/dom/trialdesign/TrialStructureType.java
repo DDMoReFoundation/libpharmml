@@ -89,7 +89,7 @@ public class TrialStructureType
     @XmlElement(name = "Activity", required = true)
     protected List<Activity> activity;
     @XmlElementRef(name = "StudyEvent", namespace = "http://www.pharmml.org/2013/03/TrialDesign", type = JAXBElement.class, required = false)
-    protected List<JAXBElement<? extends StudyEventType>> studyEvent;
+    protected List<JAXBElement<? extends StudyEvent>> studyEvent;
 
     /**
      * Gets the value of the epoch property.
@@ -259,13 +259,13 @@ public class TrialStructureType
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link Observations }{@code >}
-     * {@link JAXBElement }{@code <}{@link StudyEventType }{@code >}
+     * {@link JAXBElement }{@code <}{@link StudyEvent }{@code >}
      * 
      * 
      */
-    public List<JAXBElement<? extends StudyEventType>> getStudyEvent() {
+    public List<JAXBElement<? extends StudyEvent>> getStudyEvent() {
         if (studyEvent == null) {
-            studyEvent = new ArrayList<JAXBElement<? extends StudyEventType>>();
+            studyEvent = new ArrayList<JAXBElement<? extends StudyEvent>>();
         }
         return this.studyEvent;
     }

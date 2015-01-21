@@ -71,7 +71,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlSeeAlso({
     Observations.class
 })
-public abstract class StudyEventType
+public abstract class StudyEvent
     extends PharmMLRootType
 {
 
