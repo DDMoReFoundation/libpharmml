@@ -61,7 +61,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 @XmlType(name = "SimpleParameterType", propOrder = {
     "assign"
 })
-public class SimpleParameterType
+public class SimpleParameter
     extends CommonParameter
 {
 

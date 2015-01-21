@@ -78,7 +78,7 @@ public class CovariateModel
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected Name name;
     @XmlElement(name = "SimpleParameter")
-    protected List<SimpleParameterType> simpleParameter;
+    protected List<SimpleParameter> simpleParameter;
     @XmlElement(name = "Covariate", required = true)
     protected List<CovariateDefinition> covariate;
     @XmlAttribute(name = "blkId", required = true)
@@ -127,13 +127,13 @@ public class CovariateModel
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link SimpleParameterType }
+     * {@link SimpleParameter }
      * 
      * 
      */
-    public List<SimpleParameterType> getSimpleParameter() {
+    public List<SimpleParameter> getSimpleParameter() {
         if (simpleParameter == null) {
-            simpleParameter = new ArrayList<SimpleParameterType>();
+            simpleParameter = new ArrayList<SimpleParameter>();
         }
         return this.simpleParameter;
     }

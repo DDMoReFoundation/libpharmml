@@ -131,7 +131,7 @@ public abstract class CommonParameterModel
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link SimpleParameterType }{@code >}
+     * {@link JAXBElement }{@code <}{@link SimpleParameter }{@code >}
      * {@link JAXBElement }{@code <}{@link CommonParameter }{@code >}
      * {@link JAXBElement }{@code <}{@link IndividualParameter }{@code >}
      * {@link JAXBElement }{@code <}{@link ParameterRandomVariable }{@code >}

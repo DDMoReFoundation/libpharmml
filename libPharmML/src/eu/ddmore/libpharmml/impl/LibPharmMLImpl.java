@@ -34,7 +34,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterModel;
-import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameterType;
+import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.StructuralModelType;
 import eu.ddmore.libpharmml.validation.PharmMLElementWrapper;
 
@@ -100,9 +100,9 @@ public class LibPharmMLImpl implements ILibPharmML {
 		ModelDefinition mdt = mdefnFact.createModelDefinitionType();
 		ParameterModel pm = mdefnFact.createParameterModelType();
 		pm.setBlkId("p1");
-		SimpleParameterType spt = mdefnFact.createSimpleParameterType();
+		SimpleParameter spt = mdefnFact.createSimpleParameterType();
 		spt.setSymbId("a");
-		JAXBElement<SimpleParameterType> param1 = mdefnFact.createSimpleParameter(spt);
+		JAXBElement<SimpleParameter> param1 = mdefnFact.createSimpleParameter(spt);
 		pm.getCommonParameterElement().add(param1);
 		StructuralModelType structModel = mdefnFact.createStructuralModelType();
 		structModel.setBlkId(DEFAULT_STRUCT_MDL_NAME);

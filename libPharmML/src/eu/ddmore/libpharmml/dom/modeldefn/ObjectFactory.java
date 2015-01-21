@@ -140,11 +140,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SimpleParameterType }
+     * Create an instance of {@link SimpleParameter }
      * 
      */
-    public SimpleParameterType createSimpleParameterType() {
-        return new SimpleParameterType();
+    public SimpleParameter createSimpleParameterType() {
+        return new SimpleParameter();
     }
 
     /**
@@ -521,12 +521,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SimpleParameterType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link SimpleParameter }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "SimpleParameter", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModelDefinition", substitutionHeadName = "CommonParameterElement")
-    public JAXBElement<SimpleParameterType> createSimpleParameter(SimpleParameterType value) {
-        return new JAXBElement<SimpleParameterType>(_SimpleParameter_QNAME, SimpleParameterType.class, null, value);
+    public JAXBElement<SimpleParameter> createSimpleParameter(SimpleParameter value) {
+        return new JAXBElement<SimpleParameter>(_SimpleParameter_QNAME, SimpleParameter.class, null, value);
     }
 
     /**
