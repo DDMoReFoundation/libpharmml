@@ -173,12 +173,12 @@ public class ObjectFactory {
     }
 	
 	/**
-     * Create an instance of {@link CovariateMappingType }
+     * Create an instance of {@link CovariateMapping }
      * 
      */
 	@Deprecated
-    public CovariateMappingType createCovariateMappingType() {
-        return new CovariateMappingType();
+    public CovariateMapping createCovariateMappingType() {
+        return new CovariateMapping();
     }
 
     /**
@@ -476,7 +476,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CovariateMappingType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CovariateMapping }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "ObservationsEvent", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/TrialDesign", substitutionHeadName = "StudyEvent")
@@ -485,13 +485,13 @@ public class ObjectFactory {
     }
 	
 	/**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CovariateMappingType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CovariateMapping }{@code >}}
      * 
      */
 	@Deprecated
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "CovariateMapping", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/TrialDesign", substitutionHeadName = "AttributeMapping")
-    public JAXBElement<CovariateMappingType> createCovariateMapping(CovariateMappingType value) {
-        return new JAXBElement<CovariateMappingType>(_CovariateMapping_QNAME, CovariateMappingType.class, null, value);
+    public JAXBElement<CovariateMapping> createCovariateMapping(CovariateMapping value) {
+        return new JAXBElement<CovariateMapping>(_CovariateMapping_QNAME, CovariateMapping.class, null, value);
     }
 
     /**

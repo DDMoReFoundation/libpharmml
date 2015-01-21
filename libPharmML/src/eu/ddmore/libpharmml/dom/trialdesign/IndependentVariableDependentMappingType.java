@@ -177,7 +177,7 @@ public class IndependentVariableDependentMappingType {
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
-     * {@link JAXBElement }{@code <}{@link CovariateMappingType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CovariateMapping }{@code >}
      * {@link JAXBElement }{@code <}{@link DemographicMappingType }{@code >}
      * 
      * 

@@ -61,7 +61,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
     "symbRef"
 })
 @Deprecated
-public class CovariateMappingType
+public class CovariateMapping
     extends PopulationMappingType
 {
 
