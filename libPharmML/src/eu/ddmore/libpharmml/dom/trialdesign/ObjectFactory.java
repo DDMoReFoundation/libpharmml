@@ -198,12 +198,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TreatmentType }
+     * Create an instance of {@link Treatment }
      * 
      */
 	@Deprecated
-    public TreatmentType createTreatmentType() {
-        return new TreatmentType();
+    public Treatment createTreatmentType() {
+        return new Treatment();
     }
 
     /**

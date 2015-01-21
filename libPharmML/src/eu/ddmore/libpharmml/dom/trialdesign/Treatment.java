@@ -66,7 +66,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Name;
     "rest"
 })
 @Deprecated
-public class TreatmentType
+public class Treatment
     extends Activity
 {
 
