@@ -35,7 +35,7 @@ import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterModel;
 import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameter;
-import eu.ddmore.libpharmml.dom.modeldefn.StructuralModelType;
+import eu.ddmore.libpharmml.dom.modeldefn.StructuralModel;
 import eu.ddmore.libpharmml.validation.PharmMLElementWrapper;
 
 public class LibPharmMLImpl implements ILibPharmML {
@@ -104,7 +104,7 @@ public class LibPharmMLImpl implements ILibPharmML {
 		spt.setSymbId("a");
 		JAXBElement<SimpleParameter> param1 = mdefnFact.createSimpleParameter(spt);
 		pm.getCommonParameterElement().add(param1);
-		StructuralModelType structModel = mdefnFact.createStructuralModelType();
+		StructuralModel structModel = mdefnFact.createStructuralModelType();
 		structModel.setBlkId(DEFAULT_STRUCT_MDL_NAME);
 		VariableDefinition varType = commonFact.createVariableDefinitionType();
 		varType.setSymbId("x");

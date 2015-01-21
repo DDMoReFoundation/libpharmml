@@ -116,11 +116,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StructuralModelType }
+     * Create an instance of {@link StructuralModel }
      * 
      */
-    public StructuralModelType createStructuralModelType() {
-        return new StructuralModelType();
+    public StructuralModel createStructuralModelType() {
+        return new StructuralModel();
     }
 
     /**
@@ -476,12 +476,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StructuralModelType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link StructuralModel }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "StructuralModel")
-    public JAXBElement<StructuralModelType> createStructuralModel(StructuralModelType value) {
-        return new JAXBElement<StructuralModelType>(_StructuralModel_QNAME, StructuralModelType.class, null, value);
+    public JAXBElement<StructuralModel> createStructuralModel(StructuralModel value) {
+        return new JAXBElement<StructuralModel>(_StructuralModel_QNAME, StructuralModel.class, null, value);
     }
 
     /**

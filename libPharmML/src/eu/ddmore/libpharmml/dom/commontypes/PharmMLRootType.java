@@ -87,7 +87,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomEffect;
 import eu.ddmore.libpharmml.dom.modeldefn.ParentLevel;
 import eu.ddmore.libpharmml.dom.modeldefn.ProbabilityAssignment;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
-import eu.ddmore.libpharmml.dom.modeldefn.StructuralModelType;
+import eu.ddmore.libpharmml.dom.modeldefn.StructuralModel;
 import eu.ddmore.libpharmml.dom.modeldefn.TTEFunction;
 import eu.ddmore.libpharmml.dom.modeldefn.TransitionRate;
 import eu.ddmore.libpharmml.dom.modeldefn.VariabilityDefnBlock;
@@ -185,7 +185,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     Probability.class,
     LogicExpression.class,
     Expression.class,
-    StructuralModelType.class,
+    StructuralModel.class,
     ObservationError.class,
     eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter.GaussianModel.LinearCovariate.PopulationParameter.class,
     eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter.GaussianModel.LinearCovariate.class,

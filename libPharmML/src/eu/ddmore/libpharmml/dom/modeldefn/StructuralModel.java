@@ -81,7 +81,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKMacroList;
     "commonVariable",
     "pKmacros"
 })
-public class StructuralModelType
+public class StructuralModel
     extends PharmMLRootType
 {
 

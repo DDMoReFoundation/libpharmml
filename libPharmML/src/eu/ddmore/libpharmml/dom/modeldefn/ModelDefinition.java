@@ -79,7 +79,7 @@ public class ModelDefinition
     @XmlElement(name = "ParameterModel")
     protected List<ParameterModel> parameterModel;
     @XmlElement(name = "StructuralModel")
-    protected List<StructuralModelType> structuralModel;
+    protected List<StructuralModel> structuralModel;
     @XmlElement(name = "ObservationModel")
     protected List<ObservationModel> observationModel;
 
@@ -188,13 +188,13 @@ public class ModelDefinition
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link StructuralModelType }
+     * {@link StructuralModel }
      * 
      * 
      */
-    public List<StructuralModelType> getStructuralModel() {
+    public List<StructuralModel> getStructuralModel() {
         if (structuralModel == null) {
-            structuralModel = new ArrayList<StructuralModelType>();
+            structuralModel = new ArrayList<StructuralModel>();
         }
         return this.structuralModel;
     }
