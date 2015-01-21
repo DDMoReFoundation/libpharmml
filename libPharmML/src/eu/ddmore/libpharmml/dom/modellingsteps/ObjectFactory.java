@@ -94,11 +94,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TimepointsType }
+     * Create an instance of {@link Timepoints }
      * 
      */
-    public TimepointsType createTimepointsType() {
-        return new TimepointsType();
+    public Timepoints createTimepointsType() {
+        return new Timepoints();
     }
 
     /**
@@ -380,12 +380,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TimepointsType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Timepoints }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "Timepoints")
-    public JAXBElement<TimepointsType> createTimepoints(TimepointsType value) {
-        return new JAXBElement<TimepointsType>(_Timepoints_QNAME, TimepointsType.class, null, value);
+    public JAXBElement<Timepoints> createTimepoints(Timepoints value) {
+        return new JAXBElement<Timepoints>(_Timepoints_QNAME, Timepoints.class, null, value);
     }
 
     /**

@@ -63,7 +63,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Vector;
 @XmlType(name = "TimepointsType", propOrder = {
     "arrays"
 })
-public class TimepointsType
+public class Timepoints
     extends PharmMLRootType
 {
 
