@@ -121,7 +121,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.Timepoints;
 import eu.ddmore.libpharmml.dom.modellingsteps.ToEstimate;
 import eu.ddmore.libpharmml.dom.trialdesign.Activity;
 import eu.ddmore.libpharmml.dom.trialdesign.ArmDefinition;
-import eu.ddmore.libpharmml.dom.trialdesign.CellDefnType;
+import eu.ddmore.libpharmml.dom.trialdesign.CellDefinition;
 import eu.ddmore.libpharmml.dom.trialdesign.DemographicType;
 import eu.ddmore.libpharmml.dom.trialdesign.DosingRegimenType;
 import eu.ddmore.libpharmml.dom.trialdesign.DosingTimesPointsType;
@@ -279,7 +279,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     SteadyStateType.class,
     StudyTimePointType.class,
     IndividualDosingType.class,
-    CellDefnType.class,
+    CellDefinition.class,
     SegmentDefnType.class,
     ObservationsGroupType.class,
     PopulationMappingType.class,

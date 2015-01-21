@@ -272,11 +272,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CellDefnType }
+     * Create an instance of {@link CellDefinition }
      * 
      */
-    public CellDefnType createCellDefnType() {
-        return new CellDefnType();
+    public CellDefinition createCellDefnType() {
+        return new CellDefinition();
     }
 
     /**

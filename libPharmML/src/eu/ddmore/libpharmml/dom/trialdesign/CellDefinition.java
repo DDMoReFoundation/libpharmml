@@ -71,7 +71,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "armRef",
     "segmentRef"
 })
-public class CellDefnType
+public class CellDefinition
     extends PharmMLRootType
 {
 

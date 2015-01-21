@@ -83,7 +83,7 @@ public class TrialStructureType
     @XmlElement(name = "Arm", required = true)
     protected List<ArmDefinition> arm;
     @XmlElement(name = "Cell", required = true)
-    protected List<CellDefnType> cell;
+    protected List<CellDefinition> cell;
     @XmlElement(name = "Segment", required = true)
     protected List<SegmentDefnType> segment;
     @XmlElement(name = "Activity", required = true)
@@ -167,13 +167,13 @@ public class TrialStructureType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CellDefnType }
+     * {@link CellDefinition }
      * 
      * 
      */
-    public List<CellDefnType> getCell() {
+    public List<CellDefinition> getCell() {
         if (cell == null) {
-            cell = new ArrayList<CellDefnType>();
+            cell = new ArrayList<CellDefinition>();
         }
         return this.cell;
     }
