@@ -120,12 +120,12 @@ import eu.ddmore.libpharmml.dom.commontypes.Rhs;
     "gaussianModel",
     "assign"
 })
-public class IndividualParameterType
+public class IndividualParameter
     extends CommonParameter
 {
 
     @XmlElement(name = "GaussianModel")
-    protected IndividualParameterType.GaussianModel gaussianModel;
+    protected IndividualParameter.GaussianModel gaussianModel;
     @XmlElement(name = "Assign", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected Rhs assign;
 
@@ -134,10 +134,10 @@ public class IndividualParameterType
      * 
      * @return
      *     possible object is
-     *     {@link IndividualParameterType.GaussianModel }
+     *     {@link IndividualParameter.GaussianModel }
      *     
      */
-    public IndividualParameterType.GaussianModel getGaussianModel() {
+    public IndividualParameter.GaussianModel getGaussianModel() {
         return gaussianModel;
     }
 
@@ -146,10 +146,10 @@ public class IndividualParameterType
      * 
      * @param value
      *     allowed object is
-     *     {@link IndividualParameterType.GaussianModel }
+     *     {@link IndividualParameter.GaussianModel }
      *     
      */
-    public void setGaussianModel(IndividualParameterType.GaussianModel value) {
+    public void setGaussianModel(IndividualParameter.GaussianModel value) {
         this.gaussianModel = value;
     }
 
@@ -249,9 +249,9 @@ public class IndividualParameterType
         @XmlElement(name = "Transformation")
         protected LhsTransformationType transformation;
         @XmlElement(name = "LinearCovariate")
-        protected IndividualParameterType.GaussianModel.LinearCovariate linearCovariate;
+        protected IndividualParameter.GaussianModel.LinearCovariate linearCovariate;
         @XmlElement(name = "GeneralCovariate")
-        protected IndividualParameterType.GaussianModel.GeneralCovariate generalCovariate;
+        protected IndividualParameter.GaussianModel.GeneralCovariate generalCovariate;
         @XmlElement(name = "RandomEffects", required = true)
         protected List<ParameterRandomEffectType> randomEffects;
 
@@ -284,10 +284,10 @@ public class IndividualParameterType
          * 
          * @return
          *     possible object is
-         *     {@link IndividualParameterType.GaussianModel.LinearCovariate }
+         *     {@link IndividualParameter.GaussianModel.LinearCovariate }
          *     
          */
-        public IndividualParameterType.GaussianModel.LinearCovariate getLinearCovariate() {
+        public IndividualParameter.GaussianModel.LinearCovariate getLinearCovariate() {
             return linearCovariate;
         }
 
@@ -296,10 +296,10 @@ public class IndividualParameterType
          * 
          * @param value
          *     allowed object is
-         *     {@link IndividualParameterType.GaussianModel.LinearCovariate }
+         *     {@link IndividualParameter.GaussianModel.LinearCovariate }
          *     
          */
-        public void setLinearCovariate(IndividualParameterType.GaussianModel.LinearCovariate value) {
+        public void setLinearCovariate(IndividualParameter.GaussianModel.LinearCovariate value) {
             this.linearCovariate = value;
         }
 
@@ -308,10 +308,10 @@ public class IndividualParameterType
          * 
          * @return
          *     possible object is
-         *     {@link IndividualParameterType.GaussianModel.GeneralCovariate }
+         *     {@link IndividualParameter.GaussianModel.GeneralCovariate }
          *     
          */
-        public IndividualParameterType.GaussianModel.GeneralCovariate getGeneralCovariate() {
+        public IndividualParameter.GaussianModel.GeneralCovariate getGeneralCovariate() {
             return generalCovariate;
         }
 
@@ -320,10 +320,10 @@ public class IndividualParameterType
          * 
          * @param value
          *     allowed object is
-         *     {@link IndividualParameterType.GaussianModel.GeneralCovariate }
+         *     {@link IndividualParameter.GaussianModel.GeneralCovariate }
          *     
          */
-        public void setGeneralCovariate(IndividualParameterType.GaussianModel.GeneralCovariate value) {
+        public void setGeneralCovariate(IndividualParameter.GaussianModel.GeneralCovariate value) {
             this.generalCovariate = value;
         }
 
@@ -456,7 +456,7 @@ public class IndividualParameterType
         {
 
             @XmlElement(name = "PopulationParameter", required = true)
-            protected IndividualParameterType.GaussianModel.LinearCovariate.PopulationParameter populationParameter;
+            protected IndividualParameter.GaussianModel.LinearCovariate.PopulationParameter populationParameter;
             @XmlElement(name = "Covariate")
             protected List<CovariateRelation> covariate;
 
@@ -465,10 +465,10 @@ public class IndividualParameterType
              * 
              * @return
              *     possible object is
-             *     {@link IndividualParameterType.GaussianModel.LinearCovariate.PopulationParameter }
+             *     {@link IndividualParameter.GaussianModel.LinearCovariate.PopulationParameter }
              *     
              */
-            public IndividualParameterType.GaussianModel.LinearCovariate.PopulationParameter getPopulationParameter() {
+            public IndividualParameter.GaussianModel.LinearCovariate.PopulationParameter getPopulationParameter() {
                 return populationParameter;
             }
 
@@ -477,10 +477,10 @@ public class IndividualParameterType
              * 
              * @param value
              *     allowed object is
-             *     {@link IndividualParameterType.GaussianModel.LinearCovariate.PopulationParameter }
+             *     {@link IndividualParameter.GaussianModel.LinearCovariate.PopulationParameter }
              *     
              */
-            public void setPopulationParameter(IndividualParameterType.GaussianModel.LinearCovariate.PopulationParameter value) {
+            public void setPopulationParameter(IndividualParameter.GaussianModel.LinearCovariate.PopulationParameter value) {
                 this.populationParameter = value;
             }
 

@@ -254,7 +254,7 @@ public class ObservationModelType
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link SimpleParameterType }{@code >}
      * {@link JAXBElement }{@code <}{@link CommonParameter }{@code >}
-     * {@link JAXBElement }{@code <}{@link IndividualParameterType }{@code >}
+     * {@link JAXBElement }{@code <}{@link IndividualParameter }{@code >}
      * {@link JAXBElement }{@code <}{@link ParameterRandomVariableType }{@code >}
      * 
      * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.

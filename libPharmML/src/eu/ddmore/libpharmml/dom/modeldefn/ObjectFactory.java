@@ -68,27 +68,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IndividualParameterType }
+     * Create an instance of {@link IndividualParameter }
      * 
      */
-    public IndividualParameterType createIndividualParameterType() {
-        return new IndividualParameterType();
+    public IndividualParameter createIndividualParameterType() {
+        return new IndividualParameter();
     }
 
     /**
-     * Create an instance of {@link IndividualParameterType.GaussianModel }
+     * Create an instance of {@link IndividualParameter.GaussianModel }
      * 
      */
-    public IndividualParameterType.GaussianModel createIndividualParameterTypeGaussianModel() {
-        return new IndividualParameterType.GaussianModel();
+    public IndividualParameter.GaussianModel createIndividualParameterTypeGaussianModel() {
+        return new IndividualParameter.GaussianModel();
     }
 
     /**
-     * Create an instance of {@link IndividualParameterType.GaussianModel.LinearCovariate }
+     * Create an instance of {@link IndividualParameter.GaussianModel.LinearCovariate }
      * 
      */
-    public IndividualParameterType.GaussianModel.LinearCovariate createIndividualParameterTypeGaussianModelLinearCovariate() {
-        return new IndividualParameterType.GaussianModel.LinearCovariate();
+    public IndividualParameter.GaussianModel.LinearCovariate createIndividualParameterTypeGaussianModelLinearCovariate() {
+        return new IndividualParameter.GaussianModel.LinearCovariate();
     }
 
     /**
@@ -436,19 +436,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IndividualParameterType.GaussianModel.GeneralCovariate }
+     * Create an instance of {@link IndividualParameter.GaussianModel.GeneralCovariate }
      * 
      */
-    public IndividualParameterType.GaussianModel.GeneralCovariate createIndividualParameterTypeGaussianModelGeneralCovariate() {
-        return new IndividualParameterType.GaussianModel.GeneralCovariate();
+    public IndividualParameter.GaussianModel.GeneralCovariate createIndividualParameterTypeGaussianModelGeneralCovariate() {
+        return new IndividualParameter.GaussianModel.GeneralCovariate();
     }
 
     /**
-     * Create an instance of {@link IndividualParameterType.GaussianModel.LinearCovariate.PopulationParameter }
+     * Create an instance of {@link IndividualParameter.GaussianModel.LinearCovariate.PopulationParameter }
      * 
      */
-    public IndividualParameterType.GaussianModel.LinearCovariate.PopulationParameter createIndividualParameterTypeGaussianModelLinearCovariatePopulationParameter() {
-        return new IndividualParameterType.GaussianModel.LinearCovariate.PopulationParameter();
+    public IndividualParameter.GaussianModel.LinearCovariate.PopulationParameter createIndividualParameterTypeGaussianModelLinearCovariatePopulationParameter() {
+        return new IndividualParameter.GaussianModel.LinearCovariate.PopulationParameter();
     }
 
     /**
@@ -530,12 +530,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IndividualParameterType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link IndividualParameter }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "IndividualParameter", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModelDefinition", substitutionHeadName = "CommonParameterElement")
-    public JAXBElement<IndividualParameterType> createIndividualParameter(IndividualParameterType value) {
-        return new JAXBElement<IndividualParameterType>(_IndividualParameter_QNAME, IndividualParameterType.class, null, value);
+    public JAXBElement<IndividualParameter> createIndividualParameter(IndividualParameter value) {
+        return new JAXBElement<IndividualParameter>(_IndividualParameter_QNAME, IndividualParameter.class, null, value);
     }
 
     /**

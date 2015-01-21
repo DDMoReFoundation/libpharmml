@@ -180,7 +180,7 @@ public abstract class CommonObservationModel
      * Objects of the following type(s) are allowed in the list
      * {@link CommonParameter }
      * {@link SimpleParameterType }
-     * {@link IndividualParameterType }
+     * {@link IndividualParameter }
      * {@link ParameterRandomVariableType }
      * 
      * 

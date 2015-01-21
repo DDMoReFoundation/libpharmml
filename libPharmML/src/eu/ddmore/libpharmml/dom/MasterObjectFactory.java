@@ -34,7 +34,7 @@ import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.GaussianObsError;
 import eu.ddmore.libpharmml.dom.modeldefn.GeneralObsError;
-import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameterType;
+import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.ObservationErrorType;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomVariableType;
 import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameterType;
@@ -210,8 +210,8 @@ public class MasterObjectFactory {
 			element = MODELDEFN_OF.createRandomVariable((ParameterRandomVariableType) param);
 		} else if(param instanceof SimpleParameterType){
 			element = MODELDEFN_OF.createSimpleParameter((SimpleParameterType) param);
-		} else if(param instanceof IndividualParameterType){
-			element = MODELDEFN_OF.createIndividualParameter((IndividualParameterType) param);
+		} else if(param instanceof IndividualParameter){
+			element = MODELDEFN_OF.createIndividualParameter((IndividualParameter) param);
 		} else {
 			element = MODELDEFN_OF.createCommonParameterElement(param);
 		}
