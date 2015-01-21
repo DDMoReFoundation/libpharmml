@@ -68,7 +68,7 @@ public class CovariateRelation
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
     protected SymbolRef symbRef;
     @XmlElement(name = "FixedEffect")
-    protected FixedEffectRelationType fixedEffect;
+    protected FixedEffectRelation fixedEffect;
 
     /**
      * The covariate to be related.
@@ -99,10 +99,10 @@ public class CovariateRelation
      * 
      * @return
      *     possible object is
-     *     {@link FixedEffectRelationType }
+     *     {@link FixedEffectRelation }
      *     
      */
-    public FixedEffectRelationType getFixedEffect() {
+    public FixedEffectRelation getFixedEffect() {
         return fixedEffect;
     }
 
@@ -111,10 +111,10 @@ public class CovariateRelation
      * 
      * @param value
      *     allowed object is
-     *     {@link FixedEffectRelationType }
+     *     {@link FixedEffectRelation }
      *     
      */
-    public void setFixedEffect(FixedEffectRelationType value) {
+    public void setFixedEffect(FixedEffectRelation value) {
         this.fixedEffect = value;
     }
 

@@ -292,11 +292,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FixedEffectRelationType }
+     * Create an instance of {@link FixedEffectRelation }
      * 
      */
-    public FixedEffectRelationType createFixedEffectRelationType() {
-        return new FixedEffectRelationType();
+    public FixedEffectRelation createFixedEffectRelationType() {
+        return new FixedEffectRelation();
     }
 
     /**

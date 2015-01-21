@@ -77,7 +77,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.CovariateTransformation;
 import eu.ddmore.libpharmml.dom.modeldefn.Dependance;
 import eu.ddmore.libpharmml.dom.modeldefn.DiscreteDataParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.Discrete;
-import eu.ddmore.libpharmml.dom.modeldefn.FixedEffectRelationType;
+import eu.ddmore.libpharmml.dom.modeldefn.FixedEffectRelation;
 import eu.ddmore.libpharmml.dom.modeldefn.ListOfCategories;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinitionType;
 import eu.ddmore.libpharmml.dom.modeldefn.ObservationErrorType;
@@ -206,7 +206,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     CovariateModel.class,
     CommonObservationModel.class,
     Censoring.class,
-    FixedEffectRelationType.class,
+    FixedEffectRelation.class,
     CommonDiscreteState.class,
     ObservationModelType.class,
     CensoringFeature.class,

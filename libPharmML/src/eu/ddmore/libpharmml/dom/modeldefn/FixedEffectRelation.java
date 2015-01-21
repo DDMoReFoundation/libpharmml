@@ -76,7 +76,7 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
     "scalar",
     "category"
 })
-public class FixedEffectRelationType
+public class FixedEffectRelation
     extends PharmMLRootType
 {
 
@@ -95,13 +95,13 @@ public class FixedEffectRelationType
     /**
      * Empty constructor.
      */
-    public FixedEffectRelationType(){};
+    public FixedEffectRelation(){};
     
     /**
      * Creates a new fixed effect relation with a given value.
      * @param value The value of the fixed effect as a {@link Scalar} object.
      */
-    public FixedEffectRelationType(Scalar value){
+    public FixedEffectRelation(Scalar value){
     	this.scalar = value;
     }
     
@@ -109,7 +109,7 @@ public class FixedEffectRelationType
      * Creates a new fixed effect relation with a given value.
      * @param value The value of the fixed effect as a {@link SymbolRef} object.
      */
-    public FixedEffectRelationType(SymbolRef value){
+    public FixedEffectRelation(SymbolRef value){
     	this.symbRef = value;
     }
 
