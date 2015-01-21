@@ -78,7 +78,7 @@ public class Activity
 {
 
     @XmlElement(name = "LookupTable")
-    protected LookupTableType lookupTable;
+    protected LookupTable lookupTable;
     @XmlElementRef(name = "DosingRegimen", namespace = "http://www.pharmml.org/2013/03/TrialDesign", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends DosingRegimen> dosingRegimen;
     @XmlElement(name = "Washout")
@@ -92,11 +92,11 @@ public class Activity
      * 
      * @return
      *     possible object is
-     *     {@link LookupTableType }
+     *     {@link LookupTable }
      *     
      * @since PharmML 0.3
      */
-    public LookupTableType getLookupTable() {
+    public LookupTable getLookupTable() {
         return lookupTable;
     }
 
@@ -105,11 +105,11 @@ public class Activity
      * 
      * @param value
      *     allowed object is
-     *     {@link LookupTableType }
+     *     {@link LookupTable }
      *     
      * @since PharmML 0.3
      */
-    public void setLookupTable(LookupTableType value) {
+    public void setLookupTable(LookupTable value) {
         this.lookupTable = value;
     }
 

@@ -97,11 +97,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LookupTableType }
+     * Create an instance of {@link LookupTable }
      * 
      */
-    public LookupTableType createLookupTableType() {
-        return new LookupTableType();
+    public LookupTable createLookupTableType() {
+        return new LookupTable();
     }
 
     /**
@@ -495,12 +495,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LookupTableType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LookupTable }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "LookupTable")
-    public JAXBElement<LookupTableType> createLookupTable(LookupTableType value) {
-        return new JAXBElement<LookupTableType>(_LookupTable_QNAME, LookupTableType.class, null, value);
+    public JAXBElement<LookupTable> createLookupTable(LookupTable value) {
+        return new JAXBElement<LookupTable>(_LookupTable_QNAME, LookupTable.class, null, value);
     }
 
     /**

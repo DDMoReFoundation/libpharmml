@@ -127,7 +127,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.DosingRegimen;
 import eu.ddmore.libpharmml.dom.trialdesign.DosingTimesPoints;
 import eu.ddmore.libpharmml.dom.trialdesign.DosingVariable;
 import eu.ddmore.libpharmml.dom.trialdesign.IndividualDosing;
-import eu.ddmore.libpharmml.dom.trialdesign.LookupTableType;
+import eu.ddmore.libpharmml.dom.trialdesign.LookupTable;
 import eu.ddmore.libpharmml.dom.trialdesign.ObservationsGroupType;
 import eu.ddmore.libpharmml.dom.trialdesign.PopulationMappingType;
 import eu.ddmore.libpharmml.dom.trialdesign.PopulationType;
@@ -266,7 +266,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     ColumnMapping.class,
     CommonColumnDefinition.class,
     MapType.class,
-    LookupTableType.class,
+    LookupTable.class,
     Activity.class,
     WashoutType.class,
     DosingRegimen.class,

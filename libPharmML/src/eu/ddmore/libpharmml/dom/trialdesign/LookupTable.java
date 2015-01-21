@@ -71,7 +71,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
     "listOfColumnTransformation",
     "dataSet"
 })
-public class LookupTableType
+public class LookupTable
     extends PharmMLRootType
 {
 
