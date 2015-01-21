@@ -248,11 +248,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SteadyStateType }
+     * Create an instance of {@link SteadyState }
      * 
      */
-    public SteadyStateType createSteadyStateType() {
-        return new SteadyStateType();
+    public SteadyState createSteadyStateType() {
+        return new SteadyState();
     }
 
     /**

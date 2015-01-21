@@ -62,7 +62,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "endTime",
     "interval"
 })
-public class SteadyStateType
+public class SteadyState
     extends PharmMLRootType
 {
 
