@@ -221,7 +221,7 @@ public class EstimationOperation
      * @param value
      *     
      */
-    public void setOpType(EstimationOpTypeType value){
+    public void setOpType(EstimationOpType value){
     	if(value == null){
     		this.opType = null;
     	} else {

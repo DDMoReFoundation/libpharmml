@@ -49,7 +49,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "EstimationOpTypeType")
 @XmlEnum
-public enum EstimationOpTypeType {
+public enum EstimationOpType {
 
 
     /**
@@ -80,7 +80,7 @@ public enum EstimationOpTypeType {
     EST_FIM("estFIM");
     private final String value;
 
-    EstimationOpTypeType(String v) {
+    EstimationOpType(String v) {
         value = v;
     }
 
@@ -88,8 +88,8 @@ public enum EstimationOpTypeType {
         return value;
     }
 
-    public static EstimationOpTypeType fromValue(String v) {
-        for (EstimationOpTypeType c: EstimationOpTypeType.values()) {
+    public static EstimationOpType fromValue(String v) {
+        for (EstimationOpType c: EstimationOpType.values()) {
             if (c.value.equals(v)) {
                 return c;
             }
