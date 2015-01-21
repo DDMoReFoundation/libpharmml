@@ -118,7 +118,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolReferenceType;
 import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolSymbolType;
 import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolType;
 import eu.ddmore.libpharmml.dom.modellingsteps.TimepointsType;
-import eu.ddmore.libpharmml.dom.modellingsteps.ToEstimateType;
+import eu.ddmore.libpharmml.dom.modellingsteps.ToEstimate;
 import eu.ddmore.libpharmml.dom.trialdesign.ActivityType;
 import eu.ddmore.libpharmml.dom.trialdesign.ArmDefnType;
 import eu.ddmore.libpharmml.dom.trialdesign.CellDefnType;
@@ -309,7 +309,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     StepType.class,
     GenericCode.class,
     SymbolMappingType.class,
-    ToEstimateType.class,
+    ToEstimate.class,
     EstimationOperation.class,
     EquationType.class,
     LogicCondition.class,

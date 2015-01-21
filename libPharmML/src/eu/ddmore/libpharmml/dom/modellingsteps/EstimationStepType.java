@@ -72,7 +72,7 @@ public class EstimationStepType
     @XmlElement(name = "ObjectiveDataSet")
     protected List<DatasetMapping> objectiveDataSet;
     @XmlElement(name = "ParametersToEstimate", required = true)
-    protected ToEstimateType parametersToEstimate;
+    protected ToEstimate parametersToEstimate;
     @XmlElement(name = "Operation", required = true)
     protected List<EstimationOperation> operation;
 
@@ -110,10 +110,10 @@ public class EstimationStepType
      * 
      * @return
      *     possible object is
-     *     {@link ToEstimateType }
+     *     {@link ToEstimate }
      *     
      */
-    public ToEstimateType getParametersToEstimate() {
+    public ToEstimate getParametersToEstimate() {
         return parametersToEstimate;
     }
 
@@ -122,10 +122,10 @@ public class EstimationStepType
      * 
      * @param value
      *     allowed object is
-     *     {@link ToEstimateType }
+     *     {@link ToEstimate }
      *     
      */
-    public void setParametersToEstimate(ToEstimateType value) {
+    public void setParametersToEstimate(ToEstimate value) {
         this.parametersToEstimate = value;
     }
 

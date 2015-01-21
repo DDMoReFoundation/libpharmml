@@ -62,7 +62,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlType(name = "ToEstimateType", propOrder = {
     "parameterEstimation"
 })
-public class ToEstimateType
+public class ToEstimate
     extends PharmMLRootType
 {
 

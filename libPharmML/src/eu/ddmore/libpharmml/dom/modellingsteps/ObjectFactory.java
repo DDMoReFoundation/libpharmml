@@ -288,12 +288,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ToEstimateType }
+     * Create an instance of {@link ToEstimate }
      * 
 	 * @since PharmML0.3
      */
-    public ToEstimateType createToEstimateType() {
-        return new ToEstimateType();
+    public ToEstimate createToEstimateType() {
+        return new ToEstimate();
     }
 
     /**
