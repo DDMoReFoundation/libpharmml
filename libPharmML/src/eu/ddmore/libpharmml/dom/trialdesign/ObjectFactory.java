@@ -321,11 +321,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EpochDefnType }
+     * Create an instance of {@link EpochDefinition }
      * 
      */
-    public EpochDefnType createEpochDefnType() {
-        return new EpochDefnType();
+    public EpochDefinition createEpochDefnType() {
+        return new EpochDefinition();
     }
 
     /**

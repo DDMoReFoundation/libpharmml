@@ -79,7 +79,7 @@ public class TrialStructureType
 {
 
     @XmlElement(name = "Epoch", required = true)
-    protected List<EpochDefnType> epoch;
+    protected List<EpochDefinition> epoch;
     @XmlElement(name = "Arm", required = true)
     protected List<ArmDefinition> arm;
     @XmlElement(name = "Cell", required = true)
@@ -109,13 +109,13 @@ public class TrialStructureType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link EpochDefnType }
+     * {@link EpochDefinition }
      * 
      * 
      */
-    public List<EpochDefnType> getEpoch() {
+    public List<EpochDefinition> getEpoch() {
         if (epoch == null) {
-            epoch = new ArrayList<EpochDefnType>();
+            epoch = new ArrayList<EpochDefinition>();
         }
         return this.epoch;
     }

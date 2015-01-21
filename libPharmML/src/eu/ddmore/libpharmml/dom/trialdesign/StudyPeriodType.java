@@ -64,7 +64,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "end"
 })
 @XmlSeeAlso({
-    EpochDefnType.class
+    EpochDefinition.class
 })
 public class StudyPeriodType
     extends PharmMLRootType

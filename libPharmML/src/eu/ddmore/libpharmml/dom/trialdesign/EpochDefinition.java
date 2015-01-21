@@ -64,7 +64,7 @@ import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 @XmlType(name = "EpochDefnType", propOrder = {
     "order"
 })
-public class EpochDefnType
+public class EpochDefinition
     extends StudyPeriodType
 {
 
