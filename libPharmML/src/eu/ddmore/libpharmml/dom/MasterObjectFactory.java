@@ -35,7 +35,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.CommonParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.GaussianObsError;
 import eu.ddmore.libpharmml.dom.modeldefn.GeneralObsError;
 import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter;
-import eu.ddmore.libpharmml.dom.modeldefn.ObservationErrorType;
+import eu.ddmore.libpharmml.dom.modeldefn.ObservationError;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomVariableType;
 import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameterType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractCategoricalMultivariateDistributionType;
@@ -192,8 +192,8 @@ public class MasterObjectFactory {
 		return element;
 	}
 	
-	public static JAXBElement<? extends ObservationErrorType> createObservationError(ObservationErrorType model){
-		JAXBElement<? extends ObservationErrorType> element;
+	public static JAXBElement<? extends ObservationError> createObservationError(ObservationError model){
+		JAXBElement<? extends ObservationError> element;
 		if(model instanceof GeneralObsError){
 			element = MODELDEFN_OF.createGeneral((GeneralObsError) model);
 		} else if (model instanceof GaussianObsError){

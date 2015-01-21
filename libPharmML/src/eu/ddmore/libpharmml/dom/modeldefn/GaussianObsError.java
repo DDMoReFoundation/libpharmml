@@ -96,7 +96,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
     "residualError"
 })
 public class GaussianObsError
-    extends ObservationErrorType
+    extends ObservationError
 {
 
     @XmlElement(name = "Transformation")

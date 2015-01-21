@@ -69,7 +69,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolName;
     GaussianObsError.class,
     GeneralObsError.class
 })
-public abstract class ObservationErrorType
+public abstract class ObservationError
     extends PharmMLRootType
 {
 

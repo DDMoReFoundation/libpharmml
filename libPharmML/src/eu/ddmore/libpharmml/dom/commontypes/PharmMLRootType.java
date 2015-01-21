@@ -80,7 +80,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.Discrete;
 import eu.ddmore.libpharmml.dom.modeldefn.FixedEffectRelation;
 import eu.ddmore.libpharmml.dom.modeldefn.ListOfCategories;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
-import eu.ddmore.libpharmml.dom.modeldefn.ObservationErrorType;
+import eu.ddmore.libpharmml.dom.modeldefn.ObservationError;
 import eu.ddmore.libpharmml.dom.modeldefn.ObservationModelType;
 import eu.ddmore.libpharmml.dom.modeldefn.PairwiseType;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomEffectType;
@@ -186,7 +186,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     LogicExpression.class,
     Expression.class,
     StructuralModelType.class,
-    ObservationErrorType.class,
+    ObservationError.class,
     eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter.GaussianModel.LinearCovariate.PopulationParameter.class,
     eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter.GaussianModel.LinearCovariate.class,
     eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter.GaussianModel.GeneralCovariate.class,

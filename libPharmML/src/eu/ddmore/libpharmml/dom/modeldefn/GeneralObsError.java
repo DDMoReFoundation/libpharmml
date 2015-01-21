@@ -61,7 +61,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Rhs;
     "assign"
 })
 public class GeneralObsError
-    extends ObservationErrorType
+    extends ObservationError
 {
 
     @XmlElement(name = "Transformation")

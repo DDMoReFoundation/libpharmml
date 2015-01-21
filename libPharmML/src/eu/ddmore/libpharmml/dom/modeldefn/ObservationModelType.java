@@ -84,7 +84,7 @@ public class ObservationModelType
 
     @XmlElementRef(name = "ObservationError", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class)
     @Deprecated
-    protected JAXBElement<? extends ObservationErrorType> observationError;
+    protected JAXBElement<? extends ObservationError> observationError;
 	
 	@XmlElement(name = "ContinuousData")
     protected ContinuousObservationModel continuousData;
@@ -99,14 +99,14 @@ public class ObservationModelType
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ObservationErrorType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ObservationError }{@code >}
      *     {@link JAXBElement }{@code <}{@link GeneralObsError }{@code >}
      *     {@link JAXBElement }{@code <}{@link GaussianObsError }{@code >}
      *     
      * @deprecated The observation error has been deplaced into the continuous data element that can be accessed through {@link #getContinuousData()}
      */
     @Deprecated
-    public JAXBElement<? extends ObservationErrorType> getObservationError() {
+    public JAXBElement<? extends ObservationError> getObservationError() {
         return observationError;
     }
 
@@ -115,14 +115,14 @@ public class ObservationModelType
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ObservationErrorType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ObservationError }{@code >}
      *     {@link JAXBElement }{@code <}{@link GeneralObsError }{@code >}
      *     {@link JAXBElement }{@code <}{@link GaussianObsError }{@code >}
      *     
      * @deprecated The observation error has been deplaced into the continuous data element. It can be set through the class {@link ContinuousObservationModel}
      */
     @Deprecated
-    public void setObservationError(JAXBElement<? extends ObservationErrorType> value) {
+    public void setObservationError(JAXBElement<? extends ObservationError> value) {
         this.observationError = value;
     }
 

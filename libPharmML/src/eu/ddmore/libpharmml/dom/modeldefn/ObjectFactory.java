@@ -539,12 +539,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObservationErrorType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObservationError }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "ObservationError")
-    public JAXBElement<ObservationErrorType> createObservationError(ObservationErrorType value) {
-        return new JAXBElement<ObservationErrorType>(_ObservationError_QNAME, ObservationErrorType.class, null, value);
+    public JAXBElement<ObservationError> createObservationError(ObservationError value) {
+        return new JAXBElement<ObservationError>(_ObservationError_QNAME, ObservationError.class, null, value);
     }
 
     /**
