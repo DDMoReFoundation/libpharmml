@@ -64,7 +64,7 @@ import eu.ddmore.libpharmml.dom.maths.Piecewise;
     "columnRef",
     "piecewise"
 })
-public class MultipleDVMappingType
+public class MultipleDVMapping
     extends PharmMLRootType
 {
 

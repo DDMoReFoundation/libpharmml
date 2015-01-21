@@ -234,11 +234,11 @@ public class ObjectFactory {
     }
     
     /**
-     * Create an instance of {@link MultipleDVMappingType }
+     * Create an instance of {@link MultipleDVMapping }
      * 
      */
-    public MultipleDVMappingType createMultipleDVMappingType() {
-        return new MultipleDVMappingType();
+    public MultipleDVMapping createMultipleDVMappingType() {
+        return new MultipleDVMapping();
     }
     
     /**

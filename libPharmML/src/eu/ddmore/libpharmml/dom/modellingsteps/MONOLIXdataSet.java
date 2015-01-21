@@ -68,7 +68,7 @@ public class MONOLIXdataSet
     @XmlElement(name = "ColumnTransformation")
     protected List<ColumnTransformation> listOfColumnTransformation;
     @XmlElement(name = "MultipleDVMapping")
-    protected List<MultipleDVMappingType> listOfMultipleDVMapping;
+    protected List<MultipleDVMapping> listOfMultipleDVMapping;
     @XmlElement(name = "DataSet", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
     protected DataSet dataSet;
     @XmlElement(name = "CodeInjection")
@@ -166,13 +166,13 @@ public class MONOLIXdataSet
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link MultipleDVMappingType }
+     * {@link MultipleDVMapping }
      * 
      * 
      */
-    public List<MultipleDVMappingType> getListOfMultipleDVMapping() {
+    public List<MultipleDVMapping> getListOfMultipleDVMapping() {
         if (listOfMultipleDVMapping == null) {
-        	listOfMultipleDVMapping = new ArrayList<MultipleDVMappingType>();
+        	listOfMultipleDVMapping = new ArrayList<MultipleDVMapping>();
         }
         return this.listOfMultipleDVMapping;
     }
@@ -273,11 +273,11 @@ public class MONOLIXdataSet
     }
 
     /**
-     * Creates a new empty {@link MultipleDVMappingType} MultipleDVMapping element, adds it to the current object and returns it.
-     * @return The created {@link MultipleDVMappingType} object.
+     * Creates a new empty {@link MultipleDVMapping} MultipleDVMapping element, adds it to the current object and returns it.
+     * @return The created {@link MultipleDVMapping} object.
      */
-    public MultipleDVMappingType createMultipleDVMapping(){
-            MultipleDVMappingType el = new MultipleDVMappingType();
+    public MultipleDVMapping createMultipleDVMapping(){
+            MultipleDVMapping el = new MultipleDVMapping();
             getListOfMultipleDVMapping().add(el);
             return el;
     }

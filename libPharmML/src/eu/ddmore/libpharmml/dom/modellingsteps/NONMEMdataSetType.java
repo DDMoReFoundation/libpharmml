@@ -86,7 +86,7 @@ public class NONMEMdataSetType
     @XmlElement(name = "ColumnTransformation")
     protected List<ColumnTransformation> listOfColumnTransformation;
     @XmlElement(name = "MultipleDVMapping")
-    protected List<MultipleDVMappingType> multipleDVMapping;
+    protected List<MultipleDVMapping> multipleDVMapping;
     @XmlElement(name = "DataSet", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
     protected DataSet dataSet;
     @XmlElement(name = "CodeInjection")
@@ -171,13 +171,13 @@ public class NONMEMdataSetType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link MultipleDVMappingType }
+     * {@link MultipleDVMapping }
      * 
      * 
      */
-    public List<MultipleDVMappingType> getMultipleDVMapping() {
+    public List<MultipleDVMapping> getMultipleDVMapping() {
         if (multipleDVMapping == null) {
-            multipleDVMapping = new ArrayList<MultipleDVMappingType>();
+            multipleDVMapping = new ArrayList<MultipleDVMapping>();
         }
         return this.multipleDVMapping;
     }
