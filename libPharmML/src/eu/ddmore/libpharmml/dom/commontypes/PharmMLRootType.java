@@ -82,7 +82,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.ListOfCategories;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.ObservationError;
 import eu.ddmore.libpharmml.dom.modeldefn.ObservationModel;
-import eu.ddmore.libpharmml.dom.modeldefn.PairwiseType;
+import eu.ddmore.libpharmml.dom.modeldefn.Pairwise;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomEffectType;
 import eu.ddmore.libpharmml.dom.modeldefn.ParentLevelType;
 import eu.ddmore.libpharmml.dom.modeldefn.ProbabilityAssignment;
@@ -195,7 +195,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     ParentLevelType.class,
     TransitionRate.class,
     CovariateTransformation.class,
-    PairwiseType.class,
+    Pairwise.class,
     VariabilityLevelDefnType.class,
     CountPMF.class,
     Discrete.class,

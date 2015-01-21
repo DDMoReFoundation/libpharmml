@@ -103,7 +103,7 @@ public class Correlation
     @Deprecated
     protected ScalarRhs covariance;
     @XmlElement(name = "Pairwise")
-    protected PairwiseType pairwise;
+    protected Pairwise pairwise;
     @XmlElement(name = "Matrix")
     protected Matrix matrix;
     @XmlAttribute(name = "deviationMatrixType")
@@ -141,7 +141,7 @@ public class Correlation
      *     possible object is
      *     {@link CorrelatedRandomVariable }
      *     
-     * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link PairwiseType} child element,
+     * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link Pairwise} child element,
      * accessible through {@link #getPairwise()}
      */
     @Deprecated
@@ -156,7 +156,7 @@ public class Correlation
      *     allowed object is
      *     {@link CorrelatedRandomVariable }
      * 
-     * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link PairwiseType} child element,
+     * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link Pairwise} child element,
      * accessible through {@link #getPairwise()}
      */
     @Deprecated
@@ -171,7 +171,7 @@ public class Correlation
      *     possible object is
      *     {@link CorrelatedRandomVariable }
      *     
-     * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link PairwiseType} child element,
+     * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link Pairwise} child element,
      * accessible through {@link #getPairwise()}
      */
     @Deprecated
@@ -186,7 +186,7 @@ public class Correlation
      *     allowed object is
      *     {@link CorrelatedRandomVariable }
      *     
-     * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link PairwiseType} child element,
+     * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link Pairwise} child element,
      * accessible through {@link #getPairwise()}
      */
     @Deprecated
@@ -201,7 +201,7 @@ public class Correlation
      *     possible object is
      *     {@link ScalarRhs }
      *     
-     * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link PairwiseType} child element,
+     * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link Pairwise} child element,
      * accessible through {@link #getPairwise()}
      */
     @Deprecated
@@ -216,7 +216,7 @@ public class Correlation
      *     allowed object is
      *     {@link ScalarRhs }
      *     
-     * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link PairwiseType} child element,
+     * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link Pairwise} child element,
      * accessible through {@link #getPairwise()}
      */
     @Deprecated
@@ -231,7 +231,7 @@ public class Correlation
      *     possible object is
      *     {@link ScalarRhs }
      *     
-     * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link PairwiseType} child element,
+     * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link Pairwise} child element,
      * accessible through {@link #getPairwise()}
      */
     @Deprecated
@@ -246,7 +246,7 @@ public class Correlation
      *     allowed object is
      *     {@link ScalarRhs }
      *     
-     * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link PairwiseType} child element,
+     * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link Pairwise} child element,
      * accessible through {@link #getPairwise()}
      */
     @Deprecated
@@ -259,11 +259,11 @@ public class Correlation
      * 
      * @return
      *     possible object is
-     *     {@link PairwiseType }
+     *     {@link Pairwise }
      *     
      * @since libPharmML 0.3
      */
-    public PairwiseType getPairwise() {
+    public Pairwise getPairwise() {
         return pairwise;
     }
 
@@ -272,11 +272,11 @@ public class Correlation
      * 
      * @param value
      *     allowed object is
-     *     {@link PairwiseType }
+     *     {@link Pairwise }
      *     
      * @since libPharmML 0.3
      */
-    public void setPairwise(PairwiseType value) {
+    public void setPairwise(Pairwise value) {
         this.pairwise = value;
     }
 

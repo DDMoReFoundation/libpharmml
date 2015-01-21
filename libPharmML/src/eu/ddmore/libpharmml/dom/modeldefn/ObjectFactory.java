@@ -172,11 +172,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PairwiseType }
+     * Create an instance of {@link Pairwise }
      * 
      */
-    public PairwiseType createPairwiseType() {
-        return new PairwiseType();
+    public Pairwise createPairwiseType() {
+        return new Pairwise();
     }
 
     /**

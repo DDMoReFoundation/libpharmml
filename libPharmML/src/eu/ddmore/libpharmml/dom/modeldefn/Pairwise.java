@@ -67,7 +67,7 @@ import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
     "correlationCoefficient",
     "covariance"
 })
-public class PairwiseType
+public class Pairwise
     extends PharmMLRootType
 {
 
