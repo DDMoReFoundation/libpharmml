@@ -221,7 +221,7 @@ public class SimulationOperationType
      * @param value
      *     
      */
-    public void setOpType(SimulationOpTypeType value) {
+    public void setOpType(SimulationOpType value) {
     	if(value == null){
     		this.opType = null;
     	} else {

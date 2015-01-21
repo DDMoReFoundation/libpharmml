@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "SimulationOpTypeType")
 @XmlEnum
-public enum SimulationOpTypeType {
+public enum SimulationOpType {
 
 
     /**
@@ -70,7 +70,7 @@ public enum SimulationOpTypeType {
     SIMULATE_PD("simulatePD");
     private final String value;
 
-    SimulationOpTypeType(String v) {
+    SimulationOpType(String v) {
         value = v;
     }
 
@@ -78,8 +78,8 @@ public enum SimulationOpTypeType {
         return value;
     }
 
-    public static SimulationOpTypeType fromValue(String v) {
-        for (SimulationOpTypeType c: SimulationOpTypeType.values()) {
+    public static SimulationOpType fromValue(String v) {
+        for (SimulationOpType c: SimulationOpType.values()) {
             if (c.value.equals(v)) {
                 return c;
             }
