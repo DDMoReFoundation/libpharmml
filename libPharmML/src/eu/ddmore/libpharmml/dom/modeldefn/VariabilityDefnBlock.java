@@ -77,7 +77,7 @@ public class VariabilityDefnBlock
     @XmlElement(name = "Level", required = true)
     protected List<VariabilityLevelDefinition> level;
     @XmlAttribute(name = "type", required = true)
-    protected VariabilityType type;
+    protected Variability type;
     @XmlAttribute(name = "blkId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String blkId;
@@ -140,10 +140,10 @@ public class VariabilityDefnBlock
      * 
      * @return
      *     possible object is
-     *     {@link VariabilityType }
+     *     {@link Variability }
      *     
      */
-    public VariabilityType getType() {
+    public Variability getType() {
         return type;
     }
 
@@ -152,10 +152,10 @@ public class VariabilityDefnBlock
      * 
      * @param value
      *     allowed object is
-     *     {@link VariabilityType }
+     *     {@link Variability }
      *     
      */
-    public void setType(VariabilityType value) {
+    public void setType(Variability value) {
         this.type = value;
     }
 

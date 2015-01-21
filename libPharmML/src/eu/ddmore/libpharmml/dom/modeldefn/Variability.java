@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "VariabilityType")
 @XmlEnum
-public enum VariabilityType {
+public enum Variability {
 
 
 	/**
@@ -89,7 +89,7 @@ public enum VariabilityType {
     
     private final String value;
 
-    VariabilityType(String v) {
+    Variability(String v) {
         value = v;
     }
 
@@ -97,8 +97,8 @@ public enum VariabilityType {
         return value;
     }
 
-    public static VariabilityType fromValue(String v) {
-        for (VariabilityType c: VariabilityType.values()) {
+    public static Variability fromValue(String v) {
+        for (Variability c: Variability.values()) {
             if (c.value.equals(v)) {
                 return c;
             }
