@@ -208,12 +208,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link NONMEMdataSetType }
+     * Create an instance of {@link NONMEMdataSet }
      * 
 	 * @since PharmML0.3
      */
-    public NONMEMdataSetType createNONMEMdataSetType() {
-        return new NONMEMdataSetType();
+    public NONMEMdataSet createNONMEMdataSetType() {
+        return new NONMEMdataSet();
     }
 
     /**

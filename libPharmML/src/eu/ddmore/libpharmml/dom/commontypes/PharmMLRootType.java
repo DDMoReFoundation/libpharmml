@@ -106,7 +106,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.MappingType;
 import eu.ddmore.libpharmml.dom.modellingsteps.ModellingSteps;
 import eu.ddmore.libpharmml.dom.modellingsteps.MultipleDVMapping;
 import eu.ddmore.libpharmml.dom.modellingsteps.NONMEMdataSetReference;
-import eu.ddmore.libpharmml.dom.modellingsteps.NONMEMdataSetType;
+import eu.ddmore.libpharmml.dom.modellingsteps.NONMEMdataSet;
 import eu.ddmore.libpharmml.dom.modellingsteps.ObservationsType;
 import eu.ddmore.libpharmml.dom.modellingsteps.OperationPropertyType;
 import eu.ddmore.libpharmml.dom.modellingsteps.ParameterEstimateType;
@@ -301,7 +301,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     ObservationsType.class,
     StepDependencyType.class,
     DependentsType.class,
-    NONMEMdataSetType.class,
+    NONMEMdataSet.class,
     ScalarRhs.class,
     TargetToolSymbolType.class,
     MultipleDVMapping.class,

@@ -77,7 +77,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
     "dataSet",
     "codeInjection"
 })
-public class NONMEMdataSetType
+public class NONMEMdataSet
     extends PharmMLRootType
 {
 
