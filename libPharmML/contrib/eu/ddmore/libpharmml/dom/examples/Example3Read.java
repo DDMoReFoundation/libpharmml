@@ -31,7 +31,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter.GaussianModel;
-import eu.ddmore.libpharmml.dom.modeldefn.ParameterModelType;
+import eu.ddmore.libpharmml.dom.modeldefn.ParameterModel;
 
 public class Example3Read {
 
@@ -40,7 +40,7 @@ public class Example3Read {
 		InputStream eg3Str = new FileInputStream("examples/example3.xml");
 			IPharmMLResource res = libPml.createDomFromResource(eg3Str);
 			PharmML dom = res.getDom();
-			for (ParameterModelType pmt : dom.getModelDefinition()
+			for (ParameterModel pmt : dom.getModelDefinition()
 					.getParameterModel()) {
 				System.out.println("Parameter Model: " + pmt.getBlkId());
 				for (JAXBElement<? extends CommonParameter> cpt : pmt.getCommonParameterElement()) {

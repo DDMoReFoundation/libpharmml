@@ -77,7 +77,7 @@ public class ModelDefinition
     @XmlElement(name = "CovariateModel")
     protected List<CovariateModel> covariateModel;
     @XmlElement(name = "ParameterModel")
-    protected List<ParameterModelType> parameterModel;
+    protected List<ParameterModel> parameterModel;
     @XmlElement(name = "StructuralModel")
     protected List<StructuralModelType> structuralModel;
     @XmlElement(name = "ObservationModel")
@@ -159,13 +159,13 @@ public class ModelDefinition
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ParameterModelType }
+     * {@link ParameterModel }
      * 
      * 
      */
-    public List<ParameterModelType> getParameterModel() {
+    public List<ParameterModel> getParameterModel() {
         if (parameterModel == null) {
-            parameterModel = new ArrayList<ParameterModelType>();
+            parameterModel = new ArrayList<ParameterModel>();
         }
         return this.parameterModel;
     }

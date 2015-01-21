@@ -73,7 +73,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "correlation"
 })
 @XmlSeeAlso({
-    ParameterModelType.class
+    ParameterModel.class
 })
 public abstract class CommonParameterModel
     extends PharmMLRootType

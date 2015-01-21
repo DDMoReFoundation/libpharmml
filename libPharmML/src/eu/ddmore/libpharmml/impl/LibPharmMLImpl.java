@@ -33,7 +33,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
-import eu.ddmore.libpharmml.dom.modeldefn.ParameterModelType;
+import eu.ddmore.libpharmml.dom.modeldefn.ParameterModel;
 import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameterType;
 import eu.ddmore.libpharmml.dom.modeldefn.StructuralModelType;
 import eu.ddmore.libpharmml.validation.PharmMLElementWrapper;
@@ -98,7 +98,7 @@ public class LibPharmMLImpl implements ILibPharmML {
 		dom.setName(name);
 		eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory mdefnFact = new eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory();
 		ModelDefinition mdt = mdefnFact.createModelDefinitionType();
-		ParameterModelType pm = mdefnFact.createParameterModelType();
+		ParameterModel pm = mdefnFact.createParameterModelType();
 		pm.setBlkId("p1");
 		SimpleParameterType spt = mdefnFact.createSimpleParameterType();
 		spt.setSymbId("a");

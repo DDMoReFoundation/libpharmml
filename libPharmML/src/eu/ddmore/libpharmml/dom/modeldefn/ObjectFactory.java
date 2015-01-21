@@ -236,11 +236,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ParameterModelType }
+     * Create an instance of {@link ParameterModel }
      * 
      */
-    public ParameterModelType createParameterModelType() {
-        return new ParameterModelType();
+    public ParameterModel createParameterModelType() {
+        return new ParameterModel();
     }
 
     /**

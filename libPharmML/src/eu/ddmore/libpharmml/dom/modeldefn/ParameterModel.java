@@ -51,7 +51,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ParameterModelType")
-public class ParameterModelType
+public class ParameterModel
     extends CommonParameterModel
 {
 
