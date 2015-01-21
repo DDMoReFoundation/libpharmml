@@ -64,7 +64,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "symbol",
     "code"
 })
-public class GenericCodeType
+public class GenericCode
     extends PharmMLRootType
 {
 

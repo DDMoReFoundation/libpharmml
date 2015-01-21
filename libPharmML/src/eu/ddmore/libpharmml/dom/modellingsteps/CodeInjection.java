@@ -71,7 +71,7 @@ public class CodeInjection
     @XmlElement(name = "SymbolMapping")
     protected List<SymbolMappingType> symbolMapping;
     @XmlElement(name = "TargetCode", required = true)
-    protected GenericCodeType targetCode;
+    protected GenericCode targetCode;
 
     /**
      * Gets the value of the symbolMapping property.
@@ -107,10 +107,10 @@ public class CodeInjection
      * 
      * @return
      *     possible object is
-     *     {@link GenericCodeType }
+     *     {@link GenericCode }
      *     
      */
-    public GenericCodeType getTargetCode() {
+    public GenericCode getTargetCode() {
         return targetCode;
     }
 
@@ -119,10 +119,10 @@ public class CodeInjection
      * 
      * @param value
      *     allowed object is
-     *     {@link GenericCodeType }
+     *     {@link GenericCode }
      *     
      */
-    public void setTargetCode(GenericCodeType value) {
+    public void setTargetCode(GenericCode value) {
         this.targetCode = value;
     }
 

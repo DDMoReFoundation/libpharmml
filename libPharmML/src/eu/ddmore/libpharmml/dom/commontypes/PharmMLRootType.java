@@ -101,7 +101,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.CommonModellingStep;
 import eu.ddmore.libpharmml.dom.modellingsteps.DatasetMapping;
 import eu.ddmore.libpharmml.dom.modellingsteps.DependentsType;
 import eu.ddmore.libpharmml.dom.modellingsteps.EstimationOperation;
-import eu.ddmore.libpharmml.dom.modellingsteps.GenericCodeType;
+import eu.ddmore.libpharmml.dom.modellingsteps.GenericCode;
 import eu.ddmore.libpharmml.dom.modellingsteps.MappingType;
 import eu.ddmore.libpharmml.dom.modellingsteps.ModellingStepsType;
 import eu.ddmore.libpharmml.dom.modellingsteps.MultipleDVMappingType;
@@ -307,7 +307,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     MultipleDVMappingType.class,
     DatasetMapping.class,
     StepType.class,
-    GenericCodeType.class,
+    GenericCode.class,
     SymbolMappingType.class,
     ToEstimateType.class,
     EstimationOperation.class,

@@ -270,12 +270,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GenericCodeType }
+     * Create an instance of {@link GenericCode }
      * 
 	 * @since PharmML0.3
      */
-    public GenericCodeType createGenericCodeType() {
-        return new GenericCodeType();
+    public GenericCode createGenericCodeType() {
+        return new GenericCode();
     }
 
     /**
