@@ -135,12 +135,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SimulationOperationType }
+     * Create an instance of {@link SimulationOperation }
      * 
 	 * @since PharmML 0.3
      */
-    public SimulationOperationType createSimulationOperationType() {
-        return new SimulationOperationType();
+    public SimulationOperation createSimulationOperationType() {
+        return new SimulationOperation();
     }
 
     /**

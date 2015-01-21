@@ -72,7 +72,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "property",
     "algorithm"
 })
-public class SimulationOperationType
+public class SimulationOperation
     extends PharmMLRootType
 {
 
