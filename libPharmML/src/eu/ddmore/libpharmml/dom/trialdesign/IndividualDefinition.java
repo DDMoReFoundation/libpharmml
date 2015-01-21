@@ -83,7 +83,7 @@ public class IndividualDefinition
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected Name name;
     @XmlElement(name = "IndividualMapping", required = true)
-    protected IndividualMappingType individualMapping;
+    protected IndividualMapping individualMapping;
     @XmlElement(name = "ArmMapping", required = true)
     protected ArmMapping armMapping;
     @XmlElementRef(name = "AttributeMapping", namespace = "http://www.pharmml.org/2013/03/TrialDesign", type = JAXBElement.class, required = false)
@@ -124,10 +124,10 @@ public class IndividualDefinition
      * 
      * @return
      *     possible object is
-     *     {@link IndividualMappingType }
+     *     {@link IndividualMapping }
      *     
      */
-    public IndividualMappingType getIndividualMapping() {
+    public IndividualMapping getIndividualMapping() {
         return individualMapping;
     }
 
@@ -136,10 +136,10 @@ public class IndividualDefinition
      * 
      * @param value
      *     allowed object is
-     *     {@link IndividualMappingType }
+     *     {@link IndividualMapping }
      *     
      */
-    public void setIndividualMapping(IndividualMappingType value) {
+    public void setIndividualMapping(IndividualMapping value) {
         this.individualMapping = value;
     }
 
