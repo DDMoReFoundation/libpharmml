@@ -192,11 +192,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StepDependencyType }
+     * Create an instance of {@link StepDependency }
      * 
      */
-    public StepDependencyType createStepDependencyType() {
-        return new StepDependencyType();
+    public StepDependency createStepDependencyType() {
+        return new StepDependency();
     }
 
     /**

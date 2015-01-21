@@ -85,7 +85,7 @@ public class ModellingSteps
     @XmlElementRef(name = "CommonModellingStep", namespace = "http://www.pharmml.org/2013/03/ModellingSteps", type = JAXBElement.class, required = false)
     protected List<JAXBElement<? extends CommonModellingStep>> commonModellingStep;
     @XmlElement(name = "StepDependencies")
-    protected StepDependencyType stepDependencies;
+    protected StepDependency stepDependencies;
 
     /**
      * Gets the value of the monoliXdataSet property.
@@ -212,10 +212,10 @@ public class ModellingSteps
      * 
      * @return
      *     possible object is
-     *     {@link StepDependencyType }
+     *     {@link StepDependency }
      *     
      */
-    public StepDependencyType getStepDependencies() {
+    public StepDependency getStepDependencies() {
         return stepDependencies;
     }
 
@@ -224,10 +224,10 @@ public class ModellingSteps
      * 
      * @param value
      *     allowed object is
-     *     {@link StepDependencyType }
+     *     {@link StepDependency }
      *     
      */
-    public void setStepDependencies(StepDependencyType value) {
+    public void setStepDependencies(StepDependency value) {
         this.stepDependencies = value;
     }
 

@@ -111,7 +111,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.ObservationsType;
 import eu.ddmore.libpharmml.dom.modellingsteps.OperationProperty;
 import eu.ddmore.libpharmml.dom.modellingsteps.ParameterEstimate;
 import eu.ddmore.libpharmml.dom.modellingsteps.SimulationOperationType;
-import eu.ddmore.libpharmml.dom.modellingsteps.StepDependencyType;
+import eu.ddmore.libpharmml.dom.modellingsteps.StepDependency;
 import eu.ddmore.libpharmml.dom.modellingsteps.StepType;
 import eu.ddmore.libpharmml.dom.modellingsteps.SymbolMapping;
 import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolReference;
@@ -299,7 +299,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     TargetTool.class,
     ParameterEstimate.class,
     ObservationsType.class,
-    StepDependencyType.class,
+    StepDependency.class,
     DependentsType.class,
     NONMEMdataSet.class,
     ScalarRhs.class,

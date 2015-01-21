@@ -62,7 +62,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlType(name = "StepDependencyType", propOrder = {
     "step"
 })
-public class StepDependencyType
+public class StepDependency
     extends PharmMLRootType
 {
 
