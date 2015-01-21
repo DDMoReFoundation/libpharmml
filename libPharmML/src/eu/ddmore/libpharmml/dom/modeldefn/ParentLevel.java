@@ -59,7 +59,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 @XmlType(name = "ParentLevelType", propOrder = {
     "symbRef"
 })
-public class ParentLevelType
+public class ParentLevel
     extends PharmMLRootType
 {
 

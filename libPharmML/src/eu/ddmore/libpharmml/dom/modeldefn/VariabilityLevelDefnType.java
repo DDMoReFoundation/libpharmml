@@ -73,7 +73,7 @@ public class VariabilityLevelDefnType
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected Name name;
     @XmlElement(name = "ParentLevel")
-    protected ParentLevelType parentLevel;
+    protected ParentLevel parentLevel;
     @XmlAttribute(name = "referenceLevel")
     protected Boolean referenceLevel; // since PharmML 0.5.1
     @XmlAttribute(name = "symbId", required = true)
@@ -109,10 +109,10 @@ public class VariabilityLevelDefnType
      * 
      * @return
      *     possible object is
-     *     {@link ParentLevelType }
+     *     {@link ParentLevel }
      *     
      */
-    public ParentLevelType getParentLevel() {
+    public ParentLevel getParentLevel() {
         return parentLevel;
     }
 
@@ -121,10 +121,10 @@ public class VariabilityLevelDefnType
      * 
      * @param value
      *     allowed object is
-     *     {@link ParentLevelType }
+     *     {@link ParentLevel }
      *     
      */
-    public void setParentLevel(ParentLevelType value) {
+    public void setParentLevel(ParentLevel value) {
         this.parentLevel = value;
     }
 

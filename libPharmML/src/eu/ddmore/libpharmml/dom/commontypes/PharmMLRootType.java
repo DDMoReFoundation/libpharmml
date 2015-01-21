@@ -84,7 +84,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.ObservationError;
 import eu.ddmore.libpharmml.dom.modeldefn.ObservationModel;
 import eu.ddmore.libpharmml.dom.modeldefn.Pairwise;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomEffect;
-import eu.ddmore.libpharmml.dom.modeldefn.ParentLevelType;
+import eu.ddmore.libpharmml.dom.modeldefn.ParentLevel;
 import eu.ddmore.libpharmml.dom.modeldefn.ProbabilityAssignment;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.dom.modeldefn.StructuralModelType;
@@ -192,7 +192,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter.GaussianModel.GeneralCovariate.class,
     eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter.GaussianModel.class,
     CommonParameter.class,
-    ParentLevelType.class,
+    ParentLevel.class,
     TransitionRate.class,
     CovariateTransformation.class,
     Pairwise.class,

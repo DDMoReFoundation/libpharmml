@@ -148,11 +148,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ParentLevelType }
+     * Create an instance of {@link ParentLevel }
      * 
      */
-    public ParentLevelType createParentLevelType() {
-        return new ParentLevelType();
+    public ParentLevel createParentLevelType() {
+        return new ParentLevel();
     }
 
     /**
