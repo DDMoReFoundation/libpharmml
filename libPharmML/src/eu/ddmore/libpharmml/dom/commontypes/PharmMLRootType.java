@@ -96,7 +96,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.AbsorptionOralMacro;
 import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.OralMacro;
 import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKMacroList;
 import eu.ddmore.libpharmml.dom.modellingsteps.Algorithm;
-import eu.ddmore.libpharmml.dom.modellingsteps.CodeInjectionType;
+import eu.ddmore.libpharmml.dom.modellingsteps.CodeInjection;
 import eu.ddmore.libpharmml.dom.modellingsteps.CommonModellingStepType;
 import eu.ddmore.libpharmml.dom.modellingsteps.DatasetMappingType;
 import eu.ddmore.libpharmml.dom.modellingsteps.DependentsType;
@@ -295,7 +295,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     SimulationOperationType.class,
     Algorithm.class,
     TargetToolReferenceType.class,
-    CodeInjectionType.class,
+    CodeInjection.class,
     TargetToolType.class,
     ParameterEstimateType.class,
     ObservationsType.class,

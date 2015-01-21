@@ -72,7 +72,7 @@ public class MONOLIXdataSet
     @XmlElement(name = "DataSet", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
     protected DataSet dataSet;
     @XmlElement(name = "CodeInjection")
-    protected CodeInjectionType codeInjection;
+    protected CodeInjection codeInjection;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
@@ -209,10 +209,10 @@ public class MONOLIXdataSet
      * 
      * @return
      *     possible object is
-     *     {@link CodeInjectionType }
+     *     {@link CodeInjection }
      *     
      */
-    public CodeInjectionType getCodeInjection() {
+    public CodeInjection getCodeInjection() {
         return codeInjection;
     }
 
@@ -221,10 +221,10 @@ public class MONOLIXdataSet
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeInjectionType }
+     *     {@link CodeInjection }
      *     
      */
-    public void setCodeInjection(CodeInjectionType value) {
+    public void setCodeInjection(CodeInjection value) {
         this.codeInjection = value;
     }
 
@@ -293,11 +293,11 @@ public class MONOLIXdataSet
     }
 
     /**
-     * Creates a new empty {@link CodeInjectionType} codeInjection element, adds it to the current object and returns it.
-     * @return The created {@link CodeInjectionType} object.
+     * Creates a new empty {@link CodeInjection} codeInjection element, adds it to the current object and returns it.
+     * @return The created {@link CodeInjection} object.
      */
-    public CodeInjectionType createCodeInjection(){
-            CodeInjectionType el = new CodeInjectionType();
+    public CodeInjection createCodeInjection(){
+            CodeInjection el = new CodeInjection();
             this.codeInjection = el;
             return el;
     }

@@ -160,11 +160,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CodeInjectionType }
+     * Create an instance of {@link CodeInjection }
      * 
      */
-    public CodeInjectionType createCodeInjectionType() {
-        return new CodeInjectionType();
+    public CodeInjection createCodeInjectionType() {
+        return new CodeInjection();
     }
 
     /**

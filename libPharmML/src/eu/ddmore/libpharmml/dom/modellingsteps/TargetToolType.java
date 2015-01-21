@@ -91,7 +91,7 @@ public class TargetToolType
     @XmlElement(name = "TargetToolData", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
     protected TargetToolDataSet targetToolData;
     @XmlElement(name = "CodeInjection")
-    protected CodeInjectionType codeInjection;
+    protected CodeInjection codeInjection;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
@@ -181,10 +181,10 @@ public class TargetToolType
      * 
      * @return
      *     possible object is
-     *     {@link CodeInjectionType }
+     *     {@link CodeInjection }
      *     
      */
-    public CodeInjectionType getCodeInjection() {
+    public CodeInjection getCodeInjection() {
         return codeInjection;
     }
 
@@ -193,10 +193,10 @@ public class TargetToolType
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeInjectionType }
+     *     {@link CodeInjection }
      *     
      */
-    public void setCodeInjection(CodeInjectionType value) {
+    public void setCodeInjection(CodeInjection value) {
         this.codeInjection = value;
     }
 

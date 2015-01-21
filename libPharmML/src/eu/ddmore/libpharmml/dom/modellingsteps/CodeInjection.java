@@ -64,7 +64,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "symbolMapping",
     "targetCode"
 })
-public class CodeInjectionType
+public class CodeInjection
     extends PharmMLRootType
 {
 
