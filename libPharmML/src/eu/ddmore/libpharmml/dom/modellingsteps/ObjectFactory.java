@@ -144,11 +144,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AlgorithmType }
+     * Create an instance of {@link Algorithm }
      * 
      */
-    public AlgorithmType createAlgorithmType() {
-        return new AlgorithmType();
+    public Algorithm createAlgorithmType() {
+        return new Algorithm();
     }
 
     /**

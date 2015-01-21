@@ -68,7 +68,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "name",
     "property"
 })
-public class AlgorithmType
+public class Algorithm
     extends PharmMLRootType
 {
 

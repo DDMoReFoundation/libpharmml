@@ -81,7 +81,7 @@ public class SimulationOperationType
     @XmlElement(name = "Property")
     protected List<OperationPropertyType> property;
     @XmlElement(name = "Algorithm")
-    protected AlgorithmType algorithm;
+    protected Algorithm algorithm;
     @XmlAttribute(name = "order", required = true)
     @XmlSchemaType(name = "positiveInteger")
     protected BigInteger order;
@@ -148,10 +148,10 @@ public class SimulationOperationType
      * 
      * @return
      *     possible object is
-     *     {@link AlgorithmType }
+     *     {@link Algorithm }
      *     
      */
-    public AlgorithmType getAlgorithm() {
+    public Algorithm getAlgorithm() {
         return algorithm;
     }
 
@@ -160,10 +160,10 @@ public class SimulationOperationType
      * 
      * @param value
      *     allowed object is
-     *     {@link AlgorithmType }
+     *     {@link Algorithm }
      *     
      */
-    public void setAlgorithm(AlgorithmType value) {
+    public void setAlgorithm(Algorithm value) {
         this.algorithm = value;
     }
 
