@@ -164,11 +164,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CovariateTransformationType }
+     * Create an instance of {@link CovariateTransformation }
      * 
      */
-    public CovariateTransformationType createCovariateTransformationType() {
-        return new CovariateTransformationType();
+    public CovariateTransformation createCovariateTransformationType() {
+        return new CovariateTransformation();
     }
 
     /**

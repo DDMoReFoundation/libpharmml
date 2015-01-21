@@ -73,7 +73,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.CountPMF;
 import eu.ddmore.libpharmml.dom.modeldefn.CovariateDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.CovariateModel;
 import eu.ddmore.libpharmml.dom.modeldefn.CovariateRelation;
-import eu.ddmore.libpharmml.dom.modeldefn.CovariateTransformationType;
+import eu.ddmore.libpharmml.dom.modeldefn.CovariateTransformation;
 import eu.ddmore.libpharmml.dom.modeldefn.Dependance;
 import eu.ddmore.libpharmml.dom.modeldefn.DiscreteDataParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.Discrete;
@@ -194,7 +194,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     CommonParameter.class,
     ParentLevelType.class,
     TransitionRate.class,
-    CovariateTransformationType.class,
+    CovariateTransformation.class,
     PairwiseType.class,
     VariabilityLevelDefnType.class,
     CountPMF.class,

@@ -61,7 +61,7 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
     "transformedCovariate",
     "equation"
 })
-public class CovariateTransformationType
+public class CovariateTransformation
     extends PharmMLRootType
 {
 

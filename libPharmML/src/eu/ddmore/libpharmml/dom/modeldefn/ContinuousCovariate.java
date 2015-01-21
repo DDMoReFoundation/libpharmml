@@ -92,7 +92,7 @@ public class ContinuousCovariate
     @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = "http://www.uncertml.org/3.0", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractContinuousUnivariateDistributionType> abstractContinuousUnivariateDistribution;
     @XmlElement(name = "Transformation")
-    protected List<CovariateTransformationType> listOfTransformation;
+    protected List<CovariateTransformation> listOfTransformation;
     @XmlElement(name = "Interpolation", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected Interpolation interpolation;
 
@@ -159,13 +159,13 @@ public class ContinuousCovariate
      * 
      * @return
      *     possible object is
-     *     {@link CovariateTransformationType }
+     *     {@link CovariateTransformation }
      *     
      * @deprecated This attribute is now a list (since PharmML 0.4.1).
      * Use {@link #getListOfTransformation()} instead.
      */
     @Deprecated
-    public CovariateTransformationType getTransformation() {
+    public CovariateTransformation getTransformation() {
         if(getListOfTransformation().size() >= 1){
         	return getListOfTransformation().get(0);
         } else {
@@ -178,13 +178,13 @@ public class ContinuousCovariate
      * 
      * @param value
      *     allowed object is
-     *     {@link CovariateTransformationType }
+     *     {@link CovariateTransformation }
      * 
      * @deprecated This attribute is now a list (since PharmML 0.4.1).
      * Add an element to the list {@link #getListOfTransformation()} instead.
      */
     @Deprecated
-    public void setTransformation(CovariateTransformationType value) {
+    public void setTransformation(CovariateTransformation value) {
         getListOfTransformation().clear();
         getListOfTransformation().add(value);
     }
@@ -207,13 +207,13 @@ public class ContinuousCovariate
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CovariateTransformationType }
+     * {@link CovariateTransformation }
      * 
      * 
      */
-    public List<CovariateTransformationType> getListOfTransformation() {
+    public List<CovariateTransformation> getListOfTransformation() {
         if (listOfTransformation == null) {
-            listOfTransformation = new ArrayList<CovariateTransformationType>();
+            listOfTransformation = new ArrayList<CovariateTransformation>();
         }
         return listOfTransformation;
      }
