@@ -105,12 +105,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DemographicMappingType }
+     * Create an instance of {@link DemographicMapping }
      * 
      */
 	@Deprecated
-    public DemographicMappingType createDemographicMappingType() {
-        return new DemographicMappingType();
+    public DemographicMapping createDemographicMappingType() {
+        return new DemographicMapping();
     }
 
     /**
@@ -401,13 +401,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DemographicMappingType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DemographicMapping }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "DemographicMapping", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/TrialDesign", substitutionHeadName = "AttributeMapping")
     @Deprecated
-	public JAXBElement<DemographicMappingType> createDemographicMapping(DemographicMappingType value) {
-        return new JAXBElement<DemographicMappingType>(_DemographicMapping_QNAME, DemographicMappingType.class, null, value);
+	public JAXBElement<DemographicMapping> createDemographicMapping(DemographicMapping value) {
+        return new JAXBElement<DemographicMapping>(_DemographicMapping_QNAME, DemographicMapping.class, null, value);
     }
 
     /**

@@ -61,7 +61,7 @@ import eu.ddmore.libpharmml.dom.commontypes.OidRef;
     "oidRef"
 })
 @Deprecated
-public class DemographicMappingType
+public class DemographicMapping
     extends PopulationMappingType
 {
 
