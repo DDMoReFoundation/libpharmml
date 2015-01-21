@@ -77,7 +77,7 @@ import eu.ddmore.libpharmml.dom.commontypes.VariableAssignment;
     "variableAssignment"
 })
 @XmlSeeAlso({
-    SimulationStepType.class,
+    Simulation.class,
     Estimation.class
 })
 public abstract class CommonModellingStep

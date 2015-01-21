@@ -195,7 +195,7 @@ public class ModellingSteps
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link CommonModellingStep }{@code >}
-     * {@link JAXBElement }{@code <}{@link SimulationStepType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Simulation }{@code >}
      * {@link JAXBElement }{@code <}{@link Estimation }{@code >}
      * 
      * 

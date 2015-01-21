@@ -63,7 +63,7 @@ import javax.xml.bind.annotation.XmlType;
     "observations",
     "operation"
 })
-public class SimulationStepType
+public class Simulation
     extends CommonModellingStep
 {
 

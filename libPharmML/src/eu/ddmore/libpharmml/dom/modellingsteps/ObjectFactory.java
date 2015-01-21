@@ -77,11 +77,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SimulationStepType }
+     * Create an instance of {@link Simulation }
      * 
      */
-    public SimulationStepType createSimulationStepType() {
-        return new SimulationStepType();
+    public Simulation createSimulationStepType() {
+        return new Simulation();
     }
 
     /**
@@ -305,12 +305,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SimulationStepType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Simulation }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "SimulationStep", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModellingSteps", substitutionHeadName = "CommonModellingStep")
-    public JAXBElement<SimulationStepType> createSimulationStep(SimulationStepType value) {
-        return new JAXBElement<SimulationStepType>(_SimulationStep_QNAME, SimulationStepType.class, null, value);
+    public JAXBElement<Simulation> createSimulationStep(Simulation value) {
+        return new JAXBElement<Simulation>(_SimulationStep_QNAME, Simulation.class, null, value);
     }
 
     /**
