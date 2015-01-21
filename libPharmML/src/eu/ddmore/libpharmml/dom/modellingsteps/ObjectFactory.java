@@ -176,11 +176,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ParameterEstimateType }
+     * Create an instance of {@link ParameterEstimate }
      * 
      */
-    public ParameterEstimateType createParameterEstimateType() {
-        return new ParameterEstimateType();
+    public ParameterEstimate createParameterEstimateType() {
+        return new ParameterEstimate();
     }
 
     /**

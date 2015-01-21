@@ -68,7 +68,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
     "lowerBound",
     "upperBound"
 })
-public class ParameterEstimateType
+public class ParameterEstimate
     extends PharmMLRootType
 {
 

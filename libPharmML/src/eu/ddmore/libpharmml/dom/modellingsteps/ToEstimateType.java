@@ -67,7 +67,7 @@ public class ToEstimateType
 {
 
     @XmlElement(name = "ParameterEstimation", required = true)
-    protected List<ParameterEstimateType> parameterEstimation;
+    protected List<ParameterEstimate> parameterEstimation;
 
     /**
      * Gets the value of the parameterEstimation property.
@@ -87,13 +87,13 @@ public class ToEstimateType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ParameterEstimateType }
+     * {@link ParameterEstimate }
      * 
      * 
      */
-    public List<ParameterEstimateType> getParameterEstimation() {
+    public List<ParameterEstimate> getParameterEstimation() {
         if (parameterEstimation == null) {
-            parameterEstimation = new ArrayList<ParameterEstimateType>();
+            parameterEstimation = new ArrayList<ParameterEstimate>();
         }
         return this.parameterEstimation;
     }
