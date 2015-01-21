@@ -65,7 +65,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
     "symbRef",
     "assign"
 })
-public class DosingTimesPointsType
+public class DosingTimesPoints
     extends PharmMLRootType
 {
 

@@ -87,7 +87,7 @@ public class InfusionType
     @XmlElement(name = "SteadyState")
     protected SteadyStateType steadyState;
     @XmlElement(name = "DosingTimes")
-    protected DosingTimesPointsType dosingTimes;
+    protected DosingTimesPoints dosingTimes;
     @XmlElement(name = "Duration")
     protected SteadyStateParameterType duration;
     @XmlElement(name = "Rate")
@@ -146,10 +146,10 @@ public class InfusionType
      * 
      * @return
      *     possible object is
-     *     {@link DosingTimesPointsType }
+     *     {@link DosingTimesPoints }
      *     
      */
-    public DosingTimesPointsType getDosingTimes() {
+    public DosingTimesPoints getDosingTimes() {
         return dosingTimes;
     }
 
@@ -158,10 +158,10 @@ public class InfusionType
      * 
      * @param value
      *     allowed object is
-     *     {@link DosingTimesPointsType }
+     *     {@link DosingTimesPoints }
      *     
      */
-    public void setDosingTimes(DosingTimesPointsType value) {
+    public void setDosingTimes(DosingTimesPoints value) {
         this.dosingTimes = value;
     }
 

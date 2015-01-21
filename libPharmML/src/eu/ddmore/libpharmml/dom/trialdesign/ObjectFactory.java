@@ -338,11 +338,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DosingTimesPointsType }
+     * Create an instance of {@link DosingTimesPoints }
      * 
      */
-    public DosingTimesPointsType createDosingTimesPointsType() {
-        return new DosingTimesPointsType();
+    public DosingTimesPoints createDosingTimesPointsType() {
+        return new DosingTimesPoints();
     }
 
     /**
