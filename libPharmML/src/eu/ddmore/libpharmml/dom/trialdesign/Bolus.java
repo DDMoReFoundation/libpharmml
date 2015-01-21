@@ -66,7 +66,7 @@ import javax.xml.bind.annotation.XmlType;
     "dosingTimes"
 })
 public class Bolus
-    extends DosingRegimenType
+    extends DosingRegimen
 {
 
     @XmlElement(name = "DoseAmount", required = true)

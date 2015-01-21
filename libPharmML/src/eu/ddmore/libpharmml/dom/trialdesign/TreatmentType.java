@@ -107,7 +107,7 @@ public class TreatmentType
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link AnnotationType }{@code >}
      * {@link JAXBElement }{@code <}{@link Bolus }{@code >}
-     * {@link JAXBElement }{@code <}{@link DosingRegimenType }{@code >}
+     * {@link JAXBElement }{@code <}{@link DosingRegimen }{@code >}
      * {@link JAXBElement }{@code <}{@link Name }{@code >}
      * {@link JAXBElement }{@code <}{@link InfusionType }{@code >}
      * 

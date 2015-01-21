@@ -79,7 +79,7 @@ import javax.xml.bind.annotation.XmlType;
     "rate"
 })
 public class InfusionType
-    extends DosingRegimenType
+    extends DosingRegimen
 {
 
     @XmlElement(name = "DoseAmount", required = true)

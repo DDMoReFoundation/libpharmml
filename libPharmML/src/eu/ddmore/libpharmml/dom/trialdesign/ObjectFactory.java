@@ -421,12 +421,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DosingRegimenType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DosingRegimen }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "DosingRegimen")
-    public JAXBElement<DosingRegimenType> createDosingRegimen(DosingRegimenType value) {
-        return new JAXBElement<DosingRegimenType>(_DosingRegimen_QNAME, DosingRegimenType.class, null, value);
+    public JAXBElement<DosingRegimen> createDosingRegimen(DosingRegimen value) {
+        return new JAXBElement<DosingRegimen>(_DosingRegimen_QNAME, DosingRegimen.class, null, value);
     }
 
     /**

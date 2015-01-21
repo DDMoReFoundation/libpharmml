@@ -59,7 +59,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     InfusionType.class,
     Bolus.class
 })
-public abstract class DosingRegimenType
+public abstract class DosingRegimen
     extends PharmMLRootType
 {
 

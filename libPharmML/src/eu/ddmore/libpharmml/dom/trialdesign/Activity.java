@@ -80,7 +80,7 @@ public class Activity
     @XmlElement(name = "LookupTable")
     protected LookupTableType lookupTable;
     @XmlElementRef(name = "DosingRegimen", namespace = "http://www.pharmml.org/2013/03/TrialDesign", type = JAXBElement.class, required = false)
-    protected JAXBElement<? extends DosingRegimenType> dosingRegimen;
+    protected JAXBElement<? extends DosingRegimen> dosingRegimen;
     @XmlElement(name = "Washout")
     protected WashoutType washout;
     @XmlAttribute(name = "oid", required = true)
@@ -118,12 +118,12 @@ public class Activity
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DosingRegimenType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link DosingRegimen }{@code >}
      *     {@link JAXBElement }{@code <}{@link Bolus }{@code >}
      *     {@link JAXBElement }{@code <}{@link InfusionType }{@code >}
      *     
      */
-    public JAXBElement<? extends DosingRegimenType> getDosingRegimen() {
+    public JAXBElement<? extends DosingRegimen> getDosingRegimen() {
         return dosingRegimen;
     }
 
@@ -132,12 +132,12 @@ public class Activity
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DosingRegimenType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link DosingRegimen }{@code >}
      *     {@link JAXBElement }{@code <}{@link Bolus }{@code >}
      *     {@link JAXBElement }{@code <}{@link InfusionType }{@code >}
      *     
      */
-    public void setDosingRegimen(JAXBElement<? extends DosingRegimenType> value) {
+    public void setDosingRegimen(JAXBElement<? extends DosingRegimen> value) {
         this.dosingRegimen = value;
     }
 
