@@ -168,11 +168,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TargetToolType }
+     * Create an instance of {@link TargetTool }
      * 
      */
-    public TargetToolType createTargetToolType() {
-        return new TargetToolType();
+    public TargetTool createTargetToolType() {
+        return new TargetTool();
     }
 
     /**

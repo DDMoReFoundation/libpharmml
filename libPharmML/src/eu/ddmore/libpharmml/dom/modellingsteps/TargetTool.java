@@ -80,7 +80,7 @@ import eu.ddmore.libpharmml.dom.dataset.TargetToolDataSet;
     "targetToolData",
     "codeInjection"
 })
-public class TargetToolType
+public class TargetTool
     extends PharmMLRootType
 {
 

@@ -81,7 +81,7 @@ public class ModellingSteps
     @XmlElement(name = "NONMEMdataSet")
     protected List<NONMEMdataSet> nonmeMdataSet;
     @XmlElement(name = "TargetTool")
-    protected List<TargetToolType> targetTool;
+    protected List<TargetTool> targetTool;
     @XmlElementRef(name = "CommonModellingStep", namespace = "http://www.pharmml.org/2013/03/ModellingSteps", type = JAXBElement.class, required = false)
     protected List<JAXBElement<? extends CommonModellingStep>> commonModellingStep;
     @XmlElement(name = "StepDependencies")
@@ -163,13 +163,13 @@ public class ModellingSteps
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link TargetToolType }
+     * {@link TargetTool }
      * 
      * @since PharmML 0.3
      */
-    public List<TargetToolType> getTargetTool() {
+    public List<TargetTool> getTargetTool() {
         if (targetTool == null) {
-            targetTool = new ArrayList<TargetToolType>();
+            targetTool = new ArrayList<TargetTool>();
         }
         return this.targetTool;
     }
