@@ -332,15 +332,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AssignType }
-     * 
-     */
-    @Deprecated
-    public AssignType createAssignType() {
-        return new AssignType();
-    }
-
-    /**
      * Create an instance of {@link InitialValue }
      * 
      */

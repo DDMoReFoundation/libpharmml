@@ -31,7 +31,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
@@ -62,7 +61,6 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
  * 
  * 
  */
-@SuppressWarnings("deprecation")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Rhs", propOrder = {
     "equation",
@@ -72,9 +70,6 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
     "vector",
     "interpolation",
     "matrix"
-})
-@XmlSeeAlso({
-    AssignType.class
 })
 public class Rhs
     extends PharmMLRootType
