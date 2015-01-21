@@ -50,7 +50,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "LhsTransformationType")
 @XmlEnum
-public enum LhsTransformationType {
+public enum LhsTransformation {
 
 
     /**
@@ -82,7 +82,7 @@ public enum LhsTransformationType {
     PROBIT("probit");
     private final String value;
 
-    LhsTransformationType(String v) {
+    LhsTransformation(String v) {
         value = v;
     }
 
@@ -90,8 +90,8 @@ public enum LhsTransformationType {
         return value;
     }
 
-    public static LhsTransformationType fromValue(String v) {
-        for (LhsTransformationType c: LhsTransformationType.values()) {
+    public static LhsTransformation fromValue(String v) {
+        for (LhsTransformation c: LhsTransformation.values()) {
             if (c.value.equals(v)) {
                 return c;
             }

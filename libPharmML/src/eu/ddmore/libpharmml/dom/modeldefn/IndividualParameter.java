@@ -247,7 +247,7 @@ public class IndividualParameter
     {
 
         @XmlElement(name = "Transformation")
-        protected LhsTransformationType transformation;
+        protected LhsTransformation transformation;
         @XmlElement(name = "LinearCovariate")
         protected IndividualParameter.GaussianModel.LinearCovariate linearCovariate;
         @XmlElement(name = "GeneralCovariate")
@@ -260,10 +260,10 @@ public class IndividualParameter
          * 
          * @return
          *     possible object is
-         *     {@link LhsTransformationType }
+         *     {@link LhsTransformation }
          *     
          */
-        public LhsTransformationType getTransformation() {
+        public LhsTransformation getTransformation() {
             return transformation;
         }
 
@@ -272,10 +272,10 @@ public class IndividualParameter
          * 
          * @param value
          *     allowed object is
-         *     {@link LhsTransformationType }
+         *     {@link LhsTransformation }
          *     
          */
-        public void setTransformation(LhsTransformationType value) {
+        public void setTransformation(LhsTransformation value) {
             this.transformation = value;
         }
 

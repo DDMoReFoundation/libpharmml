@@ -100,7 +100,7 @@ public class GaussianObsError
 {
 
     @XmlElement(name = "Transformation")
-    protected LhsTransformationType transformation;
+    protected LhsTransformation transformation;
     @XmlElement(name = "Output", required = true)
     protected GaussianObsError.Output output;
     @XmlElement(name = "ErrorModel", required = true)
@@ -113,10 +113,10 @@ public class GaussianObsError
      * 
      * @return
      *     possible object is
-     *     {@link LhsTransformationType }
+     *     {@link LhsTransformation }
      *     
      */
-    public LhsTransformationType getTransformation() {
+    public LhsTransformation getTransformation() {
         return transformation;
     }
 
@@ -125,10 +125,10 @@ public class GaussianObsError
      * 
      * @param value
      *     allowed object is
-     *     {@link LhsTransformationType }
+     *     {@link LhsTransformation }
      *     
      */
-    public void setTransformation(LhsTransformationType value) {
+    public void setTransformation(LhsTransformation value) {
         this.transformation = value;
     }
 
