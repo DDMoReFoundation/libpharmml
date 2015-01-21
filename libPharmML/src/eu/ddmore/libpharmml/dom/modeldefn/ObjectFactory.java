@@ -412,11 +412,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ParameterRandomEffectType }
+     * Create an instance of {@link ParameterRandomEffect }
      * 
      */
-    public ParameterRandomEffectType createParameterRandomEffectType() {
-        return new ParameterRandomEffectType();
+    public ParameterRandomEffect createParameterRandomEffectType() {
+        return new ParameterRandomEffect();
     }
 
     /**

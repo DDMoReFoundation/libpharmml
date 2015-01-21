@@ -253,7 +253,7 @@ public class IndividualParameter
         @XmlElement(name = "GeneralCovariate")
         protected IndividualParameter.GaussianModel.GeneralCovariate generalCovariate;
         @XmlElement(name = "RandomEffects", required = true)
-        protected List<ParameterRandomEffectType> randomEffects;
+        protected List<ParameterRandomEffect> randomEffects;
 
         /**
          * Gets the value of the transformation property.
@@ -345,13 +345,13 @@ public class IndividualParameter
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link ParameterRandomEffectType }
+         * {@link ParameterRandomEffect }
          * 
          * @since PharmML 0.3. This method returned an indivual element before.
          */
-        public List<ParameterRandomEffectType> getRandomEffects() {
+        public List<ParameterRandomEffect> getRandomEffects() {
             if (randomEffects == null) {
-                randomEffects = new ArrayList<ParameterRandomEffectType>();
+                randomEffects = new ArrayList<ParameterRandomEffect>();
             }
             return this.randomEffects;
         }

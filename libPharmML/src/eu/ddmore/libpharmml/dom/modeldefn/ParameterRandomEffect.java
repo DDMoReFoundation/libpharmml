@@ -61,7 +61,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 @XmlType(name = "ParameterRandomEffectType", propOrder = {
     "symbRef"
 })
-public class ParameterRandomEffectType
+public class ParameterRandomEffect
     extends PharmMLRootType
 {
 
