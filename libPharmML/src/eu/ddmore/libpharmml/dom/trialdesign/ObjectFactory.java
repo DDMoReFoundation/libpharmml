@@ -140,12 +140,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArmMappingType }
+     * Create an instance of {@link ArmMapping }
      * 
      */
 	@Deprecated
-    public ArmMappingType createArmMappingType() {
-        return new ArmMappingType();
+    public ArmMapping createArmMappingType() {
+        return new ArmMapping();
     }
 
     /**
@@ -391,13 +391,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArmMappingType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArmMapping }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "ArmMapping")
     @Deprecated
-	public JAXBElement<ArmMappingType> createArmMapping(ArmMappingType value) {
-        return new JAXBElement<ArmMappingType>(_ArmMapping_QNAME, ArmMappingType.class, null, value);
+	public JAXBElement<ArmMapping> createArmMapping(ArmMapping value) {
+        return new JAXBElement<ArmMapping>(_ArmMapping_QNAME, ArmMapping.class, null, value);
     }
 
     /**

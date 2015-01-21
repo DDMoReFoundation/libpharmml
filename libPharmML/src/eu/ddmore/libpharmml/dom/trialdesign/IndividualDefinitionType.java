@@ -85,7 +85,7 @@ public class IndividualDefinitionType
     @XmlElement(name = "IndividualMapping", required = true)
     protected IndividualMappingType individualMapping;
     @XmlElement(name = "ArmMapping", required = true)
-    protected ArmMappingType armMapping;
+    protected ArmMapping armMapping;
     @XmlElementRef(name = "AttributeMapping", namespace = "http://www.pharmml.org/2013/03/TrialDesign", type = JAXBElement.class, required = false)
     protected List<JAXBElement<?>> attributeMapping;
     @XmlElement(name = "IVDependentMapping")
@@ -150,10 +150,10 @@ public class IndividualDefinitionType
      * 
      * @return
      *     possible object is
-     *     {@link ArmMappingType }
+     *     {@link ArmMapping }
      *     
      */
-    public ArmMappingType getArmMapping() {
+    public ArmMapping getArmMapping() {
         return armMapping;
     }
 
@@ -162,10 +162,10 @@ public class IndividualDefinitionType
      * 
      * @param value
      *     allowed object is
-     *     {@link ArmMappingType }
+     *     {@link ArmMapping }
      *     
      */
-    public void setArmMapping(ArmMappingType value) {
+    public void setArmMapping(ArmMapping value) {
         this.armMapping = value;
     }
 

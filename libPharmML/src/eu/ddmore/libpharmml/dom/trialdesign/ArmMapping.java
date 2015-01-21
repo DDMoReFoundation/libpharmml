@@ -54,7 +54,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ArmMappingType")
 @Deprecated
-public class ArmMappingType
+public class ArmMapping
     extends PopulationMappingType
 {
 
