@@ -75,7 +75,7 @@ public class VariabilityDefnBlock
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected Name name;
     @XmlElement(name = "Level", required = true)
-    protected List<VariabilityLevelDefnType> level;
+    protected List<VariabilityLevelDefinition> level;
     @XmlAttribute(name = "type", required = true)
     protected VariabilityType type;
     @XmlAttribute(name = "blkId", required = true)
@@ -124,13 +124,13 @@ public class VariabilityDefnBlock
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link VariabilityLevelDefnType }
+     * {@link VariabilityLevelDefinition }
      * 
      * 
      */
-    public List<VariabilityLevelDefnType> getLevel() {
+    public List<VariabilityLevelDefinition> getLevel() {
         if (level == null) {
-            level = new ArrayList<VariabilityLevelDefnType>();
+            level = new ArrayList<VariabilityLevelDefinition>();
         }
         return this.level;
     }

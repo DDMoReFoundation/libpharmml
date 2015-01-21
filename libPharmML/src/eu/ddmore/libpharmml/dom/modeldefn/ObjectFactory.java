@@ -188,11 +188,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VariabilityLevelDefnType }
+     * Create an instance of {@link VariabilityLevelDefinition }
      * 
      */
-    public VariabilityLevelDefnType createVariabilityLevelDefnType() {
-        return new VariabilityLevelDefnType();
+    public VariabilityLevelDefinition createVariabilityLevelDefnType() {
+        return new VariabilityLevelDefinition();
     }
 
     /**

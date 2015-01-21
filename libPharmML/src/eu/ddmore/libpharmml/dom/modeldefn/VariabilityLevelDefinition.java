@@ -66,7 +66,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "name",
     "parentLevel"
 })
-public class VariabilityLevelDefnType
+public class VariabilityLevelDefinition
     extends PharmMLRootType
 {
 

@@ -91,7 +91,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.StructuralModel;
 import eu.ddmore.libpharmml.dom.modeldefn.TTEFunction;
 import eu.ddmore.libpharmml.dom.modeldefn.TransitionRate;
 import eu.ddmore.libpharmml.dom.modeldefn.VariabilityDefnBlock;
-import eu.ddmore.libpharmml.dom.modeldefn.VariabilityLevelDefnType;
+import eu.ddmore.libpharmml.dom.modeldefn.VariabilityLevelDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.AbsorptionOralMacro;
 import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.OralMacro;
 import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKMacroList;
@@ -196,7 +196,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     TransitionRate.class,
     CovariateTransformation.class,
     Pairwise.class,
-    VariabilityLevelDefnType.class,
+    VariabilityLevelDefinition.class,
     CountPMF.class,
     Discrete.class,
     VariabilityDefnBlock.class,
