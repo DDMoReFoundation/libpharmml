@@ -134,7 +134,7 @@ public abstract class CommonParameterModel
      * {@link JAXBElement }{@code <}{@link SimpleParameterType }{@code >}
      * {@link JAXBElement }{@code <}{@link CommonParameter }{@code >}
      * {@link JAXBElement }{@code <}{@link IndividualParameter }{@code >}
-     * {@link JAXBElement }{@code <}{@link ParameterRandomVariableType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ParameterRandomVariable }{@code >}
      * 
      * 
      */

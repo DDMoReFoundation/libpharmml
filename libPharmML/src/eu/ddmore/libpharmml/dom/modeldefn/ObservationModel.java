@@ -255,7 +255,7 @@ public class ObservationModel
      * {@link JAXBElement }{@code <}{@link SimpleParameterType }{@code >}
      * {@link JAXBElement }{@code <}{@link CommonParameter }{@code >}
      * {@link JAXBElement }{@code <}{@link IndividualParameter }{@code >}
-     * {@link JAXBElement }{@code <}{@link ParameterRandomVariableType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ParameterRandomVariable }{@code >}
      * 
      * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.
      * See the documentation of {@link ObservationModel}.

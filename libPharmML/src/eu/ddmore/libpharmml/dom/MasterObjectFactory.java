@@ -36,7 +36,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.GaussianObsError;
 import eu.ddmore.libpharmml.dom.modeldefn.GeneralObsError;
 import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.ObservationError;
-import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomVariableType;
+import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomVariable;
 import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameterType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractCategoricalMultivariateDistributionType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractCategoricalUnivariateDistributionType;
@@ -206,8 +206,8 @@ public class MasterObjectFactory {
 	
 	public static JAXBElement<? extends CommonParameter> createParameter(CommonParameter param){
 		JAXBElement<? extends CommonParameter> element;
-		if(param instanceof ParameterRandomVariableType){
-			element = MODELDEFN_OF.createRandomVariable((ParameterRandomVariableType) param);
+		if(param instanceof ParameterRandomVariable){
+			element = MODELDEFN_OF.createRandomVariable((ParameterRandomVariable) param);
 		} else if(param instanceof SimpleParameterType){
 			element = MODELDEFN_OF.createSimpleParameter((SimpleParameterType) param);
 		} else if(param instanceof IndividualParameter){

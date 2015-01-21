@@ -132,11 +132,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ParameterRandomVariableType }
+     * Create an instance of {@link ParameterRandomVariable }
      * 
      */
-    public ParameterRandomVariableType createParameterRandomVariableType() {
-        return new ParameterRandomVariableType();
+    public ParameterRandomVariable createParameterRandomVariableType() {
+        return new ParameterRandomVariable();
     }
 
     /**
@@ -557,12 +557,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ParameterRandomVariableType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ParameterRandomVariable }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "RandomVariable", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModelDefinition", substitutionHeadName = "CommonParameterElement")
-    public JAXBElement<ParameterRandomVariableType> createRandomVariable(ParameterRandomVariableType value) {
-        return new JAXBElement<ParameterRandomVariableType>(_RandomVariable_QNAME, ParameterRandomVariableType.class, null, value);
+    public JAXBElement<ParameterRandomVariable> createRandomVariable(ParameterRandomVariable value) {
+        return new JAXBElement<ParameterRandomVariable>(_RandomVariable_QNAME, ParameterRandomVariable.class, null, value);
     }
 
 }

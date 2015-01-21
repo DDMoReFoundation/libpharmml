@@ -102,7 +102,7 @@ import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
     "abstractCategoricalUnivariateDistribution",
     "abstractCategoricalMultivariateDistribution"
 })
-public class ParameterRandomVariableType
+public class ParameterRandomVariable
     extends CommonParameter
 {
 

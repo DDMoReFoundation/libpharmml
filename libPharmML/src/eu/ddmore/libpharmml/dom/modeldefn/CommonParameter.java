@@ -65,7 +65,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolName;
     "symbol"
 })
 @XmlSeeAlso({
-    ParameterRandomVariableType.class,
+    ParameterRandomVariable.class,
     SimpleParameterType.class,
     IndividualParameter.class
 })

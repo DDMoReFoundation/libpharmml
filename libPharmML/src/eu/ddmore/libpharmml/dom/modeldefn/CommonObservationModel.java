@@ -181,7 +181,7 @@ public abstract class CommonObservationModel
      * {@link CommonParameter }
      * {@link SimpleParameterType }
      * {@link IndividualParameter }
-     * {@link ParameterRandomVariableType }
+     * {@link ParameterRandomVariable }
      * 
      * 
      */
