@@ -297,11 +297,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EstimationOperationType }
+     * Create an instance of {@link EstimationOperation }
      * 
      */
-    public EstimationOperationType createEstimationOperationType() {
-        return new EstimationOperationType();
+    public EstimationOperation createEstimationOperationType() {
+        return new EstimationOperation();
     }
 
     /**
@@ -361,13 +361,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EstimationOperationType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link EstimationOperation }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "Operation")
 	@Deprecated
-    public JAXBElement<EstimationOperationType> createOperation(EstimationOperationType value) {
-        return new JAXBElement<EstimationOperationType>(_Operation_QNAME, EstimationOperationType.class, null, value);
+    public JAXBElement<EstimationOperation> createOperation(EstimationOperation value) {
+        return new JAXBElement<EstimationOperation>(_Operation_QNAME, EstimationOperation.class, null, value);
     }
 
     /**

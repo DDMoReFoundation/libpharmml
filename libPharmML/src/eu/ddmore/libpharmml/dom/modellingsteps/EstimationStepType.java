@@ -74,7 +74,7 @@ public class EstimationStepType
     @XmlElement(name = "ParametersToEstimate", required = true)
     protected ToEstimateType parametersToEstimate;
     @XmlElement(name = "Operation", required = true)
-    protected List<EstimationOperationType> operation;
+    protected List<EstimationOperation> operation;
 
     /**
      * Gets the value of the objectiveDataSet property.
@@ -147,13 +147,13 @@ public class EstimationStepType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link EstimationOperationType }
+     * {@link EstimationOperation }
      * 
      * 
      */
-    public List<EstimationOperationType> getOperation() {
+    public List<EstimationOperation> getOperation() {
         if (operation == null) {
-            operation = new ArrayList<EstimationOperationType>();
+            operation = new ArrayList<EstimationOperation>();
         }
         return this.operation;
     }

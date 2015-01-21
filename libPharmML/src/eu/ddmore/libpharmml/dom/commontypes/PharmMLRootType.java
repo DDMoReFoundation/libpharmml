@@ -100,7 +100,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.CodeInjection;
 import eu.ddmore.libpharmml.dom.modellingsteps.CommonModellingStep;
 import eu.ddmore.libpharmml.dom.modellingsteps.DatasetMapping;
 import eu.ddmore.libpharmml.dom.modellingsteps.DependentsType;
-import eu.ddmore.libpharmml.dom.modellingsteps.EstimationOperationType;
+import eu.ddmore.libpharmml.dom.modellingsteps.EstimationOperation;
 import eu.ddmore.libpharmml.dom.modellingsteps.GenericCodeType;
 import eu.ddmore.libpharmml.dom.modellingsteps.MappingType;
 import eu.ddmore.libpharmml.dom.modellingsteps.ModellingStepsType;
@@ -310,7 +310,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     GenericCodeType.class,
     SymbolMappingType.class,
     ToEstimateType.class,
-    EstimationOperationType.class,
+    EstimationOperation.class,
     EquationType.class,
     LogicCondition.class,
     AbsorptionOralMacro.class,
