@@ -65,7 +65,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "symbol"
 })
 @XmlSeeAlso({
-    FunctionDefinitionType.class,
+    FunctionDefinition.class,
     VariableDefinition.class,
     DerivativeVariable.class,
     FunctionParameter.class

@@ -114,11 +114,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FunctionDefinitionType }
+     * Create an instance of {@link FunctionDefinition }
      * 
      */
-    public FunctionDefinitionType createFunctionDefinitionType() {
-        return new FunctionDefinitionType();
+    public FunctionDefinition createFunctionDefinitionType() {
+        return new FunctionDefinition();
     }
 
     /**
@@ -384,12 +384,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FunctionDefinitionType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FunctionDefinition }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "FunctionDefinition")
-    public JAXBElement<FunctionDefinitionType> createFunctionDefinition(FunctionDefinitionType value) {
-        return new JAXBElement<FunctionDefinitionType>(_FunctionDefinition_QNAME, FunctionDefinitionType.class, null, value);
+    public JAXBElement<FunctionDefinition> createFunctionDefinition(FunctionDefinition value) {
+        return new JAXBElement<FunctionDefinition>(_FunctionDefinition_QNAME, FunctionDefinition.class, null, value);
     }
 
     /**

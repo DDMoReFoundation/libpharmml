@@ -65,7 +65,7 @@ import javax.xml.bind.annotation.XmlType;
     "functionArgument",
     "definition"
 })
-public class FunctionDefinitionType
+public class FunctionDefinition
     extends CommonVariableDefinition
 {
 

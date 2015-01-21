@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
-import eu.ddmore.libpharmml.dom.commontypes.FunctionDefinitionType;
+import eu.ddmore.libpharmml.dom.commontypes.FunctionDefinition;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modellingsteps.ModellingSteps;
@@ -92,7 +92,7 @@ public class PharmML {
     @XmlElement(name = "IndependentVariable")
     protected IndependentVariable independentVariable;
     @XmlElement(name = "FunctionDefinition", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected List<FunctionDefinitionType> functionDefinition;
+    protected List<FunctionDefinition> functionDefinition;
     @XmlElement(name = "ModelDefinition", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", required = true)
     protected ModelDefinition modelDefinition;
     @XmlElement(name = "TrialDesign", namespace = "http://www.pharmml.org/2013/03/TrialDesign")
@@ -197,13 +197,13 @@ public class PharmML {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link FunctionDefinitionType }
+     * {@link FunctionDefinition }
      * 
      * 
      */
-    public List<FunctionDefinitionType> getFunctionDefinition() {
+    public List<FunctionDefinition> getFunctionDefinition() {
         if (functionDefinition == null) {
-            functionDefinition = new ArrayList<FunctionDefinitionType>();
+            functionDefinition = new ArrayList<FunctionDefinition>();
         }
         return this.functionDefinition;
     }
