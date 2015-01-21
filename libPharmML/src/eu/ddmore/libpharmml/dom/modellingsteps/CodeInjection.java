@@ -69,7 +69,7 @@ public class CodeInjection
 {
 
     @XmlElement(name = "SymbolMapping")
-    protected List<SymbolMappingType> symbolMapping;
+    protected List<SymbolMapping> symbolMapping;
     @XmlElement(name = "TargetCode", required = true)
     protected GenericCode targetCode;
 
@@ -91,13 +91,13 @@ public class CodeInjection
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link SymbolMappingType }
+     * {@link SymbolMapping }
      * 
      * 
      */
-    public List<SymbolMappingType> getSymbolMapping() {
+    public List<SymbolMapping> getSymbolMapping() {
         if (symbolMapping == null) {
-            symbolMapping = new ArrayList<SymbolMappingType>();
+            symbolMapping = new ArrayList<SymbolMapping>();
         }
         return this.symbolMapping;
     }

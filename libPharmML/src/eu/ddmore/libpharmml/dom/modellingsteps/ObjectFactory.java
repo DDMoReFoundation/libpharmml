@@ -279,12 +279,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SymbolMappingType }
+     * Create an instance of {@link SymbolMapping }
      * 
 	 * @since PharmML0.3
      */
-    public SymbolMappingType createSymbolMappingType() {
-        return new SymbolMappingType();
+    public SymbolMapping createSymbolMappingType() {
+        return new SymbolMapping();
     }
 
     /**

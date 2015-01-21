@@ -70,7 +70,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 @XmlType(name = "SymbolMappingType", propOrder = {
     "rest"
 })
-public class SymbolMappingType
+public class SymbolMapping
     extends PharmMLRootType
 {
 

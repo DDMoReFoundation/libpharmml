@@ -113,7 +113,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.ParameterEstimate;
 import eu.ddmore.libpharmml.dom.modellingsteps.SimulationOperationType;
 import eu.ddmore.libpharmml.dom.modellingsteps.StepDependencyType;
 import eu.ddmore.libpharmml.dom.modellingsteps.StepType;
-import eu.ddmore.libpharmml.dom.modellingsteps.SymbolMappingType;
+import eu.ddmore.libpharmml.dom.modellingsteps.SymbolMapping;
 import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolReference;
 import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolSymbol;
 import eu.ddmore.libpharmml.dom.modellingsteps.TargetTool;
@@ -308,7 +308,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     DatasetMapping.class,
     StepType.class,
     GenericCode.class,
-    SymbolMappingType.class,
+    SymbolMapping.class,
     ToEstimate.class,
     EstimationOperation.class,
     EquationType.class,
