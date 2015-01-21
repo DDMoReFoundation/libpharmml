@@ -190,11 +190,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DosingVariableType }
+     * Create an instance of {@link DosingVariable }
      * 
      */
-    public DosingVariableType createDosingVariableType() {
-        return new DosingVariableType();
+    public DosingVariable createDosingVariableType() {
+        return new DosingVariable();
     }
 
     /**

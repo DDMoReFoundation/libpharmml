@@ -233,7 +233,7 @@ public class InfusionType
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "")
     public static class DoseAmount
-        extends DosingVariableType
+        extends DosingVariable
     {
 
 

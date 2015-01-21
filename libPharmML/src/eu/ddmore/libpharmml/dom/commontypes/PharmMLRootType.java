@@ -125,7 +125,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.CellDefinition;
 import eu.ddmore.libpharmml.dom.trialdesign.DemographicType;
 import eu.ddmore.libpharmml.dom.trialdesign.DosingRegimen;
 import eu.ddmore.libpharmml.dom.trialdesign.DosingTimesPoints;
-import eu.ddmore.libpharmml.dom.trialdesign.DosingVariableType;
+import eu.ddmore.libpharmml.dom.trialdesign.DosingVariable;
 import eu.ddmore.libpharmml.dom.trialdesign.IndividualDosingType;
 import eu.ddmore.libpharmml.dom.trialdesign.LookupTableType;
 import eu.ddmore.libpharmml.dom.trialdesign.ObservationsGroupType;
@@ -272,7 +272,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     DosingRegimen.class,
     StudyEventType.class,
     TrialStructureType.class,
-    DosingVariableType.class,
+    DosingVariable.class,
     SteadyStateParameterType.class,
     ArmDefinition.class,
     PopulationType.class,

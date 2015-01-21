@@ -70,7 +70,7 @@ public class Bolus
 {
 
     @XmlElement(name = "DoseAmount", required = true)
-    protected DosingVariableType doseAmount;
+    protected DosingVariable doseAmount;
     @XmlElement(name = "SteadyState")
     protected SteadyStateType steadyState;
     @XmlElement(name = "DosingTimes")
@@ -81,10 +81,10 @@ public class Bolus
      * 
      * @return
      *     possible object is
-     *     {@link DosingVariableType }
+     *     {@link DosingVariable }
      *     
      */
-    public DosingVariableType getDoseAmount() {
+    public DosingVariable getDoseAmount() {
         return doseAmount;
     }
 
@@ -93,10 +93,10 @@ public class Bolus
      * 
      * @param value
      *     allowed object is
-     *     {@link DosingVariableType }
+     *     {@link DosingVariable }
      *     
      */
-    public void setDoseAmount(DosingVariableType value) {
+    public void setDoseAmount(DosingVariable value) {
         this.doseAmount = value;
     }
 
