@@ -65,11 +65,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ImportTargetDataType }
+     * Create an instance of {@link ImportTargetData }
      * 
      */
-    public ImportTargetDataType createImportTargetDataType() {
-        return new ImportTargetDataType();
+    public ImportTargetData createImportTargetDataType() {
+        return new ImportTargetData();
     }
 
     /**
@@ -223,12 +223,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ImportTargetDataType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ImportTargetData }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/08/Dataset", name = "ImportTargetData")
-    public JAXBElement<ImportTargetDataType> createImportTargetData(ImportTargetDataType value) {
-        return new JAXBElement<ImportTargetDataType>(_ImportTargetData_QNAME, ImportTargetDataType.class, null, value);
+    public JAXBElement<ImportTargetData> createImportTargetData(ImportTargetData value) {
+        return new JAXBElement<ImportTargetData>(_ImportTargetData_QNAME, ImportTargetData.class, null, value);
     }
 
 }

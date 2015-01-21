@@ -84,7 +84,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "format",
     "delimiter"
 })
-public class ImportTargetDataType
+public class ImportTargetData
     extends PharmMLRootType
 {
 

@@ -73,7 +73,7 @@ public class TargetToolDataSet
     @XmlElement(name = "Definition")
     protected ColumnsDefinitionType definition;
     @XmlElement(name = "ImportTargetData")
-    protected ImportTargetDataType importTargetData;
+    protected ImportTargetData importTargetData;
     @XmlElement(name = "Table")
     protected DataSetTableType table;
 
@@ -108,10 +108,10 @@ public class TargetToolDataSet
      * 
      * @return
      *     possible object is
-     *     {@link ImportTargetDataType }
+     *     {@link ImportTargetData }
      *     
      */
-    public ImportTargetDataType getImportTargetData() {
+    public ImportTargetData getImportTargetData() {
         return importTargetData;
     }
 
@@ -120,10 +120,10 @@ public class TargetToolDataSet
      * 
      * @param value
      *     allowed object is
-     *     {@link ImportTargetDataType }
+     *     {@link ImportTargetData }
      *     
      */
-    public void setImportTargetData(ImportTargetDataType value) {
+    public void setImportTargetData(ImportTargetData value) {
         this.importTargetData = value;
     }
 
