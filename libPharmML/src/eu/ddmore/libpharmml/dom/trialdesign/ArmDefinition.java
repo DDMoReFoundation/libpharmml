@@ -58,7 +58,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ArmDefnType")
-public class ArmDefnType
+public class ArmDefinition
     extends PharmMLRootType
 {
 

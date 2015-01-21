@@ -223,11 +223,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArmDefnType }
+     * Create an instance of {@link ArmDefinition }
      * 
      */
-    public ArmDefnType createArmDefnType() {
-        return new ArmDefnType();
+    public ArmDefinition createArmDefnType() {
+        return new ArmDefinition();
     }
 
     /**
