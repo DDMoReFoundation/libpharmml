@@ -140,7 +140,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.StudyTimePoint;
 import eu.ddmore.libpharmml.dom.trialdesign.Target;
 import eu.ddmore.libpharmml.dom.trialdesign.TrialDesign;
 import eu.ddmore.libpharmml.dom.trialdesign.TrialStructure;
-import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
+import eu.ddmore.libpharmml.dom.trialdesign.Washout;
 
 
 /**
@@ -268,7 +268,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     MapType.class,
     LookupTable.class,
     Activity.class,
-    WashoutType.class,
+    Washout.class,
     DosingRegimen.class,
     StudyEvent.class,
     TrialStructure.class,

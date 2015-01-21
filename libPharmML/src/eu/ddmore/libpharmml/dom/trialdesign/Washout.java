@@ -54,7 +54,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "WashoutType")
-public class WashoutType
+public class Washout
     extends PharmMLRootType
 {
 

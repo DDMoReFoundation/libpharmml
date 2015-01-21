@@ -82,7 +82,7 @@ public class Activity
     @XmlElementRef(name = "DosingRegimen", namespace = "http://www.pharmml.org/2013/03/TrialDesign", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends DosingRegimen> dosingRegimen;
     @XmlElement(name = "Washout")
-    protected WashoutType washout;
+    protected Washout washout;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
@@ -146,10 +146,10 @@ public class Activity
      * 
      * @return
      *     possible object is
-     *     {@link WashoutType }
+     *     {@link Washout }
      *     
      */
-    public WashoutType getWashout() {
+    public Washout getWashout() {
         return washout;
     }
 
@@ -158,10 +158,10 @@ public class Activity
      * 
      * @param value
      *     allowed object is
-     *     {@link WashoutType }
+     *     {@link Washout }
      *     
      */
-    public void setWashout(WashoutType value) {
+    public void setWashout(Washout value) {
         this.washout = value;
     }
 

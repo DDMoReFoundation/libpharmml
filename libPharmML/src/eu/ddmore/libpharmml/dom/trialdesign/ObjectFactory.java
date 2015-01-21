@@ -149,11 +149,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link WashoutType }
+     * Create an instance of {@link Washout }
      * 
      */
-    public WashoutType createWashoutType() {
-        return new WashoutType();
+    public Washout createWashoutType() {
+        return new Washout();
     }
 
     /**
@@ -448,12 +448,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link WashoutType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Washout }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "Washout")
-    public JAXBElement<WashoutType> createWashout(WashoutType value) {
-        return new JAXBElement<WashoutType>(_Washout_QNAME, WashoutType.class, null, value);
+    public JAXBElement<Washout> createWashout(Washout value) {
+        return new JAXBElement<Washout>(_Washout_QNAME, Washout.class, null, value);
     }
 
     /**
