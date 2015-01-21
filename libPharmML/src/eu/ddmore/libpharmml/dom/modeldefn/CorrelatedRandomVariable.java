@@ -59,7 +59,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 @XmlType(name = "CorrelatedRandomVarType", propOrder = {
     "symbRef"
 })
-public class CorrelatedRandomVarType
+public class CorrelatedRandomVariable
     extends PharmMLRootType
 {
 

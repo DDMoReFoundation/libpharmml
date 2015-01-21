@@ -72,9 +72,9 @@ public class PairwiseType
 {
 
     @XmlElement(name = "RandomVariable1", required = true)
-    protected CorrelatedRandomVarType randomVariable1;
+    protected CorrelatedRandomVariable randomVariable1;
     @XmlElement(name = "RandomVariable2", required = true)
-    protected CorrelatedRandomVarType randomVariable2;
+    protected CorrelatedRandomVariable randomVariable2;
     @XmlElement(name = "CorrelationCoefficient")
     protected ScalarRhs correlationCoefficient;
     @XmlElement(name = "Covariance")
@@ -85,10 +85,10 @@ public class PairwiseType
      * 
      * @return
      *     possible object is
-     *     {@link CorrelatedRandomVarType }
+     *     {@link CorrelatedRandomVariable }
      *     
      */
-    public CorrelatedRandomVarType getRandomVariable1() {
+    public CorrelatedRandomVariable getRandomVariable1() {
         return randomVariable1;
     }
 
@@ -97,10 +97,10 @@ public class PairwiseType
      * 
      * @param value
      *     allowed object is
-     *     {@link CorrelatedRandomVarType }
+     *     {@link CorrelatedRandomVariable }
      *     
      */
-    public void setRandomVariable1(CorrelatedRandomVarType value) {
+    public void setRandomVariable1(CorrelatedRandomVariable value) {
         this.randomVariable1 = value;
     }
 
@@ -109,10 +109,10 @@ public class PairwiseType
      * 
      * @return
      *     possible object is
-     *     {@link CorrelatedRandomVarType }
+     *     {@link CorrelatedRandomVariable }
      *     
      */
-    public CorrelatedRandomVarType getRandomVariable2() {
+    public CorrelatedRandomVariable getRandomVariable2() {
         return randomVariable2;
     }
 
@@ -121,10 +121,10 @@ public class PairwiseType
      * 
      * @param value
      *     allowed object is
-     *     {@link CorrelatedRandomVarType }
+     *     {@link CorrelatedRandomVariable }
      *     
      */
-    public void setRandomVariable2(CorrelatedRandomVarType value) {
+    public void setRandomVariable2(CorrelatedRandomVariable value) {
         this.randomVariable2 = value;
     }
 

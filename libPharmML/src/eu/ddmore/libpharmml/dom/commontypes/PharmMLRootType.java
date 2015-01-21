@@ -67,7 +67,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.CommonObservationModel;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonParameterModel;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.ContinuousCovariate;
-import eu.ddmore.libpharmml.dom.modeldefn.CorrelatedRandomVarType;
+import eu.ddmore.libpharmml.dom.modeldefn.CorrelatedRandomVariable;
 import eu.ddmore.libpharmml.dom.modeldefn.CorrelationType;
 import eu.ddmore.libpharmml.dom.modeldefn.CountPMF;
 import eu.ddmore.libpharmml.dom.modeldefn.CovariateDefinitionType;
@@ -215,7 +215,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     ListOfCategories.class,
     CorrelationType.class,
     CommonDiscreteVariable.class,
-    CorrelatedRandomVarType.class,
+    CorrelatedRandomVariable.class,
     CategoricalPMF.class,
     TTEFunction.class,
     CategoricalRelation.class,

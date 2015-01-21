@@ -92,10 +92,10 @@ public class CorrelationType
     protected LevelReference variabilityReference;
 	@XmlElement(name = "RandomVariable1", required = true)
 	@Deprecated
-    protected CorrelatedRandomVarType randomVariable1;
+    protected CorrelatedRandomVariable randomVariable1;
     @XmlElement(name = "RandomVariable2", required = true)
     @Deprecated
-    protected CorrelatedRandomVarType randomVariable2;
+    protected CorrelatedRandomVariable randomVariable2;
     @XmlElement(name = "CorrelationCoefficient")
     @Deprecated
     protected ScalarRhs correlationCoefficient;
@@ -139,13 +139,13 @@ public class CorrelationType
      * 
      * @return
      *     possible object is
-     *     {@link CorrelatedRandomVarType }
+     *     {@link CorrelatedRandomVariable }
      *     
      * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link PairwiseType} child element,
      * accessible through {@link #getPairwise()}
      */
     @Deprecated
-	public CorrelatedRandomVarType getRandomVariable1() {
+	public CorrelatedRandomVariable getRandomVariable1() {
         return randomVariable1;
     }
 
@@ -154,13 +154,13 @@ public class CorrelationType
      * 
      * @param value
      *     allowed object is
-     *     {@link CorrelatedRandomVarType }
+     *     {@link CorrelatedRandomVariable }
      * 
      * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link PairwiseType} child element,
      * accessible through {@link #getPairwise()}
      */
     @Deprecated
-	public void setRandomVariable1(CorrelatedRandomVarType value) {
+	public void setRandomVariable1(CorrelatedRandomVariable value) {
         this.randomVariable1 = value;
     }
 
@@ -169,13 +169,13 @@ public class CorrelationType
      * 
      * @return
      *     possible object is
-     *     {@link CorrelatedRandomVarType }
+     *     {@link CorrelatedRandomVariable }
      *     
      * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link PairwiseType} child element,
      * accessible through {@link #getPairwise()}
      */
     @Deprecated
-	public CorrelatedRandomVarType getRandomVariable2() {
+	public CorrelatedRandomVariable getRandomVariable2() {
         return randomVariable2;
     }
 
@@ -184,13 +184,13 @@ public class CorrelationType
      * 
      * @param value
      *     allowed object is
-     *     {@link CorrelatedRandomVarType }
+     *     {@link CorrelatedRandomVariable }
      *     
      * @deprecated Since PharmML 0.3, pair-wise correlations must be defined within the {@link PairwiseType} child element,
      * accessible through {@link #getPairwise()}
      */
     @Deprecated
-	public void setRandomVariable2(CorrelatedRandomVarType value) {
+	public void setRandomVariable2(CorrelatedRandomVariable value) {
         this.randomVariable2 = value;
     }
 

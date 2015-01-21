@@ -364,11 +364,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CorrelatedRandomVarType }
+     * Create an instance of {@link CorrelatedRandomVariable }
      * 
      */
-    public CorrelatedRandomVarType createCorrelatedRandomVarType() {
-        return new CorrelatedRandomVarType();
+    public CorrelatedRandomVariable createCorrelatedRandomVarType() {
+        return new CorrelatedRandomVariable();
     }
 
     /**
