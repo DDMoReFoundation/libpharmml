@@ -100,11 +100,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ModelDefinitionType }
+     * Create an instance of {@link ModelDefinition }
      * 
      */
-    public ModelDefinitionType createModelDefinitionType() {
-        return new ModelDefinitionType();
+    public ModelDefinition createModelDefinitionType() {
+        return new ModelDefinition();
     }
 
     /**
@@ -485,12 +485,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModelDefinitionType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ModelDefinition }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "ModelDefinition")
-    public JAXBElement<ModelDefinitionType> createModelDefinition(ModelDefinitionType value) {
-        return new JAXBElement<ModelDefinitionType>(_ModelDefinition_QNAME, ModelDefinitionType.class, null, value);
+    public JAXBElement<ModelDefinition> createModelDefinition(ModelDefinition value) {
+        return new JAXBElement<ModelDefinition>(_ModelDefinition_QNAME, ModelDefinition.class, null, value);
     }
 
     /**

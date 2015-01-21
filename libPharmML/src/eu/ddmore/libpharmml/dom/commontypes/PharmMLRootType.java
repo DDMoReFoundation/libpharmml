@@ -79,7 +79,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.DiscreteDataParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.Discrete;
 import eu.ddmore.libpharmml.dom.modeldefn.FixedEffectRelation;
 import eu.ddmore.libpharmml.dom.modeldefn.ListOfCategories;
-import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinitionType;
+import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.ObservationErrorType;
 import eu.ddmore.libpharmml.dom.modeldefn.ObservationModelType;
 import eu.ddmore.libpharmml.dom.modeldefn.PairwiseType;
@@ -170,7 +170,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
 })
 @XmlSeeAlso({
     IndependentVariable.class,
-    ModelDefinitionType.class,
+    ModelDefinition.class,
     TrialDesignType.class,
     ModellingStepsType.class,
     LogicBinOp.class,

@@ -68,7 +68,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "structuralModel",
     "observationModel"
 })
-public class ModelDefinitionType
+public class ModelDefinition
     extends PharmMLRootType
 {
 

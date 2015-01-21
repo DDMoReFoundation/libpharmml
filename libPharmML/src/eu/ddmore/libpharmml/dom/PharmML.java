@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
 import eu.ddmore.libpharmml.dom.commontypes.FunctionDefinitionType;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
-import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinitionType;
+import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modellingsteps.ModellingStepsType;
 import eu.ddmore.libpharmml.dom.trialdesign.TrialDesignType;
 
@@ -94,7 +94,7 @@ public class PharmML {
     @XmlElement(name = "FunctionDefinition", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected List<FunctionDefinitionType> functionDefinition;
     @XmlElement(name = "ModelDefinition", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", required = true)
-    protected ModelDefinitionType modelDefinition;
+    protected ModelDefinition modelDefinition;
     @XmlElement(name = "TrialDesign", namespace = "http://www.pharmml.org/2013/03/TrialDesign")
     protected TrialDesignType trialDesign;
     @XmlElement(name = "ModellingSteps", namespace = "http://www.pharmml.org/2013/03/ModellingSteps")
@@ -215,10 +215,10 @@ public class PharmML {
      * 
      * @return
      *     possible object is
-     *     {@link ModelDefinitionType }
+     *     {@link ModelDefinition }
      *     
      */
-    public ModelDefinitionType getModelDefinition() {
+    public ModelDefinition getModelDefinition() {
         return modelDefinition;
     }
 
@@ -227,10 +227,10 @@ public class PharmML {
      * 
      * @param value
      *     allowed object is
-     *     {@link ModelDefinitionType }
+     *     {@link ModelDefinition }
      *     
      */
-    public void setModelDefinition(ModelDefinitionType value) {
+    public void setModelDefinition(ModelDefinition value) {
         this.modelDefinition = value;
     }
 

@@ -31,7 +31,7 @@ import javax.xml.validation.Schema;
 
 import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
-import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinitionType;
+import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.StructuralModelType;
 import eu.ddmore.libpharmml.impl.Messages;
 import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory;
@@ -44,7 +44,7 @@ public class TestDomFactory {
 		eu.ddmore.libpharmml.dom.ObjectFactory fact = new eu.ddmore.libpharmml.dom.ObjectFactory();
 		PharmML dom = fact.createPharmML();
 		eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory mdefnFact = new eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory();
-		ModelDefinitionType mdt = mdefnFact.createModelDefinitionType();
+		ModelDefinition mdt = mdefnFact.createModelDefinitionType();
 		StructuralModelType stm = mdefnFact.createStructuralModelType();
 		stm.setBlkId("main");
 		mdt.getStructuralModel().add(stm);
