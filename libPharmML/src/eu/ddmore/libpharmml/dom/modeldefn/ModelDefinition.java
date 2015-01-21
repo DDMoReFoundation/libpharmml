@@ -62,29 +62,36 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ModelDefinitionType", propOrder = {
-    "variabilityModel",
-    "covariateModel",
-    "parameterModel",
-    "structuralModel",
-    "observationModel"
+    "listOfVariabilityModel",
+    "listOfCovariateModel",
+    "listOfParameterModel",
+    "listOfStructuralModel",
+    "listOfObservationModel"
 })
 public class ModelDefinition
     extends PharmMLRootType
 {
 
     @XmlElement(name = "VariabilityModel")
-    protected List<VariabilityDefnBlock> variabilityModel;
+    protected List<VariabilityDefnBlock> listOfVariabilityModel;
     @XmlElement(name = "CovariateModel")
-    protected List<CovariateModel> covariateModel;
+    protected List<CovariateModel> listOfCovariateModel;
     @XmlElement(name = "ParameterModel")
-    protected List<ParameterModel> parameterModel;
+    protected List<ParameterModel> listOfParameterModel;
     @XmlElement(name = "StructuralModel")
-    protected List<StructuralModel> structuralModel;
+    protected List<StructuralModel> listOfStructuralModel;
     @XmlElement(name = "ObservationModel")
-    protected List<ObservationModel> observationModel;
+    protected List<ObservationModel> listOfObservationModel;
 
     /**
-     * Gets the value of the variabilityModel property.
+     * @deprecated Since libPharmML 0.4. Use {@link #getListOfVariabilityModel()} instead.
+     */
+    @Deprecated
+    public List<VariabilityDefnBlock> getVariabilityModel() {
+        return getListOfVariabilityModel();
+    }
+    /**
+     * Gets the list of the variability models.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
@@ -105,13 +112,20 @@ public class ModelDefinition
      * 
      * 
      */
-    public List<VariabilityDefnBlock> getVariabilityModel() {
-        if (variabilityModel == null) {
-            variabilityModel = new ArrayList<VariabilityDefnBlock>();
+    public List<VariabilityDefnBlock> getListOfVariabilityModel() {
+        if (listOfVariabilityModel == null) {
+        	listOfVariabilityModel = new ArrayList<VariabilityDefnBlock>();
         }
-        return this.variabilityModel;
+        return this.listOfVariabilityModel;
     }
 
+    /**
+     * @deprecated Since libPharmML 0.4. Use {@link #getListOfCovariateModel()} instead.
+     */
+    @Deprecated
+    public List<CovariateModel> getCovariateModel() {
+        return getListOfCovariateModel();
+    }
     /**
      * Gets the value of the covariateModel property.
      * 
@@ -134,15 +148,22 @@ public class ModelDefinition
      * 
      * 
      */
-    public List<CovariateModel> getCovariateModel() {
-        if (covariateModel == null) {
-            covariateModel = new ArrayList<CovariateModel>();
+    public List<CovariateModel> getListOfCovariateModel() {
+        if (listOfCovariateModel == null) {
+        	listOfCovariateModel = new ArrayList<CovariateModel>();
         }
-        return this.covariateModel;
+        return this.listOfCovariateModel;
     }
 
     /**
-     * Gets the value of the parameterModel property.
+     * @deprecated Since libPharmML 0.4. Use {@link #getListOfParameterModel()} instead.
+     */
+    @Deprecated
+    public List<ParameterModel> getParameterModel() {
+        return getListOfParameterModel();
+    }
+    /**
+     * Gets the list of the parameter models.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
@@ -163,15 +184,22 @@ public class ModelDefinition
      * 
      * 
      */
-    public List<ParameterModel> getParameterModel() {
-        if (parameterModel == null) {
-            parameterModel = new ArrayList<ParameterModel>();
+    public List<ParameterModel> getListOfParameterModel() {
+        if (listOfParameterModel == null) {
+        	listOfParameterModel = new ArrayList<ParameterModel>();
         }
-        return this.parameterModel;
+        return this.listOfParameterModel;
     }
 
     /**
-     * A structural model.Gets the value of the structuralModel property.
+     * @deprecated Since libPharmML 0.4. Use {@link #getListOfStructuralModel()} instead.
+     */
+    @Deprecated
+    public List<StructuralModel> getStructuralModel() {
+        return getListOfStructuralModel();
+    }
+    /**
+     * Gets the list of structural models.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
@@ -192,15 +220,22 @@ public class ModelDefinition
      * 
      * 
      */
-    public List<StructuralModel> getStructuralModel() {
-        if (structuralModel == null) {
-            structuralModel = new ArrayList<StructuralModel>();
+    public List<StructuralModel> getListOfStructuralModel() {
+        if (listOfStructuralModel == null) {
+        	listOfStructuralModel = new ArrayList<StructuralModel>();
         }
-        return this.structuralModel;
+        return this.listOfStructuralModel;
     }
 
     /**
-     * Gets the value of the observationModel property.
+     * @deprecated Since libPharmML 0.4. Use {@link #getListOfObservationModel()} instead.
+     */
+    @Deprecated
+    public List<ObservationModel> getObservationModel() {
+        return getListOfObservationModel();
+    }
+    /**
+     * Gets the list of observation models.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
@@ -221,11 +256,114 @@ public class ModelDefinition
      * 
      * 
      */
-    public List<ObservationModel> getObservationModel() {
-        if (observationModel == null) {
-            observationModel = new ArrayList<ObservationModel>();
+    public List<ObservationModel> getListOfObservationModel() {
+        if (listOfObservationModel == null) {
+        	listOfObservationModel = new ArrayList<ObservationModel>();
         }
-        return this.observationModel;
+        return this.listOfObservationModel;
     }
+    
+    /**
+     * Creates a new empty {@link VariabilityDefnBlock} variabilityModel element, adds it to the current object and returns it.
+     * @return The created {@link VariabilityDefnBlock} object.
+     */
+    public VariabilityDefnBlock createVariabilityModel(){
+            VariabilityDefnBlock el = new VariabilityDefnBlock();
+            getListOfVariabilityModel().add(el);
+            return el;
+    }
+    /**
+     * Creates a new {@link VariabilityDefnBlock} variabilityModel element, adds it to the current object and returns it.
+     * @param blkId
+     * @param variability
+     * @return The created {@link VariabilityDefnBlock} object.
+     */
+    public VariabilityDefnBlock createVariabilityModel(String blkId, Variability variability){
+            VariabilityDefnBlock el = createVariabilityModel();
+            el.setBlkId(blkId);
+            el.setType(variability);
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link CovariateModel} covariateModel element, adds it to the current object and returns it.
+     * @return The created {@link CovariateModel} object.
+     */
+    public CovariateModel createCovariateModel(){
+            CovariateModel el = new CovariateModel();
+            getListOfCovariateModel().add(el);
+            return el;
+    }
+    /**
+     * Creates a new {@link CovariateModel} covariateModel element, adds it to the current object and returns it.
+     * @param blkId Block id of the covariate model.
+     * @return The created {@link CovariateModel} object.
+     */
+    public CovariateModel createCovariateModel(String blkId){
+            CovariateModel el = createCovariateModel();
+            el.setBlkId(blkId);
+            return el;
+    }
+
+    /**
+     * Creates a new {@link ParameterModel} parameterModel element, adds it to the current object and returns it.
+     * @return The created {@link ParameterModel} object.
+     */
+    public ParameterModel createParameterModel(){
+            ParameterModel el = new ParameterModel();
+            getListOfParameterModel().add(el);
+            return el;
+    }
+    /**
+     * Creates a new empty {@link ParameterModel} parameterModel element, adds it to the current object and returns it.
+     * @param blkId Block id of the parameter model.
+     * @return The created {@link ParameterModel} object.
+     */
+    public ParameterModel createParameterModel(String blkId){
+            ParameterModel el = createParameterModel();
+            el.setBlkId(blkId);
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link StructuralModel} structuralModel element, adds it to the current object and returns it.
+     * @return The created {@link StructuralModel} object.
+     */
+    public StructuralModel createStructuralModel(){
+            StructuralModel el = new StructuralModel();
+            getListOfStructuralModel().add(el);
+            return el;
+    }
+    /**
+     * Creates a new {@link StructuralModel} structuralModel element, adds it to the current object and returns it.
+     * @param blkId Block id of the structural model.
+     * @return The created {@link StructuralModel} object.
+     */
+    public StructuralModel createStructuralModel(String blkId){
+            StructuralModel el = createStructuralModel();
+            el.setBlkId(blkId);
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link ObservationModel} observationModel element, adds it to the current object and returns it.
+     * @return The created {@link ObservationModel} object.
+     */
+    public ObservationModel createObservationModel(){
+            ObservationModel el = new ObservationModel();
+            getListOfObservationModel().add(el);
+            return el;
+    }
+    /**
+     * Creates a new {@link ObservationModel} observationModel element, adds it to the current object and returns it.
+     * @param blkId Block id of the observation model.
+     * @return The created {@link ObservationModel} object.
+     */
+    public ObservationModel createObservationModel(String blkId){
+            ObservationModel el = createObservationModel();
+            el.setBlkId(blkId);
+            return el;
+    }
+
 
 }
