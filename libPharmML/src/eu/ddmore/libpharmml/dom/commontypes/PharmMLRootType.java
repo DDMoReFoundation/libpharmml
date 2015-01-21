@@ -81,7 +81,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.FixedEffectRelation;
 import eu.ddmore.libpharmml.dom.modeldefn.ListOfCategories;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.ObservationError;
-import eu.ddmore.libpharmml.dom.modeldefn.ObservationModelType;
+import eu.ddmore.libpharmml.dom.modeldefn.ObservationModel;
 import eu.ddmore.libpharmml.dom.modeldefn.PairwiseType;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomEffectType;
 import eu.ddmore.libpharmml.dom.modeldefn.ParentLevelType;
@@ -208,7 +208,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     Censoring.class,
     FixedEffectRelation.class,
     CommonDiscreteState.class,
-    ObservationModelType.class,
+    ObservationModel.class,
     CensoringFeature.class,
     DiscreteDataParameter.class,
     ProbabilityAssignment.class,

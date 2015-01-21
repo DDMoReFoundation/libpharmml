@@ -308,11 +308,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ObservationModelType }
+     * Create an instance of {@link ObservationModel }
      * 
      */
-    public ObservationModelType createObservationModelType() {
-        return new ObservationModelType();
+    public ObservationModel createObservationModelType() {
+        return new ObservationModel();
     }
 
     /**

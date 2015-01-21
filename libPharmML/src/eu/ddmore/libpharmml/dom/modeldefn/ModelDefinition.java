@@ -81,7 +81,7 @@ public class ModelDefinition
     @XmlElement(name = "StructuralModel")
     protected List<StructuralModelType> structuralModel;
     @XmlElement(name = "ObservationModel")
-    protected List<ObservationModelType> observationModel;
+    protected List<ObservationModel> observationModel;
 
     /**
      * Gets the value of the variabilityModel property.
@@ -217,13 +217,13 @@ public class ModelDefinition
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ObservationModelType }
+     * {@link ObservationModel }
      * 
      * 
      */
-    public List<ObservationModelType> getObservationModel() {
+    public List<ObservationModel> getObservationModel() {
         if (observationModel == null) {
-            observationModel = new ArrayList<ObservationModelType>();
+            observationModel = new ArrayList<ObservationModel>();
         }
         return this.observationModel;
     }

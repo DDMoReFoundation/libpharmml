@@ -76,7 +76,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Name;
     "discrete",
     "observationError"
 })
-public class ObservationModelType
+public class ObservationModel
     extends CommonParameterModel
 {
 	//TODO: extends PharmMLRootType. still CommonParameterModelType for backward compatiblity.
@@ -210,7 +210,7 @@ public class ObservationModelType
      *     {@link Name }
      *     
      * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.
-     * See the documentation of {@link ObservationModelType}.
+     * See the documentation of {@link ObservationModel}.
      */
     @Override
     @Deprecated
@@ -226,7 +226,7 @@ public class ObservationModelType
      *     {@link Name }
      *     
      * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.
-     * See the documentation of {@link ObservationModelType}.
+     * See the documentation of {@link ObservationModel}.
      */
     @Override
     @Deprecated
@@ -258,7 +258,7 @@ public class ObservationModelType
      * {@link JAXBElement }{@code <}{@link ParameterRandomVariableType }{@code >}
      * 
      * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.
-     * See the documentation of {@link ObservationModelType}.
+     * See the documentation of {@link ObservationModel}.
      */
     @Override
     @Deprecated
@@ -287,7 +287,7 @@ public class ObservationModelType
      * {@link Correlation }
      * 
      * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.
-     * See the documentation of {@link ObservationModelType}.
+     * See the documentation of {@link ObservationModel}.
      */
     @Override
     @Deprecated
