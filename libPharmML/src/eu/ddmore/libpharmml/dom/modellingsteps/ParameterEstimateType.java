@@ -75,7 +75,7 @@ public class ParameterEstimateType
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
     protected SymbolRef symbRef;
     @XmlElement(name = "InitialEstimate")
-    protected InitialEstimateType initialEstimate;
+    protected InitialEstimate initialEstimate;
     @XmlElement(name = "LowerBound")
     protected ScalarRhs lowerBound;
     @XmlElement(name = "UpperBound")
@@ -112,10 +112,10 @@ public class ParameterEstimateType
      * 
      * @return
      *     possible object is
-     *     {@link InitialEstimateType }
+     *     {@link InitialEstimate }
      *     
      */
-    public InitialEstimateType getInitialEstimate() {
+    public InitialEstimate getInitialEstimate() {
         return initialEstimate;
     }
 
@@ -124,10 +124,10 @@ public class ParameterEstimateType
      * 
      * @param value
      *     allowed object is
-     *     {@link InitialEstimateType }
+     *     {@link InitialEstimate }
      *     
      */
-    public void setInitialEstimate(InitialEstimateType value) {
+    public void setInitialEstimate(InitialEstimate value) {
         this.initialEstimate = value;
     }
 

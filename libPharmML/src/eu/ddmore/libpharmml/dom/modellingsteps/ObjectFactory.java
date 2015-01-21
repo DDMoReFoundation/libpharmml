@@ -217,11 +217,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link InitialEstimateType }
+     * Create an instance of {@link InitialEstimate }
      * 
      */
-    public InitialEstimateType createInitialEstimateType() {
-        return new InitialEstimateType();
+    public InitialEstimate createInitialEstimateType() {
+        return new InitialEstimate();
     }
 
     /**

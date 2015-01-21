@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.maths.Equation;
-import eu.ddmore.libpharmml.dom.modellingsteps.InitialEstimateType;
+import eu.ddmore.libpharmml.dom.modellingsteps.InitialEstimate;
 
 
 /**
@@ -65,7 +65,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.InitialEstimateType;
     "symbRef"
 })
 @XmlSeeAlso({
-    InitialEstimateType.class
+    InitialEstimate.class
 })
 public class ScalarRhs
     extends PharmMLRootType

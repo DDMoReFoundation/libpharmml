@@ -56,7 +56,7 @@ import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "InitialEstimateType")
-public class InitialEstimateType
+public class InitialEstimate
     extends ScalarRhs
 {
 
