@@ -215,11 +215,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StudyPeriodType }
+     * Create an instance of {@link StudyPeriod }
      * 
      */
-    public StudyPeriodType createStudyPeriodType() {
-        return new StudyPeriodType();
+    public StudyPeriod createStudyPeriodType() {
+        return new StudyPeriod();
     }
 
     /**

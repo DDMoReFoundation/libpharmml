@@ -76,7 +76,7 @@ public class ObservationsGroup
     @XmlElement(name = "EpochRef")
     protected OidRef epochRef;
     @XmlElement(name = "Period")
-    protected StudyPeriodType period;
+    protected StudyPeriod period;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
@@ -110,10 +110,10 @@ public class ObservationsGroup
      * 
      * @return
      *     possible object is
-     *     {@link StudyPeriodType }
+     *     {@link StudyPeriod }
      *     
      */
-    public StudyPeriodType getPeriod() {
+    public StudyPeriod getPeriod() {
         return period;
     }
 
@@ -122,10 +122,10 @@ public class ObservationsGroup
      * 
      * @param value
      *     allowed object is
-     *     {@link StudyPeriodType }
+     *     {@link StudyPeriod }
      *     
      */
-    public void setPeriod(StudyPeriodType value) {
+    public void setPeriod(StudyPeriod value) {
         this.period = value;
     }
 

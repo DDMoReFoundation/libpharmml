@@ -65,7 +65,7 @@ import eu.ddmore.libpharmml.dom.commontypes.IntValue;
     "order"
 })
 public class EpochDefinition
-    extends StudyPeriodType
+    extends StudyPeriod
 {
 
     @XmlElement(name = "Order", required = true)
