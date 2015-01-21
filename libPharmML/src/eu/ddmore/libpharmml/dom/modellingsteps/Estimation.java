@@ -65,7 +65,7 @@ import javax.xml.bind.annotation.XmlType;
     "parametersToEstimate",
     "operation"
 })
-public class EstimationStepType
+public class Estimation
     extends CommonModellingStep
 {
 

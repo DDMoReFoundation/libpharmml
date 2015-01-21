@@ -78,7 +78,7 @@ import eu.ddmore.libpharmml.dom.commontypes.VariableAssignment;
 })
 @XmlSeeAlso({
     SimulationStepType.class,
-    EstimationStepType.class
+    Estimation.class
 })
 public abstract class CommonModellingStep
     extends PharmMLRootType

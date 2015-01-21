@@ -111,11 +111,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EstimationStepType }
+     * Create an instance of {@link Estimation }
      * 
      */
-    public EstimationStepType createEstimationStepType() {
-        return new EstimationStepType();
+    public Estimation createEstimationStepType() {
+        return new Estimation();
     }
 
     /**
@@ -371,12 +371,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EstimationStepType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Estimation }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "EstimationStep", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModellingSteps", substitutionHeadName = "CommonModellingStep")
-    public JAXBElement<EstimationStepType> createEstimationStep(EstimationStepType value) {
-        return new JAXBElement<EstimationStepType>(_EstimationStep_QNAME, EstimationStepType.class, null, value);
+    public JAXBElement<Estimation> createEstimationStep(Estimation value) {
+        return new JAXBElement<Estimation>(_EstimationStep_QNAME, Estimation.class, null, value);
     }
 
     /**
