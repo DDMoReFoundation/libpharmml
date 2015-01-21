@@ -280,11 +280,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SegmentDefnType }
+     * Create an instance of {@link SegmentDefinition }
      * 
      */
-    public SegmentDefnType createSegmentDefnType() {
-        return new SegmentDefnType();
+    public SegmentDefinition createSegmentDefnType() {
+        return new SegmentDefinition();
     }
 
     /**

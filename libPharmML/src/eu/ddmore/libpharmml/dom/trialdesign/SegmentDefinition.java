@@ -67,7 +67,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlType(name = "SegmentDefnType", propOrder = {
     "activityRef"
 })
-public class SegmentDefnType
+public class SegmentDefinition
     extends PharmMLRootType
 {
 
