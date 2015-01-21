@@ -64,7 +64,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
     "symbRef",
     "assign"
 })
-public class SteadyStateParameterType
+public class SteadyStateParameter
     extends PharmMLRootType
 {
 

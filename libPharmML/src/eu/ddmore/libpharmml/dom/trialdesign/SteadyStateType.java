@@ -67,19 +67,19 @@ public class SteadyStateType
 {
 
     @XmlElement(name = "EndTime", required = true)
-    protected SteadyStateParameterType endTime;
+    protected SteadyStateParameter endTime;
     @XmlElement(name = "Interval")
-    protected SteadyStateParameterType interval;
+    protected SteadyStateParameter interval;
 
     /**
      * Gets the value of the endTime property.
      * 
      * @return
      *     possible object is
-     *     {@link SteadyStateParameterType }
+     *     {@link SteadyStateParameter }
      *     
      */
-    public SteadyStateParameterType getEndTime() {
+    public SteadyStateParameter getEndTime() {
         return endTime;
     }
 
@@ -88,10 +88,10 @@ public class SteadyStateType
      * 
      * @param value
      *     allowed object is
-     *     {@link SteadyStateParameterType }
+     *     {@link SteadyStateParameter }
      *     
      */
-    public void setEndTime(SteadyStateParameterType value) {
+    public void setEndTime(SteadyStateParameter value) {
         this.endTime = value;
     }
 
@@ -100,10 +100,10 @@ public class SteadyStateType
      * 
      * @return
      *     possible object is
-     *     {@link SteadyStateParameterType }
+     *     {@link SteadyStateParameter }
      *     
      */
-    public SteadyStateParameterType getInterval() {
+    public SteadyStateParameter getInterval() {
         return interval;
     }
 
@@ -112,10 +112,10 @@ public class SteadyStateType
      * 
      * @param value
      *     allowed object is
-     *     {@link SteadyStateParameterType }
+     *     {@link SteadyStateParameter }
      *     
      */
-    public void setInterval(SteadyStateParameterType value) {
+    public void setInterval(SteadyStateParameter value) {
         this.interval = value;
     }
 

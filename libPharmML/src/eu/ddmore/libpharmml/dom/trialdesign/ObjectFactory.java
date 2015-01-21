@@ -207,11 +207,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SteadyStateParameterType }
+     * Create an instance of {@link SteadyStateParameter }
      * 
      */
-    public SteadyStateParameterType createSteadyStateParameterType() {
-        return new SteadyStateParameterType();
+    public SteadyStateParameter createSteadyStateParameterType() {
+        return new SteadyStateParameter();
     }
 
     /**
