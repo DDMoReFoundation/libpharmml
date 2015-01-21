@@ -138,7 +138,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.StudyEvent;
 import eu.ddmore.libpharmml.dom.trialdesign.StudyPeriod;
 import eu.ddmore.libpharmml.dom.trialdesign.StudyTimePoint;
 import eu.ddmore.libpharmml.dom.trialdesign.Target;
-import eu.ddmore.libpharmml.dom.trialdesign.TrialDesignType;
+import eu.ddmore.libpharmml.dom.trialdesign.TrialDesign;
 import eu.ddmore.libpharmml.dom.trialdesign.TrialStructureType;
 import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
 
@@ -171,7 +171,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
 @XmlSeeAlso({
     IndependentVariable.class,
     ModelDefinition.class,
-    TrialDesignType.class,
+    TrialDesign.class,
     ModellingSteps.class,
     LogicBinOp.class,
     Binop.class,

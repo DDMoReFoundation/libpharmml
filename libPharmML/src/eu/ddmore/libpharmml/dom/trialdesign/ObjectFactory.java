@@ -89,11 +89,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TrialDesignType }
+     * Create an instance of {@link TrialDesign }
      * 
      */
-    public TrialDesignType createTrialDesignType() {
-        return new TrialDesignType();
+    public TrialDesign createTrialDesignType() {
+        return new TrialDesign();
     }
 
     /**
@@ -382,12 +382,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TrialDesignType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link TrialDesign }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "TrialDesign")
-    public JAXBElement<TrialDesignType> createTrialDesign(TrialDesignType value) {
-        return new JAXBElement<TrialDesignType>(_TrialDesign_QNAME, TrialDesignType.class, null, value);
+    public JAXBElement<TrialDesign> createTrialDesign(TrialDesign value) {
+        return new JAXBElement<TrialDesign>(_TrialDesign_QNAME, TrialDesign.class, null, value);
     }
 
     /**

@@ -66,7 +66,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "population",
     "individualDosing"
 })
-public class TrialDesignType
+public class TrialDesign
     extends PharmMLRootType
 {
 
