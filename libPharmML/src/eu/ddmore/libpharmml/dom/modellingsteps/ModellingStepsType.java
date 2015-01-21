@@ -83,7 +83,7 @@ public class ModellingStepsType
     @XmlElement(name = "TargetTool")
     protected List<TargetToolType> targetTool;
     @XmlElementRef(name = "CommonModellingStep", namespace = "http://www.pharmml.org/2013/03/ModellingSteps", type = JAXBElement.class, required = false)
-    protected List<JAXBElement<? extends CommonModellingStepType>> commonModellingStep;
+    protected List<JAXBElement<? extends CommonModellingStep>> commonModellingStep;
     @XmlElement(name = "StepDependencies")
     protected StepDependencyType stepDependencies;
 
@@ -194,15 +194,15 @@ public class ModellingStepsType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link CommonModellingStepType }{@code >}
+     * {@link JAXBElement }{@code <}{@link CommonModellingStep }{@code >}
      * {@link JAXBElement }{@code <}{@link SimulationStepType }{@code >}
      * {@link JAXBElement }{@code <}{@link EstimationStepType }{@code >}
      * 
      * 
      */
-    public List<JAXBElement<? extends CommonModellingStepType>> getCommonModellingStep() {
+    public List<JAXBElement<? extends CommonModellingStep>> getCommonModellingStep() {
         if (commonModellingStep == null) {
-            commonModellingStep = new ArrayList<JAXBElement<? extends CommonModellingStepType>>();
+            commonModellingStep = new ArrayList<JAXBElement<? extends CommonModellingStep>>();
         }
         return this.commonModellingStep;
     }

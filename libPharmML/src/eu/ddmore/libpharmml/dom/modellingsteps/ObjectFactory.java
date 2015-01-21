@@ -327,8 +327,8 @@ public class ObjectFactory {
      * 
      */
 	@XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "CommonModellingStep")
-    public JAXBElement<CommonModellingStepType> createCommonModellingStep(CommonModellingStepType value) {
-        return new JAXBElement<CommonModellingStepType>(_CommonModellingStep_QNAME, CommonModellingStepType.class, null, value);
+    public JAXBElement<CommonModellingStep> createCommonModellingStep(CommonModellingStep value) {
+        return new JAXBElement<CommonModellingStep>(_CommonModellingStep_QNAME, CommonModellingStep.class, null, value);
     }
 
     /**

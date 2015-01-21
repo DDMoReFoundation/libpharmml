@@ -80,7 +80,7 @@ import eu.ddmore.libpharmml.dom.commontypes.VariableAssignment;
     SimulationStepType.class,
     EstimationStepType.class
 })
-public abstract class CommonModellingStepType
+public abstract class CommonModellingStep
     extends PharmMLRootType
 {
 

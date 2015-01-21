@@ -66,7 +66,7 @@ import javax.xml.bind.annotation.XmlType;
     "operation"
 })
 public class EstimationStepType
-    extends CommonModellingStepType
+    extends CommonModellingStep
 {
 
     @XmlElement(name = "ObjectiveDataSet")
