@@ -91,7 +91,7 @@ public class IndividualDefinition
     @XmlElement(name = "IVDependentMapping")
     protected List<IndependentVariableDependentMapping> ivDependentMapping;
     @XmlElement(name = "ReplicateMapping")
-    protected ReplicateMappingType replicateMapping;
+    protected ReplicateMapping replicateMapping;
 
     /**
      * Gets the value of the name property.
@@ -238,10 +238,10 @@ public class IndividualDefinition
      * 
      * @return
      *     possible object is
-     *     {@link ReplicateMappingType }
+     *     {@link ReplicateMapping }
      *     
      */
-    public ReplicateMappingType getReplicateMapping() {
+    public ReplicateMapping getReplicateMapping() {
         return replicateMapping;
     }
 
@@ -250,10 +250,10 @@ public class IndividualDefinition
      * 
      * @param value
      *     allowed object is
-     *     {@link ReplicateMappingType }
+     *     {@link ReplicateMapping }
      *     
      */
-    public void setReplicateMapping(ReplicateMappingType value) {
+    public void setReplicateMapping(ReplicateMapping value) {
         this.replicateMapping = value;
     }
 

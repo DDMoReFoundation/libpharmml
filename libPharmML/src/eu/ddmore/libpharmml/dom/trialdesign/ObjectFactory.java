@@ -114,12 +114,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReplicateMappingType }
+     * Create an instance of {@link ReplicateMapping }
      * 
      */
 	@Deprecated
-    public ReplicateMappingType createReplicateMappingType() {
-        return new ReplicateMappingType();
+    public ReplicateMapping createReplicateMappingType() {
+        return new ReplicateMapping();
     }
 
     /**
@@ -411,13 +411,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ReplicateMappingType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReplicateMapping }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "ReplicateMapping")
     @Deprecated
-	public JAXBElement<ReplicateMappingType> createReplicateMapping(ReplicateMappingType value) {
-        return new JAXBElement<ReplicateMappingType>(_ReplicateMapping_QNAME, ReplicateMappingType.class, null, value);
+	public JAXBElement<ReplicateMapping> createReplicateMapping(ReplicateMapping value) {
+        return new JAXBElement<ReplicateMapping>(_ReplicateMapping_QNAME, ReplicateMapping.class, null, value);
     }
 
     /**
