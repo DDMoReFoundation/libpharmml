@@ -71,19 +71,19 @@ public class StudyPeriod
 {
 
     @XmlElement(name = "Start", required = true)
-    protected StudyTimePointType start;
+    protected StudyTimePoint start;
     @XmlElement(name = "End", required = true)
-    protected StudyTimePointType end;
+    protected StudyTimePoint end;
 
     /**
      * Gets the value of the start property.
      * 
      * @return
      *     possible object is
-     *     {@link StudyTimePointType }
+     *     {@link StudyTimePoint }
      *     
      */
-    public StudyTimePointType getStart() {
+    public StudyTimePoint getStart() {
         return start;
     }
 
@@ -92,10 +92,10 @@ public class StudyPeriod
      * 
      * @param value
      *     allowed object is
-     *     {@link StudyTimePointType }
+     *     {@link StudyTimePoint }
      *     
      */
-    public void setStart(StudyTimePointType value) {
+    public void setStart(StudyTimePoint value) {
         this.start = value;
     }
 
@@ -104,10 +104,10 @@ public class StudyPeriod
      * 
      * @return
      *     possible object is
-     *     {@link StudyTimePointType }
+     *     {@link StudyTimePoint }
      *     
      */
-    public StudyTimePointType getEnd() {
+    public StudyTimePoint getEnd() {
         return end;
     }
 
@@ -116,10 +116,10 @@ public class StudyPeriod
      * 
      * @param value
      *     allowed object is
-     *     {@link StudyTimePointType }
+     *     {@link StudyTimePoint }
      *     
      */
-    public void setEnd(StudyTimePointType value) {
+    public void setEnd(StudyTimePoint value) {
         this.end = value;
     }
 

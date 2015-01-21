@@ -256,11 +256,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StudyTimePointType }
+     * Create an instance of {@link StudyTimePoint }
      * 
      */
-    public StudyTimePointType createStudyTimePointType() {
-        return new StudyTimePointType();
+    public StudyTimePoint createStudyTimePointType() {
+        return new StudyTimePoint();
     }
 
     /**

@@ -136,7 +136,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.SteadyStateParameter;
 import eu.ddmore.libpharmml.dom.trialdesign.SteadyState;
 import eu.ddmore.libpharmml.dom.trialdesign.StudyEvent;
 import eu.ddmore.libpharmml.dom.trialdesign.StudyPeriod;
-import eu.ddmore.libpharmml.dom.trialdesign.StudyTimePointType;
+import eu.ddmore.libpharmml.dom.trialdesign.StudyTimePoint;
 import eu.ddmore.libpharmml.dom.trialdesign.TargetType;
 import eu.ddmore.libpharmml.dom.trialdesign.TrialDesignType;
 import eu.ddmore.libpharmml.dom.trialdesign.TrialStructureType;
@@ -277,7 +277,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     ArmDefinition.class,
     Population.class,
     SteadyState.class,
-    StudyTimePointType.class,
+    StudyTimePoint.class,
     IndividualDosing.class,
     CellDefinition.class,
     SegmentDefinition.class,

@@ -61,7 +61,7 @@ import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 @XmlType(name = "StudyTimePointType", propOrder = {
     "real"
 })
-public class StudyTimePointType
+public class StudyTimePoint
     extends PharmMLRootType
 {
 
