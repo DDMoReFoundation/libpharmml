@@ -61,7 +61,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlType(name = "TargetToolReferenceType", propOrder = {
     "oidRef"
 })
-public class TargetToolReferenceType
+public class TargetToolReference
     extends PharmMLRootType
 {
 

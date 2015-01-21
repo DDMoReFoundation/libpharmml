@@ -152,11 +152,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TargetToolReferenceType }
+     * Create an instance of {@link TargetToolReference }
      * 
      */
-    public TargetToolReferenceType createTargetToolReferenceType() {
-        return new TargetToolReferenceType();
+    public TargetToolReference createTargetToolReferenceType() {
+        return new TargetToolReference();
     }
 
     /**

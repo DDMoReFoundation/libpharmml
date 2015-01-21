@@ -85,7 +85,7 @@ public abstract class CommonModellingStep
 {
 
     @XmlElement(name = "TargetToolReference")
-    protected TargetToolReferenceType targetToolReference;
+    protected TargetToolReference targetToolReference;
     @XmlElement(name = "MONOLIXdataSetReference")
     protected MONOLIXdataSetReference monoliXdataSetReference;
     @XmlElement(name = "NONMEMdataSetReference")
@@ -101,10 +101,10 @@ public abstract class CommonModellingStep
      * 
      * @return
      *     possible object is
-     *     {@link TargetToolReferenceType }
+     *     {@link TargetToolReference }
      *     
      */
-    public TargetToolReferenceType getTargetToolReference() {
+    public TargetToolReference getTargetToolReference() {
         return targetToolReference;
     }
 
@@ -113,10 +113,10 @@ public abstract class CommonModellingStep
      * 
      * @param value
      *     allowed object is
-     *     {@link TargetToolReferenceType }
+     *     {@link TargetToolReference }
      *     
      */
-    public void setTargetToolReference(TargetToolReferenceType value) {
+    public void setTargetToolReference(TargetToolReference value) {
         this.targetToolReference = value;
     }
 

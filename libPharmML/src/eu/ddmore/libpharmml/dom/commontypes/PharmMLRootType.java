@@ -114,7 +114,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.SimulationOperationType;
 import eu.ddmore.libpharmml.dom.modellingsteps.StepDependencyType;
 import eu.ddmore.libpharmml.dom.modellingsteps.StepType;
 import eu.ddmore.libpharmml.dom.modellingsteps.SymbolMappingType;
-import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolReferenceType;
+import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolReference;
 import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolSymbol;
 import eu.ddmore.libpharmml.dom.modellingsteps.TargetTool;
 import eu.ddmore.libpharmml.dom.modellingsteps.Timepoints;
@@ -294,7 +294,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     NONMEMdataSetReference.class,
     SimulationOperationType.class,
     Algorithm.class,
-    TargetToolReferenceType.class,
+    TargetToolReference.class,
     CodeInjection.class,
     TargetTool.class,
     ParameterEstimate.class,
