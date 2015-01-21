@@ -67,7 +67,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Name;
 })
 @Deprecated
 public class TreatmentType
-    extends ActivityType
+    extends Activity
 {
 
     @XmlElementRefs({

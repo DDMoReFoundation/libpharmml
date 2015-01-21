@@ -87,7 +87,7 @@ public class TrialStructureType
     @XmlElement(name = "Segment", required = true)
     protected List<SegmentDefnType> segment;
     @XmlElement(name = "Activity", required = true)
-    protected List<ActivityType> activity;
+    protected List<Activity> activity;
     @XmlElementRef(name = "StudyEvent", namespace = "http://www.pharmml.org/2013/03/TrialDesign", type = JAXBElement.class, required = false)
     protected List<JAXBElement<? extends StudyEventType>> studyEvent;
 
@@ -227,13 +227,13 @@ public class TrialStructureType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ActivityType }
+     * {@link Activity }
      * 
      * 
      */
-    public List<ActivityType> getActivity() {
+    public List<Activity> getActivity() {
         if (activity == null) {
-            activity = new ArrayList<ActivityType>();
+            activity = new ArrayList<Activity>();
         }
         return this.activity;
     }

@@ -123,11 +123,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ActivityType }
+     * Create an instance of {@link Activity }
      * 
      */
-    public ActivityType createActivityType() {
-        return new ActivityType();
+    public Activity createActivityType() {
+        return new Activity();
     }
 
     /**
@@ -504,12 +504,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ActivityType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Activity }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "Activity")
-    public JAXBElement<ActivityType> createActivity(ActivityType value) {
-        return new JAXBElement<ActivityType>(_Activity_QNAME, ActivityType.class, null, value);
+    public JAXBElement<Activity> createActivity(Activity value) {
+        return new JAXBElement<Activity>(_Activity_QNAME, Activity.class, null, value);
     }
 
 }

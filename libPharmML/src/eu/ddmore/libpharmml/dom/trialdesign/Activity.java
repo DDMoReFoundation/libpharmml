@@ -73,7 +73,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "dosingRegimen",
     "washout"
 })
-public class ActivityType
+public class Activity
     extends PharmMLRootType
 {
 

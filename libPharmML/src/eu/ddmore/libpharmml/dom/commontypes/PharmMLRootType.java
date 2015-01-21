@@ -119,7 +119,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolSymbol;
 import eu.ddmore.libpharmml.dom.modellingsteps.TargetTool;
 import eu.ddmore.libpharmml.dom.modellingsteps.Timepoints;
 import eu.ddmore.libpharmml.dom.modellingsteps.ToEstimate;
-import eu.ddmore.libpharmml.dom.trialdesign.ActivityType;
+import eu.ddmore.libpharmml.dom.trialdesign.Activity;
 import eu.ddmore.libpharmml.dom.trialdesign.ArmDefnType;
 import eu.ddmore.libpharmml.dom.trialdesign.CellDefnType;
 import eu.ddmore.libpharmml.dom.trialdesign.DemographicType;
@@ -267,7 +267,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     CommonColumnDefinition.class,
     MapType.class,
     LookupTableType.class,
-    ActivityType.class,
+    Activity.class,
     WashoutType.class,
     DosingRegimenType.class,
     StudyEventType.class,
