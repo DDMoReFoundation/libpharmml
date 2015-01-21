@@ -78,7 +78,7 @@ public class IndependentVariableDependentMapping {
     @XmlElement(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
     protected ColumnReference columnRef;
     @XmlElement(name = "IndependentVariableMapping")
-    protected IndependentVariableMappingType independentVariableMapping;
+    protected IndependentVariableMapping independentVariableMapping;
     @XmlElement(name = "EpochMapping")
     protected EpochMapping epochMapping;
     @XmlElementRef(name = "AttributeMapping", namespace = "http://www.pharmml.org/2013/03/TrialDesign", type = JAXBElement.class)
@@ -113,10 +113,10 @@ public class IndependentVariableDependentMapping {
      * 
      * @return
      *     possible object is
-     *     {@link IndependentVariableMappingType }
+     *     {@link IndependentVariableMapping }
      *     
      */
-    public IndependentVariableMappingType getIndependentVariableMapping() {
+    public IndependentVariableMapping getIndependentVariableMapping() {
         return independentVariableMapping;
     }
 
@@ -125,10 +125,10 @@ public class IndependentVariableDependentMapping {
      * 
      * @param value
      *     allowed object is
-     *     {@link IndependentVariableMappingType }
+     *     {@link IndependentVariableMapping }
      *     
      */
-    public void setIndependentVariableMapping(IndependentVariableMappingType value) {
+    public void setIndependentVariableMapping(IndependentVariableMapping value) {
         this.independentVariableMapping = value;
     }
 

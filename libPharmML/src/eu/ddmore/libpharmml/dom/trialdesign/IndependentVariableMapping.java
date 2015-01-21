@@ -56,7 +56,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IndependentVariableMappingType")
 @Deprecated
-public class IndependentVariableMappingType
+public class IndependentVariableMapping
     extends PopulationMappingType
 {
 
