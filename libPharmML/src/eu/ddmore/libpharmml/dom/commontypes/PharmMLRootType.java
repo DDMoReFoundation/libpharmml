@@ -70,7 +70,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.ContinuousCovariate;
 import eu.ddmore.libpharmml.dom.modeldefn.CorrelatedRandomVariable;
 import eu.ddmore.libpharmml.dom.modeldefn.Correlation;
 import eu.ddmore.libpharmml.dom.modeldefn.CountPMF;
-import eu.ddmore.libpharmml.dom.modeldefn.CovariateDefinitionType;
+import eu.ddmore.libpharmml.dom.modeldefn.CovariateDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.CovariateModelType;
 import eu.ddmore.libpharmml.dom.modeldefn.CovariateRelationType;
 import eu.ddmore.libpharmml.dom.modeldefn.CovariateTransformationType;
@@ -222,7 +222,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     ContinuousCovariate.class,
     Dependance.class,
     ParameterRandomEffectType.class,
-    CovariateDefinitionType.class,
+    CovariateDefinition.class,
     LevelReference.class,
     Matrix.class,
     VariableAssignment.class,

@@ -420,11 +420,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CovariateDefinitionType }
+     * Create an instance of {@link CovariateDefinition }
      * 
      */
-    public CovariateDefinitionType createCovariateDefinitionType() {
-        return new CovariateDefinitionType();
+    public CovariateDefinition createCovariateDefinitionType() {
+        return new CovariateDefinition();
     }
 
     /**

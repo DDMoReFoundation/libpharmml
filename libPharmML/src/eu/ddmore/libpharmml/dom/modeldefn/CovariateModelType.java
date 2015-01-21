@@ -80,7 +80,7 @@ public class CovariateModelType
     @XmlElement(name = "SimpleParameter")
     protected List<SimpleParameterType> simpleParameter;
     @XmlElement(name = "Covariate", required = true)
-    protected List<CovariateDefinitionType> covariate;
+    protected List<CovariateDefinition> covariate;
     @XmlAttribute(name = "blkId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String blkId;
@@ -156,13 +156,13 @@ public class CovariateModelType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CovariateDefinitionType }
+     * {@link CovariateDefinition }
      * 
      * 
      */
-    public List<CovariateDefinitionType> getCovariate() {
+    public List<CovariateDefinition> getCovariate() {
         if (covariate == null) {
-            covariate = new ArrayList<CovariateDefinitionType>();
+            covariate = new ArrayList<CovariateDefinition>();
         }
         return this.covariate;
     }

@@ -69,7 +69,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolName;
     "continuous",
     "categorical"
 })
-public class CovariateDefinitionType
+public class CovariateDefinition
     extends PharmMLRootType
 {
 
