@@ -288,11 +288,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ObservationsGroupType }
+     * Create an instance of {@link ObservationsGroup }
      * 
      */
-    public ObservationsGroupType createObservationsGroupType() {
-        return new ObservationsGroupType();
+    public ObservationsGroup createObservationsGroupType() {
+        return new ObservationsGroup();
     }
 
     /**

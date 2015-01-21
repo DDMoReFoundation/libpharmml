@@ -69,7 +69,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     "epochRef",
     "period"
 })
-public class ObservationsGroupType
+public class ObservationsGroup
     extends PharmMLRootType
 {
 

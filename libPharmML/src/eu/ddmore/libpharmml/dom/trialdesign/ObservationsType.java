@@ -76,7 +76,7 @@ public class ObservationsType
     @XmlElement(name = "VariabilityReference", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected LevelReference variabilityReference;
     @XmlElement(name = "ObservationGroup", required = true)
-    protected List<ObservationsGroupType> observationGroup;
+    protected List<ObservationsGroup> observationGroup;
 
     /**
      * 
@@ -149,13 +149,13 @@ public class ObservationsType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ObservationsGroupType }
+     * {@link ObservationsGroup }
      * 
      * 
      */
-    public List<ObservationsGroupType> getObservationGroup() {
+    public List<ObservationsGroup> getObservationGroup() {
         if (observationGroup == null) {
-            observationGroup = new ArrayList<ObservationsGroupType>();
+            observationGroup = new ArrayList<ObservationsGroup>();
         }
         return this.observationGroup;
     }
