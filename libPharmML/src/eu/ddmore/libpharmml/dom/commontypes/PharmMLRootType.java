@@ -122,7 +122,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.ToEstimate;
 import eu.ddmore.libpharmml.dom.trialdesign.Activity;
 import eu.ddmore.libpharmml.dom.trialdesign.ArmDefinition;
 import eu.ddmore.libpharmml.dom.trialdesign.CellDefinition;
-import eu.ddmore.libpharmml.dom.trialdesign.DemographicType;
+import eu.ddmore.libpharmml.dom.trialdesign.Demographic;
 import eu.ddmore.libpharmml.dom.trialdesign.DosingRegimen;
 import eu.ddmore.libpharmml.dom.trialdesign.DosingTimesPoints;
 import eu.ddmore.libpharmml.dom.trialdesign.DosingVariable;
@@ -283,7 +283,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.Washout;
     SegmentDefinition.class,
     ObservationsGroup.class,
     PopulationMapping.class,
-    DemographicType.class,
+    Demographic.class,
     Target.class,
     StudyPeriod.class,
     DosingTimesPoints.class,

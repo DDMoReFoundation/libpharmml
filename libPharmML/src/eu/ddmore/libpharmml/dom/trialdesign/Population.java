@@ -81,7 +81,7 @@ public class Population
     @XmlElement(name = "VariabilityReference", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected LevelReference variabilityReference;
     @XmlElement(name = "Demographic")
-    protected List<DemographicType> demographic;
+    protected List<Demographic> demographic;
     @XmlElement(name = "ColumnMapping")
     protected List<ColumnMapping> columnMapping;
     @XmlElement(name = "DataSet", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
@@ -135,13 +135,13 @@ public class Population
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link DemographicType }
+     * {@link Demographic }
      * 
      * 
      */
-    public List<DemographicType> getDemographic() {
+    public List<Demographic> getDemographic() {
         if (demographic == null) {
-            demographic = new ArrayList<DemographicType>();
+            demographic = new ArrayList<Demographic>();
         }
         return this.demographic;
     }

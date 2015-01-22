@@ -86,7 +86,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
     "scalar",
     "columnRef"
 })
-public class DemographicType
+public class Demographic
     extends PharmMLRootType
 {
 

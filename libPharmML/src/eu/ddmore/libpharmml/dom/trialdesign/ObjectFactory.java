@@ -305,11 +305,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DemographicType }
+     * Create an instance of {@link Demographic }
      * 
      */
-    public DemographicType createDemographicType() {
-        return new DemographicType();
+    public Demographic createDemographicType() {
+        return new Demographic();
     }
 
     /**
