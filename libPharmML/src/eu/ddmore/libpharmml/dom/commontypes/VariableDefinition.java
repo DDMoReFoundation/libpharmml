@@ -32,6 +32,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.maths.Equation;
+
 
 /**
  * A standard variable definition. Elements defined unsing this XML Schema Type have a Symbol type
@@ -62,7 +64,7 @@ import javax.xml.bind.annotation.XmlType;
     "assign"
 })
 public class VariableDefinition
-    extends CommonVariableDefinition
+    extends CommonVariableDefinition implements Assignable
 {
 
     @XmlElement(name = "Assign")
@@ -117,5 +119,54 @@ public class VariableDefinition
     public void setSymbolType(SymbolType value) {
         this.symbolType = value;
     }
+    
+    @Override
+	public Rhs assign(Scalar scalar) {
+		Rhs rhs = new Rhs(scalar);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Equation equation) {
+		Rhs rhs = new Rhs(equation);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(SymbolRef symbolRef) {
+		Rhs rhs = new Rhs(symbolRef);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Sequence sequence) {
+		Rhs rhs = new Rhs(sequence);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Vector vector) {
+		Rhs rhs = new Rhs(vector);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Interpolation interpolation) {
+		Rhs rhs = new Rhs(interpolation);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Matrix matrix) {
+		Rhs rhs = new Rhs(matrix);
+		setAssign(rhs);
+		return rhs;
+	}
 
 }
