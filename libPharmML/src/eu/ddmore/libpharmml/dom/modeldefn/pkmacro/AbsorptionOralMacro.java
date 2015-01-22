@@ -50,7 +50,7 @@ public abstract class AbsorptionOralMacro
 	 * @param assignment The value that is assigned to the argument.
 	 * @return The created {@link MacroValue} object.
 	 */
-	public MacroValue createValue(Arg argument, Rhs assignment){
+	public MacroValue createValue(AbsorptionOralMacro.Arg argument, Rhs assignment){
 		MacroValue value = new MacroValue(argument.toString(), assignment);
 		getListOfValue().add(value);
 		return value;
