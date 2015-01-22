@@ -30,7 +30,16 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.dom.commontypes.Assignable;
+import eu.ddmore.libpharmml.dom.commontypes.Interpolation;
+import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
+import eu.ddmore.libpharmml.dom.commontypes.Scalar;
+import eu.ddmore.libpharmml.dom.commontypes.Sequence;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
+import eu.ddmore.libpharmml.dom.commontypes.Vector;
+import eu.ddmore.libpharmml.dom.maths.Equation;
 
 
 /**
@@ -62,7 +71,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Rhs;
     "assign"
 })
 public class SimpleParameter
-    extends CommonParameter
+    extends CommonParameter implements Assignable
 {
 
     @XmlElement(name = "Assign", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
@@ -91,5 +100,54 @@ public class SimpleParameter
     public void setAssign(Rhs value) {
         this.assign = value;
     }
+
+	@Override
+	public Rhs assign(Scalar scalar) {
+		Rhs rhs = new Rhs(scalar);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Equation equation) {
+		Rhs rhs = new Rhs(equation);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(SymbolRef symbolRef) {
+		Rhs rhs = new Rhs(symbolRef);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Sequence sequence) {
+		Rhs rhs = new Rhs(sequence);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Vector vector) {
+		Rhs rhs = new Rhs(vector);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Interpolation interpolation) {
+		Rhs rhs = new Rhs(interpolation);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Matrix matrix) {
+		Rhs rhs = new Rhs(matrix);
+		setAssign(rhs);
+		return rhs;
+	}
 
 }
