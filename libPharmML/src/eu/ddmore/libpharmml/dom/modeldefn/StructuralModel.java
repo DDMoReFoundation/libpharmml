@@ -39,10 +39,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.CommonVariableDefinition;
 import eu.ddmore.libpharmml.dom.commontypes.DerivativeVariable;
+import eu.ddmore.libpharmml.dom.commontypes.FunctionDefinition;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKMacroList;
 
@@ -238,5 +241,68 @@ public class StructuralModel
     	setPKmacros(macros);
     	return macros;
     }
+    
+    public SimpleParameter createSimpleParameter(){
+    	SimpleParameter param = new SimpleParameter();
+    	getSimpleParameter().add(param);
+    	return param;
+    }
+    
+    public SimpleParameter createSimpleParameter(String symbId){
+    	SimpleParameter param = createSimpleParameter();
+    	param.setSymbId(symbId);
+    	return param;
+    }
+    
+    public VariableDefinition createVariable(){
+    	VariableDefinition var = new VariableDefinition();
+    	getCommonVariable().add(MasterObjectFactory.COMMONTYPES_OF.createVariable(var));
+    	return var;
+    }
+    
+    public VariableDefinition createVariable(String symbId, SymbolType symbolType){
+    	VariableDefinition var = createVariable();
+    	var.setSymbId(symbId);
+    	var.setSymbolType(symbolType);
+    	return var;
+    }
+    
+    public DerivativeVariable createDerivativeVariable(){
+    	DerivativeVariable var = new DerivativeVariable();
+    	getCommonVariable().add(MasterObjectFactory.COMMONTYPES_OF.createDerivativeVariable(var));
+    	return var;
+    }
+    
+    public DerivativeVariable createDerivativeVariable(String symbId, SymbolType symbolType){
+    	DerivativeVariable var = createDerivativeVariable();
+    	var.setSymbId(symbId);
+    	var.setSymbolType(symbolType);
+    	return var;
+    }
+    
+    /**
+     * Creates a new empty {@link FunctionDefinition} functionDefinition element, adds it to the current object and returns it.
+     * @return The created {@link FunctionDefinition} object.
+     */
+    public FunctionDefinition createFunctionDefinition(){
+            FunctionDefinition el = new FunctionDefinition();
+            getCommonVariable().add(MasterObjectFactory.COMMONTYPES_OF.createFunctionDefinition(el));
+            return el;
+    }
+    /**
+     * Creates a new {@link FunctionDefinition} functionDefinition element, adds it to the
+     * current object and returns it.
+     * @param symbId Symbol of the function, used when it is referred to.
+     * @param type Return type of the function.
+     * @return The created {@link FunctionDefinition} object.
+     */
+    public FunctionDefinition createFunctionDefinition(String symbId, SymbolType type){
+            FunctionDefinition el = createFunctionDefinition();
+            el.setSymbId(symbId);
+            el.setSymbolType(type);
+            return el;
+    }
+    
+    //TODO: deal with FunctionParameter no of
 
 }
