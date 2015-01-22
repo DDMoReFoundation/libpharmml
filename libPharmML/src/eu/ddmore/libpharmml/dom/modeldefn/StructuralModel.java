@@ -228,5 +228,15 @@ public class StructuralModel
     public void setBlkId(String value) {
         this.blkId = value;
     }
+    
+    /**
+     * Creates an empty list of PKMacros.
+     * @return The created {@link PKMacroList} instance.
+     */
+    public PKMacroList createPKMacroList(){
+    	PKMacroList macros = new PKMacroList();
+    	setPKmacros(macros);
+    	return macros;
+    }
 
 }
