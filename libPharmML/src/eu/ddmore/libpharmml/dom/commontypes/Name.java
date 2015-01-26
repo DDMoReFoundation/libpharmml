@@ -120,5 +120,13 @@ public class Name {
     public void setId(String value) {
         this.id = value;
     }
+    
+    /**
+     * Gets the string value of this name. Equivalent to {@link #getValue()}.
+     */
+    @Override
+    public String toString() {
+    	return value;
+    }
 
 }
