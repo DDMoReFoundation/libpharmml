@@ -35,6 +35,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.LinkFunction;
@@ -54,17 +56,18 @@ import eu.ddmore.libpharmml.dom.maths.Operand;
  * <pre>
  * &lt;complexType name="ProbabilityType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;choice minOccurs="0">
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}LogicBinop"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}LogicUniop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}LogicBinop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}LogicUniop"/>
  *         &lt;/choice>
- *         &lt;element name="CurrentState" type="{http://www.pharmml.org/2013/03/ModelDefinition}CommonDiscreteStateType" minOccurs="0"/>
- *         &lt;element name="PreviousState" type="{http://www.pharmml.org/2013/03/ModelDefinition}CommonDiscreteStateType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Condition" type="{http://www.pharmml.org/2013/03/ModelDefinition}CommonDiscreteStateType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="CurrentState" type="{http://www.pharmml.org/pharmml/0.6/ModelDefinition}CommonDiscreteStateType" minOccurs="0"/>
+ *         &lt;element name="PreviousState" type="{http://www.pharmml.org/pharmml/0.6/ModelDefinition}CommonDiscreteStateType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Condition" type="{http://www.pharmml.org/pharmml/0.6/ModelDefinition}CommonDiscreteStateType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attribute name="linkFunction" type="{http://www.pharmml.org/2013/03/CommonTypes}LinkFunctionType" />
+ *       &lt;attribute name="symbId" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}SymbolIdType" />
+ *       &lt;attribute name="linkFunction" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}LinkFunctionType" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -94,6 +97,9 @@ public class Probability
     protected List<CommonDiscreteState> previousState;
     @XmlElement(name = "Condition")
     protected List<CommonDiscreteState> condition;
+    @XmlAttribute(name = "symbId")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String symbId;
     @XmlAttribute(name = "linkFunction")
     protected LinkFunction linkFunction;
 
@@ -249,6 +255,32 @@ public class Probability
      */
     public void setLinkFunction(LinkFunction value) {
         this.linkFunction = value;
+    }
+	
+	/**
+     * Gets the value of the symbId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     * 
+     * @since PharmML 0.6
+     */
+    public String getSymbId() {
+        return symbId;
+    }
+
+    /**
+     * Sets the value of the symbId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     * 
+     * @since PharmML 0.6
+     */
+    public void setSymbId(String value) {
+        this.symbId = value;
     }
     
     /**
