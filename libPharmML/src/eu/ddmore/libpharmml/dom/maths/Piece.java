@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import eu.ddmore.libpharmml.dom.dataset.CategoryMapping;
 
 
 /**
@@ -42,9 +43,10 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="PieceType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/Maths}ExprType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/Maths}ExprType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Condition"/>
+ *         &lt;element name="CategoryMapping" type="{http://www.pharmml.org/pharmml/0.6/Dataset}CategoryMappingType" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}Condition"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -55,14 +57,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PieceType", propOrder = {
+    "categoryMapping",
     "condition"
 })
 public class Piece
     extends Expression
 {
 
+    @XmlElement(name = "CategoryMapping")
+    protected CategoryMapping categoryMapping;
     @XmlElement(name = "Condition", required = true)
     protected Condition condition;
+
+    /**
+     * Gets the value of the categoryMapping property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CategoryMappingType }
+     *     
+     */
+    public CategoryMapping getCategoryMapping() {
+        return categoryMapping;
+    }
+
+    /**
+     * Sets the value of the categoryMapping property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CategoryMappingType }
+     *     
+     */
+    public void setCategoryMapping(CategoryMapping value) {
+        this.categoryMapping = value;
+    }
 
     /**
      * Gets the value of the condition property.
