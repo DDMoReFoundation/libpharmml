@@ -201,12 +201,8 @@ public class ExternalFile
      *     {@link Delimiter} enum value
      *     
      */
-    public Delimiter getDelimiter() {
-    	if(delimiter != null){
-    		return Delimiter.valueOf(delimiter);
-    	} else {
-    		return null;
-    	}
+    public String getDelimiter() {
+    	return delimiter;
     }
 
     /**
@@ -218,7 +214,23 @@ public class ExternalFile
      *     
      */
     public void setDelimiter(Delimiter value) {
-        this.delimiter = value.toString();
+    	if(value == null){
+    		this.delimiter = null;
+    	} else {
+    		this.delimiter = value.toString();
+    	}
+    }
+    
+    /**
+     * Sets the value of the delimiter property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDelimiter(String value) {
+        this.delimiter = value;
     }
 
     /**
