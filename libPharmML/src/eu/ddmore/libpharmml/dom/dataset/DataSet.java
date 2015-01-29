@@ -48,7 +48,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
-import eu.ddmore.libpharmml.dom.dataset.ImportData.Delimiter;
+import eu.ddmore.libpharmml.dom.dataset.ExternalFile.Delimiter;
 import eu.ddmore.libpharmml.impl.ValidationErrorImpl;
 import eu.ddmore.libpharmml.util.Util;
 import eu.ddmore.libpharmml.util.WrappedList;
@@ -100,7 +100,7 @@ public class DataSet
 	protected WrappedList<ColumnDefinition> wrappedListOfColumn;
 	
     @XmlElement(name = "ImportData")
-    protected ImportData importData;
+    protected ExternalFile importData;
     
     @XmlElement(name = "Table")
     @XmlJavaTypeAdapter(DataSet.RowDefinitionAdapter.class)
@@ -209,10 +209,10 @@ public class DataSet
      * @param format Format of the file such as "CSV".
      * @param delimiter Delimiter in the csv file.
      * @param oid Object id of the import data element.
-     * @return The created import data as a {@link ImportData} object.
+     * @return The created import data as a {@link ExternalFile} object.
      */
-    public ImportData createImportData(String path, String format, Delimiter delimiter, String oid){
-    	ImportData data = new ImportData();
+    public ExternalFile createImportData(String path, String format, Delimiter delimiter, String oid){
+    	ExternalFile data = new ExternalFile();
     	data.setPath(path);
     	data.setFormat(format);
     	data.setDelimiter(delimiter);
@@ -228,10 +228,10 @@ public class DataSet
      * 
      * @return
      *     possible object is
-     *     {@link ImportData }
+     *     {@link ExternalFile }
      *     
      */
-    public ImportData getImportData() {
+    public ExternalFile getImportData() {
         return importData;
     }
 
@@ -240,10 +240,10 @@ public class DataSet
      * 
      * @param value
      *     allowed object is
-     *     {@link ImportData }
+     *     {@link ExternalFile }
      *     
      */
-    public void setImportData(ImportData value) {
+    public void setImportData(ExternalFile value) {
         this.importData = value;
     }
 
