@@ -76,6 +76,7 @@ public class Piece
      *     possible object is
      *     {@link CategoryMappingType }
      *     
+     * @since PharmML 0.6
      */
     public CategoryMapping getCategoryMapping() {
         return categoryMapping;
@@ -87,7 +88,8 @@ public class Piece
      * @param value
      *     allowed object is
      *     {@link CategoryMappingType }
-     *     
+     * 
+     * @since PharmML 0.6
      */
     public void setCategoryMapping(CategoryMapping value) {
         this.categoryMapping = value;
