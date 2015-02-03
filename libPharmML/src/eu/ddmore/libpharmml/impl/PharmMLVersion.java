@@ -51,21 +51,31 @@ public enum PharmMLVersion {
 	/**
 	 * PharmML 0.5.1
 	 */
-	V0_5_1("0.5.1","MarshallerImpl.xmlCatalogLocation.0.5.1",7);
+	V0_5_1("0.5.1","MarshallerImpl.xmlCatalogLocation.0.5.1",7),
+	/**
+	 * PharmML 0.6
+	 */
+	V0_6("0.6","MarshallerImpl.xmlCatalogLocation.0.6",8);
 	
 	/**
-	 * The latest version of PharmML. Current is 0.5.1.
+	 * The latest version of PharmML. Current is 0.6.
 	 */
-	public static final PharmMLVersion DEFAULT = PharmMLVersion.V0_5_1;
+	public static final PharmMLVersion DEFAULT = PharmMLVersion.V0_6;
 	
-	private String version;
-	private String catalogLocation;
-	private int index;
+	private final String version;
+	private final String catalogLocation;
+	private final int index;
+//	private final String pharmml_URI;
 	
 	private PharmMLVersion(String version,String catalogMessage,int index) {
 		this.version = version;
 		this.catalogLocation = Messages.getString(catalogMessage);
 		this.index = index;
+//		if(index >= 8){
+//			this.pharmml_URI = String.format(XMLFilter.NS_PATTERN_PHARMML, version);
+//		} else {
+//			this.pharmml_URI = Messages.getString("MarshallerImpl.PharmMLURI.old");
+//		}
 	}
 	
 	/**
@@ -86,29 +96,22 @@ public enum PharmMLVersion {
 		return catalogLocation;
 	}
 	
+//	public String getPharmmlURI(){
+//		return pharmml_URI;
+//	}
+//	
 	/**
 	 * Contruct a {@link PharmMLVersion} object based on the provided version as string.
 	 * If the version does not exist, this method returns null.
 	 * @param version the version as a string in "x.x(.x)" format.
 	 */
 	public static PharmMLVersion getEnum(String version){
-		if(version.equals("0.2.1")){
-			return PharmMLVersion.V0_2_1;
-		} else if(version.equals("0.3")){
-			return PharmMLVersion.V0_3;
-		} else if(version.equals("0.3.1")){
-			return PharmMLVersion.V0_3_1;
-		} else if(version.equals("0.4")){
-			return PharmMLVersion.V0_4;
-		} else if(version.equals("0.4.1")){
-			return PharmMLVersion.V0_4_1;
-		} else if(version.equals("0.5")){
-			return PharmMLVersion.V0_5;
-		} else if(version.equals("0.5.1")){
-			return PharmMLVersion.V0_5_1;
-		} else {
-			return null;
+		for(PharmMLVersion enumVersion : values()){
+			if(version.equals(enumVersion.getValue())){
+				return enumVersion;
+			}
 		}
+		return null;
 	}
 	
 	/**
