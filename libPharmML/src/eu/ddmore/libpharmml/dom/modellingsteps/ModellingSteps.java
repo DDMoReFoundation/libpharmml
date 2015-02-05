@@ -28,13 +28,21 @@ package eu.ddmore.libpharmml.dom.modellingsteps;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.JAXBElement;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.ToolName;
+import eu.ddmore.libpharmml.impl.LoggerWrapper;
+import eu.ddmore.libpharmml.impl.MarshalListener;
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 
 /**
@@ -49,13 +57,12 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  * <pre>
  * &lt;complexType name="ModellingStepsType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="MONOLIXdataSet" type="{http://www.pharmml.org/2013/03/ModellingSteps}MONOLIXdataSetType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="NONMEMdataSet" type="{http://www.pharmml.org/2013/03/ModellingSteps}NONMEMdataSetType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="TargetTool" type="{http://www.pharmml.org/2013/03/ModellingSteps}TargetToolType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/ModellingSteps}CommonModellingStep" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="StepDependencies" type="{http://www.pharmml.org/2013/03/ModellingSteps}StepDependencyType" minOccurs="0"/>
+ *         &lt;element name="ExternalDataSet" type="{http://www.pharmml.org/pharmml/0.6/ModellingSteps}ExternalDataSetType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="TargetTool" type="{http://www.pharmml.org/pharmml/0.6/ModellingSteps}TargetToolType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.6/ModellingSteps}CommonModellingStep" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="StepDependencies" type="{http://www.pharmml.org/pharmml/0.6/ModellingSteps}StepDependencyType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -66,20 +73,28 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ModellingStepsType", propOrder = {
-    "listOfMonoliXdataSet",
-    "nonmeMdataSet",
+	"listOfExternalDataset",
+    "listOfMonolixDataset",
+    "listOfNonmemDataset",
     "targetTool",
     "commonModellingStep",
     "stepDependencies"
 })
+@SuppressWarnings("deprecation")
 public class ModellingSteps
     extends PharmMLRootType
 {
 
+	// Dataset bundle, see afterUnmarshal and beforeMarshal
     @XmlElement(name = "MONOLIXdataSet")
-    protected List<MONOLIXdataSet> listOfMonoliXdataSet;
+    private List<MONOLIXdataSet> listOfMonolixDataset;
     @XmlElement(name = "NONMEMdataSet")
-    protected List<NONMEMdataSet> nonmeMdataSet;
+    private List<NONMEMdataSet> listOfNonmemDataset;
+    
+    @XmlElement(name = "ExternalDataSet")
+    protected List<ExternalDataSet> listOfExternalDataset;
+    // --------------
+    
     @XmlElement(name = "TargetTool")
     protected List<TargetTool> targetTool;
     @XmlElementRef(name = "CommonModellingStep", namespace = "http://www.pharmml.org/2013/03/ModellingSteps", type = JAXBElement.class, required = false)
@@ -87,62 +102,91 @@ public class ModellingSteps
     @XmlElement(name = "StepDependencies")
     protected StepDependency stepDependencies;
 
+//    /**
+//     * Gets the value of the monoliXdataSet property.
+//     * 
+//     * <p>
+//     * This accessor method returns a reference to the live list,
+//     * not a snapshot. Therefore any modification you make to the
+//     * returned list will be present inside the JAXB object.
+//     * This is why there is not a <CODE>set</CODE> method for the monoliXdataSet property.
+//     * 
+//     * <p>
+//     * For example, to add a new item, do as follows:
+//     * <pre>
+//     *    getMONOLIXdataSet().add(newItem);
+//     * </pre>
+//     * 
+//     * 
+//     * <p>
+//     * Objects of the following type(s) are allowed in the list
+//     * {@link MONOLIXdataSetType }
+//     * 
+//     * 
+//     */
+//    public List<MONOLIXdataSet> getListOfMONOLIXdataSet() {
+//        if (listOfMonoliXdataSet == null) {
+//        	listOfMonoliXdataSet = new ArrayList<MONOLIXdataSet>();
+//        }
+//        return this.listOfMonoliXdataSet;
+//    }
+//
+//    /**
+//     * Gets the value of the nonmeMdataSet property.
+//     * 
+//     * <p>
+//     * This accessor method returns a reference to the live list,
+//     * not a snapshot. Therefore any modification you make to the
+//     * returned list will be present inside the JAXB object.
+//     * This is why there is not a <CODE>set</CODE> method for the nonmeMdataSet property.
+//     * 
+//     * <p>
+//     * For example, to add a new item, do as follows:
+//     * <pre>
+//     *    getNONMEMdataSet().add(newItem);
+//     * </pre>
+//     * 
+//     * 
+//     * <p>
+//     * Objects of the following type(s) are allowed in the list
+//     * {@link NONMEMdataSet }
+//     * 
+//     * @since PharmML 0.3
+//     */
+//    public List<NONMEMdataSet> getNONMEMdataSet() {
+//        if (nonmeMdataSet == null) {
+//            nonmeMdataSet = new ArrayList<NONMEMdataSet>();
+//        }
+//        return this.nonmeMdataSet;
+//    }
+    
     /**
-     * Gets the value of the monoliXdataSet property.
+     * Gets the value of the externalDataSet property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the monoliXdataSet property.
+     * This is why there is not a <CODE>set</CODE> method for the externalDataSet property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getMONOLIXdataSet().add(newItem);
+     *    getExternalDataSet().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link MONOLIXdataSetType }
+     * {@link ExternalDataSetType }
      * 
      * 
      */
-    public List<MONOLIXdataSet> getListOfMONOLIXdataSet() {
-        if (listOfMonoliXdataSet == null) {
-        	listOfMonoliXdataSet = new ArrayList<MONOLIXdataSet>();
+    public List<ExternalDataSet> getListOfExternalDataSet() {
+        if (listOfExternalDataset == null) {
+            listOfExternalDataset = new ArrayList<ExternalDataSet>();
         }
-        return this.listOfMonoliXdataSet;
-    }
-
-    /**
-     * Gets the value of the nonmeMdataSet property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the nonmeMdataSet property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getNONMEMdataSet().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link NONMEMdataSet }
-     * 
-     * @since PharmML 0.3
-     */
-    public List<NONMEMdataSet> getNONMEMdataSet() {
-        if (nonmeMdataSet == null) {
-            nonmeMdataSet = new ArrayList<NONMEMdataSet>();
-        }
-        return this.nonmeMdataSet;
+        return this.listOfExternalDataset;
     }
 
     /**
@@ -229,6 +273,80 @@ public class ModellingSteps
      */
     public void setStepDependencies(StepDependency value) {
         this.stepDependencies = value;
+    }
+    
+    protected void afterUnmarshal(Unmarshaller unmarshaller, Object parent){
+    	PharmMLVersion version = getUnmarshalVersion();
+    	// For versions older than PharmML 0.6, NONMEM and MONOLIX datasets are converted
+    	// to ExternalDataset instances. Otherwise they are ignored, as they are not supposed
+    	// to be used anymore.
+    	if(!version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
+    		if(listOfMonolixDataset != null){
+    			for(MONOLIXdataSet ds : listOfMonolixDataset){
+    				ExternalDataSet eds = new ExternalDataSet(ToolName.MONOLIX, ds.getOid());
+    				eds.setCodeInjection(ds.getCodeInjection());
+    				eds.setDataSet(ds.getDataSet());
+    				eds.setDescription(ds.getDescription());
+    				eds.setId(ds.getId());
+    				eds.setUnmarshalVersion(ds.getUnmarshalVersion());
+    				getListOfExternalDataSet().add(eds);
+    			}
+    			listOfMonolixDataset = null;
+    		}
+    		if(listOfNonmemDataset != null){
+    			for(NONMEMdataSet ds : listOfNonmemDataset){
+    				ExternalDataSet eds = new ExternalDataSet(ToolName.NONMEM, ds.getOid());
+    				eds.setCodeInjection(ds.getCodeInjection());
+    				eds.setDataSet(ds.getDataSet());
+    				eds.setDescription(ds.getDescription());
+    				eds.setId(ds.getId());
+    				eds.setUnmarshalVersion(ds.getUnmarshalVersion());
+    				getListOfExternalDataSet().add(eds);
+    			}
+    			listOfNonmemDataset = null;
+    		}
+    	}
+    }
+    
+    protected void beforeMarshal(Marshaller m){
+    	// If version older than 0.6, external datasets are converted to NONMEMdataset
+    	// or MONOLIXdataset instances, depending on their toolName attribute value.
+    	LoggerWrapper.getLogger().info("beforeMarshal");
+    	LoggerWrapper.getLogger().info(m.toString());
+    	if(m.getListener() instanceof MarshalListener){ // should be
+    		LoggerWrapper.getLogger().info("beforeMarshal!");
+    		PharmMLVersion version = ((MarshalListener) m.getListener()).getMarshalVersion();
+    		if(!version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
+    			listOfMonolixDataset = new ArrayList<MONOLIXdataSet>();
+    			listOfNonmemDataset = new ArrayList<NONMEMdataSet>();
+    			for(ExternalDataSet eds : getListOfExternalDataSet()){
+    				switch (eds.getToolName()){
+					case MONOLIX:
+						MONOLIXdataSet mds = new MONOLIXdataSet();
+						mds.setCodeInjection(eds.getCodeInjection());
+						mds.setDataSet(eds.getDataSet());
+						mds.setDescription(eds.getDescription());
+						mds.setId(eds.getId());
+						mds.setOid(eds.getOid());
+						listOfMonolixDataset.add(mds);
+						break;
+					case NONMEM:
+						NONMEMdataSet nds = new NONMEMdataSet();
+						nds.setCodeInjection(eds.getCodeInjection());
+						nds.setDataSet(eds.getDataSet());
+						nds.setDescription(eds.getDescription());
+						nds.setId(eds.getId());
+						nds.setOid(eds.getOid());
+						listOfNonmemDataset.add(nds);
+						break;
+					default:
+						LoggerWrapper.getLogger().warning("Only MONOLIX or NONMEM datasets are supported in this PharmML version.");
+						break;		
+    				}
+    			}
+    			getListOfExternalDataSet().clear();
+    		}
+    	}
     }
 
 }

@@ -49,7 +49,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated MONOLIX and NONMEM datasets are now regrouped into the {@link ExternalDataSet} class.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MONOLIXdataSetType", propOrder = {
@@ -59,6 +59,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
     "dataSet",
     "codeInjection"
 })
+@Deprecated
 public class MONOLIXdataSet
     extends PharmMLRootType
 {
