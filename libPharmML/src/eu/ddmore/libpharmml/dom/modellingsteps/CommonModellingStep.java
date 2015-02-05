@@ -72,6 +72,7 @@ import eu.ddmore.libpharmml.dom.commontypes.VariableAssignment;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CommonModellingStepType", propOrder = {
     "targetToolReference",
+    "externalDataSetReference",
     "monoliXdataSetReference",
     "nonmeMdataSetReference",
     "variableAssignment"
@@ -86,10 +87,15 @@ public abstract class CommonModellingStep
 
     @XmlElement(name = "TargetToolReference")
     protected TargetToolReference targetToolReference;
+    
     @XmlElement(name = "MONOLIXdataSetReference")
     protected MONOLIXdataSetReference monoliXdataSetReference;
     @XmlElement(name = "NONMEMdataSetReference")
     protected NONMEMdataSetReference nonmeMdataSetReference;
+    
+    @XmlElement(name = "ExternalDataSetReference")
+    protected ExternalDataSetReference externalDataSetReference;
+    
     @XmlElement(name = "VariableAssignment", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected List<VariableAssignment> variableAssignment;
     @XmlAttribute(name = "oid", required = true)
@@ -119,6 +125,30 @@ public abstract class CommonModellingStep
     public void setTargetToolReference(TargetToolReference value) {
         this.targetToolReference = value;
     }
+    
+    /**
+     * Gets the value of the externalDataSetReference property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ExternalDataSetReferenceType }
+     *     
+     */
+    public ExternalDataSetReference getExternalDataSetReference() {
+        return externalDataSetReference;
+    }
+
+    /**
+     * Sets the value of the externalDataSetReference property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ExternalDataSetReferenceType }
+     *     
+     */
+    public void setExternalDataSetReference(ExternalDataSetReference value) {
+        this.externalDataSetReference = value;
+    }
 
     /**
      * Gets the value of the monoliXdataSetReference property.
@@ -127,7 +157,9 @@ public abstract class CommonModellingStep
      *     possible object is
      *     {@link MONOLIXdataSetReferenceType }
      *     
+     * @deprecated Use {@link #getExternalDataSetReference()}.
      */
+    @Deprecated
     public MONOLIXdataSetReference getMONOLIXdataSetReference() {
         return monoliXdataSetReference;
     }
@@ -138,8 +170,10 @@ public abstract class CommonModellingStep
      * @param value
      *     allowed object is
      *     {@link MONOLIXdataSetReferenceType }
-     *     
+     * 
+     * @deprecated Use {@link #setExternalDataSetReference(ExternalDataSetReference)} instead.
      */
+    @Deprecated
     public void setMONOLIXdataSetReference(MONOLIXdataSetReference value) {
         this.monoliXdataSetReference = value;
     }
@@ -150,8 +184,10 @@ public abstract class CommonModellingStep
      * @return
      *     possible object is
      *     {@link NONMEMdataSetReference }
-     *     
+     *  
+     * @deprecated Use {@link #getExternalDataSetReference()}.
      */
+    @Deprecated
     public NONMEMdataSetReference getNONMEMdataSetReference() {
         return nonmeMdataSetReference;
     }
@@ -162,8 +198,10 @@ public abstract class CommonModellingStep
      * @param value
      *     allowed object is
      *     {@link NONMEMdataSetReference }
-     *     
+     *  
+     * @deprecated Use {@link #setExternalDataSetReference(ExternalDataSetReference)} instead.
      */
+    @Deprecated
     public void setNONMEMdataSetReference(NONMEMdataSetReference value) {
         this.nonmeMdataSetReference = value;
     }
