@@ -65,10 +65,40 @@ public class MarshallerImpl implements IMarshaller {
 			}
 			Marshaller m = context.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-			m.setListener(mListener);
-			m.marshal(dom, os);
+			m.setListener(mListener);	
+			
+			// TODO: use a proper XML writer. Use last version as default one.
+			if(version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
+				// Marshalling into a XMLStreamWriter with filter for namespaces.
+				// Into a ByteArray so it can be inputstreamed again.
+				ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+				XMLFilter filter = new XMLFilter(version);	
+//				XMLStreamWriter xmlsw = filter.getXMLStreamWriter(byteOut);	
+				m.marshal(dom, byteOut);
+				
+				filter.filterRawText(new ByteArrayInputStream(byteOut.toByteArray()), os);
+			} else { // no filtering, applying old default namespace
+				m.marshal(dom, os);
+			}
+			
+//			// Using a transformer for pretty XML print
+//			Transformer transformer = TransformerFactory.newInstance().newTransformer();
+//			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+//			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2"); // indent length
+//			transformer.transform(
+//					new StreamSource(new ByteArrayInputStream(byteOut.toByteArray())), 
+//					new StreamResult(os)
+//					);
+//			
 		} catch (JAXBException e) {
 			throw new RuntimeException(e);
+//		} catch (XMLStreamException e) {
+//			throw new RuntimeException(e);
+//		} catch (TransformerException e) {
+//			throw new RuntimeException(e);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

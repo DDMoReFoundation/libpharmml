@@ -1,8 +1,22 @@
 package eu.ddmore.libpharmml.impl;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+
+import javax.xml.namespace.NamespaceContext;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.XMLFilterImpl;
+
+import com.sun.xml.internal.txw2.output.IndentingXMLStreamWriter;
 
 public class XMLFilter extends XMLFilterImpl {
 	
@@ -35,15 +49,23 @@ public class XMLFilter extends XMLFilterImpl {
 	static final private String NS_OLD_ROOT = "http://www.pharmml.org/2013/03/";
 	
 	static final public String NS_OLD_CT = NS_OLD_ROOT + "CommonTypes";
-	static final public String NS_OLD_DS = NS_OLD_ROOT + "Dataset";
+	static final public String NS_OLD_DS = "http://www.pharmml.org/2013/08/Dataset";
 	static final public String NS_OLD_MATH = NS_OLD_ROOT + "Maths";
 	static final public String NS_OLD_MDEF = NS_OLD_ROOT + "ModelDefinition";
 	static final public String NS_OLD_TD = NS_OLD_ROOT + "TrialDesign";
 	static final public String NS_OLD_MSTEPS = NS_OLD_ROOT + "ModellingSteps";
 	static final public String NS_OLD_MML = NS_OLD_ROOT + "PharmML";
+	
+	private final PharmMLVersion version;
 
     public XMLFilter(PharmMLVersion writtenVersion) {
         super();
+        
+        if(writtenVersion == null){
+        	throw new IllegalArgumentException("Written version cannot be null");
+        }
+        
+        this.version = writtenVersion;
         
         if(writtenVersion.isEqualOrLaterThan(PharmMLVersion.V0_6)){
         	NS_DOC_CT = String.format(NS_PATTERN_CT, writtenVersion);
@@ -78,14 +100,14 @@ public class XMLFilter extends XMLFilterImpl {
     public void startElement(String arg0, String arg1, String arg2,
             Attributes arg3) throws SAXException {
 
-        super.startElement(filterNamespace(arg0), arg1, arg2, arg3);
+        super.startElement(filterInputNamespace(arg0), arg1, arg2, arg3);
     }
 
     @Override
     public void endElement(String arg0, String arg1, String arg2)
             throws SAXException {
 
-        super.endElement(filterNamespace(arg0), arg1, arg2);
+        super.endElement(filterInputNamespace(arg0), arg1, arg2);
     }
 
 //    @Override
@@ -117,26 +139,232 @@ public class XMLFilter extends XMLFilterImpl {
      * @param ns Document namespace
      * @return Default namespace
      */
-    private String filterNamespace(String ns){
+    private String filterInputNamespace(String ns){
     	if(ns.equals(NS_DOC_CT)){
-    		return NS_DEFAULT_CT;
+    		return NS_OLD_CT;
     	} else if(ns.equals(NS_DOC_DS)){
-        	return NS_DEFAULT_DS;
+        	return NS_OLD_DS;
     	} else if(ns.equals(NS_DOC_MATH)){
-        	return NS_DEFAULT_MATH;
+        	return NS_OLD_MATH;
     	} else if(ns.equals(NS_DOC_MDEF)){
-        	return NS_DEFAULT_MDEF;
+        	return NS_OLD_MDEF;
     	} else if(ns.equals(NS_DOC_MSTEPS)){
-        	return NS_DEFAULT_MSTEPS;
+        	return NS_OLD_MSTEPS;
     	} else if(ns.equals(NS_DOC_TD)){
-        	return NS_DEFAULT_TD;
+        	return NS_OLD_TD;
     	} else if(ns.equals(NS_DOC_MML)){
-        	return NS_DEFAULT_MML;
+        	return NS_OLD_MML;
     	} else {
     		return ns;
     	}
     }
     
+    private String filterOutputNamespace(String ns){
+    	if(ns.equals(NS_OLD_CT)){
+    		return NS_DOC_CT;
+    	} else if(ns.equals(NS_OLD_DS)){
+        	return NS_DOC_DS;
+    	} else if(ns.equals(NS_OLD_MATH)){
+        	return NS_DOC_MATH;
+    	} else if(ns.equals(NS_OLD_MDEF)){
+        	return NS_DOC_MDEF;
+    	} else if(ns.equals(NS_OLD_MSTEPS)){
+        	return NS_DOC_MSTEPS;
+    	} else if(ns.equals(NS_OLD_TD)){
+        	return NS_DOC_TD;
+    	} else if(ns.equals(NS_OLD_MML)){
+        	return NS_DOC_MML;
+    	} else {
+    		return ns;
+    	}
+    }
     
+    public XMLStreamWriter getXMLStreamWriter(final OutputStream stream) throws XMLStreamException{
+    	
+    	XMLStreamWriter filterWriter =  new XMLStreamWriter() {
+    		
+    		XMLStreamWriter writer = new IndentingXMLStreamWriter(XMLOutputFactory.newFactory().createXMLStreamWriter(stream));
+
+			@Override
+			public void writeStartElement(String localName) throws XMLStreamException {
+				writer.writeStartElement(localName);
+			}
+
+			@Override
+			public void writeStartElement(String namespaceURI, String localName) throws XMLStreamException {
+				writer.writeStartElement(filterOutputNamespace(namespaceURI), localName);
+			}
+
+			@Override
+			public void writeStartElement(String prefix, String localName, String namespaceURI)
+					throws XMLStreamException {
+				writer.writeStartElement(prefix, localName, filterOutputNamespace(namespaceURI));
+			}
+
+			@Override
+			public void writeEmptyElement(String namespaceURI, String localName) throws XMLStreamException {
+				writer.writeEmptyElement(filterOutputNamespace(namespaceURI), localName);
+			}
+
+			@Override
+			public void writeEmptyElement(String prefix, String localName, String namespaceURI)
+					throws XMLStreamException {
+				writer.writeEmptyElement(prefix, localName, filterOutputNamespace(namespaceURI));
+			}
+
+			@Override
+			public void writeEmptyElement(String localName) throws XMLStreamException {
+				writer.writeEmptyElement(localName);
+			}
+
+			@Override
+			public void writeEndElement() throws XMLStreamException {
+				writer.writeEndElement();
+			}
+
+			@Override
+			public void writeEndDocument() throws XMLStreamException {
+				writer.writeEndDocument();
+			}
+
+			@Override
+			public void close() throws XMLStreamException {
+				writer.close();
+			}
+
+			@Override
+			public void flush() throws XMLStreamException {
+				writer.flush();
+			}
+
+			@Override
+			public void writeAttribute(String localName, String value) throws XMLStreamException {
+				writer.writeAttribute(localName, value);
+			}
+
+			@Override
+			public void writeAttribute(String prefix, String namespaceURI, String localName, String value)
+					throws XMLStreamException {
+				writer.writeAttribute(prefix, filterOutputNamespace(namespaceURI), localName, value);
+			}
+
+			@Override
+			public void writeAttribute(String namespaceURI, String localName, String value) throws XMLStreamException {
+				writer.writeAttribute(filterOutputNamespace(namespaceURI), localName, value);
+			}
+
+			@Override
+			public void writeNamespace(String prefix, String namespaceURI) throws XMLStreamException {
+				writer.writeNamespace(prefix, filterOutputNamespace(namespaceURI));
+			}
+
+			@Override
+			public void writeDefaultNamespace(String namespaceURI) throws XMLStreamException {
+				writer.writeDefaultNamespace(filterOutputNamespace(namespaceURI));
+			}
+
+			@Override
+			public void writeComment(String data) throws XMLStreamException {
+				writer.writeComment(data);
+			}
+
+			@Override
+			public void writeProcessingInstruction(String target) throws XMLStreamException {
+				writer.writeProcessingInstruction(target);
+			}
+
+			@Override
+			public void writeProcessingInstruction(String target, String data) throws XMLStreamException {
+				writer.writeProcessingInstruction(target, data);
+			}
+
+			@Override
+			public void writeCData(String data) throws XMLStreamException {
+				writer.writeCData(data);
+			}
+
+			@Override
+			public void writeDTD(String dtd) throws XMLStreamException {
+				writer.writeDTD(dtd);
+			}
+
+			@Override
+			public void writeEntityRef(String name) throws XMLStreamException {
+				writer.writeEntityRef(name);
+			}
+
+			@Override
+			public void writeStartDocument() throws XMLStreamException {
+				writer.writeStartDocument();
+			}
+
+			@Override
+			public void writeStartDocument(String version) throws XMLStreamException {
+				writer.writeStartDocument(version);
+			}
+
+			@Override
+			public void writeStartDocument(String encoding, String version) throws XMLStreamException {
+				writer.writeStartDocument(encoding, version);
+			}
+
+			@Override
+			public void writeCharacters(String text) throws XMLStreamException {
+				writer.writeCharacters(text);
+			}
+
+			@Override
+			public void writeCharacters(char[] text, int start, int len) throws XMLStreamException {
+				writer.writeCharacters(text, start, len);
+			}
+
+			@Override
+			public String getPrefix(String uri) throws XMLStreamException {
+				return writer.getPrefix(filterOutputNamespace(uri));
+			}
+
+			@Override
+			public void setPrefix(String prefix, String uri) throws XMLStreamException {
+				writer.setPrefix(prefix, filterOutputNamespace(uri));
+			}
+
+			@Override
+			public void setDefaultNamespace(String uri) throws XMLStreamException {
+				writer.setDefaultNamespace(filterOutputNamespace(uri));
+			}
+
+			@Override
+			public void setNamespaceContext(NamespaceContext context) throws XMLStreamException {
+				writer.setNamespaceContext(context);
+			}
+
+			@Override
+			public NamespaceContext getNamespaceContext() {
+				return writer.getNamespaceContext();
+			}
+
+			@Override
+			public Object getProperty(String name) throws IllegalArgumentException {
+				return writer.getProperty(name);
+			}
+    		
+    	};
+    	
+    	return filterWriter;
+    }
+    
+    void filterRawText(InputStream is, OutputStream os) throws IOException{
+    	BufferedReader br = new BufferedReader(new InputStreamReader(is));
+    	String line = null;
+    	OutputStreamWriter osw = new OutputStreamWriter(os);
+    	while((line = br.readLine()) != null){
+    		line = line.replaceAll("xmlns(:\\w+)?=\"http://www.pharmml.org/[^\"]+/([^\"]+)\"",
+    				"xmlns$1=\"http://www.pharmml.org/"+ version.toString() +"/$2\"");
+    		osw.append(line);
+    		osw.append("\n");
+    	}
+    	br.close();
+    	osw.close();
+    }
 
 }

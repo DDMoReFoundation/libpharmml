@@ -33,7 +33,7 @@ public class PharmMLSchemaFactory {
 	private static PharmMLSchemaFactory anInstance = null;
 
 //	private static final String DEFINITIONS_XML_CATALOG_XML = Messages.getString("MarshallerImpl.xmlCatalogLocation"); //$NON-NLS-1$
-	private static final String PHARML_URI = Messages.getString("MarshallerImpl.PharmMLURI");
+//	private static final String PHARML_URI = Messages.getString("MarshallerImpl.PharmMLURI");
 	
 	
 	public static PharmMLSchemaFactory getInstance(){
@@ -54,7 +54,8 @@ public class PharmMLSchemaFactory {
 			String[] catalogs = { url.toExternalForm() };
 			XMLCatalogResolver resolver = new XMLCatalogResolver();
 			resolver.setCatalogList(catalogs);
-			String val = resolver.resolveSystem(PHARML_URI); 
+			XMLFilter filter = new XMLFilter(version);
+			String val = resolver.resolveSystem(filter.NS_DOC_MML); 
 			StreamSource src = new StreamSource(val);
 			SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 			sf.setResourceResolver(resolver);
