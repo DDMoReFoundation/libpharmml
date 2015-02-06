@@ -36,6 +36,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.validation.Schema;
 
+import sun.invoke.util.Wrapper;
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.IMarshaller;
 import eu.ddmore.libpharmml.dom.PharmML;
@@ -140,7 +141,9 @@ public class MarshallerImpl implements IMarshaller {
 			
 			u.setListener(new UnmarshalListener(currentDocVersion));
 			
-			PharmML doc = (PharmML)u.unmarshal(bais);
+			XMLStreamReader xmlsr = new XMLFilter(currentDocVersion).getXMLStreamReader(bais);
+			
+			PharmML doc = (PharmML)u.unmarshal(xmlsr);
 			return doc;
 		} catch (JAXBException e) {
 			throw new RuntimeException(e.getMessage(), e);
