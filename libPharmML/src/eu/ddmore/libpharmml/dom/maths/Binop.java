@@ -432,5 +432,53 @@ public class Binop
 			  operator = Binoperator.fromString(op);
 		  }
 	}
+	
+	@Override
+	public String toString() {
+		if(operator == null){
+			return super.toString();
+		} else {
+			String string;
+			switch (operator) {
+				case ATAN2:
+					string = "atan2( "+operand1+" , "+operand2+" )";
+					break;
+				case DIVIDE:
+					string = operand1+" / "+operand2;
+					break;
+				case LOGX:
+					string = operand1+"log "+operand2;
+					break;
+				case MAX:
+					string = "max{ "+operand1+" , "+operand2+" }";
+					break;
+				case MIN:
+					string = "min{ "+operand1+" , "+operand2+" }";
+					break;
+				case MINUS:
+					string = operand1+" - "+operand2;
+					break;
+				case PLUS:
+					string = operand1+" + "+operand2;
+					break;
+				case POWER:
+					string = operand1+" ^ "+operand2;
+					break;
+				case REM:
+					string = operand1+" % "+operand2;
+					break;
+				case ROOT:
+					string = operand2+"root( "+operand1+" )";
+					break;
+				case TIMES:
+					string = operand1+" x "+operand2;
+					break;
+				default:
+					string = "" + operand1 + operator + operand2;
+					break;
+			}
+			return string;
+		}
+	}
 
 }
