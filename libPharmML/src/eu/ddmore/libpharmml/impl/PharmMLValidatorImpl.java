@@ -98,15 +98,16 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 			validator.validate(source);
 			
 			// symbol resolution
-			SymbolResolver resolver = new SymbolResolver(dom);
-			List<IValidationError> resolvErrors = resolver.resolveSymbols();
-			for(IValidationError error : resolvErrors){
-				rptFact.addError(error);
-			}
-			List<IValidationError> unicityErrors = resolver.checkUnicity();
-			for(IValidationError error : unicityErrors){
-				rptFact.addError(error);
-			}
+			// TODO: re-enable symbol resolution. Need to be fixed
+//			SymbolResolver resolver = new SymbolResolver(dom);
+//			List<IValidationError> resolvErrors = resolver.resolveSymbols();
+//			for(IValidationError error : resolvErrors){
+//				rptFact.addError(error);
+//			}
+//			List<IValidationError> unicityErrors = resolver.checkUnicity();
+//			for(IValidationError error : unicityErrors){
+//				rptFact.addError(error);
+//			}
 			
 			List<IValidationError> specErrors = PharmMLValidator.validate(dom);
 			for(IValidationError error : specErrors){
