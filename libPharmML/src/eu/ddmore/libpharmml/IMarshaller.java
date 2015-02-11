@@ -22,12 +22,15 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import eu.ddmore.libpharmml.dom.PharmML;
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 public interface IMarshaller {
 
 	void marshall(PharmML dom, OutputStream os);
 
 	PharmML unmarshall(InputStream in);
+	
+	PharmML unmarshall(InputStream in, PharmMLVersion version);
 
 	void setErrorHandler(IErrorHandler errHandler);
 

@@ -18,10 +18,21 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml.impl;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import javax.management.RuntimeErrorException;
 import javax.xml.bind.JAXBElement;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.Validator;
+
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 import eu.ddmore.libpharmml.ILibPharmML;
 import eu.ddmore.libpharmml.IMarshaller;
@@ -56,8 +67,41 @@ public class LibPharmMLImpl implements ILibPharmML {
 	@Override
 	public IPharmMLResource createDomFromResource(InputStream inStr) {
 		final ValidationReportFactory repFact = new ValidationReportFactory();
-		this.marshaller.setErrorHandler(repFact);
-		final PharmML dom = this.marshaller.unmarshall(inStr);
+//		this.marshaller.setErrorHandler(repFact);
+		
+		final PharmMLVersion currentDocVersion;
+		
+		try {
+			
+		byte[] data = MarshallerImpl.toByteArray(inStr);
+		ByteArrayInputStream bais = new ByteArrayInputStream(data);
+		currentDocVersion = MarshallerImpl.parseVersion(bais);
+		bais.reset();
+		
+		// Validating stream with schemas
+		Schema schema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(currentDocVersion);
+		Validator validator = schema.newValidator();
+		validator.setErrorHandler(new ErrorHandler() {
+			
+			@Override
+			public void warning(SAXParseException exception) throws SAXException {
+				repFact.handleWarning(exception.getMessage());
+			}
+			
+			@Override
+			public void fatalError(SAXParseException exception) throws SAXException {
+				repFact.handleError(exception.getMessage());
+			}
+			
+			@Override
+			public void error(SAXParseException exception) throws SAXException {
+				repFact.handleError(exception.getMessage());
+			}
+		});
+		validator.validate(new StreamSource(bais));
+		bais.reset();
+		
+		final PharmML dom = this.marshaller.unmarshall(bais,currentDocVersion);
 		IPharmMLResource retVal = new IPharmMLResource() {
 			@Override
 			public PharmML getDom() {
@@ -79,6 +123,14 @@ public class LibPharmMLImpl implements ILibPharmML {
 			}
 		};
 		return retVal;
+		
+		} catch (XMLStreamException e) {
+			throw new RuntimeException(e);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} catch (SAXException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
