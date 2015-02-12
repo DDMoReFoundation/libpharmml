@@ -28,15 +28,11 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.bind.ValidationEvent;
-import javax.xml.bind.ValidationEventHandler;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import javax.xml.validation.Schema;
 
-import sun.invoke.util.Wrapper;
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.IMarshaller;
 import eu.ddmore.libpharmml.dom.PharmML;
