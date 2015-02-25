@@ -33,6 +33,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -49,9 +50,12 @@ import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile.Delimiter;
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.ValidationErrorImpl;
 import eu.ddmore.libpharmml.util.Util;
 import eu.ddmore.libpharmml.util.WrappedList;
+import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
+import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 import eu.ddmore.libpharmml.validation.Validatable;
 
 
@@ -85,9 +89,14 @@ import eu.ddmore.libpharmml.validation.Validatable;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DataSetType", propOrder = {
     "wrappedListOfColumn",
-    "importData",
+    "mapped_externalFile",
+    "mapped_importData",
     "wrappedListOfRow"
 })
+@HasElementRenamed(mappedFields = { 
+		@RenamedElement(field = "mapped_externalFile", since = PharmMLVersion.V0_6),
+		@RenamedElement(field = "mapped_importData")
+}, transientField = "externalFile")
 public class DataSet
     extends PharmMLRootType implements Validatable
 {
@@ -99,8 +108,13 @@ public class DataSet
 	@XmlJavaTypeAdapter(DataSet.ColumnDefinitionAdapter.class)
 	protected WrappedList<ColumnDefinition> wrappedListOfColumn;
 	
+	// ExternalData renamed fields
+	@XmlElement(name = "ExternalFile")
+    protected ExternalFile mapped_externalFile;
     @XmlElement(name = "ImportData")
-    protected ExternalFile importData;
+    protected ExternalFile mapped_importData;
+    @XmlTransient
+    protected ExternalFile externalFile;
     
     @XmlElement(name = "Table")
     @XmlJavaTypeAdapter(DataSet.RowDefinitionAdapter.class)
@@ -230,9 +244,39 @@ public class DataSet
      *     possible object is
      *     {@link ExternalFile }
      *     
+     * @deprecated Use {@link #getExternalFile()} instead.
      */
+    @Deprecated
     public ExternalFile getImportData() {
-        return importData;
+        return externalFile;
+    }
+
+    /**
+     * Sets the value of the importData property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ExternalFile }
+     *     
+     * @deprecated Use {@link #setExternalFile(ExternalFile)}.
+     */
+    @Deprecated
+    public void setImportData(ExternalFile value) {
+        this.externalFile = value;
+    }
+    
+    /**
+     * 
+     *                                     Import datafile
+     *                                 
+     * 
+     * @return
+     *     possible object is
+     *     {@link ExternalFile }
+     *     
+     */
+    public ExternalFile getExternalFile() {
+        return externalFile;
     }
 
     /**
@@ -243,8 +287,8 @@ public class DataSet
      *     {@link ExternalFile }
      *     
      */
-    public void setImportData(ExternalFile value) {
-        this.importData = value;
+    public void setExternalFile(ExternalFile value) {
+        this.externalFile = value;
     }
 
 	@Override
