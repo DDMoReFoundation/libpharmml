@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -76,7 +77,10 @@ public class MatrixCell
     protected MatrixVectorIndex cellRow;
     @XmlElement(name = "CellColumn", required = true)
     protected MatrixVectorIndex cellColumn;
-    @XmlElementRef(name = "VectorCellValue", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class)
+    @XmlElementRefs({
+    		@XmlElementRef(name = "VectorCellValue", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class),
+    		@XmlElementRef(name = "Equation", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class)
+    })
     protected MatrixCellValue value;
     
     /**
