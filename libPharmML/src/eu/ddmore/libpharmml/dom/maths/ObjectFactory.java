@@ -57,7 +57,8 @@ public class ObjectFactory {
     private final static QName _Uniop_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "Uniop");
     private final static QName _Binop_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "Binop");
     private final static QName _EquationTypePiecewise_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "Piecewise");
-
+    private final static QName _Equation_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "Equation");
+    
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.maths
      * 
@@ -254,6 +255,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Binop")
     public JAXBElement<Binop> createBinop(Binop value) {
         return new JAXBElement<Binop>(_Binop_QNAME, Binop.class, null, value);
+    }
+    
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Equation }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Equation")
+    public JAXBElement<Equation> createEquation(Equation value) {
+        return new JAXBElement<Equation>(_Equation_QNAME, Equation.class, null, value);
     }
 
     /**
