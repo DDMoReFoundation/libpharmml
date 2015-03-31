@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.dom.maths.Operand;
 
 
@@ -77,7 +78,7 @@ import eu.ddmore.libpharmml.dom.maths.Operand;
     "tail"
 })
 public class VectorSelector
-    extends PharmMLRootType implements Operand
+    extends PharmMLRootType implements Operand, ExpressionValue
 {
 
     @XmlElement(name = "SymbRef", required = true)

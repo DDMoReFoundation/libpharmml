@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.LinkFunction;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.dom.maths.LogicUniOp;
 import eu.ddmore.libpharmml.dom.maths.Operand;
@@ -84,7 +85,7 @@ import eu.ddmore.libpharmml.dom.maths.Operand;
     "condition"
 })
 public class Probability
-    extends PharmMLRootType implements Operand
+    extends PharmMLRootType implements Operand, ExpressionValue
 {
 
     @XmlElement(name = "LogicBinop", namespace = "http://www.pharmml.org/2013/03/Maths")

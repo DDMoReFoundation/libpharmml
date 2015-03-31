@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.dom.maths.Operand;
 
 
@@ -74,7 +75,7 @@ import eu.ddmore.libpharmml.dom.maths.Operand;
     "column"
 })
 public class MatrixSelector
-    extends PharmMLRootType implements Operand
+    extends PharmMLRootType implements Operand, ExpressionValue
 {
 
     @XmlElement(name = "SymbRef", required = true)

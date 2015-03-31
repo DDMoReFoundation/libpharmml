@@ -69,7 +69,7 @@ import eu.ddmore.libpharmml.dom.MasterObjectFactory;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConstantType")
-public class Constant implements Operand{
+public class Constant implements Operand, ExpressionValue{
 
     @XmlAttribute(name = "op", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

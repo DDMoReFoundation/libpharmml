@@ -75,7 +75,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
     "functionArgument"
 })
 public class FunctionCallType
-    extends PharmMLRootType implements Operand
+    extends PharmMLRootType implements Operand, ExpressionValue
 {
 
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)

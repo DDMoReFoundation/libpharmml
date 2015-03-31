@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.dom.maths.Operand;
 
 
@@ -61,7 +62,7 @@ import eu.ddmore.libpharmml.dom.maths.Operand;
 @XmlType(name = "SymbolRefType")
 @XmlRootElement(name = "SymbRef")
 public class SymbolRef
-    extends PharmMLRootType implements VectorCellValue, MatrixCellValue, MatrixRowValue, OperationVariable, Operand
+    extends PharmMLRootType implements VectorCellValue, MatrixCellValue, MatrixRowValue, OperationVariable, Operand, ExpressionValue
 {
 
     @XmlAttribute(name = "blkIdRef")

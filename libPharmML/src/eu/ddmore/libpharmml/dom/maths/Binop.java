@@ -194,7 +194,7 @@ import eu.ddmore.libpharmml.impl.LoggerWrapper;
     "content"
 })
 public class Binop
-    extends PharmMLRootType implements Operand
+    extends PharmMLRootType implements Operand, ExpressionValue
 {
     
 	@XmlElementRefs({

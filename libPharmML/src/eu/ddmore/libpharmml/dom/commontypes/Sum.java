@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.dom.maths.Operand;
 
 
@@ -130,7 +131,7 @@ import eu.ddmore.libpharmml.dom.maths.Operand;
     "sumIndexSet"
 })
 public class Sum
-    extends AbstractFormula implements Operand
+    extends AbstractFormula implements Operand, ExpressionValue
 {
 	
 	/**
