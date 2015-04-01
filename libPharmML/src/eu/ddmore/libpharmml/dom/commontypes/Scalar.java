@@ -20,6 +20,7 @@ package eu.ddmore.libpharmml.dom.commontypes;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.dom.maths.Operand;
 
 /**
@@ -28,6 +29,6 @@ import eu.ddmore.libpharmml.dom.maths.Operand;
  *
  */
 @XmlJavaTypeAdapter(ScalarAdapter.class)
-public interface Scalar extends VectorCellValue, MatrixCellValue, MatrixRowValue, Operand {
+public interface Scalar extends VectorCellValue, MatrixCellValue, MatrixRowValue, Operand, ExpressionValue {
 
 }
