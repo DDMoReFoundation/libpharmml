@@ -121,6 +121,21 @@ public class Uniop
     
     @XmlTransient
     protected Unioperator operator;
+    
+    /**
+     * Empty constructor
+     */
+    public Uniop() {}
+    
+    /**
+     * Creates a new unioperation with the given operator and the given value.
+     * @param operator
+     * @param value
+     */
+    public Uniop(Unioperator operator, ExpressionValue value){
+    	this.operator = operator;
+    	this.value = value;
+    }
 
     /**
      * Gets the value of the op property.
