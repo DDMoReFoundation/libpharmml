@@ -27,12 +27,16 @@
 package eu.ddmore.libpharmml.dom.maths;
 
 import javax.xml.bind.JAXBElement;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
@@ -41,6 +45,7 @@ import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Product;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
+import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.Sum;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
@@ -81,19 +86,22 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
+//@XmlType(name = "ExprType", propOrder = {
+//    "scalar",
+//    "symbRef",
+//    "constant",
+//    "binop",
+//    "uniop",
+//    "functionCall",
+//    "sum",
+//    "product",
+//    "vectorSelector",
+//    "matrixSelector",
+//    "probability"
+//})
 @XmlType(name = "ExprType", propOrder = {
-    "scalar",
-    "symbRef",
-    "constant",
-    "binop",
-    "uniop",
-    "functionCall",
-    "sum",
-    "product",
-    "vectorSelector",
-    "matrixSelector",
-    "probability"
-})
+	    "jaxb_value"
+	})
 @XmlSeeAlso({
     Uniop.class,
     Piece.class
@@ -102,28 +110,54 @@ public class Expression
     extends PharmMLRootType
 {
 
-    @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
-    protected JAXBElement<?> scalar;
-    @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected SymbolRef symbRef;
-    @XmlElement(name = "Constant")
-    protected Constant constant;
-    @XmlElement(name = "Binop")
-    protected Binop binop;
-    @XmlElement(name = "Uniop")
-    protected Uniop uniop;
-    @XmlElement(name = "FunctionCall")
-    protected FunctionCallType functionCall;
-    @XmlElement(name = "Sum", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected Sum sum;
-    @XmlElement(name = "Product", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected Product product;
-    @XmlElement(name = "VectorSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected VectorSelector vectorSelector;
-    @XmlElement(name = "MatrixSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected MatrixSelector matrixSelector;
-    @XmlElement(name = "Probability", namespace = "http://www.pharmml.org/2013/03/ModelDefinition")
-    protected Probability probability;
+//    @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+//    protected JAXBElement<?> scalar;
+//    @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+//    protected SymbolRef symbRef;
+//    @XmlElement(name = "Constant")
+//    protected Constant constant;
+//    @XmlElement(name = "Binop")
+//    protected Binop binop;
+//    @XmlElement(name = "Uniop")
+//    protected Uniop uniop;
+//    @XmlElement(name = "FunctionCall")
+//    protected FunctionCallType functionCall;
+//    @XmlElement(name = "Sum", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+//    protected Sum sum;
+//    @XmlElement(name = "Product", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+//    protected Product product;
+//    @XmlElement(name = "VectorSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+//    protected VectorSelector vectorSelector;
+//    @XmlElement(name = "MatrixSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+//    protected MatrixSelector matrixSelector;
+//    @XmlElement(name = "Probability", namespace = "http://www.pharmml.org/2013/03/ModelDefinition")
+//    protected Probability probability;
+    
+    @XmlElementRefs({
+    	@XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class),
+    	@XmlElementRef(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class),
+    	@XmlElementRef(name = "Sum", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class),
+    	@XmlElementRef(name = "Product", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class),
+    	@XmlElementRef(name = "VectorSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class),
+    	@XmlElementRef(name = "MatrixSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class),
+    	@XmlElementRef(name = "Probability", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class),
+    	@XmlElementRef(name = "Constant", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class),
+    	@XmlElementRef(name = "Binop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class),
+    	@XmlElementRef(name = "Uniop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class),
+    	@XmlElementRef(name = "FunctionCall", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class)
+    })
+    protected JAXBElement<?> jaxb_value;
+    
+    @XmlTransient
+    protected ExpressionValue value;
+    
+    public ExpressionValue getValue(){
+    	return value;
+    }
+    
+    public void setValue(ExpressionValue value){
+    	this.value = value;
+    }
 
     /**
      * Gets the value of the scalar property.
@@ -139,9 +173,15 @@ public class Expression
      *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
      *     
+     * @deprecated Must use {@link #getValue()} instead.
      */
+    @Deprecated
     public JAXBElement<?> getScalar() {
-        return scalar;
+    	if(value instanceof Scalar){
+    		return value.toJAXBElement();
+    	} else {
+    		return null;
+    	}
     }
 
     /**
@@ -158,9 +198,13 @@ public class Expression
      *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
      *     
+     * @deprecated Must use {@link #setValue(ExpressionValue)} instead.
      */
+    @Deprecated
     public void setScalar(JAXBElement<?> value) {
-        this.scalar = value;
+    	if(value.getValue() instanceof ExpressionValue){
+    		this.value = (ExpressionValue) value.getValue();
+    	}
     }
 
     /**
@@ -170,9 +214,15 @@ public class Expression
      *     possible object is
      *     {@link SymbolRef }
      *     
+     * @deprecated Must use {@link #getValue()} instead.
      */
+    @Deprecated
     public SymbolRef getSymbRef() {
-        return symbRef;
+    	if(value instanceof SymbolRef){
+    		return (SymbolRef) value;
+    	} else {
+    		return null;
+    	}
     }
 
     /**
@@ -182,9 +232,11 @@ public class Expression
      *     allowed object is
      *     {@link SymbolRef }
      *     
+     * @deprecated Must use {@link #setValue(ExpressionValue)} instead.
      */
+    @Deprecated
     public void setSymbRef(SymbolRef value) {
-        this.symbRef = value;
+        this.value = value;
     }
 
     /**
@@ -194,9 +246,15 @@ public class Expression
      *     possible object is
      *     {@link Constant }
      *     
+     * @deprecated Must use {@link #getValue()} instead.
      */
+    @Deprecated
     public Constant getConstant() {
-        return constant;
+    	if(value instanceof Constant){
+    		return (Constant) value;
+    	} else {
+    		return null;
+    	}
     }
 
     /**
@@ -206,9 +264,11 @@ public class Expression
      *     allowed object is
      *     {@link Constant }
      *     
+     * @deprecated Must use {@link #setValue(ExpressionValue)} instead.
      */
+    @Deprecated
     public void setConstant(Constant value) {
-        this.constant = value;
+        this.value = value;
     }
 
     /**
@@ -218,9 +278,15 @@ public class Expression
      *     possible object is
      *     {@link Binop }
      *     
+     * @deprecated Must use {@link #getValue()} instead.
      */
+    @Deprecated
     public Binop getBinop() {
-        return binop;
+    	if(value instanceof Binop){
+    		return (Binop) value;
+    	} else {
+    		return null;
+    	}
     }
 
     /**
@@ -230,9 +296,11 @@ public class Expression
      *     allowed object is
      *     {@link Binop }
      *     
+     * @deprecated Must use {@link #setValue(ExpressionValue)} instead.
      */
+    @Deprecated
     public void setBinop(Binop value) {
-        this.binop = value;
+        this.value = value;
     }
 
     /**
@@ -242,9 +310,15 @@ public class Expression
      *     possible object is
      *     {@link Uniop }
      *     
+     * @deprecated Must use {@link #getValue()} instead.
      */
+    @Deprecated
     public Uniop getUniop() {
-        return uniop;
+    	if(value instanceof Uniop){
+    		return (Uniop) value;
+    	} else {
+    		return null;
+    	}
     }
 
     /**
@@ -254,9 +328,11 @@ public class Expression
      *     allowed object is
      *     {@link Uniop }
      *     
+     * @deprecated Must use {@link #setValue(ExpressionValue)} instead.
      */
+    @Deprecated
     public void setUniop(Uniop value) {
-        this.uniop = value;
+        this.value = value;
     }
 
     /**
@@ -266,9 +342,15 @@ public class Expression
      *     possible object is
      *     {@link FunctionCallType }
      *     
+     * @deprecated Must use {@link #getValue()} instead.
      */
+    @Deprecated
     public FunctionCallType getFunctionCall() {
-        return functionCall;
+    	if(value instanceof FunctionCallType){
+    		return (FunctionCallType) value;
+    	} else {
+    		return null;
+    	}
     }
 
     /**
@@ -278,9 +360,11 @@ public class Expression
      *     allowed object is
      *     {@link FunctionCallType }
      *     
+     * @deprecated Must use {@link #setValue(ExpressionValue)} instead.
      */
+    @Deprecated
     public void setFunctionCall(FunctionCallType value) {
-        this.functionCall = value;
+        this.value = value;
     }
 
     /**
@@ -290,9 +374,15 @@ public class Expression
      *     possible object is
      *     {@link SumType }
      *     
+     * @deprecated Must use {@link #getValue()} instead.
      */
+    @Deprecated
     public Sum getSum() {
-        return sum;
+    	if(value instanceof Sum){
+    		return (Sum) value;
+    	} else {
+    		return null;
+    	}
     }
 
     /**
@@ -302,9 +392,11 @@ public class Expression
      *     allowed object is
      *     {@link SumType }
      *     
+     * @deprecated Must use {@link #setValue(ExpressionValue)} instead.
      */
+    @Deprecated
     public void setSum(Sum value) {
-        this.sum = value;
+        this.value = value;
     }
 
     /**
@@ -314,9 +406,15 @@ public class Expression
      *     possible object is
      *     {@link Product }
      *     
+     * @deprecated Must use {@link #getValue()} instead.
      */
+    @Deprecated
     public Product getProduct() {
-        return product;
+    	if(value instanceof Product){
+    		return (Product) value;
+    	} else {
+    		return null;
+    	}
     }
 
     /**
@@ -326,9 +424,11 @@ public class Expression
      *     allowed object is
      *     {@link Product }
      *     
+     * @deprecated Must use {@link #setValue(ExpressionValue)} instead.
      */
+    @Deprecated
     public void setProduct(Product value) {
-        this.product = value;
+        this.value = value;
     }
 
     /**
@@ -338,9 +438,15 @@ public class Expression
      *     possible object is
      *     {@link VectorSelectorType }
      *     
+     * @deprecated Must use {@link #getValue()} instead.
      */
+    @Deprecated
     public VectorSelector getVectorSelector() {
-        return vectorSelector;
+    	if(value instanceof VectorSelector){
+    		return (VectorSelector) value;
+    	} else {
+    		return null;
+    	}
     }
 
     /**
@@ -350,9 +456,11 @@ public class Expression
      *     allowed object is
      *     {@link VectorSelectorType }
      *     
+     * @deprecated Must use {@link #setValue(ExpressionValue)} instead.
      */
+    @Deprecated
     public void setVectorSelector(VectorSelector value) {
-        this.vectorSelector = value;
+        this.value = value;
     }
 
     /**
@@ -362,9 +470,15 @@ public class Expression
      *     possible object is
      *     {@link MatrixSelector }
      *     
+     * @deprecated Must use {@link #getValue()} instead.
      */
+    @Deprecated
     public MatrixSelector getMatrixSelector() {
-        return matrixSelector;
+    	if(value instanceof MatrixSelector){
+    		return (MatrixSelector) value;
+    	} else {
+    		return null;
+    	}
     }
 
     /**
@@ -373,10 +487,12 @@ public class Expression
      * @param value
      *     allowed object is
      *     {@link MatrixSelector }
-     *     
+     *    
+     * @deprecated Must use {@link #setValue(ExpressionValue)} instead. 
      */
+    @Deprecated
     public void setMatrixSelector(MatrixSelector value) {
-        this.matrixSelector = value;
+        this.value = value;
     }
 
     /**
@@ -386,9 +502,15 @@ public class Expression
      *     possible object is
      *     {@link Probability }
      *     
+     * @deprecated Must use {@link #getValue()} instead.
      */
+    @Deprecated
     public Probability getProbability() {
-        return probability;
+    	if(value instanceof Probability){
+    		return (Probability) value;
+    	} else {
+    		return null;
+    	}
     }
 
     /**
@@ -397,10 +519,28 @@ public class Expression
      * @param value
      *     allowed object is
      *     {@link Probability }
-     *     
+     *   
+     * @deprecated Must use {@link #setValue(ExpressionValue)} instead.
      */
+    @Deprecated
     public void setProbability(Probability value) {
-        this.probability = value;
+        this.value = value;
     }
+    
+	protected void beforeMarshal(Marshaller m){
+		if(value != null){
+			jaxb_value = value.toJAXBElement();
+		} else {
+			jaxb_value = null;
+		}
+	}
+	
+	protected void afterUnmarshal(Unmarshaller u, Object parent) {
+		if(jaxb_value != null && jaxb_value.getValue() instanceof ExpressionValue){
+			this.value = (ExpressionValue) jaxb_value.getValue();
+		} else {
+			this.value = null;
+		}
+	}
 
 }

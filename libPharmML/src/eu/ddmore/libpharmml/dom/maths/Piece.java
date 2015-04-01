@@ -26,10 +26,13 @@
 
 package eu.ddmore.libpharmml.dom.maths;
 
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.dataset.CategoryMapping;
 
 
@@ -118,5 +121,13 @@ public class Piece
     public void setCondition(Condition value) {
         this.condition = value;
     }
+    
+    protected void beforeMarshal(Marshaller m){
+		super.beforeMarshal(m);
+	}
+	
+	protected void afterUnmarshal(Unmarshaller u, Object parent) {
+		super.afterUnmarshal(u, parent);
+	}
 
 }

@@ -178,6 +178,7 @@ public class Uniop
 	
 	protected void beforeMarshal(Marshaller m){
 		init();
+		super.beforeMarshal(m);
 //		if(operand1 != null){
 //			content.set(0, operand1.toJAXBElement());
 //		}
@@ -190,6 +191,7 @@ public class Uniop
 	}
 	
 	protected void afterUnmarshal(Unmarshaller u, Object parent) {
+		super.afterUnmarshal(u, parent);
 //		  if(content != null){
 //			  if(content.size() >= 1){
 //				  Object _operand = content.get(0).getValue();
