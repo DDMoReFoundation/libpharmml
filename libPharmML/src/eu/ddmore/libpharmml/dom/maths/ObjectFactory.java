@@ -235,8 +235,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Otherwise")
-    public JAXBElement<Object> createOtherwise(Object value) {
-        return new JAXBElement<Object>(_Otherwise_QNAME, Object.class, null, value);
+    public JAXBElement<Otherwise> createOtherwise(Otherwise value) {
+        return new JAXBElement<Otherwise>(_Otherwise_QNAME, Otherwise.class, null, value);
     }
 
     /**

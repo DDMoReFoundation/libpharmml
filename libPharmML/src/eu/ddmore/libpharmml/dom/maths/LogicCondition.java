@@ -84,7 +84,7 @@ public class LogicCondition
     @XmlElementRef(name = "Boolean", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends BooleanValue> _boolean;
     @XmlElement(name = "Otherwise")
-    protected Object otherwise;
+    protected Otherwise otherwise;
 
     /**
      * Gets the value of the logicBinop property.
@@ -179,11 +179,24 @@ public class LogicCondition
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link Otherwise}
      *     
      */
-    public void setOtherwise(Object value) {
+    public void setOtherwise(Otherwise value) {
         this.otherwise = value;
+    }
+    
+    /**
+     * Sets the value of the otherwise property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Object }
+     *     
+     * @deprecated Use {@link #setOtherwise(Otherwise)}.
+     */
+    public void setOtherwise(Object value) {
+        this.otherwise = new Otherwise();
     }
 
 }
