@@ -229,5 +229,22 @@ public class Uniop
 			  operator = Unioperator.fromString(op);
 		  }
 	}
+	
+	@Override
+	public String toString() {
+		String content = getValue().toString();
+		
+		StringBuilder sb = new StringBuilder();
+		switch (operator){
+		case MINUS:
+			sb.append("- "+content);
+			break;
+		default:
+			sb.append(operator+"("+content+")");
+			break;
+			
+		}
+		return sb.toString();
+	}
 
 }
