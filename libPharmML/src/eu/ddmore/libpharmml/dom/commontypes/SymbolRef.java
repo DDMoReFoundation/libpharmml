@@ -147,6 +147,18 @@ public class SymbolRef
 	public String asString() {
 		return getSymbIdRef();
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		if(blkIdRef != null){
+			sb.append("[");
+			sb.append(blkIdRef);
+			sb.append("]");
+		}
+		sb.append(symbIdRef);
+		return sb.toString();
+	};
 
 	@Override
 	public JAXBElement<SymbolRef> toJAXBElement() {
