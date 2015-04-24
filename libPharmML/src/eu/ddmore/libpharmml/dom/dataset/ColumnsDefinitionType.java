@@ -73,13 +73,13 @@ public class ColumnsDefinitionType
 {
 	@SuppressWarnings("deprecation")
 	@XmlElements({
-        @XmlElement(name = "Column", type = ColumnDefnType.class),
+        @XmlElement(name = "Column", type = ColumnDefinition.class),
         @XmlElement(name = "Table", type = DataSetTableDefnType.class)
     })
-    protected List<CommonColumnDefnType> columnOrTable;
+    protected List<CommonColumnDefinition> columnOrTable;
 	
     @XmlElement(name = "Column")
-    protected List<ColumnDefnType> column;
+    protected List<ColumnDefinition> column;
 	
 	/**
      * Gets the value of the columnOrTable property.
@@ -99,16 +99,16 @@ public class ColumnsDefinitionType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ColumnDefnType }
+     * {@link ColumnDefinition }
      * {@link DataSetTableDefnType }
      * 
      * @deprecated Since version 0.3. This method should only be used with 0.2 PharmML documents. 
      * This attribute would remain empty for other versions. Use {@link #getColumn()} instead.
      */
     @Deprecated
-	public List<CommonColumnDefnType> getColumnOrTable() {
+	public List<CommonColumnDefinition> getColumnOrTable() {
         if (columnOrTable == null) {
-            columnOrTable = new ArrayList<CommonColumnDefnType>();
+            columnOrTable = new ArrayList<CommonColumnDefinition>();
         }
         return this.columnOrTable;
     }
@@ -131,13 +131,13 @@ public class ColumnsDefinitionType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ColumnDefnType }
+     * {@link ColumnDefinition }
      * 
      * 
      */
-    public List<ColumnDefnType> getColumn() {
+    public List<ColumnDefinition> getColumn() {
         if (column == null) {
-            column = new ArrayList<ColumnDefnType>();
+            column = new ArrayList<ColumnDefinition>();
         }
         return this.column;
     }
@@ -150,9 +150,9 @@ public class ColumnsDefinitionType
     		break;
     	default :
     		if(getColumnOrTable().size() > 0){
-    			for(CommonColumnDefnType colOrTab : getColumnOrTable()){
-        			if(colOrTab instanceof ColumnDefnType){
-        				getColumn().add((ColumnDefnType)colOrTab);
+    			for(CommonColumnDefinition colOrTab : getColumnOrTable()){
+        			if(colOrTab instanceof ColumnDefinition){
+        				getColumn().add((ColumnDefinition)colOrTab);
         				LoggerWrapper.getLogger().info("Moved 1 column from columnOrTable attribute to column attribute in "+this);
         			} else {
         				LoggerWrapper.getLogger().warning("Skipping 1 table in the element "+this+". No more used in version "+version);

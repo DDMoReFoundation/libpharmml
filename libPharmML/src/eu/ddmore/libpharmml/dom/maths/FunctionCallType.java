@@ -28,12 +28,16 @@ package eu.ddmore.libpharmml.dom.maths;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 
 
 /**
@@ -71,11 +75,11 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
     "functionArgument"
 })
 public class FunctionCallType
-    extends PharmMLRootType
+    extends PharmMLRootType implements Operand, ExpressionValue
 {
 
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
     @XmlElement(name = "FunctionArgument")
     protected List<FunctionCallType.FunctionArgument> functionArgument;
 
@@ -84,10 +88,10 @@ public class FunctionCallType
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -96,10 +100,10 @@ public class FunctionCallType
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 
@@ -157,5 +161,11 @@ public class FunctionCallType
 
 
     }
+
+
+	@Override
+	public JAXBElement<FunctionCallType> toJAXBElement() {
+		return MasterObjectFactory.MATHS_OF.createFunctionCall(this);
+	}
 
 }

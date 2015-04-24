@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import eu.ddmore.libpharmml.dom.commontypes.NameType;
+import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
@@ -73,11 +73,11 @@ public class VariabilityDefnBlock
 {
 
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected NameType name;
+    protected Name name;
     @XmlElement(name = "Level", required = true)
-    protected List<VariabilityLevelDefnType> level;
+    protected List<VariabilityLevelDefinition> level;
     @XmlAttribute(name = "type", required = true)
-    protected VariabilityType type;
+    protected Variability type;
     @XmlAttribute(name = "blkId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String blkId;
@@ -87,10 +87,10 @@ public class VariabilityDefnBlock
      * 
      * @return
      *     possible object is
-     *     {@link NameType }
+     *     {@link Name }
      *     
      */
-    public NameType getName() {
+    public Name getName() {
         return name;
     }
 
@@ -99,10 +99,10 @@ public class VariabilityDefnBlock
      * 
      * @param value
      *     allowed object is
-     *     {@link NameType }
+     *     {@link Name }
      *     
      */
-    public void setName(NameType value) {
+    public void setName(Name value) {
         this.name = value;
     }
 
@@ -124,13 +124,13 @@ public class VariabilityDefnBlock
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link VariabilityLevelDefnType }
+     * {@link VariabilityLevelDefinition }
      * 
      * 
      */
-    public List<VariabilityLevelDefnType> getLevel() {
+    public List<VariabilityLevelDefinition> getLevel() {
         if (level == null) {
-            level = new ArrayList<VariabilityLevelDefnType>();
+            level = new ArrayList<VariabilityLevelDefinition>();
         }
         return this.level;
     }
@@ -140,10 +140,10 @@ public class VariabilityDefnBlock
      * 
      * @return
      *     possible object is
-     *     {@link VariabilityType }
+     *     {@link Variability }
      *     
      */
-    public VariabilityType getType() {
+    public Variability getType() {
         return type;
     }
 
@@ -152,10 +152,10 @@ public class VariabilityDefnBlock
      * 
      * @param value
      *     allowed object is
-     *     {@link VariabilityType }
+     *     {@link Variability }
      *     
      */
-    public void setType(VariabilityType value) {
+    public void setType(Variability value) {
         this.type = value;
     }
 

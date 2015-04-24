@@ -67,7 +67,7 @@ public class DataSetTableType
 {
 
     @XmlElement(name = "Row", required = true)
-    protected List<DatasetRowType> row;
+    protected List<DatasetRow> row;
 
     /**
      * Gets the value of the row property.
@@ -87,13 +87,13 @@ public class DataSetTableType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link DatasetRowType }
+     * {@link DatasetRow }
      * 
      * 
      */
-    public List<DatasetRowType> getRow() {
+    public List<DatasetRow> getRow() {
         if (row == null) {
-            row = new ArrayList<DatasetRowType>();
+            row = new ArrayList<DatasetRow>();
         }
         return this.row;
     }

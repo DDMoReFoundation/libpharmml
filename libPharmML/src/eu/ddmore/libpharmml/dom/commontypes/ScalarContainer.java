@@ -58,12 +58,12 @@ public interface ScalarContainer {
 	public IdValue createIdValue(String value);
 
 	/**
-	 * Creates either a {@link TrueBooleanType} or a {@link FalseBooleanType} element, adds it as a value to the current object and returns it.
-	 * @param value Primitive value of the {@link BooleanType} element. If <b>true</b>, the return
-	 * type will be {@link TrueBooleanType}, else it will be {@link FalseBooleanType}.
-	 * @return The created {@link BooleanType} element.
+	 * Creates either a {@link TrueBoolean} or a {@link FalseBoolean} element, adds it as a value to the current object and returns it.
+	 * @param value Primitive value of the {@link BooleanValue} element. If <b>true</b>, the return
+	 * type will be {@link TrueBoolean}, else it will be {@link FalseBoolean}.
+	 * @return The created {@link BooleanValue} element.
 	 */
-	public BooleanType createBooleanValue(boolean value);
+	public BooleanValue createBooleanValue(boolean value);
 
 	
 }

@@ -44,8 +44,9 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  * &lt;complexType name="MapType">
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
- *       &lt;attribute name="dataSymbol" use="required" type="{http://www.pharmml.org/2013/03/CommonTypes}CatIdType" />
- *       &lt;attribute name="modelSymbol" use="required" type="{http://www.pharmml.org/2013/03/CommonTypes}SymbolIdType" />
+ *       &lt;attribute name="dataSymbol" type="{http://www.pharmml.org/2013/03/CommonTypes}CatIdType" />
+ *       &lt;attribute name="modelSymbol" type="{http://www.pharmml.org/2013/03/CommonTypes}SymbolIdType" />
+ *       &lt;attribute name="admNumber" type="{http://www.w3.org/2001/XMLSchema}integer" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -59,11 +60,13 @@ public class MapType
     extends PharmMLRootType
 {
 
-    @XmlAttribute(name = "dataSymbol", required = true)
+    @XmlAttribute(name = "dataSymbol")
     protected String dataSymbol;
-    @XmlAttribute(name = "modelSymbol", required = true)
+    @XmlAttribute(name = "modelSymbol")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String modelSymbol;
+	@XmlAttribute(name = "admNumber")
+    protected Integer admNumber;
     
     public MapType(){}
     
@@ -73,7 +76,7 @@ public class MapType
     }
 
     /**
-     * Gets the value of the dataSymbol property.
+     * Symbol in the data set.
      * 
      * @return
      *     possible object is
@@ -85,7 +88,7 @@ public class MapType
     }
 
     /**
-     * Sets the value of the dataSymbol property.
+     * Symbol in the data set.
      * 
      * @param value
      *     allowed object is
@@ -97,7 +100,7 @@ public class MapType
     }
 
     /**
-     * Gets the value of the modelSymbol property.
+     * ID referencing a Symbol in the model.
      * 
      * @return
      *     possible object is
@@ -109,7 +112,7 @@ public class MapType
     }
 
     /**
-     * Sets the value of the modelSymbol property.
+     * ID referencing a Symbol in the model.
      * 
      * @param value
      *     allowed object is
@@ -120,4 +123,27 @@ public class MapType
         this.modelSymbol = value;
     }
 
+	/**
+     * Number referencing adm/type macro attribute.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public Integer getAdmNumber() {
+        return admNumber;
+    }
+
+    /**
+     * Number referencing adm/type macro attribute.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setAdmNumber(Integer value) {
+        this.admNumber = value;
+    }
 }

@@ -39,7 +39,7 @@ import org.apache.xerces.util.XMLCatalogResolver;
 import org.xml.sax.SAXException;
 
 import eu.ddmore.libpharmml.dom.PharmML;
-import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinitionType;
+import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 public class TestJaxB {
@@ -56,7 +56,7 @@ public class TestJaxB {
 		eu.ddmore.libpharmml.dom.ObjectFactory fact = new eu.ddmore.libpharmml.dom.ObjectFactory();
 		PharmML dom = fact.createPharmML();
 		eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory mdefnFact = new eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory();
-		ModelDefinitionType mdt = mdefnFact.createModelDefinitionType();
+		ModelDefinition mdt = mdefnFact.createModelDefinitionType();
 		mdefnFact.createModelDefinition(mdt);
 		dom.setModelDefinition(mdt);
 		return dom;

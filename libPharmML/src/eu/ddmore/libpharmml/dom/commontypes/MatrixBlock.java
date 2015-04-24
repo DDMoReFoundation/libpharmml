@@ -84,7 +84,7 @@ public class MatrixBlock
     @XmlElement(name = "BlockStartColumn", required = true)
     protected MatrixVectorIndex blockStartColumn;
     @XmlElement(name = "BlockRow")
-    protected List<MatrixRowType> blockRow;
+    protected List<MatrixRow> blockRow;
     @XmlElement(name = "BlockCell")
     protected List<MatrixCell> blockCell;
     @XmlAttribute(name = "diagDefault")
@@ -173,13 +173,13 @@ public class MatrixBlock
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link MatrixRowType }
+     * {@link MatrixRow }
      * 
      * 
      */
-    public List<MatrixRowType> getListOfBlockRow() {
+    public List<MatrixRow> getListOfBlockRow() {
         if (blockRow == null) {
-            blockRow = new ArrayList<MatrixRowType>();
+            blockRow = new ArrayList<MatrixRow>();
         }
         return this.blockRow;
     }
@@ -338,22 +338,22 @@ public class MatrixBlock
     }
 
     /**
-     * Creates a new empty {@link MatrixRowType} blockRow element, adds it to the current object and returns it.
-     * @return The created {@link MatrixRowType} object.
+     * Creates a new empty {@link MatrixRow} blockRow element, adds it to the current object and returns it.
+     * @return The created {@link MatrixRow} object.
      */
-    public MatrixRowType createBlockRow(){
-            MatrixRowType el = new MatrixRowType();
+    public MatrixRow createBlockRow(){
+            MatrixRow el = new MatrixRow();
             getListOfBlockRow().add(el);
             return el;
     }
     
     /**
-     * Creates a new {@link MatrixRowType} blockRow element, adds it to the current object and returns it.
+     * Creates a new {@link MatrixRow} blockRow element, adds it to the current object and returns it.
      * @param rowIndex The index within the parent matrix.
-     * @return The created {@link MatrixRowType} object.
+     * @return The created {@link MatrixRow} object.
      */
-    public MatrixRowType createBlockRow(MatrixVectorIndex rowIndex){
-            MatrixRowType el = createBlockRow();
+    public MatrixRow createBlockRow(MatrixVectorIndex rowIndex){
+            MatrixRow el = createBlockRow();
             el.setRowIndex(rowIndex);
             return el;
     }

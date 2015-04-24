@@ -68,27 +68,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IndividualParameterType }
+     * Create an instance of {@link IndividualParameter }
      * 
      */
-    public IndividualParameterType createIndividualParameterType() {
-        return new IndividualParameterType();
+    public IndividualParameter createIndividualParameterType() {
+        return new IndividualParameter();
     }
 
     /**
-     * Create an instance of {@link IndividualParameterType.GaussianModel }
+     * Create an instance of {@link IndividualParameter.GaussianModel }
      * 
      */
-    public IndividualParameterType.GaussianModel createIndividualParameterTypeGaussianModel() {
-        return new IndividualParameterType.GaussianModel();
+    public IndividualParameter.GaussianModel createIndividualParameterTypeGaussianModel() {
+        return new IndividualParameter.GaussianModel();
     }
 
     /**
-     * Create an instance of {@link IndividualParameterType.GaussianModel.LinearCovariate }
+     * Create an instance of {@link IndividualParameter.GaussianModel.LinearCovariate }
      * 
      */
-    public IndividualParameterType.GaussianModel.LinearCovariate createIndividualParameterTypeGaussianModelLinearCovariate() {
-        return new IndividualParameterType.GaussianModel.LinearCovariate();
+    public IndividualParameter.GaussianModel.LinearCovariate createIndividualParameterTypeGaussianModelLinearCovariate() {
+        return new IndividualParameter.GaussianModel.LinearCovariate();
     }
 
     /**
@@ -100,11 +100,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ModelDefinitionType }
+     * Create an instance of {@link ModelDefinition }
      * 
      */
-    public ModelDefinitionType createModelDefinitionType() {
-        return new ModelDefinitionType();
+    public ModelDefinition createModelDefinitionType() {
+        return new ModelDefinition();
     }
 
     /**
@@ -116,11 +116,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StructuralModelType }
+     * Create an instance of {@link StructuralModel }
      * 
      */
-    public StructuralModelType createStructuralModelType() {
-        return new StructuralModelType();
+    public StructuralModel createStructuralModelType() {
+        return new StructuralModel();
     }
 
     /**
@@ -132,27 +132,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ParameterRandomVariableType }
+     * Create an instance of {@link ParameterRandomVariable }
      * 
      */
-    public ParameterRandomVariableType createParameterRandomVariableType() {
-        return new ParameterRandomVariableType();
+    public ParameterRandomVariable createParameterRandomVariableType() {
+        return new ParameterRandomVariable();
     }
 
     /**
-     * Create an instance of {@link SimpleParameterType }
+     * Create an instance of {@link SimpleParameter }
      * 
      */
-    public SimpleParameterType createSimpleParameterType() {
-        return new SimpleParameterType();
+    public SimpleParameter createSimpleParameterType() {
+        return new SimpleParameter();
     }
 
     /**
-     * Create an instance of {@link ParentLevelType }
+     * Create an instance of {@link ParentLevel }
      * 
      */
-    public ParentLevelType createParentLevelType() {
-        return new ParentLevelType();
+    public ParentLevel createParentLevelType() {
+        return new ParentLevel();
     }
 
     /**
@@ -164,19 +164,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CovariateTransformationType }
+     * Create an instance of {@link CovariateTransformation }
      * 
      */
-    public CovariateTransformationType createCovariateTransformationType() {
-        return new CovariateTransformationType();
+    public CovariateTransformation createCovariateTransformationType() {
+        return new CovariateTransformation();
     }
 
     /**
-     * Create an instance of {@link PairwiseType }
+     * Create an instance of {@link Pairwise }
      * 
      */
-    public PairwiseType createPairwiseType() {
-        return new PairwiseType();
+    public Pairwise createPairwiseType() {
+        return new Pairwise();
     }
 
     /**
@@ -188,11 +188,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VariabilityLevelDefnType }
+     * Create an instance of {@link VariabilityLevelDefinition }
      * 
      */
-    public VariabilityLevelDefnType createVariabilityLevelDefnType() {
-        return new VariabilityLevelDefnType();
+    public VariabilityLevelDefinition createVariabilityLevelDefnType() {
+        return new VariabilityLevelDefinition();
     }
 
     /**
@@ -228,35 +228,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CategoryType }
+     * Create an instance of {@link Category }
      * 
      */
-    public CategoryType createCategoryType() {
-        return new CategoryType();
+    public Category createCategoryType() {
+        return new Category();
     }
 
     /**
-     * Create an instance of {@link ParameterModelType }
+     * Create an instance of {@link ParameterModel }
      * 
      */
-    public ParameterModelType createParameterModelType() {
-        return new ParameterModelType();
+    public ParameterModel createParameterModelType() {
+        return new ParameterModel();
     }
 
     /**
-     * Create an instance of {@link CategoricalCovariateType }
+     * Create an instance of {@link CategoricalCovariate }
      * 
      */
-    public CategoricalCovariateType createCategoricalCovariateType() {
-        return new CategoricalCovariateType();
+    public CategoricalCovariate createCategoricalCovariateType() {
+        return new CategoricalCovariate();
     }
 
     /**
-     * Create an instance of {@link CovariateRelationType }
+     * Create an instance of {@link CovariateRelation }
      * 
      */
-    public CovariateRelationType createCovariateRelationType() {
-        return new CovariateRelationType();
+    public CovariateRelation createCovariateRelationType() {
+        return new CovariateRelation();
     }
 
     /**
@@ -268,11 +268,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CovariateModelType }
+     * Create an instance of {@link CovariateModel }
      * 
      */
-    public CovariateModelType createCovariateModelType() {
-        return new CovariateModelType();
+    public CovariateModel createCovariateModelType() {
+        return new CovariateModel();
     }
 
     /**
@@ -292,11 +292,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FixedEffectRelationType }
+     * Create an instance of {@link FixedEffectRelation }
      * 
      */
-    public FixedEffectRelationType createFixedEffectRelationType() {
-        return new FixedEffectRelationType();
+    public FixedEffectRelation createFixedEffectRelationType() {
+        return new FixedEffectRelation();
     }
 
     /**
@@ -308,11 +308,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ObservationModelType }
+     * Create an instance of {@link ObservationModel }
      * 
      */
-    public ObservationModelType createObservationModelType() {
-        return new ObservationModelType();
+    public ObservationModel createObservationModelType() {
+        return new ObservationModel();
     }
 
     /**
@@ -348,11 +348,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CorrelationType }
+     * Create an instance of {@link Correlation }
      * 
      */
-    public CorrelationType createCorrelationType() {
-        return new CorrelationType();
+    public Correlation createCorrelationType() {
+        return new Correlation();
     }
 
     /**
@@ -364,11 +364,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CorrelatedRandomVarType }
+     * Create an instance of {@link CorrelatedRandomVariable }
      * 
      */
-    public CorrelatedRandomVarType createCorrelatedRandomVarType() {
-        return new CorrelatedRandomVarType();
+    public CorrelatedRandomVariable createCorrelatedRandomVarType() {
+        return new CorrelatedRandomVariable();
     }
 
     /**
@@ -388,19 +388,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CategoricalRelationType }
+     * Create an instance of {@link CategoricalRelation }
      * 
      */
-    public CategoricalRelationType createCategoricalRelationType() {
-        return new CategoricalRelationType();
+    public CategoricalRelation createCategoricalRelationType() {
+        return new CategoricalRelation();
     }
 
     /**
-     * Create an instance of {@link ContinuousCovariateType }
+     * Create an instance of {@link ContinuousCovariate }
      * 
      */
-    public ContinuousCovariateType createContinuousCovariateType() {
-        return new ContinuousCovariateType();
+    public ContinuousCovariate createContinuousCovariateType() {
+        return new ContinuousCovariate();
     }
 
     /**
@@ -412,43 +412,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ParameterRandomEffectType }
+     * Create an instance of {@link ParameterRandomEffect }
      * 
      */
-    public ParameterRandomEffectType createParameterRandomEffectType() {
-        return new ParameterRandomEffectType();
+    public ParameterRandomEffect createParameterRandomEffectType() {
+        return new ParameterRandomEffect();
     }
 
     /**
-     * Create an instance of {@link CovariateDefinitionType }
+     * Create an instance of {@link CovariateDefinition }
      * 
      */
-    public CovariateDefinitionType createCovariateDefinitionType() {
-        return new CovariateDefinitionType();
+    public CovariateDefinition createCovariateDefinitionType() {
+        return new CovariateDefinition();
     }
 
     /**
-     * Create an instance of {@link CategoricalCovariateType }
+     * Create an instance of {@link CategoricalCovariate }
      * 
      */
-    public CategoricalCovariateType createCategorialCovariateType() {
-        return new CategoricalCovariateType();
+    public CategoricalCovariate createCategorialCovariateType() {
+        return new CategoricalCovariate();
     }
 
     /**
-     * Create an instance of {@link IndividualParameterType.GaussianModel.GeneralCovariate }
+     * Create an instance of {@link IndividualParameter.GaussianModel.GeneralCovariate }
      * 
      */
-    public IndividualParameterType.GaussianModel.GeneralCovariate createIndividualParameterTypeGaussianModelGeneralCovariate() {
-        return new IndividualParameterType.GaussianModel.GeneralCovariate();
+    public IndividualParameter.GaussianModel.GeneralCovariate createIndividualParameterTypeGaussianModelGeneralCovariate() {
+        return new IndividualParameter.GaussianModel.GeneralCovariate();
     }
 
     /**
-     * Create an instance of {@link IndividualParameterType.GaussianModel.LinearCovariate.PopulationParameter }
+     * Create an instance of {@link IndividualParameter.GaussianModel.LinearCovariate.PopulationParameter }
      * 
      */
-    public IndividualParameterType.GaussianModel.LinearCovariate.PopulationParameter createIndividualParameterTypeGaussianModelLinearCovariatePopulationParameter() {
-        return new IndividualParameterType.GaussianModel.LinearCovariate.PopulationParameter();
+    public IndividualParameter.GaussianModel.LinearCovariate.PopulationParameter createIndividualParameterTypeGaussianModelLinearCovariatePopulationParameter() {
+        return new IndividualParameter.GaussianModel.LinearCovariate.PopulationParameter();
     }
 
     /**
@@ -476,21 +476,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StructuralModelType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link StructuralModel }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "StructuralModel")
-    public JAXBElement<StructuralModelType> createStructuralModel(StructuralModelType value) {
-        return new JAXBElement<StructuralModelType>(_StructuralModel_QNAME, StructuralModelType.class, null, value);
+    public JAXBElement<StructuralModel> createStructuralModel(StructuralModel value) {
+        return new JAXBElement<StructuralModel>(_StructuralModel_QNAME, StructuralModel.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModelDefinitionType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ModelDefinition }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "ModelDefinition")
-    public JAXBElement<ModelDefinitionType> createModelDefinition(ModelDefinitionType value) {
-        return new JAXBElement<ModelDefinitionType>(_ModelDefinition_QNAME, ModelDefinitionType.class, null, value);
+    public JAXBElement<ModelDefinition> createModelDefinition(ModelDefinition value) {
+        return new JAXBElement<ModelDefinition>(_ModelDefinition_QNAME, ModelDefinition.class, null, value);
     }
 
     /**
@@ -521,48 +521,48 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SimpleParameterType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link SimpleParameter }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "SimpleParameter", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModelDefinition", substitutionHeadName = "CommonParameterElement")
-    public JAXBElement<SimpleParameterType> createSimpleParameter(SimpleParameterType value) {
-        return new JAXBElement<SimpleParameterType>(_SimpleParameter_QNAME, SimpleParameterType.class, null, value);
+    public JAXBElement<SimpleParameter> createSimpleParameter(SimpleParameter value) {
+        return new JAXBElement<SimpleParameter>(_SimpleParameter_QNAME, SimpleParameter.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IndividualParameterType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link IndividualParameter }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "IndividualParameter", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModelDefinition", substitutionHeadName = "CommonParameterElement")
-    public JAXBElement<IndividualParameterType> createIndividualParameter(IndividualParameterType value) {
-        return new JAXBElement<IndividualParameterType>(_IndividualParameter_QNAME, IndividualParameterType.class, null, value);
+    public JAXBElement<IndividualParameter> createIndividualParameter(IndividualParameter value) {
+        return new JAXBElement<IndividualParameter>(_IndividualParameter_QNAME, IndividualParameter.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ObservationErrorType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ObservationError }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "ObservationError")
-    public JAXBElement<ObservationErrorType> createObservationError(ObservationErrorType value) {
-        return new JAXBElement<ObservationErrorType>(_ObservationError_QNAME, ObservationErrorType.class, null, value);
+    public JAXBElement<ObservationError> createObservationError(ObservationError value) {
+        return new JAXBElement<ObservationError>(_ObservationError_QNAME, ObservationError.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CommonParameterType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CommonParameter }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "CommonParameterElement")
-    public JAXBElement<CommonParameterType> createCommonParameterElement(CommonParameterType value) {
-        return new JAXBElement<CommonParameterType>(_CommonParameterElement_QNAME, CommonParameterType.class, null, value);
+    public JAXBElement<CommonParameter> createCommonParameterElement(CommonParameter value) {
+        return new JAXBElement<CommonParameter>(_CommonParameterElement_QNAME, CommonParameter.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ParameterRandomVariableType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ParameterRandomVariable }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "RandomVariable", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModelDefinition", substitutionHeadName = "CommonParameterElement")
-    public JAXBElement<ParameterRandomVariableType> createRandomVariable(ParameterRandomVariableType value) {
-        return new JAXBElement<ParameterRandomVariableType>(_RandomVariable_QNAME, ParameterRandomVariableType.class, null, value);
+    public JAXBElement<ParameterRandomVariable> createRandomVariable(ParameterRandomVariable value) {
+        return new JAXBElement<ParameterRandomVariable>(_RandomVariable_QNAME, ParameterRandomVariable.class, null, value);
     }
 
 }

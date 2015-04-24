@@ -20,12 +20,15 @@ package eu.ddmore.libpharmml.dom.commontypes;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
+import eu.ddmore.libpharmml.dom.maths.Operand;
+
 /**
  * Interface for scalar values
  * @author florent
  *
  */
 @XmlJavaTypeAdapter(ScalarAdapter.class)
-public interface Scalar extends VectorCellValue {
+public interface Scalar extends VectorCellValue, MatrixCellValue, MatrixRowValue, Operand, ExpressionValue {
 
 }

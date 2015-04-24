@@ -68,8 +68,8 @@ public class MatrixColumnRowNames
 {
 
     @XmlElements({
-        @XmlElement(name = "String", type = StringValueType.class),
-        @XmlElement(name = "SymbRef", type = SymbolRefType.class)
+        @XmlElement(name = "String", type = StringValue.class),
+        @XmlElement(name = "SymbRef", type = SymbolRef.class)
     })
     protected List<PharmMLElement> stringOrSymbRef;
 
@@ -91,8 +91,8 @@ public class MatrixColumnRowNames
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link StringValueType }
-     * {@link SymbolRefType }
+     * {@link StringValue }
+     * {@link SymbolRef }
      * 
      * 
      */

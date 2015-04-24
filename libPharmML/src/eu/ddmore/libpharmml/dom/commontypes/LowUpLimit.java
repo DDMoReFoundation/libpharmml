@@ -31,6 +31,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.maths.Equation;
+
 
 /**
  * <p>Java class for LowUpLimitType complex type.
@@ -54,6 +56,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LowUpLimitType", propOrder = {
+    "equation",
     "_int",
     "symbRef"
 })
@@ -67,24 +70,56 @@ public class LowUpLimit
 		this._int = new IntValue(value);
 	}
 	
-	public LowUpLimit(SymbolRefType value){
+	public LowUpLimit(SymbolRef value){
 		this.symbRef = value;
 	}
+	
+	public LowUpLimit(Equation value){
+		this.equation = value;
+	}
 
+    @XmlElement(name = "Equation", namespace = "http://www.pharmml.org/2013/03/Maths")
+    protected Equation equation;
     @XmlElement(name = "Int")
-    protected IntValueType _int;
+    protected IntValue _int;
     @XmlElement(name = "SymbRef")
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
+
+    /**
+     * A mathematical expression.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Equation }
+     *     
+     * @since PharmML 0.4.1
+     */
+    public Equation getEquation() {
+        return equation;
+    }
+
+    /**
+     * Sets the value of the equation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Equation }
+     *     
+     * @since PharmML 0.4.1
+     */
+    public void setEquation(Equation value) {
+        this.equation = value;
+    }
 
     /**
      * An integer value.
      * 
      * @return
      *     possible object is
-     *     {@link IntValueType }
+     *     {@link IntValue }
      *     
      */
-    public IntValueType getInt() {
+    public IntValue getInt() {
         return _int;
     }
 
@@ -93,10 +128,10 @@ public class LowUpLimit
      * 
      * @param value
      *     allowed object is
-     *     {@link IntValueType }
+     *     {@link IntValue }
      *     
      */
-    public void setInt(IntValueType value) {
+    public void setInt(IntValue value) {
         this._int = value;
     }
 
@@ -105,10 +140,10 @@ public class LowUpLimit
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -117,10 +152,10 @@ public class LowUpLimit
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 

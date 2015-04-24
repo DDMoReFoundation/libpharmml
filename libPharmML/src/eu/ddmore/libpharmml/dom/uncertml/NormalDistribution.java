@@ -52,6 +52,26 @@ import javax.xml.bind.annotation.XmlType;
 public class NormalDistribution
     extends NormalDistributionType
 {
+	
+	/**
+	 * Empty constructor.
+	 */
+	public NormalDistribution(){}
 
+	/**
+	 * Creates a normal distribution with the provided mean and standard deviation.
+	 * @param mean Mean as {@link java.lang.Double}.
+	 * @param stdDev Stand deviation as {@link java.lang.Double}
+	 */
+	public NormalDistribution(java.lang.Double mean, java.lang.Double stdDev){
+		ContinuousValueType meanValue = new ContinuousValueType();
+		meanValue.setRVal(mean);
+		this.mean = meanValue;
+		
+		this.stddev = new PositiveRealValueType();
+		VarRefType varRef = new VarRefType();
+		varRef.setVarId(stdDev.toString());
+		this.stddev.setVar(varRef);
+	}
 
 }

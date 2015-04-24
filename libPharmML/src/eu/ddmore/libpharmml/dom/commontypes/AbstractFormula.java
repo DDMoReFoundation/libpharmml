@@ -19,7 +19,10 @@
 package eu.ddmore.libpharmml.dom.commontypes;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlTransient;
+
+import eu.ddmore.libpharmml.dom.maths.Equation;
 
 /**
  * Abstract class for regrouping common properties in formulas.
@@ -28,8 +31,15 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlTransient
 public abstract class AbstractFormula extends PharmMLRootType {
 	
-	@XmlElement(name = "SymbRef", required = true)
-    protected SymbolRefType symbRef;
+//	@XmlElement(name = "SymbRef", required = true)
+//    protected SymbolRefType symbRef;
+	
+	@XmlElements({ 
+		@XmlElement(name = "SymbRef", type = SymbolRef.class),
+		@XmlElement(name = "Equation", namespace = "http://www.pharmml.org/2013/03/Maths" ,type = Equation.class)
+		})
+	public OperationVariable variable;
+	
 	@XmlElement(name = "LowLimit", required = true)
     protected LowUpLimit lowLimit;
     @XmlElement(name = "UpLimit", required = true)
@@ -40,11 +50,18 @@ public abstract class AbstractFormula extends PharmMLRootType {
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
+     * @deprecated
+     * 
      */
-    public SymbolRefType getSymbRef() {
-        return symbRef;
+    @Deprecated
+    public SymbolRef getSymbRef() {
+        if(variable != null && variable instanceof SymbolRef){
+        	return (SymbolRef) variable;
+        } else {
+        	return null;
+        }
     }
 
     /**
@@ -52,11 +69,38 @@ public abstract class AbstractFormula extends PharmMLRootType {
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
-        this.symbRef = value;
+    @Deprecated
+    public void setSymbRef(SymbolRef value) {
+        this.variable = value;
+    }
+    
+    /**
+     * Gets the value of the variable property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SymbolRef },
+     *     {@link Equation }
+     * 
+     */
+    public OperationVariable getVariable() {
+        return variable;
+    }
+
+    /**
+     * Sets the value of the variable property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SymbolRef },
+     *     {@link Equation}
+     *     
+     */
+    public void setVariable(OperationVariable value) {
+        this.variable = value;
     }
     
     /**
@@ -112,7 +156,7 @@ public abstract class AbstractFormula extends PharmMLRootType {
     	this.setLowLimit(lowLimit);
     	return lowLimit;
     }
-    public LowUpLimit createLowLimit(SymbolRefType limit){
+    public LowUpLimit createLowLimit(SymbolRef limit){
     	LowUpLimit lowLimit = new LowUpLimit(limit);
     	this.setLowLimit(lowLimit);
     	return lowLimit;
@@ -123,7 +167,7 @@ public abstract class AbstractFormula extends PharmMLRootType {
     	this.setUpLimit(upLimit);
     	return upLimit;
     }
-    public LowUpLimit createUpLimit(SymbolRefType limit){
+    public LowUpLimit createUpLimit(SymbolRef limit){
     	LowUpLimit upLimit = new LowUpLimit(limit);
     	this.setUpLimit(upLimit);
     	return upLimit;

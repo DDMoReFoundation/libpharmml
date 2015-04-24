@@ -18,9 +18,32 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml;
 
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
+
 public interface IValidationError {
 
+	/**
+	 * Gets the rule identifier of the error.
+	 * 
+	 * <p>If the identifier is "SCHEMA", the errors come from the schema-based validation, generally meaning 
+	 * that a required value is missing. Otherwise, the identifier refers to thr list of rules from the PharmML
+	 * specification. Please refer to this document for an explanation of each rule.
+	 * @return The rule identifier as a {@link String}.
+	 */
 	String getRuleId();
 	
+	/**
+	 * Gets the message of the error. The message is either the one from the schema validation directly, or
+	 * an explanation if the error comes from a rule that is defined in the PharmML specification.
+	 * @return The message error as {@link String}.
+	 */
 	String getErrorMsg();
+	
+	/**
+	 * Gets the object that is concerned by the validation error. If the error is schema-based,
+	 * it returns null.
+	 * @return The invalid object as a {@link PharmMLElement}.
+	 */
+	PharmMLElement getInvalidObject();
+	
 }

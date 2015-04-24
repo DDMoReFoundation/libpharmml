@@ -26,10 +26,14 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.maths.Operand;
 
 
 /**
@@ -71,11 +75,11 @@ import javax.xml.bind.annotation.XmlType;
     "delayVariable"
 })
 public class Delay
-    extends PharmMLRootType
+    extends PharmMLRootType implements Operand
 {
 
     @XmlElement(name = "SymbRef", required = true)
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
     @XmlElement(name = "DelayVariable", required = true)
     protected DelayVariable delayVariable;
     
@@ -96,7 +100,7 @@ public class Delay
      * @param y The model variable
      * @param tau The discrete delay as a reference to the according symbol 
      */
-    public Delay(SymbolRefType y, SymbolRefType tau){
+    public Delay(SymbolRef y, SymbolRef tau){
     	this.symbRef = y;
     	createDelayVariable(tau);
     }
@@ -111,14 +115,14 @@ public class Delay
 	 * <mo>)</mo>
 	 * </math>" whith <mi>&tau;</mi> as a scalar.
      * @param y The model variable
-     * @param tau The discrete delay as a scalar, either {@link IntValueType },
-     *     {@link StringValueType },
-     *     {@link RealValueType },
-     *     {@link TrueBooleanType },
-     *     {@link IdValueType } or
-     *     {@link FalseBooleanType }
+     * @param tau The discrete delay as a scalar, either {@link IntValue },
+     *     {@link StringValue },
+     *     {@link RealValue },
+     *     {@link TrueBoolean },
+     *     {@link IdValue } or
+     *     {@link FalseBoolean }
      */
-    public Delay(SymbolRefType y, Scalar tau){
+    public Delay(SymbolRef y, Scalar tau){
     	this.symbRef = y;
     	createDelayVariable(tau);
     }
@@ -128,10 +132,10 @@ public class Delay
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -140,10 +144,10 @@ public class Delay
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 
@@ -176,7 +180,7 @@ public class Delay
      * @param symbRef The delay variable <mi>&tau;</mi>
      * @return the created {@link DelayVariable} element
      */
-    public DelayVariable createDelayVariable(SymbolRefType symbRef){
+    public DelayVariable createDelayVariable(SymbolRef symbRef){
     	DelayVariable var = new DelayVariable();
     	var.setSymbRef(symbRef);
     	delayVariable = var;
@@ -194,5 +198,10 @@ public class Delay
     	delayVariable = var;
     	return var;
     }
+
+	@Override
+	public JAXBElement<Delay> toJAXBElement() {
+		return MasterObjectFactory.COMMONTYPES_OF.createDelay(this);
+	}
 
 }

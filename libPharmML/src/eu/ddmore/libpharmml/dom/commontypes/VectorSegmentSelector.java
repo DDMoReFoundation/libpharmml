@@ -154,7 +154,7 @@ public class VectorSegmentSelector
     	return mvIndex;
     }
     
-    public MatrixVectorIndex createStartIndex(SymbolRefType index){
+    public MatrixVectorIndex createStartIndex(SymbolRef index){
     	MatrixVectorIndex mvIndex = new MatrixVectorIndex();
     	mvIndex.setSymbolRef(index);
     	this.startIndex = mvIndex;
@@ -168,7 +168,7 @@ public class VectorSegmentSelector
     	return mvIndex;
     }
     
-    public MatrixVectorIndex createSegmentLength(SymbolRefType length){
+    public MatrixVectorIndex createSegmentLength(SymbolRef length){
     	MatrixVectorIndex mvIndex = new MatrixVectorIndex();
     	mvIndex.setSymbolRef(length);
     	this.segmentLength = mvIndex;

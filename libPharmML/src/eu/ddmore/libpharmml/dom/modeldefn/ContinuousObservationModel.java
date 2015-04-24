@@ -70,9 +70,9 @@ public class ContinuousObservationModel
 
 	// -------------
     @XmlElementRef(name = "ObservationError", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class)
-    protected JAXBElement<? extends ObservationErrorType> jaxbObservationError;
+    protected JAXBElement<? extends ObservationError> jaxbObservationError;
     @XmlTransient
-    protected ObservationErrorType observationError;
+    protected ObservationError observationError;
     // -------------
 
     /**
@@ -80,12 +80,12 @@ public class ContinuousObservationModel
      * 
      * @return
      *     possible object is
-     *     {@link ObservationErrorType }
+     *     {@link ObservationError }
      *     {@link GeneralObsError }
      *     {@link GaussianObsError }
      *     
      */
-    public ObservationErrorType getObservationError() {
+    public ObservationError getObservationError() {
         return observationError;
     }
 

@@ -18,11 +18,16 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml.impl;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.List;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.util.JAXBSource;
+//import javax.xml.bind.JAXBContext;
+//import javax.xml.bind.JAXBException;
+//import javax.xml.bind.util.JAXBSource;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.Validator;
 
@@ -30,13 +35,17 @@ import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
+import eu.ddmore.libpharmml.IMarshaller;
 import eu.ddmore.libpharmml.IPharmMLResource;
 import eu.ddmore.libpharmml.IPharmMLValidator;
+import eu.ddmore.libpharmml.IValidationError;
 import eu.ddmore.libpharmml.IValidationReport;
 import eu.ddmore.libpharmml.dom.PharmML;
+import eu.ddmore.libpharmml.validation.PharmMLValidator;
+import eu.ddmore.libpharmml.validation.SymbolResolver;
 
 public class PharmMLValidatorImpl implements IPharmMLValidator {
-	private static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
+//	private static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
 
 	@Override
 	public IValidationReport createValidationReport(IPharmMLResource resource) {
@@ -53,8 +62,18 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 				LoggerWrapper.getLogger().warning("Missing or unknown writtenVersion of PharmML document. Using default version ("+docVersion.getValue()+").");
 			}
 
-			JAXBContext jc = JAXBContext.newInstance(CONTEXT_NAME);
-			JAXBSource source = new JAXBSource(jc, dom);
+			// Marshalling into a byte array for validation
+			// This step is necessary as it may need namespace transformation prior to
+			// schema validation.
+			
+//			JAXBContext jc = JAXBContext.newInstance(CONTEXT_NAME);
+//			JAXBSource source = new JAXBSource(jc, dom);
+			
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			IMarshaller m = new MarshallerImpl();
+			m.marshall(dom, baos);
+			Source source = new StreamSource(new ByteArrayInputStream(baos.toByteArray()));
+			
 	 
 			Schema schema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(docVersion);
 			Validator validator = schema.newValidator();
@@ -77,12 +96,30 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 				}
 			});
 			validator.validate(source);
+			
+			// symbol resolution
+			// TODO: re-enable symbol resolution. Need to be fixed
+//			SymbolResolver resolver = new SymbolResolver(dom);
+//			List<IValidationError> resolvErrors = resolver.resolveSymbols();
+//			for(IValidationError error : resolvErrors){
+//				rptFact.addError(error);
+//			}
+//			List<IValidationError> unicityErrors = resolver.checkUnicity();
+//			for(IValidationError error : unicityErrors){
+//				rptFact.addError(error);
+//			}
+			
+			List<IValidationError> specErrors = PharmMLValidator.validate(dom);
+			for(IValidationError error : specErrors){
+				rptFact.addError(error);
+			}
+			
 			return rptFact.createReport();
 		}
 		catch (IOException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		} catch (JAXBException e) {
-			throw new RuntimeException(e.getMessage(), e);
+//		} catch (JAXBException e) {
+//			throw new RuntimeException(e.getMessage(), e);
         } catch (SAXException e) {
 			throw new RuntimeException(e.getMessage(), e);
         }

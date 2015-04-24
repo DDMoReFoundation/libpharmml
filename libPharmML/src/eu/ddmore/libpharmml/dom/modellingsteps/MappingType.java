@@ -31,8 +31,10 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
+import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 
 
 /**
@@ -56,22 +58,23 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated Since PharmML 0.5.1. Mapping is now supported with {@link ColumnMapping}.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MappingType", propOrder = {
     "columnRef"
 })
 @XmlSeeAlso({
-    IndividualMappingType.class,
-    VariableMappingType.class
+    IndividualMapping.class,
+    VariableMapping.class
 })
+@Deprecated
 public abstract class MappingType
     extends PharmMLRootType
 {
 
     @XmlElement(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
-    protected ColumnRefType columnRef;
+    protected ColumnReference columnRef;
 
     /**
      * 
@@ -80,10 +83,10 @@ public abstract class MappingType
      * 
      * @return
      *     possible object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      */
-    public ColumnRefType getColumnRef() {
+    public ColumnReference getColumnRef() {
         return columnRef;
     }
 
@@ -92,10 +95,10 @@ public abstract class MappingType
      * 
      * @param value
      *     allowed object is
-     *     {@link ColumnRefType }
+     *     {@link ColumnReference }
      *     
      */
-    public void setColumnRef(ColumnRefType value) {
+    public void setColumnRef(ColumnReference value) {
         this.columnRef = value;
     }
 

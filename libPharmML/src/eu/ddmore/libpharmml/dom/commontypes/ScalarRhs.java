@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.maths.Equation;
-import eu.ddmore.libpharmml.dom.modellingsteps.InitialEstimateType;
+import eu.ddmore.libpharmml.dom.modellingsteps.InitialEstimate;
 
 
 /**
@@ -65,7 +65,7 @@ import eu.ddmore.libpharmml.dom.modellingsteps.InitialEstimateType;
     "symbRef"
 })
 @XmlSeeAlso({
-    InitialEstimateType.class
+    InitialEstimate.class
 })
 public class ScalarRhs
     extends PharmMLRootType
@@ -76,7 +76,7 @@ public class ScalarRhs
     @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     protected JAXBElement<?> scalar;
     @XmlElement(name = "SymbRef")
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
 
     /**
      * A mathematical expression.
@@ -107,14 +107,14 @@ public class ScalarRhs
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StringValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RealValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
      *     
      */
     public JAXBElement<?> getScalar() {
@@ -126,14 +126,14 @@ public class ScalarRhs
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StringValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RealValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
      *     
      */
     public void setScalar(JAXBElement<?> value) {
@@ -145,10 +145,10 @@ public class ScalarRhs
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -157,10 +157,10 @@ public class ScalarRhs
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 

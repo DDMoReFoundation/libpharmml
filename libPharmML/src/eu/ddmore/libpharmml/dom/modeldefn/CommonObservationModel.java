@@ -41,10 +41,10 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
-import eu.ddmore.libpharmml.dom.commontypes.NameType;
+import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolTypeType;
-import eu.ddmore.libpharmml.dom.commontypes.VariableDefinitionType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
+import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
 
 
 /**
@@ -90,29 +90,29 @@ public abstract class CommonObservationModel
 {
 
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected NameType name;
+    protected Name name;
     
     // -----------
     @XmlElementRef(name = "CommonParameterElement", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class, required = false)
-    protected List<JAXBElement<? extends CommonParameterType>> commonParameterElement;
+    protected List<JAXBElement<? extends CommonParameter>> commonParameterElement;
     @XmlTransient
-    protected List<CommonParameterType> listOfCommonParameterElement;
+    protected List<CommonParameter> listOfCommonParameterElement;
     // ------------
     
     @XmlElement(name = "Variable", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected List<VariableDefinitionType> variable;
+    protected List<VariableDefinition> variable;
     @XmlElement(name = "Correlation")
-    protected List<CorrelationType> correlation;
+    protected List<Correlation> correlation;
 
     /**
      * Gets the value of the name property.
      * 
      * @return
      *     possible object is
-     *     {@link NameType }
+     *     {@link Name }
      *     
      */
-    public NameType getName() {
+    public Name getName() {
         return name;
     }
 
@@ -121,10 +121,10 @@ public abstract class CommonObservationModel
      * 
      * @param value
      *     allowed object is
-     *     {@link NameType }
+     *     {@link Name }
      *     
      */
-    public void setName(NameType value) {
+    public void setName(Name value) {
         this.name = value;
     }
 
@@ -178,16 +178,16 @@ public abstract class CommonObservationModel
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CommonParameterType }
-     * {@link SimpleParameterType }
-     * {@link IndividualParameterType }
-     * {@link ParameterRandomVariableType }
+     * {@link CommonParameter }
+     * {@link SimpleParameter }
+     * {@link IndividualParameter }
+     * {@link ParameterRandomVariable }
      * 
      * 
      */
-    public List<CommonParameterType> getListOfCommonParameterElement() {
+    public List<CommonParameter> getListOfCommonParameterElement() {
         if (listOfCommonParameterElement == null) {
-        	listOfCommonParameterElement = new ArrayList<CommonParameterType>();
+        	listOfCommonParameterElement = new ArrayList<CommonParameter>();
         }
         return this.listOfCommonParameterElement;
     }
@@ -210,13 +210,13 @@ public abstract class CommonObservationModel
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link VariableDefinitionType }
+     * {@link VariableDefinition }
      * 
      * 
      */
-    public List<VariableDefinitionType> getListOfVariable() {
+    public List<VariableDefinition> getListOfVariable() {
         if (variable == null) {
-            variable = new ArrayList<VariableDefinitionType>();
+            variable = new ArrayList<VariableDefinition>();
         }
         return this.variable;
     }
@@ -239,47 +239,47 @@ public abstract class CommonObservationModel
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CorrelationType }
+     * {@link Correlation }
      * 
      * 
      */
-    public List<CorrelationType> getListOfCorrelation() {
+    public List<Correlation> getListOfCorrelation() {
         if (correlation == null) {
-            correlation = new ArrayList<CorrelationType>();
+            correlation = new ArrayList<Correlation>();
         }
         return this.correlation;
     }
     
     /**
-     * Creates a new {@link NameType} name element, adds it to the current object and returns it.
+     * Creates a new {@link Name} name element, adds it to the current object and returns it.
      * @param name The value of the name
-     * @return The created {@link NameType} object.
+     * @return The created {@link Name} object.
      */
-    public NameType createName(String name){
-            NameType el = new NameType();
+    public Name createName(String name){
+            Name el = new Name();
             this.name = el;
             el.setValue(name);
             return el;
     }
 
     /**
-     * Creates a new empty {@link VariableDefinitionType} variable element, adds it to the current object and returns it.
-     * @return The created {@link VariableDefinitionType} object.
+     * Creates a new empty {@link VariableDefinition} variable element, adds it to the current object and returns it.
+     * @return The created {@link VariableDefinition} object.
      */
-    public VariableDefinitionType createVariable(){
-            VariableDefinitionType el = new VariableDefinitionType();
+    public VariableDefinition createVariable(){
+            VariableDefinition el = new VariableDefinition();
             getListOfVariable().add(el);
             return el;
     }
     
     /**
-     * Creates a new {@link VariableDefinitionType} variable element, adds it to the current object and returns it.
+     * Creates a new {@link VariableDefinition} variable element, adds it to the current object and returns it.
      * @param symbolId The identifier of the symbol
      * @param type The symbol type
-     * @return The created {@link VariableDefinitionType} object.
+     * @return The created {@link VariableDefinition} object.
      */
-    public VariableDefinitionType createVariable(String symbolId, SymbolTypeType type){
-            VariableDefinitionType el = new VariableDefinitionType();
+    public VariableDefinition createVariable(String symbolId, SymbolType type){
+            VariableDefinition el = new VariableDefinition();
             getListOfVariable().add(el);
             el.setSymbId(symbolId);
             el.setSymbolType(type);
@@ -287,19 +287,19 @@ public abstract class CommonObservationModel
     }
 
     /**
-     * Creates a new empty {@link CorrelationType} correlation element, adds it to the current object and returns it.
-     * @return The created {@link CorrelationType} object.
+     * Creates a new empty {@link Correlation} correlation element, adds it to the current object and returns it.
+     * @return The created {@link Correlation} object.
      */
-    public CorrelationType createCorrelation(){
-            CorrelationType el = new CorrelationType();
+    public Correlation createCorrelation(){
+            Correlation el = new Correlation();
             getListOfCorrelation().add(el);
             return el;
     }
     
     protected void afterUnmarshal(Unmarshaller u, Object parent){
     	if(commonParameterElement != null){
-			listOfCommonParameterElement = new ArrayList<CommonParameterType>();
-			for(JAXBElement<? extends CommonParameterType> el : commonParameterElement){
+			listOfCommonParameterElement = new ArrayList<CommonParameter>();
+			for(JAXBElement<? extends CommonParameter> el : commonParameterElement){
 				listOfCommonParameterElement.add(el.getValue());
 			}
 		} else {
@@ -309,8 +309,8 @@ public abstract class CommonObservationModel
     
     protected void beforeMarshal(Marshaller m){
     	if(listOfCommonParameterElement != null){
-			commonParameterElement = new ArrayList<JAXBElement<? extends CommonParameterType>>();
-			for(CommonParameterType param : listOfCommonParameterElement){
+			commonParameterElement = new ArrayList<JAXBElement<? extends CommonParameter>>();
+			for(CommonParameter param : listOfCommonParameterElement){
 				commonParameterElement.add(MasterObjectFactory.createParameter(param));
 			}
 		} else {

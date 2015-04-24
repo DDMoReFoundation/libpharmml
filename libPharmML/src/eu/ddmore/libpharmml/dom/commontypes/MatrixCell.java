@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -76,8 +77,11 @@ public class MatrixCell
     protected MatrixVectorIndex cellRow;
     @XmlElement(name = "CellColumn", required = true)
     protected MatrixVectorIndex cellColumn;
-    @XmlElementRef(name = "VectorCellValue", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class)
-    protected VectorCellValue value;
+    @XmlElementRefs({
+    		@XmlElementRef(name = "VectorCellValue", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class),
+    		@XmlElementRef(name = "Equation", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class)
+    })
+    protected MatrixCellValue value;
     
     /**
      * Empty constructor
@@ -100,7 +104,7 @@ public class MatrixCell
      * @param columnIndex The column index within the matrix
      * @param value The value of the cell
      */
-    public MatrixCell(MatrixVectorIndex rowIndex, MatrixVectorIndex columnIndex, VectorCellValue value){
+    public MatrixCell(MatrixVectorIndex rowIndex, MatrixVectorIndex columnIndex, MatrixCellValue value){
     	this(rowIndex, columnIndex);
     	this.value = value;
     }
@@ -158,18 +162,18 @@ public class MatrixCell
      * 
      * <p>
      * Objects of the following type(s) are allowed:
-     * {@link IntValueType }
-     * {@link StringValueType }
-     * {@link RealValueType }
-     * {@link TrueBooleanType }
-     * {@link SymbolRefType }
-     * {@link BooleanType }
-     * {@link IdValueType }
-     * {@link FalseBooleanType }
+     * {@link IntValue }
+     * {@link StringValue }
+     * {@link RealValue }
+     * {@link TrueBoolean }
+     * {@link SymbolRef }
+     * {@link BooleanValue }
+     * {@link IdValue }
+     * {@link FalseBoolean }
      * 
      * 
      */
-    public VectorCellValue getValue() {
+    public MatrixCellValue getValue() {
         return this.value;
     }
     
@@ -178,17 +182,17 @@ public class MatrixCell
      * 
      * <p>
      * Objects of the following type(s) are allowed:
-     * {@link IntValueType }
-     * {@link StringValueType }
-     * {@link RealValueType }
-     * {@link TrueBooleanType }
-     * {@link SymbolRefType }
-     * {@link BooleanType }
-     * {@link IdValueType }
-     * {@link FalseBooleanType }
+     * {@link IntValue }
+     * {@link StringValue }
+     * {@link RealValue }
+     * {@link TrueBoolean }
+     * {@link SymbolRef }
+     * {@link BooleanValue }
+     * {@link IdValue }
+     * {@link FalseBoolean }
      * 
      */
-    public void setValue(VectorCellValue value){
+    public void setValue(MatrixCellValue value){
     	this.value = value;
     }
     
@@ -218,7 +222,7 @@ public class MatrixCell
      * @param index The row index of the cell, as a symbol.
      * @return The created {@link MatrixVectorIndex} object.
      */
-    public MatrixVectorIndex createCellRowIndex(SymbolRefType index){
+    public MatrixVectorIndex createCellRowIndex(SymbolRef index){
             MatrixVectorIndex el = createCellRowIndex();
             el.setSymbolRef(index);
             return el;
@@ -250,7 +254,7 @@ public class MatrixCell
      * @param index The column index of the cell, as an symbol.
      * @return The created {@link MatrixVectorIndex} object.
      */
-    public MatrixVectorIndex createCellColumnIndex(SymbolRefType index){
+    public MatrixVectorIndex createCellColumnIndex(SymbolRef index){
             MatrixVectorIndex el = createCellColumnIndex();
             el.setSymbolRef(index);
             return el;
@@ -284,12 +288,12 @@ public class MatrixCell
 	}
 
 	@Override
-	public BooleanType createBooleanValue(boolean value) {
-		BooleanType wValue;
+	public BooleanValue createBooleanValue(boolean value) {
+		BooleanValue wValue;
 		if(value){
-			wValue = new TrueBooleanType();
+			wValue = new TrueBoolean();
 		} else {
-			wValue = new FalseBooleanType();
+			wValue = new FalseBoolean();
 		}
 		return wValue;
 	}

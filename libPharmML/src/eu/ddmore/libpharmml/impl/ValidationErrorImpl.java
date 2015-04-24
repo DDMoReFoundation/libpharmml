@@ -19,14 +19,21 @@
 package eu.ddmore.libpharmml.impl;
 
 import eu.ddmore.libpharmml.IValidationError;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 
 public class ValidationErrorImpl implements IValidationError {
 	private final String ruleId;
 	private final String msg;
+	private final PharmMLElement invalidObject;
 	
 	public ValidationErrorImpl(String ruleId, String msg){
+		this(ruleId,msg,null);
+	}
+	
+	public ValidationErrorImpl(String ruleId, String msg, PharmMLElement invalidObject) {
 		this.ruleId = ruleId;
 		this.msg = msg;
+		this.invalidObject = invalidObject;
 	}
 	
 	@Override
@@ -38,6 +45,11 @@ public class ValidationErrorImpl implements IValidationError {
 	public String getErrorMsg() {
 		return this.msg;
 	}
+	
+	@Override
+	public PharmMLElement getInvalidObject() {
+		return this.invalidObject;
+	};
 
 	@Override
 	public int hashCode() {
@@ -72,7 +84,11 @@ public class ValidationErrorImpl implements IValidationError {
 
 	@Override
 	public String toString() {
-		return "ValidationErrorImpl [ruleId=" + ruleId + ", msg=" + msg + "]";
+		if(invalidObject == null){
+			return "ValidationErrorImpl [ruleId=" + ruleId + ", msg=\"" + msg + "\"]";
+		} else {
+			return "ValidationErrorImpl [ruleId=" + ruleId + ", msg=\"" + msg + "\", object="+invalidObject+"]";
+		}
 	}
 
 }

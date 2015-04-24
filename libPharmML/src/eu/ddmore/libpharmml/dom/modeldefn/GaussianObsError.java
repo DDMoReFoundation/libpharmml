@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 
 
 /**
@@ -96,11 +96,11 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
     "residualError"
 })
 public class GaussianObsError
-    extends ObservationErrorType
+    extends ObservationError
 {
 
     @XmlElement(name = "Transformation")
-    protected LhsTransformationType transformation;
+    protected LhsTransformation transformation;
     @XmlElement(name = "Output", required = true)
     protected GaussianObsError.Output output;
     @XmlElement(name = "ErrorModel", required = true)
@@ -113,10 +113,10 @@ public class GaussianObsError
      * 
      * @return
      *     possible object is
-     *     {@link LhsTransformationType }
+     *     {@link LhsTransformation }
      *     
      */
-    public LhsTransformationType getTransformation() {
+    public LhsTransformation getTransformation() {
         return transformation;
     }
 
@@ -125,10 +125,10 @@ public class GaussianObsError
      * 
      * @param value
      *     allowed object is
-     *     {@link LhsTransformationType }
+     *     {@link LhsTransformation }
      *     
      */
-    public void setTransformation(LhsTransformationType value) {
+    public void setTransformation(LhsTransformation value) {
         this.transformation = value;
     }
 
@@ -286,17 +286,17 @@ public class GaussianObsError
     public static class Output {
 
         @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
-        protected SymbolRefType symbRef;
+        protected SymbolRef symbRef;
 
         /**
          * Gets the value of the symbRef property.
          * 
          * @return
          *     possible object is
-         *     {@link SymbolRefType }
+         *     {@link SymbolRef }
          *     
          */
-        public SymbolRefType getSymbRef() {
+        public SymbolRef getSymbRef() {
             return symbRef;
         }
 
@@ -305,10 +305,10 @@ public class GaussianObsError
          * 
          * @param value
          *     allowed object is
-         *     {@link SymbolRefType }
+         *     {@link SymbolRef }
          *     
          */
-        public void setSymbRef(SymbolRefType value) {
+        public void setSymbRef(SymbolRef value) {
             this.symbRef = value;
         }
 
@@ -341,17 +341,17 @@ public class GaussianObsError
     public static class ResidualError {
 
         @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
-        protected SymbolRefType symbRef;
+        protected SymbolRef symbRef;
 
         /**
          * Gets the value of the symbRef property.
          * 
          * @return
          *     possible object is
-         *     {@link SymbolRefType }
+         *     {@link SymbolRef }
          *     
          */
-        public SymbolRefType getSymbRef() {
+        public SymbolRef getSymbRef() {
             return symbRef;
         }
 
@@ -360,10 +360,10 @@ public class GaussianObsError
          * 
          * @param value
          *     allowed object is
-         *     {@link SymbolRefType }
+         *     {@link SymbolRef }
          *     
          */
-        public void setSymbRef(SymbolRefType value) {
+        public void setSymbRef(SymbolRef value) {
             this.symbRef = value;
         }
 

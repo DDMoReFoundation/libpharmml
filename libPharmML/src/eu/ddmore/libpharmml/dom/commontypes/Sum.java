@@ -26,12 +26,15 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import eu.ddmore.libpharmml.dom.modeldefn.Probability;
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
+import eu.ddmore.libpharmml.dom.maths.Operand;
 
 
 /**
@@ -121,15 +124,14 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SumType", propOrder = {
-    "symbRef",
-    "probability",
+    "variable",
     "sumIndex",
     "lowLimit",
     "upLimit",
     "sumIndexSet"
 })
 public class Sum
-    extends AbstractFormula
+    extends AbstractFormula implements Operand, ExpressionValue
 {
 	
 	/**
@@ -144,8 +146,8 @@ public class Sum
 	 * @param n The lower bound
 	 * @param N The upper bound
 	 */
-	public Sum(SymbolRefType V, SymbolRefType i, int n, int N){
-		this.symbRef = V;
+	public Sum(OperationVariable V, SymbolRef i, int n, int N){
+		this.variable = V;
 		createSumIndex(i);
 		createLowLimit(n);
 		createUpLimit(N);
@@ -157,55 +159,18 @@ public class Sum
 	 * @param i The index of summation
 	 * @param indexSet The set of values for the index
 	 */
-	public Sum(SymbolRefType V, SymbolRefType i, VectorType indexSet){
-		this.symbRef = V;
-		createSumIndex(i);
-		createSumIndexSet(indexSet);
-	}
-	
-	public Sum(Probability P, SymbolRefType i, int n, int N){
-		this.probability = P;
-		createSumIndex(i);
-		createLowLimit(n);
-		createUpLimit(N);
-	}
-	
-	public Sum(Probability P, SymbolRefType i, VectorType indexSet){
-		this.probability = P;
+	public Sum(OperationVariable V, SymbolRef i, Vector indexSet){
+		this.variable = V;
 		createSumIndex(i);
 		createSumIndexSet(indexSet);
 	}
 
-    @XmlElement(name = "Probability", namespace = "http://www.pharmml.org/2013/03/ModelDefinition")
-    protected Probability probability;
+//    @XmlElement(name = "Probability", namespace = "http://www.pharmml.org/2013/03/ModelDefinition")
+//    protected Probability probability;
     @XmlElement(name = "SumIndex", required = true)
     protected SumProductIndex sumIndex;
     @XmlElement(name = "SumIndexSet")
     protected SumIndexSet sumIndexSet;
-
-    /**
-     * Gets the value of the probability property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Probability }
-     *     
-     */
-    public Probability getProbability() {
-        return probability;
-    }
-
-    /**
-     * Sets the value of the probability property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Probability }
-     *     
-     */
-    public void setProbability(Probability value) {
-        this.probability = value;
-    }
 
     /**
      * Gets the value of the sumIndex property.
@@ -257,10 +222,10 @@ public class Sum
     
     /**
      * Creates a new {@link SumIndexSet} (S), adds it to the current sum and returns it.
-     * @param vector The {@link VectorType} object used as a sum index set.
+     * @param vector The {@link Vector} object used as a sum index set.
      * @return The created {@link SumIndexSet} object.
      */
-    public SumIndexSet createSumIndexSet(VectorType vector){
+    public SumIndexSet createSumIndexSet(Vector vector){
     	SumIndexSet indexSet = new SumIndexSet();
     	indexSet.setVector(vector);
     	this.setSumIndexSet(indexSet);
@@ -272,11 +237,16 @@ public class Sum
      * @param i The index as a symbol reference.
      * @return The created {@link SumProductIndex} object.
      */
-    public SumProductIndex createSumIndex(SymbolRefType i){
+    public SumProductIndex createSumIndex(SymbolRef i){
     	SumProductIndex index = new SumProductIndex();
     	index.setSymbRef(i);
     	this.setSumIndex(index);
     	return index;
     }
+
+	@Override
+	public JAXBElement<Sum> toJAXBElement() {
+		return MasterObjectFactory.COMMONTYPES_OF.createSum(this);
+	}
 
 }

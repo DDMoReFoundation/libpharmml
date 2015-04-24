@@ -34,8 +34,8 @@ public class VectorCellValueAdapter extends XmlAdapter<JAXBElement<?>, VectorCel
 
 	@Override
 	public JAXBElement<?> marshal(VectorCellValue v) throws Exception {
-		if(v instanceof SymbolRefType){
-			return of.createSymbRef((SymbolRefType) v);
+		if(v instanceof SymbolRef){
+			return of.createSymbRef((SymbolRef) v);
 		} else if (v instanceof Scalar){
 			ScalarAdapter scalarAdapter = new ScalarAdapter();
 			return scalarAdapter.marshal((Scalar) v);

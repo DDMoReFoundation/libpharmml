@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import eu.ddmore.libpharmml.dom.commontypes.OidRefType;
+import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
@@ -68,7 +68,7 @@ public class DependentsType
 {
 
     @XmlElement(name = "OidRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
-    protected List<OidRefType> oidRef;
+    protected List<OidRef> oidRef;
 
     /**
      * 
@@ -90,13 +90,13 @@ public class DependentsType
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link OidRefType }
+     * {@link OidRef }
      * 
      * 
      */
-    public List<OidRefType> getOidRef() {
+    public List<OidRef> getOidRef() {
         if (oidRef == null) {
-            oidRef = new ArrayList<OidRefType>();
+            oidRef = new ArrayList<OidRef>();
         }
         return this.oidRef;
     }

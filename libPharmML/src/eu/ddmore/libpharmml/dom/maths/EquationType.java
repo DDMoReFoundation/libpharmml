@@ -39,20 +39,20 @@ import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
-import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
 import eu.ddmore.libpharmml.dom.commontypes.Delay;
-import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.IdValueType;
-import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
+import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
+import eu.ddmore.libpharmml.dom.commontypes.IdValue;
+import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Product;
-import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
+import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
-import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
+import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.Sum;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
-import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
+import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
@@ -117,13 +117,13 @@ public class EquationType
     @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     protected JAXBElement<?> scalar;
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
     @XmlElement(name = "Binop")
-    protected BinopType binop;
+    protected Binop binop;
     @XmlElement(name = "Uniop")
-    protected UniopType uniop;
+    protected Uniop uniop;
     @XmlElement(name = "Piecewise")
-    protected PiecewiseType piecewise;
+    protected Piecewise piecewise;
     @XmlElement(name = "FunctionCall")
     protected FunctionCallType functionCall;
 	@XmlElement(name = "Sum", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
@@ -156,13 +156,13 @@ public class EquationType
      * @return
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StringValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RealValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
      *     
      */
     public JAXBElement<?> getScalar() {
@@ -175,13 +175,13 @@ public class EquationType
      * @param value
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StringValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RealValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
      *     
      */
     public void setScalar(JAXBElement<?> value) {
@@ -193,10 +193,10 @@ public class EquationType
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -205,10 +205,10 @@ public class EquationType
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 
@@ -217,10 +217,10 @@ public class EquationType
      * 
      * @return
      *     possible object is
-     *     {@link BinopType }
+     *     {@link Binop }
      *     
      */
-    public BinopType getBinop() {
+    public Binop getBinop() {
         return binop;
     }
 
@@ -229,10 +229,10 @@ public class EquationType
      * 
      * @param value
      *     allowed object is
-     *     {@link BinopType }
+     *     {@link Binop }
      *     
      */
-    public void setBinop(BinopType value) {
+    public void setBinop(Binop value) {
         this.binop = value;
     }
 
@@ -241,10 +241,10 @@ public class EquationType
      * 
      * @return
      *     possible object is
-     *     {@link UniopType }
+     *     {@link Uniop }
      *     
      */
-    public UniopType getUniop() {
+    public Uniop getUniop() {
         return uniop;
     }
 
@@ -253,10 +253,10 @@ public class EquationType
      * 
      * @param value
      *     allowed object is
-     *     {@link UniopType }
+     *     {@link Uniop }
      *     
      */
-    public void setUniop(UniopType value) {
+    public void setUniop(Uniop value) {
         this.uniop = value;
     }
 
@@ -265,10 +265,10 @@ public class EquationType
      * 
      * @return
      *     possible object is
-     *     {@link PiecewiseType }
+     *     {@link Piecewise }
      *     
      */
-    public PiecewiseType getPiecewise() {
+    public Piecewise getPiecewise() {
         return piecewise;
     }
 
@@ -277,10 +277,10 @@ public class EquationType
      * 
      * @param value
      *     allowed object is
-     *     {@link PiecewiseType }
+     *     {@link Piecewise }
      *     
      */
-    public void setPiecewise(PiecewiseType value) {
+    public void setPiecewise(Piecewise value) {
         this.piecewise = value;
     }
 
@@ -475,20 +475,20 @@ public class EquationType
     		boolean firstElement = false;
     		for(JAXBElement<?> element : getScalarOrSymbRefOrBinop()){
     			if(!firstElement){
-        			if(element.getDeclaredType().equals(SymbolRefType.class)){
-        				setSymbRef((SymbolRefType)element.getValue()); 
+        			if(element.getDeclaredType().equals(SymbolRef.class)){
+        				setSymbRef((SymbolRef)element.getValue()); 
         				firstElement = true;
-        			} else if (element.getDeclaredType().equals(BinopType.class)){
-        				setBinop((BinopType)element.getValue());
+        			} else if (element.getDeclaredType().equals(Binop.class)){
+        				setBinop((Binop)element.getValue());
         				firstElement = true;
         			} else if (element.getDeclaredType().equals(FunctionCallType.class)){
         				setFunctionCall((FunctionCallType)element.getValue());
         				firstElement = true;
-        			} else if (element.getDeclaredType().equals(PiecewiseType.class)){
-        				setPiecewise((PiecewiseType)element.getValue());
+        			} else if (element.getDeclaredType().equals(Piecewise.class)){
+        				setPiecewise((Piecewise)element.getValue());
         				firstElement = true;
-        			} else if (element.getDeclaredType().equals(UniopType.class)){
-        				setUniop((UniopType)element.getValue());
+        			} else if (element.getDeclaredType().equals(Uniop.class)){
+        				setUniop((Uniop)element.getValue());
         				firstElement = true;
 //        			} else if (element.getDeclaredType().equals(ScalarRhs.class)){
 //        				setScalar(element);

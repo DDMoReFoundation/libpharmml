@@ -21,7 +21,12 @@ package eu.ddmore.libpharmml.dom.commontypes;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
+import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
+import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 
 /**
  * 
@@ -52,13 +57,22 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VectorSegmentType", propOrder = {
     "startIndex",
+    "segmentStartIndex",
     "segmentLength",
     "vectorElements"
 })
+@HasElementRenamed(mappedFields = {
+		@RenamedElement(field = "segmentStartIndex", since = PharmMLVersion.V0_4_1),
+		@RenamedElement(field = "startIndex")
+		}, transientField = "index")
 public class VectorSegment extends AbstractVector {
 	
 	@XmlElement(name = "StartIndex")
 	protected MatrixVectorIndex startIndex;
+	@XmlElement(name = "SegmentStartIndex")
+	protected MatrixVectorIndex segmentStartIndex;
+	@XmlTransient
+	protected MatrixVectorIndex index;
 	
 	@XmlElement(name = "SegmentLength")
 	protected MatrixVectorIndex segmentLength;
@@ -72,7 +86,7 @@ public class VectorSegment extends AbstractVector {
 	
 	public VectorSegment(MatrixVectorIndex startIndex, MatrixVectorIndex segmentLength, double defaultValue){
 		this.defaultValue = defaultValue;
-		this.startIndex = startIndex;
+		this.index = startIndex;
 		this.segmentLength = segmentLength;
 	}
 	
@@ -82,7 +96,7 @@ public class VectorSegment extends AbstractVector {
 	}
 	
 	public MatrixVectorIndex getStartIndex(){
-		return startIndex;
+		return index;
 	}
 	
 	public MatrixVectorIndex getSegmentLength(){
@@ -90,7 +104,7 @@ public class VectorSegment extends AbstractVector {
 	}
 	
 	public void setStartIndex(MatrixVectorIndex startIndex){
-		this.startIndex = startIndex;
+		this.index = startIndex;
 	}
 	
 	public void setSegmentLength(MatrixVectorIndex segmentLength){

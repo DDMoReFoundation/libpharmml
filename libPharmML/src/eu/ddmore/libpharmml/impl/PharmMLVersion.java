@@ -18,6 +18,11 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml.impl;
 
+/**
+ * Enum for handling various PharmML versions.
+ * 
+ * @author F. Yvon
+ */
 public enum PharmMLVersion {
 	/**
 	 * PharmML 0.2.1
@@ -32,57 +37,96 @@ public enum PharmMLVersion {
 	 */
 	V0_3_1("0.3.1","MarshallerImpl.xmlCatalogLocation.0.3.1",3),
 	/**
-	 * PharmML 0.3.2
+	 * PharmML 0.4
 	 */
-	V0_4("0.4","MarshallerImpl.xmlCatalogLocation.0.4",4);
+	V0_4("0.4","MarshallerImpl.xmlCatalogLocation.0.4",4),
+	/**
+	 * PharmML 0.4.1
+	 */
+	V0_4_1("0.4.1","MarshallerImpl.xmlCatalogLocation.0.4.1",5),
+	/**
+	 * PharmML 0.5
+	 */
+	V0_5("0.5","MarshallerImpl.xmlCatalogLocation.0.5",6),
+	/**
+	 * PharmML 0.5.1
+	 */
+	V0_5_1("0.5.1","MarshallerImpl.xmlCatalogLocation.0.5.1",7),
+	/**
+	 * PharmML 0.6
+	 */
+	V0_6("0.6","MarshallerImpl.xmlCatalogLocation.0.6",8);
 	
 	/**
-	 * The latest version of PharmML. Current is 0.3.1.
+	 * The latest version of PharmML. Current is 0.6.
 	 */
-	public static final PharmMLVersion DEFAULT = PharmMLVersion.V0_4;
+	public static final PharmMLVersion DEFAULT = PharmMLVersion.V0_6;
 	
-	private String version;
-	private String catalogLocation;
-	private int index;
+	private final String version;
+	private final String catalogLocation;
+	private final int index;
+//	private final String pharmml_URI;
 	
 	private PharmMLVersion(String version,String catalogMessage,int index) {
 		this.version = version;
 		this.catalogLocation = Messages.getString(catalogMessage);
 		this.index = index;
+//		if(index >= 8){
+//			this.pharmml_URI = String.format(XMLFilter.NS_PATTERN_PHARMML, version);
+//		} else {
+//			this.pharmml_URI = Messages.getString("MarshallerImpl.PharmMLURI.old");
+//		}
 	}
 	
+	/**
+	 * Gets a string representation of the version. For instance, for the enum value V0_5, this method
+	 * returns "0.5".
+	 * @return The string representation of this version.
+	 */
 	public String getValue(){
 		return version;
 	}
 	
-	String getCatalogLocation(){
+	/**
+	 * Catalog location in the messages.properties file. This method should not be needed for
+	 * the majority of times.
+	 * @return Catalog location
+	 */
+	public String getCatalogLocation(){
 		return catalogLocation;
 	}
 	
+//	public String getPharmmlURI(){
+//		return pharmml_URI;
+//	}
+//	
 	/**
 	 * Contruct a {@link PharmMLVersion} object based on the provided version as string.
 	 * If the version does not exist, this method returns null.
 	 * @param version the version as a string in "x.x(.x)" format.
 	 */
 	public static PharmMLVersion getEnum(String version){
-		if(version.equals("0.2.1")){
-			return PharmMLVersion.V0_2_1;
-		} else if(version.equals("0.3")){
-			return PharmMLVersion.V0_3;
-		} else if(version.equals("0.3.1")){
-			return PharmMLVersion.V0_3_1;
-		} else if(version.equals("0.4")){
-			return PharmMLVersion.V0_4;
-		} else {
-			return null;
+		for(PharmMLVersion enumVersion : values()){
+			if(version.equals(enumVersion.getValue())){
+				return enumVersion;
+			}
 		}
+		return null;
 	}
 	
+	/**
+	 * Gets a string representation of this instance. This methods is equivalent to {@link #getValue()}.
+	 */
 	@Override
 	public String toString(){
 		return getValue();
 	}
 	
+	/**
+	 * Tests if this instantiated version equals or is later than the provided one.
+	 * @param version The version that the instantiated one is compared to.
+	 * @return true if this version is superior or equal to the argument, else false.
+	 */
 	public boolean isEqualOrLaterThan(PharmMLVersion version){
 		return (this.index >= version.index);
 	}

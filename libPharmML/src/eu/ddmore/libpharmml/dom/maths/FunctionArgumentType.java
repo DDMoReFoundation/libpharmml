@@ -36,19 +36,21 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
-import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.IdValueType;
-import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
+import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
+import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
+import eu.ddmore.libpharmml.dom.commontypes.IdValue;
+import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.commontypes.Product;
-import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
-import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
+import eu.ddmore.libpharmml.dom.commontypes.RealValue;
+import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.Sum;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolNameType;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
-import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolName;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
+import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 
@@ -104,10 +106,10 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 @XmlSeeAlso({
     eu.ddmore.libpharmml.dom.maths.FunctionCallType.FunctionArgument.class
 })
-public class FunctionArgumentType {
+public class FunctionArgumentType extends PharmMLElement {
 
     @XmlElement(name = "Symbol", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected SymbolNameType symbol;
+    protected SymbolName symbol;
     @XmlElement(name = "Description", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected AnnotationType description;
     @XmlElement(name = "Equation")
@@ -115,9 +117,9 @@ public class FunctionArgumentType {
     @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     protected JAXBElement<?> scalar;
     @XmlElement(name = "Constant")
-    protected ConstantType constant;
+    protected Constant constant;
     @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
     @XmlElement(name = "Sum", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected Sum sum;
     @XmlElement(name = "Product", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
@@ -137,10 +139,10 @@ public class FunctionArgumentType {
      * 
      * @return
      *     possible object is
-     *     {@link SymbolNameType }
+     *     {@link SymbolName }
      *     
      */
-    public SymbolNameType getSymbol() {
+    public SymbolName getSymbol() {
         return symbol;
     }
 
@@ -149,10 +151,10 @@ public class FunctionArgumentType {
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolNameType }
+     *     {@link SymbolName }
      *     
      */
-    public void setSymbol(SymbolNameType value) {
+    public void setSymbol(SymbolName value) {
         this.symbol = value;
     }
 
@@ -210,13 +212,13 @@ public class FunctionArgumentType {
      * @return
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StringValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RealValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
      *     
      */
     public JAXBElement<?> getScalar() {
@@ -229,13 +231,13 @@ public class FunctionArgumentType {
      * @param value
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StringValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RealValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
      *     
      */
     public void setScalar(JAXBElement<?> value) {
@@ -247,10 +249,10 @@ public class FunctionArgumentType {
      * 
      * @return
      *     possible object is
-     *     {@link ConstantType }
+     *     {@link Constant }
      *     
      */
-    public ConstantType getConstant() {
+    public Constant getConstant() {
         return constant;
     }
 
@@ -259,10 +261,10 @@ public class FunctionArgumentType {
      * 
      * @param value
      *     allowed object is
-     *     {@link ConstantType }
+     *     {@link Constant }
      *     
      */
-    public void setConstant(ConstantType value) {
+    public void setConstant(Constant value) {
         this.constant = value;
     }
 
@@ -271,10 +273,10 @@ public class FunctionArgumentType {
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -283,10 +285,10 @@ public class FunctionArgumentType {
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 

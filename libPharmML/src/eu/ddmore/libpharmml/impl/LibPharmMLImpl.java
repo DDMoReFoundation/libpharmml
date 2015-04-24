@@ -18,10 +18,21 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml.impl;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import javax.management.RuntimeErrorException;
 import javax.xml.bind.JAXBElement;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.Validator;
+
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 import eu.ddmore.libpharmml.ILibPharmML;
 import eu.ddmore.libpharmml.IMarshaller;
@@ -29,13 +40,14 @@ import eu.ddmore.libpharmml.IPharmMLResource;
 import eu.ddmore.libpharmml.IPharmMLValidator;
 import eu.ddmore.libpharmml.IValidationReport;
 import eu.ddmore.libpharmml.dom.PharmML;
-import eu.ddmore.libpharmml.dom.commontypes.NameType;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolTypeType;
-import eu.ddmore.libpharmml.dom.commontypes.VariableDefinitionType;
-import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinitionType;
-import eu.ddmore.libpharmml.dom.modeldefn.ParameterModelType;
-import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameterType;
-import eu.ddmore.libpharmml.dom.modeldefn.StructuralModelType;
+import eu.ddmore.libpharmml.dom.commontypes.Name;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
+import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
+import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
+import eu.ddmore.libpharmml.dom.modeldefn.ParameterModel;
+import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameter;
+import eu.ddmore.libpharmml.dom.modeldefn.StructuralModel;
+import eu.ddmore.libpharmml.validation.PharmMLElementWrapper;
 
 public class LibPharmMLImpl implements ILibPharmML {
 	private static final String DEFAULT_NAME = "Stub Model";
@@ -55,8 +67,41 @@ public class LibPharmMLImpl implements ILibPharmML {
 	@Override
 	public IPharmMLResource createDomFromResource(InputStream inStr) {
 		final ValidationReportFactory repFact = new ValidationReportFactory();
-		this.marshaller.setErrorHandler(repFact);
-		final PharmML dom = this.marshaller.unmarshall(inStr);
+//		this.marshaller.setErrorHandler(repFact);
+		
+		final PharmMLVersion currentDocVersion;
+		
+		try {
+			
+		byte[] data = MarshallerImpl.toByteArray(inStr);
+		ByteArrayInputStream bais = new ByteArrayInputStream(data);
+		currentDocVersion = MarshallerImpl.parseVersion(bais);
+		bais.reset();
+		
+		// Validating stream with schemas
+		Schema schema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(currentDocVersion);
+		Validator validator = schema.newValidator();
+		validator.setErrorHandler(new ErrorHandler() {
+			
+			@Override
+			public void warning(SAXParseException exception) throws SAXException {
+				repFact.handleWarning(exception.getMessage());
+			}
+			
+			@Override
+			public void fatalError(SAXParseException exception) throws SAXException {
+				repFact.handleError(exception.getMessage());
+			}
+			
+			@Override
+			public void error(SAXParseException exception) throws SAXException {
+				repFact.handleError(exception.getMessage());
+			}
+		});
+		validator.validate(new StreamSource(bais));
+		bais.reset();
+		
+		final PharmML dom = this.marshaller.unmarshall(bais,currentDocVersion);
 		IPharmMLResource retVal = new IPharmMLResource() {
 			@Override
 			public PharmML getDom() {
@@ -66,8 +111,26 @@ public class LibPharmMLImpl implements ILibPharmML {
 			public IValidationReport getCreationReport() {
 				return repFact.createReport();
 			}
+			@Override
+			public Object find(String id) {
+				PharmMLElementWrapper wrappedDom = new PharmMLElementWrapper(getDom());
+				PharmMLElementWrapper foundWrappedEl = Utils.findById(wrappedDom, id);
+				if(foundWrappedEl != null){
+					return foundWrappedEl.getElement();
+				} else {
+					return null;
+				}
+			}
 		};
 		return retVal;
+		
+		} catch (XMLStreamException e) {
+			throw new RuntimeException(e);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} catch (SAXException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
@@ -82,23 +145,23 @@ public class LibPharmMLImpl implements ILibPharmML {
 		eu.ddmore.libpharmml.dom.commontypes.ObjectFactory commonFact = new eu.ddmore.libpharmml.dom.commontypes.ObjectFactory();
 		final PharmML dom = fact.createPharmML();
 		dom.setWrittenVersion(version.getValue());
-		NameType name = commonFact.createNameType();
+		Name name = commonFact.createNameType();
 		name.setValue(DEFAULT_NAME);
 		dom.setName(name);
 		eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory mdefnFact = new eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory();
-		ModelDefinitionType mdt = mdefnFact.createModelDefinitionType();
-		ParameterModelType pm = mdefnFact.createParameterModelType();
+		ModelDefinition mdt = mdefnFact.createModelDefinitionType();
+		ParameterModel pm = mdefnFact.createParameterModelType();
 		pm.setBlkId("p1");
-		SimpleParameterType spt = mdefnFact.createSimpleParameterType();
+		SimpleParameter spt = mdefnFact.createSimpleParameterType();
 		spt.setSymbId("a");
-		JAXBElement<SimpleParameterType> param1 = mdefnFact.createSimpleParameter(spt);
+		JAXBElement<SimpleParameter> param1 = mdefnFact.createSimpleParameter(spt);
 		pm.getCommonParameterElement().add(param1);
-		StructuralModelType structModel = mdefnFact.createStructuralModelType();
+		StructuralModel structModel = mdefnFact.createStructuralModelType();
 		structModel.setBlkId(DEFAULT_STRUCT_MDL_NAME);
-		VariableDefinitionType varType = commonFact.createVariableDefinitionType();
+		VariableDefinition varType = commonFact.createVariableDefinitionType();
 		varType.setSymbId("x");
-		varType.setSymbolType(SymbolTypeType.REAL);
-		JAXBElement<VariableDefinitionType> var1 = commonFact.createVariable(varType);
+		varType.setSymbolType(SymbolType.REAL);
+		JAXBElement<VariableDefinition> var1 = commonFact.createVariable(varType);
 		structModel.getCommonVariable().add(var1);
 		mdt.getParameterModel().add(pm);
 		mdt.getStructuralModel().add(structModel);
@@ -115,6 +178,17 @@ public class LibPharmMLImpl implements ILibPharmML {
 			@Override
 			public IValidationReport getCreationReport() {
 				return repFact.createReport();
+			}
+			
+			@Override
+			public Object find(String id) {
+				PharmMLElementWrapper wrappedDom = new PharmMLElementWrapper(getDom());
+				PharmMLElementWrapper foundWrappedEl = Utils.findById(wrappedDom, id);
+				if(foundWrappedEl != null){
+					return foundWrappedEl.getElement();
+				} else {
+					return null;
+				}
 			}
 		};
 	}

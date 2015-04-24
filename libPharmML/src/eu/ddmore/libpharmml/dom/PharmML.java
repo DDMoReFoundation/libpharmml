@@ -28,6 +28,7 @@ package eu.ddmore.libpharmml.dom;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -36,12 +37,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
-import eu.ddmore.libpharmml.dom.commontypes.FunctionDefinitionType;
-import eu.ddmore.libpharmml.dom.commontypes.NameType;
-import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinitionType;
-import eu.ddmore.libpharmml.dom.modellingsteps.ModellingStepsType;
-import eu.ddmore.libpharmml.dom.trialdesign.TrialDesignType;
+import eu.ddmore.libpharmml.dom.commontypes.FunctionDefinition;
+import eu.ddmore.libpharmml.dom.commontypes.Name;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
+import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
+import eu.ddmore.libpharmml.dom.modellingsteps.ModellingSteps;
+import eu.ddmore.libpharmml.dom.trialdesign.TrialDesign;
 
 
 /**
@@ -77,7 +80,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.TrialDesignType;
     "name",
     "description",
     "independentVariable",
-    "functionDefinition",
+    "listOfFunctionDefinition",
     "modelDefinition",
     "trialDesign",
     "modellingSteps"
@@ -86,19 +89,19 @@ import eu.ddmore.libpharmml.dom.trialdesign.TrialDesignType;
 public class PharmML {
 
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
-    protected NameType name;
+    protected Name name;
     @XmlElement(name = "Description", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
     protected AnnotationType description;
     @XmlElement(name = "IndependentVariable")
-    protected IndependentVariableType independentVariable;
+    protected IndependentVariable independentVariable;
     @XmlElement(name = "FunctionDefinition", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
-    protected List<FunctionDefinitionType> functionDefinition;
+    protected List<FunctionDefinition> listOfFunctionDefinition;
     @XmlElement(name = "ModelDefinition", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", required = true)
-    protected ModelDefinitionType modelDefinition;
+    protected ModelDefinition modelDefinition;
     @XmlElement(name = "TrialDesign", namespace = "http://www.pharmml.org/2013/03/TrialDesign")
-    protected TrialDesignType trialDesign;
+    protected TrialDesign trialDesign;
     @XmlElement(name = "ModellingSteps", namespace = "http://www.pharmml.org/2013/03/ModellingSteps")
-    protected ModellingStepsType modellingSteps;
+    protected ModellingSteps modellingSteps;
     @XmlAttribute(name = "writtenVersion", required = true)
     protected String writtenVersion;
     @XmlAttribute(name = "implementedBy")
@@ -112,10 +115,10 @@ public class PharmML {
      * 
      * @return
      *     possible object is
-     *     {@link NameType }
+     *     {@link Name }
      *     
      */
-    public NameType getName() {
+    public Name getName() {
         return name;
     }
 
@@ -124,10 +127,10 @@ public class PharmML {
      * 
      * @param value
      *     allowed object is
-     *     {@link NameType }
+     *     {@link Name }
      *     
      */
-    public void setName(NameType value) {
+    public void setName(Name value) {
         this.name = value;
     }
 
@@ -160,10 +163,10 @@ public class PharmML {
      * 
      * @return
      *     possible object is
-     *     {@link IndependentVariableType }
+     *     {@link IndependentVariable }
      *     
      */
-    public IndependentVariableType getIndependentVariable() {
+    public IndependentVariable getIndependentVariable() {
         return independentVariable;
     }
 
@@ -172,10 +175,10 @@ public class PharmML {
      * 
      * @param value
      *     allowed object is
-     *     {@link IndependentVariableType }
+     *     {@link IndependentVariable }
      *     
      */
-    public void setIndependentVariable(IndependentVariableType value) {
+    public void setIndependentVariable(IndependentVariable value) {
         this.independentVariable = value;
     }
 
@@ -197,15 +200,40 @@ public class PharmML {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link FunctionDefinitionType }
+     * {@link FunctionDefinition }
+     * 
+     * @deprecated Since libPharmML 0.4. Use {@link #getListOfFunctionDefinition()} instead.
+     */
+    public List<FunctionDefinition> getFunctionDefinition() {
+        return getListOfFunctionDefinition();
+    }
+    /**
+     * Gets the list of the function definitions.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the functionDefinition property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getFunctionDefinition().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link FunctionDefinition }
      * 
      * 
      */
-    public List<FunctionDefinitionType> getFunctionDefinition() {
-        if (functionDefinition == null) {
-            functionDefinition = new ArrayList<FunctionDefinitionType>();
+    public List<FunctionDefinition> getListOfFunctionDefinition() {
+        if (listOfFunctionDefinition == null) {
+        	listOfFunctionDefinition = new ArrayList<FunctionDefinition>();
         }
-        return this.functionDefinition;
+        return this.listOfFunctionDefinition;
     }
 
     /**
@@ -215,10 +243,10 @@ public class PharmML {
      * 
      * @return
      *     possible object is
-     *     {@link ModelDefinitionType }
+     *     {@link ModelDefinition }
      *     
      */
-    public ModelDefinitionType getModelDefinition() {
+    public ModelDefinition getModelDefinition() {
         return modelDefinition;
     }
 
@@ -227,10 +255,10 @@ public class PharmML {
      * 
      * @param value
      *     allowed object is
-     *     {@link ModelDefinitionType }
+     *     {@link ModelDefinition }
      *     
      */
-    public void setModelDefinition(ModelDefinitionType value) {
+    public void setModelDefinition(ModelDefinition value) {
         this.modelDefinition = value;
     }
 
@@ -239,10 +267,10 @@ public class PharmML {
      * 
      * @return
      *     possible object is
-     *     {@link TrialDesignType }
+     *     {@link TrialDesign }
      *     
      */
-    public TrialDesignType getTrialDesign() {
+    public TrialDesign getTrialDesign() {
         return trialDesign;
     }
 
@@ -251,10 +279,10 @@ public class PharmML {
      * 
      * @param value
      *     allowed object is
-     *     {@link TrialDesignType }
+     *     {@link TrialDesign }
      *     
      */
-    public void setTrialDesign(TrialDesignType value) {
+    public void setTrialDesign(TrialDesign value) {
         this.trialDesign = value;
     }
 
@@ -263,10 +291,10 @@ public class PharmML {
      * 
      * @return
      *     possible object is
-     *     {@link ModellingStepsType }
+     *     {@link ModellingSteps }
      *     
      */
-    public ModellingStepsType getModellingSteps() {
+    public ModellingSteps getModellingSteps() {
         return modellingSteps;
     }
 
@@ -275,10 +303,10 @@ public class PharmML {
      * 
      * @param value
      *     allowed object is
-     *     {@link ModellingStepsType }
+     *     {@link ModellingSteps }
      *     
      */
-    public void setModellingSteps(ModellingStepsType value) {
+    public void setModellingSteps(ModellingSteps value) {
         this.modellingSteps = value;
     }
 
@@ -352,6 +380,104 @@ public class PharmML {
      */
     public void setId(String value) {
         this.id = value;
+    }
+    
+    /**                                                              
+     * Creates a new {@link Name} name element, adds it to the current object and returns it.
+     * @param Name of the model.
+     * @return The created {@link Name} object.                                                    
+     */                                                                                            
+    public Name createName(String name){                                                                      
+            Name el = new Name();
+            el.setValue(name);
+            this.name = el;
+            return el;
+    }
+
+    /**
+     * Creates a new {@link AnnotationType} description element, adds it to the current object and returns it.
+     * @param description Description of the model.
+     * @return The created {@link AnnotationType} object.
+     */
+    public AnnotationType createDescription(String description){
+            AnnotationType el = new AnnotationType();
+            el.setValue(description);
+            this.description = el;
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link IndependentVariable} independentVariable element, adds it to the current object and returns it.
+     * @return The created {@link IndependentVariable} object.
+     */
+    public IndependentVariable createIndependentVariable(){
+            IndependentVariable el = new IndependentVariable();
+            this.independentVariable = el;
+            return el;
+    }
+    /**
+     * Creates a new {@link IndependentVariable} independentVariable element, adds it to 
+     * the current object and returns it.
+     * @param symbId Symbol of the independent variable.
+     * @return The created {@link IndependentVariable} object.
+     */
+    public IndependentVariable createIndependentVariable(String symbId){
+            IndependentVariable el = createIndependentVariable();
+            el.setSymbId(symbId);
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link FunctionDefinition} functionDefinition element, adds it to the current object and returns it.
+     * @return The created {@link FunctionDefinition} object.
+     */
+    public FunctionDefinition createFunctionDefinition(){
+            FunctionDefinition el = new FunctionDefinition();
+            getListOfFunctionDefinition().add(el);
+            return el;
+    }
+    /**
+     * Creates a new {@link FunctionDefinition} functionDefinition element, adds it to the
+     * current object and returns it.
+     * @param symbId Symbol of the function, used when it is referred to.
+     * @param type Return type of the function.
+     * @return The created {@link FunctionDefinition} object.
+     */
+    public FunctionDefinition createFunctionDefinition(String symbId, SymbolType type){
+            FunctionDefinition el = createFunctionDefinition();
+            el.setSymbId(symbId);
+            el.setSymbolType(type);
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link ModelDefinition} modelDefinition element, adds it to the current object and returns it.
+     * @return The created {@link ModelDefinition} object.
+     */
+    public ModelDefinition createModelDefinition(){
+            ModelDefinition el = new ModelDefinition();
+            this.modelDefinition = el;
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link TrialDesign} trialDesign element, adds it to the current object and returns it.
+     * @return The created {@link TrialDesign} object.
+     */
+    public TrialDesign createTrialDesign(){
+            TrialDesign el = new TrialDesign();
+            this.trialDesign = el;
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link ModellingSteps} modellingSteps element, adds it to the current object and returns it.
+     * @return The created {@link ModellingSteps} object.
+     */
+    public ModellingSteps createModellingSteps(){
+            ModellingSteps el = new ModellingSteps();
+            this.modellingSteps = el;
+            return el;
     }
 
 }

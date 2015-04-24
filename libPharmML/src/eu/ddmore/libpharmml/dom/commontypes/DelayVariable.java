@@ -72,7 +72,7 @@ public class DelayVariable
     @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     protected Scalar scalar;
     @XmlElement(name = "SymbRef")
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
     
     /**
      * Empty constructor
@@ -81,12 +81,12 @@ public class DelayVariable
     
     /**
      * Creates a new DelayVariable and set its value with the provided scalar. Possible scalar type is 
-     * 	   {@link IntValueType }
-     *     {@link StringValueType }
-     *     {@link RealValueType }
-     *     {@link TrueBooleanType }
-     *     {@link IdValueType }
-     *     {@link FalseBooleanType }
+     * 	   {@link IntValue }
+     *     {@link StringValue }
+     *     {@link RealValue }
+     *     {@link TrueBoolean }
+     *     {@link IdValue }
+     *     {@link FalseBoolean }
      * @param scalar
      */
     public DelayVariable(Scalar scalar){
@@ -97,7 +97,7 @@ public class DelayVariable
      * Creates a new DelayVariable and set its value with the provided symbol reference.
      * @param symbRef
      */
-    public DelayVariable(SymbolRefType symbRef){
+    public DelayVariable(SymbolRef symbRef){
     	this.symbRef = symbRef;
     }
 
@@ -106,12 +106,12 @@ public class DelayVariable
      * 
      * @return
      *     possible object is
-     *     {@link IntValueType }
-     *     {@link StringValueType }
-     *     {@link RealValueType }
-     *     {@link TrueBooleanType }
-     *     {@link IdValueType }
-     *     {@link FalseBooleanType }
+     *     {@link IntValue }
+     *     {@link StringValue }
+     *     {@link RealValue }
+     *     {@link TrueBoolean }
+     *     {@link IdValue }
+     *     {@link FalseBoolean }
      *     
      */
     public Scalar getScalar() {
@@ -123,12 +123,12 @@ public class DelayVariable
      * 
      * @param value
      *     allowed object is
-     *     {@link IntValueType }
-     *     {@link StringValueType }
-     *     {@link RealValueType }
-     *     {@link TrueBooleanType }
-     *     {@link IdValueType }
-     *     {@link FalseBooleanType }
+     *     {@link IntValue }
+     *     {@link StringValue }
+     *     {@link RealValue }
+     *     {@link TrueBoolean }
+     *     {@link IdValue }
+     *     {@link FalseBoolean }
      *     
      */
     public void setScalar(Scalar value) {
@@ -140,10 +140,10 @@ public class DelayVariable
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -152,10 +152,10 @@ public class DelayVariable
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 

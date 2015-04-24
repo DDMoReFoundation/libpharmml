@@ -64,6 +64,24 @@ public class Double {
 
     protected java.lang.Double rVal;
     protected VarRefType var;
+    
+    /**
+     * Empty constructor
+     */
+    public Double(){};
+    
+    /**
+     * Creates a uncertml Double value from a java.lang.Double object.
+     * @param rVal The value of the Double.
+     */
+    public Double(java.lang.Double rVal){
+    	this.rVal = rVal;
+    }
+    
+    public Double(java.lang.Double rVal, VarRefType var){
+    	this.rVal = rVal;
+    	this.var = var;
+    }
 
     /**
      * Gets the value of the rVal property.

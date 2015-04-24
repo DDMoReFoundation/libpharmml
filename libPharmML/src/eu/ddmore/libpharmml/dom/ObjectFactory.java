@@ -63,11 +63,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IndependentVariableType }
+     * Create an instance of {@link IndependentVariable }
      * 
      */
-    public IndependentVariableType createIndependentVariableType() {
-        return new IndependentVariableType();
+    public IndependentVariable createIndependentVariableType() {
+        return new IndependentVariable();
     }
 
 }

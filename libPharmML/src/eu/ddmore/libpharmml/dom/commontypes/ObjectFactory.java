@@ -98,11 +98,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link NameType }
+     * Create an instance of {@link Name }
      * 
      */
-    public NameType createNameType() {
-        return new NameType();
+    public Name createNameType() {
+        return new Name();
     }
 
     /**
@@ -114,19 +114,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FunctionDefinitionType }
+     * Create an instance of {@link FunctionDefinition }
      * 
      */
-    public FunctionDefinitionType createFunctionDefinitionType() {
-        return new FunctionDefinitionType();
+    public FunctionDefinition createFunctionDefinitionType() {
+        return new FunctionDefinition();
     }
 
     /**
-     * Create an instance of {@link SymbolRefType }
+     * Create an instance of {@link SymbolRef }
      * 
      */
-    public SymbolRefType createSymbolRefType() {
-        return new SymbolRefType();
+    public SymbolRef createSymbolRefType() {
+        return new SymbolRef();
     }
 
     /**
@@ -138,149 +138,149 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VariableDefinitionType }
+     * Create an instance of {@link VariableDefinition }
      * 
      */
-    public VariableDefinitionType createVariableDefinitionType() {
-        return new VariableDefinitionType();
+    public VariableDefinition createVariableDefinitionType() {
+        return new VariableDefinition();
     }
 
     /**
-     * Create an instance of {@link LevelReferenceType }
+     * Create an instance of {@link LevelReference }
      * 
      */
-    public LevelReferenceType createLevelReferenceType() {
-        return new LevelReferenceType();
+    public LevelReference createLevelReferenceType() {
+        return new LevelReference();
     }
 
     /**
-     * Create an instance of {@link DerivativeVariableType }
+     * Create an instance of {@link DerivativeVariable }
      * 
      */
-    public DerivativeVariableType createDerivativeVariableType() {
-        return new DerivativeVariableType();
+    public DerivativeVariable createDerivativeVariableType() {
+        return new DerivativeVariable();
     }
 
     /**
-     * Create an instance of {@link FalseBooleanType }
+     * Create an instance of {@link FalseBoolean }
      * 
      */
-    public FalseBooleanType createFalseBooleanType() {
-        return new FalseBooleanType();
+    public FalseBoolean createFalseBooleanType() {
+        return new FalseBoolean();
     }
 
     /**
-     * Create an instance of {@link InterpolationType }
+     * Create an instance of {@link Interpolation }
      * 
      */
-    public InterpolationType createInterpolationType() {
-        return new InterpolationType();
+    public Interpolation createInterpolationType() {
+        return new Interpolation();
     }
 
     /**
-     * Create an instance of {@link RealValueType }
+     * Create an instance of {@link RealValue }
      * 
      */
-    public RealValueType createRealValueType() {
-        return new RealValueType();
+    public RealValue createRealValueType() {
+        return new RealValue();
     }
 
     /**
-     * Create an instance of {@link StringValueType }
+     * Create an instance of {@link StringValue }
      * 
      */
-    public StringValueType createStringValueType() {
-        return new StringValueType();
+    public StringValue createStringValueType() {
+        return new StringValue();
     }
 
     /**
-     * Create an instance of {@link SymbolNameType }
+     * Create an instance of {@link SymbolName }
      * 
      */
-    public SymbolNameType createSymbolNameType() {
-        return new SymbolNameType();
+    public SymbolName createSymbolNameType() {
+        return new SymbolName();
     }
 
     /**
-     * Create an instance of {@link TrueBooleanType }
+     * Create an instance of {@link TrueBoolean }
      * 
      */
-    public TrueBooleanType createTrueBooleanType() {
-        return new TrueBooleanType();
+    public TrueBoolean createTrueBooleanType() {
+        return new TrueBoolean();
     }
 
     /**
-     * Create an instance of {@link VariableAssignmentType }
+     * Create an instance of {@link VariableAssignment }
      * 
      */
-    public VariableAssignmentType createVariableAssignmentType() {
-        return new VariableAssignmentType();
+    public VariableAssignment createVariableAssignmentType() {
+        return new VariableAssignment();
     }
 
     /**
-     * Create an instance of {@link IdValueType }
+     * Create an instance of {@link IdValue }
      * 
      */
-    public IdValueType createIdValueType() {
-        return new IdValueType();
+    public IdValue createIdValueType() {
+        return new IdValue();
     }
 
     /**
-     * Create an instance of {@link OidRefType }
+     * Create an instance of {@link OidRef }
      * 
      */
-    public OidRefType createOidRefType() {
-        return new OidRefType();
+    public OidRef createOidRefType() {
+        return new OidRef();
     }
 
     /**
-     * Create an instance of {@link SequenceType }
+     * Create an instance of {@link Sequence }
      * 
      */
-    public SequenceType createSequenceType() {
-        return new SequenceType();
+    public Sequence createSequenceType() {
+        return new Sequence();
     }
 
     /**
-     * Create an instance of {@link IntValueType }
+     * Create an instance of {@link IntValue }
      * 
      */
-    public IntValueType createIntValueType() {
-        return new IntValueType();
+    public IntValue createIntValueType() {
+        return new IntValue();
     }
 
     /**
-     * Create an instance of {@link VectorType }
+     * Create an instance of {@link Vector }
      * 
      */
     @Deprecated
-    public VectorType createVectorType() {
-        return new VectorType();
+    public Vector createVectorType() {
+        return new Vector();
     }
 
     /**
-     * Create an instance of {@link MatrixType }
+     * Create an instance of {@link Matrix }
      * @deprecated Use {@link #createMatrix()} instead.
      */
     @Deprecated
-    public MatrixType createMatrixType() {
-        return new MatrixType();
+    public Matrix createMatrixType() {
+        return new Matrix();
     }
     
     /**
      * Create an instance of {@link Matrix }
      * 
      */
-    public MatrixType createMatrix() {
+    public Matrix createMatrix() {
         return new Matrix();
     }
 
     /**
-     * Create an instance of {@link InitialTimeType }
+     * Create an instance of {@link InitialTime }
      * 
      */
-    public InitialTimeType createInitialTimeType() {
-        return new InitialTimeType();
+    public InitialTime createInitialTimeType() {
+        return new InitialTime();
     }
 
     /**
@@ -292,19 +292,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IndependentVariableReferenceType }
+     * Create an instance of {@link IndependentVariableReference }
      * 
      */
-    public IndependentVariableReferenceType createIndependentVariableReferenceType() {
-        return new IndependentVariableReferenceType();
+    public IndependentVariableReference createIndependentVariableReferenceType() {
+        return new IndependentVariableReference();
     }
 
     /**
-     * Create an instance of {@link InterpolationIVType }
+     * Create an instance of {@link InterpolationIV }
      * 
      */
-    public InterpolationIVType createInterpolationIVType() {
-        return new InterpolationIVType();
+    public InterpolationIV createInterpolationIVType() {
+        return new InterpolationIV();
     }
 
     /**
@@ -316,89 +316,80 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MatrixRowType }
+     * Create an instance of {@link MatrixRow }
      * 
      */
-    public MatrixRowType createMatrixRowType() {
-        return new MatrixRowType();
+    public MatrixRow createMatrixRowType() {
+        return new MatrixRow();
     }
 
     /**
-     * Create an instance of {@link InitialConditionType }
+     * Create an instance of {@link InitialCondition }
      * 
      */
-    public InitialConditionType createInitialConditionType() {
-        return new InitialConditionType();
+    public InitialCondition createInitialConditionType() {
+        return new InitialCondition();
     }
 
     /**
-     * Create an instance of {@link AssignType }
+     * Create an instance of {@link InitialValue }
      * 
      */
-    @Deprecated
-    public AssignType createAssignType() {
-        return new AssignType();
+    public InitialValue createInitialValueType() {
+        return new InitialValue();
     }
 
     /**
-     * Create an instance of {@link InitialValueType }
+     * Create an instance of {@link FunctionParameter }
      * 
      */
-    public InitialValueType createInitialValueType() {
-        return new InitialValueType();
+    public FunctionParameter createFuncParameterDefinitionType() {
+        return new FunctionParameter();
     }
 
     /**
-     * Create an instance of {@link FuncParameterDefinitionType }
-     * 
-     */
-    public FuncParameterDefinitionType createFuncParameterDefinitionType() {
-        return new FuncParameterDefinitionType();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VariableDefinitionType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link VariableDefinition }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Variable", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "CommonVariable")
-    public JAXBElement<VariableDefinitionType> createVariable(VariableDefinitionType value) {
-        return new JAXBElement<VariableDefinitionType>(_Variable_QNAME, VariableDefinitionType.class, null, value);
+    public JAXBElement<VariableDefinition> createVariable(VariableDefinition value) {
+        return new JAXBElement<VariableDefinition>(_Variable_QNAME, VariableDefinition.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link InterpolationType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Interpolation }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Interpolation")
-    public JAXBElement<InterpolationType> createInterpolation(InterpolationType value) {
-        return new JAXBElement<InterpolationType>(_Interpolation_QNAME, InterpolationType.class, null, value);
+    public JAXBElement<Interpolation> createInterpolation(Interpolation value) {
+        return new JAXBElement<Interpolation>(_Interpolation_QNAME, Interpolation.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IntValueType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link IntValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Int", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Scalar")
-    public JAXBElement<IntValueType> createInt(IntValueType value) {
-        return new JAXBElement<IntValueType>(_Int_QNAME, IntValueType.class, null, value);
+    public JAXBElement<IntValue> createInt(IntValue value) {
+        return new JAXBElement<IntValue>(_Int_QNAME, IntValue.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VariableAssignmentType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link VariableAssignment }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "VariableAssignment")
-    public JAXBElement<VariableAssignmentType> createVariableAssignment(VariableAssignmentType value) {
-        return new JAXBElement<VariableAssignmentType>(_VariableAssignment_QNAME, VariableAssignmentType.class, null, value);
+    public JAXBElement<VariableAssignment> createVariableAssignment(VariableAssignment value) {
+        return new JAXBElement<VariableAssignment>(_VariableAssignment_QNAME, VariableAssignment.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FunctionDefinitionType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FunctionDefinition }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "FunctionDefinition")
-    public JAXBElement<FunctionDefinitionType> createFunctionDefinition(FunctionDefinitionType value) {
-        return new JAXBElement<FunctionDefinitionType>(_FunctionDefinition_QNAME, FunctionDefinitionType.class, null, value);
+    public JAXBElement<FunctionDefinition> createFunctionDefinition(FunctionDefinition value) {
+        return new JAXBElement<FunctionDefinition>(_FunctionDefinition_QNAME, FunctionDefinition.class, null, value);
     }
 
     /**
@@ -411,12 +402,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LevelReferenceType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LevelReference }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "VariabilityReference")
-    public JAXBElement<LevelReferenceType> createVariabilityReference(LevelReferenceType value) {
-        return new JAXBElement<LevelReferenceType>(_VariabilityReference_QNAME, LevelReferenceType.class, null, value);
+    public JAXBElement<LevelReference> createVariabilityReference(LevelReference value) {
+        return new JAXBElement<LevelReference>(_VariabilityReference_QNAME, LevelReference.class, null, value);
     }
 
     /**
@@ -429,66 +420,66 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SymbolNameType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link SymbolName }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Symbol")
-    public JAXBElement<SymbolNameType> createSymbol(SymbolNameType value) {
-        return new JAXBElement<SymbolNameType>(_Symbol_QNAME, SymbolNameType.class, null, value);
+    public JAXBElement<SymbolName> createSymbol(SymbolName value) {
+        return new JAXBElement<SymbolName>(_Symbol_QNAME, SymbolName.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StringValueType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link StringValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "String", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Scalar")
-    public JAXBElement<StringValueType> createString(StringValueType value) {
-        return new JAXBElement<StringValueType>(_String_QNAME, StringValueType.class, null, value);
+    public JAXBElement<StringValue> createString(StringValue value) {
+        return new JAXBElement<StringValue>(_String_QNAME, StringValue.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CommonVariableDefinitionType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CommonVariableDefinition }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "CommonVariable")
-    public JAXBElement<CommonVariableDefinitionType> createCommonVariable(CommonVariableDefinitionType value) {
-        return new JAXBElement<CommonVariableDefinitionType>(_CommonVariable_QNAME, CommonVariableDefinitionType.class, null, value);
+    public JAXBElement<CommonVariableDefinition> createCommonVariable(CommonVariableDefinition value) {
+        return new JAXBElement<CommonVariableDefinition>(_CommonVariable_QNAME, CommonVariableDefinition.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RealValueType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RealValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Real", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Scalar")
-    public JAXBElement<RealValueType> createReal(RealValueType value) {
-        return new JAXBElement<RealValueType>(_Real_QNAME, RealValueType.class, null, value);
+    public JAXBElement<RealValue> createReal(RealValue value) {
+        return new JAXBElement<RealValue>(_Real_QNAME, RealValue.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VectorType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Vector }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Vector", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Arrays")
-    public JAXBElement<VectorType> createVector(VectorType value) {
-        return new JAXBElement<VectorType>(_Vector_QNAME, VectorType.class, null, value);
+    public JAXBElement<Vector> createVector(Vector value) {
+        return new JAXBElement<Vector>(_Vector_QNAME, Vector.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "True", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Boolean")
-    public JAXBElement<TrueBooleanType> createTrue(TrueBooleanType value) {
-        return new JAXBElement<TrueBooleanType>(_True_QNAME, TrueBooleanType.class, null, value);
+    public JAXBElement<TrueBoolean> createTrue(TrueBoolean value) {
+        return new JAXBElement<TrueBoolean>(_True_QNAME, TrueBoolean.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IdValueType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link IdValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Id", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Scalar")
-    public JAXBElement<IdValueType> createId(IdValueType value) {
-        return new JAXBElement<IdValueType>(_Id_QNAME, IdValueType.class, null, value);
+    public JAXBElement<IdValue> createId(IdValue value) {
+        return new JAXBElement<IdValue>(_Id_QNAME, IdValue.class, null, value);
     }
 
     /**
@@ -501,48 +492,48 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SequenceType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Sequence }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Sequence", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Arrays")
-    public JAXBElement<SequenceType> createSequence(SequenceType value) {
-        return new JAXBElement<SequenceType>(_Sequence_QNAME, SequenceType.class, null, value);
+    public JAXBElement<Sequence> createSequence(Sequence value) {
+        return new JAXBElement<Sequence>(_Sequence_QNAME, Sequence.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OidRefType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link OidRef }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "OidRef")
-    public JAXBElement<OidRefType> createOidRef(OidRefType value) {
-        return new JAXBElement<OidRefType>(_OidRef_QNAME, OidRefType.class, null, value);
+    public JAXBElement<OidRef> createOidRef(OidRef value) {
+        return new JAXBElement<OidRef>(_OidRef_QNAME, OidRef.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DerivativeVariableType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DerivativeVariable }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "DerivativeVariable", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "CommonVariable")
-    public JAXBElement<DerivativeVariableType> createDerivativeVariable(DerivativeVariableType value) {
-        return new JAXBElement<DerivativeVariableType>(_DerivativeVariable_QNAME, DerivativeVariableType.class, null, value);
+    public JAXBElement<DerivativeVariable> createDerivativeVariable(DerivativeVariable value) {
+        return new JAXBElement<DerivativeVariable>(_DerivativeVariable_QNAME, DerivativeVariable.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "False", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Boolean")
-    public JAXBElement<FalseBooleanType> createFalse(FalseBooleanType value) {
-        return new JAXBElement<FalseBooleanType>(_False_QNAME, FalseBooleanType.class, null, value);
+    public JAXBElement<FalseBoolean> createFalse(FalseBoolean value) {
+        return new JAXBElement<FalseBoolean>(_False_QNAME, FalseBoolean.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NameType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Name }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Name")
-    public JAXBElement<NameType> createName(NameType value) {
-        return new JAXBElement<NameType>(_Name_QNAME, NameType.class, null, value);
+    public JAXBElement<Name> createName(Name value) {
+        return new JAXBElement<Name>(_Name_QNAME, Name.class, null, value);
     }
 
     /**
@@ -555,21 +546,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BooleanType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Boolean", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName = "Scalar")
-    public JAXBElement<BooleanType> createBoolean(BooleanType value) {
-        return new JAXBElement<BooleanType>(_Boolean_QNAME, BooleanType.class, null, value);
+    public JAXBElement<BooleanValue> createBoolean(BooleanValue value) {
+        return new JAXBElement<BooleanValue>(_Boolean_QNAME, BooleanValue.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link SymbolRef }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "SymbRef", substitutionHeadNamespace="http://www.pharmml.org/2013/03/CommonTypes", substitutionHeadName="VectorCellValue")
-    public JAXBElement<SymbolRefType> createSymbRef(SymbolRefType value) {
-        return new JAXBElement<SymbolRefType>(_SymbRef_QNAME, SymbolRefType.class, null, value);
+    public JAXBElement<SymbolRef> createSymbRef(SymbolRef value) {
+        return new JAXBElement<SymbolRef>(_SymbRef_QNAME, SymbolRef.class, null, value);
     }
     
     // 0.3.2
@@ -626,12 +617,12 @@ public class ObjectFactory {
         return new JAXBElement<VectorSelector>(_VectorSelector_QNAME, VectorSelector.class, null, value);
     }
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MatrixType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Matrix }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/CommonTypes", name = "Matrix")
-    public JAXBElement<MatrixType> createMatrix(MatrixType value) {
-        return new JAXBElement<MatrixType>(_Matrix_QNAME, MatrixType.class, null, value);
+    public JAXBElement<Matrix> createMatrix(Matrix value) {
+        return new JAXBElement<Matrix>(_Matrix_QNAME, Matrix.class, null, value);
     }
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Delay }{@code >}}

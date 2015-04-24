@@ -20,24 +20,24 @@ package eu.ddmore.libpharmml.dom;
 
 import javax.xml.bind.JAXBElement;
 
-import eu.ddmore.libpharmml.dom.commontypes.BooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.FalseBooleanType;
-import eu.ddmore.libpharmml.dom.commontypes.IdValueType;
-import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
-import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
+import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
+import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
+import eu.ddmore.libpharmml.dom.commontypes.IdValue;
+import eu.ddmore.libpharmml.dom.commontypes.IntValue;
+import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
-import eu.ddmore.libpharmml.dom.commontypes.SequenceType;
-import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolRefType;
-import eu.ddmore.libpharmml.dom.commontypes.TrueBooleanType;
+import eu.ddmore.libpharmml.dom.commontypes.Sequence;
+import eu.ddmore.libpharmml.dom.commontypes.StringValue;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
+import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
-import eu.ddmore.libpharmml.dom.modeldefn.CommonParameterType;
+import eu.ddmore.libpharmml.dom.modeldefn.CommonParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.GaussianObsError;
 import eu.ddmore.libpharmml.dom.modeldefn.GeneralObsError;
-import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameterType;
-import eu.ddmore.libpharmml.dom.modeldefn.ObservationErrorType;
-import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomVariableType;
-import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameterType;
+import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter;
+import eu.ddmore.libpharmml.dom.modeldefn.ObservationError;
+import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomVariable;
+import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameter;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractCategoricalMultivariateDistributionType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractCategoricalUnivariateDistributionType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractDiscreteMultivariateDistributionType;
@@ -80,19 +80,19 @@ public class MasterObjectFactory {
 	 */
 	public static JAXBElement<? extends Scalar> createScalar(Scalar scalar){
 		JAXBElement<? extends Scalar> element;
-		if(scalar instanceof IntValueType){
-			element = COMMONTYPES_OF.createInt((IntValueType) scalar);
-		} else if(scalar instanceof RealValueType){
-			element = COMMONTYPES_OF.createReal((RealValueType) scalar);
-		} else if(scalar instanceof StringValueType){
-			element = COMMONTYPES_OF.createString((StringValueType) scalar);
-		} else if(scalar instanceof IdValueType){
-			element = COMMONTYPES_OF.createId((IdValueType) scalar);
-		} else if(scalar instanceof BooleanType){
-			if(scalar instanceof TrueBooleanType){
-				element = COMMONTYPES_OF.createTrue((TrueBooleanType) scalar);
+		if(scalar instanceof IntValue){
+			element = COMMONTYPES_OF.createInt((IntValue) scalar);
+		} else if(scalar instanceof RealValue){
+			element = COMMONTYPES_OF.createReal((RealValue) scalar);
+		} else if(scalar instanceof StringValue){
+			element = COMMONTYPES_OF.createString((StringValue) scalar);
+		} else if(scalar instanceof IdValue){
+			element = COMMONTYPES_OF.createId((IdValue) scalar);
+		} else if(scalar instanceof BooleanValue){
+			if(scalar instanceof TrueBoolean){
+				element = COMMONTYPES_OF.createTrue((TrueBoolean) scalar);
 			} else {
-				element = COMMONTYPES_OF.createFalse((FalseBooleanType) scalar);
+				element = COMMONTYPES_OF.createFalse((FalseBoolean) scalar);
 			}
 		} else {
 			throw new IllegalArgumentException("Unknown scalar type");
@@ -192,8 +192,8 @@ public class MasterObjectFactory {
 		return element;
 	}
 	
-	public static JAXBElement<? extends ObservationErrorType> createObservationError(ObservationErrorType model){
-		JAXBElement<? extends ObservationErrorType> element;
+	public static JAXBElement<? extends ObservationError> createObservationError(ObservationError model){
+		JAXBElement<? extends ObservationError> element;
 		if(model instanceof GeneralObsError){
 			element = MODELDEFN_OF.createGeneral((GeneralObsError) model);
 		} else if (model instanceof GaussianObsError){
@@ -204,14 +204,14 @@ public class MasterObjectFactory {
 		return element;
 	}
 	
-	public static JAXBElement<? extends CommonParameterType> createParameter(CommonParameterType param){
-		JAXBElement<? extends CommonParameterType> element;
-		if(param instanceof ParameterRandomVariableType){
-			element = MODELDEFN_OF.createRandomVariable((ParameterRandomVariableType) param);
-		} else if(param instanceof SimpleParameterType){
-			element = MODELDEFN_OF.createSimpleParameter((SimpleParameterType) param);
-		} else if(param instanceof IndividualParameterType){
-			element = MODELDEFN_OF.createIndividualParameter((IndividualParameterType) param);
+	public static JAXBElement<? extends CommonParameter> createParameter(CommonParameter param){
+		JAXBElement<? extends CommonParameter> element;
+		if(param instanceof ParameterRandomVariable){
+			element = MODELDEFN_OF.createRandomVariable((ParameterRandomVariable) param);
+		} else if(param instanceof SimpleParameter){
+			element = MODELDEFN_OF.createSimpleParameter((SimpleParameter) param);
+		} else if(param instanceof IndividualParameter){
+			element = MODELDEFN_OF.createIndividualParameter((IndividualParameter) param);
 		} else {
 			element = MODELDEFN_OF.createCommonParameterElement(param);
 		}
@@ -222,10 +222,10 @@ public class MasterObjectFactory {
 		JAXBElement<? extends VectorValue> element;
 		if(value instanceof Scalar){
 			element = createScalar((Scalar) value);
-		} else if(value instanceof SymbolRefType){
-			element = COMMONTYPES_OF.createSymbRef((SymbolRefType) value);
-		} else if(value instanceof SequenceType){
-			element = COMMONTYPES_OF.createSequence((SequenceType) value);
+		} else if(value instanceof SymbolRef){
+			element = COMMONTYPES_OF.createSymbRef((SymbolRef) value);
+		} else if(value instanceof Sequence){
+			element = COMMONTYPES_OF.createSequence((Sequence) value);
 		} else {
 			throw new RuntimeException("Unknown VectorValue type");
 		}

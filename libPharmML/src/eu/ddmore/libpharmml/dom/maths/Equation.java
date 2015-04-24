@@ -31,6 +31,10 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.commontypes.MatrixCellValue;
+import eu.ddmore.libpharmml.dom.commontypes.MatrixRowValue;
+import eu.ddmore.libpharmml.dom.commontypes.OperationVariable;
+
 
 /**
  * <p>Java class for anonymous complex type.
@@ -52,7 +56,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "")
 @XmlRootElement(name = "Equation")
 public class Equation
-    extends EquationType
+    extends EquationType implements MatrixCellValue, MatrixRowValue, OperationVariable
 {
 
 

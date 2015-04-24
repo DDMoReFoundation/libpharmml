@@ -35,109 +35,112 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import eu.ddmore.libpharmml.dom.IndependentVariableType;
+import eu.ddmore.libpharmml.dom.IndependentVariable;
 import eu.ddmore.libpharmml.dom.commontypes.VectorElements;
 import eu.ddmore.libpharmml.dom.dataset.CategoryMapping;
-import eu.ddmore.libpharmml.dom.dataset.ColumnMappingType;
-import eu.ddmore.libpharmml.dom.dataset.ColumnRefType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
+import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.dom.dataset.ColumnsDefinitionType;
-import eu.ddmore.libpharmml.dom.dataset.CommonColumnDefnType;
+import eu.ddmore.libpharmml.dom.dataset.CommonColumnDefinition;
 import eu.ddmore.libpharmml.dom.dataset.DataSetTableType;
-import eu.ddmore.libpharmml.dom.dataset.DataSetType;
-import eu.ddmore.libpharmml.dom.dataset.DatasetRowType;
-import eu.ddmore.libpharmml.dom.dataset.ImportDataType;
-import eu.ddmore.libpharmml.dom.dataset.ImportTargetDataType;
+import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.dom.dataset.DatasetRow;
+import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
+import eu.ddmore.libpharmml.dom.dataset.ImportTargetData;
 import eu.ddmore.libpharmml.dom.dataset.MapType;
-import eu.ddmore.libpharmml.dom.dataset.TargetToolDataSetType;
-import eu.ddmore.libpharmml.dom.maths.BinopType;
+import eu.ddmore.libpharmml.dom.dataset.TargetToolDataSet;
+import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.EquationType;
-import eu.ddmore.libpharmml.dom.maths.ExprType;
+import eu.ddmore.libpharmml.dom.maths.Expression;
 import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
-import eu.ddmore.libpharmml.dom.maths.LogicBinOpType;
-import eu.ddmore.libpharmml.dom.maths.LogicConditionType;
-import eu.ddmore.libpharmml.dom.maths.LogicExprType;
-import eu.ddmore.libpharmml.dom.modeldefn.CategoricalCovariateType;
+import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
+import eu.ddmore.libpharmml.dom.maths.LogicCondition;
+import eu.ddmore.libpharmml.dom.maths.LogicExpression;
+import eu.ddmore.libpharmml.dom.modeldefn.CategoricalCovariate;
 import eu.ddmore.libpharmml.dom.modeldefn.CategoricalPMF;
-import eu.ddmore.libpharmml.dom.modeldefn.CategoricalRelationType;
+import eu.ddmore.libpharmml.dom.modeldefn.CategoricalRelation;
 import eu.ddmore.libpharmml.dom.modeldefn.CensoringFeature;
 import eu.ddmore.libpharmml.dom.modeldefn.Censoring;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonDiscreteState;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonDiscreteVariable;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonObservationModel;
-import eu.ddmore.libpharmml.dom.modeldefn.CommonParameterModelType;
-import eu.ddmore.libpharmml.dom.modeldefn.CommonParameterType;
-import eu.ddmore.libpharmml.dom.modeldefn.ContinuousCovariateType;
-import eu.ddmore.libpharmml.dom.modeldefn.CorrelatedRandomVarType;
-import eu.ddmore.libpharmml.dom.modeldefn.CorrelationType;
+import eu.ddmore.libpharmml.dom.modeldefn.CommonParameterModel;
+import eu.ddmore.libpharmml.dom.modeldefn.CommonParameter;
+import eu.ddmore.libpharmml.dom.modeldefn.ContinuousCovariate;
+import eu.ddmore.libpharmml.dom.modeldefn.CorrelatedRandomVariable;
+import eu.ddmore.libpharmml.dom.modeldefn.Correlation;
 import eu.ddmore.libpharmml.dom.modeldefn.CountPMF;
-import eu.ddmore.libpharmml.dom.modeldefn.CovariateDefinitionType;
-import eu.ddmore.libpharmml.dom.modeldefn.CovariateModelType;
-import eu.ddmore.libpharmml.dom.modeldefn.CovariateRelationType;
-import eu.ddmore.libpharmml.dom.modeldefn.CovariateTransformationType;
+import eu.ddmore.libpharmml.dom.modeldefn.CovariateDefinition;
+import eu.ddmore.libpharmml.dom.modeldefn.CovariateModel;
+import eu.ddmore.libpharmml.dom.modeldefn.CovariateRelation;
+import eu.ddmore.libpharmml.dom.modeldefn.CovariateTransformation;
 import eu.ddmore.libpharmml.dom.modeldefn.Dependance;
 import eu.ddmore.libpharmml.dom.modeldefn.DiscreteDataParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.Discrete;
-import eu.ddmore.libpharmml.dom.modeldefn.FixedEffectRelationType;
+import eu.ddmore.libpharmml.dom.modeldefn.FixedEffectRelation;
 import eu.ddmore.libpharmml.dom.modeldefn.ListOfCategories;
-import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinitionType;
-import eu.ddmore.libpharmml.dom.modeldefn.ObservationErrorType;
-import eu.ddmore.libpharmml.dom.modeldefn.ObservationModelType;
-import eu.ddmore.libpharmml.dom.modeldefn.PairwiseType;
-import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomEffectType;
-import eu.ddmore.libpharmml.dom.modeldefn.ParentLevelType;
+import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
+import eu.ddmore.libpharmml.dom.modeldefn.ObservationError;
+import eu.ddmore.libpharmml.dom.modeldefn.ObservationModel;
+import eu.ddmore.libpharmml.dom.modeldefn.Pairwise;
+import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomEffect;
+import eu.ddmore.libpharmml.dom.modeldefn.ParentLevel;
 import eu.ddmore.libpharmml.dom.modeldefn.ProbabilityAssignment;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
-import eu.ddmore.libpharmml.dom.modeldefn.StructuralModelType;
+import eu.ddmore.libpharmml.dom.modeldefn.StructuralModel;
 import eu.ddmore.libpharmml.dom.modeldefn.TTEFunction;
 import eu.ddmore.libpharmml.dom.modeldefn.TransitionRate;
 import eu.ddmore.libpharmml.dom.modeldefn.VariabilityDefnBlock;
-import eu.ddmore.libpharmml.dom.modeldefn.VariabilityLevelDefnType;
-import eu.ddmore.libpharmml.dom.modellingsteps.AlgorithmType;
-import eu.ddmore.libpharmml.dom.modellingsteps.CodeInjectionType;
-import eu.ddmore.libpharmml.dom.modellingsteps.CommonModellingStepType;
-import eu.ddmore.libpharmml.dom.modellingsteps.DatasetMappingType;
+import eu.ddmore.libpharmml.dom.modeldefn.VariabilityLevelDefinition;
+import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.AbsorptionOralMacro;
+import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.OralMacro;
+import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKMacroList;
+import eu.ddmore.libpharmml.dom.modellingsteps.Algorithm;
+import eu.ddmore.libpharmml.dom.modellingsteps.CodeInjection;
+import eu.ddmore.libpharmml.dom.modellingsteps.CommonModellingStep;
+import eu.ddmore.libpharmml.dom.modellingsteps.DatasetMapping;
 import eu.ddmore.libpharmml.dom.modellingsteps.DependentsType;
-import eu.ddmore.libpharmml.dom.modellingsteps.EstimationOperationType;
-import eu.ddmore.libpharmml.dom.modellingsteps.GenericCodeType;
+import eu.ddmore.libpharmml.dom.modellingsteps.EstimationOperation;
+import eu.ddmore.libpharmml.dom.modellingsteps.GenericCode;
 import eu.ddmore.libpharmml.dom.modellingsteps.MappingType;
-import eu.ddmore.libpharmml.dom.modellingsteps.ModellingStepsType;
-import eu.ddmore.libpharmml.dom.modellingsteps.MultipleDVMappingType;
-import eu.ddmore.libpharmml.dom.modellingsteps.NONMEMdataSetReferenceType;
-import eu.ddmore.libpharmml.dom.modellingsteps.NONMEMdataSetType;
-import eu.ddmore.libpharmml.dom.modellingsteps.ObservationsType;
-import eu.ddmore.libpharmml.dom.modellingsteps.OperationPropertyType;
-import eu.ddmore.libpharmml.dom.modellingsteps.ParameterEstimateType;
-import eu.ddmore.libpharmml.dom.modellingsteps.SimulationOperationType;
-import eu.ddmore.libpharmml.dom.modellingsteps.StepDependencyType;
+import eu.ddmore.libpharmml.dom.modellingsteps.ModellingSteps;
+import eu.ddmore.libpharmml.dom.modellingsteps.MultipleDVMapping;
+import eu.ddmore.libpharmml.dom.modellingsteps.NONMEMdataSetReference;
+import eu.ddmore.libpharmml.dom.modellingsteps.NONMEMdataSet;
+import eu.ddmore.libpharmml.dom.modellingsteps.Observations;
+import eu.ddmore.libpharmml.dom.modellingsteps.OperationProperty;
+import eu.ddmore.libpharmml.dom.modellingsteps.ParameterEstimate;
+import eu.ddmore.libpharmml.dom.modellingsteps.SimulationOperation;
+import eu.ddmore.libpharmml.dom.modellingsteps.StepDependency;
 import eu.ddmore.libpharmml.dom.modellingsteps.StepType;
-import eu.ddmore.libpharmml.dom.modellingsteps.SymbolMappingType;
-import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolReferenceType;
-import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolSymbolType;
-import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolType;
-import eu.ddmore.libpharmml.dom.modellingsteps.TimepointsType;
-import eu.ddmore.libpharmml.dom.modellingsteps.ToEstimateType;
-import eu.ddmore.libpharmml.dom.trialdesign.ActivityType;
-import eu.ddmore.libpharmml.dom.trialdesign.ArmDefnType;
-import eu.ddmore.libpharmml.dom.trialdesign.CellDefnType;
-import eu.ddmore.libpharmml.dom.trialdesign.DemographicType;
-import eu.ddmore.libpharmml.dom.trialdesign.DosingRegimenType;
-import eu.ddmore.libpharmml.dom.trialdesign.DosingTimesPointsType;
-import eu.ddmore.libpharmml.dom.trialdesign.DosingVariableType;
-import eu.ddmore.libpharmml.dom.trialdesign.IndividualDosingType;
-import eu.ddmore.libpharmml.dom.trialdesign.LookupTableType;
-import eu.ddmore.libpharmml.dom.trialdesign.ObservationsGroupType;
-import eu.ddmore.libpharmml.dom.trialdesign.PopulationMappingType;
-import eu.ddmore.libpharmml.dom.trialdesign.PopulationType;
-import eu.ddmore.libpharmml.dom.trialdesign.SegmentDefnType;
-import eu.ddmore.libpharmml.dom.trialdesign.SteadyStateParameterType;
-import eu.ddmore.libpharmml.dom.trialdesign.SteadyStateType;
-import eu.ddmore.libpharmml.dom.trialdesign.StudyEventType;
-import eu.ddmore.libpharmml.dom.trialdesign.StudyPeriodType;
-import eu.ddmore.libpharmml.dom.trialdesign.StudyTimePointType;
-import eu.ddmore.libpharmml.dom.trialdesign.TargetMappingType;
-import eu.ddmore.libpharmml.dom.trialdesign.TrialDesignType;
-import eu.ddmore.libpharmml.dom.trialdesign.TrialStructureType;
-import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
+import eu.ddmore.libpharmml.dom.modellingsteps.SymbolMapping;
+import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolReference;
+import eu.ddmore.libpharmml.dom.modellingsteps.TargetToolSymbol;
+import eu.ddmore.libpharmml.dom.modellingsteps.TargetTool;
+import eu.ddmore.libpharmml.dom.modellingsteps.Timepoints;
+import eu.ddmore.libpharmml.dom.modellingsteps.ToEstimate;
+import eu.ddmore.libpharmml.dom.trialdesign.Activity;
+import eu.ddmore.libpharmml.dom.trialdesign.ArmDefinition;
+import eu.ddmore.libpharmml.dom.trialdesign.CellDefinition;
+import eu.ddmore.libpharmml.dom.trialdesign.Demographic;
+import eu.ddmore.libpharmml.dom.trialdesign.DosingRegimen;
+import eu.ddmore.libpharmml.dom.trialdesign.DosingTimesPoints;
+import eu.ddmore.libpharmml.dom.trialdesign.DosingVariable;
+import eu.ddmore.libpharmml.dom.trialdesign.IndividualDosing;
+import eu.ddmore.libpharmml.dom.trialdesign.LookupTable;
+import eu.ddmore.libpharmml.dom.trialdesign.ObservationsGroup;
+import eu.ddmore.libpharmml.dom.trialdesign.PopulationMapping;
+import eu.ddmore.libpharmml.dom.trialdesign.Population;
+import eu.ddmore.libpharmml.dom.trialdesign.SegmentDefinition;
+import eu.ddmore.libpharmml.dom.trialdesign.SteadyStateParameter;
+import eu.ddmore.libpharmml.dom.trialdesign.SteadyState;
+import eu.ddmore.libpharmml.dom.trialdesign.StudyEvent;
+import eu.ddmore.libpharmml.dom.trialdesign.StudyPeriod;
+import eu.ddmore.libpharmml.dom.trialdesign.StudyTimePoint;
+import eu.ddmore.libpharmml.dom.trialdesign.Target;
+import eu.ddmore.libpharmml.dom.trialdesign.TrialDesign;
+import eu.ddmore.libpharmml.dom.trialdesign.TrialStructure;
+import eu.ddmore.libpharmml.dom.trialdesign.Washout;
 
 
 /**
@@ -160,18 +163,19 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
  * 
  * 
  */
+@SuppressWarnings("deprecation")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PharmMLRootType", propOrder = {
     "description"
 })
 @XmlSeeAlso({
-    IndependentVariableType.class,
-    ModelDefinitionType.class,
-    TrialDesignType.class,
-    ModellingStepsType.class,
-    LogicBinOpType.class,
-    BinopType.class,
-    SymbolRefType.class,
+    IndependentVariable.class,
+    ModelDefinition.class,
+    TrialDesign.class,
+    ModellingSteps.class,
+    LogicBinOp.class,
+    Binop.class,
+    SymbolRef.class,
     FunctionCallType.class,
     Sum.class,
     Product.class,
@@ -179,136 +183,139 @@ import eu.ddmore.libpharmml.dom.trialdesign.WashoutType;
     VectorSelector.class,
     MatrixSelector.class,
     Probability.class,
-    LogicExprType.class,
-    ExprType.class,
-    StructuralModelType.class,
-    ObservationErrorType.class,
-    eu.ddmore.libpharmml.dom.modeldefn.IndividualParameterType.GaussianModel.LinearCovariate.PopulationParameter.class,
-    eu.ddmore.libpharmml.dom.modeldefn.IndividualParameterType.GaussianModel.LinearCovariate.class,
-    eu.ddmore.libpharmml.dom.modeldefn.IndividualParameterType.GaussianModel.GeneralCovariate.class,
-    eu.ddmore.libpharmml.dom.modeldefn.IndividualParameterType.GaussianModel.class,
-    CommonParameterType.class,
-    ParentLevelType.class,
+    LogicExpression.class,
+    Expression.class,
+    StructuralModel.class,
+    ObservationError.class,
+    eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter.GaussianModel.LinearCovariate.PopulationParameter.class,
+    eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter.GaussianModel.LinearCovariate.class,
+    eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter.GaussianModel.GeneralCovariate.class,
+    eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter.GaussianModel.class,
+    CommonParameter.class,
+    ParentLevel.class,
     TransitionRate.class,
-    CovariateTransformationType.class,
-    PairwiseType.class,
-    VariabilityLevelDefnType.class,
+    CovariateTransformation.class,
+    Pairwise.class,
+    VariabilityLevelDefinition.class,
     CountPMF.class,
     Discrete.class,
     VariabilityDefnBlock.class,
-    CommonParameterModelType.class,
-    CategoricalCovariateType.class,
-    CovariateRelationType.class,
-    CovariateModelType.class,
+    CommonParameterModel.class,
+    CategoricalCovariate.class,
+    CovariateRelation.class,
+    CovariateModel.class,
     CommonObservationModel.class,
     Censoring.class,
-    FixedEffectRelationType.class,
+    FixedEffectRelation.class,
     CommonDiscreteState.class,
-    ObservationModelType.class,
+    ObservationModel.class,
     CensoringFeature.class,
     DiscreteDataParameter.class,
     ProbabilityAssignment.class,
     ListOfCategories.class,
-    CorrelationType.class,
+    Correlation.class,
     CommonDiscreteVariable.class,
-    CorrelatedRandomVarType.class,
+    CorrelatedRandomVariable.class,
     CategoricalPMF.class,
     TTEFunction.class,
-    CategoricalRelationType.class,
-    ContinuousCovariateType.class,
+    CategoricalRelation.class,
+    ContinuousCovariate.class,
     Dependance.class,
-    ParameterRandomEffectType.class,
-    CovariateDefinitionType.class,
-    LevelReferenceType.class,
-    MatrixType.class,
-    VariableAssignmentType.class,
-    OidRefType.class,
-    SequenceType.class,
+    ParameterRandomEffect.class,
+    CovariateDefinition.class,
+    LevelReference.class,
+    Matrix.class,
+    VariableAssignment.class,
+    OidRef.class,
+    Sequence.class,
     Rhs.class,
-    InterpolationType.class,
-    BooleanType.class,
-    VectorType.class,
+    Interpolation.class,
+    BooleanValue.class,
+    Vector.class,
     History.class,
     SumIndexSet.class,
     VectorCell.class,
     SumProductIndex.class,
     VectorElements.class,
-    MatrixRowType.class,
+    MatrixRow.class,
     VectorSegmentSelector.class,
-    InitialConditionType.class,
+    InitialCondition.class,
     MatrixCellSelector.class,
     MatrixVectorIndex.class,
-    CommonVariableDefinitionType.class,
+    CommonVariableDefinition.class,
     MatrixBlock.class,
     MatrixCell.class,
-    InitialTimeType.class,
-    IndependentVariableReferenceType.class,
+    InitialTime.class,
+    IndependentVariableReference.class,
     DelayVariable.class,
-    InterpolationIVType.class,
+    InterpolationIV.class,
     MatrixColumnRowNames.class,
     LowUpLimit.class,
     VectorSegment.class,
-    InitialValueType.class,
+    InitialValue.class,
     MatrixBlockSelector.class,
-    ImportTargetDataType.class,
-    TargetToolDataSetType.class,
-    DataSetType.class,
+    ImportTargetData.class,
+    TargetToolDataSet.class,
+    DataSet.class,
     DataSetTableType.class,
-    ImportDataType.class,
+    ExternalFile.class,
     ColumnsDefinitionType.class,
-    ColumnRefType.class,
-    DatasetRowType.class,
+    ColumnReference.class,
+    DatasetRow.class,
     CategoryMapping.class,
-    ColumnMappingType.class,
-    CommonColumnDefnType.class,
+    ColumnMapping.class,
+    CommonColumnDefinition.class,
     MapType.class,
-    LookupTableType.class,
-    ActivityType.class,
-    WashoutType.class,
-    DosingRegimenType.class,
-    StudyEventType.class,
-    TrialStructureType.class,
-    DosingVariableType.class,
-    SteadyStateParameterType.class,
-    ArmDefnType.class,
-    PopulationType.class,
-    SteadyStateType.class,
-    StudyTimePointType.class,
-    IndividualDosingType.class,
-    CellDefnType.class,
-    SegmentDefnType.class,
-    ObservationsGroupType.class,
-    PopulationMappingType.class,
-    DemographicType.class,
-    TargetMappingType.class,
-    StudyPeriodType.class,
-    DosingTimesPointsType.class,
-    TimepointsType.class,
+    LookupTable.class,
+    Activity.class,
+    Washout.class,
+    DosingRegimen.class,
+    StudyEvent.class,
+    TrialStructure.class,
+    DosingVariable.class,
+    SteadyStateParameter.class,
+    ArmDefinition.class,
+    Population.class,
+    SteadyState.class,
+    StudyTimePoint.class,
+    IndividualDosing.class,
+    CellDefinition.class,
+    SegmentDefinition.class,
+    ObservationsGroup.class,
+    PopulationMapping.class,
+    Demographic.class,
+    Target.class,
+    StudyPeriod.class,
+    DosingTimesPoints.class,
+    Timepoints.class,
     MappingType.class,
-    CommonModellingStepType.class,
-    OperationPropertyType.class,
-    NONMEMdataSetReferenceType.class,
-    SimulationOperationType.class,
-    AlgorithmType.class,
-    TargetToolReferenceType.class,
-    CodeInjectionType.class,
-    TargetToolType.class,
-    ParameterEstimateType.class,
-    ObservationsType.class,
-    StepDependencyType.class,
+    CommonModellingStep.class,
+    OperationProperty.class,
+    NONMEMdataSetReference.class,
+    SimulationOperation.class,
+    Algorithm.class,
+    TargetToolReference.class,
+    CodeInjection.class,
+    TargetTool.class,
+    ParameterEstimate.class,
+    Observations.class,
+    StepDependency.class,
     DependentsType.class,
-    NONMEMdataSetType.class,
+    NONMEMdataSet.class,
     ScalarRhs.class,
-    TargetToolSymbolType.class,
-    MultipleDVMappingType.class,
-    DatasetMappingType.class,
+    TargetToolSymbol.class,
+    MultipleDVMapping.class,
+    DatasetMapping.class,
     StepType.class,
-    GenericCodeType.class,
-    SymbolMappingType.class,
-    ToEstimateType.class,
-    EstimationOperationType.class,
+    GenericCode.class,
+    SymbolMapping.class,
+    ToEstimate.class,
+    EstimationOperation.class,
     EquationType.class,
-    LogicConditionType.class
+    LogicCondition.class,
+    AbsorptionOralMacro.class,
+    OralMacro.class,
+    PKMacroList.class
 })
 public abstract class PharmMLRootType extends PharmMLElement {
 

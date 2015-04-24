@@ -57,7 +57,8 @@ public class ObjectFactory {
     private final static QName _Uniop_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "Uniop");
     private final static QName _Binop_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "Binop");
     private final static QName _EquationTypePiecewise_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "Piecewise");
-
+    private final static QName _Equation_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "Equation");
+    
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.maths
      * 
@@ -82,35 +83,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LogicConditionType }
+     * Create an instance of {@link LogicCondition }
      * 
      */
-    public LogicConditionType createLogicConditionType() {
-        return new LogicConditionType();
+    public LogicCondition createLogicConditionType() {
+        return new LogicCondition();
     }
 
     /**
-     * Create an instance of {@link LogicBinOpType }
+     * Create an instance of {@link LogicBinOp }
      * 
      */
-    public LogicBinOpType createLogicBinOpType() {
-        return new LogicBinOpType();
+    public LogicBinOp createLogicBinOpType() {
+        return new LogicBinOp();
     }
 
     /**
-     * Create an instance of {@link LogicUniOpType }
+     * Create an instance of {@link LogicUniOp }
      * 
      */
-    public LogicUniOpType createLogicUniOpType() {
-        return new LogicUniOpType();
+    public LogicUniOp createLogicUniOpType() {
+        return new LogicUniOp();
     }
 
     /**
-     * Create an instance of {@link BinopType }
+     * Create an instance of {@link Binop }
      * 
      */
-    public BinopType createBinopType() {
-        return new BinopType();
+    public Binop createBinopType() {
+        return new Binop();
     }
 
     /**
@@ -130,51 +131,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UniopType }
+     * Create an instance of {@link Uniop }
      * 
      */
-    public UniopType createUniopType() {
-        return new UniopType();
+    public Uniop createUniopType() {
+        return new Uniop();
     }
 
     /**
-     * Create an instance of {@link PiecewiseType }
+     * Create an instance of {@link Piecewise }
      * 
      */
-    public PiecewiseType createPiecewiseType() {
-        return new PiecewiseType();
+    public Piecewise createPiecewiseType() {
+        return new Piecewise();
     }
 
     /**
-     * Create an instance of {@link ConstantType }
+     * Create an instance of {@link Constant }
      * 
      */
-    public ConstantType createConstantType() {
-        return new ConstantType();
+    public Constant createConstantType() {
+        return new Constant();
     }
 
     /**
-     * Create an instance of {@link ExprType }
+     * Create an instance of {@link Expression }
      * 
      */
-    public ExprType createExprType() {
-        return new ExprType();
+    public Expression createExprType() {
+        return new Expression();
     }
 
     /**
-     * Create an instance of {@link LogicExprType }
+     * Create an instance of {@link LogicExpression }
      * 
      */
-    public LogicExprType createLogicExprType() {
-        return new LogicExprType();
+    public LogicExpression createLogicExprType() {
+        return new LogicExpression();
     }
 
     /**
-     * Create an instance of {@link PieceType }
+     * Create an instance of {@link Piece }
      * 
      */
-    public PieceType createPieceType() {
-        return new PieceType();
+    public Piece createPieceType() {
+        return new Piece();
     }
 
     /**
@@ -203,30 +204,30 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ConstantType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Constant }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Constant")
-    public JAXBElement<ConstantType> createConstant(ConstantType value) {
-        return new JAXBElement<ConstantType>(_Constant_QNAME, ConstantType.class, null, value);
+    public JAXBElement<Constant> createConstant(Constant value) {
+        return new JAXBElement<Constant>(_Constant_QNAME, Constant.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LogicUniOpType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LogicUniOp }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "LogicUniop")
-    public JAXBElement<LogicUniOpType> createLogicUniop(LogicUniOpType value) {
-        return new JAXBElement<LogicUniOpType>(_LogicUniop_QNAME, LogicUniOpType.class, null, value);
+    public JAXBElement<LogicUniOp> createLogicUniop(LogicUniOp value) {
+        return new JAXBElement<LogicUniOp>(_LogicUniop_QNAME, LogicUniOp.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LogicBinOpType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LogicBinOp }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "LogicBinop")
-    public JAXBElement<LogicBinOpType> createLogicBinop(LogicBinOpType value) {
-        return new JAXBElement<LogicBinOpType>(_LogicBinop_QNAME, LogicBinOpType.class, null, value);
+    public JAXBElement<LogicBinOp> createLogicBinop(LogicBinOp value) {
+        return new JAXBElement<LogicBinOp>(_LogicBinop_QNAME, LogicBinOp.class, null, value);
     }
 
     /**
@@ -234,36 +235,45 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Otherwise")
-    public JAXBElement<Object> createOtherwise(Object value) {
-        return new JAXBElement<Object>(_Otherwise_QNAME, Object.class, null, value);
+    public JAXBElement<Otherwise> createOtherwise(Otherwise value) {
+        return new JAXBElement<Otherwise>(_Otherwise_QNAME, Otherwise.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UniopType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Uniop }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Uniop")
-    public JAXBElement<UniopType> createUniop(UniopType value) {
-        return new JAXBElement<UniopType>(_Uniop_QNAME, UniopType.class, null, value);
+    public JAXBElement<Uniop> createUniop(Uniop value) {
+        return new JAXBElement<Uniop>(_Uniop_QNAME, Uniop.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BinopType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Binop }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Binop")
-    public JAXBElement<BinopType> createBinop(BinopType value) {
-        return new JAXBElement<BinopType>(_Binop_QNAME, BinopType.class, null, value);
+    public JAXBElement<Binop> createBinop(Binop value) {
+        return new JAXBElement<Binop>(_Binop_QNAME, Binop.class, null, value);
+    }
+    
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Equation }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Equation")
+    public JAXBElement<Equation> createEquation(Equation value) {
+        return new JAXBElement<Equation>(_Equation_QNAME, Equation.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PiecewiseType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Piecewise }{@code >}}
      * 
      */
 	@Deprecated
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Piecewise", scope = EquationType.class)
-    public JAXBElement<PiecewiseType> createEquationTypePiecewise(PiecewiseType value) {
-        return new JAXBElement<PiecewiseType>(_EquationTypePiecewise_QNAME, PiecewiseType.class, EquationType.class, value);
+    public JAXBElement<Piecewise> createEquationTypePiecewise(Piecewise value) {
+        return new JAXBElement<Piecewise>(_EquationTypePiecewise_QNAME, Piecewise.class, EquationType.class, value);
     }
 
 }

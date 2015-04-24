@@ -61,11 +61,11 @@ import eu.ddmore.libpharmml.dom.commontypes.Rhs;
     "assign"
 })
 public class GeneralObsError
-    extends ObservationErrorType
+    extends ObservationError
 {
 
     @XmlElement(name = "Transformation")
-    protected LhsTransformationType transformation;
+    protected LhsTransformation transformation;
     @XmlElement(name = "Assign", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
     protected Rhs assign;
 
@@ -74,10 +74,10 @@ public class GeneralObsError
      * 
      * @return
      *     possible object is
-     *     {@link LhsTransformationType }
+     *     {@link LhsTransformation }
      *     
      */
-    public LhsTransformationType getTransformation() {
+    public LhsTransformation getTransformation() {
         return transformation;
     }
 
@@ -86,10 +86,10 @@ public class GeneralObsError
      * 
      * @param value
      *     allowed object is
-     *     {@link LhsTransformationType }
+     *     {@link LhsTransformation }
      *     
      */
-    public void setTransformation(LhsTransformationType value) {
+    public void setTransformation(LhsTransformation value) {
         this.transformation = value;
     }
 

@@ -65,27 +65,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ImportTargetDataType }
+     * Create an instance of {@link ImportTargetData }
      * 
      */
-    public ImportTargetDataType createImportTargetDataType() {
-        return new ImportTargetDataType();
+    public ImportTargetData createImportTargetDataType() {
+        return new ImportTargetData();
     }
 
     /**
-     * Create an instance of {@link TargetToolDataSetType }
+     * Create an instance of {@link TargetToolDataSet }
      * 
      */
-    public TargetToolDataSetType createTargetToolDataSetType() {
-        return new TargetToolDataSetType();
+    public TargetToolDataSet createTargetToolDataSetType() {
+        return new TargetToolDataSet();
     }
 
     /**
-     * Create an instance of {@link DataSetType }
+     * Create an instance of {@link DataSet }
      * 
      */
-    public DataSetType createDataSetType() {
-        return new DataSetType();
+    public DataSet createDataSetType() {
+        return new DataSet();
     }
 
     /**
@@ -97,11 +97,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ImportDataType }
+     * Create an instance of {@link ExternalFile }
      * 
      */
-    public ImportDataType createImportDataType() {
-        return new ImportDataType();
+    public ExternalFile createImportDataType() {
+        return new ExternalFile();
     }
 
     /**
@@ -113,19 +113,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ColumnRefType }
+     * Create an instance of {@link ColumnReference }
      * 
      */
-    public ColumnRefType createColumnRefType() {
-        return new ColumnRefType();
+    public ColumnReference createColumnRefType() {
+        return new ColumnReference();
     }
 
     /**
-     * Create an instance of {@link DatasetRowType }
+     * Create an instance of {@link DatasetRow }
      * 
      */
-    public DatasetRowType createDatasetRowType() {
-        return new DatasetRowType();
+    public DatasetRow createDatasetRowType() {
+        return new DatasetRow();
     }
 
     /**
@@ -137,27 +137,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CommonColumnDefnType }
+     * Create an instance of {@link CommonColumnDefinition }
      * 
      */
-    public CommonColumnDefnType createCommonColumnDefnType() {
-        return new CommonColumnDefnType();
+    public CommonColumnDefinition createCommonColumnDefnType() {
+        return new CommonColumnDefinition();
     }
 
     /**
-     * Create an instance of {@link ColumnMappingType }
+     * Create an instance of {@link ColumnMapping }
      * 
      */
-    public ColumnMappingType createColumnMappingType() {
-        return new ColumnMappingType();
+    public ColumnMapping createColumnMappingType() {
+        return new ColumnMapping();
     }
 
     /**
-     * Create an instance of {@link ColumnDefnType }
+     * Create an instance of {@link ColumnDefinition }
      * 
      */
-    public ColumnDefnType createColumnDefnType() {
-        return new ColumnDefnType();
+    public ColumnDefinition createColumnDefnType() {
+        return new ColumnDefinition();
     }
 
     /**
@@ -187,48 +187,48 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TargetToolDataSetType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link TargetToolDataSet }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/08/Dataset", name = "TargetToolData")
-    public JAXBElement<TargetToolDataSetType> createTargetToolData(TargetToolDataSetType value) {
-        return new JAXBElement<TargetToolDataSetType>(_TargetToolData_QNAME, TargetToolDataSetType.class, null, value);
+    public JAXBElement<TargetToolDataSet> createTargetToolData(TargetToolDataSet value) {
+        return new JAXBElement<TargetToolDataSet>(_TargetToolData_QNAME, TargetToolDataSet.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ColumnRefType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ColumnReference }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/08/Dataset", name = "ColumnRef")
-    public JAXBElement<ColumnRefType> createColumnRef(ColumnRefType value) {
-        return new JAXBElement<ColumnRefType>(_ColumnRef_QNAME, ColumnRefType.class, null, value);
+    public JAXBElement<ColumnReference> createColumnRef(ColumnReference value) {
+        return new JAXBElement<ColumnReference>(_ColumnRef_QNAME, ColumnReference.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ImportDataType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ExternalFile }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/08/Dataset", name = "ImportData")
-    public JAXBElement<ImportDataType> createImportData(ImportDataType value) {
-        return new JAXBElement<ImportDataType>(_ImportData_QNAME, ImportDataType.class, null, value);
+    public JAXBElement<ExternalFile> createImportData(ExternalFile value) {
+        return new JAXBElement<ExternalFile>(_ImportData_QNAME, ExternalFile.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DataSetType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/08/Dataset", name = "DataSet")
-    public JAXBElement<DataSetType> createDataSet(DataSetType value) {
-        return new JAXBElement<DataSetType>(_DataSet_QNAME, DataSetType.class, null, value);
+    public JAXBElement<DataSet> createDataSet(DataSet value) {
+        return new JAXBElement<DataSet>(_DataSet_QNAME, DataSet.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ImportTargetDataType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ImportTargetData }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/08/Dataset", name = "ImportTargetData")
-    public JAXBElement<ImportTargetDataType> createImportTargetData(ImportTargetDataType value) {
-        return new JAXBElement<ImportTargetDataType>(_ImportTargetData_QNAME, ImportTargetDataType.class, null, value);
+    public JAXBElement<ImportTargetData> createImportTargetData(ImportTargetData value) {
+        return new JAXBElement<ImportTargetData>(_ImportTargetData_QNAME, ImportTargetData.class, null, value);
     }
 
 }

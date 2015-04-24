@@ -28,15 +28,23 @@ package eu.ddmore.libpharmml.dom.modeldefn;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.LinkFunction;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.maths.LogicBinOpType;
-import eu.ddmore.libpharmml.dom.maths.LogicUniOpType;
+import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
+import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
+import eu.ddmore.libpharmml.dom.maths.LogicUniOp;
+import eu.ddmore.libpharmml.dom.maths.Operand;
 
 
 /**
@@ -49,17 +57,18 @@ import eu.ddmore.libpharmml.dom.maths.LogicUniOpType;
  * <pre>
  * &lt;complexType name="ProbabilityType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;choice minOccurs="0">
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}LogicBinop"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}LogicUniop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}LogicBinop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}LogicUniop"/>
  *         &lt;/choice>
- *         &lt;element name="CurrentState" type="{http://www.pharmml.org/2013/03/ModelDefinition}CommonDiscreteStateType" minOccurs="0"/>
- *         &lt;element name="PreviousState" type="{http://www.pharmml.org/2013/03/ModelDefinition}CommonDiscreteStateType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Condition" type="{http://www.pharmml.org/2013/03/ModelDefinition}CommonDiscreteStateType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="CurrentState" type="{http://www.pharmml.org/pharmml/0.6/ModelDefinition}CommonDiscreteStateType" minOccurs="0"/>
+ *         &lt;element name="PreviousState" type="{http://www.pharmml.org/pharmml/0.6/ModelDefinition}CommonDiscreteStateType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Condition" type="{http://www.pharmml.org/pharmml/0.6/ModelDefinition}CommonDiscreteStateType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attribute name="linkFunction" type="{http://www.pharmml.org/2013/03/CommonTypes}LinkFunctionType" />
+ *       &lt;attribute name="symbId" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}SymbolIdType" />
+ *       &lt;attribute name="linkFunction" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}LinkFunctionType" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -76,19 +85,22 @@ import eu.ddmore.libpharmml.dom.maths.LogicUniOpType;
     "condition"
 })
 public class Probability
-    extends PharmMLRootType
+    extends PharmMLRootType implements Operand, ExpressionValue
 {
 
     @XmlElement(name = "LogicBinop", namespace = "http://www.pharmml.org/2013/03/Maths")
-    protected LogicBinOpType logicBinop;
+    protected LogicBinOp logicBinop;
     @XmlElement(name = "LogicUniop", namespace = "http://www.pharmml.org/2013/03/Maths")
-    protected LogicUniOpType logicUniop;
+    protected LogicUniOp logicUniop;
     @XmlElement(name = "CurrentState")
     protected CommonDiscreteState currentState;
     @XmlElement(name = "PreviousState")
     protected List<CommonDiscreteState> previousState;
     @XmlElement(name = "Condition")
     protected List<CommonDiscreteState> condition;
+    @XmlAttribute(name = "symbId")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String symbId;
     @XmlAttribute(name = "linkFunction")
     protected LinkFunction linkFunction;
 
@@ -97,10 +109,10 @@ public class Probability
      * 
      * @return
      *     possible object is
-     *     {@link LogicBinOpType }
+     *     {@link LogicBinOp }
      *     
      */
-    public LogicBinOpType getLogicBinop() {
+    public LogicBinOp getLogicBinop() {
         return logicBinop;
     }
 
@@ -109,10 +121,10 @@ public class Probability
      * 
      * @param value
      *     allowed object is
-     *     {@link LogicBinOpType }
+     *     {@link LogicBinOp }
      *     
      */
-    public void setLogicBinop(LogicBinOpType value) {
+    public void setLogicBinop(LogicBinOp value) {
         this.logicBinop = value;
     }
 
@@ -121,10 +133,10 @@ public class Probability
      * 
      * @return
      *     possible object is
-     *     {@link LogicUniOpType }
+     *     {@link LogicUniOp }
      *     
      */
-    public LogicUniOpType getLogicUniop() {
+    public LogicUniOp getLogicUniop() {
         return logicUniop;
     }
 
@@ -133,10 +145,10 @@ public class Probability
      * 
      * @param value
      *     allowed object is
-     *     {@link LogicUniOpType }
+     *     {@link LogicUniOp }
      *     
      */
-    public void setLogicUniop(LogicUniOpType value) {
+    public void setLogicUniop(LogicUniOp value) {
         this.logicUniop = value;
     }
 
@@ -245,23 +257,49 @@ public class Probability
     public void setLinkFunction(LinkFunction value) {
         this.linkFunction = value;
     }
+	
+	/**
+     * Gets the value of the symbId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     * 
+     * @since PharmML 0.6
+     */
+    public String getSymbId() {
+        return symbId;
+    }
+
+    /**
+     * Sets the value of the symbId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     * 
+     * @since PharmML 0.6
+     */
+    public void setSymbId(String value) {
+        this.symbId = value;
+    }
     
     /**
-     * Creates a new empty {@link LogicBinOpType} element, adds it to the current {@link Probability} object and returns it.
-     * @return The created {@link LogicBinOpType} object.
+     * Creates a new empty {@link LogicBinOp} element, adds it to the current {@link Probability} object and returns it.
+     * @return The created {@link LogicBinOp} object.
      */
-    public LogicBinOpType createLogicBinop(){
-            LogicBinOpType el = new LogicBinOpType();
+    public LogicBinOp createLogicBinop(){
+            LogicBinOp el = new LogicBinOp();
             this.logicBinop = el;
             return el;
     }
 
     /**
-     * Creates a new empty {@link LogicUniOpType} element, adds it to the current {@link Probability} object and returns it.
-     * @return The created {@link LogicUniOpType} object.
+     * Creates a new empty {@link LogicUniOp} element, adds it to the current {@link Probability} object and returns it.
+     * @return The created {@link LogicUniOp} object.
      */
-    public LogicUniOpType createLogicUniop(){
-            LogicUniOpType el = new LogicUniOpType();
+    public LogicUniOp createLogicUniop(){
+            LogicUniOp el = new LogicUniOp();
             this.logicUniop = el;
             return el;
     }
@@ -295,6 +333,11 @@ public class Probability
             getListOfCondition().add(el);
             return el;
     }
+
+	@Override
+	public JAXBElement<Probability> toJAXBElement() {
+		return MasterObjectFactory.MODELDEFN_OF.createProbability(this);
+	}
 
 
 }

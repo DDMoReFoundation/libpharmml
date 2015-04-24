@@ -69,132 +69,134 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ModellingStepsType }
+     * Create an instance of {@link ModellingSteps }
      * 
      */
-    public ModellingStepsType createModellingStepsType() {
-        return new ModellingStepsType();
+    public ModellingSteps createModellingStepsType() {
+        return new ModellingSteps();
     }
 
     /**
-     * Create an instance of {@link SimulationStepType }
+     * Create an instance of {@link Simulation }
      * 
      */
-    public SimulationStepType createSimulationStepType() {
-        return new SimulationStepType();
+    public Simulation createSimulationStepType() {
+        return new Simulation();
     }
 
     /**
-     * Create an instance of {@link IndividualMappingType }
+     * Create an instance of {@link IndividualMapping }
      * 
      */
-    public IndividualMappingType createIndividualMappingType() {
-        return new IndividualMappingType();
+    @Deprecated
+    public IndividualMapping createIndividualMappingType() {
+        return new IndividualMapping();
     }
 
     /**
-     * Create an instance of {@link TimepointsType }
+     * Create an instance of {@link Timepoints }
      * 
      */
-    public TimepointsType createTimepointsType() {
-        return new TimepointsType();
+    public Timepoints createTimepointsType() {
+        return new Timepoints();
     }
 
     /**
-     * Create an instance of {@link VariableMappingType }
+     * Create an instance of {@link VariableMapping }
      * 
      */
-    public VariableMappingType createVariableMappingType() {
-        return new VariableMappingType();
+    @Deprecated
+    public VariableMapping createVariableMappingType() {
+        return new VariableMapping();
     }
 
     /**
-     * Create an instance of {@link EstimationStepType }
+     * Create an instance of {@link Estimation }
      * 
      */
-    public EstimationStepType createEstimationStepType() {
-        return new EstimationStepType();
+    public Estimation createEstimationStepType() {
+        return new Estimation();
     }
 
     /**
-     * Create an instance of {@link OperationPropertyType }
+     * Create an instance of {@link OperationProperty }
      * 
      */
-    public OperationPropertyType createOperationPropertyType() {
-        return new OperationPropertyType();
+    public OperationProperty createOperationPropertyType() {
+        return new OperationProperty();
     }
 
     /**
-     * Create an instance of {@link ContinuousObservationType }
+     * Create an instance of {@link ContinuousObservation }
      * 
      */
-    public ContinuousObservationType createContinuousObservationType() {
-        return new ContinuousObservationType();
+    public ContinuousObservation createContinuousObservationType() {
+        return new ContinuousObservation();
     }
 
     /**
-     * Create an instance of {@link SimulationOperationType }
+     * Create an instance of {@link SimulationOperation }
      * 
 	 * @since PharmML 0.3
      */
-    public SimulationOperationType createSimulationOperationType() {
-        return new SimulationOperationType();
+    public SimulationOperation createSimulationOperationType() {
+        return new SimulationOperation();
     }
 
     /**
-     * Create an instance of {@link AlgorithmType }
+     * Create an instance of {@link Algorithm }
      * 
      */
-    public AlgorithmType createAlgorithmType() {
-        return new AlgorithmType();
+    public Algorithm createAlgorithmType() {
+        return new Algorithm();
     }
 
     /**
-     * Create an instance of {@link TargetToolReferenceType }
+     * Create an instance of {@link TargetToolReference }
      * 
      */
-    public TargetToolReferenceType createTargetToolReferenceType() {
-        return new TargetToolReferenceType();
+    public TargetToolReference createTargetToolReferenceType() {
+        return new TargetToolReference();
     }
 
     /**
-     * Create an instance of {@link CodeInjectionType }
+     * Create an instance of {@link CodeInjection }
      * 
      */
-    public CodeInjectionType createCodeInjectionType() {
-        return new CodeInjectionType();
+    public CodeInjection createCodeInjectionType() {
+        return new CodeInjection();
     }
 
     /**
-     * Create an instance of {@link TargetToolType }
+     * Create an instance of {@link TargetTool }
      * 
      */
-    public TargetToolType createTargetToolType() {
-        return new TargetToolType();
+    public TargetTool createTargetToolType() {
+        return new TargetTool();
     }
 
     /**
-     * Create an instance of {@link ParameterEstimateType }
+     * Create an instance of {@link ParameterEstimate }
      * 
      */
-    public ParameterEstimateType createParameterEstimateType() {
-        return new ParameterEstimateType();
+    public ParameterEstimate createParameterEstimateType() {
+        return new ParameterEstimate();
     }
 
     /**
-     * Create an instance of {@link ObservationsType }
+     * Create an instance of {@link Observations }
      * 
      */
-    public ObservationsType createObservationsType() {
-        return new ObservationsType();
+    public Observations createObservationsType() {
+        return new Observations();
     }
 
     /**
-     * Create an instance of {@link StepDependencyType }
+     * Create an instance of {@link StepDependency }
      * 
      */
-    public StepDependencyType createStepDependencyType() {
-        return new StepDependencyType();
+    public StepDependency createStepDependencyType() {
+        return new StepDependency();
     }
 
     /**
@@ -206,56 +208,56 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link NONMEMdataSetType }
+     * Create an instance of {@link NONMEMdataSet }
      * 
 	 * @since PharmML0.3
      */
-    public NONMEMdataSetType createNONMEMdataSetType() {
-        return new NONMEMdataSetType();
+    public NONMEMdataSet createNONMEMdataSetType() {
+        return new NONMEMdataSet();
     }
 
     /**
-     * Create an instance of {@link InitialEstimateType }
+     * Create an instance of {@link InitialEstimate }
      * 
      */
-    public InitialEstimateType createInitialEstimateType() {
-        return new InitialEstimateType();
+    public InitialEstimate createInitialEstimateType() {
+        return new InitialEstimate();
     }
 
     /**
-     * Create an instance of {@link TargetToolSymbolType }
+     * Create an instance of {@link TargetToolSymbol }
      * 
 	 * @since PharmML0.3
      */
-    public TargetToolSymbolType createTargetToolSymbolType() {
-        return new TargetToolSymbolType();
+    public TargetToolSymbol createTargetToolSymbolType() {
+        return new TargetToolSymbol();
     }
     
     /**
-     * Create an instance of {@link MultipleDVMappingType }
+     * Create an instance of {@link MultipleDVMapping }
      * 
      */
-    public MultipleDVMappingType createMultipleDVMappingType() {
-        return new MultipleDVMappingType();
+    public MultipleDVMapping createMultipleDVMappingType() {
+        return new MultipleDVMapping();
     }
     
     /**
-     * Create an instance of {@link NONMEMdataSetReferenceType }
+     * Create an instance of {@link NONMEMdataSetReference }
      * 
      */
-    public NONMEMdataSetReferenceType createNONMEMdataSetReferenceType() {
-        return new NONMEMdataSetReferenceType();
+    public NONMEMdataSetReference createNONMEMdataSetReferenceType() {
+        return new NONMEMdataSetReference();
     }
 
 
 
     /**
-     * Create an instance of {@link DatasetMappingType }
+     * Create an instance of {@link DatasetMapping }
      * 
 	 * @since PharmML0.3
      */
-    public DatasetMappingType createDatasetMappingType() {
-        return new DatasetMappingType();
+    public DatasetMapping createDatasetMappingType() {
+        return new DatasetMapping();
     }
 
     /**
@@ -268,56 +270,56 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GenericCodeType }
+     * Create an instance of {@link GenericCode }
      * 
 	 * @since PharmML0.3
      */
-    public GenericCodeType createGenericCodeType() {
-        return new GenericCodeType();
+    public GenericCode createGenericCodeType() {
+        return new GenericCode();
     }
 
     /**
-     * Create an instance of {@link SymbolMappingType }
+     * Create an instance of {@link SymbolMapping }
      * 
 	 * @since PharmML0.3
      */
-    public SymbolMappingType createSymbolMappingType() {
-        return new SymbolMappingType();
+    public SymbolMapping createSymbolMappingType() {
+        return new SymbolMapping();
     }
 
     /**
-     * Create an instance of {@link ToEstimateType }
+     * Create an instance of {@link ToEstimate }
      * 
 	 * @since PharmML0.3
      */
-    public ToEstimateType createToEstimateType() {
-        return new ToEstimateType();
+    public ToEstimate createToEstimateType() {
+        return new ToEstimate();
     }
 
     /**
-     * Create an instance of {@link EstimationOperationType }
+     * Create an instance of {@link EstimationOperation }
      * 
      */
-    public EstimationOperationType createEstimationOperationType() {
-        return new EstimationOperationType();
+    public EstimationOperation createEstimationOperationType() {
+        return new EstimationOperation();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SimulationStepType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Simulation }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "SimulationStep", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModellingSteps", substitutionHeadName = "CommonModellingStep")
-    public JAXBElement<SimulationStepType> createSimulationStep(SimulationStepType value) {
-        return new JAXBElement<SimulationStepType>(_SimulationStep_QNAME, SimulationStepType.class, null, value);
+    public JAXBElement<Simulation> createSimulationStep(Simulation value) {
+        return new JAXBElement<Simulation>(_SimulationStep_QNAME, Simulation.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OperationPropertyType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link OperationProperty }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "Property")
-    public JAXBElement<OperationPropertyType> createProperty(OperationPropertyType value) {
-        return new JAXBElement<OperationPropertyType>(_Property_QNAME, OperationPropertyType.class, null, value);
+    public JAXBElement<OperationProperty> createProperty(OperationProperty value) {
+        return new JAXBElement<OperationProperty>(_Property_QNAME, OperationProperty.class, null, value);
     }
 
     /**
@@ -325,63 +327,65 @@ public class ObjectFactory {
      * 
      */
 	@XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "CommonModellingStep")
-    public JAXBElement<CommonModellingStepType> createCommonModellingStep(CommonModellingStepType value) {
-        return new JAXBElement<CommonModellingStepType>(_CommonModellingStep_QNAME, CommonModellingStepType.class, null, value);
+    public JAXBElement<CommonModellingStep> createCommonModellingStep(CommonModellingStep value) {
+        return new JAXBElement<CommonModellingStep>(_CommonModellingStep_QNAME, CommonModellingStep.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModellingStepsType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ModellingSteps }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "ModellingSteps")
-    public JAXBElement<ModellingStepsType> createModellingSteps(ModellingStepsType value) {
-        return new JAXBElement<ModellingStepsType>(_ModellingSteps_QNAME, ModellingStepsType.class, null, value);
+    public JAXBElement<ModellingSteps> createModellingSteps(ModellingSteps value) {
+        return new JAXBElement<ModellingSteps>(_ModellingSteps_QNAME, ModellingSteps.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VariableMappingType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link VariableMapping }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "VariableMapping", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModellingSteps", substitutionHeadName = "Mapping")
-    public JAXBElement<VariableMappingType> createVariableMapping(VariableMappingType value) {
-        return new JAXBElement<VariableMappingType>(_VariableMapping_QNAME, VariableMappingType.class, null, value);
+    @Deprecated
+    public JAXBElement<VariableMapping> createVariableMapping(VariableMapping value) {
+        return new JAXBElement<VariableMapping>(_VariableMapping_QNAME, VariableMapping.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IndividualMappingType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link IndividualMapping }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "IndividualMapping", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModellingSteps", substitutionHeadName = "Mapping")
-    public JAXBElement<IndividualMappingType> createIndividualMapping(IndividualMappingType value) {
-        return new JAXBElement<IndividualMappingType>(_IndividualMapping_QNAME, IndividualMappingType.class, null, value);
+    @Deprecated
+    public JAXBElement<IndividualMapping> createIndividualMapping(IndividualMapping value) {
+        return new JAXBElement<IndividualMapping>(_IndividualMapping_QNAME, IndividualMapping.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EstimationOperationType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link EstimationOperation }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "Operation")
 	@Deprecated
-    public JAXBElement<EstimationOperationType> createOperation(EstimationOperationType value) {
-        return new JAXBElement<EstimationOperationType>(_Operation_QNAME, EstimationOperationType.class, null, value);
+    public JAXBElement<EstimationOperation> createOperation(EstimationOperation value) {
+        return new JAXBElement<EstimationOperation>(_Operation_QNAME, EstimationOperation.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EstimationStepType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Estimation }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "EstimationStep", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModellingSteps", substitutionHeadName = "CommonModellingStep")
-    public JAXBElement<EstimationStepType> createEstimationStep(EstimationStepType value) {
-        return new JAXBElement<EstimationStepType>(_EstimationStep_QNAME, EstimationStepType.class, null, value);
+    public JAXBElement<Estimation> createEstimationStep(Estimation value) {
+        return new JAXBElement<Estimation>(_EstimationStep_QNAME, Estimation.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TimepointsType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Timepoints }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "Timepoints")
-    public JAXBElement<TimepointsType> createTimepoints(TimepointsType value) {
-        return new JAXBElement<TimepointsType>(_Timepoints_QNAME, TimepointsType.class, null, value);
+    public JAXBElement<Timepoints> createTimepoints(Timepoints value) {
+        return new JAXBElement<Timepoints>(_Timepoints_QNAME, Timepoints.class, null, value);
     }
 
     /**
@@ -389,6 +393,7 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "Mapping")
+    @Deprecated
     public JAXBElement<MappingType> createMapping(MappingType value) {
         return new JAXBElement<MappingType>(_Mapping_QNAME, MappingType.class, null, value);
     }

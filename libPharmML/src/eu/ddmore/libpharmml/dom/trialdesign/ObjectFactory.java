@@ -30,7 +30,7 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
-import eu.ddmore.libpharmml.dom.commontypes.IntValueType;
+import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 
 
 /**
@@ -81,293 +81,294 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link InfusionType }
+     * Create an instance of {@link Infusion }
      * 
      */
-    public InfusionType createInfusionType() {
-        return new InfusionType();
+    public Infusion createInfusionType() {
+        return new Infusion();
     }
 
     /**
-     * Create an instance of {@link TrialDesignType }
+     * Create an instance of {@link TrialDesign }
      * 
      */
-    public TrialDesignType createTrialDesignType() {
-        return new TrialDesignType();
+    public TrialDesign createTrialDesignType() {
+        return new TrialDesign();
     }
 
     /**
-     * Create an instance of {@link LookupTableType }
+     * Create an instance of {@link LookupTable }
      * 
      */
-    public LookupTableType createLookupTableType() {
-        return new LookupTableType();
+    public LookupTable createLookupTableType() {
+        return new LookupTable();
     }
 
     /**
-     * Create an instance of {@link DemographicMappingType }
+     * Create an instance of {@link DemographicMapping }
      * 
      */
 	@Deprecated
-    public DemographicMappingType createDemographicMappingType() {
-        return new DemographicMappingType();
+    public DemographicMapping createDemographicMappingType() {
+        return new DemographicMapping();
     }
 
     /**
-     * Create an instance of {@link ReplicateMappingType }
+     * Create an instance of {@link ReplicateMapping }
      * 
      */
 	@Deprecated
-    public ReplicateMappingType createReplicateMappingType() {
-        return new ReplicateMappingType();
+    public ReplicateMapping createReplicateMappingType() {
+        return new ReplicateMapping();
     }
 
     /**
-     * Create an instance of {@link ActivityType }
+     * Create an instance of {@link Activity }
      * 
      */
-    public ActivityType createActivityType() {
-        return new ActivityType();
+    public Activity createActivityType() {
+        return new Activity();
     }
 
     /**
-     * Create an instance of {@link IndividualMappingType }
-     * 
-     */
-	@Deprecated
-    public IndividualMappingType createIndividualMappingType() {
-        return new IndividualMappingType();
-    }
-
-    /**
-     * Create an instance of {@link ArmMappingType }
+     * Create an instance of {@link IndividualMapping }
      * 
      */
 	@Deprecated
-    public ArmMappingType createArmMappingType() {
-        return new ArmMappingType();
+    public IndividualMapping createIndividualMappingType() {
+        return new IndividualMapping();
     }
 
     /**
-     * Create an instance of {@link WashoutType }
+     * Create an instance of {@link ArmMapping }
      * 
      */
-    public WashoutType createWashoutType() {
-        return new WashoutType();
+	@Deprecated
+    public ArmMapping createArmMappingType() {
+        return new ArmMapping();
     }
 
     /**
-     * Create an instance of {@link BolusType }
+     * Create an instance of {@link Washout }
      * 
      */
-    public BolusType createBolusType() {
-        return new BolusType();
+    public Washout createWashoutType() {
+        return new Washout();
     }
 
     /**
-     * Create an instance of {@link ObservationsType }
+     * Create an instance of {@link Bolus }
      * 
      */
-    public ObservationsType createObservationsType() {
-        return new ObservationsType();
+    public Bolus createBolusType() {
+        return new Bolus();
+    }
+
+    /**
+     * Create an instance of {@link Observations }
+     * 
+     */
+    public Observations createObservationsType() {
+        return new Observations();
     }
 	
 	/**
-     * Create an instance of {@link CovariateMappingType }
+     * Create an instance of {@link CovariateMapping }
      * 
      */
 	@Deprecated
-    public CovariateMappingType createCovariateMappingType() {
-        return new CovariateMappingType();
+    public CovariateMapping createCovariateMappingType() {
+        return new CovariateMapping();
     }
 
     /**
-     * Create an instance of {@link TrialStructureType }
+     * Create an instance of {@link TrialStructure }
      * 
      */
-    public TrialStructureType createTrialStructureType() {
-        return new TrialStructureType();
+    public TrialStructure createTrialStructureType() {
+        return new TrialStructure();
     }
 
     /**
-     * Create an instance of {@link DosingVariableType }
+     * Create an instance of {@link DosingVariable }
      * 
      */
-    public DosingVariableType createDosingVariableType() {
-        return new DosingVariableType();
+    public DosingVariable createDosingVariableType() {
+        return new DosingVariable();
     }
 
     /**
-     * Create an instance of {@link TreatmentType }
-     * 
-     */
-	@Deprecated
-    public TreatmentType createTreatmentType() {
-        return new TreatmentType();
-    }
-
-    /**
-     * Create an instance of {@link SteadyStateParameterType }
-     * 
-     */
-    public SteadyStateParameterType createSteadyStateParameterType() {
-        return new SteadyStateParameterType();
-    }
-
-    /**
-     * Create an instance of {@link StudyPeriodType }
-     * 
-     */
-    public StudyPeriodType createStudyPeriodType() {
-        return new StudyPeriodType();
-    }
-
-    /**
-     * Create an instance of {@link ArmDefnType }
-     * 
-     */
-    public ArmDefnType createArmDefnType() {
-        return new ArmDefnType();
-    }
-
-    /**
-     * Create an instance of {@link PopulationType }
-     * 
-     */
-    public PopulationType createPopulationType() {
-        return new PopulationType();
-    }
-
-    /**
-     * Create an instance of {@link IndividualDefinitionType }
+     * Create an instance of {@link Treatment }
      * 
      */
 	@Deprecated
-    public IndividualDefinitionType createIndividualDefinitionType() {
-        return new IndividualDefinitionType();
+    public Treatment createTreatmentType() {
+        return new Treatment();
     }
 
     /**
-     * Create an instance of {@link SteadyStateType }
+     * Create an instance of {@link SteadyStateParameter }
      * 
      */
-    public SteadyStateType createSteadyStateType() {
-        return new SteadyStateType();
+    public SteadyStateParameter createSteadyStateParameterType() {
+        return new SteadyStateParameter();
     }
 
     /**
-     * Create an instance of {@link StudyTimePointType }
+     * Create an instance of {@link StudyPeriod }
      * 
      */
-    public StudyTimePointType createStudyTimePointType() {
-        return new StudyTimePointType();
+    public StudyPeriod createStudyPeriodType() {
+        return new StudyPeriod();
     }
 
     /**
-     * Create an instance of {@link IndividualDosingType }
+     * Create an instance of {@link ArmDefinition }
      * 
      */
-    public IndividualDosingType createIndividualDosingType() {
-        return new IndividualDosingType();
+    public ArmDefinition createArmDefnType() {
+        return new ArmDefinition();
     }
 
     /**
-     * Create an instance of {@link CellDefnType }
+     * Create an instance of {@link Population }
      * 
      */
-    public CellDefnType createCellDefnType() {
-        return new CellDefnType();
+    public Population createPopulationType() {
+        return new Population();
     }
 
     /**
-     * Create an instance of {@link SegmentDefnType }
-     * 
-     */
-    public SegmentDefnType createSegmentDefnType() {
-        return new SegmentDefnType();
-    }
-
-    /**
-     * Create an instance of {@link ObservationsGroupType }
-     * 
-     */
-    public ObservationsGroupType createObservationsGroupType() {
-        return new ObservationsGroupType();
-    }
-
-    /**
-     * Create an instance of {@link IndependentVariableMappingType }
-     * 
-     */
-    public IndependentVariableMappingType createIndependentVariableMappingType() {
-        return new IndependentVariableMappingType();
-    }
-
-    /**
-     * Create an instance of {@link DemographicType }
-     * 
-     */
-    public DemographicType createDemographicType() {
-        return new DemographicType();
-    }
-
-    /**
-     * Create an instance of {@link TargetMappingType }
-     * 
-     */
-    public TargetMappingType createTargetMappingType() {
-        return new TargetMappingType();
-    }
-
-    /**
-     * Create an instance of {@link EpochDefnType }
-     * 
-     */
-    public EpochDefnType createEpochDefnType() {
-        return new EpochDefnType();
-    }
-
-    /**
-     * Create an instance of {@link EpochMappingType }
+     * Create an instance of {@link IndividualDefinition }
      * 
      */
 	@Deprecated
-    public EpochMappingType createEpochMappingType() {
-        return new EpochMappingType();
+    public IndividualDefinition createIndividualDefinitionType() {
+        return new IndividualDefinition();
     }
 
     /**
-     * Create an instance of {@link DosingTimesPointsType }
+     * Create an instance of {@link SteadyState }
      * 
      */
-    public DosingTimesPointsType createDosingTimesPointsType() {
-        return new DosingTimesPointsType();
+    public SteadyState createSteadyStateType() {
+        return new SteadyState();
     }
 
     /**
-     * Create an instance of {@link IndependentVariableDependentMappingType }
+     * Create an instance of {@link StudyTimePoint }
+     * 
+     */
+    public StudyTimePoint createStudyTimePointType() {
+        return new StudyTimePoint();
+    }
+
+    /**
+     * Create an instance of {@link IndividualDosing }
+     * 
+     */
+    public IndividualDosing createIndividualDosingType() {
+        return new IndividualDosing();
+    }
+
+    /**
+     * Create an instance of {@link CellDefinition }
+     * 
+     */
+    public CellDefinition createCellDefnType() {
+        return new CellDefinition();
+    }
+
+    /**
+     * Create an instance of {@link SegmentDefinition }
+     * 
+     */
+    public SegmentDefinition createSegmentDefnType() {
+        return new SegmentDefinition();
+    }
+
+    /**
+     * Create an instance of {@link ObservationsGroup }
+     * 
+     */
+    public ObservationsGroup createObservationsGroupType() {
+        return new ObservationsGroup();
+    }
+
+    /**
+     * Create an instance of {@link IndependentVariableMapping }
+     * 
+     */
+    @Deprecated
+    public IndependentVariableMapping createIndependentVariableMappingType() {
+        return new IndependentVariableMapping();
+    }
+
+    /**
+     * Create an instance of {@link Demographic }
+     * 
+     */
+    public Demographic createDemographicType() {
+        return new Demographic();
+    }
+
+    /**
+     * Create an instance of {@link Target }
+     * 
+     */
+    public Target createTargetMappingType() {
+        return new Target();
+    }
+
+    /**
+     * Create an instance of {@link EpochDefinition }
+     * 
+     */
+    public EpochDefinition createEpochDefnType() {
+        return new EpochDefinition();
+    }
+
+    /**
+     * Create an instance of {@link EpochMapping }
      * 
      */
 	@Deprecated
-    public IndependentVariableDependentMappingType createIndependentVariableDependentMappingType() {
-        return new IndependentVariableDependentMappingType();
+    public EpochMapping createEpochMappingType() {
+        return new EpochMapping();
     }
 
     /**
-     * Create an instance of {@link InfusionType.DoseAmount }
+     * Create an instance of {@link DosingTimesPoints }
      * 
      */
-    public InfusionType.DoseAmount createInfusionTypeDoseAmount() {
-        return new InfusionType.DoseAmount();
+    public DosingTimesPoints createDosingTimesPointsType() {
+        return new DosingTimesPoints();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IntValueType }{@code >}}
+     * Create an instance of {@link IndependentVariableDependentMapping }
+     * 
+     */
+	@Deprecated
+    public IndependentVariableDependentMapping createIndependentVariableDependentMappingType() {
+        return new IndependentVariableDependentMapping();
+    }
+
+    /**
+     * Create an instance of {@link Infusion.DoseAmount }
+     * 
+     */
+    public Infusion.DoseAmount createInfusionTypeDoseAmount() {
+        return new Infusion.DoseAmount();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link IntValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "Order")
-    public JAXBElement<IntValueType> createOrder(IntValueType value) {
-        return new JAXBElement<IntValueType>(_Order_QNAME, IntValueType.class, null, value);
+    public JAXBElement<IntValue> createOrder(IntValue value) {
+        return new JAXBElement<IntValue>(_Order_QNAME, IntValue.class, null, value);
     }
 
     /**
@@ -381,134 +382,134 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TrialDesignType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link TrialDesign }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "TrialDesign")
-    public JAXBElement<TrialDesignType> createTrialDesign(TrialDesignType value) {
-        return new JAXBElement<TrialDesignType>(_TrialDesign_QNAME, TrialDesignType.class, null, value);
+    public JAXBElement<TrialDesign> createTrialDesign(TrialDesign value) {
+        return new JAXBElement<TrialDesign>(_TrialDesign_QNAME, TrialDesign.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArmMappingType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArmMapping }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "ArmMapping")
     @Deprecated
-	public JAXBElement<ArmMappingType> createArmMapping(ArmMappingType value) {
-        return new JAXBElement<ArmMappingType>(_ArmMapping_QNAME, ArmMappingType.class, null, value);
+	public JAXBElement<ArmMapping> createArmMapping(ArmMapping value) {
+        return new JAXBElement<ArmMapping>(_ArmMapping_QNAME, ArmMapping.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DemographicMappingType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DemographicMapping }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "DemographicMapping", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/TrialDesign", substitutionHeadName = "AttributeMapping")
     @Deprecated
-	public JAXBElement<DemographicMappingType> createDemographicMapping(DemographicMappingType value) {
-        return new JAXBElement<DemographicMappingType>(_DemographicMapping_QNAME, DemographicMappingType.class, null, value);
+	public JAXBElement<DemographicMapping> createDemographicMapping(DemographicMapping value) {
+        return new JAXBElement<DemographicMapping>(_DemographicMapping_QNAME, DemographicMapping.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ReplicateMappingType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReplicateMapping }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "ReplicateMapping")
     @Deprecated
-	public JAXBElement<ReplicateMappingType> createReplicateMapping(ReplicateMappingType value) {
-        return new JAXBElement<ReplicateMappingType>(_ReplicateMapping_QNAME, ReplicateMappingType.class, null, value);
+	public JAXBElement<ReplicateMapping> createReplicateMapping(ReplicateMapping value) {
+        return new JAXBElement<ReplicateMapping>(_ReplicateMapping_QNAME, ReplicateMapping.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DosingRegimenType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DosingRegimen }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "DosingRegimen")
-    public JAXBElement<DosingRegimenType> createDosingRegimen(DosingRegimenType value) {
-        return new JAXBElement<DosingRegimenType>(_DosingRegimen_QNAME, DosingRegimenType.class, null, value);
+    public JAXBElement<DosingRegimen> createDosingRegimen(DosingRegimen value) {
+        return new JAXBElement<DosingRegimen>(_DosingRegimen_QNAME, DosingRegimen.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link StudyEventType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link StudyEvent }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "StudyEvent")
-    public JAXBElement<StudyEventType> createStudyEvent(StudyEventType value) {
-        return new JAXBElement<StudyEventType>(_StudyEvent_QNAME, StudyEventType.class, null, value);
+    public JAXBElement<StudyEvent> createStudyEvent(StudyEvent value) {
+        return new JAXBElement<StudyEvent>(_StudyEvent_QNAME, StudyEvent.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BolusType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Bolus }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "Bolus", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/TrialDesign", substitutionHeadName = "DosingRegimen")
-    public JAXBElement<BolusType> createBolus(BolusType value) {
-        return new JAXBElement<BolusType>(_Bolus_QNAME, BolusType.class, null, value);
+    public JAXBElement<Bolus> createBolus(Bolus value) {
+        return new JAXBElement<Bolus>(_Bolus_QNAME, Bolus.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link WashoutType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Washout }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "Washout")
-    public JAXBElement<WashoutType> createWashout(WashoutType value) {
-        return new JAXBElement<WashoutType>(_Washout_QNAME, WashoutType.class, null, value);
+    public JAXBElement<Washout> createWashout(Washout value) {
+        return new JAXBElement<Washout>(_Washout_QNAME, Washout.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link InfusionType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Infusion }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "Infusion", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/TrialDesign", substitutionHeadName = "DosingRegimen")
-    public JAXBElement<InfusionType> createInfusion(InfusionType value) {
-        return new JAXBElement<InfusionType>(_Infusion_QNAME, InfusionType.class, null, value);
+    public JAXBElement<Infusion> createInfusion(Infusion value) {
+        return new JAXBElement<Infusion>(_Infusion_QNAME, Infusion.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IndividualMappingType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link IndividualMapping }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "IndividualMapping")
     @Deprecated
-	public JAXBElement<IndividualMappingType> createIndividualMapping(IndividualMappingType value) {
-        return new JAXBElement<IndividualMappingType>(_IndividualMapping_QNAME, IndividualMappingType.class, null, value);
+	public JAXBElement<IndividualMapping> createIndividualMapping(IndividualMapping value) {
+        return new JAXBElement<IndividualMapping>(_IndividualMapping_QNAME, IndividualMapping.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CovariateMappingType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CovariateMapping }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "ObservationsEvent", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/TrialDesign", substitutionHeadName = "StudyEvent")
-    public JAXBElement<ObservationsType> createObservationsEvent(ObservationsType value) {
-        return new JAXBElement<ObservationsType>(_ObservationsEvent_QNAME, ObservationsType.class, null, value);
+    public JAXBElement<Observations> createObservationsEvent(Observations value) {
+        return new JAXBElement<Observations>(_ObservationsEvent_QNAME, Observations.class, null, value);
     }
 	
 	/**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CovariateMappingType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CovariateMapping }{@code >}}
      * 
      */
 	@Deprecated
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "CovariateMapping", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/TrialDesign", substitutionHeadName = "AttributeMapping")
-    public JAXBElement<CovariateMappingType> createCovariateMapping(CovariateMappingType value) {
-        return new JAXBElement<CovariateMappingType>(_CovariateMapping_QNAME, CovariateMappingType.class, null, value);
+    public JAXBElement<CovariateMapping> createCovariateMapping(CovariateMapping value) {
+        return new JAXBElement<CovariateMapping>(_CovariateMapping_QNAME, CovariateMapping.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LookupTableType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LookupTable }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "LookupTable")
-    public JAXBElement<LookupTableType> createLookupTable(LookupTableType value) {
-        return new JAXBElement<LookupTableType>(_LookupTable_QNAME, LookupTableType.class, null, value);
+    public JAXBElement<LookupTable> createLookupTable(LookupTable value) {
+        return new JAXBElement<LookupTable>(_LookupTable_QNAME, LookupTable.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ActivityType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Activity }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "Activity")
-    public JAXBElement<ActivityType> createActivity(ActivityType value) {
-        return new JAXBElement<ActivityType>(_Activity_QNAME, ActivityType.class, null, value);
+    public JAXBElement<Activity> createActivity(Activity value) {
+        return new JAXBElement<Activity>(_Activity_QNAME, Activity.class, null, value);
     }
 
 }

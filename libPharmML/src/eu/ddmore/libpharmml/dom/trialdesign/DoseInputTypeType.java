@@ -45,7 +45,7 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/simpleType>
  * </pre>
  * 
- * @deprecated Since PharmML 0.3. Use {@link DoseInputTargetType} instead.
+ * @deprecated Since PharmML 0.3. Use {@link DoseInputTarget} instead.
  */
 @XmlType(name = "DoseInputTypeType")
 @XmlEnum

@@ -31,7 +31,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
@@ -62,7 +61,6 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
  * 
  * 
  */
-@SuppressWarnings("deprecation")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Rhs", propOrder = {
     "equation",
@@ -70,10 +68,8 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
     "symbRef",
     "sequence",
     "vector",
-    "interpolation"
-})
-@XmlSeeAlso({
-    AssignType.class
+    "interpolation",
+    "matrix"
 })
 public class Rhs
     extends PharmMLRootType
@@ -84,13 +80,15 @@ public class Rhs
     @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
     protected JAXBElement<?> scalar;
     @XmlElement(name = "SymbRef")
-    protected SymbolRefType symbRef;
+    protected SymbolRef symbRef;
     @XmlElement(name = "Sequence")
-    protected SequenceType sequence;
+    protected Sequence sequence;
     @XmlElement(name = "Vector")
-    protected VectorType vector;
+    protected Vector vector;
     @XmlElement(name = "Interpolation")
-    protected InterpolationType interpolation;
+    protected Interpolation interpolation;
+    @XmlElement(name = "Matrix")
+    protected Matrix matrix;
     
     public Rhs(){}
     
@@ -103,20 +101,24 @@ public class Rhs
     	this.scalar = MasterObjectFactory.createScalar(scalar);
     }
     
-    public Rhs(SymbolRefType symbRef){
+    public Rhs(SymbolRef symbRef){
     	this.symbRef = symbRef;
     }
 
-    public Rhs(SequenceType sequence){
+    public Rhs(Sequence sequence){
     	this.sequence = sequence;
     }
     
-    public Rhs(VectorType vector){
+    public Rhs(Vector vector){
     	this.vector = vector;
     }
     
-    public Rhs(InterpolationType interpolation){
+    public Rhs(Interpolation interpolation){
     	this.interpolation = interpolation;
+    }
+    
+    public Rhs(Matrix matrix){
+    	this.matrix = matrix;
     }
     
     /**
@@ -148,14 +150,14 @@ public class Rhs
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StringValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RealValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
      *     
      */
     public JAXBElement<?> getScalar() {
@@ -167,14 +169,14 @@ public class Rhs
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
+     *     {@link JAXBElement }{@code <}{@link StringValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link RealValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
+     *     {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
      *     
      */
     public void setScalar(JAXBElement<?> value) {
@@ -186,10 +188,10 @@ public class Rhs
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public SymbolRefType getSymbRef() {
+    public SymbolRef getSymbRef() {
         return symbRef;
     }
 
@@ -198,10 +200,10 @@ public class Rhs
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
-    public void setSymbRef(SymbolRefType value) {
+    public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
 
@@ -210,10 +212,10 @@ public class Rhs
      * 
      * @return
      *     possible object is
-     *     {@link SequenceType }
+     *     {@link Sequence }
      *     
      */
-    public SequenceType getSequence() {
+    public Sequence getSequence() {
         return sequence;
     }
 
@@ -222,10 +224,10 @@ public class Rhs
      * 
      * @param value
      *     allowed object is
-     *     {@link SequenceType }
+     *     {@link Sequence }
      *     
      */
-    public void setSequence(SequenceType value) {
+    public void setSequence(Sequence value) {
         this.sequence = value;
     }
 
@@ -234,10 +236,10 @@ public class Rhs
      * 
      * @return
      *     possible object is
-     *     {@link VectorType }
+     *     {@link Vector }
      *     
      */
-    public VectorType getVector() {
+    public Vector getVector() {
         return vector;
     }
 
@@ -246,10 +248,10 @@ public class Rhs
      * 
      * @param value
      *     allowed object is
-     *     {@link VectorType }
+     *     {@link Vector }
      *     
      */
-    public void setVector(VectorType value) {
+    public void setVector(Vector value) {
         this.vector = value;
     }
 
@@ -258,10 +260,10 @@ public class Rhs
      * 
      * @return
      *     possible object is
-     *     {@link InterpolationType }
+     *     {@link Interpolation }
      *     
      */
-    public InterpolationType getInterpolation() {
+    public Interpolation getInterpolation() {
         return interpolation;
     }
 
@@ -270,11 +272,55 @@ public class Rhs
      * 
      * @param value
      *     allowed object is
-     *     {@link InterpolationType }
+     *     {@link Interpolation }
      *     
      */
-    public void setInterpolation(InterpolationType value) {
+    public void setInterpolation(Interpolation value) {
         this.interpolation = value;
+    }
+    
+    /**
+     * Gets the value of the matrix property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Matrix }
+     *     
+     * @since PharmML 0.4.1
+     */
+    public Matrix getMatrix() {
+        return matrix;
+    }
+
+    /**
+     * Sets the value of the matrix property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Matrix }
+     *     
+     * @since PharmML 0.4.1
+     */
+    public void setMatrix(Matrix value) {
+        this.matrix = value;
+    }
+    
+    /**
+     * Gets the unique content of this Rhs. Each mapped attribute is checked and the first checked one
+     * that is not null is returned. Only one is returned even if 2 or more attributes have been set.
+     * If there is no content, this method returns null.
+     * @return Possible return types are {@link Equation}, {@link Scalar}, {@link SymbolRef}, 
+     * {@link Vector}, {@link Matrix}, {@link Interpolation} and {@link Sequence}.
+     */
+    public Object getContent(){
+    	if(equation != null) return equation;
+    	if(scalar != null) return scalar.getValue();
+    	if(symbRef != null) return symbRef;
+    	if(vector != null) return vector;
+    	if(matrix != null) return matrix;
+    	if(interpolation != null) return interpolation;
+    	if(sequence != null) return sequence;
+    	else return null;
     }
 
 }

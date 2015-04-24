@@ -77,32 +77,32 @@ public class VectorElements extends PharmMLRootType implements ScalarContainer {
 	}
 
 	@Override
-	public BooleanType createBooleanValue(boolean value) {
-		BooleanType wValue;
+	public BooleanValue createBooleanValue(boolean value) {
+		BooleanValue wValue;
 		if(value){
-			wValue = new TrueBooleanType();
+			wValue = new TrueBoolean();
 		} else {
-			wValue = new FalseBooleanType();
+			wValue = new FalseBoolean();
 		}
 		getListOfElements().add(wValue);
 		return wValue;
 	}
 	
-	public SymbolRefType createSymbolRef(String symbId){
-		SymbolRefType symbRef = new SymbolRefType();
+	public SymbolRef createSymbolRef(String symbId){
+		SymbolRef symbRef = new SymbolRef();
 		symbRef.setId(symbId);
 		getListOfElements().add(symbRef);
 		return symbRef;
 	}
 	
-	public SymbolRefType createSymbolRef(String symbId, String blkId){
-		SymbolRefType symbRef = createSymbolRef(symbId);
+	public SymbolRef createSymbolRef(String symbId, String blkId){
+		SymbolRef symbRef = createSymbolRef(symbId);
 		symbRef.setBlkIdRef(blkId);
 		return symbRef;
 	}
 	
-	public SequenceType createSequence(){
-		SequenceType seq = new SequenceType();
+	public Sequence createSequence(){
+		Sequence seq = new Sequence();
 		getListOfElements().add(seq);
 		return seq;
 	}

@@ -111,5 +111,13 @@ public class AnnotationType {
     public void setId(String value) {
         this.id = value;
     }
+    
+    /**
+     * Gets the string value of the annotation. Equivalent to {@link #getValue()}.
+     */
+    @Override
+    public String toString() {
+    	return value;
+    }
 
 }

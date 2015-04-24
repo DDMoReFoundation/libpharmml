@@ -26,10 +26,15 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
+import eu.ddmore.libpharmml.dom.maths.Operand;
 
 
 /**
@@ -85,13 +90,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProductType", propOrder = {
-    "symbRef",
+    "variable",
     "productIndex",
     "lowLimit",
     "upLimit"
 })
 public class Product
-    extends AbstractFormula
+    extends AbstractFormula implements Operand, ExpressionValue
 {
 	
 	/**
@@ -106,8 +111,8 @@ public class Product
 	 * @param n The lower bound
 	 * @param N The upper bound
 	 */
-	public Product(SymbolRefType V, SymbolRefType i, int n, int N){
-		this.symbRef = V;
+	public Product(OperationVariable V, SymbolRef i, int n, int N){
+		this.variable = V;
 		createProductIndex(i);
 		createLowLimit(n);
 		createUpLimit(N);
@@ -140,11 +145,16 @@ public class Product
         this.productIndex = value;
     }
     
-    public SumProductIndex createProductIndex(SymbolRefType i){
+    public SumProductIndex createProductIndex(SymbolRef i){
     	SumProductIndex index = new SumProductIndex();
     	index.setSymbRef(i);
     	this.setProductIndex(index);
     	return index;
     }
+
+	@Override
+	public JAXBElement<Product> toJAXBElement() {
+		return MasterObjectFactory.COMMONTYPES_OF.createProduct(this);
+	}
 
 }

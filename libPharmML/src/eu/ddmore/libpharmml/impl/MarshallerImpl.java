@@ -28,19 +28,14 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.bind.Unmarshaller.Listener;
-import javax.xml.bind.ValidationEvent;
-import javax.xml.bind.ValidationEventHandler;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import javax.xml.validation.Schema;
 
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.IMarshaller;
 import eu.ddmore.libpharmml.dom.PharmML;
-import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 
 public class MarshallerImpl implements IMarshaller {
 	private static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
@@ -53,68 +48,114 @@ public class MarshallerImpl implements IMarshaller {
 	public void marshall(PharmML dom, OutputStream os) {
 		try {
 			JAXBContext context = JAXBContext.newInstance(CONTEXT_NAME);
+			
+			if(dom.getWrittenVersion() == null){
+				throw new RuntimeException("writtenVersion attribute must be set to the root element.");
+			}
+			
+			PharmMLVersion version = PharmMLVersion.getEnum(dom.getWrittenVersion());
+			MarshalListener mListener;
+			if(version != null){
+				mListener = new MarshalListener(version);
+			} else {
+				throw new RuntimeException("Unknown or unsupported PharmML written version ("+dom.getWrittenVersion()+")");
+			}
 			Marshaller m = context.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-			m.marshal(dom, os);
+			m.setListener(mListener);	
+			
+			// TODO: use a proper XML writer. Use last version as default one.
+			if(version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
+				// Marshalling into a XMLStreamWriter with filter for namespaces.
+				// Into a ByteArray so it can be inputstreamed again.
+				ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+				XMLFilter filter = new XMLFilter(version);	
+//				XMLStreamWriter xmlsw = filter.getXMLStreamWriter(byteOut);	
+				m.marshal(dom, byteOut);
+				
+				filter.filterRawText(new ByteArrayInputStream(byteOut.toByteArray()), os);
+			} else { // no filtering, applying old default namespace
+				m.marshal(dom, os);
+			}
+			
+//			// Using a transformer for pretty XML print
+//			Transformer transformer = TransformerFactory.newInstance().newTransformer();
+//			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+//			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2"); // indent length
+//			transformer.transform(
+//					new StreamSource(new ByteArrayInputStream(byteOut.toByteArray())), 
+//					new StreamResult(os)
+//					);
+//			
 		} catch (JAXBException e) {
 			throw new RuntimeException(e);
+//		} catch (XMLStreamException e) {
+//			throw new RuntimeException(e);
+//		} catch (TransformerException e) {
+//			throw new RuntimeException(e);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
 	@Override
 	public PharmML unmarshall(InputStream is) {
 		try {
-//			String packageName = PharmML.class.getPackage().getName();
-			JAXBContext context = JAXBContext.newInstance(CONTEXT_NAME);
-			Unmarshaller u = context.createUnmarshaller();
-			u.setEventHandler(new ValidationEventHandler() {
-				
-				@Override
-				public boolean handleEvent(ValidationEvent event) {
-					int severity = event.getSeverity();
-					switch(severity){
-					case ValidationEvent.ERROR:
-						errorHandler.handleError(event.getMessage());
-						break;
-					case ValidationEvent.FATAL_ERROR:
-						errorHandler.handleError(event.getMessage());
-						break;
-					case ValidationEvent.WARNING:
-						errorHandler.handleWarning(event.getMessage());
-						break;
-					}
-					return true;
-				}
-			});
-			
-			// Convert inputStream to byteArray so it can be read twice (first to get PharmML version before unmarshalling)
+			// Convert inputStream to byteArray so it can be read twice 
+			// (first to get PharmML version before unmarshalling)
 			byte[] data = toByteArray(is);
 			ByteArrayInputStream bais = new ByteArrayInputStream(data);
 			final PharmMLVersion currentDocVersion = parseVersion(bais);
 			bais.reset();
 			
+			return unmarshall(bais, currentDocVersion);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} catch (XMLStreamException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	@Override
+	public PharmML unmarshall(InputStream is, PharmMLVersion version) {
+		try {
+//			String packageName = PharmML.class.getPackage().getName();
+			JAXBContext context = JAXBContext.newInstance(CONTEXT_NAME);
+			Unmarshaller u = context.createUnmarshaller();
+//			u.setEventHandler(new ValidationEventHandler() {
+//				
+//				@Override
+//				public boolean handleEvent(ValidationEvent event) {
+//					int severity = event.getSeverity();
+//					switch(severity){
+//					case ValidationEvent.ERROR:
+//						errorHandler.handleError(event.getMessage());
+//						break;
+//					case ValidationEvent.FATAL_ERROR:
+//						errorHandler.handleError(event.getMessage());
+//						break;
+//					case ValidationEvent.WARNING:
+//						errorHandler.handleWarning(event.getMessage());
+//						break;
+//					}
+//					return true;
+//				}
+//			});
+
 			// Schema
-			Schema mySchema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(currentDocVersion);
-			u.setSchema(mySchema);
+//			Schema mySchema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(version);
+//			u.setSchema(mySchema);
 			
-			// Store version info into each element
-			Listener listener = new Listener() {
-				@Override
-				public void beforeUnmarshal(Object target, Object parent) {
-					if(target instanceof PharmMLElement){
-						((PharmMLElement)target).setUnmarshalVersion(currentDocVersion);
-					}
-				}
-			};
-			u.setListener(listener);
+			u.setListener(new UnmarshalListener(version));
 			
-			PharmML doc = (PharmML)u.unmarshal(bais);
+			XMLStreamReader xmlsr = new XMLFilter(version).getXMLStreamReader(is);
+			
+			PharmML doc = (PharmML)u.unmarshal(xmlsr);
 			return doc;
 		} catch (JAXBException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} catch (XMLStreamException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		} catch (IOException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
@@ -129,7 +170,7 @@ public class MarshallerImpl implements IMarshaller {
 		return this.errorHandler;
 	}
 	
-	private PharmMLVersion parseVersion(InputStream is) throws XMLStreamException{
+	static PharmMLVersion parseVersion(InputStream is) throws XMLStreamException{
 		XMLInputFactory factory = XMLInputFactory.newFactory();
 		XMLStreamReader sReader = factory.createXMLStreamReader(is);
 		String version = null;
@@ -151,7 +192,7 @@ public class MarshallerImpl implements IMarshaller {
 		return phVersion;
 	}
 	
-	private byte[] toByteArray(InputStream is) throws IOException{
+	static byte[] toByteArray(InputStream is) throws IOException{
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();				
 		byte[] buffer = new byte[1024];
 		int read = 0;

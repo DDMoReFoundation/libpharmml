@@ -44,8 +44,8 @@ import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.LinkFunction;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
-import eu.ddmore.libpharmml.dom.maths.LogicBinOpType;
-import eu.ddmore.libpharmml.dom.maths.LogicUniOpType;
+import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
+import eu.ddmore.libpharmml.dom.maths.LogicUniOp;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractDiscreteUnivariateDistributionType;
 import eu.ddmore.libpharmml.dom.uncertml.BinomialDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.DiscreteUnivariateMixtureModel;
@@ -105,9 +105,9 @@ public class CountPMF
 {
 
     @XmlElement(name = "LogicBinop", namespace = "http://www.pharmml.org/2013/03/Maths")
-    protected LogicBinOpType logicBinop;
+    protected LogicBinOp logicBinop;
     @XmlElement(name = "LogicUniop", namespace = "http://www.pharmml.org/2013/03/Maths")
-    protected LogicUniOpType logicUniop;
+    protected LogicUniOp logicUniop;
     @XmlElement(name = "CurrentState")
     protected CommonDiscreteState currentState;
     @XmlElement(name = "PreviousState")
@@ -136,10 +136,10 @@ public class CountPMF
      * 
      * @return
      *     possible object is
-     *     {@link LogicBinOpType }
+     *     {@link LogicBinOp }
      *     
      */
-    public LogicBinOpType getLogicBinop() {
+    public LogicBinOp getLogicBinop() {
         return logicBinop;
     }
 
@@ -148,10 +148,10 @@ public class CountPMF
      * 
      * @param value
      *     allowed object is
-     *     {@link LogicBinOpType }
+     *     {@link LogicBinOp }
      *     
      */
-    public void setLogicBinop(LogicBinOpType value) {
+    public void setLogicBinop(LogicBinOp value) {
         this.logicBinop = value;
     }
 
@@ -160,10 +160,10 @@ public class CountPMF
      * 
      * @return
      *     possible object is
-     *     {@link LogicUniOpType }
+     *     {@link LogicUniOp }
      *     
      */
-    public LogicUniOpType getLogicUniop() {
+    public LogicUniOp getLogicUniop() {
         return logicUniop;
     }
 
@@ -172,10 +172,10 @@ public class CountPMF
      * 
      * @param value
      *     allowed object is
-     *     {@link LogicUniOpType }
+     *     {@link LogicUniOp }
      *     
      */
-    public void setLogicUniop(LogicUniOpType value) {
+    public void setLogicUniop(LogicUniOp value) {
         this.logicUniop = value;
     }
 
@@ -407,21 +407,21 @@ public class CountPMF
     }
     
     /**
-     * Creates a new empty {@link LogicBinOpType} element, adds it to the current {@link CountPMF} object and returns it.
-     * @return The created {@link LogicBinOpType} object.
+     * Creates a new empty {@link LogicBinOp} element, adds it to the current {@link CountPMF} object and returns it.
+     * @return The created {@link LogicBinOp} object.
      */
-    public LogicBinOpType createLogicBinop(){
-            LogicBinOpType el = new LogicBinOpType();
+    public LogicBinOp createLogicBinop(){
+            LogicBinOp el = new LogicBinOp();
             this.logicBinop = el;
             return el;
     }
 
     /**
-     * Creates a new empty {@link LogicUniOpType} element, adds it to the current {@link CountPMF} object and returns it.
-     * @return The created {@link LogicUniOpType} object.
+     * Creates a new empty {@link LogicUniOp} element, adds it to the current {@link CountPMF} object and returns it.
+     * @return The created {@link LogicUniOp} object.
      */
-    public LogicUniOpType createLogicUniop(){
-            LogicUniOpType el = new LogicUniOpType();
+    public LogicUniOp createLogicUniop(){
+            LogicUniOp el = new LogicUniOp();
             this.logicUniop = el;
             return el;
     }
