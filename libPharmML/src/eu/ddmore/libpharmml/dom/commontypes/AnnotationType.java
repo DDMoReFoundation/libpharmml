@@ -34,6 +34,8 @@ import javax.xml.bind.annotation.XmlValue;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.Identifiable;
+
 
 /**
  * <p>Java class for AnnotationType complex type.
@@ -56,7 +58,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "AnnotationType", propOrder = {
     "value"
 })
-public class AnnotationType {
+public class AnnotationType implements Identifiable {
 
     @XmlValue
     protected String value;

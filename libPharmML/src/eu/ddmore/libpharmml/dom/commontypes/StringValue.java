@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlValue;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 
 
@@ -61,7 +62,7 @@ import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 @XmlType(name = "StringValueType", propOrder = {
     "value"
 })
-public class StringValue extends PharmMLElement implements Scalar {
+public class StringValue extends PharmMLElement implements Scalar, Identifiable {
 
     @XmlValue
     protected String value;

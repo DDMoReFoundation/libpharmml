@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.dom.IndependentVariable;
 import eu.ddmore.libpharmml.dom.commontypes.VectorElements;
 import eu.ddmore.libpharmml.dom.dataset.CategoryMapping;
@@ -317,7 +318,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.Washout;
     OralMacro.class,
     PKMacroList.class
 })
-public abstract class PharmMLRootType extends PharmMLElement {
+public abstract class PharmMLRootType extends PharmMLElement implements Identifiable {
 
     @XmlElement(name = "Description")
     protected AnnotationType description;

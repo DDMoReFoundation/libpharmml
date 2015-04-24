@@ -34,6 +34,8 @@ import javax.xml.bind.annotation.XmlValue;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.Identifiable;
+
 
 /**
  * Type specifying a descriptive name that
@@ -59,7 +61,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "NameType", propOrder = {
     "value"
 })
-public class Name {
+public class Name implements Identifiable {
 
     @XmlValue
     protected String value;

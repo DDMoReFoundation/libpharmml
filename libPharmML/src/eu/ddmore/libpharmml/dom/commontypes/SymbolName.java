@@ -34,6 +34,8 @@ import javax.xml.bind.annotation.XmlValue;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.Identifiable;
+
 
 /**
  * Type defining the name of the symbol in a form suitable for display. Currently this should be plain text and not include any markup.
@@ -58,7 +60,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "SymbolNameType", propOrder = {
     "value"
 })
-public class SymbolName {
+public class SymbolName implements Identifiable {
 
     @XmlValue
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

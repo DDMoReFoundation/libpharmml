@@ -86,7 +86,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.TrialDesign;
     "modellingSteps"
 })
 @XmlRootElement(name = "PharmML")
-public class PharmML {
+public class PharmML implements Identifiable {
 
     @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
     protected Name name;

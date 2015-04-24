@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlValue;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 
 
@@ -61,7 +62,7 @@ import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 @XmlType(name = "RealValueType", propOrder = {
     "value"
 })
-public class RealValue extends PharmMLElement implements Scalar, VectorValue {
+public class RealValue extends PharmMLElement implements Scalar, VectorValue, Identifiable {
 
     @XmlValue
     protected double value;
