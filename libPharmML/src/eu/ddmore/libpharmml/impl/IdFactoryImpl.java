@@ -6,13 +6,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import eu.ddmore.libpharmml.IdFactory;
 import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.validation.exceptions.DuplicateIdentifierException;
 
 /**
  * Class handling the generation and storing of identifiers.
  */
-public class IdFactoryImpl {
+public class IdFactoryImpl implements IdFactory {
 	
 	private final Map<String,Identifiable> table;
 	
