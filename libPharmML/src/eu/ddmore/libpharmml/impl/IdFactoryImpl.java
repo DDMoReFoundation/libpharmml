@@ -12,7 +12,7 @@ import eu.ddmore.libpharmml.validation.exceptions.DuplicateIdentifierException;
 /**
  * Class handling the generation and storing of identifiers.
  */
-public class IdFactory {
+public class IdFactoryImpl {
 	
 	private final Map<String,Identifiable> table;
 	
@@ -20,7 +20,7 @@ public class IdFactory {
 	private static final String patternString = "^i(\\d+)$";
 	private static final Pattern idPattern = Pattern.compile(patternString);
 	
-	public IdFactory(){
+	public IdFactoryImpl(){
 		table = new Hashtable<String,Identifiable>();
 		lastIndex = new AtomicInteger(0);
 	}
