@@ -27,6 +27,7 @@ import java.io.OutputStream;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Marshaller.Listener;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -40,29 +41,28 @@ import eu.ddmore.libpharmml.dom.PharmML;
 public class MarshallerImpl implements IMarshaller {
 	private static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
 	private IErrorHandler errorHandler;
-	
-	public MarshallerImpl(){
-	}
-	
+	private javax.xml.bind.Marshaller.Listener marshalListener;
+	private javax.xml.bind.Unmarshaller.Listener unmarshalListener;
+
 	@Override
 	public void marshall(PharmML dom, OutputStream os) {
 		try {
 			JAXBContext context = JAXBContext.newInstance(CONTEXT_NAME);
 			
-			if(dom.getWrittenVersion() == null){
-				throw new RuntimeException("writtenVersion attribute must be set to the root element.");
-			}
-			
+//			if(dom.getWrittenVersion() == null){
+//				throw new RuntimeException("writtenVersion attribute must be set to the root element.");
+//			}
+//			
 			PharmMLVersion version = PharmMLVersion.getEnum(dom.getWrittenVersion());
-			MarshalListener mListener;
-			if(version != null){
-				mListener = new MarshalListener(version);
-			} else {
-				throw new RuntimeException("Unknown or unsupported PharmML written version ("+dom.getWrittenVersion()+")");
-			}
+//			MarshalListener mListener;
+//			if(version != null){
+//				mListener = new MarshalListener(version,idFactory);
+//			} else {
+//				throw new RuntimeException("Unknown or unsupported PharmML written version ("+dom.getWrittenVersion()+")");
+//			}
 			Marshaller m = context.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-			m.setListener(mListener);	
+			m.setListener(marshalListener);
 			
 			// TODO: use a proper XML writer. Use last version as default one.
 			if(version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
@@ -147,7 +147,7 @@ public class MarshallerImpl implements IMarshaller {
 //			Schema mySchema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(version);
 //			u.setSchema(mySchema);
 			
-			u.setListener(new UnmarshalListener(version));
+			u.setListener(unmarshalListener);
 			
 			XMLStreamReader xmlsr = new XMLFilter(version).getXMLStreamReader(is);
 			
@@ -201,6 +201,26 @@ public class MarshallerImpl implements IMarshaller {
 		}		
 		baos.flush();	
 		return baos.toByteArray();
+	}
+
+	@Override
+	public Listener getMarshalListener() {
+		return marshalListener;
+	}
+
+	@Override
+	public void setMarshalListener(Listener listener) {
+		this.marshalListener = listener;
+	}
+
+	@Override
+	public javax.xml.bind.Unmarshaller.Listener getUnmarshalListener() {
+		return unmarshalListener;
+	}
+
+	@Override
+	public void setUnmarshalListener(javax.xml.bind.Unmarshaller.Listener listener) {
+		this.unmarshalListener = listener;
 	}
 
 }

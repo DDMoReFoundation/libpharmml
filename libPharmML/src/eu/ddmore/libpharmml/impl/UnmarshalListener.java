@@ -9,18 +9,23 @@ import java.util.Map;
 
 import javax.xml.bind.Unmarshaller.Listener;
 
+import eu.ddmore.libpharmml.IdFactory;
+import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.exceptions.AnnotationException;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
+import eu.ddmore.libpharmml.validation.exceptions.DuplicateIdentifierException;
 import static eu.ddmore.libpharmml.impl.Utils.*;
 
 public class UnmarshalListener extends Listener {
 	
 	private PharmMLVersion docVersion;
+	private final IdFactory idFactory;
 	
-	public UnmarshalListener(PharmMLVersion docVersion){
+	public UnmarshalListener(PharmMLVersion docVersion, IdFactory idFactory){
 		this.docVersion = docVersion;
+		this.idFactory = idFactory;
 	}
 
 	@Override
@@ -67,6 +72,18 @@ public class UnmarshalListener extends Listener {
 				throw new AnnotationException(target, "1 field does not exist.");
 			}
 			
+		}
+		
+		// Storing id if present
+		if(target instanceof Identifiable){
+			if(((Identifiable) target).getId() != null){
+				try {
+					idFactory.storeIdentifiable((Identifiable) target);
+					LoggerWrapper.getLogger().info("Stored object with id \""+ ((Identifiable) target).getId() +"\"");
+				} catch (DuplicateIdentifierException e) {
+					LoggerWrapper.getLogger().warning("Identifier \""+ e.getDuplicate().getId() +"\" is duplicate.");
+				}
+			}
 		}
 	}
 

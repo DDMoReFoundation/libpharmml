@@ -50,4 +50,16 @@ public interface IPharmMLResource {
 	 */
 	Object find(String id);
 	
+	/**
+	 * Gets the id factory that is used by this resource.
+	 * @return An {@link IdFactory} implementation.
+	 */
+	IdFactory getIdFactory();
+	
+	/**
+	 * Sets the id factory used by this resource.
+	 * @param idFactory An {@link IdFactory} implementation.
+	 */
+	void setIdFactory(IdFactory idFactory);
+	
 }

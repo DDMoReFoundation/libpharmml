@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import javax.management.RuntimeErrorException;
 import javax.xml.bind.JAXBElement;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.stream.StreamSource;
@@ -38,7 +37,7 @@ import eu.ddmore.libpharmml.ILibPharmML;
 import eu.ddmore.libpharmml.IMarshaller;
 import eu.ddmore.libpharmml.IPharmMLResource;
 import eu.ddmore.libpharmml.IPharmMLValidator;
-import eu.ddmore.libpharmml.IValidationReport;
+import eu.ddmore.libpharmml.IdFactory;
 import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
@@ -47,7 +46,6 @@ import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterModel;
 import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.StructuralModel;
-import eu.ddmore.libpharmml.validation.PharmMLElementWrapper;
 
 public class LibPharmMLImpl implements ILibPharmML {
 	private static final String DEFAULT_NAME = "Stub Model";
@@ -61,6 +59,20 @@ public class LibPharmMLImpl implements ILibPharmML {
 	public void save(OutputStream opStr, IPharmMLResource resource) {
 		// Set the correct written version that we are compliant with.
 //		resource.getDom().setWrittenVersion(WRITTEN_VERSION);
+		
+		if(resource.getDom().getWrittenVersion() == null){
+			throw new RuntimeException("writtenVersion attribute must be set to the root element.");
+		}
+		
+		PharmMLVersion version = PharmMLVersion.getEnum(resource.getDom().getWrittenVersion());
+		MarshalListener mListener;
+		if(version != null){
+			mListener = new MarshalListener(version,resource.getIdFactory());
+		} else {
+			throw new RuntimeException("Unknown or unsupported PharmML written version ("+resource.getDom().getWrittenVersion()+")");
+		}
+		this.marshaller.setMarshalListener(mListener);
+		
 		this.marshaller.marshall(resource.getDom(), opStr);
 	}
 
@@ -101,27 +113,14 @@ public class LibPharmMLImpl implements ILibPharmML {
 		validator.validate(new StreamSource(bais));
 		bais.reset();
 		
+		IdFactory idFactory = new IdFactoryImpl();
+		
+		this.marshaller.setUnmarshalListener(
+				new UnmarshalListener(currentDocVersion, idFactory));
+		
 		final PharmML dom = this.marshaller.unmarshall(bais,currentDocVersion);
-		IPharmMLResource retVal = new IPharmMLResource() {
-			@Override
-			public PharmML getDom() {
-				return dom;
-			}
-			@Override
-			public IValidationReport getCreationReport() {
-				return repFact.createReport();
-			}
-			@Override
-			public Object find(String id) {
-				PharmMLElementWrapper wrappedDom = new PharmMLElementWrapper(getDom());
-				PharmMLElementWrapper foundWrappedEl = Utils.findById(wrappedDom, id);
-				if(foundWrappedEl != null){
-					return foundWrappedEl.getElement();
-				} else {
-					return null;
-				}
-			}
-		};
+		IPharmMLResource retVal = new PharmMLResourceImpl(dom,repFact.createReport());
+		retVal.setIdFactory(idFactory);
 		return retVal;
 		
 		} catch (XMLStreamException e) {
@@ -163,34 +162,35 @@ public class LibPharmMLImpl implements ILibPharmML {
 		varType.setSymbolType(SymbolType.REAL);
 		JAXBElement<VariableDefinition> var1 = commonFact.createVariable(varType);
 		structModel.getCommonVariable().add(var1);
-		mdt.getParameterModel().add(pm);
-		mdt.getStructuralModel().add(structModel);
+		mdt.getListOfParameterModel().add(pm);
+		mdt.getListOfStructuralModel().add(structModel);
 		mdefnFact.createModelDefinition(mdt);
 		dom.setModelDefinition(mdt);
 		final ValidationReportFactory repFact = new ValidationReportFactory();
-		return new IPharmMLResource() {
-			
-			@Override
-			public PharmML getDom() {
-				return dom;
-			}
-			
-			@Override
-			public IValidationReport getCreationReport() {
-				return repFact.createReport();
-			}
-			
-			@Override
-			public Object find(String id) {
-				PharmMLElementWrapper wrappedDom = new PharmMLElementWrapper(getDom());
-				PharmMLElementWrapper foundWrappedEl = Utils.findById(wrappedDom, id);
-				if(foundWrappedEl != null){
-					return foundWrappedEl.getElement();
-				} else {
-					return null;
-				}
-			}
-		};
+		return new PharmMLResourceImpl(dom, repFact.createReport());
+//		return new IPharmMLResource() {
+//			
+//			@Override
+//			public PharmML getDom() {
+//				return dom;
+//			}
+//			
+//			@Override
+//			public IValidationReport getCreationReport() {
+//				return repFact.createReport();
+//			}
+//			
+//			@Override
+//			public Object find(String id) {
+//				PharmMLElementWrapper wrappedDom = new PharmMLElementWrapper(getDom());
+//				PharmMLElementWrapper foundWrappedEl = Utils.findById(wrappedDom, id);
+//				if(foundWrappedEl != null){
+//					return foundWrappedEl.getElement();
+//				} else {
+//					return null;
+//				}
+//			}
+//		};
 	}
 
 	@Override

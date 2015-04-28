@@ -12,6 +12,8 @@ import java.util.Map;
 
 import javax.xml.bind.Marshaller.Listener;
 
+import eu.ddmore.libpharmml.IdFactory;
+import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.exceptions.AnnotationException;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
@@ -19,9 +21,11 @@ import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 public class MarshalListener extends Listener {
 	
 	PharmMLVersion marshalVersion;
+	private IdFactory idFactory;
 	
-	public MarshalListener(PharmMLVersion version){
+	public MarshalListener(PharmMLVersion version,IdFactory idFactory){
 		this.marshalVersion = version;
+		this.idFactory = idFactory;
 	}
 	
 	public PharmMLVersion getMarshalVersion(){
@@ -66,6 +70,13 @@ public class MarshalListener extends Listener {
 				throw new AnnotationException(source, "1 field does not exist.");
 			}
 			
+		}
+		
+		if(source instanceof Identifiable){
+			if(((Identifiable) source).getId() == null){
+				String id = idFactory.generateAndStoreIdentifiable((Identifiable) source);
+				LoggerWrapper.getLogger().info("Assigning id \""+id+"\" to "+source.getClass()+".");
+			}
 		}
 		
 	}

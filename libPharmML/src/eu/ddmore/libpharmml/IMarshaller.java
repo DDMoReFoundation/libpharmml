@@ -36,4 +36,12 @@ public interface IMarshaller {
 
 	IErrorHandler getErrorHandler();
 	
+	javax.xml.bind.Marshaller.Listener getMarshalListener();
+	
+	void setMarshalListener(javax.xml.bind.Marshaller.Listener listener);
+	
+	javax.xml.bind.Unmarshaller.Listener getUnmarshalListener();
+	
+	void setUnmarshalListener(javax.xml.bind.Unmarshaller.Listener listener);
+	
 }
