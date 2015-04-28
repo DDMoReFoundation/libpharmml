@@ -41,11 +41,14 @@ import eu.ddmore.libpharmml.dom.PharmML;
 public class MarshallerImpl implements IMarshaller {
 	private static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
 	private IErrorHandler errorHandler;
-	private javax.xml.bind.Marshaller.Listener marshalListener;
-	private javax.xml.bind.Unmarshaller.Listener unmarshalListener;
-
+	
 	@Override
 	public void marshall(PharmML dom, OutputStream os) {
+		marshall(dom, os, null);
+	}
+
+	@Override
+	public void marshall(PharmML dom, OutputStream os, Listener mListener) {
 		try {
 			JAXBContext context = JAXBContext.newInstance(CONTEXT_NAME);
 			
@@ -62,7 +65,7 @@ public class MarshallerImpl implements IMarshaller {
 //			}
 			Marshaller m = context.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-			m.setListener(marshalListener);
+			m.setListener(mListener);
 			
 			// TODO: use a proper XML writer. Use last version as default one.
 			if(version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
@@ -118,7 +121,12 @@ public class MarshallerImpl implements IMarshaller {
 	}
 	
 	@Override
-	public PharmML unmarshall(InputStream is, PharmMLVersion version) {
+	public PharmML unmarshall(InputStream in, PharmMLVersion version) {
+		return unmarshall(in, version, null);
+	}
+	
+	@Override
+	public PharmML unmarshall(InputStream is, PharmMLVersion version, javax.xml.bind.Unmarshaller.Listener uListener) {
 		try {
 //			String packageName = PharmML.class.getPackage().getName();
 			JAXBContext context = JAXBContext.newInstance(CONTEXT_NAME);
@@ -147,7 +155,7 @@ public class MarshallerImpl implements IMarshaller {
 //			Schema mySchema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(version);
 //			u.setSchema(mySchema);
 			
-			u.setListener(unmarshalListener);
+			u.setListener(uListener);
 			
 			XMLStreamReader xmlsr = new XMLFilter(version).getXMLStreamReader(is);
 			
@@ -201,26 +209,6 @@ public class MarshallerImpl implements IMarshaller {
 		}		
 		baos.flush();	
 		return baos.toByteArray();
-	}
-
-	@Override
-	public Listener getMarshalListener() {
-		return marshalListener;
-	}
-
-	@Override
-	public void setMarshalListener(Listener listener) {
-		this.marshalListener = listener;
-	}
-
-	@Override
-	public javax.xml.bind.Unmarshaller.Listener getUnmarshalListener() {
-		return unmarshalListener;
-	}
-
-	@Override
-	public void setUnmarshalListener(javax.xml.bind.Unmarshaller.Listener listener) {
-		this.unmarshalListener = listener;
 	}
 
 }

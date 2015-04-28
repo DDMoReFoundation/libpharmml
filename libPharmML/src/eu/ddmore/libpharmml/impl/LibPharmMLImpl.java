@@ -71,9 +71,8 @@ public class LibPharmMLImpl implements ILibPharmML {
 		} else {
 			throw new RuntimeException("Unknown or unsupported PharmML written version ("+resource.getDom().getWrittenVersion()+")");
 		}
-		this.marshaller.setMarshalListener(mListener);
 		
-		this.marshaller.marshall(resource.getDom(), opStr);
+		this.marshaller.marshall(resource.getDom(), opStr, mListener);
 	}
 
 	@Override
@@ -115,10 +114,8 @@ public class LibPharmMLImpl implements ILibPharmML {
 		
 		IdFactory idFactory = new IdFactoryImpl();
 		
-		this.marshaller.setUnmarshalListener(
+		final PharmML dom = this.marshaller.unmarshall(bais,currentDocVersion,
 				new UnmarshalListener(currentDocVersion, idFactory));
-		
-		final PharmML dom = this.marshaller.unmarshall(bais,currentDocVersion);
 		IPharmMLResource retVal = new PharmMLResourceImpl(dom,repFact.createReport());
 		retVal.setIdFactory(idFactory);
 		return retVal;

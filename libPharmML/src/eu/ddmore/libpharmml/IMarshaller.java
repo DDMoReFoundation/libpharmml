@@ -21,27 +21,25 @@ package eu.ddmore.libpharmml;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import javax.xml.bind.Marshaller.Listener;
+
 import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 public interface IMarshaller {
 
 	void marshall(PharmML dom, OutputStream os);
+	
+	void marshall(PharmML dom, OutputStream os, Listener mListener);
 
 	PharmML unmarshall(InputStream in);
 	
 	PharmML unmarshall(InputStream in, PharmMLVersion version);
+	
+	PharmML unmarshall(InputStream in, PharmMLVersion version, javax.xml.bind.Unmarshaller.Listener uListener);
 
 	void setErrorHandler(IErrorHandler errHandler);
 
 	IErrorHandler getErrorHandler();
-	
-	javax.xml.bind.Marshaller.Listener getMarshalListener();
-	
-	void setMarshalListener(javax.xml.bind.Marshaller.Listener listener);
-	
-	javax.xml.bind.Unmarshaller.Listener getUnmarshalListener();
-	
-	void setUnmarshalListener(javax.xml.bind.Unmarshaller.Listener listener);
 	
 }
