@@ -18,8 +18,8 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml;
 
+import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.dom.PharmML;
-import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 public interface IPharmMLResource {
 	
@@ -44,16 +44,30 @@ public interface IPharmMLResource {
 	IValidationReport getCreationReport();
 	
 	/**
-	 * Browses the whole DOM tree of this PharmML resource and tries to find the element
-	 * with the provided identifier. The identifier corresponds to the "id" attribute,
-	 * accessible though {@link PharmMLRootType#getId()}. If the searched id is duplicated,
-	 * only the first occurence will be returned. The validity of the PharmML resource should
-	 * be checked before.
+	 * Gets the element with the given identifier, i.e. the element which the value of the 
+	 * id attribute matches the provided one. Can only be found the elements that are stored
+	 * in the id factory of the resource. It means that elements needs to be either unmarshalled,
+	 * marshalled or explicitely stored in the id factory in order to be found.
+	 * 
+	 * <p>The 3rd option can be achieved as follows:
+	 * <pre>
+	 * {@code
+	 * identifiable.setId("i1");
+	 * resource.getIdFactory().storeIdentifiable(identifiable);
+	 * }
+	 * </pre>
+	 * 
+	 * <p>If the id can't be found, this method returns null. If more than 1 element has the given id,
+	 * the first occurence that was stored will be returned. Be careful to have a valid model while
+	 * using this method.
+	 * 
+	 * <p>If the resource does not have any id factory, the DOM tree will be browsed entirely, which can
+	 * be slow. This situation should never happen though.
+	 * 
 	 * @param id The identifier of the wanted element.
-	 * @return The object that matches the provided id. Returns <b>null</b> if the provided id is not 
-	 * found.
+	 * @return The found element. null if it does not exist.
 	 */
-	Object find(String id);
+	Identifiable find(String id);
 	
 	/**
 	 * Gets the id factory that is used by this resource.
