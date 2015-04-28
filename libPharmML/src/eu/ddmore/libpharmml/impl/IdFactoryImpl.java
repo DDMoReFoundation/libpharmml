@@ -28,13 +28,14 @@ public class IdFactoryImpl implements IdFactory {
 	
 	/**
 	 * Stores the given identifiable element, which must have a defined id.
+	 * If the given element is already stored, nothing will be done.
 	 * @param element The element to store.
-	 * @throws DuplicateIdentifierException If a identifiable element has already been
+	 * @throws DuplicateIdentifierException If a different identifiable element has already been
 	 * stored with the same id.
 	 */
 	public void storeIdentifiable(Identifiable element) throws DuplicateIdentifierException{
 		String id = element.getId();
-		if(table.containsKey(id)){
+		if(table.containsKey(id) && !table.get(id).equals(element)){
 			throw new DuplicateIdentifierException(table.get(id));
 		}
 		Matcher matcher = idPattern.matcher(id);
