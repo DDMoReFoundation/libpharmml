@@ -64,13 +64,17 @@ public class LibPharmMLImpl implements ILibPharmML {
 			throw new RuntimeException("writtenVersion attribute must be set to the root element.");
 		}
 		
+		IdFactory idFactory = resource.getIdFactory();
+		
 		PharmMLVersion version = PharmMLVersion.getEnum(resource.getDom().getWrittenVersion());
 		MarshalListener mListener;
 		if(version != null){
-			mListener = new MarshalListener(version,resource.getIdFactory());
+			mListener = new MarshalListener(version,idFactory);
 		} else {
 			throw new RuntimeException("Unknown or unsupported PharmML written version ("+resource.getDom().getWrittenVersion()+")");
 		}
+		
+		mListener.autosetId(resource.getParameter(IPharmMLResource.AUTOSET_ID));
 		
 		this.marshaller.marshall(resource.getDom(), opStr, mListener);
 	}

@@ -23,6 +23,8 @@ public class MarshalListener extends Listener {
 	PharmMLVersion marshalVersion;
 	private IdFactory idFactory;
 	
+	private boolean autoset_id = true;
+	
 	public MarshalListener(PharmMLVersion version,IdFactory idFactory){
 		this.marshalVersion = version;
 		this.idFactory = idFactory;
@@ -72,7 +74,7 @@ public class MarshalListener extends Listener {
 			
 		}
 		
-		if(source instanceof Identifiable){
+		if(source instanceof Identifiable && autoset_id){
 			if(((Identifiable) source).getId() == null){
 				String id = idFactory.generateAndStoreIdentifiable((Identifiable) source);
 				LoggerWrapper.getLogger().info("Assigning id \""+id+"\" to "+source.getClass()+".");
@@ -86,5 +88,8 @@ public class MarshalListener extends Listener {
 		super.afterMarshal(source);
 	}
 	
+	public void autosetId(boolean b){
+		autoset_id = b;
+	}
 
 }

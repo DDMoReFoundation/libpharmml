@@ -22,6 +22,11 @@ import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 public interface IPharmMLResource {
+	
+	/**
+	 * Autosetting identifiers during marshalling. Default value is true.
+	 */
+	public final static String AUTOSET_ID = "pharmmlresource.param.autoset_id";
 
 	/**
 	 * Gets the Domain Object Model of the PharmML resource.
@@ -61,5 +66,19 @@ public interface IPharmMLResource {
 	 * @param idFactory An {@link IdFactory} implementation.
 	 */
 	void setIdFactory(IdFactory idFactory);
+	
+	/**
+	 * Sets a value to the given parameter for this resource.
+	 * @param param The parameter name.
+	 * @param value The value as a {@link Boolean}.
+	 */
+	void setParameter(String param, Boolean value);
+	
+	/**
+	 * Gets the value of the given parameter.
+	 * @param argument The name of the argument.
+	 * @return The value of the parameter as a {@link Boolean}.
+	 */
+	Boolean getParameter(String argument);
 	
 }
