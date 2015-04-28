@@ -17,6 +17,7 @@ import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.exceptions.AnnotationException;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
+import eu.ddmore.libpharmml.validation.exceptions.DuplicateIdentifierException;
 
 public class MarshalListener extends Listener {
 	
@@ -74,10 +75,16 @@ public class MarshalListener extends Listener {
 			
 		}
 		
-		if(source instanceof Identifiable && autoset_id){
-			if(((Identifiable) source).getId() == null){
+		if(source instanceof Identifiable){
+			if(((Identifiable) source).getId() == null && autoset_id){
 				String id = idFactory.generateAndStoreIdentifiable((Identifiable) source);
 				LoggerWrapper.getLogger().info("Assigning id \""+id+"\" to "+source.getClass()+".");
+			} else {
+				try {
+					idFactory.storeIdentifiable((Identifiable) source);
+				} catch (DuplicateIdentifierException e) {
+					LoggerWrapper.getLogger().warning("Attempt to store a duplicate identifier ("+e.getDuplicate().getId()+").");
+				}
 			}
 		}
 		
