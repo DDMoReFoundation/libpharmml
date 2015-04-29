@@ -37,8 +37,10 @@ public class PharmMLVersionFactory {
 		switch(version){
 		case V0_2_1:
 			return "examples/0_2_1";
-		default:
+		case V0_3:
 			return "examples/0_3";
+		default:
+			return "examples/0_6";
 		}
 	}
 	
