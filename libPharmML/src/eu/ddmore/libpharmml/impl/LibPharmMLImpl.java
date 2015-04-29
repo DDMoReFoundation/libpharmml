@@ -120,8 +120,7 @@ public class LibPharmMLImpl implements ILibPharmML {
 		
 		final PharmML dom = this.marshaller.unmarshall(bais,currentDocVersion,
 				new UnmarshalListener(currentDocVersion, idFactory));
-		IPharmMLResource retVal = new PharmMLResourceImpl(dom,repFact.createReport());
-		retVal.setIdFactory(idFactory);
+		IPharmMLResource retVal = new PharmMLResourceImpl(dom,repFact.createReport(),idFactory);
 		return retVal;
 		
 		} catch (XMLStreamException e) {
@@ -168,7 +167,7 @@ public class LibPharmMLImpl implements ILibPharmML {
 		mdefnFact.createModelDefinition(mdt);
 		dom.setModelDefinition(mdt);
 		final ValidationReportFactory repFact = new ValidationReportFactory();
-		return new PharmMLResourceImpl(dom, repFact.createReport());
+		return new PharmMLResourceImpl(dom, repFact.createReport(),new IdFactoryImpl());
 //		return new IPharmMLResource() {
 //			
 //			@Override

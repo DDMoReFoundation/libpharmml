@@ -18,9 +18,10 @@ public class PharmMLResourceImpl implements IPharmMLResource {
 	
 	private final Map<String,Boolean> parameters;
 	
-	PharmMLResourceImpl(PharmML dom, IValidationReport creationReport) {
+	PharmMLResourceImpl(PharmML dom, IValidationReport creationReport, IdFactory idFactory) {
 		this.dom = dom;
 		this.creationReport = creationReport;
+		this.idFactory = idFactory;
 		
 		// Options
 		parameters = new Hashtable<String, Boolean>();
