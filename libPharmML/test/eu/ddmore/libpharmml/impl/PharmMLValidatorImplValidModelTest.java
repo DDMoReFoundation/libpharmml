@@ -45,7 +45,7 @@ public class PharmMLValidatorImplValidModelTest {
 	public PharmMLValidatorImplValidModelTest(PharmMLVersion version){
 		this.testInstance = new PharmMLValidatorImpl();
 		final PharmML dom = TestDomFactory.createValidModel(version); 
-		this.validResource = new PharmMLResourceImpl(dom, null);
+		this.validResource = new PharmMLResourceImpl(dom, null, new IdFactoryImpl());
 	}
 	
 	@Parameters

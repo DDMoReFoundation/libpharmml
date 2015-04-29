@@ -40,7 +40,7 @@ public class PharmMLValidatorImplInvalidModelTest {
 	public void setUp() throws Exception {
 		this.testInstance = new PharmMLValidatorImpl();
 		final PharmML dom = TestDomFactory.createInvalidModel(); 
-		this.inValidResource = new PharmMLResourceImpl(dom, null);
+		this.inValidResource = new PharmMLResourceImpl(dom, null,new IdFactoryImpl());
 	}
 
 	@After

@@ -40,6 +40,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.dom.PharmML;
+import eu.ddmore.libpharmml.impl.IdFactoryImpl;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 @RunWith(Parameterized.class)
@@ -69,6 +70,7 @@ public class LibPharmMLValidIntegrationTest {
 
 	private IPharmMLResource createValidResource(PharmMLVersion version) throws IOException{
 		final PharmML dom = TestDomFactory.createValidModel(version);
+		final IdFactory idFactory = new IdFactoryImpl();
 		final List<IValidationError> errList = Collections.emptyList();
 		IPharmMLResource res = new IPharmMLResource() {
 			@Override
@@ -102,7 +104,7 @@ public class LibPharmMLValidIntegrationTest {
 			}
 			@Override
 			public IdFactory getIdFactory() {
-				return null;
+				return idFactory;
 			}
 			@Override
 			public void setIdFactory(IdFactory idFactory) {				

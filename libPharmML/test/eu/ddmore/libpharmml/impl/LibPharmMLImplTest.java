@@ -65,9 +65,9 @@ public class LibPharmMLImplTest {
 		this.version = version;
 		final ValidationReportFactory rptFact = new ValidationReportFactory();
 		this.validResource = new PharmMLResourceImpl(
-				TestDomFactory.createValidModel(PharmMLVersion.DEFAULT), rptFact.createReport());
+				TestDomFactory.createValidModel(version), rptFact.createReport(), new IdFactoryImpl());
 		this.invalidResource = new PharmMLResourceImpl(
-				TestDomFactory.createInvalidModel(), rptFact.createReport());
+				TestDomFactory.createInvalidModel(), rptFact.createReport(), new IdFactoryImpl());
 	}
 	
 	@Parameters

@@ -26,16 +26,17 @@ import java.io.InputStream;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.bind.Unmarshaller.Listener;
-import javax.xml.validation.Schema;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 
 import eu.ddmore.libpharmml.dom.PharmML;
-import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.StructuralModel;
+import eu.ddmore.libpharmml.impl.IdFactoryImpl;
 import eu.ddmore.libpharmml.impl.Messages;
-import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
+import eu.ddmore.libpharmml.impl.UnmarshalListener;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 public class TestDomFactory {
 	private static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
@@ -43,6 +44,7 @@ public class TestDomFactory {
 	public static PharmML createInvalidModel(){
 		eu.ddmore.libpharmml.dom.ObjectFactory fact = new eu.ddmore.libpharmml.dom.ObjectFactory();
 		PharmML dom = fact.createPharmML();
+		dom.setWrittenVersion(PharmMLVersion.DEFAULT.getValue());
 		eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory mdefnFact = new eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory();
 		ModelDefinition mdt = mdefnFact.createModelDefinitionType();
 		StructuralModel stm = mdefnFact.createStructuralModelType();
@@ -54,31 +56,38 @@ public class TestDomFactory {
 	}
 	
 	public static PharmML createValidModel(final PharmMLVersion version){
+		// TODO: include schema validation
 		try {
-			Schema mySchema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(version);
+//			Schema mySchema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(version);
 			String exampleDir = PharmMLVersionFactory.getExampleDir(version);
-		InputStream is = new FileInputStream(new File(exampleDir+"/example1.xml"));
+			File file = new File(exampleDir+"/example1.xml");
+		InputStream is = new FileInputStream(file);
 //		String packageName = PharmML.class.getPackage().getName();
 		JAXBContext context = JAXBContext.newInstance(CONTEXT_NAME);
 		Unmarshaller u = context.createUnmarshaller();
-		u.setSchema(mySchema);
+//		u.setSchema(mySchema);
 		// Store version info into each element
-		Listener listener = new Listener() {
-			@Override
-			public void beforeUnmarshal(Object target, Object parent) {
-				if(target instanceof PharmMLElement){
-					((PharmMLElement)target).setUnmarshalVersion(version);
-				}
-			}
-		};
-		u.setListener(listener);
-		PharmML doc = (PharmML)u.unmarshal(is);
+//		Listener listener = new Listener() {
+//			@Override
+//			public void beforeUnmarshal(Object target, Object parent) {
+//				if(target instanceof PharmMLElement){
+//					((PharmMLElement)target).setUnmarshalVersion(version);
+//				}
+//			}
+//		};
+		u.setListener(new UnmarshalListener(version, new IdFactoryImpl()));
+		
+		XMLStreamReader xmlsr = new XMLFilter(version).getXMLStreamReader(is);
+		
+		PharmML doc = (PharmML)u.unmarshal(xmlsr);
 		return doc;
 		} catch (IOException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} catch (JAXBException e) {
 			throw new RuntimeException(e.getMessage(), e);
-        }
+        } catch (XMLStreamException e) {
+        	throw new RuntimeException(e.getMessage(), e);
+		}
 	}
 	
 }
