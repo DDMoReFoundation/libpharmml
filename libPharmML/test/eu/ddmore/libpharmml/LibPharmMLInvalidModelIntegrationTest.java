@@ -32,6 +32,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.dom.PharmML;
 
 public class LibPharmMLInvalidModelIntegrationTest {
@@ -69,6 +70,24 @@ public class LibPharmMLInvalidModelIntegrationTest {
 			}
 			@Override
 			public IValidationReport getCreationReport() {
+				return null;
+			}
+			@Override
+			public Identifiable find(String id) {
+				return null;
+			}
+			@Override
+			public IdFactory getIdFactory() {
+				return null;
+			}
+			@Override
+			public void setIdFactory(IdFactory idFactory) {				
+			}
+			@Override
+			public void setParameter(String param, Boolean value) {
+			}
+			@Override
+			public Boolean getParameter(String argument) {
 				return null;
 			}
 		};

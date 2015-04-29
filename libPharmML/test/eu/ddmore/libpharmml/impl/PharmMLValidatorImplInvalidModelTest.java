@@ -40,18 +40,7 @@ public class PharmMLValidatorImplInvalidModelTest {
 	public void setUp() throws Exception {
 		this.testInstance = new PharmMLValidatorImpl();
 		final PharmML dom = TestDomFactory.createInvalidModel(); 
-		this.inValidResource = new IPharmMLResource() {
-			
-			@Override
-			public PharmML getDom() {
-				return dom;
-			}
-			
-			@Override
-			public IValidationReport getCreationReport() {
-				return null;
-			}
-		};
+		this.inValidResource = new PharmMLResourceImpl(dom, null);
 	}
 
 	@After

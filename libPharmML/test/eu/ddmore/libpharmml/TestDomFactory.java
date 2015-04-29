@@ -47,7 +47,7 @@ public class TestDomFactory {
 		ModelDefinition mdt = mdefnFact.createModelDefinitionType();
 		StructuralModel stm = mdefnFact.createStructuralModelType();
 		stm.setBlkId("main");
-		mdt.getStructuralModel().add(stm);
+		mdt.getListOfStructuralModel().add(stm);
 		mdefnFact.createModelDefinition(mdt);
 		dom.setModelDefinition(mdt);
 		return dom;

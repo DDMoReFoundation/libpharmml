@@ -38,6 +38,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
@@ -94,6 +95,24 @@ public class LibPharmMLValidIntegrationTest {
 						return errList.iterator();
 					}
 				};
+			}
+			@Override
+			public Identifiable find(String id) {
+				return null;
+			}
+			@Override
+			public IdFactory getIdFactory() {
+				return null;
+			}
+			@Override
+			public void setIdFactory(IdFactory idFactory) {				
+			}
+			@Override
+			public void setParameter(String param, Boolean value) {				
+			}
+			@Override
+			public Boolean getParameter(String argument) {
+				return null;
 			}
 		};
 		return res;

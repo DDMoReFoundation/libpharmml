@@ -48,7 +48,6 @@ import eu.ddmore.libpharmml.IPharmMLValidator;
 import eu.ddmore.libpharmml.IValidationReport;
 import eu.ddmore.libpharmml.PharmMLVersionFactory;
 import eu.ddmore.libpharmml.TestDomFactory;
-import eu.ddmore.libpharmml.dom.PharmML;
 
 @RunWith(Parameterized.class)
 public class LibPharmMLImplTest {
@@ -65,30 +64,10 @@ public class LibPharmMLImplTest {
 		this.testInstance.setMarshaller(new MarshallerImpl());
 		this.version = version;
 		final ValidationReportFactory rptFact = new ValidationReportFactory();
-		this.validResource = new IPharmMLResource() {
-
-			@Override
-			public PharmML getDom() {
-				return TestDomFactory.createValidModel(version);
-			}
-
-			@Override
-			public IValidationReport getCreationReport() {
-				return rptFact.createReport();
-			}
-		};
-		this.invalidResource = new IPharmMLResource() {
-
-			@Override
-			public PharmML getDom() {
-				return TestDomFactory.createInvalidModel();
-			}
-
-			@Override
-			public IValidationReport getCreationReport() {
-				return rptFact.createReport();
-			}
-		};
+		this.validResource = new PharmMLResourceImpl(
+				TestDomFactory.createValidModel(PharmMLVersion.DEFAULT), rptFact.createReport());
+		this.invalidResource = new PharmMLResourceImpl(
+				TestDomFactory.createInvalidModel(), rptFact.createReport());
 	}
 	
 	@Parameters
