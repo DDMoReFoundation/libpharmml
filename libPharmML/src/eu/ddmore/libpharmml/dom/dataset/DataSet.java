@@ -30,6 +30,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -52,6 +53,7 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile.Delimiter;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.ValidationErrorImpl;
+import eu.ddmore.libpharmml.util.SubList;
 import eu.ddmore.libpharmml.util.Util;
 import eu.ddmore.libpharmml.util.WrappedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
@@ -291,6 +293,7 @@ public class DataSet
         this.externalFile = value;
     }
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public List<IValidationError> validate() {
 		List<IValidationError> errors = new ArrayList<IValidationError>();
@@ -334,9 +337,20 @@ public class DataSet
 				if(row.size() != colNum){
 					DS8 = true;
 				}
+				List<Scalar> listOfValue;
+				if(getUnmarshalVersion() != null && getUnmarshalVersion().equals(PharmMLVersion.V0_2_1)){
+					listOfValue = new ArrayList<Scalar>();
+					for(JAXBElement<?> jaxbEl : row.getScalarOrTable()){
+						if(jaxbEl.getValue() instanceof Scalar){
+							listOfValue.add((Scalar) jaxbEl.getValue());
+						}
+					}
+				} else {
+					listOfValue = row.getListOfValue();
+				}
 				for(int i=0;i<colNum;i++){
 					try{
-						Scalar cell = row.getListOfValue().get(i);
+						Scalar cell = listOfValue.get(i);
 //						SymbolTypeType columnDataType = colDef.getColumn().get(i).getValueType();
 						SymbolType columnDataType = getListOfColumnDefinition().get(i).getValueType();
 						if(!cell.getClass().equals(columnDataType.getDataType())){
@@ -371,7 +385,7 @@ public class DataSet
 //		}
 		if(DS8){
 			errors.add(new ValidationErrorImpl("DS8",
-					"Each row must define a cell for each column.",
+					"Each row must define a cell for each column (column n:"+colNum+").",
 					this));
 		}
 		
@@ -433,6 +447,7 @@ public class DataSet
 
 	static class ColumnDefinitionAdapter extends XmlAdapter<ColumnsDefinitionType, WrappedList<ColumnDefinition>>{
 
+		@SuppressWarnings("deprecation")
 		@Override
 		public WrappedList<ColumnDefinition> unmarshal(ColumnsDefinitionType v) throws Exception {
 			if(v == null){
@@ -441,6 +456,7 @@ public class DataSet
 				WrappedList<ColumnDefinition> wrappedList = new WrappedList<ColumnDefinition>();
 				Util.cloneRoot(v, wrappedList);
 				wrappedList.addAll(v.getColumn());
+				wrappedList.addAll(new SubList<ColumnDefinition>(v.getColumnOrTable(), ColumnDefinition.class));
 				return wrappedList;
 			}
 		}
