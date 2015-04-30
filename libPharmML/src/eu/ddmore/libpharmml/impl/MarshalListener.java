@@ -75,7 +75,7 @@ public class MarshalListener extends Listener {
 			
 		}
 		
-		if(source instanceof Identifiable){
+		if(source instanceof Identifiable && marshalVersion.isEqualOrLaterThan(PharmMLVersion.V0_6)){
 			if(((Identifiable) source).getId() == null && autoset_id){
 				String id = idFactory.generateAndStoreIdentifiable((Identifiable) source);
 				LoggerWrapper.getLogger().info("Assigning id \""+id+"\" to "+source.getClass()+".");
