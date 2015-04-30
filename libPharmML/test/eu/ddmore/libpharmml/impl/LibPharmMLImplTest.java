@@ -23,15 +23,13 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Collection;
 
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Schema;
-import javax.xml.validation.Validator;
 
 import org.junit.After;
 import org.junit.Test;
@@ -88,7 +86,7 @@ public class LibPharmMLImplTest {
 		OutputStream os = new FileOutputStream(tmpFile);
 		this.testInstance.save(os, validResource);
 		os.close();
-		assertTrue("Valid doc", checkFileIsValid(tmpFile));
+		assertTrue("Valid doc: "+tmpFile+" ("+version+")", checkFileIsValid(tmpFile));
 	}
 
 	@Test
@@ -98,17 +96,13 @@ public class LibPharmMLImplTest {
 		OutputStream os = new FileOutputStream(tmpFile);
 		this.testInstance.save(os, invalidResource);
 		os.close();
-		assertFalse("Invalid doc", checkFileIsValid(tmpFile));
+		assertFalse("Invalid doc"+tmpFile+" ("+version+")", checkFileIsValid(tmpFile));
 	}
 
 	private boolean checkFileIsValid(File tmpFile) throws IOException, SAXException, ParserConfigurationException {
-		Schema s = PharmMLSchemaFactory.getInstance().createPharmMlSchema(version);
-		Validator v = s.newValidator();
-		StreamSource instanceDocument = new StreamSource(tmpFile);
-		ValidationErrorHander validnHandler = new ValidationErrorHander();
-		v.setErrorHandler(validnHandler);
-		v.validate(instanceDocument);
-		return validnHandler.isValid();
+		IPharmMLResource res = testInstance.createDomFromResource(new FileInputStream(tmpFile));
+		IValidationReport valRep = testInstance.getValidator().createValidationReport(res);
+		return valRep.isValid();
 	}
 
 	@Test
