@@ -25,13 +25,6 @@ import java.io.OutputStream;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.stream.XMLStreamException;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Schema;
-import javax.xml.validation.Validator;
-
-import org.xml.sax.ErrorHandler;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
 
 import eu.ddmore.libpharmml.ILibPharmML;
 import eu.ddmore.libpharmml.IMarshaller;
@@ -46,7 +39,6 @@ import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterModel;
 import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.StructuralModel;
-import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory.NamespaceType;
 
 public class LibPharmMLImpl implements ILibPharmML {
 	private static final String DEFAULT_NAME = "Stub Model";
@@ -94,29 +86,6 @@ public class LibPharmMLImpl implements ILibPharmML {
 		currentDocVersion = MarshallerImpl.parseVersion(bais);
 		bais.reset();
 		
-		// Validating stream with schemas
-		Schema schema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(currentDocVersion,NamespaceType.OLD);
-		Validator validator = schema.newValidator();
-		validator.setErrorHandler(new ErrorHandler() {
-			
-			@Override
-			public void warning(SAXParseException exception) throws SAXException {
-				repFact.handleWarning(exception.getMessage());
-			}
-			
-			@Override
-			public void fatalError(SAXParseException exception) throws SAXException {
-				repFact.handleError(exception.getMessage());
-			}
-			
-			@Override
-			public void error(SAXParseException exception) throws SAXException {
-				repFact.handleError(exception.getMessage());
-			}
-		});
-		validator.validate(new StreamSource(bais));
-		bais.reset();
-		
 		IdFactory idFactory = new IdFactoryImpl();
 		
 		final PharmML dom = this.marshaller.unmarshall(bais,currentDocVersion,
@@ -127,8 +96,6 @@ public class LibPharmMLImpl implements ILibPharmML {
 		} catch (XMLStreamException e) {
 			throw new RuntimeException(e);
 		} catch (IOException e) {
-			throw new RuntimeException(e);
-		} catch (SAXException e) {
 			throw new RuntimeException(e);
 		}
 	}

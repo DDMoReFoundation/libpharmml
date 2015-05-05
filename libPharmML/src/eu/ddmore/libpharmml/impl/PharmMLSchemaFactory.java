@@ -57,6 +57,7 @@ public class PharmMLSchemaFactory {
 			String catalogLocation;
 			if(type.equals(NamespaceType.OLD) 
 					&& version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
+				// Use old_ns directory for schemas
 				catalogLocation = version.getOldCatalogLocation();
 			} else {
 				catalogLocation = version.getCatalogLocation();
@@ -65,11 +66,11 @@ public class PharmMLSchemaFactory {
 			String[] catalogs = { url.toExternalForm() };
 			XMLCatalogResolver resolver = new XMLCatalogResolver();
 			resolver.setCatalogList(catalogs);
-			XMLFilter filter = new XMLFilter(version);
+//			XMLFilter filter = new XMLFilter(version);
 			String systemURI;
 			if(type.equals(NamespaceType.DEFAULT)
 					&& version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
-				systemURI = filter.NS_DOC_MML;
+				systemURI = XMLFilter.NS_DEFAULT_MML;
 			} else {
 				systemURI = XMLFilter.NS_OLD_MML;
 			}

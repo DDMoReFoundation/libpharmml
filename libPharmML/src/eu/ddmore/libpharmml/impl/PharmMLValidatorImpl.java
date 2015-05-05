@@ -75,7 +75,7 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 //			Source source = new StreamSource(new ByteArrayInputStream(baos.toByteArray()));
 			
 	 
-			Schema schema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(docVersion,NamespaceType.DEFAULT);
+			Schema schema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(docVersion,NamespaceType.OLD);
 			Validator validator = schema.newValidator();
 			final ValidationReportFactory rptFact = new ValidationReportFactory();
 			validator.setErrorHandler(new ErrorHandler() {
