@@ -29,14 +29,18 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Marshaller.Listener;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.ValidationEvent;
+import javax.xml.bind.ValidationEventHandler;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import javax.xml.validation.Schema;
 
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.IMarshaller;
 import eu.ddmore.libpharmml.dom.PharmML;
+import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory.NamespaceType;
 
 public class MarshallerImpl implements IMarshaller {
 	private static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
@@ -131,29 +135,29 @@ public class MarshallerImpl implements IMarshaller {
 //			String packageName = PharmML.class.getPackage().getName();
 			JAXBContext context = JAXBContext.newInstance(CONTEXT_NAME);
 			Unmarshaller u = context.createUnmarshaller();
-//			u.setEventHandler(new ValidationEventHandler() {
-//				
-//				@Override
-//				public boolean handleEvent(ValidationEvent event) {
-//					int severity = event.getSeverity();
-//					switch(severity){
-//					case ValidationEvent.ERROR:
-//						errorHandler.handleError(event.getMessage());
-//						break;
-//					case ValidationEvent.FATAL_ERROR:
-//						errorHandler.handleError(event.getMessage());
-//						break;
-//					case ValidationEvent.WARNING:
-//						errorHandler.handleWarning(event.getMessage());
-//						break;
-//					}
-//					return true;
-//				}
-//			});
+			u.setEventHandler(new ValidationEventHandler() {
+				
+				@Override
+				public boolean handleEvent(ValidationEvent event) {
+					int severity = event.getSeverity();
+					switch(severity){
+					case ValidationEvent.ERROR:
+						errorHandler.handleError(event.getMessage());
+						break;
+					case ValidationEvent.FATAL_ERROR:
+						errorHandler.handleError(event.getMessage());
+						break;
+					case ValidationEvent.WARNING:
+						errorHandler.handleWarning(event.getMessage());
+						break;
+					}
+					return true;
+				}
+			});
 
 			// Schema
-//			Schema mySchema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(version);
-//			u.setSchema(mySchema);
+			Schema mySchema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(version,NamespaceType.OLD);
+			u.setSchema(mySchema);
 			
 			u.setListener(uListener);
 			

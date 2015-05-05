@@ -35,6 +35,10 @@ public class PharmMLSchemaFactory {
 //	private static final String DEFINITIONS_XML_CATALOG_XML = Messages.getString("MarshallerImpl.xmlCatalogLocation"); //$NON-NLS-1$
 //	private static final String PHARML_URI = Messages.getString("MarshallerImpl.PharmMLURI");
 	
+	public enum NamespaceType {
+		DEFAULT,
+		OLD;
+	}
 	
 	public static PharmMLSchemaFactory getInstance(){
 		if(anInstance == null){
@@ -48,14 +52,28 @@ public class PharmMLSchemaFactory {
 	 * @param version the version of the schema
 	 * @return 		a {@link Schema} instance of PharmML
 	 */
-	public Schema createPharmMlSchema(PharmMLVersion version){
+	public Schema createPharmMlSchema(PharmMLVersion version, NamespaceType type){
 		try {
-			URL url = getClass().getResource(version.getCatalogLocation());
+			String catalogLocation;
+			if(type.equals(NamespaceType.OLD) 
+					&& version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
+				catalogLocation = version.getOldCatalogLocation();
+			} else {
+				catalogLocation = version.getCatalogLocation();
+			}
+			URL url = getClass().getResource(catalogLocation);
 			String[] catalogs = { url.toExternalForm() };
 			XMLCatalogResolver resolver = new XMLCatalogResolver();
 			resolver.setCatalogList(catalogs);
 			XMLFilter filter = new XMLFilter(version);
-			String val = resolver.resolveSystem(filter.NS_DOC_MML); 
+			String systemURI;
+			if(type.equals(NamespaceType.DEFAULT)
+					&& version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
+				systemURI = filter.NS_DOC_MML;
+			} else {
+				systemURI = XMLFilter.NS_OLD_MML;
+			}
+			String val = resolver.resolveSystem(systemURI); 
 			StreamSource src = new StreamSource(val);
 			SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 			sf.setResourceResolver(resolver);
@@ -77,7 +95,7 @@ public class PharmMLSchemaFactory {
 	 */
 	@Deprecated
 	public Schema createPharmMlSchema(){
-		return createPharmMlSchema(PharmMLVersion.V0_2_1);
+		return createPharmMlSchema(PharmMLVersion.V0_2_1,NamespaceType.DEFAULT);
 	}
 	
 }

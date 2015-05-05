@@ -96,6 +96,10 @@ public enum PharmMLVersion {
 		return catalogLocation;
 	}
 	
+	public String getOldCatalogLocation(){
+		return catalogLocation.replace("/xmlCatalog.xml", "/old_ns/xmlCatalog.xml");
+	}
+	
 //	public String getPharmmlURI(){
 //		return pharmml_URI;
 //	}

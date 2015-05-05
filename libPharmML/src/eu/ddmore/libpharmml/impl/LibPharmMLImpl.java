@@ -46,6 +46,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterModel;
 import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.StructuralModel;
+import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory.NamespaceType;
 
 public class LibPharmMLImpl implements ILibPharmML {
 	private static final String DEFAULT_NAME = "Stub Model";
@@ -82,7 +83,7 @@ public class LibPharmMLImpl implements ILibPharmML {
 	@Override
 	public IPharmMLResource createDomFromResource(InputStream inStr) {
 		final ValidationReportFactory repFact = new ValidationReportFactory();
-//		this.marshaller.setErrorHandler(repFact);
+		this.marshaller.setErrorHandler(repFact);
 		
 		final PharmMLVersion currentDocVersion;
 		
@@ -94,7 +95,7 @@ public class LibPharmMLImpl implements ILibPharmML {
 		bais.reset();
 		
 		// Validating stream with schemas
-		Schema schema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(currentDocVersion);
+		Schema schema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(currentDocVersion,NamespaceType.OLD);
 		Validator validator = schema.newValidator();
 		validator.setErrorHandler(new ErrorHandler() {
 			
