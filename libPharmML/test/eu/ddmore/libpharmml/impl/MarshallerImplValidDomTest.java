@@ -21,6 +21,8 @@ package eu.ddmore.libpharmml.impl;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
+import static eu.ddmore.libpharmml.impl.LoggerWrapper.getLogger;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -48,7 +50,7 @@ public class MarshallerImplValidDomTest{
 	private PharmML validDom;
 	protected boolean warningOccurred;
 	protected boolean errorOccurred;
-	
+	private PharmMLVersion version;
 
 	public MarshallerImplValidDomTest(PharmMLVersion version){
 		this.testInstance = new MarshallerImpl();
@@ -56,6 +58,7 @@ public class MarshallerImplValidDomTest{
 		this.errorOccurred = false;
 		this.validDom = TestDomFactory.createValidModel(version);
 		this.exampleDir = PharmMLVersionFactory.getExampleDir(version);
+		this.version = version;
 	}
 	
 	@Parameters
@@ -103,14 +106,16 @@ public class MarshallerImplValidDomTest{
 		this.testInstance.setErrorHandler(new IErrorHandler() {
 			@Override
 			public void handleWarning(String warnMsg) {
+				getLogger().severe(warnMsg);
 				warningOccurred = true;
 			}
 			@Override
 			public void handleError(String errMsg) {
+				getLogger().severe(errMsg);
 				errorOccurred = true;
 			}
 		});
-		PharmML dom = this.testInstance.unmarshall(is);
+		PharmML dom = this.testInstance.unmarshall(is,version,new UnmarshalListener(version, new IdFactoryImpl()));
 		assertFalse("No errors reported", errorOccurred);
 		assertNotNull("dom created", dom);
 	}
