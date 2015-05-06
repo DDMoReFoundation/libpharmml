@@ -29,8 +29,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.After;
 import org.junit.Test;
@@ -72,6 +74,8 @@ public class LibPharmMLValidIntegrationTest {
 		final PharmML dom = TestDomFactory.createValidModel(version);
 		final IdFactory idFactory = new IdFactoryImpl();
 		final List<IValidationError> errList = Collections.emptyList();
+		final Map<String,Boolean> parameters = new HashMap<String,Boolean>();
+		parameters.put(IPharmMLResource.AUTOSET_ID, true);
 		IPharmMLResource res = new IPharmMLResource() {
 			@Override
 			public PharmML getDom() {
@@ -110,11 +114,12 @@ public class LibPharmMLValidIntegrationTest {
 			public void setIdFactory(IdFactory idFactory) {				
 			}
 			@Override
-			public void setParameter(String param, Boolean value) {				
+			public void setParameter(String param, Boolean value) {	
+				parameters.put(param, value);
 			}
 			@Override
 			public Boolean getParameter(String argument) {
-				return null;
+				return parameters.get(argument);
 			}
 		};
 		return res;
