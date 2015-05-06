@@ -7,6 +7,7 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
@@ -22,7 +23,10 @@ import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 public class VectorElements extends PharmMLRootType implements ScalarContainer {
 		
 	//-------
-	@XmlElementRef(name = "VectorValue", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type=JAXBElement.class)
+	@XmlElementRefs({
+		@XmlElementRef(name = "VectorValue", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type=JAXBElement.class),
+		@XmlElementRef(name = "Sequence", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type=JAXBElement.class)
+	})
 	protected List<JAXBElement<? extends VectorValue>> jaxb_elements;
 	@XmlTransient
 	protected List<VectorValue> elements;
