@@ -32,9 +32,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import eu.ddmore.libpharmml.dom.Identifiable;
-import eu.ddmore.libpharmml.dom.PharmML;
-import eu.ddmore.libpharmml.impl.IdFactoryImpl;
+import eu.ddmore.libpharmml.impl.TestResourceFactory;
 
 public class LibPharmMLInvalidModelIntegrationTest {
 	private static final String INVALID_MODEL_FILE = "invalidModel.xml";
@@ -63,40 +61,8 @@ public class LibPharmMLInvalidModelIntegrationTest {
 	}
 	
 	private IPharmMLResource createResource() throws IOException{
-		final PharmML dom = TestDomFactory.createInvalidModel();
-		final IdFactory idFactory = new IdFactoryImpl();
-		IPharmMLResource res = new IPharmMLResource() {
-			@Override
-			public PharmML getDom() {
-				return dom;
-			}
-			@Override
-			public IValidationReport getCreationReport() {
-				return null;
-			}
-			@Override
-			public Identifiable find(String id) {
-				return idFactory.getIdentifiable(id);
-			}
-			@Override
-			public IdFactory getIdFactory() {
-				return idFactory;
-			}
-			@Override
-			public void setIdFactory(IdFactory idFactory) {				
-			}
-			@Override
-			public void setParameter(String param, Boolean value) {
-			}
-			@Override
-			public Boolean getParameter(String argument) {
-				return null;
-			}
-		};
-		return res;
+		return TestResourceFactory.createResource(TestDomFactory.createInvalidModel());
 	}
-	
-	
 
 	@Test
 	public void testLoadInvalidModel() throws IOException {
