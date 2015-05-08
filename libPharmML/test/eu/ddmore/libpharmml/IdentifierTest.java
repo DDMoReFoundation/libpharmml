@@ -53,7 +53,7 @@ public class IdentifierTest {
 	public void testAutosetIdOn() throws IOException{
 		File tmpFile = File.createTempFile("tst", ".xml");
 		LoggerWrapper.getLogger().warning(tmpFile.getAbsolutePath());
-//		tmpFile.deleteOnExit();
+		tmpFile.deleteOnExit();
 		testInstance.save(new FileOutputStream(tmpFile), testResource);
 		
 		IPharmMLResource newResource = testInstance.createDomFromResource(new FileInputStream(tmpFile));
