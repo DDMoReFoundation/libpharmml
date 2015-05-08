@@ -1,5 +1,7 @@
 package eu.ddmore.libpharmml;
 
+import java.util.Set;
+
 import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.validation.exceptions.DuplicateIdentifierException;
 
@@ -37,5 +39,11 @@ public interface IdFactory {
 	 * @return true if the identifier is found, else false.
 	 */
 	public boolean exists(String id);
+	
+	/**
+	 * Gets the list of all registered identifiable elements within the resource.
+	 * @return A {@link Set} of identifiable elements.
+	 */
+	public Set<Identifiable> getListOfIdentifiable();
 
 }

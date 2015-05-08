@@ -1,7 +1,9 @@
 package eu.ddmore.libpharmml.impl;
 
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -84,7 +86,10 @@ public class IdFactoryImpl implements IdFactory {
 	public boolean exists(String id){
 		return table.containsKey(id);
 	}
-	
-	
 
+	@Override
+	public Set<Identifiable> getListOfIdentifiable() {
+		return new HashSet<Identifiable>(table.values());
+	}
+	
 }
