@@ -44,7 +44,7 @@ public class PharmMLVersionFactory {
 		case V0_6:
 			return "examples/0_6";
 		default:
-			return null;
+			throw new RuntimeException("No example dir for version "+version);
 		}
 	}
 	
