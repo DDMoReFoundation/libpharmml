@@ -28,12 +28,15 @@ package eu.ddmore.libpharmml.dom.modellingsteps;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -69,7 +72,7 @@ public class StepType
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "OidRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
+    @XmlElement(name = "OidRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
     protected OidRef oidRef;
     @XmlElement(name = "Dependents")
     protected List<DependentsType> dependents;

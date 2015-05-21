@@ -38,6 +38,8 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.impl.XMLFilter;
+
 
 /**
  * This type specifies a row of values in a matrix. The row can contain indexed cells or 
@@ -80,9 +82,9 @@ public class MatrixRow
     @XmlElement(name = "RowIndex")
     protected MatrixVectorIndex rowIndex;
     @XmlElementRefs({
-        @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Sequence", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Sequence", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     })
     protected List<MatrixRowValue> listOfValues;
     @XmlAttribute(name = "default")

@@ -10,12 +10,15 @@ package eu.ddmore.libpharmml.dom.modellingsteps;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -49,7 +52,7 @@ public class DiscreteObservation
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
+    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
     protected List<SymbolRef> listOfSymbRef;
 
     /**

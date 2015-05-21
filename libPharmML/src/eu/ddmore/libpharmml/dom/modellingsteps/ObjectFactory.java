@@ -31,6 +31,8 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
+import eu.ddmore.libpharmml.impl.XMLFilter;
+
 
 /**
  * This object contains factory methods for each 
@@ -49,17 +51,17 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _SimulationStep_QNAME = new QName("http://www.pharmml.org/2013/03/ModellingSteps", "SimulationStep");
-    private final static QName _Property_QNAME = new QName("http://www.pharmml.org/2013/03/ModellingSteps", "Property");
-    private final static QName _CommonModellingStep_QNAME = new QName("http://www.pharmml.org/2013/03/ModellingSteps", "CommonModellingStep");
-    private final static QName _ModellingSteps_QNAME = new QName("http://www.pharmml.org/2013/03/ModellingSteps", "ModellingSteps");
-    private final static QName _VariableMapping_QNAME = new QName("http://www.pharmml.org/2013/03/ModellingSteps", "VariableMapping");
-    private final static QName _IndividualMapping_QNAME = new QName("http://www.pharmml.org/2013/03/ModellingSteps", "IndividualMapping");
+    private final static QName _SimulationStep_QNAME = new QName(XMLFilter.NS_DEFAULT_MSTEPS, "SimulationStep");
+    private final static QName _Property_QNAME = new QName(XMLFilter.NS_DEFAULT_MSTEPS, "Property");
+    private final static QName _CommonModellingStep_QNAME = new QName(XMLFilter.NS_DEFAULT_MSTEPS, "CommonModellingStep");
+    private final static QName _ModellingSteps_QNAME = new QName(XMLFilter.NS_DEFAULT_MSTEPS, "ModellingSteps");
+    private final static QName _VariableMapping_QNAME = new QName(XMLFilter.NS_DEFAULT_MSTEPS, "VariableMapping");
+    private final static QName _IndividualMapping_QNAME = new QName(XMLFilter.NS_DEFAULT_MSTEPS, "IndividualMapping");
 	@Deprecated
-    private final static QName _Operation_QNAME = new QName("http://www.pharmml.org/2013/03/ModellingSteps", "Operation");
-    private final static QName _EstimationStep_QNAME = new QName("http://www.pharmml.org/2013/03/ModellingSteps", "EstimationStep");
-    private final static QName _Timepoints_QNAME = new QName("http://www.pharmml.org/2013/03/ModellingSteps", "Timepoints");
-    private final static QName _Mapping_QNAME = new QName("http://www.pharmml.org/2013/03/ModellingSteps", "Mapping");
+    private final static QName _Operation_QNAME = new QName(XMLFilter.NS_DEFAULT_MSTEPS, "Operation");
+    private final static QName _EstimationStep_QNAME = new QName(XMLFilter.NS_DEFAULT_MSTEPS, "EstimationStep");
+    private final static QName _Timepoints_QNAME = new QName(XMLFilter.NS_DEFAULT_MSTEPS, "Timepoints");
+    private final static QName _Mapping_QNAME = new QName(XMLFilter.NS_DEFAULT_MSTEPS, "Mapping");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.modellingsteps
@@ -212,6 +214,7 @@ public class ObjectFactory {
      * 
 	 * @since PharmML0.3
      */
+    @Deprecated
     public NONMEMdataSet createNONMEMdataSetType() {
         return new NONMEMdataSet();
     }
@@ -308,7 +311,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Simulation }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "SimulationStep", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModellingSteps", substitutionHeadName = "CommonModellingStep")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MSTEPS, name = "SimulationStep", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_MSTEPS, substitutionHeadName = "CommonModellingStep")
     public JAXBElement<Simulation> createSimulationStep(Simulation value) {
         return new JAXBElement<Simulation>(_SimulationStep_QNAME, Simulation.class, null, value);
     }
@@ -317,7 +320,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link OperationProperty }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "Property")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MSTEPS, name = "Property")
     public JAXBElement<OperationProperty> createProperty(OperationProperty value) {
         return new JAXBElement<OperationProperty>(_Property_QNAME, OperationProperty.class, null, value);
     }
@@ -326,7 +329,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ModellingStepType }{@code >}}
      * 
      */
-	@XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "CommonModellingStep")
+	@XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MSTEPS, name = "CommonModellingStep")
     public JAXBElement<CommonModellingStep> createCommonModellingStep(CommonModellingStep value) {
         return new JAXBElement<CommonModellingStep>(_CommonModellingStep_QNAME, CommonModellingStep.class, null, value);
     }
@@ -335,7 +338,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ModellingSteps }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "ModellingSteps")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MSTEPS, name = "ModellingSteps")
     public JAXBElement<ModellingSteps> createModellingSteps(ModellingSteps value) {
         return new JAXBElement<ModellingSteps>(_ModellingSteps_QNAME, ModellingSteps.class, null, value);
     }
@@ -344,7 +347,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link VariableMapping }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "VariableMapping", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModellingSteps", substitutionHeadName = "Mapping")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MSTEPS, name = "VariableMapping", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_MSTEPS, substitutionHeadName = "Mapping")
     @Deprecated
     public JAXBElement<VariableMapping> createVariableMapping(VariableMapping value) {
         return new JAXBElement<VariableMapping>(_VariableMapping_QNAME, VariableMapping.class, null, value);
@@ -354,7 +357,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link IndividualMapping }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "IndividualMapping", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModellingSteps", substitutionHeadName = "Mapping")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MSTEPS, name = "IndividualMapping", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_MSTEPS, substitutionHeadName = "Mapping")
     @Deprecated
     public JAXBElement<IndividualMapping> createIndividualMapping(IndividualMapping value) {
         return new JAXBElement<IndividualMapping>(_IndividualMapping_QNAME, IndividualMapping.class, null, value);
@@ -364,7 +367,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link EstimationOperation }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "Operation")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MSTEPS, name = "Operation")
 	@Deprecated
     public JAXBElement<EstimationOperation> createOperation(EstimationOperation value) {
         return new JAXBElement<EstimationOperation>(_Operation_QNAME, EstimationOperation.class, null, value);
@@ -374,7 +377,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Estimation }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "EstimationStep", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModellingSteps", substitutionHeadName = "CommonModellingStep")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MSTEPS, name = "EstimationStep", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_MSTEPS, substitutionHeadName = "CommonModellingStep")
     public JAXBElement<Estimation> createEstimationStep(Estimation value) {
         return new JAXBElement<Estimation>(_EstimationStep_QNAME, Estimation.class, null, value);
     }
@@ -383,7 +386,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Timepoints }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "Timepoints")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MSTEPS, name = "Timepoints")
     public JAXBElement<Timepoints> createTimepoints(Timepoints value) {
         return new JAXBElement<Timepoints>(_Timepoints_QNAME, Timepoints.class, null, value);
     }
@@ -392,7 +395,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link MappingType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModellingSteps", name = "Mapping")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MSTEPS, name = "Mapping")
     @Deprecated
     public JAXBElement<MappingType> createMapping(MappingType value) {
         return new JAXBElement<MappingType>(_Mapping_QNAME, MappingType.class, null, value);

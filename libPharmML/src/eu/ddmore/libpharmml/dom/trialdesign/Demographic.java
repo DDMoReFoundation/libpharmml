@@ -50,6 +50,7 @@ import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -90,13 +91,13 @@ public class Demographic
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Name name;
-    @XmlElement(name = "VariabilityReference", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
+    @XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
     protected LevelReference variabilityReference;
-    @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class)
+    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class)
     protected List<JAXBElement<?>> scalar;
-    @XmlElement(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
+    @XmlElement(name = "ColumnRef", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
     protected ColumnReference columnRef;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

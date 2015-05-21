@@ -43,6 +43,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -80,9 +81,9 @@ public class FixedEffectRelation
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
     protected SymbolRef symbRef;
-    @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected Scalar scalar;
     
     /**

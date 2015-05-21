@@ -28,13 +28,16 @@ package eu.ddmore.libpharmml.dom.trialdesign;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -75,13 +78,13 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 @Deprecated
 public class IndependentVariableDependentMapping {
 
-    @XmlElement(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
+    @XmlElement(name = "ColumnRef", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
     protected ColumnReference columnRef;
     @XmlElement(name = "IndependentVariableMapping")
     protected IndependentVariableMapping independentVariableMapping;
     @XmlElement(name = "EpochMapping")
     protected EpochMapping epochMapping;
-    @XmlElementRef(name = "AttributeMapping", namespace = "http://www.pharmml.org/2013/03/TrialDesign", type = JAXBElement.class)
+    @XmlElementRef(name = "AttributeMapping", namespace = XMLFilter.NS_DEFAULT_TD, type = JAXBElement.class)
     protected List<JAXBElement<?>> attributeMapping;
 
     /**

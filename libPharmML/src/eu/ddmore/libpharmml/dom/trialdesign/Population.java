@@ -38,6 +38,7 @@ import eu.ddmore.libpharmml.dom.commontypes.LevelReference;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -78,13 +79,13 @@ public class Population
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "VariabilityReference", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT)
     protected LevelReference variabilityReference;
     @XmlElement(name = "Demographic")
     protected List<Demographic> demographic;
     @XmlElement(name = "ColumnMapping")
     protected List<ColumnMapping> columnMapping;
-    @XmlElement(name = "DataSet", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
+    @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
     protected DataSet dataSet;
 	@XmlElement(name = "IndividualTemplate")
 	@Deprecated

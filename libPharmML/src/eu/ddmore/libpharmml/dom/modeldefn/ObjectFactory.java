@@ -31,6 +31,8 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
+import eu.ddmore.libpharmml.impl.XMLFilter;
+
 
 /**
  * This object contains factory methods for each 
@@ -49,16 +51,16 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _StructuralModel_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "StructuralModel");
-    private final static QName _ModelDefinition_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "ModelDefinition");
-    private final static QName _General_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "General");
-    private final static QName _Probability_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "Probability");
-    private final static QName _Standard_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "Standard");
-    private final static QName _SimpleParameter_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "SimpleParameter");
-    private final static QName _IndividualParameter_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "IndividualParameter");
-    private final static QName _ObservationError_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "ObservationError");
-    private final static QName _CommonParameterElement_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "CommonParameterElement");
-    private final static QName _RandomVariable_QNAME = new QName("http://www.pharmml.org/2013/03/ModelDefinition", "RandomVariable");
+    private final static QName _StructuralModel_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "StructuralModel");
+    private final static QName _ModelDefinition_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "ModelDefinition");
+    private final static QName _General_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "General");
+    private final static QName _Probability_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "Probability");
+    private final static QName _Standard_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "Standard");
+    private final static QName _SimpleParameter_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "SimpleParameter");
+    private final static QName _IndividualParameter_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "IndividualParameter");
+    private final static QName _ObservationError_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "ObservationError");
+    private final static QName _CommonParameterElement_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "CommonParameterElement");
+    private final static QName _RandomVariable_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "RandomVariable");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.modeldefn
@@ -479,7 +481,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StructuralModel }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "StructuralModel")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "StructuralModel")
     public JAXBElement<StructuralModel> createStructuralModel(StructuralModel value) {
         return new JAXBElement<StructuralModel>(_StructuralModel_QNAME, StructuralModel.class, null, value);
     }
@@ -488,7 +490,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ModelDefinition }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "ModelDefinition")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "ModelDefinition")
     public JAXBElement<ModelDefinition> createModelDefinition(ModelDefinition value) {
         return new JAXBElement<ModelDefinition>(_ModelDefinition_QNAME, ModelDefinition.class, null, value);
     }
@@ -497,7 +499,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GeneralObsError }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "General", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModelDefinition", substitutionHeadName = "ObservationError")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "General", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_MDEF, substitutionHeadName = "ObservationError")
     public JAXBElement<GeneralObsError> createGeneral(GeneralObsError value) {
         return new JAXBElement<GeneralObsError>(_General_QNAME, GeneralObsError.class, null, value);
     }
@@ -506,7 +508,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Probability }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "Probability")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Probability")
     public JAXBElement<Probability> createProbability(Probability value) {
         return new JAXBElement<Probability>(_Probability_QNAME, Probability.class, null, value);
     }
@@ -515,7 +517,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GaussianObsError }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "Standard", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModelDefinition", substitutionHeadName = "ObservationError")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Standard", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_MDEF, substitutionHeadName = "ObservationError")
     public JAXBElement<GaussianObsError> createStandard(GaussianObsError value) {
         return new JAXBElement<GaussianObsError>(_Standard_QNAME, GaussianObsError.class, null, value);
     }
@@ -524,7 +526,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SimpleParameter }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "SimpleParameter", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModelDefinition", substitutionHeadName = "CommonParameterElement")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "SimpleParameter", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_MDEF, substitutionHeadName = "CommonParameterElement")
     public JAXBElement<SimpleParameter> createSimpleParameter(SimpleParameter value) {
         return new JAXBElement<SimpleParameter>(_SimpleParameter_QNAME, SimpleParameter.class, null, value);
     }
@@ -533,7 +535,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link IndividualParameter }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "IndividualParameter", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModelDefinition", substitutionHeadName = "CommonParameterElement")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "IndividualParameter", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_MDEF, substitutionHeadName = "CommonParameterElement")
     public JAXBElement<IndividualParameter> createIndividualParameter(IndividualParameter value) {
         return new JAXBElement<IndividualParameter>(_IndividualParameter_QNAME, IndividualParameter.class, null, value);
     }
@@ -542,7 +544,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ObservationError }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "ObservationError")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "ObservationError")
     public JAXBElement<ObservationError> createObservationError(ObservationError value) {
         return new JAXBElement<ObservationError>(_ObservationError_QNAME, ObservationError.class, null, value);
     }
@@ -551,7 +553,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link CommonParameter }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "CommonParameterElement")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "CommonParameterElement")
     public JAXBElement<CommonParameter> createCommonParameterElement(CommonParameter value) {
         return new JAXBElement<CommonParameter>(_CommonParameterElement_QNAME, CommonParameter.class, null, value);
     }
@@ -560,7 +562,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ParameterRandomVariable }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", name = "RandomVariable", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/ModelDefinition", substitutionHeadName = "CommonParameterElement")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "RandomVariable", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_MDEF, substitutionHeadName = "CommonParameterElement")
     public JAXBElement<ParameterRandomVariable> createRandomVariable(ParameterRandomVariable value) {
         return new JAXBElement<ParameterRandomVariable>(_RandomVariable_QNAME, ParameterRandomVariable.class, null, value);
     }

@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VectorElements", propOrder = {
@@ -24,8 +25,8 @@ public class VectorElements extends PharmMLRootType implements ScalarContainer {
 		
 	//-------
 	@XmlElementRefs({
-		@XmlElementRef(name = "VectorValue", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type=JAXBElement.class),
-		@XmlElementRef(name = "Sequence", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type=JAXBElement.class)
+		@XmlElementRef(name = "VectorValue", namespace = XMLFilter.NS_DEFAULT_CT, type=JAXBElement.class),
+		@XmlElementRef(name = "Sequence", namespace = XMLFilter.NS_DEFAULT_CT, type=JAXBElement.class)
 	})
 	protected List<JAXBElement<? extends VectorValue>> jaxb_elements;
 	@XmlTransient

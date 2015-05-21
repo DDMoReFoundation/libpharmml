@@ -28,12 +28,15 @@ package eu.ddmore.libpharmml.dom.modeldefn;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -126,7 +129,7 @@ public class IndividualParameter
 
     @XmlElement(name = "GaussianModel")
     protected IndividualParameter.GaussianModel gaussianModel;
-    @XmlElement(name = "Assign", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Rhs assign;
 
     /**

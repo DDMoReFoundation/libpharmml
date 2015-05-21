@@ -28,15 +28,18 @@ package eu.ddmore.libpharmml.dom.modellingsteps;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -75,8 +78,8 @@ public class SymbolMapping
 {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "ColumnRef", namespace = "http://www.pharmml.org/2013/08/Dataset", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "ColumnRef", namespace = XMLFilter.NS_DEFAULT_DS, type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<? extends PharmMLRootType>> rest;
 

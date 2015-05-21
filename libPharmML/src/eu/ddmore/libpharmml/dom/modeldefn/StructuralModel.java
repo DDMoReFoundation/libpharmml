@@ -48,6 +48,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKMacroList;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -88,11 +89,11 @@ public class StructuralModel
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Name name;
     @XmlElement(name = "SimpleParameter")
     protected List<SimpleParameter> simpleParameter;
-    @XmlElementRef(name = "CommonVariable", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class)
+    @XmlElementRef(name = "CommonVariable", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class)
     protected List<JAXBElement<? extends CommonVariableDefinition>> commonVariable;
     @XmlElement(name = "PKmacros")
     protected PKMacroList pKmacros;

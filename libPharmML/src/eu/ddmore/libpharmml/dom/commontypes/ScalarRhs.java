@@ -33,8 +33,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.dom.modellingsteps.InitialEstimate;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -71,9 +73,9 @@ public class ScalarRhs
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Equation", namespace = "http://www.pharmml.org/2013/03/Maths")
+    @XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
     protected Equation equation;
-    @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected JAXBElement<?> scalar;
     @XmlElement(name = "SymbRef")
     protected SymbolRef symbRef;

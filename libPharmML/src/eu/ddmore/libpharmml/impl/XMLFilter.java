@@ -34,14 +34,15 @@ public class XMLFilter extends XMLFilterImpl {
 	static final protected String NS_PATTERN_MSTEPS = NS_PATTERN_ROOT + "ModellingSteps";
 	static final public String NS_PATTERN_MML = NS_PATTERN_ROOT + "PharmML";
 	
-	static final private PharmMLVersion DEFAULT_VERSION = PharmMLVersion.V0_6;
-	static final public String NS_DEFAULT_CT = String.format(NS_PATTERN_CT, DEFAULT_VERSION);
-	static final public String NS_DEFAULT_DS = String.format(NS_PATTERN_DS, DEFAULT_VERSION);
-	static final public String NS_DEFAULT_MATH = String.format(NS_PATTERN_MATH, DEFAULT_VERSION);
-	static final public String NS_DEFAULT_MDEF = String.format(NS_PATTERN_MDEF, DEFAULT_VERSION);
-	static final public String NS_DEFAULT_TD = String.format(NS_PATTERN_TD, DEFAULT_VERSION);
-	static final public String NS_DEFAULT_MSTEPS = String.format(NS_PATTERN_MSTEPS, DEFAULT_VERSION);
-	static final public String NS_DEFAULT_MML = String.format(NS_PATTERN_MML, DEFAULT_VERSION);
+//	static final private PharmMLVersion DEFAULT_VERSION = PharmMLVersion.V0_6;
+	static final public String NS_DEFAULT_CT = "http://www.pharmml.org/pharmml/0.6/CommonTypes";
+	static final public String NS_DEFAULT_DS = "http://www.pharmml.org/pharmml/0.6/Dataset";
+	static final public String NS_DEFAULT_MATH = "http://www.pharmml.org/pharmml/0.6/Maths";
+	static final public String NS_DEFAULT_MDEF = "http://www.pharmml.org/pharmml/0.6/ModelDefinition";
+	static final public String NS_DEFAULT_TD = "http://www.pharmml.org/pharmml/0.6/TrialDesign";
+	static final public String NS_DEFAULT_MSTEPS = "http://www.pharmml.org/pharmml/0.6/ModellingSteps";
+	static final public String NS_DEFAULT_MML = "http://www.pharmml.org/pharmml/0.6/PharmML";
+	static final public String NS_DEFAULT_UNCERTML = "http://www.uncertml.org/3.0";
 	
 	final protected String NS_DOC_CT;
 	final protected String NS_DOC_DS;

@@ -28,12 +28,14 @@ package eu.ddmore.libpharmml.dom.modeldefn;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.Interpolation;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractContinuousUnivariateDistributionType;
@@ -54,6 +56,7 @@ import eu.ddmore.libpharmml.dom.uncertml.ParetoDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.StudentTDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.UniformDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -89,11 +92,11 @@ public class ContinuousCovariate
     extends PharmMLRootType
 {
 
-    @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = "http://www.uncertml.org/3.0", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractContinuousUnivariateDistributionType> abstractContinuousUnivariateDistribution;
     @XmlElement(name = "Transformation")
     protected List<CovariateTransformation> listOfTransformation;
-    @XmlElement(name = "Interpolation", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Interpolation", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Interpolation interpolation;
 
     /**

@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -79,7 +80,7 @@ public class Activity
 
     @XmlElement(name = "LookupTable")
     protected LookupTable lookupTable;
-    @XmlElementRef(name = "DosingRegimen", namespace = "http://www.pharmml.org/2013/03/TrialDesign", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "DosingRegimen", namespace = XMLFilter.NS_DEFAULT_TD, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends DosingRegimen> dosingRegimen;
     @XmlElement(name = "Washout")
     protected Washout washout;

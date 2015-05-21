@@ -52,6 +52,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -134,17 +135,17 @@ public class Expression
 //    protected Probability probability;
     
     @XmlElementRefs({
-    	@XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class),
-    	@XmlElementRef(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class),
-    	@XmlElementRef(name = "Sum", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class),
-    	@XmlElementRef(name = "Product", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class),
-    	@XmlElementRef(name = "VectorSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class),
-    	@XmlElementRef(name = "MatrixSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class),
-    	@XmlElementRef(name = "Probability", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class),
-    	@XmlElementRef(name = "Constant", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class),
-    	@XmlElementRef(name = "Binop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class),
-    	@XmlElementRef(name = "Uniop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class),
-    	@XmlElementRef(name = "FunctionCall", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class)
+    	@XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class),
+    	@XmlElementRef(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class),
+    	@XmlElementRef(name = "Sum", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class),
+    	@XmlElementRef(name = "Product", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class),
+    	@XmlElementRef(name = "VectorSelector", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class),
+    	@XmlElementRef(name = "MatrixSelector", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class),
+    	@XmlElementRef(name = "Probability", namespace = XMLFilter.NS_DEFAULT_MDEF, type = JAXBElement.class),
+    	@XmlElementRef(name = "Constant", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class),
+    	@XmlElementRef(name = "Binop", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class),
+    	@XmlElementRef(name = "Uniop", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class),
+    	@XmlElementRef(name = "FunctionCall", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class)
     })
     protected JAXBElement<?> jaxb_value;
     

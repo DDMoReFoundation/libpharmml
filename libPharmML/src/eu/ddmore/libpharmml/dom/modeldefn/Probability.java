@@ -45,6 +45,7 @@ import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.dom.maths.LogicUniOp;
 import eu.ddmore.libpharmml.dom.maths.Operand;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -88,9 +89,9 @@ public class Probability
     extends PharmMLRootType implements Operand, ExpressionValue
 {
 
-    @XmlElement(name = "LogicBinop", namespace = "http://www.pharmml.org/2013/03/Maths")
+    @XmlElement(name = "LogicBinop", namespace = XMLFilter.NS_DEFAULT_MATH)
     protected LogicBinOp logicBinop;
-    @XmlElement(name = "LogicUniop", namespace = "http://www.pharmml.org/2013/03/Maths")
+    @XmlElement(name = "LogicUniop", namespace = XMLFilter.NS_DEFAULT_MATH)
     protected LogicUniOp logicUniop;
     @XmlElement(name = "CurrentState")
     protected CommonDiscreteState currentState;

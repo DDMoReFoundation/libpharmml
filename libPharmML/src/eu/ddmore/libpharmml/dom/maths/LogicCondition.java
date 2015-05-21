@@ -33,10 +33,12 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -81,7 +83,7 @@ public class LogicCondition
     protected LogicBinOp logicBinop;
     @XmlElement(name = "LogicUniop")
     protected LogicUniOp logicUniop;
-    @XmlElementRef(name = "Boolean", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Boolean", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends BooleanValue> _boolean;
     @XmlElement(name = "Otherwise")
     protected Otherwise otherwise;

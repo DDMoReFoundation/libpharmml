@@ -30,7 +30,9 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
+
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -50,28 +52,28 @@ import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Order_QNAME = new QName("http://www.pharmml.org/2013/03/TrialDesign", "Order");
+    private final static QName _Order_QNAME = new QName(XMLFilter.NS_DEFAULT_TD, "Order");
     @Deprecated
-	private final static QName _AttributeMapping_QNAME = new QName("http://www.pharmml.org/2013/03/TrialDesign", "AttributeMapping");
-    private final static QName _TrialDesign_QNAME = new QName("http://www.pharmml.org/2013/03/TrialDesign", "TrialDesign");
+	private final static QName _AttributeMapping_QNAME = new QName(XMLFilter.NS_DEFAULT_TD, "AttributeMapping");
+    private final static QName _TrialDesign_QNAME = new QName(XMLFilter.NS_DEFAULT_TD, "TrialDesign");
     @Deprecated
-	private final static QName _ArmMapping_QNAME = new QName("http://www.pharmml.org/2013/03/TrialDesign", "ArmMapping");
+	private final static QName _ArmMapping_QNAME = new QName(XMLFilter.NS_DEFAULT_TD, "ArmMapping");
     @Deprecated
-	private final static QName _DemographicMapping_QNAME = new QName("http://www.pharmml.org/2013/03/TrialDesign", "DemographicMapping");
+	private final static QName _DemographicMapping_QNAME = new QName(XMLFilter.NS_DEFAULT_TD, "DemographicMapping");
     @Deprecated
-	private final static QName _ReplicateMapping_QNAME = new QName("http://www.pharmml.org/2013/03/TrialDesign", "ReplicateMapping");
-    private final static QName _DosingRegimen_QNAME = new QName("http://www.pharmml.org/2013/03/TrialDesign", "DosingRegimen");
-    private final static QName _StudyEvent_QNAME = new QName("http://www.pharmml.org/2013/03/TrialDesign", "StudyEvent");
-    private final static QName _Bolus_QNAME = new QName("http://www.pharmml.org/2013/03/TrialDesign", "Bolus");
-    private final static QName _Washout_QNAME = new QName("http://www.pharmml.org/2013/03/TrialDesign", "Washout");
-    private final static QName _Infusion_QNAME = new QName("http://www.pharmml.org/2013/03/TrialDesign", "Infusion");
+	private final static QName _ReplicateMapping_QNAME = new QName(XMLFilter.NS_DEFAULT_TD, "ReplicateMapping");
+    private final static QName _DosingRegimen_QNAME = new QName(XMLFilter.NS_DEFAULT_TD, "DosingRegimen");
+    private final static QName _StudyEvent_QNAME = new QName(XMLFilter.NS_DEFAULT_TD, "StudyEvent");
+    private final static QName _Bolus_QNAME = new QName(XMLFilter.NS_DEFAULT_TD, "Bolus");
+    private final static QName _Washout_QNAME = new QName(XMLFilter.NS_DEFAULT_TD, "Washout");
+    private final static QName _Infusion_QNAME = new QName(XMLFilter.NS_DEFAULT_TD, "Infusion");
 	@Deprecated
-    private final static QName _IndividualMapping_QNAME = new QName("http://www.pharmml.org/2013/03/TrialDesign", "IndividualMapping");
+    private final static QName _IndividualMapping_QNAME = new QName(XMLFilter.NS_DEFAULT_TD, "IndividualMapping");
 	@Deprecated
-    private final static QName _CovariateMapping_QNAME = new QName("http://www.pharmml.org/2013/03/TrialDesign", "CovariateMapping");
-    private final static QName _ObservationsEvent_QNAME = new QName("http://www.pharmml.org/2013/03/TrialDesign", "ObservationsEvent");
-    private final static QName _LookupTable_QNAME = new QName("http://www.pharmml.org/2013/03/TrialDesign", "LookupTable");
-    private final static QName _Activity_QNAME = new QName("http://www.pharmml.org/2013/03/TrialDesign", "Activity");
+    private final static QName _CovariateMapping_QNAME = new QName(XMLFilter.NS_DEFAULT_TD, "CovariateMapping");
+    private final static QName _ObservationsEvent_QNAME = new QName(XMLFilter.NS_DEFAULT_TD, "ObservationsEvent");
+    private final static QName _LookupTable_QNAME = new QName(XMLFilter.NS_DEFAULT_TD, "LookupTable");
+    private final static QName _Activity_QNAME = new QName(XMLFilter.NS_DEFAULT_TD, "Activity");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.trialdesign
@@ -366,7 +368,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link IntValue }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "Order")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_TD, name = "Order")
     public JAXBElement<IntValue> createOrder(IntValue value) {
         return new JAXBElement<IntValue>(_Order_QNAME, IntValue.class, null, value);
     }
@@ -376,7 +378,7 @@ public class ObjectFactory {
      * 
      */
 	@Deprecated
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "AttributeMapping")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_TD, name = "AttributeMapping")
     public JAXBElement<Object> createAttributeMapping(Object value) {
         return new JAXBElement<Object>(_AttributeMapping_QNAME, Object.class, null, value);
     }
@@ -385,7 +387,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link TrialDesign }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "TrialDesign")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_TD, name = "TrialDesign")
     public JAXBElement<TrialDesign> createTrialDesign(TrialDesign value) {
         return new JAXBElement<TrialDesign>(_TrialDesign_QNAME, TrialDesign.class, null, value);
     }
@@ -394,7 +396,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ArmMapping }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "ArmMapping")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_TD, name = "ArmMapping")
     @Deprecated
 	public JAXBElement<ArmMapping> createArmMapping(ArmMapping value) {
         return new JAXBElement<ArmMapping>(_ArmMapping_QNAME, ArmMapping.class, null, value);
@@ -404,7 +406,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DemographicMapping }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "DemographicMapping", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/TrialDesign", substitutionHeadName = "AttributeMapping")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_TD, name = "DemographicMapping", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_TD, substitutionHeadName = "AttributeMapping")
     @Deprecated
 	public JAXBElement<DemographicMapping> createDemographicMapping(DemographicMapping value) {
         return new JAXBElement<DemographicMapping>(_DemographicMapping_QNAME, DemographicMapping.class, null, value);
@@ -414,7 +416,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ReplicateMapping }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "ReplicateMapping")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_TD, name = "ReplicateMapping")
     @Deprecated
 	public JAXBElement<ReplicateMapping> createReplicateMapping(ReplicateMapping value) {
         return new JAXBElement<ReplicateMapping>(_ReplicateMapping_QNAME, ReplicateMapping.class, null, value);
@@ -424,7 +426,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DosingRegimen }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "DosingRegimen")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_TD, name = "DosingRegimen")
     public JAXBElement<DosingRegimen> createDosingRegimen(DosingRegimen value) {
         return new JAXBElement<DosingRegimen>(_DosingRegimen_QNAME, DosingRegimen.class, null, value);
     }
@@ -433,7 +435,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StudyEvent }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "StudyEvent")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_TD, name = "StudyEvent")
     public JAXBElement<StudyEvent> createStudyEvent(StudyEvent value) {
         return new JAXBElement<StudyEvent>(_StudyEvent_QNAME, StudyEvent.class, null, value);
     }
@@ -442,7 +444,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Bolus }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "Bolus", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/TrialDesign", substitutionHeadName = "DosingRegimen")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_TD, name = "Bolus", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_TD, substitutionHeadName = "DosingRegimen")
     public JAXBElement<Bolus> createBolus(Bolus value) {
         return new JAXBElement<Bolus>(_Bolus_QNAME, Bolus.class, null, value);
     }
@@ -451,7 +453,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Washout }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "Washout")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_TD, name = "Washout")
     public JAXBElement<Washout> createWashout(Washout value) {
         return new JAXBElement<Washout>(_Washout_QNAME, Washout.class, null, value);
     }
@@ -460,7 +462,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Infusion }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "Infusion", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/TrialDesign", substitutionHeadName = "DosingRegimen")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_TD, name = "Infusion", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_TD, substitutionHeadName = "DosingRegimen")
     public JAXBElement<Infusion> createInfusion(Infusion value) {
         return new JAXBElement<Infusion>(_Infusion_QNAME, Infusion.class, null, value);
     }
@@ -469,7 +471,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link IndividualMapping }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "IndividualMapping")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_TD, name = "IndividualMapping")
     @Deprecated
 	public JAXBElement<IndividualMapping> createIndividualMapping(IndividualMapping value) {
         return new JAXBElement<IndividualMapping>(_IndividualMapping_QNAME, IndividualMapping.class, null, value);
@@ -479,7 +481,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link CovariateMapping }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "ObservationsEvent", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/TrialDesign", substitutionHeadName = "StudyEvent")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_TD, name = "ObservationsEvent", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_TD, substitutionHeadName = "StudyEvent")
     public JAXBElement<Observations> createObservationsEvent(Observations value) {
         return new JAXBElement<Observations>(_ObservationsEvent_QNAME, Observations.class, null, value);
     }
@@ -489,7 +491,7 @@ public class ObjectFactory {
      * 
      */
 	@Deprecated
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "CovariateMapping", substitutionHeadNamespace = "http://www.pharmml.org/2013/03/TrialDesign", substitutionHeadName = "AttributeMapping")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_TD, name = "CovariateMapping", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_TD, substitutionHeadName = "AttributeMapping")
     public JAXBElement<CovariateMapping> createCovariateMapping(CovariateMapping value) {
         return new JAXBElement<CovariateMapping>(_CovariateMapping_QNAME, CovariateMapping.class, null, value);
     }
@@ -498,7 +500,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link LookupTable }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "LookupTable")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_TD, name = "LookupTable")
     public JAXBElement<LookupTable> createLookupTable(LookupTable value) {
         return new JAXBElement<LookupTable>(_LookupTable_QNAME, LookupTable.class, null, value);
     }
@@ -507,7 +509,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Activity }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/TrialDesign", name = "Activity")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_TD, name = "Activity")
     public JAXBElement<Activity> createActivity(Activity value) {
         return new JAXBElement<Activity>(_Activity_QNAME, Activity.class, null, value);
     }

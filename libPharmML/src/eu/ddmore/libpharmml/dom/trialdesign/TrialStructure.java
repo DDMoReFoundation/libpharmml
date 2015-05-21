@@ -28,13 +28,16 @@ package eu.ddmore.libpharmml.dom.trialdesign;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -88,7 +91,7 @@ public class TrialStructure
     protected List<SegmentDefinition> segment;
     @XmlElement(name = "Activity", required = true)
     protected List<Activity> activity;
-    @XmlElementRef(name = "StudyEvent", namespace = "http://www.pharmml.org/2013/03/TrialDesign", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "StudyEvent", namespace = XMLFilter.NS_DEFAULT_TD, type = JAXBElement.class, required = false)
     protected List<JAXBElement<? extends StudyEvent>> studyEvent;
 
     /**

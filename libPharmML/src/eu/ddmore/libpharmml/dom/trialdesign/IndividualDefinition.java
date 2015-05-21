@@ -28,14 +28,17 @@ package eu.ddmore.libpharmml.dom.trialdesign;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -80,13 +83,13 @@ public class IndividualDefinition
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Name name;
     @XmlElement(name = "IndividualMapping", required = true)
     protected IndividualMapping individualMapping;
     @XmlElement(name = "ArmMapping", required = true)
     protected ArmMapping armMapping;
-    @XmlElementRef(name = "AttributeMapping", namespace = "http://www.pharmml.org/2013/03/TrialDesign", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AttributeMapping", namespace = XMLFilter.NS_DEFAULT_TD, type = JAXBElement.class, required = false)
     protected List<JAXBElement<?>> attributeMapping;
     @XmlElement(name = "IVDependentMapping")
     protected List<IndependentVariableDependentMapping> ivDependentMapping;

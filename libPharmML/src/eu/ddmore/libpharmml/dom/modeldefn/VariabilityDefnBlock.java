@@ -28,6 +28,7 @@ package eu.ddmore.libpharmml.dom.modeldefn;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -35,8 +36,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -72,7 +75,7 @@ public class VariabilityDefnBlock
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Name name;
     @XmlElement(name = "Level", required = true)
     protected List<VariabilityLevelDefinition> level;

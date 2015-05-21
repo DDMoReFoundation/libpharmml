@@ -40,6 +40,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableAssignment;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -77,15 +78,15 @@ public class DatasetMapping
     extends PharmMLRootType
 {
 
-	@XmlElement(name = "VariableAssignment", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+	@XmlElement(name = "VariableAssignment", namespace = XMLFilter.NS_DEFAULT_CT)
 	@Deprecated
     protected List<VariableAssignment> variableAssignment;
-	@XmlElementRef(name = "Mapping", namespace = "http://www.pharmml.org/2013/03/ModellingSteps", type = JAXBElement.class)
+	@XmlElementRef(name = "Mapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = JAXBElement.class)
 	@Deprecated
     protected List<JAXBElement<? extends MappingType>> mapping;
     @XmlElement(name = "ColumnMapping", required = true)
     protected List<ColumnMapping> columnMapping;
-    @XmlElement(name = "DataSet", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
+    @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
     protected DataSet dataSet;
 
 	/**

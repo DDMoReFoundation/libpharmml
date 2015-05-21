@@ -31,9 +31,11 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Sequence;
 import eu.ddmore.libpharmml.dom.commontypes.Vector;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -67,7 +69,7 @@ public class Timepoints
     extends PharmMLRootType
 {
 
-    @XmlElementRef(name = "Arrays", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class)
+    @XmlElementRef(name = "Arrays", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class)
     protected JAXBElement<?> arrays;
 
     /**

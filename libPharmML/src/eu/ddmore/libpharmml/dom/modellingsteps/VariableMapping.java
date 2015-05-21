@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -67,7 +68,7 @@ public class VariableMapping
     extends MappingType
 {
 
-    @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
+    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
     protected SymbolRef symbRef;
 
     /**

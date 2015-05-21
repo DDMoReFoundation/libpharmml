@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableAssignment;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -96,7 +97,7 @@ public abstract class CommonModellingStep
     @XmlElement(name = "ExternalDataSetReference")
     protected ExternalDataSetReference externalDataSetReference;
     
-    @XmlElement(name = "VariableAssignment", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "VariableAssignment", namespace = XMLFilter.NS_DEFAULT_CT)
     protected List<VariableAssignment> variableAssignment;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

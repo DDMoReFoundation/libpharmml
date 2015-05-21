@@ -28,14 +28,17 @@ package eu.ddmore.libpharmml.dom.trialdesign;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -71,9 +74,9 @@ public class Treatment
 {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "DosingRegimen", namespace = "http://www.pharmml.org/2013/03/TrialDesign", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Description", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "DosingRegimen", namespace = XMLFilter.NS_DEFAULT_TD, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Description", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> rest;
 

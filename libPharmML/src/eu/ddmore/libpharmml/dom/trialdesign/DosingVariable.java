@@ -32,10 +32,12 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.dataset.TargetMapping;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -81,9 +83,9 @@ public class DosingVariable
 
     @XmlElement(name = "TargetMapping")
     protected TargetMapping targetMapping;
-    @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
     protected SymbolRef symbRef;
-    @XmlElement(name = "Assign", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Rhs assign;
 	@XmlAttribute(name = "inputType")
 	@Deprecated

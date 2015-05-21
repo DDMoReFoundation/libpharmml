@@ -39,6 +39,8 @@ import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.impl.XMLFilter;
+
 
 /**
  * The definition of a non-uniform sequence of numbers. The vector is an ordered list of
@@ -120,8 +122,8 @@ public class Vector extends AbstractVector {
 	
 	// deprecated since 0.3.2
 	@XmlElementRefs({
-		@XmlElementRef(name = "Sequence", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+		@XmlElementRef(name = "Sequence", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
 	})
 	protected List<JAXBElement<?>> sequenceOrScalar;
 	// ----------

@@ -24,9 +24,9 @@
 //
 
 @javax.xml.bind.annotation.XmlSchema(
-		namespace = "http://www.pharmml.org/2013/03/CommonTypes", 
+		namespace = eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_CT, 
 		xmlns = {@javax.xml.bind.annotation.XmlNs(
-				namespaceURI = "http://www.pharmml.org/2013/03/CommonTypes", 
+				namespaceURI = eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_CT, 
 				prefix = "ct")},
 		elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package eu.ddmore.libpharmml.dom.commontypes;

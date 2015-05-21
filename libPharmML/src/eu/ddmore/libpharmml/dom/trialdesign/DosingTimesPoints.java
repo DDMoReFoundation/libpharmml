@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -69,9 +70,9 @@ public class DosingTimesPoints
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
     protected SymbolRef symbRef;
-    @XmlElement(name = "Assign", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
+    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
     protected Rhs assign;
 
     /**

@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.Name;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -82,7 +83,7 @@ public class ObservationModel
 	//TODO: extends PharmMLRootType. still CommonParameterModelType for backward compatiblity.
 	// All inherited methods are @override and @deprecated
 
-    @XmlElementRef(name = "ObservationError", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class)
+    @XmlElementRef(name = "ObservationError", namespace = XMLFilter.NS_DEFAULT_MDEF, type = JAXBElement.class)
     @Deprecated
     protected JAXBElement<? extends ObservationError> observationError;
 	

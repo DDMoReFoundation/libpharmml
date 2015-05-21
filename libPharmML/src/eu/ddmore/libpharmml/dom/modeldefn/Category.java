@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -69,9 +70,9 @@ import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
 })
 public class Category {
 
-    @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Name name;
-    @XmlElement(name = "Description", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Description", namespace = XMLFilter.NS_DEFAULT_CT)
     protected AnnotationType description;
     @XmlElement(name = "Probability")
     protected ScalarRhs probability;

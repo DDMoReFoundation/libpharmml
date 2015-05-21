@@ -31,6 +31,8 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
+import eu.ddmore.libpharmml.impl.XMLFilter;
+
 
 /**
  * This object contains factory methods for each 
@@ -49,15 +51,15 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _FunctionCall_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "FunctionCall");
-    private final static QName _Constant_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "Constant");
-    private final static QName _LogicUniop_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "LogicUniop");
-    private final static QName _LogicBinop_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "LogicBinop");
-    private final static QName _Otherwise_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "Otherwise");
-    private final static QName _Uniop_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "Uniop");
-    private final static QName _Binop_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "Binop");
-    private final static QName _EquationTypePiecewise_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "Piecewise");
-    private final static QName _Equation_QNAME = new QName("http://www.pharmml.org/2013/03/Maths", "Equation");
+    private final static QName _FunctionCall_QNAME = new QName(XMLFilter.NS_DEFAULT_MATH, "FunctionCall");
+    private final static QName _Constant_QNAME = new QName(XMLFilter.NS_DEFAULT_MATH, "Constant");
+    private final static QName _LogicUniop_QNAME = new QName(XMLFilter.NS_DEFAULT_MATH, "LogicUniop");
+    private final static QName _LogicBinop_QNAME = new QName(XMLFilter.NS_DEFAULT_MATH, "LogicBinop");
+    private final static QName _Otherwise_QNAME = new QName(XMLFilter.NS_DEFAULT_MATH, "Otherwise");
+    private final static QName _Uniop_QNAME = new QName(XMLFilter.NS_DEFAULT_MATH, "Uniop");
+    private final static QName _Binop_QNAME = new QName(XMLFilter.NS_DEFAULT_MATH, "Binop");
+    private final static QName _EquationTypePiecewise_QNAME = new QName(XMLFilter.NS_DEFAULT_MATH, "Piecewise");
+    private final static QName _Equation_QNAME = new QName(XMLFilter.NS_DEFAULT_MATH, "Equation");
     
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.maths
@@ -198,7 +200,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link FunctionCallType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "FunctionCall")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MATH, name = "FunctionCall")
     public JAXBElement<FunctionCallType> createFunctionCall(FunctionCallType value) {
         return new JAXBElement<FunctionCallType>(_FunctionCall_QNAME, FunctionCallType.class, null, value);
     }
@@ -207,7 +209,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Constant }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Constant")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MATH, name = "Constant")
     public JAXBElement<Constant> createConstant(Constant value) {
         return new JAXBElement<Constant>(_Constant_QNAME, Constant.class, null, value);
     }
@@ -216,7 +218,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link LogicUniOp }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "LogicUniop")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MATH, name = "LogicUniop")
     public JAXBElement<LogicUniOp> createLogicUniop(LogicUniOp value) {
         return new JAXBElement<LogicUniOp>(_LogicUniop_QNAME, LogicUniOp.class, null, value);
     }
@@ -225,7 +227,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link LogicBinOp }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "LogicBinop")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MATH, name = "LogicBinop")
     public JAXBElement<LogicBinOp> createLogicBinop(LogicBinOp value) {
         return new JAXBElement<LogicBinOp>(_LogicBinop_QNAME, LogicBinOp.class, null, value);
     }
@@ -234,7 +236,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Otherwise")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MATH, name = "Otherwise")
     public JAXBElement<Otherwise> createOtherwise(Otherwise value) {
         return new JAXBElement<Otherwise>(_Otherwise_QNAME, Otherwise.class, null, value);
     }
@@ -243,7 +245,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Uniop }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Uniop")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MATH, name = "Uniop")
     public JAXBElement<Uniop> createUniop(Uniop value) {
         return new JAXBElement<Uniop>(_Uniop_QNAME, Uniop.class, null, value);
     }
@@ -252,7 +254,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Binop }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Binop")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MATH, name = "Binop")
     public JAXBElement<Binop> createBinop(Binop value) {
         return new JAXBElement<Binop>(_Binop_QNAME, Binop.class, null, value);
     }
@@ -261,7 +263,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Equation }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Equation")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MATH, name = "Equation")
     public JAXBElement<Equation> createEquation(Equation value) {
         return new JAXBElement<Equation>(_Equation_QNAME, Equation.class, null, value);
     }
@@ -271,7 +273,7 @@ public class ObjectFactory {
      * 
      */
 	@Deprecated
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/03/Maths", name = "Piecewise", scope = EquationType.class)
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MATH, name = "Piecewise", scope = EquationType.class)
     public JAXBElement<Piecewise> createEquationTypePiecewise(Piecewise value) {
         return new JAXBElement<Piecewise>(_EquationTypePiecewise_QNAME, Piecewise.class, EquationType.class, value);
     }

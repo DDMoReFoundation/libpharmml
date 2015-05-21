@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 //import eu.ddmore.libpharmml.dom.commontypes.ToolName;
 //import eu.ddmore.libpharmml.impl.LoggerWrapper;
 //import eu.ddmore.libpharmml.impl.MarshalListener;
@@ -97,7 +98,7 @@ public class ModellingSteps
     
     @XmlElement(name = "TargetTool")
     protected List<TargetTool> targetTool;
-    @XmlElementRef(name = "CommonModellingStep", namespace = "http://www.pharmml.org/2013/03/ModellingSteps", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "CommonModellingStep", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = JAXBElement.class, required = false)
     protected List<JAXBElement<? extends CommonModellingStep>> commonModellingStep;
     @XmlElement(name = "StepDependencies")
     protected StepDependency stepDependencies;

@@ -28,12 +28,15 @@ package eu.ddmore.libpharmml.dom.trialdesign;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.LevelReference;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -71,9 +74,9 @@ public class Observations
     extends StudyEvent
 {
 
-    @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Name name;
-    @XmlElement(name = "VariabilityReference", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT)
     protected LevelReference variabilityReference;
     @XmlElement(name = "ObservationGroup", required = true)
     protected List<ObservationsGroup> observationGroup;

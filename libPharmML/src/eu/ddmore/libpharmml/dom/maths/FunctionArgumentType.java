@@ -53,6 +53,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -108,27 +109,27 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 })
 public class FunctionArgumentType extends PharmMLElement {
 
-    @XmlElement(name = "Symbol", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Symbol", namespace = XMLFilter.NS_DEFAULT_CT)
     protected SymbolName symbol;
-    @XmlElement(name = "Description", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Description", namespace = XMLFilter.NS_DEFAULT_CT)
     protected AnnotationType description;
     @XmlElement(name = "Equation")
     protected Equation equation;
-    @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected JAXBElement<?> scalar;
     @XmlElement(name = "Constant")
     protected Constant constant;
-    @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
     protected SymbolRef symbRef;
-    @XmlElement(name = "Sum", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Sum", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Sum sum;
-    @XmlElement(name = "Product", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Product", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Product product;
-    @XmlElement(name = "VectorSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "VectorSelector", namespace = XMLFilter.NS_DEFAULT_CT)
     protected VectorSelector vectorSelector;
-    @XmlElement(name = "MatrixSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "MatrixSelector", namespace = XMLFilter.NS_DEFAULT_CT)
     protected MatrixSelector matrixSelector;
-    @XmlElement(name = "Probability", namespace = "http://www.pharmml.org/2013/03/ModelDefinition")
+    @XmlElement(name = "Probability", namespace = XMLFilter.NS_DEFAULT_MDEF)
     protected Probability probability;
     @XmlAttribute(name = "symbId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

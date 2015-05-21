@@ -45,6 +45,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -89,17 +90,17 @@ public abstract class CommonObservationModel
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Name name;
     
     // -----------
-    @XmlElementRef(name = "CommonParameterElement", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "CommonParameterElement", namespace = XMLFilter.NS_DEFAULT_MDEF, type = JAXBElement.class, required = false)
     protected List<JAXBElement<? extends CommonParameter>> commonParameterElement;
     @XmlTransient
     protected List<CommonParameter> listOfCommonParameterElement;
     // ------------
     
-    @XmlElement(name = "Variable", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Variable", namespace = XMLFilter.NS_DEFAULT_CT)
     protected List<VariableDefinition> variable;
     @XmlElement(name = "Correlation")
     protected List<Correlation> correlation;

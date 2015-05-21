@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -78,7 +79,7 @@ public class FunctionCallType
     extends PharmMLRootType implements Operand, ExpressionValue
 {
 
-    @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
+    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
     protected SymbolRef symbRef;
     @XmlElement(name = "FunctionArgument")
     protected List<FunctionCallType.FunctionArgument> functionArgument;

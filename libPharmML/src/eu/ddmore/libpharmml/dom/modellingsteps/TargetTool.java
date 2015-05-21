@@ -28,6 +28,7 @@ package eu.ddmore.libpharmml.dom.modellingsteps;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -35,9 +36,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.TargetToolDataSet;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -88,7 +91,7 @@ public class TargetTool
     protected String targetToolName;
     @XmlElement(name = "ColumnMapping")
     protected List<ColumnMapping> columnMapping;
-    @XmlElement(name = "TargetToolData", namespace = "http://www.pharmml.org/2013/08/Dataset", required = true)
+    @XmlElement(name = "TargetToolData", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
     protected TargetToolDataSet targetToolData;
     @XmlElement(name = "CodeInjection")
     protected CodeInjection codeInjection;

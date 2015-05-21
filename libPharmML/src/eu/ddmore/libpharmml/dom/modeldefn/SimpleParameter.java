@@ -40,6 +40,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Sequence;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.dom.maths.Equation;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -74,7 +75,7 @@ public class SimpleParameter
     extends CommonParameter implements Assignable
 {
 
-    @XmlElement(name = "Assign", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Rhs assign;
 
     /**

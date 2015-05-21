@@ -31,6 +31,8 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
+import eu.ddmore.libpharmml.impl.XMLFilter;
+
 
 /**
  * This object contains factory methods for each 
@@ -49,13 +51,13 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Table_QNAME = new QName("http://www.pharmml.org/2013/08/Dataset", "Table");
-    private final static QName _Definition_QNAME = new QName("http://www.pharmml.org/2013/08/Dataset", "Definition");
-    private final static QName _TargetToolData_QNAME = new QName("http://www.pharmml.org/2013/08/Dataset", "TargetToolData");
-    private final static QName _ColumnRef_QNAME = new QName("http://www.pharmml.org/2013/08/Dataset", "ColumnRef");
-    private final static QName _ImportData_QNAME = new QName("http://www.pharmml.org/2013/08/Dataset", "ImportData");
-    private final static QName _DataSet_QNAME = new QName("http://www.pharmml.org/2013/08/Dataset", "DataSet");
-    private final static QName _ImportTargetData_QNAME = new QName("http://www.pharmml.org/2013/08/Dataset", "ImportTargetData");
+    private final static QName _Table_QNAME = new QName(XMLFilter.NS_DEFAULT_DS, "Table");
+    private final static QName _Definition_QNAME = new QName(XMLFilter.NS_DEFAULT_DS, "Definition");
+    private final static QName _TargetToolData_QNAME = new QName(XMLFilter.NS_DEFAULT_DS, "TargetToolData");
+    private final static QName _ColumnRef_QNAME = new QName(XMLFilter.NS_DEFAULT_DS, "ColumnRef");
+    private final static QName _ImportData_QNAME = new QName(XMLFilter.NS_DEFAULT_DS, "ImportData");
+    private final static QName _DataSet_QNAME = new QName(XMLFilter.NS_DEFAULT_DS, "DataSet");
+    private final static QName _ImportTargetData_QNAME = new QName(XMLFilter.NS_DEFAULT_DS, "ImportTargetData");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.dataset
@@ -172,7 +174,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSetTableType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/08/Dataset", name = "Table")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_DS, name = "Table")
     public JAXBElement<DataSetTableType> createTable(DataSetTableType value) {
         return new JAXBElement<DataSetTableType>(_Table_QNAME, DataSetTableType.class, null, value);
     }
@@ -181,7 +183,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ColumnsDefinitionType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/08/Dataset", name = "Definition")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_DS, name = "Definition")
     public JAXBElement<ColumnsDefinitionType> createDefinition(ColumnsDefinitionType value) {
         return new JAXBElement<ColumnsDefinitionType>(_Definition_QNAME, ColumnsDefinitionType.class, null, value);
     }
@@ -190,7 +192,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link TargetToolDataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/08/Dataset", name = "TargetToolData")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_DS, name = "TargetToolData")
     public JAXBElement<TargetToolDataSet> createTargetToolData(TargetToolDataSet value) {
         return new JAXBElement<TargetToolDataSet>(_TargetToolData_QNAME, TargetToolDataSet.class, null, value);
     }
@@ -199,7 +201,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ColumnReference }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/08/Dataset", name = "ColumnRef")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_DS, name = "ColumnRef")
     public JAXBElement<ColumnReference> createColumnRef(ColumnReference value) {
         return new JAXBElement<ColumnReference>(_ColumnRef_QNAME, ColumnReference.class, null, value);
     }
@@ -208,7 +210,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ExternalFile }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/08/Dataset", name = "ImportData")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_DS, name = "ImportData")
     public JAXBElement<ExternalFile> createImportData(ExternalFile value) {
         return new JAXBElement<ExternalFile>(_ImportData_QNAME, ExternalFile.class, null, value);
     }
@@ -217,7 +219,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/08/Dataset", name = "DataSet")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_DS, name = "DataSet")
     public JAXBElement<DataSet> createDataSet(DataSet value) {
         return new JAXBElement<DataSet>(_DataSet_QNAME, DataSet.class, null, value);
     }
@@ -226,7 +228,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ImportTargetData }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/2013/08/Dataset", name = "ImportTargetData")
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_DS, name = "ImportTargetData")
     public JAXBElement<ImportTargetData> createImportTargetData(ImportTargetData value) {
         return new JAXBElement<ImportTargetData>(_ImportTargetData_QNAME, ImportTargetData.class, null, value);
     }

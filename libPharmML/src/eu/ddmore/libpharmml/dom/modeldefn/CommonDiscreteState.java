@@ -27,14 +27,17 @@
 package eu.ddmore.libpharmml.dom.modeldefn;
 
 import java.math.BigInteger;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.dom.maths.LogicUniOp;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -69,9 +72,9 @@ public class CommonDiscreteState
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "LogicBinop", namespace = "http://www.pharmml.org/2013/03/Maths")
+    @XmlElement(name = "LogicBinop", namespace = XMLFilter.NS_DEFAULT_MATH)
     protected LogicBinOp logicBinop;
-    @XmlElement(name = "LogicUniop", namespace = "http://www.pharmml.org/2013/03/Maths")
+    @XmlElement(name = "LogicUniop", namespace = XMLFilter.NS_DEFAULT_MATH)
     protected LogicUniOp logicUniop;
     @XmlAttribute(name = "MarkovOrder")
     protected BigInteger markovOrder;

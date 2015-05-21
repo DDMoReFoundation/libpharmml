@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -69,7 +70,7 @@ public class ContinuousObservationModel
 {
 
 	// -------------
-    @XmlElementRef(name = "ObservationError", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", type = JAXBElement.class)
+    @XmlElementRef(name = "ObservationError", namespace = XMLFilter.NS_DEFAULT_MDEF, type = JAXBElement.class)
     protected JAXBElement<? extends ObservationError> jaxbObservationError;
     @XmlTransient
     protected ObservationError observationError;

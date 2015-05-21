@@ -33,8 +33,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolName;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -73,7 +75,7 @@ public class CovariateDefinition
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Symbol", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Symbol", namespace = XMLFilter.NS_DEFAULT_CT)
     protected SymbolName symbol;
     @XmlElement(name = "Continuous")
     protected ContinuousCovariate continuous;

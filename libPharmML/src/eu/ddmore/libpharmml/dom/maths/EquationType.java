@@ -57,6 +57,7 @@ import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -114,9 +115,9 @@ public class EquationType
     extends PharmMLRootType
 {
 
-    @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected JAXBElement<?> scalar;
-    @XmlElement(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
     protected SymbolRef symbRef;
     @XmlElement(name = "Binop")
     protected Binop binop;
@@ -126,26 +127,26 @@ public class EquationType
     protected Piecewise piecewise;
     @XmlElement(name = "FunctionCall")
     protected FunctionCallType functionCall;
-	@XmlElement(name = "Sum", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+	@XmlElement(name = "Sum", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Sum sum;
-    @XmlElement(name = "Product", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Product", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Product product;
-    @XmlElement(name = "Delay", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Delay", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Delay delay;
-    @XmlElement(name = "VectorSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "VectorSelector", namespace = XMLFilter.NS_DEFAULT_CT)
     protected VectorSelector vectorSelector;
-    @XmlElement(name = "MatrixSelector", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "MatrixSelector", namespace = XMLFilter.NS_DEFAULT_CT)
     protected MatrixSelector matrixSelector;
-    @XmlElement(name = "Probability", namespace = "http://www.pharmml.org/2013/03/ModelDefinition")
+    @XmlElement(name = "Probability", namespace = XMLFilter.NS_DEFAULT_MDEF)
     protected Probability probability;
 	
 	@XmlElementRefs({
-        @XmlElementRef(name = "Piecewise", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "SymbRef", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Uniop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Binop", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "FunctionCall", namespace = "http://www.pharmml.org/2013/03/Maths", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "Piecewise", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Uniop", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Binop", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "FunctionCall", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     })
 	@Deprecated
     protected List<JAXBElement<?>> scalarOrSymbRefOrBinop;
