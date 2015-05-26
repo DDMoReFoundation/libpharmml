@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:ivy="antlib:org.apache.ivy.ant" name="libPharmML" default="jar-all" basedir=".">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="libPharmML" default="build-all" basedir=".">
 	<property name="build.dir" location="build"/>
 	<property name="src.dir" location="./src"/>
 	<property name="test.dir" location="./test"/>
@@ -59,7 +59,7 @@
 		</classpath>
 	</taskdef>-->
 
-	<target name="build-all" depends="build-src" description="Build everything">
+	<target name="build-all" depends="clean,run-tests,jar-all" description="Build everything">
 	</target>
 
 	<!-- ================================= 
