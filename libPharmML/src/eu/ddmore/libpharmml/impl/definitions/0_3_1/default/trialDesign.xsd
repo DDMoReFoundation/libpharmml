@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-Copyright 2013 European Molecular Biology Laboratory, Heidelberg,
+Copyright 2014 European Molecular Biology Laboratory, Heidelberg,
 Germany and Novo Nordisk A/S, Bagsvaerd, Denmark.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you
@@ -14,14 +14,14 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
 implied. See the License for the specific language governing
 permissions and limitations under the License.
--->
+-->    
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="http://www.pharmml.org/2013/03/TrialDesign"
-    xmlns:design="http://www.pharmml.org/2013/03/TrialDesign"
-    xmlns:maths="http://www.pharmml.org/2013/03/Maths"
-    xmlns:mdef="http://www.pharmml.org/2013/03/ModelDefinition"
-    xmlns:ds="http://www.pharmml.org/2013/08/Dataset"
-    xmlns:ct="http://www.pharmml.org/2013/03/CommonTypes" version="0.6"
+    targetNamespace="http://www.pharmml.org/pharmml/0.6/TrialDesign"
+    xmlns:design="http://www.pharmml.org/pharmml/0.6/TrialDesign"
+    xmlns:maths="http://www.pharmml.org/pharmml/0.6/Maths"
+    xmlns:mdef="http://www.pharmml.org/pharmml/0.6/ModelDefinition"
+    xmlns:ds="http://www.pharmml.org/pharmml/0.6/Dataset"
+    xmlns:ct="http://www.pharmml.org/pharmml/0.6/CommonTypes" version="0.1"
     elementFormDefault="qualified" attributeFormDefault="unqualified">
     <xs:annotation>
         <xs:documentation>
@@ -32,11 +32,11 @@ permissions and limitations under the License.
     <!--
         Imports
         -->
-    <xs:import namespace="http://www.pharmml.org/2013/03/CommonTypes"
-        schemaLocation="http://www.pharmml.org/2013/03/CommonTypes"/>
+    <xs:import namespace="http://www.pharmml.org/pharmml/0.6/CommonTypes"
+        schemaLocation="http://www.pharmml.org/pharmml/0.6/CommonTypes"/>
 
-    <xs:import namespace="http://www.pharmml.org/2013/08/Dataset"
-        schemaLocation="http://www.pharmml.org/2013/08/Dataset"/>
+    <xs:import namespace="http://www.pharmml.org/pharmml/0.6/Dataset"
+        schemaLocation="http://www.pharmml.org/pharmml/0.6/Dataset"/>
 
 
     <!--
@@ -71,13 +71,6 @@ permissions and limitations under the License.
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="admType">
-                <xs:annotation>
-                    <xs:documentation>
-                        Dose is an input to a system via a admin type defined in a macro.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
 
@@ -96,22 +89,13 @@ permissions and limitations under the License.
         <xs:complexContent>
             <xs:extension base="ct:PharmMLRootType">
                 <xs:sequence>
-                    <xs:choice>
-                        <xs:element minOccurs="0" maxOccurs="1" name="TargetMapping" type="ds:TargetMappingType">
-                            <xs:annotation>
-                                <xs:documentation>
-                                    Defined the mapping between targets in the structural model and the TrialDesign.
-                                </xs:documentation>
-                            </xs:annotation>
-                        </xs:element>
-                        <xs:element minOccurs="0" ref="ct:SymbRef">
-                            <xs:annotation>
-                                <xs:documentation>
-                                    The name of the variable that is the dose administered to.
-                                </xs:documentation>
-                            </xs:annotation>
-                        </xs:element>
-                    </xs:choice>
+                    <xs:element ref="ct:SymbRef">
+                        <xs:annotation>
+                            <xs:documentation>
+                                The name of the variable that is the dose administered to.
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
                     <xs:element minOccurs="0" ref="ct:Assign">
                         <xs:annotation>
                             <xs:documentation>The amount of dose to be applied at dosing time.</xs:documentation>
@@ -122,6 +106,7 @@ permissions and limitations under the License.
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
+    
     
     <xs:complexType name="DosingRegimenType" abstract="true">
         <xs:annotation>
@@ -297,7 +282,7 @@ permissions and limitations under the License.
     <xs:complexType name="LookupTableType">
         <xs:annotation>
             <xs:documentation>
-                A type defining the lookup table type data.                
+                A type defining the NONMEM type data and task settings.                
             </xs:documentation>
         </xs:annotation>
         <xs:complexContent>
@@ -311,17 +296,10 @@ permissions and limitations under the License.
                             </xs:documentation>
                         </xs:annotation>
                     </xs:element>                        
-                    <xs:element name="Target" maxOccurs="unbounded" type="design:TargetType">
+                    <xs:element name="Target" maxOccurs="unbounded" type="design:TargetMappingType">
                         <xs:annotation>
                             <xs:documentation>
                                 Definition of mapping between lookup table variable and target in the model.
-                            </xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="ColumnTransformation" minOccurs="0" maxOccurs="unbounded" type="ds:ColumnTransformationType">
-                        <xs:annotation>
-                            <xs:documentation>
-                                Allows to encode any transformation of the columns.
                             </xs:documentation>
                         </xs:annotation>
                     </xs:element>
@@ -338,7 +316,7 @@ permissions and limitations under the License.
         </xs:complexContent>
     </xs:complexType>
     
-    <xs:complexType name="TargetType">
+    <xs:complexType name="TargetMappingType">
         <xs:annotation>
             <xs:documentation>
                 Mapping of the lookup table target variables type.
@@ -657,14 +635,14 @@ permissions and limitations under the License.
         <xs:complexContent>
             <xs:extension base="ct:PharmMLRootType">
                 <xs:sequence>
-                    <xs:element name="Structure" minOccurs="0" type="design:TrialStructureType"> 
+                    <xs:element name="Structure" type="design:TrialStructureType"> 
                         <xs:annotation>
                             <xs:documentation>
                                 Defines the structure of the study.   
                             </xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="Population" minOccurs="0" type="design:PopulationType">
+                    <xs:element name="Population" type="design:PopulationType">
                         <xs:annotation>
                             <xs:documentation>
                                 Defines the population of the study.
@@ -789,6 +767,17 @@ permissions and limitations under the License.
                     </xs:element>
                 </xs:sequence>
             </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="IndependentVariableMappingType">
+        <xs:annotation>
+            <xs:documentation>
+                A type defining the independent variable mapping.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="design:PopulationMappingType"/>
         </xs:complexContent>
     </xs:complexType>
     

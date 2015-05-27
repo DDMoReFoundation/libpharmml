@@ -16,34 +16,23 @@ implied. See the License for the specific language governing
 permissions and limitations under the License.
 -->    
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:ct="http://www.pharmml.org/2013/03/CommonTypes"
-    targetNamespace="http://www.pharmml.org/2013/03/CommonTypes"
-    xmlns:distrib="http://www.uncertml.org/3.0"
-    xmlns:mdef="http://www.pharmml.org/2013/03/ModelDefinition"
-    xmlns:math="http://www.pharmml.org/2013/03/Maths"
-    version="0.6" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    xmlns:ct="http://www.pharmml.org/pharmml/0.6/CommonTypes"
+    targetNamespace="http://www.pharmml.org/pharmml/0.6/CommonTypes"
+    xmlns:distrib="http://www.uncertml.org/3.0" 
+    xmlns:mdef="http://www.pharmml.org/pharmml/0.6/ModelDefinition"
+    xmlns:math="http://www.pharmml.org/pharmml/0.6/Maths"
+    version="0.4.1" elementFormDefault="qualified" attributeFormDefault="unqualified">
     
-    <xs:import namespace="http://www.pharmml.org/2013/03/Maths"
-        schemaLocation="http://www.pharmml.org/2013/03/Maths"/>
+    <xs:import namespace="http://www.pharmml.org/pharmml/0.6/Maths"
+        schemaLocation="http://www.pharmml.org/pharmml/0.6/Maths"/>
     
-    <xs:import namespace="http://www.pharmml.org/2013/03/ModelDefinition"
-        schemaLocation="http://www.pharmml.org/2013/03/ModelDefinition"/>
+    <xs:import namespace="http://www.pharmml.org/pharmml/0.6/ModelDefinition"
+        schemaLocation="http://www.pharmml.org/pharmml/0.6/ModelDefinition"/>
     
     
     <!--
         Simple Types
       -->
-    <xs:simpleType name="ToolNameType">
-        <xs:annotation>
-            <xs:documentation>Defines the tool names attribute.</xs:documentation>
-        </xs:annotation>
-        <xs:restriction base="xs:token">
-            <xs:enumeration value="BUGS"/>
-            <xs:enumeration value="Monolix"/>
-            <xs:enumeration value="NONMEM"/>
-            <!-- extandable with other tool names -->
-        </xs:restriction>
-    </xs:simpleType>    
     <xs:simpleType name="SymbolTypeType">
         <xs:annotation>
             <xs:documentation>Defines the symbol types. Restricted to the available types.</xs:documentation>
@@ -443,7 +432,7 @@ permissions and limitations under the License.
         <xs:complexContent>
             <xs:extension base="ct:PharmMLRootType">
                 <xs:sequence>
-                    <xs:element minOccurs="0" name="HistoryValue" type="ct:InitialValueType"/>
+                    <xs:element minOccurs="0" name="HistoryValue" type="ct:InitialValueType"/>  <!-- CHECK THIS one!!!!!!!!!! -->
                     <xs:element minOccurs="0" name="HistoryTime" type="ct:InitialTimeType"/>
                 </xs:sequence>
             </xs:extension>
@@ -729,7 +718,10 @@ permissions and limitations under the License.
     </xs:complexType>
 
 
-    <xs:complexType name="MatrixType">
+
+    <!-- relocated types Vector, Matrix, Sum, Product -->
+
+       <xs:complexType name="MatrixType">
         <xs:annotation>
             <xs:documentation>
                 The type specifies the content of a matrix.
@@ -800,6 +792,7 @@ permissions and limitations under the License.
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:attribute>
+                <xs:attribute name="symbId" type="ct:SymbolIdType" use="optional"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>

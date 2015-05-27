@@ -16,37 +16,28 @@ implied. See the License for the specific language governing
 permissions and limitations under the License.
 -->    
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:mdef="http://www.pharmml.org/2013/03/ModelDefinition"
-    xmlns:ct="http://www.pharmml.org/2013/03/CommonTypes"
-    xmlns:math="http://www.pharmml.org/2013/03/Maths" 
+    xmlns:mdef="http://www.pharmml.org/pharmml/0.6/ModelDefinition"
+    xmlns:ct="http://www.pharmml.org/pharmml/0.6/CommonTypes"
+    xmlns:math="http://www.pharmml.org/pharmml/0.6/Maths" 
     xmlns:distrib="http://www.uncertml.org/3.0"
-    targetNamespace="http://www.pharmml.org/2013/03/ModelDefinition" version="0.6"
+    targetNamespace="http://www.pharmml.org/pharmml/0.6/ModelDefinition" version="0.4.1"
     elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <!--
         Imports
         -->
-    <xs:import namespace="http://www.pharmml.org/2013/03/CommonTypes"
-        schemaLocation="http://www.pharmml.org/2013/03/CommonTypes"/>
+    <xs:import namespace="http://www.pharmml.org/pharmml/0.6/CommonTypes"
+        schemaLocation="http://www.pharmml.org/pharmml/0.6/CommonTypes"/>
     
-    <xs:import namespace="http://www.pharmml.org/2013/03/Maths"
-        schemaLocation="http://www.pharmml.org/2013/03/Maths"/>
+    <xs:import namespace="http://www.pharmml.org/pharmml/0.6/Maths"
+        schemaLocation="http://www.pharmml.org/pharmml/0.6/Maths"/>
     
-    <xs:import namespace="http://www.uncertml.org/3.0" 
-        schemaLocation="http://www.uncertml.org/3.0"/>
+    <xs:import namespace="http://www.uncertml.org/3.0" schemaLocation="http://www.uncertml.org/3.0"/>
 
 
     <!--
         Simple Types
         -->
-    <xs:simpleType name="ReferenceLevelType">
-        <xs:annotation>
-            <xs:documentation>
-                The type defining the reference level in the variability model.
-            </xs:documentation>
-        </xs:annotation>
-        <xs:restriction base="xs:boolean"/>
-    </xs:simpleType>
     <xs:simpleType name="VariabilityType">
         <xs:annotation>
             <xs:documentation>
@@ -146,7 +137,6 @@ permissions and limitations under the License.
                         </xs:annotation>
                     </xs:element>
                 </xs:sequence>
-                <xs:attribute name="referenceLevel" type="mdef:ReferenceLevelType"/>
                 <xs:attributeGroup ref="ct:SymbolDefinitionGroup"/>
             </xs:extension>
         </xs:complexContent>
@@ -438,11 +428,6 @@ permissions and limitations under the License.
                         </xs:annotation>
                     </xs:element>
                 </xs:sequence>
-                <xs:attribute name="symbId" type="ct:SymbolIdType" use="optional">
-                    <xs:annotation>
-                        <xs:documentation>The symbol id for the probability.</xs:documentation>
-                    </xs:annotation>
-                </xs:attribute>
                 <xs:attribute name="linkFunction" type="ct:LinkFunctionType" use="optional">
                     <xs:annotation>
                         <xs:documentation>Type of the link function applied to a probability.</xs:documentation>
@@ -1035,9 +1020,10 @@ permissions and limitations under the License.
                                                                             </xs:complexContent>
                                                                         </xs:complexType>
                                                                     </xs:element>
-                                                                    <xs:element name="Covariate" maxOccurs="unbounded" minOccurs="0" type="mdef:CovariateRelationType">
+                                                                    <xs:element name="Covariate" maxOccurs="unbounded"
+                                                                        minOccurs="0" type="mdef:CovariateRelationType">
                                                                         <xs:annotation>
-                                                                            <xs:documentation>Defines the covariate terms: beta * c_i</xs:documentation>
+                                                                            <xs:documentation>Defines the linear covates: beta c_i</xs:documentation>
                                                                         </xs:annotation>
                                                                     </xs:element>
                                                                 </xs:sequence>
@@ -1126,6 +1112,7 @@ permissions and limitations under the License.
                             </xs:documentation>
                         </xs:annotation>
                     </xs:element> 
+                    <!-- TEST -->
                     <xs:choice>
                         <xs:element ref="distrib:AbstractContinuousUnivariateDistribution">
                             <xs:annotation>
@@ -1156,6 +1143,7 @@ permissions and limitations under the License.
                             </xs:annotation>
                         </xs:element>
                     </xs:choice>
+                    <!-- /TEST -->
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -1388,11 +1376,6 @@ permissions and limitations under the License.
                             <xs:documentation>A variable definition.</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="PKmacros" minOccurs="0" type="mdef:PKmacroType">
-                        <xs:annotation>
-                            <xs:documentation>A macro definition.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
                 </xs:sequence>
                 <xs:attributeGroup ref="ct:BlockDefnGroup"/>
             </xs:extension>
@@ -1465,521 +1448,7 @@ permissions and limitations under the License.
         </xs:complexContent>
     </xs:complexType>
     
-    <xs:complexType name="PKmacroType">
-        <xs:annotation>
-            <xs:documentation>Type defines a PK macro.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:sequence maxOccurs="unbounded">
-                    <xs:element name="Absorption" minOccurs="0" maxOccurs="unbounded" type="mdef:AbsorptionOralMacroType">
-                        <xs:annotation>
-                            <xs:documentation>An absorption macro definition.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="Compartment" minOccurs="0" maxOccurs="unbounded" type="mdef:CompartmentMacroType">
-                        <xs:annotation>
-                            <xs:documentation>A compartment macro definition.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="Depot" minOccurs="0" maxOccurs="unbounded" type="mdef:DepotMacroType">
-                        <xs:annotation>
-                            <xs:documentation>An depot macro definition.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="Effect" minOccurs="0" maxOccurs="unbounded" type="mdef:EffectMacroType">
-                        <xs:annotation>
-                            <xs:documentation>An effect macro definition.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="Elimination" minOccurs="0" maxOccurs="unbounded" type="mdef:EliminationMacroType">
-                        <xs:annotation>
-                            <xs:documentation>An elimination macro definition.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="IV" minOccurs="0" maxOccurs="unbounded" type="mdef:IVMacroType">
-                        <xs:annotation>
-                            <xs:documentation>An iv macro definition.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="Oral" minOccurs="0" maxOccurs="unbounded" type="mdef:AbsorptionOralMacroType">
-                        <xs:annotation>
-                            <xs:documentation>An oral macro definition.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="Peripheral" minOccurs="0" maxOccurs="unbounded" type="mdef:PeripheralMacroType">
-                        <xs:annotation>
-                            <xs:documentation>A peripheral macro definition.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element name="Transfer" minOccurs="0" maxOccurs="unbounded" type="mdef:TransferMacroType">
-                        <xs:annotation>
-                            <xs:documentation>An transfer macro definition.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                </xs:sequence>
-            </xs:extension>
-       </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:complexType name="CompartmentMacroType">
-        <xs:annotation>
-            <xs:documentation>Type defines a compartment macro.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" name="Value" type="mdef:CompartmentMacroValueType"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:complexType name="CompartmentMacroValueType">
-        <xs:annotation>
-            <xs:documentation>Type defines a compartment macro value.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:choice>
-                    <xs:element ref="ct:Assign">
-                        <xs:annotation>
-                            <xs:documentation>Initialise the name attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element ref="ct:SymbRef">
-                        <xs:annotation>
-                            <xs:documentation>Reference to the variable which is assigned to the 'name' attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element ref="ct:Scalar">
-                        <xs:annotation>
-                            <xs:documentation>The value of the name attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>                    
-                </xs:choice>
-                <xs:attribute name="argument" use="optional">
-                    <xs:annotation>
-                        <xs:documentation>Name of the argument belonging to the macro.</xs:documentation>
-                    </xs:annotation>
-                    <xs:simpleType>
-                        <xs:restriction base="xs:Name">
-                            <xs:enumeration value="cmt"/>
-                            <xs:enumeration value="amount"/>
-                            <xs:enumeration value="volume"/>
-                            <xs:enumeration value="concentration"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:attribute>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:complexType name="PeripheralMacroType">
-        <xs:annotation>
-            <xs:documentation>Type defines a peripheral macro.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" name="Value" type="mdef:PeripheralMacroValueType"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:complexType name="PeripheralMacroValueType">
-        <xs:annotation>
-            <xs:documentation>Type defines a peripheral macro value.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:choice>
-                    <xs:element ref="ct:Assign">
-                        <xs:annotation>
-                            <xs:documentation>Initialise the name attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element ref="ct:SymbRef">
-                        <xs:annotation>
-                            <xs:documentation>Reference to the variable which is assigned to the 'name' attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element ref="ct:Scalar">
-                        <xs:annotation>
-                            <xs:documentation>The value of the name attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>                    
-                </xs:choice>
-                <xs:attribute name="argument" use="optional">
-                    <xs:annotation>
-                        <xs:documentation>Name of the argument belonging to the macro.</xs:documentation>
-                    </xs:annotation>
-                    <xs:simpleType>
-                        <xs:union>
-                            <xs:simpleType>
-                                <xs:restriction base="xs:Name">
-                                    <xs:enumeration value="amount"/>
-                                    <xs:enumeration value="volume"/>
-                                    <xs:enumeration value="concentration"/>
-                                </xs:restriction>
-                            </xs:simpleType>
-                            <xs:simpleType>
-                                <xs:restriction base="xs:string">
-                                    <xs:pattern value="k[0-9][0-9]"/>
-                                </xs:restriction>
-                            </xs:simpleType>
-                            <xs:simpleType>
-                                <xs:restriction base="xs:string">
-                                    <xs:pattern value="k[0-9][0-9][0-9][0-9]"/>
-                                </xs:restriction>
-                            </xs:simpleType>
-                            <xs:simpleType>
-                                <xs:restriction base="xs:string">
-                                    <xs:pattern value="k_[0-9]_[0-9]"/>
-                                </xs:restriction>
-                            </xs:simpleType>
-                            <xs:simpleType>
-                                <xs:restriction base="xs:string">
-                                    <xs:pattern value="k_[0-9][0-9]_[0-9][0-9]"/>
-                                </xs:restriction>
-                            </xs:simpleType>
-                        </xs:union>
-                    </xs:simpleType>
-                </xs:attribute>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:complexType name="IVMacroType">
-        <xs:annotation>
-            <xs:documentation>Type defines a iv macro.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" name="Value" type="mdef:IVMacroValueType"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:complexType name="IVMacroValueType">
-        <xs:annotation>
-            <xs:documentation>Type defines a iv macro value.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:choice>
-                    <xs:element ref="ct:Assign">
-                        <xs:annotation>
-                            <xs:documentation>Initialise the name attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element ref="ct:SymbRef">
-                        <xs:annotation>
-                            <xs:documentation>Reference to the variable which is assigned to the 'name' attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element ref="ct:Scalar">
-                        <xs:annotation>
-                            <xs:documentation>The value of the name attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>                    
-                </xs:choice>
-                <xs:attribute name="argument" use="optional">
-                    <xs:annotation>
-                        <xs:documentation>Name of the argument belonging to the macro.</xs:documentation>
-                    </xs:annotation>
-                    <xs:simpleType>
-                        <xs:restriction base="xs:Name">
-                            <xs:enumeration value="cmt"/>
-                            <xs:enumeration value="type"/>
-                            <xs:enumeration value="adm"/>
-                            <xs:enumeration value="Tlag"/>
-                            <xs:enumeration value="p"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:attribute>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:complexType name="TransferMacroType">
-        <xs:annotation>
-            <xs:documentation>Type defines a transfer macro.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" name="Value" type="mdef:TransferMacroValueType"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:complexType name="TransferMacroValueType">
-        <xs:annotation>
-            <xs:documentation>Type defines a transfer macro value.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:choice>
-                    <xs:element ref="ct:Assign">
-                        <xs:annotation>
-                            <xs:documentation>Initialise the name attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element ref="ct:SymbRef">
-                        <xs:annotation>
-                            <xs:documentation>Reference to the variable which is assigned to the 'name' attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element ref="ct:Scalar">
-                        <xs:annotation>
-                            <xs:documentation>The value of the name attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>                    
-                </xs:choice>
-                <xs:attribute name="argument" use="optional">
-                    <xs:annotation>
-                        <xs:documentation>Name of the argument belonging to the macro.</xs:documentation>
-                    </xs:annotation>
-                    <xs:simpleType>
-                        <xs:restriction base="xs:Name">
-                            <xs:enumeration value="from"/>
-                            <xs:enumeration value="to"/>
-                            <xs:enumeration value="kt"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:attribute>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:complexType name="EliminationMacroType">
-        <xs:annotation>
-            <xs:documentation>Type defines an elimination macro.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" name="Value" type="mdef:EliminationMacroValueType"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:complexType name="EliminationMacroValueType">
-        <xs:annotation>
-            <xs:documentation>Type defines an elimination macro value.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:choice>
-                    <xs:element ref="ct:Assign">
-                        <xs:annotation>
-                            <xs:documentation>Initialise the name attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element ref="ct:SymbRef">
-                        <xs:annotation>
-                            <xs:documentation>Reference to the variable which is assigned to the 'name' attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element ref="ct:Scalar">
-                        <xs:annotation>
-                            <xs:documentation>The value of the name attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>                    
-                </xs:choice>
-                <xs:attribute name="argument" use="optional">
-                    <xs:annotation>
-                        <xs:documentation>Name of the argument belonging to the macro.</xs:documentation>
-                    </xs:annotation>
-                    <xs:simpleType>
-                        <xs:restriction base="xs:Name">
-                            <xs:enumeration value="cmt"/>
-                            <xs:enumeration value="V"/>
-                            <xs:enumeration value="k"/>
-                            <xs:enumeration value="CL"/>
-                            <xs:enumeration value="Vm"/>
-                            <xs:enumeration value="Km"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:attribute>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:complexType name="AbsorptionOralMacroType">
-        <xs:annotation>
-            <xs:documentation>Type defines an absorption/oral macro.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" name="Value" type="mdef:AbsorptionOralMacroValueType"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:complexType name="AbsorptionOralMacroValueType">
-        <xs:annotation>
-            <xs:documentation>Type defines a oral macro.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:choice>
-                    <xs:element ref="ct:Assign">
-                        <xs:annotation>
-                            <xs:documentation>Initialise the name attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element ref="ct:SymbRef">
-                        <xs:annotation>
-                            <xs:documentation>Reference to the variable which is assigned to the 'name' attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element ref="ct:Scalar">
-                        <xs:annotation>
-                            <xs:documentation>The value of the name attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>                    
-                </xs:choice>
-                <xs:attribute name="argument" use="optional">
-                    <xs:annotation>
-                        <xs:documentation>Name of the argument belonging to the macro.</xs:documentation>
-                    </xs:annotation>
-                    <xs:simpleType>
-                        <xs:restriction base="xs:Name">
-                            <xs:enumeration value="cmt"/>
-                            <xs:enumeration value="type"/>
-                            <xs:enumeration value="adm"/>
-                            <xs:enumeration value="Tlag"/>
-                            <xs:enumeration value="p"/>
-                            <xs:enumeration value="Tk0"/>
-                            <xs:enumeration value="ka"/>
-                            <xs:enumeration value="Ktr"/>
-                            <xs:enumeration value="Mtt"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:attribute>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
 
-    <xs:complexType name="EffectMacroType">
-        <xs:annotation>
-            <xs:documentation>Type defines an effect macro.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" name="Value" type="mdef:EffectMacroValueType"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:complexType name="EffectMacroValueType">
-        <xs:annotation>
-            <xs:documentation>Type defines an effect macro value.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:choice>
-                    <xs:element ref="ct:Assign">
-                        <xs:annotation>
-                            <xs:documentation>Initialise the name attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element ref="ct:SymbRef">
-                        <xs:annotation>
-                            <xs:documentation>Reference to the variable which is assigned to the 'name' attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element ref="ct:Scalar">
-                        <xs:annotation>
-                            <xs:documentation>The value of the name attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>                    
-                </xs:choice>
-                <xs:attribute name="argument" use="optional">
-                    <xs:annotation>
-                        <xs:documentation>Name of the argument belonging to the macro.</xs:documentation>
-                    </xs:annotation>
-                    <xs:simpleType>
-                        <xs:restriction base="xs:Name">
-                            <xs:enumeration value="cmt"/>
-                            <xs:enumeration value="ke0"/>
-                            <xs:enumeration value="concentration"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:attribute>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:complexType name="DepotMacroType">
-        <xs:annotation>
-            <xs:documentation>Type defines an depot macro.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" name="Value" type="mdef:DepotMacroValueType"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:complexType name="DepotMacroValueType">
-        <xs:annotation>
-            <xs:documentation>Type defines an depot macro value.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ct:PharmMLRootType">
-                <xs:choice>
-                    <xs:element ref="ct:Assign">
-                        <xs:annotation>
-                            <xs:documentation>Initialise the name attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element ref="ct:SymbRef">
-                        <xs:annotation>
-                            <xs:documentation>Reference to the variable which is assigned to the 'name' attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element ref="ct:Scalar">
-                        <xs:annotation>
-                            <xs:documentation>The value of the name attribute.</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>                    
-                </xs:choice>
-                <xs:attribute name="argument" use="optional">
-                    <xs:annotation>
-                        <xs:documentation>Name of the argument belonging to the macro.</xs:documentation>
-                    </xs:annotation>
-                    <xs:simpleType>
-                        <xs:restriction base="xs:Name">
-                            <xs:enumeration value="type"/>
-                            <xs:enumeration value="adm"/>
-                            <xs:enumeration value="Tlag"/>
-                            <xs:enumeration value="p"/>
-                            <xs:enumeration value="target"/>
-                            <xs:enumeration value="Tk0"/>
-                            <xs:enumeration value="ka"/>
-                            <xs:enumeration value="Ktr"/>
-                            <xs:enumeration value="Mtt"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:attribute>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    
     
     <!--
         Elements 

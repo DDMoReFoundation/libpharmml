@@ -16,21 +16,21 @@ implied. See the License for the specific language governing
 permissions and limitations under the License.
 -->    
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="http://www.pharmml.org/2013/03/Maths"
-    xmlns:math="http://www.pharmml.org/2013/03/Maths" elementFormDefault="qualified"
-    attributeFormDefault="unqualified" version="0.6"
-    xmlns:ct="http://www.pharmml.org/2013/03/CommonTypes"
-    xmlns:ds="http://www.pharmml.org/2013/08/Dataset"
-    xmlns:mdef="http://www.pharmml.org/2013/03/ModelDefinition">
+    targetNamespace="http://www.pharmml.org/pharmml/0.6/Maths" version="0.4"
+    xmlns:math="http://www.pharmml.org/pharmml/0.6/Maths" elementFormDefault="qualified"
+    attributeFormDefault="unqualified" 
+    xmlns:ct="http://www.pharmml.org/pharmml/0.6/CommonTypes"
+    xmlns:ds="http://www.pharmml.org/pharmml/0.6/Dataset"
+    xmlns:mdef="http://www.pharmml.org/pharmml/0.6/ModelDefinition">
     
-    <xs:import namespace="http://www.pharmml.org/2013/03/ModelDefinition" 
-        schemaLocation="http://www.pharmml.org/2013/03/ModelDefinition"/>
+    <xs:import namespace="http://www.pharmml.org/pharmml/0.6/ModelDefinition" 
+        schemaLocation="http://www.pharmml.org/pharmml/0.6/ModelDefinition"/>
 
-    <xs:import namespace="http://www.pharmml.org/2013/03/CommonTypes"
-        schemaLocation="http://www.pharmml.org/2013/03/CommonTypes"/>
+    <xs:import namespace="http://www.pharmml.org/pharmml/0.6/CommonTypes"
+        schemaLocation="http://www.pharmml.org/pharmml/0.6/CommonTypes"/>
     
-    <xs:import namespace="http://www.pharmml.org/2013/08/Dataset"
-        schemaLocation="http://www.pharmml.org/2013/08/Dataset"/>
+    <xs:import namespace="http://www.pharmml.org/pharmml/0.6/Dataset"
+        schemaLocation="http://www.pharmml.org/pharmml/0.6/Dataset"/>
     
     <xs:complexType name="BinopType">
         <xs:annotation>
@@ -44,10 +44,9 @@ permissions and limitations under the License.
                     <xs:choice>
                         <xs:annotation>
                             <xs:documentation>Operand 1</xs:documentation>
-                        </xs:annotation> 
+                        </xs:annotation>
                         <xs:element ref="ct:Scalar"/>
                         <xs:element ref="ct:SymbRef"/>
-                        <xs:element ref="ds:ColumnRef"/>
                         <xs:element ref="math:Constant"/>
                         <xs:element ref="math:Binop"/>
                         <xs:element ref="math:Uniop"/>
@@ -65,7 +64,6 @@ permissions and limitations under the License.
                         </xs:annotation>
                         <xs:element ref="ct:Scalar"/>
                         <xs:element ref="ct:SymbRef"/>
-                        <xs:element ref="ds:ColumnRef"/>
                         <xs:element ref="math:Constant"/>
                         <xs:element ref="math:Binop"/>
                         <xs:element ref="math:Uniop"/>
@@ -94,7 +92,6 @@ permissions and limitations under the License.
                             <xs:enumeration value="min"/>
                             <xs:enumeration value="max"/>
                             <xs:enumeration value="rem"/>
-                            <xs:enumeration value="atan2"/>
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:attribute>
@@ -134,12 +131,11 @@ permissions and limitations under the License.
                             <xs:enumeration value="probit"/>
                             <xs:enumeration value="minus"/>
                             <xs:enumeration value="sqrt"/>
-                            <xs:enumeration value="heaviside"/>
-                            <xs:enumeration value="sign"/>
                             <xs:enumeration value="sin"/>
                             <xs:enumeration value="cos"/>
                             <xs:enumeration value="tan"/>
                             <xs:enumeration value="cot"/>
+                            <xs:enumeration value="atan2"/>
                             <xs:enumeration value="sec"/>
                             <xs:enumeration value="csc"/>
                             <xs:enumeration value="sinh"/>
@@ -200,7 +196,6 @@ permissions and limitations under the License.
             </xs:element>
         </xs:sequence>
     </xs:complexType>
-    
     <xs:complexType name="PieceType">
         <xs:annotation>
             <xs:documentation>The schema type defining a `piece' in a piecewise function.</xs:documentation>
@@ -208,13 +203,11 @@ permissions and limitations under the License.
         <xs:complexContent>
             <xs:extension base="math:ExprType">
                 <xs:sequence>
-                    <xs:element name="CategoryMapping" minOccurs="0" type="ds:CategoryMappingType"/>
                     <xs:element ref="math:Condition"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-
     <xs:complexType name="ExprType">
         <xs:annotation>
             <xs:documentation>The schema type defining a mathematical expression.</xs:documentation>
@@ -287,7 +280,6 @@ permissions and limitations under the License.
                         <xs:element ref="ct:Scalar"/>
                         <xs:element ref="math:Constant"/>
                         <xs:element ref="ct:SymbRef"/>
-                        <xs:element ref="ds:ColumnRef"/>
                         <xs:element ref="math:Binop"/>
                         <xs:element ref="math:Uniop"/>
                         <xs:element ref="math:FunctionCall"/>
@@ -434,9 +426,6 @@ permissions and limitations under the License.
             </xs:annotation>
         </xs:attribute>
     </xs:complexType>
-    
-    
-    <!-- elements -->
     <xs:element name="Otherwise">
         <xs:annotation>
             <xs:documentation>The otherwise case in a piecewise function.</xs:documentation>
