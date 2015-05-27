@@ -45,6 +45,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modellingsteps.ModellingSteps;
 import eu.ddmore.libpharmml.dom.trialdesign.TrialDesign;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -88,19 +89,19 @@ import eu.ddmore.libpharmml.dom.trialdesign.TrialDesign;
 @XmlRootElement(name = "PharmML")
 public class PharmML implements Identifiable {
 
-    @XmlElement(name = "Name", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
+    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
     protected Name name;
-    @XmlElement(name = "Description", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "Description", namespace = XMLFilter.NS_DEFAULT_CT)
     protected AnnotationType description;
     @XmlElement(name = "IndependentVariable")
     protected IndependentVariable independentVariable;
-    @XmlElement(name = "FunctionDefinition", namespace = "http://www.pharmml.org/2013/03/CommonTypes")
+    @XmlElement(name = "FunctionDefinition", namespace = XMLFilter.NS_DEFAULT_CT)
     protected List<FunctionDefinition> listOfFunctionDefinition;
-    @XmlElement(name = "ModelDefinition", namespace = "http://www.pharmml.org/2013/03/ModelDefinition", required = true)
+    @XmlElement(name = "ModelDefinition", namespace = XMLFilter.NS_DEFAULT_MDEF, required = true)
     protected ModelDefinition modelDefinition;
-    @XmlElement(name = "TrialDesign", namespace = "http://www.pharmml.org/2013/03/TrialDesign")
+    @XmlElement(name = "TrialDesign", namespace = XMLFilter.NS_DEFAULT_TD)
     protected TrialDesign trialDesign;
-    @XmlElement(name = "ModellingSteps", namespace = "http://www.pharmml.org/2013/03/ModellingSteps")
+    @XmlElement(name = "ModellingSteps", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
     protected ModellingSteps modellingSteps;
     @XmlAttribute(name = "writtenVersion", required = true)
     protected String writtenVersion;

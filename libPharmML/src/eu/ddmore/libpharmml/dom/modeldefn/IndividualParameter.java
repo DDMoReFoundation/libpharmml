@@ -387,7 +387,7 @@ public class IndividualParameter
             extends PharmMLRootType
         {
 
-            @XmlElement(name = "Assign", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
+            @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
             protected Rhs assign;
 
             /**
@@ -544,7 +544,7 @@ public class IndividualParameter
                 extends PharmMLRootType
             {
 
-                @XmlElement(name = "Assign", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
+                @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
                 protected Rhs assign;
 
                 /**

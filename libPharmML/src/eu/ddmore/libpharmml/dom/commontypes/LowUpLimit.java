@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.maths.Equation;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -78,7 +79,7 @@ public class LowUpLimit
 		this.equation = value;
 	}
 
-    @XmlElement(name = "Equation", namespace = "http://www.pharmml.org/2013/03/Maths")
+    @XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
     protected Equation equation;
     @XmlElement(name = "Int")
     protected IntValue _int;
