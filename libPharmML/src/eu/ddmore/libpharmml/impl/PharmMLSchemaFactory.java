@@ -55,25 +55,24 @@ public class PharmMLSchemaFactory {
 	public Schema createPharmMlSchema(PharmMLVersion version, NamespaceType type){
 		try {
 			String catalogLocation;
-			if(type.equals(NamespaceType.OLD) 
-					&& version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
-				// Use old_ns directory for schemas
-				catalogLocation = version.getOldCatalogLocation();
-			} else {
+			String systemURI;
+			if(version.isEqualOrLaterThan(PharmMLVersion.DEFAULT)){
 				catalogLocation = version.getCatalogLocation();
+				systemURI = XMLFilter.NS_DEFAULT_MML;
+			} else {
+				if(type.equals(NamespaceType.DEFAULT)){
+					catalogLocation = version.getDefaultCatalogLocation();
+					systemURI = XMLFilter.NS_DEFAULT_MML;
+				} else {
+					catalogLocation = version.getCatalogLocation();
+					systemURI = XMLFilter.NS_OLD_MML;
+				}
 			}
 			URL url = getClass().getResource(catalogLocation);
 			String[] catalogs = { url.toExternalForm() };
 			XMLCatalogResolver resolver = new XMLCatalogResolver();
 			resolver.setCatalogList(catalogs);
-//			XMLFilter filter = new XMLFilter(version);
-			String systemURI;
-			if(type.equals(NamespaceType.DEFAULT)
-					&& version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
-				systemURI = XMLFilter.NS_DEFAULT_MML;
-			} else {
-				systemURI = XMLFilter.NS_OLD_MML;
-			}
+
 			String val = resolver.resolveSystem(systemURI); 
 			StreamSource src = new StreamSource(val);
 			SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);

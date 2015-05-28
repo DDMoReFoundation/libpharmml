@@ -72,7 +72,7 @@ public class MarshallerImpl implements IMarshaller {
 			m.setListener(mListener);
 			
 			// TODO: use a proper XML writer. Use last version as default one.
-			if(version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
+			if(!version.isEqualOrLaterThan(PharmMLVersion.DEFAULT)){
 				// Marshalling into a XMLStreamWriter with filter for namespaces.
 				// Into a ByteArray so it can be inputstreamed again.
 				ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
@@ -156,14 +156,19 @@ public class MarshallerImpl implements IMarshaller {
 			});
 
 			// Schema
-			Schema mySchema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(version,NamespaceType.OLD);
+			Schema mySchema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(version,NamespaceType.DEFAULT);
 			u.setSchema(mySchema);
 			
 			u.setListener(uListener);
 			
-			XMLStreamReader xmlsr = new XMLFilter(version).getXMLStreamReader(is);
-			
-			PharmML doc = (PharmML)u.unmarshal(xmlsr);
+			PharmML doc;
+			if(!version.isEqualOrLaterThan(PharmMLVersion.DEFAULT)){
+				XMLStreamReader xmlsr = new XMLFilter(version).getXMLStreamReader(is);
+				doc = (PharmML)u.unmarshal(xmlsr);
+			} else {
+				doc = (PharmML)u.unmarshal(is);
+			}
+
 			return doc;
 		} catch (JAXBException e) {
 			throw new RuntimeException(e.getMessage(), e);

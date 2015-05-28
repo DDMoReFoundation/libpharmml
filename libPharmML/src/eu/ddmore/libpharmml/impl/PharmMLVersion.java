@@ -96,8 +96,13 @@ public enum PharmMLVersion {
 		return catalogLocation;
 	}
 	
-	public String getOldCatalogLocation(){
-		return catalogLocation.replace("/xmlCatalog.xml", "/old_ns/xmlCatalog.xml");
+	/**
+	 * Gets the catalog location for the schemas that have the default namespaces, i.e. the last
+	 * PharmML version.
+	 * @return Catalog location
+	 */
+	public String getDefaultCatalogLocation(){
+		return catalogLocation.replace("/xmlCatalog.xml", "/default/xmlCatalog.xml");
 	}
 	
 //	public String getPharmmlURI(){
