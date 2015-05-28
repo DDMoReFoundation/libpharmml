@@ -17,9 +17,9 @@
  * under the License.
  *******************************************************************************/
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.pharmml.org/2013/03/ModelDefinition", 
+@javax.xml.bind.annotation.XmlSchema(namespace = eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_MDEF, 
 xmlns = {@javax.xml.bind.annotation.XmlNs(
-		namespaceURI = "http://www.pharmml.org/2013/03/ModelDefinition", 
+		namespaceURI = eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_MDEF, 
 		prefix = "mdef")},
 elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package eu.ddmore.libpharmml.dom.modeldefn.pkmacro;
