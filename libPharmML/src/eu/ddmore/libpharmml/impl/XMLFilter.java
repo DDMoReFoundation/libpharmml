@@ -12,10 +12,8 @@ import javax.xml.namespace.NamespaceContext;
 import javax.xml.namespace.QName;
 import javax.xml.stream.Location;
 import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import javax.xml.stream.XMLStreamWriter;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -63,17 +61,13 @@ public class XMLFilter extends XMLFilterImpl {
 	static final public String NS_OLD_MSTEPS = NS_OLD_ROOT + "ModellingSteps";
 	static final public String NS_OLD_MML = NS_OLD_ROOT + "PharmML";
 	
-	private final PharmMLVersion version;
-
     public XMLFilter(PharmMLVersion writtenVersion) {
         super();
         
         if(writtenVersion == null){
         	throw new IllegalArgumentException("Written version cannot be null");
         }
-        
-        this.version = writtenVersion;
-        
+                
         if(writtenVersion.isEqualOrLaterThan(PharmMLVersion.V0_6)){
         	NS_DOC_ROOT = String.format(NS_PATTERN_ROOT, writtenVersion);
         	NS_DOC_CT = String.format(NS_PATTERN_CT, writtenVersion);
@@ -171,28 +165,28 @@ public class XMLFilter extends XMLFilterImpl {
     	}
     }
     
-    private String filterOutputNamespace(String ns){
-    	if(ns == null){
-    		return null;
-    	}
-    	if(ns.equals(NS_OLD_CT)){
-    		return NS_DOC_CT;
-    	} else if(ns.equals(NS_OLD_DS)){
-        	return NS_DOC_DS;
-    	} else if(ns.equals(NS_OLD_MATH)){
-        	return NS_DOC_MATH;
-    	} else if(ns.equals(NS_OLD_MDEF)){
-        	return NS_DOC_MDEF;
-    	} else if(ns.equals(NS_OLD_MSTEPS)){
-        	return NS_DOC_MSTEPS;
-    	} else if(ns.equals(NS_OLD_TD)){
-        	return NS_DOC_TD;
-    	} else if(ns.equals(NS_OLD_MML)){
-        	return NS_DOC_MML;
-    	} else {
-    		return ns;
-    	}
-    }
+//    private String filterOutputNamespace(String ns){
+//    	if(ns == null){
+//    		return null;
+//    	}
+//    	if(ns.equals(NS_OLD_CT)){
+//    		return NS_DOC_CT;
+//    	} else if(ns.equals(NS_OLD_DS)){
+//        	return NS_DOC_DS;
+//    	} else if(ns.equals(NS_OLD_MATH)){
+//        	return NS_DOC_MATH;
+//    	} else if(ns.equals(NS_OLD_MDEF)){
+//        	return NS_DOC_MDEF;
+//    	} else if(ns.equals(NS_OLD_MSTEPS)){
+//        	return NS_DOC_MSTEPS;
+//    	} else if(ns.equals(NS_OLD_TD)){
+//        	return NS_DOC_TD;
+//    	} else if(ns.equals(NS_OLD_MML)){
+//        	return NS_DOC_MML;
+//    	} else {
+//    		return ns;
+//    	}
+//    }
     
     public XMLStreamReader getXMLStreamReader(final InputStream is) throws XMLStreamException{
     	
@@ -301,7 +295,7 @@ public class XMLFilter extends XMLFilterImpl {
 				return new NamespaceContext() {
 					
 					@Override
-					public Iterator getPrefixes(String namespaceURI) {
+					public Iterator<?> getPrefixes(String namespaceURI) {
 						return context.getPrefixes(namespaceURI);
 					}
 					
