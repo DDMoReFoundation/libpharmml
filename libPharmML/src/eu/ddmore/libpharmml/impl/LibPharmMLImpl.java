@@ -89,7 +89,7 @@ public class LibPharmMLImpl implements ILibPharmML {
 		IdFactory idFactory = new IdFactoryImpl();
 		
 		final PharmML dom = this.marshaller.unmarshall(bais,currentDocVersion,
-				new UnmarshalListener(currentDocVersion, idFactory));
+				new UnmarshalListener(currentDocVersion, idFactory, repFact));
 		IPharmMLResource retVal = new PharmMLResourceImpl(dom,repFact.createReport(),idFactory);
 		return retVal;
 		

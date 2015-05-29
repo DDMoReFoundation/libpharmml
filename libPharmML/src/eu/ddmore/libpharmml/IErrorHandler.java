@@ -19,8 +19,13 @@
 package eu.ddmore.libpharmml;
 
 public interface IErrorHandler {
-
+	
+	@Deprecated
 	void handleError(String errMsg);
+
+	void handleError(String id, String errMsg);
+	
+	void handleError(String id, String errMsg, Object invalidObject);
 	
 	void handleWarning(String warnMsg);
 	

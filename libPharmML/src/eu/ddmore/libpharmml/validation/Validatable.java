@@ -1,8 +1,6 @@
 package eu.ddmore.libpharmml.validation;
 
-import java.util.List;
-
-import eu.ddmore.libpharmml.IValidationError;
+import eu.ddmore.libpharmml.IErrorHandler;
 
 /**
  * Interface implemented by each validatable element.
@@ -17,9 +15,9 @@ public interface Validatable {
 
 	/**
 	 * Tries to validate the current element following the PharmML specification. 
-	 * Each validation error is returned.
-	 * @return A {@link List} of {@link IValidationError} objects.
+	 * Each validation error is handled by the given {@link IErrorHandler} implementation.
+	 * @param errorHandler An implementation of {@link IErrorHandler}.
 	 */
-	List<IValidationError> validate();
+	void validate(IErrorHandler errorHandler);
 	
 }

@@ -1,9 +1,6 @@
 package eu.ddmore.libpharmml.validation;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import eu.ddmore.libpharmml.IValidationError;
+import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 
@@ -21,16 +18,11 @@ public class PharmMLValidator {
 	 * <p>When an object implementing the {@link Validatable} interface is met, the validation errors
 	 * that may be found are added to a master list, which is returned at the end of the process.
 	 * @param dom The PharmML root object of the document.
-	 * @return A {@link List} of {@link IValidationError} objects that was aggregated during
-	 * the validation process.
+	 * @param errorHandler
 	 */
-	public static List<IValidationError> validate(PharmML dom){
-		List<IValidationError> errors = new ArrayList<IValidationError>();
-		
+	public static void validate(PharmML dom, IErrorHandler errorHandler){		
 		PharmMLElementWrapper wRoot = new PharmMLElementWrapper(dom);
-		recursiveValidate(errors, wRoot);
-		
-		return errors;
+		recursiveValidate(errorHandler, wRoot);
 	}
 	
 	/**
@@ -39,14 +31,14 @@ public class PharmMLValidator {
 	 * @param wEl The element to validate. Its mapped children are fetched and this method
 	 * is executed on each child.
 	 */
-	private static void recursiveValidate(List<IValidationError> errors, PharmMLElementWrapper wEl){
+	private static void recursiveValidate(IErrorHandler errorHandler, PharmMLElementWrapper wEl){
 		Object el = wEl.getElement();
 		if(el instanceof Validatable){
 			LoggerWrapper.getLogger().info("Validating "+el);
-			errors.addAll(((Validatable)el).validate());
+			((Validatable)el).validate(errorHandler);
 		}
 		for(PharmMLElementWrapper wChild : wEl.getChildren()){
-			recursiveValidate(errors, wChild);
+			recursiveValidate(errorHandler, wChild);
 		}
 	}
 

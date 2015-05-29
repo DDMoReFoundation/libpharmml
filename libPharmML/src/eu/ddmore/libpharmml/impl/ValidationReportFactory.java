@@ -27,7 +27,7 @@ import eu.ddmore.libpharmml.IValidationError;
 import eu.ddmore.libpharmml.IValidationReport;
 
 public class ValidationReportFactory implements IErrorHandler {
-	private static final String SCHEMA_ERR_CODE = "SCHEMA";
+	public static final String SCHEMA_ERR_CODE = "SCHEMA";
 
 	private final List<IValidationError> errors;
 	
@@ -40,8 +40,9 @@ public class ValidationReportFactory implements IErrorHandler {
 	}
 
 	@Override
+	@Deprecated
 	public void handleError(String exception) {
-		this.errors.add(new ValidationErrorImpl(SCHEMA_ERR_CODE, exception));			
+		handleError(SCHEMA_ERR_CODE, exception);		
 	}
 
 	public IValidationReport createReport(){
@@ -71,6 +72,16 @@ public class ValidationReportFactory implements IErrorHandler {
 	
 	public boolean addError(IValidationError error){
 		return errors.add(error);
+	}
+
+	@Override
+	public void handleError(String id, String errMsg) {
+		this.errors.add(new ValidationErrorImpl(id, errMsg));
+	}
+
+	@Override
+	public void handleError(String id, String errMsg, Object invalidObject) {
+		this.errors.add(new ValidationErrorImpl(id, errMsg, invalidObject));
 	}
 
 }

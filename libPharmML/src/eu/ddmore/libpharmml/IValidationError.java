@@ -18,7 +18,6 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml;
 
-import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 
 public interface IValidationError {
 
@@ -42,8 +41,8 @@ public interface IValidationError {
 	/**
 	 * Gets the object that is concerned by the validation error. If the error is schema-based,
 	 * it returns null.
-	 * @return The invalid object as a {@link PharmMLElement}.
+	 * @return The invalid object.
 	 */
-	PharmMLElement getInvalidObject();
+	Object getInvalidObject();
 	
 }

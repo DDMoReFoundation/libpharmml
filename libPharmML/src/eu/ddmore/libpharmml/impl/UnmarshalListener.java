@@ -1,5 +1,7 @@
 package eu.ddmore.libpharmml.impl;
 
+import static eu.ddmore.libpharmml.impl.Utils.copyField;
+
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,23 +11,26 @@ import java.util.Map;
 
 import javax.xml.bind.Unmarshaller.Listener;
 
+import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.IdFactory;
 import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.exceptions.AnnotationException;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
+import eu.ddmore.libpharmml.validation.Validatable;
 import eu.ddmore.libpharmml.validation.exceptions.DuplicateIdentifierException;
-import static eu.ddmore.libpharmml.impl.Utils.*;
 
 public class UnmarshalListener extends Listener {
 	
-	private PharmMLVersion docVersion;
+	private final PharmMLVersion docVersion;
 	private final IdFactory idFactory;
+	private final IErrorHandler errorHandler;
 	
-	public UnmarshalListener(PharmMLVersion docVersion, IdFactory idFactory){
+	public UnmarshalListener(PharmMLVersion docVersion, IdFactory idFactory, IErrorHandler errorHandler){
 		this.docVersion = docVersion;
 		this.idFactory = idFactory;
+		this.errorHandler = errorHandler;
 	}
 
 	@Override
@@ -84,6 +89,11 @@ public class UnmarshalListener extends Listener {
 					LoggerWrapper.getLogger().warning("Identifier \""+ e.getDuplicate().getId() +"\" is duplicate.");
 				}
 			}
+		}
+		
+		// Validating if possible
+		if(target instanceof Validatable){
+			((Validatable) target).validate(errorHandler);
 		}
 	}
 

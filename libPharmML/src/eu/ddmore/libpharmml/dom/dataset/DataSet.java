@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import eu.ddmore.libpharmml.IValidationError;
+import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
@@ -52,7 +52,6 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile.Delimiter;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.ValidationErrorImpl;
 import eu.ddmore.libpharmml.util.SubList;
 import eu.ddmore.libpharmml.util.Util;
 import eu.ddmore.libpharmml.util.WrappedList;
@@ -295,9 +294,7 @@ public class DataSet
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public List<IValidationError> validate() {
-		List<IValidationError> errors = new ArrayList<IValidationError>();
-		
+	public void validate(IErrorHandler errorHandler) {		
 		boolean DS1 = false;
 		boolean DS2 = false;
 //		boolean DS6 = false; added for each cell
@@ -355,10 +352,10 @@ public class DataSet
 						SymbolType columnDataType = getListOfColumnDefinition().get(i).getValueType();
 						if(!cell.getClass().equals(columnDataType.getDataType())){
 //							DS6 = true;
-							errors.add(new ValidationErrorImpl("DS6",
+							errorHandler.handleError("DS6",
 									"Cell value "+cell+" ("+cell.getClass()+
 									") is not type compatible with the column definition ("+
-											columnDataType.value()+")", this));
+											columnDataType.value()+")", this);
 						}
 					} catch (IndexOutOfBoundsException e) {
 						DS8 = true;
@@ -369,14 +366,14 @@ public class DataSet
 //		}
 		
 		if(DS1){
-			errors.add(new ValidationErrorImpl("DS1",
+			errorHandler.handleError("DS1",
 					"Columns must be ordered. The order is specified by the columnNum attribute.",
-					this));
+					this);
 		}
 		if(DS2){
-			errors.add(new ValidationErrorImpl("DS2",
+			errorHandler.handleError("DS2",
 					"Columns must be numbered sequentially from 1, with no gaps in the sequence.",
-					this));
+					this);
 		}
 //		if(DS6){
 //			errors.add(new ValidationErrorImpl("DS6",
@@ -384,13 +381,11 @@ public class DataSet
 //					this));
 //		}
 		if(DS8){
-			errors.add(new ValidationErrorImpl("DS8",
+			errorHandler.handleError("DS8",
 					"Each row must define a cell for each column (column n:"+colNum+").",
-					this));
+					this);
 		}
-		
-		return errors;
-	}
+			}
 	
 	/**
 	 * Updates the DOM types of all the values stored in this dataset, following the valueType of each

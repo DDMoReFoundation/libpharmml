@@ -20,7 +20,6 @@ package eu.ddmore.libpharmml.impl;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -35,14 +34,10 @@ import org.xml.sax.SAXParseException;
 import eu.ddmore.libpharmml.IMarshaller;
 import eu.ddmore.libpharmml.IPharmMLResource;
 import eu.ddmore.libpharmml.IPharmMLValidator;
-import eu.ddmore.libpharmml.IValidationError;
 import eu.ddmore.libpharmml.IValidationReport;
 import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory.NamespaceType;
 import eu.ddmore.libpharmml.validation.PharmMLValidator;
-//import javax.xml.bind.JAXBContext;
-//import javax.xml.bind.JAXBException;
-//import javax.xml.bind.util.JAXBSource;
 
 public class PharmMLValidatorImpl implements IPharmMLValidator {
 	private static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
@@ -87,12 +82,12 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 				
 				@Override
 				public void fatalError(SAXParseException exception) throws SAXException {
-					rptFact.handleError(exception.getMessage());
+					rptFact.handleError(ValidationReportFactory.SCHEMA_ERR_CODE, exception.getMessage());
 				}
 				
 				@Override
 				public void error(SAXParseException exception) throws SAXException {
-					rptFact.handleError(exception.getMessage());
+					rptFact.handleError(ValidationReportFactory.SCHEMA_ERR_CODE, exception.getMessage());
 				}
 			});
 			validator.validate(source);
@@ -109,10 +104,7 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 //				rptFact.addError(error);
 //			}
 			
-			List<IValidationError> specErrors = PharmMLValidator.validate(dom);
-			for(IValidationError error : specErrors){
-				rptFact.addError(error);
-			}
+			PharmMLValidator.validate(dom,rptFact);
 			
 			return rptFact.createReport();
 		}

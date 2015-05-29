@@ -71,6 +71,14 @@ public class MarshallerImplInvalidDomTest {
 			public void handleError(String errMsg) {
 				errorOccurred = true;
 			}
+			@Override
+			public void handleError(String id, String errMsg) {
+				errorOccurred = true;
+			}
+			@Override
+			public void handleError(String id, String errMsg, Object invalidObject) {
+				errorOccurred = true;
+			}
 		});
 		this.testInstance.marshall(invalidDom, os);
 		assertFalse("No error reported", errorOccurred);
@@ -88,6 +96,14 @@ public class MarshallerImplInvalidDomTest {
 			}
 			@Override
 			public void handleError(String errMsg) {
+				errorOccurred = true;
+			}
+			@Override
+			public void handleError(String id, String errMsg) {
+				errorOccurred = true;
+			}
+			@Override
+			public void handleError(String id, String errMsg, Object invalidObject) {
 				errorOccurred = true;
 			}
 		});

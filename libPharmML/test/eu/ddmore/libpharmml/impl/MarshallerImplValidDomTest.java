@@ -20,7 +20,6 @@ package eu.ddmore.libpharmml.impl;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-
 import static eu.ddmore.libpharmml.impl.LoggerWrapper.getLogger;
 
 import java.io.File;
@@ -93,6 +92,14 @@ public class MarshallerImplValidDomTest{
 			public void handleError(String errMsg) {
 				errorOccurred = true;
 			}
+			@Override
+			public void handleError(String id, String errMsg) {
+				errorOccurred = true;
+			}
+			@Override
+			public void handleError(String id, String errMsg, Object invalidObject) {
+				errorOccurred = true;
+			}
 		});
 		this.testInstance.marshall(validDom, os);
 		assertFalse("No error reported", errorOccurred);
@@ -103,7 +110,7 @@ public class MarshallerImplValidDomTest{
 	@Test
 	public void testUnmarshall() throws IOException {
 		InputStream is = new FileInputStream(exampleDir+"/"+VALID_MODEL_FILE);
-		this.testInstance.setErrorHandler(new IErrorHandler() {
+		IErrorHandler errorHandler = new IErrorHandler() {
 			@Override
 			public void handleWarning(String warnMsg) {
 				getLogger().severe(warnMsg);
@@ -114,8 +121,17 @@ public class MarshallerImplValidDomTest{
 				getLogger().severe(errMsg);
 				errorOccurred = true;
 			}
-		});
-		PharmML dom = this.testInstance.unmarshall(is,version,new UnmarshalListener(version, new IdFactoryImpl()));
+			@Override
+			public void handleError(String id, String errMsg) {
+				errorOccurred = true;
+			}
+			@Override
+			public void handleError(String id, String errMsg, Object invalidObject) {
+				errorOccurred = true;
+			}
+		};
+		this.testInstance.setErrorHandler(errorHandler);
+		PharmML dom = this.testInstance.unmarshall(is,version,new UnmarshalListener(version, new IdFactoryImpl(),errorHandler));
 		assertFalse("No errors reported", errorOccurred);
 		assertNotNull("dom created", dom);
 	}

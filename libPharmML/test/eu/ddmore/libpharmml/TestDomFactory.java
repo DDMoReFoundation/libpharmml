@@ -36,6 +36,7 @@ import eu.ddmore.libpharmml.impl.IdFactoryImpl;
 import eu.ddmore.libpharmml.impl.Messages;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.UnmarshalListener;
+import eu.ddmore.libpharmml.impl.ValidationReportFactory;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 
 public class TestDomFactory {
@@ -75,7 +76,7 @@ public class TestDomFactory {
 //				}
 //			}
 //		};
-		u.setListener(new UnmarshalListener(version, new IdFactoryImpl()));
+		u.setListener(new UnmarshalListener(version, new IdFactoryImpl(), new ValidationReportFactory()));
 		
 		XMLStreamReader xmlsr = new XMLFilter(version).getXMLStreamReader(is);
 		
