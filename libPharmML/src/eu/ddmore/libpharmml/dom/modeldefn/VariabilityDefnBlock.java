@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.commontypes.Block;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.impl.XMLFilter;
@@ -72,7 +73,7 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
     "level"
 })
 public class VariabilityDefnBlock
-    extends PharmMLRootType
+    extends PharmMLRootType implements Block
 {
 
     @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)

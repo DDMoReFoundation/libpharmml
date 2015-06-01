@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.commontypes.Block;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 
@@ -78,7 +79,7 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
     "observationError"
 })
 public class ObservationModel
-    extends CommonParameterModel
+    extends CommonParameterModel implements Block
 {
 	//TODO: extends PharmMLRootType. still CommonParameterModelType for backward compatiblity.
 	// All inherited methods are @override and @deprecated

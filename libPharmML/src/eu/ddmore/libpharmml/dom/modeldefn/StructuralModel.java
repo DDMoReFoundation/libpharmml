@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.commontypes.Block;
 import eu.ddmore.libpharmml.dom.commontypes.CommonVariableDefinition;
 import eu.ddmore.libpharmml.dom.commontypes.DerivativeVariable;
 import eu.ddmore.libpharmml.dom.commontypes.FunctionDefinition;
@@ -86,7 +87,7 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
     "pKmacros"
 })
 public class StructuralModel
-    extends PharmMLRootType
+    extends PharmMLRootType implements Block
 {
 
     @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
