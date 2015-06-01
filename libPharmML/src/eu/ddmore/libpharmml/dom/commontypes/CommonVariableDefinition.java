@@ -71,7 +71,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     FunctionParameter.class
 })
 public abstract class CommonVariableDefinition
-    extends PharmMLRootType
+    extends PharmMLRootType implements Symbol
 {
 
     @XmlElement(name = "Symbol")

@@ -32,7 +32,9 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.Symbol;
 
 
 /**
@@ -57,7 +59,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CommonDiscreteVariableType")
 public class CommonDiscreteVariable
-    extends PharmMLRootType
+    extends PharmMLRootType implements Symbol
 {
 
     @XmlAttribute(name = "symbId", required = true)

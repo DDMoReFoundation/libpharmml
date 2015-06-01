@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.Symbol;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
@@ -69,7 +70,7 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
     "parentLevel"
 })
 public class VariabilityLevelDefinition
-    extends PharmMLRootType
+    extends PharmMLRootType implements Symbol
 {
 
     @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)

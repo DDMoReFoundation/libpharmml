@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
+import eu.ddmore.libpharmml.dom.commontypes.Symbol;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
@@ -66,7 +67,7 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
     "assign"
 })
 public class DiscreteDataParameter
-    extends PharmMLRootType
+    extends PharmMLRootType implements Symbol
 {
 
     @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
