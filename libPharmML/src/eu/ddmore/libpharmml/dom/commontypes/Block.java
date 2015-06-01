@@ -1,6 +1,6 @@
 package eu.ddmore.libpharmml.dom.commontypes;
 
-public interface Block {
+public interface Block extends SymbolScope {
 	
 	/**
      * Gets the value of the blkId property.
