@@ -28,6 +28,15 @@ public abstract class AbstractTreeNode implements TreeNode{
 	public TreeNode getParent() {
 		return parent;
 	}
+	
+	/**
+	 * Method used during various libPharmML processes to register the
+	 * parent object within the current one. Should never be used by the client.
+	 * @param parent The parent node of this node.
+	 */
+	public void setParent(TreeNode parent){
+		this.parent = parent;
+	}
 
 	@Override
 	public int getIndex(TreeNode node) {

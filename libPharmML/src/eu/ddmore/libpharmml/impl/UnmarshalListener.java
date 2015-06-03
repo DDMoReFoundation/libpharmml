@@ -9,11 +9,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.Unmarshaller.Listener;
 
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.IdFactory;
 import eu.ddmore.libpharmml.dom.Identifiable;
+import eu.ddmore.libpharmml.dom.commontypes.AbstractTreeNode;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.exceptions.AnnotationException;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
@@ -95,6 +97,14 @@ public class UnmarshalListener extends Listener {
 		if(target instanceof Validatable){
 			((Validatable) target).validate(errorHandler);
 		}
+		
+		// Registering parent
+		if(target instanceof AbstractTreeNode){
+			if(parent instanceof TreeNode){
+				((AbstractTreeNode) target).setParent((TreeNode) parent);
+			}
+		}
+		
 	}
 
 }
