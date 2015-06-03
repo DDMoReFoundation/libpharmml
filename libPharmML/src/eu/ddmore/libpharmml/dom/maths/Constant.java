@@ -26,6 +26,10 @@
 
 package eu.ddmore.libpharmml.dom.maths;
 
+import java.util.Collections;
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -35,6 +39,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 
 
 /**
@@ -69,7 +74,7 @@ import eu.ddmore.libpharmml.dom.MasterObjectFactory;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConstantType")
-public class Constant implements Operand, ExpressionValue{
+public class Constant extends PharmMLElement implements Operand, ExpressionValue{
 
     @XmlAttribute(name = "op", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -121,6 +126,11 @@ public class Constant implements Operand, ExpressionValue{
 	@Override
 	public String toString(){
 		return this.getOp();
+	}
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return Collections.emptyList();
 	}
 
 }

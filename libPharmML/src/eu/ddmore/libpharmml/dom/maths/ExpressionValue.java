@@ -1,5 +1,6 @@
 package eu.ddmore.libpharmml.dom.maths;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 
 /**
@@ -8,7 +9,7 @@ import javax.xml.bind.JAXBElement;
  * @author F. Yvon
  *
  */
-public interface ExpressionValue {
+public interface ExpressionValue extends TreeNode {
 	
 	/**
 	 * Converts the object to a JAXBElement for marshalling.

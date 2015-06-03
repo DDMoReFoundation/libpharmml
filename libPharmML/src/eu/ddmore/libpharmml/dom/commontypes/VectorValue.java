@@ -18,6 +18,7 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
@@ -26,7 +27,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *
  */
 @XmlJavaTypeAdapter(VectorValueAdapter.class)
-public interface VectorValue {
+public interface VectorValue extends TreeNode {
 
 	/**
 	 * Gets a human readable representation of the value.

@@ -28,11 +28,15 @@ package eu.ddmore.libpharmml.dom.dataset;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -111,5 +115,11 @@ public class CategoryMapping
     	getListOfMap().add(map);
     	return map;
     }
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(map);
+	}
 
 }

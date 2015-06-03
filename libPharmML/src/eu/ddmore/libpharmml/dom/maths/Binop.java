@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom.maths;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
@@ -46,6 +47,7 @@ import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -480,6 +482,13 @@ public class Binop
 			}
 			return string;
 		}
+	}
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(operand1)
+				.addIfNotNull(operand2);
 	}
 
 }

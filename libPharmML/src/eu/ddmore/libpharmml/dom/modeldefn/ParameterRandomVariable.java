@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.dom.modeldefn;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -65,6 +68,7 @@ import eu.ddmore.libpharmml.dom.uncertml.StudentTDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.UniformDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -300,5 +304,15 @@ public class ParameterRandomVariable
     public void setAbstractCategoricalMultivariateDistribution(JAXBElement<? extends AbstractCategoricalMultivariateDistributionType> value) {
         this.abstractCategoricalMultivariateDistribution = value;
     }
+    
+    @Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(variabilityReference)
+				.addJAXBIfNotNull(abstractContinuousUnivariateDistribution)
+				.addJAXBIfNotNull(abstractContinuousMultivariateDistribution)
+				.addJAXBIfNotNull(abstractCategoricalUnivariateDistribution)
+				.addJAXBIfNotNull(abstractCategoricalMultivariateDistribution);
+	}
 
 }

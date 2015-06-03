@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom.modeldefn;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -50,6 +51,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKMacroList;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -306,5 +308,17 @@ public class StructuralModel
     }
     
     //TODO: deal with FunctionParameter no of
+    
+    @Override
+	protected List<TreeNode> listChildren() {
+		ChainedList<TreeNode> list = new ChainedList<TreeNode>()
+				.addIfNotNull(name)
+				.addIfNotNull(simpleParameter);
+		for(JAXBElement<? extends CommonVariableDefinition> el : getCommonVariable()){
+			list.add(el.getValue());
+		}
+		list.addIfNotNull(pKmacros);
+		return list;
+	}
 
 }

@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.dom.modeldefn;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -34,8 +37,10 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -68,7 +73,7 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
     "description",
     "probability"
 })
-public class Category {
+public class Category extends PharmMLElement {
 
     @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Name name;
@@ -174,5 +179,13 @@ public class Category {
     public void setCatId(String value) {
         this.catId = value;
     }
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(name)
+				.addIfNotNull(description)
+				.addIfNotNull(probability);
+	}
 
 }

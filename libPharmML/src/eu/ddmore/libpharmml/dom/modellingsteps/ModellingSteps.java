@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom.modellingsteps;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 //import javax.xml.bind.Marshaller;
 //import javax.xml.bind.Unmarshaller;
@@ -44,6 +45,7 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
 //import eu.ddmore.libpharmml.impl.LoggerWrapper;
 //import eu.ddmore.libpharmml.impl.MarshalListener;
 //import eu.ddmore.libpharmml.impl.PharmMLVersion;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -278,6 +280,18 @@ public class ModellingSteps
     public void setStepDependencies(StepDependency value) {
         this.stepDependencies = value;
     }
+    
+    @Override
+	protected List<TreeNode> listChildren() {
+		ChainedList<TreeNode> list = new ChainedList<TreeNode>()
+				.addIfNotNull(listOfExternalDataset)
+				.addIfNotNull(targetTool);
+		for(JAXBElement<? extends CommonModellingStep> el : getCommonModellingStep()){
+			list.add(el.getValue());
+		}
+		list.addIfNotNull(stepDependencies);
+		return list;
+	}
     
 //    protected void afterUnmarshal(Unmarshaller unmarshaller, Object parent){
 //    	PharmMLVersion version = getUnmarshalVersion();

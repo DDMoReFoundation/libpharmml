@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.dom.maths;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -39,6 +42,7 @@ import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -200,5 +204,17 @@ public class LogicCondition
     public void setOtherwise(Object value) {
         this.otherwise = new Otherwise();
     }
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		List<TreeNode> list = new ChainedList<TreeNode>()
+				.addIfNotNull(logicBinop)
+				.addIfNotNull(logicUniop)
+				.addIfNotNull(otherwise);
+		if(_boolean != null){
+			list.add(_boolean.getValue());
+		}
+		return list;
+	}
 
 }

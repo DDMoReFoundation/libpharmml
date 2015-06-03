@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom.modeldefn;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -54,6 +55,7 @@ import eu.ddmore.libpharmml.dom.uncertml.HypergeometricDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.NegativeBinomialDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.PoissonDistribution;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -456,6 +458,19 @@ public class CountPMF
             getListOfCondition().add(el);
             return el;
     }
+
+    @Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(logicBinop)
+				.addIfNotNull(logicUniop)
+				.addIfNotNull(currentState)
+				.addIfNotNull(previousState)
+				.addIfNotNull(condition)
+				.addJAXBIfNotNull(abstractDiscreteUnivariateDistribution)
+				.addIfNotNull(distribution)
+				.addIfNotNull(assign);
+	}
 
     
 

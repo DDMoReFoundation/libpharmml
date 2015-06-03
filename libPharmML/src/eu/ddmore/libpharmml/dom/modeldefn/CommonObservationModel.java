@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom.modeldefn;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
@@ -46,6 +47,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -317,6 +319,15 @@ public abstract class CommonObservationModel
 		} else {
 			commonParameterElement = null;
 		}
+    }
+    
+    @Override
+    protected List<TreeNode> listChildren() {
+    	return new ChainedList<TreeNode>()
+    			.addIfNotNull(name)
+    			.addIfNotNull(listOfCommonParameterElement)
+    			.addIfNotNull(variable)
+    			.addIfNotNull(correlation);
     }
     
 //    protected static class Adapter extends XmlAdapter<CommonObservationModel,CommonObservationModel>{

@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.dom.modeldefn;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -33,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -118,5 +122,12 @@ public class GeneralObsError
     public void setAssign(Rhs value) {
         this.assign = value;
     }
+    
+    @Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(super.listChildren())
+				.addIfNotNull(assign);
+	}
 
 }

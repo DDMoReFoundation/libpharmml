@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.dom.modeldefn;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -54,6 +57,11 @@ import javax.xml.bind.annotation.XmlType;
 public class ParameterModel
     extends CommonParameterModel
 {
+	
+	@Override
+	protected List<TreeNode> listChildren() {
+		return super.listChildren();
+	}
 
 
 }

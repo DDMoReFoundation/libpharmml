@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom.modeldefn;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -38,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.DependanceAttribute;
 import eu.ddmore.libpharmml.dom.commontypes.OrderedAttribute;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -434,6 +436,19 @@ public class CategoricalData
             getListOfPMF().add(el);
             return el;
     }
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(super.listChildren())
+				.addIfNotNull(listOfCategories)
+				.addIfNotNull(categoryVariable)
+				.addIfNotNull(initialStateVariable)
+				.addIfNotNull(previousStateVariable)
+				.addIfNotNull(dependance)
+				.addIfNotNull(probabilityAssignment)
+				.addIfNotNull(pmf);
+	}
 
 
 }

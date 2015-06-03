@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom.dataset;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -49,6 +50,7 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -209,5 +211,10 @@ public class DatasetRow extends PharmMLRootType{
     		}
     	}
     }
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>().addIfNotNull(listOfValues);
+	}
 
 }

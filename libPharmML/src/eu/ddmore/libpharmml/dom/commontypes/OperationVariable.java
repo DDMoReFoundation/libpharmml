@@ -1,5 +1,7 @@
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import javax.swing.tree.TreeNode;
+
 import eu.ddmore.libpharmml.dom.maths.Equation;
 
 /**
@@ -8,6 +10,6 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
  * 		{@link SymbolRef},
  * 		{@link Equation}
  */
-public interface OperationVariable {
+public interface OperationVariable extends TreeNode {
 
 }

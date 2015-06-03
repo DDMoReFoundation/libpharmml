@@ -1,5 +1,8 @@
 package eu.ddmore.libpharmml.dom.modeldefn.pkmacro;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -19,6 +22,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 /**
  * Class for PK macro values.
@@ -271,6 +275,14 @@ public class MacroValue extends PharmMLRootType implements Assignable {
 			this.assign = new Rhs(symbRef);
 			this.symbRef = null;
 		}
+	}
+	
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(assign)
+				.addIfNotNull(symbRef)
+				.addIfNotNull(scalar);
 	}
 
 }

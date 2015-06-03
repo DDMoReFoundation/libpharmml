@@ -26,6 +26,10 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import java.util.Collections;
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -134,6 +138,11 @@ public class RealValue extends PharmMLElement implements Scalar, VectorValue, Id
 	@Override
 	public JAXBElement<? extends Scalar> toJAXBElement() {
 		return MasterObjectFactory.createScalar(this);
+	}
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return Collections.emptyList();
 	}
 
 }

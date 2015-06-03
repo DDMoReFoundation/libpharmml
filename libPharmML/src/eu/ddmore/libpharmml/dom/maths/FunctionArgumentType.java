@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.dom.maths;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -55,6 +58,7 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -437,5 +441,24 @@ public class FunctionArgumentType extends PharmMLElement implements Symbol {
     public void setSymbId(String value) {
         this.symbId = value;
     }
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		List<TreeNode> list = new ChainedList<TreeNode>()
+				.addIfNotNull(symbol)
+				.addIfNotNull(description)
+				.addIfNotNull(equation)
+				.addIfNotNull(constant)
+				.addIfNotNull(symbRef)
+				.addIfNotNull(sum)
+				.addIfNotNull(product)
+				.addIfNotNull(vectorSelector)
+				.addIfNotNull(matrixSelector)
+				.addIfNotNull(probability);
+		if(scalar != null && scalar.getValue() instanceof TreeNode){
+			list.add((TreeNode) scalar.getValue());
+		}
+		return list;
+	}
 
 }

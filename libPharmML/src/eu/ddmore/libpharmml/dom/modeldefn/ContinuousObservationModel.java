@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.dom.modeldefn;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
@@ -37,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -170,6 +174,13 @@ public class ContinuousObservationModel
 			jaxbObservationError = null;
 		}
     	super.beforeMarshal(m);
+    }
+    
+    @Override
+    protected List<TreeNode> listChildren() {
+    	return new ChainedList<TreeNode>()
+    			.addIfNotNull(super.listChildren())
+    			.addIfNotNull(observationError);
     }
     
 //    protected static class Adapter extends XmlAdapter<ContinuousObservationModel, ContinuousObservationModel>{

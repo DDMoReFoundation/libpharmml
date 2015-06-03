@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom.modellingsteps;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -40,6 +41,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -121,6 +123,15 @@ public class SymbolMapping
             rest = new ArrayList<JAXBElement<? extends PharmMLRootType>>();
         }
         return this.rest;
+    }
+    
+    @Override
+    protected List<TreeNode> listChildren() {
+    	List<TreeNode> list = new ChainedList<TreeNode>();
+    	for(JAXBElement<? extends PharmMLRootType> el : getRest()){
+    		list.add(el.getValue());
+    	}
+    	return list;
     }
 
 }

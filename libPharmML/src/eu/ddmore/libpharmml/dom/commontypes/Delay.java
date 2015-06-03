@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -34,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.Operand;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -202,6 +206,13 @@ public class Delay
 	@Override
 	public JAXBElement<Delay> toJAXBElement() {
 		return MasterObjectFactory.COMMONTYPES_OF.createDelay(this);
+	}
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(delayVariable)
+				.addIfNotNull(symbRef);
 	}
 
 }

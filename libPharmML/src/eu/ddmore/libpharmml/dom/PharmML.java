@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -41,11 +42,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
 import eu.ddmore.libpharmml.dom.commontypes.FunctionDefinition;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modellingsteps.ModellingSteps;
 import eu.ddmore.libpharmml.dom.trialdesign.TrialDesign;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -87,7 +90,7 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
     "modellingSteps"
 })
 @XmlRootElement(name = "PharmML")
-public class PharmML implements Identifiable {
+public class PharmML extends PharmMLElement implements Identifiable {
 
     @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
     protected Name name;
@@ -480,5 +483,17 @@ public class PharmML implements Identifiable {
             this.modellingSteps = el;
             return el;
     }
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(name)
+				.addIfNotNull(description)
+				.addIfNotNull(independentVariable)
+				.addIfNotNull(listOfFunctionDefinition)
+				.addIfNotNull(modelDefinition)
+				.addIfNotNull(trialDesign)
+				.addIfNotNull(modellingSteps);
+	}
 
 }

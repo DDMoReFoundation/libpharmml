@@ -18,6 +18,9 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -25,6 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
+import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 
@@ -109,6 +113,14 @@ public class VectorSegment extends AbstractVector {
 	
 	public void setSegmentLength(MatrixVectorIndex segmentLength){
 		this.segmentLength = segmentLength;
+	}
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(index)
+				.addIfNotNull(segmentLength)
+				.addIfNotNull(vectorElements);
 	}
 
 }

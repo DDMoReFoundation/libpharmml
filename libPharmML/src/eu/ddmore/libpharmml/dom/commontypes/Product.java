@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -35,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.dom.maths.Operand;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -155,6 +159,15 @@ public class Product
 	@Override
 	public JAXBElement<Product> toJAXBElement() {
 		return MasterObjectFactory.COMMONTYPES_OF.createProduct(this);
+	}
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(variable)
+				.addIfNotNull(productIndex)
+				.addIfNotNull(lowLimit)
+				.addIfNotNull(upLimit);
 	}
 
 }

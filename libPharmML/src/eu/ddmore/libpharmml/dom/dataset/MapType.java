@@ -26,12 +26,17 @@
 
 package eu.ddmore.libpharmml.dom.dataset;
 
+import java.util.Collections;
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
@@ -146,4 +151,9 @@ public class MapType
     public void setAdmNumber(Integer value) {
         this.admNumber = value;
     }
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return Collections.emptyList();
+	}
 }

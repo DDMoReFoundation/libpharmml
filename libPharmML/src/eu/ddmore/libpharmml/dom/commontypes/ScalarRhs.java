@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -37,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.dom.modellingsteps.InitialEstimate;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -165,5 +169,16 @@ public class ScalarRhs
     public void setSymbRef(SymbolRef value) {
         this.symbRef = value;
     }
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		List<TreeNode> list = new ChainedList<TreeNode>()
+				.addIfNotNull(equation)
+				.addIfNotNull(symbRef);
+		if(scalar != null && scalar.getValue() instanceof TreeNode){
+			list.add((TreeNode) scalar.getValue());
+		}
+		return list;
+	}
 
 }

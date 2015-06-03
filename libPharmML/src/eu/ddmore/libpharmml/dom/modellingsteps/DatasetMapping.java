@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom.modellingsteps;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -41,6 +42,7 @@ import eu.ddmore.libpharmml.dom.commontypes.VariableAssignment;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -210,5 +212,12 @@ public class DatasetMapping
     public void setDataSet(DataSet value) {
         this.dataSet = value;
     }
+    
+    @Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(columnMapping)
+				.addIfNotNull(dataSet);
+	}
 
 }

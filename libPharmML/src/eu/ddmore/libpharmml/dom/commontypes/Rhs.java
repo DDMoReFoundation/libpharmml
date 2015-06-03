@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -36,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -323,5 +327,20 @@ public class Rhs
     	if(sequence != null) return sequence;
     	else return null;
     }
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		List<TreeNode> list = new ChainedList<TreeNode>()
+				.addIfNotNull(equation)
+				.addIfNotNull(symbRef)
+				.addIfNotNull(sequence)
+				.addIfNotNull(vector)
+				.addIfNotNull(interpolation)
+				.addIfNotNull(matrix);
+		if(scalar != null && scalar.getValue() instanceof TreeNode){
+			list.add((TreeNode) scalar.getValue());
+		}
+		return list;
+	}
 
 }

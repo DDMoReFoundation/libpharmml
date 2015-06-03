@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom.trialdesign;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -38,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -272,5 +274,19 @@ public class TrialStructure
         }
         return this.studyEvent;
     }
+    
+    @Override
+	protected List<TreeNode> listChildren() {
+		List<TreeNode> list = new ChainedList<TreeNode>()
+				.addIfNotNull(epoch)
+				.addIfNotNull(arm)
+				.addIfNotNull(cell)
+				.addIfNotNull(segment)
+				.addIfNotNull(activity);
+		for(JAXBElement<? extends StudyEvent> el : getStudyEvent()){
+			list.add(el.getValue());
+		}
+		return list;
+	}
 
 }

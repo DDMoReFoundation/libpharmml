@@ -26,6 +26,10 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import java.util.Collections;
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -99,5 +103,10 @@ public class OidRef
     public void setOidRef(String value) {
         this.oidRef = value;
     }
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return Collections.emptyList();
+	}
 
 }

@@ -26,9 +26,14 @@
 
 package eu.ddmore.libpharmml.dom.trialdesign;
 
+import java.util.Collections;
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
@@ -57,6 +62,11 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 public class Washout
     extends PharmMLRootType
 {
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return Collections.emptyList();
+	}
 
 
 }

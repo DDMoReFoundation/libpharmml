@@ -1,5 +1,6 @@
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.maths.Equation;
@@ -15,6 +16,6 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
  * 		{@link Equation}
  */
 @XmlJavaTypeAdapter(MatrixCellValueAdapter.class)
-public interface MatrixCellValue {
+public interface MatrixCellValue extends TreeNode{
 
 }

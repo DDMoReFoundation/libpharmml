@@ -26,6 +26,10 @@
 
 package eu.ddmore.libpharmml.dom.uncertml;
 
+import java.util.Collections;
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -33,6 +37,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 
 
 /**
@@ -60,7 +66,7 @@ import javax.xml.bind.annotation.XmlType;
     AbstractDistributionType.class,
     AbstractSummaryStatisticType.class
 })
-public abstract class AbstractUncertaintyType {
+public abstract class AbstractUncertaintyType extends PharmMLElement {
 	
 	@XmlTransient
 	public static java.lang.String DEFINITION_DOMAIN_URI = "http://www.uncertml.org/";
@@ -110,5 +116,10 @@ public abstract class AbstractUncertaintyType {
     	if(definition == null){
     		definition = contructDefinition();
     	}
+    }
+    
+    @Override
+    protected List<TreeNode> listChildren() {
+    	return Collections.emptyList(); // TODO: deal with uncertML tree nodes
     }
 }

@@ -18,6 +18,7 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
@@ -25,6 +26,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * @author F. Yvon
  */
 @XmlJavaTypeAdapter(VectorCellValueAdapter.class)
-public interface VectorCellValue extends VectorValue {
+public interface VectorCellValue extends VectorValue, TreeNode {
 
 }

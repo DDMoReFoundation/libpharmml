@@ -26,6 +26,10 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import java.util.Collections;
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -58,7 +62,7 @@ import eu.ddmore.libpharmml.dom.Identifiable;
 @XmlType(name = "AnnotationType", propOrder = {
     "value"
 })
-public class AnnotationType implements Identifiable {
+public class AnnotationType extends PharmMLElement implements Identifiable {
 
     @XmlValue
     protected String value;
@@ -121,5 +125,10 @@ public class AnnotationType implements Identifiable {
     public String toString() {
     	return value;
     }
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return Collections.emptyList();
+	}
 
 }

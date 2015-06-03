@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.dom.trialdesign;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -38,6 +41,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -189,5 +193,13 @@ public class Activity
     public void setOid(String value) {
         this.oid = value;
     }
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(lookupTable)
+				.addJAXBIfNotNull(dosingRegimen)
+				.addIfNotNull(washout);
+	}
 
 }

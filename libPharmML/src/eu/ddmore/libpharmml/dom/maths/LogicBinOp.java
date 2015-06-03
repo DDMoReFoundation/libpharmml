@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom.maths;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -50,6 +51,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -220,5 +222,16 @@ public class LogicBinOp
     public void setOp(String value) {
         this.op = value;
     }
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		ChainedList<TreeNode> list = new ChainedList<TreeNode>();
+		for(JAXBElement<?> jaxbEl : getContent()){
+			if(jaxbEl.getValue() instanceof TreeNode){
+				list.add((TreeNode) jaxbEl.getValue());
+			}
+		}
+		return list;
+	}
 
 }

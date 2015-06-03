@@ -26,10 +26,15 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -146,5 +151,13 @@ public class InitialCondition
     public void setInitialTime(InitialTime value) {
         this.initialTime = value;
     }
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(assign)
+				.addIfNotNull(initialValue)
+				.addIfNotNull(initialTime);
+	}
 
 }

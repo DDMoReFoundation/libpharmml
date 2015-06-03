@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.namespace.QName;
 
@@ -34,7 +35,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  * of these elements is set by the {@link QName} property, readable through {@link #getWrappedQName()}.
  */
 @XmlTransient
-public class WrappedList<E> extends PharmMLRootType implements List<E>{
+public class WrappedList<E extends TreeNode> extends PharmMLRootType implements List<E>{
 	
 	/**
 	 * The list that contains the wrapped elements.
@@ -135,6 +136,12 @@ public class WrappedList<E> extends PharmMLRootType implements List<E>{
 	}
 	public List<E> subList(int fromIndex, int toIndex) {
 		return list.subList(fromIndex, toIndex);
+	}
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(list);
 	}
 		
 }

@@ -26,6 +26,10 @@
 
 package eu.ddmore.libpharmml.dom.modellingsteps;
 
+import java.util.Collections;
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -91,5 +95,10 @@ public class TargetToolSymbol
     public void setSymbId(String value) {
         this.symbId = value;
     }
+    
+    @Override
+	protected List<TreeNode> listChildren() {
+		return Collections.emptyList();
+	}
 
 }

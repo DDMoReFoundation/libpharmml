@@ -29,7 +29,7 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
  * @since libPharmML 0.3
  */
 @XmlTransient
-public abstract class PharmMLElement {
+public abstract class PharmMLElement extends AbstractTreeNode {
 	
 	@XmlTransient
     private PharmMLVersion unmarshalVersion = null;

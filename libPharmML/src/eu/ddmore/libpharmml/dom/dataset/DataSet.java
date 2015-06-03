@@ -30,6 +30,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -52,6 +53,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile.Delimiter;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
+import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.SubList;
 import eu.ddmore.libpharmml.util.Util;
 import eu.ddmore.libpharmml.util.WrappedList;
@@ -496,6 +498,14 @@ public class DataSet
 			}
 		}
 		
+	}
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull((TreeNode) wrappedListOfColumn)
+				.addIfNotNull(externalFile)
+				.addIfNotNull((TreeNode) wrappedListOfRow);
 	}
 	
 //	/**

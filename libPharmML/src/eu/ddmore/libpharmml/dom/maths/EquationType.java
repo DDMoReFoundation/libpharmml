@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom.maths;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -58,6 +59,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -506,5 +508,25 @@ public class EquationType
     		getScalarOrSymbRefOrBinop().clear();
     	}
     }
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		List<TreeNode> list = new ChainedList<TreeNode>()
+				.addIfNotNull(symbRef)
+				.addIfNotNull(binop)
+				.addIfNotNull(uniop)
+				.addIfNotNull(piecewise)
+				.addIfNotNull(functionCall)
+				.addIfNotNull(sum)
+				.addIfNotNull(product)
+				.addIfNotNull(delay)
+				.addIfNotNull(vectorSelector)
+				.addIfNotNull(matrixSelector)
+				.addIfNotNull(probability);
+		if(scalar != null && scalar.getValue() instanceof TreeNode){
+			list.add((TreeNode) scalar.getValue());
+		}
+		return list;
+	}
 
 }

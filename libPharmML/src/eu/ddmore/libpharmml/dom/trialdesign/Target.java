@@ -28,13 +28,17 @@ package eu.ddmore.libpharmml.dom.trialdesign;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -128,5 +132,11 @@ public class Target
     public void setInputTarget(DoseInputTarget value) {
         this.inputTarget = value;
     }
+    
+    @Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(columnMapping);
+	}
 
 }

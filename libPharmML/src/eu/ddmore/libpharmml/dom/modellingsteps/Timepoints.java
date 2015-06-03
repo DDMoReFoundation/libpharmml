@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.dom.modellingsteps;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -36,6 +39,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Sequence;
 import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -98,6 +102,15 @@ public class Timepoints
      */
     public void setArrays(JAXBElement<?> value) {
         this.arrays = value;
+    }
+    
+    @Override
+    protected List<TreeNode> listChildren() {
+    	List<TreeNode> list = new ChainedList<TreeNode>();
+    	if(arrays != null && arrays.getValue() instanceof TreeNode){
+    		list.add((TreeNode) arrays.getValue());
+    	}
+    	return list;
     }
 
 }

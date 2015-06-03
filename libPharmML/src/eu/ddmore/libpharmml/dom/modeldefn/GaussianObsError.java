@@ -26,14 +26,19 @@
 
 package eu.ddmore.libpharmml.dom.modeldefn;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -230,7 +235,7 @@ public class GaussianObsError
     @XmlType(name = "", propOrder = {
         "assign"
     })
-    public static class ErrorModel {
+    public static class ErrorModel extends PharmMLElement {
 
         @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
         protected Rhs assign;
@@ -258,6 +263,12 @@ public class GaussianObsError
         public void setAssign(Rhs value) {
             this.assign = value;
         }
+        
+        @Override
+    	protected List<TreeNode> listChildren() {
+    		return new ChainedList<TreeNode>()
+    				.addIfNotNull(assign);
+    	}
 
     }
 
@@ -285,7 +296,7 @@ public class GaussianObsError
     @XmlType(name = "", propOrder = {
         "symbRef"
     })
-    public static class Output {
+    public static class Output extends PharmMLElement {
 
         @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
         protected SymbolRef symbRef;
@@ -313,6 +324,12 @@ public class GaussianObsError
         public void setSymbRef(SymbolRef value) {
             this.symbRef = value;
         }
+        
+        @Override
+    	protected List<TreeNode> listChildren() {
+    		return new ChainedList<TreeNode>()
+    				.addIfNotNull(symbRef);
+    	}
 
     }
 
@@ -340,7 +357,7 @@ public class GaussianObsError
     @XmlType(name = "", propOrder = {
         "symbRef"
     })
-    public static class ResidualError {
+    public static class ResidualError extends PharmMLElement {
 
         @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
         protected SymbolRef symbRef;
@@ -368,7 +385,22 @@ public class GaussianObsError
         public void setSymbRef(SymbolRef value) {
             this.symbRef = value;
         }
+        
+        @Override
+    	protected List<TreeNode> listChildren() {
+    		return new ChainedList<TreeNode>()
+    				.addIfNotNull(symbRef);
+    	}
 
     }
+    
+    @Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(super.listChildren())
+				.addIfNotNull(output)
+				.addIfNotNull(errorModel)
+				.addIfNotNull(residualError);
+	}
 
 }

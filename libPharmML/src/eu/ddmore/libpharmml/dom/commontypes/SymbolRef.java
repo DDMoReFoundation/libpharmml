@@ -26,6 +26,10 @@
 
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import java.util.Collections;
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -163,6 +167,11 @@ public class SymbolRef
 	@Override
 	public JAXBElement<SymbolRef> toJAXBElement() {
 		return MasterObjectFactory.COMMONTYPES_OF.createSymbRef(this);
+	}
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return Collections.emptyList();
 	}
 
 }

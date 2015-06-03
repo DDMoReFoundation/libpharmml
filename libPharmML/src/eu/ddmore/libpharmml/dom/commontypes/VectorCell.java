@@ -18,6 +18,9 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -29,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 
@@ -222,6 +226,13 @@ public class VectorCell extends PharmMLRootType implements ScalarContainer {
 		}
 		setValue(wValue);
 		return wValue;
+	}
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(index)
+				.addIfNotNull(value);
 	}
 
 }

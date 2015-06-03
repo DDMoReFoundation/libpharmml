@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.dom.trialdesign;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -38,6 +41,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.dataset.TargetMapping;
 import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -218,5 +222,13 @@ public class DosingVariable
     public void setInputTarget(DoseInputTarget value) {
         this.inputTarget = value;
     }
+    
+    @Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(targetMapping)
+				.addIfNotNull(symbRef)
+				.addIfNotNull(assign);
+	}
 
 }

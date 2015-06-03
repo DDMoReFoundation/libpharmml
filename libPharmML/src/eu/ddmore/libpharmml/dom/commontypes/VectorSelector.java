@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.dom.commontypes;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -39,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.dom.maths.Operand;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -298,6 +300,15 @@ public class VectorSelector
 	@Override
 	public JAXBElement<VectorSelector> toJAXBElement() {
 		return MasterObjectFactory.COMMONTYPES_OF.createVectorSelector(this);
+	}
+
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(symbRef)
+				.addIfNotNull(head)
+				.addIfNotNull(cellOrSegment)
+				.addIfNotNull(tail);
 	}
 
 }
