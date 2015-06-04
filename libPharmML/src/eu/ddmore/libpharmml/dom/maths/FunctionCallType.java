@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolScope;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -78,7 +79,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "functionArgument"
 })
 public class FunctionCallType
-    extends PharmMLRootType implements Operand, ExpressionValue
+    extends PharmMLRootType implements Operand, ExpressionValue, SymbolScope
 {
 
     @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
