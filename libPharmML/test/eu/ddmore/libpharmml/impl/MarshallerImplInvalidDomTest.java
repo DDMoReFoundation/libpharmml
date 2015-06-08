@@ -28,6 +28,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import javax.xml.bind.ValidationEventLocator;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,6 +37,7 @@ import org.junit.Test;
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.TestDomFactory;
 import eu.ddmore.libpharmml.dom.PharmML;
+import eu.ddmore.libpharmml.dom.commontypes.AbstractTreeNode;
 
 public class MarshallerImplInvalidDomTest {
 	private static final String INVALID_MODEL_FILE = "invalidModel.xml";
@@ -76,7 +79,11 @@ public class MarshallerImplInvalidDomTest {
 				errorOccurred = true;
 			}
 			@Override
-			public void handleError(String id, String errMsg, Object invalidObject) {
+			public void handleError(String id, String errMsg, ValidationEventLocator locator) {
+				errorOccurred = true;
+			}
+			@Override
+			public void handleError(String id, String errMsg, AbstractTreeNode invalidObject) {
 				errorOccurred = true;
 			}
 		});
@@ -103,7 +110,11 @@ public class MarshallerImplInvalidDomTest {
 				errorOccurred = true;
 			}
 			@Override
-			public void handleError(String id, String errMsg, Object invalidObject) {
+			public void handleError(String id, String errMsg, ValidationEventLocator locator) {
+				errorOccurred = true;
+			}
+			@Override
+			public void handleError(String id, String errMsg, AbstractTreeNode invalidObject) {
 				errorOccurred = true;
 			}
 		});
