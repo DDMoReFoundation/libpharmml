@@ -41,6 +41,7 @@ import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.IMarshaller;
 import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory.NamespaceType;
+import eu.ddmore.libpharmml.validation.PharmMLValidator;
 
 public class MarshallerImpl implements IMarshaller {
 	private static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
@@ -167,6 +168,8 @@ public class MarshallerImpl implements IMarshaller {
 			} else {
 				doc = (PharmML)u.unmarshal(is);
 			}
+			
+			PharmMLValidator.validate(doc, errorHandler);
 
 			return doc;
 		} catch (JAXBException e) {

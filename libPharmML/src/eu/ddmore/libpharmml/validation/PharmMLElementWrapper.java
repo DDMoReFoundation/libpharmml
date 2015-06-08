@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
  * @author Florent Yvon
  * 
  */
+@Deprecated
 public class PharmMLElementWrapper {
 	
 	// TODO: ad hoc class for symbol resolution. Needs improvement.

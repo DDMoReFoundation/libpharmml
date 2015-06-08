@@ -1,5 +1,9 @@
 package eu.ddmore.libpharmml.validation;
 
+import java.util.Enumeration;
+
+import javax.swing.tree.TreeNode;
+
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
@@ -20,9 +24,10 @@ public class PharmMLValidator {
 	 * @param dom The PharmML root object of the document.
 	 * @param errorHandler
 	 */
-	public static void validate(PharmML dom, IErrorHandler errorHandler){		
-		PharmMLElementWrapper wRoot = new PharmMLElementWrapper(dom);
-		recursiveValidate(errorHandler, wRoot);
+	public static void validate(PharmML dom, IErrorHandler errorHandler){	
+		SymbolResolver sr = new SymbolResolver(dom, errorHandler);
+		sr.validateAll();
+		recursiveValidate(errorHandler, dom);
 	}
 	
 	/**
@@ -31,14 +36,15 @@ public class PharmMLValidator {
 	 * @param wEl The element to validate. Its mapped children are fetched and this method
 	 * is executed on each child.
 	 */
-	private static void recursiveValidate(IErrorHandler errorHandler, PharmMLElementWrapper wEl){
-		Object el = wEl.getElement();
+	private static void recursiveValidate(IErrorHandler errorHandler, TreeNode el){
 		if(el instanceof Validatable){
 			LoggerWrapper.getLogger().info("Validating "+el);
 			((Validatable)el).validate(errorHandler);
 		}
-		for(PharmMLElementWrapper wChild : wEl.getChildren()){
-			recursiveValidate(errorHandler, wChild);
+		@SuppressWarnings("unchecked")
+		Enumeration<TreeNode> children = el.children();
+		while(children.hasMoreElements()){
+			recursiveValidate(errorHandler, children.nextElement());
 		}
 	}
 
