@@ -132,7 +132,7 @@ public class Name extends PharmMLElement implements Identifiable {
      */
     @Override
     public String toString() {
-    	return value;
+    	return super.toString()+" ["+value+"]";
     }
 
 	@Override
