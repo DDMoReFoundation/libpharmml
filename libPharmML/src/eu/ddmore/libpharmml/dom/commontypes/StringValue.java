@@ -141,7 +141,7 @@ public class StringValue extends PharmMLElement implements Scalar, Identifiable 
 	
 	@Override
 	public String toString() {
-		return value;
+		return super.toString()+" ["+value+"]";
 	}
 	
 	@Override
@@ -152,6 +152,11 @@ public class StringValue extends PharmMLElement implements Scalar, Identifiable 
 	@Override
 	protected List<TreeNode> listChildren() {
 		return Collections.emptyList();
+	}
+
+	@Override
+	public String valueToString() {
+		return value;
 	}
 
 }

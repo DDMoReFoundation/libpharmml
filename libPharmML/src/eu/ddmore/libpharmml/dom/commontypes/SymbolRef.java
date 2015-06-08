@@ -154,7 +154,7 @@ public class SymbolRef
 	
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder sb = new StringBuilder(super.toString()+" ");
 		if(blkIdRef != null){
 			sb.append("[");
 			sb.append(blkIdRef);

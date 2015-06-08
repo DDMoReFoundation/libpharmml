@@ -62,15 +62,15 @@ public class TrueBoolean
 	public String asString() {
 		return "true";
 	}
-	
-	@Override
-	public String toString() {
-		return "true";
-	}
 
 	@Override
 	public JAXBElement<? extends Scalar> toJAXBElement() {
 		return MasterObjectFactory.createScalar(this);
+	}
+
+	@Override
+	public String valueToString() {
+		return "true";
 	}
 
 }

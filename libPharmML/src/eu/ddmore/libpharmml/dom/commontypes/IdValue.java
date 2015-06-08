@@ -147,7 +147,7 @@ public class IdValue extends PharmMLElement implements Scalar, Identifiable {
 	
 	@Override
 	public String toString() {
-		return String.valueOf(value);
+		return super.toString()+" ["+String.valueOf(value)+"]";
 	}
 	
 	@Override
@@ -158,6 +158,11 @@ public class IdValue extends PharmMLElement implements Scalar, Identifiable {
 	@Override
 	protected List<TreeNode> listChildren() {
 		return Collections.emptyList();
+	}
+
+	@Override
+	public String valueToString() {
+		return String.valueOf(value);
 	}
 
 }

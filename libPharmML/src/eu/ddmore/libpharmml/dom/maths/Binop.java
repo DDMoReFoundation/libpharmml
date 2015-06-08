@@ -45,6 +45,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
@@ -441,46 +442,59 @@ public class Binop
 		if(operator == null){
 			return super.toString();
 		} else {
+			String superString = super.toString()+" [";
+			String operand1String;
+			String operand2String;
+			if(operand1 instanceof Scalar){
+				operand1String = ((Scalar) operand1).valueToString();
+			} else {
+				operand1String = String.valueOf(operand1);
+			}
+			if(operand2 instanceof Scalar){
+				operand2String = ((Scalar) operand2).valueToString();
+			} else {
+				operand2String = String.valueOf(operand2);
+			}
 			String string;
 			switch (operator) {
 				case ATAN2:
-					string = "atan2( "+operand1+" , "+operand2+" )";
+					string = "atan2( "+operand1String+" , "+operand2String+" )";
 					break;
 				case DIVIDE:
-					string = operand1+" / "+operand2;
+					string = operand1String+" / "+operand2String;
 					break;
 				case LOGX:
-					string = operand1+"log "+operand2;
+					string = operand1String+"log "+operand2String;
 					break;
 				case MAX:
-					string = "max{ "+operand1+" , "+operand2+" }";
+					string = "max{ "+operand1String+" , "+operand2String+" }";
 					break;
 				case MIN:
-					string = "min{ "+operand1+" , "+operand2+" }";
+					string = "min{ "+operand1String+" , "+operand2String+" }";
 					break;
 				case MINUS:
-					string = operand1+" - "+operand2;
+					string = operand1String+" - "+operand2String;
 					break;
 				case PLUS:
-					string = operand1+" + "+operand2;
+					string = operand1String+" + "+operand2String;
 					break;
 				case POWER:
-					string = operand1+" ^ "+operand2;
+					string = operand1String+" ^ "+operand2String;
 					break;
 				case REM:
-					string = operand1+" % "+operand2;
+					string = operand1String+" % "+operand2String;
 					break;
 				case ROOT:
-					string = operand2+"root( "+operand1+" )";
+					string = operand2String+"root( "+operand1String+" )";
 					break;
 				case TIMES:
-					string = operand1+" x "+operand2;
+					string = operand1String+" x "+operand2String;
 					break;
 				default:
-					string = "" + operand1 + operator + operand2;
+					string = "" + operand1String + operator + operand2String;
 					break;
 			}
-			return string;
+			return superString+string+"]";
 		}
 	}
 

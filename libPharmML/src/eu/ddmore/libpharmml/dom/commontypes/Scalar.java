@@ -32,4 +32,10 @@ import eu.ddmore.libpharmml.dom.maths.Operand;
 @XmlJavaTypeAdapter(ScalarAdapter.class)
 public interface Scalar extends VectorCellValue, MatrixCellValue, MatrixRowValue, Operand, ExpressionValue, TreeNode {
 
+	/**
+	 * Gets a string representation of the value of this scalar.
+	 * @return The value as a {@link String}.
+	 */
+	String valueToString();
+	
 }

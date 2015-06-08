@@ -64,13 +64,13 @@ public class FalseBoolean
 	}
 	
 	@Override
-	public String toString() {
-		return "false";
+	public JAXBElement<? extends Scalar> toJAXBElement() {
+		return MasterObjectFactory.createScalar(this);
 	}
 
 	@Override
-	public JAXBElement<? extends Scalar> toJAXBElement() {
-		return MasterObjectFactory.createScalar(this);
+	public String valueToString() {
+		return "false";
 	}
 
 }

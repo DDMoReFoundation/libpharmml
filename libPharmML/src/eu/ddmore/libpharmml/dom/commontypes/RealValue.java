@@ -132,7 +132,7 @@ public class RealValue extends PharmMLElement implements Scalar, VectorValue, Id
     
     @Override
     public String toString() {
-    	return String.valueOf(value);
+    	return super.toString()+" ["+valueToString()+"]";
     }
 
 	@Override
@@ -143,6 +143,11 @@ public class RealValue extends PharmMLElement implements Scalar, VectorValue, Id
 	@Override
 	protected List<TreeNode> listChildren() {
 		return Collections.emptyList();
+	}
+	
+	@Override
+	public String valueToString() {
+		return String.valueOf(value);
 	}
 
 }
