@@ -142,10 +142,10 @@ public class MarshallerImpl implements IMarshaller {
 					int severity = event.getSeverity();
 					switch(severity){
 					case ValidationEvent.ERROR:
-						errorHandler.handleError(ValidationReportFactory.SCHEMA_ERR_CODE, event.getMessage());
+						errorHandler.handleError(ValidationReportFactory.SCHEMA_ERR_CODE, event.getMessage(),event.getLocator());
 						break;
 					case ValidationEvent.FATAL_ERROR:
-						errorHandler.handleError(ValidationReportFactory.SCHEMA_ERR_CODE, event.getMessage());
+						errorHandler.handleError(ValidationReportFactory.SCHEMA_ERR_CODE, event.getMessage(),event.getLocator());
 						break;
 					case ValidationEvent.WARNING:
 						errorHandler.handleWarning(event.getMessage());

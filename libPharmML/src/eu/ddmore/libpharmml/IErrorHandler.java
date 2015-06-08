@@ -18,14 +18,20 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml;
 
+import javax.xml.bind.ValidationEventLocator;
+
+import eu.ddmore.libpharmml.dom.commontypes.AbstractTreeNode;
+
 public interface IErrorHandler {
 	
 	@Deprecated
 	void handleError(String errMsg);
-
-	void handleError(String id, String errMsg);
 	
-	void handleError(String id, String errMsg, Object invalidObject);
+	void handleError(String id, String errMsg);
+
+	void handleError(String id, String errMsg, ValidationEventLocator locator);
+		
+	void handleError(String id, String errMsg, AbstractTreeNode invalidObject);
 	
 	void handleWarning(String warnMsg);
 	

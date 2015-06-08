@@ -58,7 +58,7 @@ class Utils {
 		}
 	}
 	
-	
+	@Deprecated
 	public static PharmMLElementWrapper findById(PharmMLElementWrapper wrappedEl, String id){
 		if(wrappedEl.getId() != null && wrappedEl.getId().equals(id)){
 			return wrappedEl;

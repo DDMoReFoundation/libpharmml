@@ -22,9 +22,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.xml.bind.ValidationEventLocator;
+
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.IValidationError;
 import eu.ddmore.libpharmml.IValidationReport;
+import eu.ddmore.libpharmml.dom.commontypes.AbstractTreeNode;
 
 public class ValidationReportFactory implements IErrorHandler {
 	public static final String SCHEMA_ERR_CODE = "SCHEMA";
@@ -42,7 +45,7 @@ public class ValidationReportFactory implements IErrorHandler {
 	@Override
 	@Deprecated
 	public void handleError(String exception) {
-		handleError(SCHEMA_ERR_CODE, exception);		
+		handleError(SCHEMA_ERR_CODE, exception, (AbstractTreeNode) null);		
 	}
 
 	public IValidationReport createReport(){
@@ -75,13 +78,18 @@ public class ValidationReportFactory implements IErrorHandler {
 	}
 
 	@Override
-	public void handleError(String id, String errMsg) {
-		this.errors.add(new ValidationErrorImpl(id, errMsg));
+	public void handleError(String id, String errMsg, ValidationEventLocator locator) {
+		this.errors.add(new ValidationErrorImpl(id, errMsg, locator));
 	}
 
 	@Override
-	public void handleError(String id, String errMsg, Object invalidObject) {
+	public void handleError(String id, String errMsg, AbstractTreeNode invalidObject) {
 		this.errors.add(new ValidationErrorImpl(id, errMsg, invalidObject));
 	}
 
+	@Override
+	public void handleError(String id, String errMsg) {
+		this.errors.add(new ValidationErrorImpl(id, errMsg));
+	}
+	
 }

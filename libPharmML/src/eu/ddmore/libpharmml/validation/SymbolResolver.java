@@ -10,6 +10,7 @@ import javax.swing.tree.TreeNode;
 
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.PharmML;
+import eu.ddmore.libpharmml.dom.commontypes.AbstractTreeNode;
 import eu.ddmore.libpharmml.dom.commontypes.Block;
 import eu.ddmore.libpharmml.dom.commontypes.FunctionDefinition;
 import eu.ddmore.libpharmml.dom.commontypes.FunctionParameter;
@@ -154,12 +155,12 @@ public class SymbolResolver {
 	
 	private void handleException(DuplicatedSymbolException e){
 		errorHandler.handleError("S1", "Symbols must be unique within their scope ("+e.getDuplicatedSymbol().getSymbId()+").", 
-				e.getDuplicatedSymbol());
+				(AbstractTreeNode) e.getDuplicatedSymbol());
 	}
 	
 	private void handleException(DuplicatedBlockException e){
 		errorHandler.handleError("S1", "Blocks must be unique ("+e.getDuplicatedBlock().getBlkId()+").", 
-				e.getDuplicatedBlock());
+				(AbstractTreeNode) e.getDuplicatedBlock());
 	}
 	
 	private void handleUnresolvedSymbol(SymbolRef symbolRef, ValidationBlock within){

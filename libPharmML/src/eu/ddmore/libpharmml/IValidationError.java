@@ -45,4 +45,10 @@ public interface IValidationError {
 	 */
 	Object getInvalidObject();
 	
+	/**
+	 * Gets the line number of the error if available.
+	 * @return The line number as {@link Integer}, or null if not available.
+	 */
+	Integer getLineNumber();
+	
 }

@@ -18,21 +18,36 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml.impl;
 
+import javax.xml.bind.ValidationEventLocator;
+
 import eu.ddmore.libpharmml.IValidationError;
+import eu.ddmore.libpharmml.dom.commontypes.AbstractTreeNode;
 
 public class ValidationErrorImpl implements IValidationError {
 	private final String ruleId;
 	private final String msg;
-	private final Object invalidObject;
+	private final AbstractTreeNode invalidObject;
+	private final Integer lineNumber;
 	
 	public ValidationErrorImpl(String ruleId, String msg){
-		this(ruleId,msg,null);
+		this.ruleId = ruleId;
+		this.msg = msg;
+		this.invalidObject = null;
+		this.lineNumber = null;
 	}
 	
-	public ValidationErrorImpl(String ruleId, String msg, Object invalidObject) {
+	public ValidationErrorImpl(String ruleId, String msg, ValidationEventLocator locator){
+		this.ruleId = ruleId;
+		this.msg = msg;
+		this.invalidObject = null;
+		this.lineNumber = locator.getLineNumber();
+	}
+	
+	public ValidationErrorImpl(String ruleId, String msg, AbstractTreeNode invalidObject) {
 		this.ruleId = ruleId;
 		this.msg = msg;
 		this.invalidObject = invalidObject;
+		this.lineNumber = null;
 	}
 	
 	@Override
@@ -46,7 +61,7 @@ public class ValidationErrorImpl implements IValidationError {
 	}
 	
 	@Override
-	public Object getInvalidObject() {
+	public AbstractTreeNode getInvalidObject() {
 		return this.invalidObject;
 	};
 
@@ -83,11 +98,18 @@ public class ValidationErrorImpl implements IValidationError {
 
 	@Override
 	public String toString() {
-		if(invalidObject == null){
-			return "ValidationErrorImpl [ruleId=" + ruleId + ", msg=\"" + msg + "\"]";
-		} else {
+		if(invalidObject != null){
 			return "ValidationErrorImpl [ruleId=" + ruleId + ", msg=\"" + msg + "\", object="+invalidObject+"]";
+		} else if(lineNumber != null){
+			return "ValidationErrorImpl [ruleId=" + ruleId + ", msg=\"" + msg + "\", line="+lineNumber+"]";
+		} else {
+			return "ValidationErrorImpl [ruleId=" + ruleId + ", msg=\"" + msg + "\"]";
 		}
+	}
+
+	@Override
+	public Integer getLineNumber() {
+		return lineNumber;
 	}
 
 }
