@@ -101,8 +101,7 @@ public class MarshallerImpl implements IMarshaller {
 //		} catch (TransformerException e) {
 //			throw new RuntimeException(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 	}
 
