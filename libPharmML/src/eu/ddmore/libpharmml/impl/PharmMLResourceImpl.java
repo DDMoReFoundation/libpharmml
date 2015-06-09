@@ -8,7 +8,6 @@ import eu.ddmore.libpharmml.IValidationReport;
 import eu.ddmore.libpharmml.IdFactory;
 import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.dom.PharmML;
-import eu.ddmore.libpharmml.validation.PharmMLElementWrapper;
 
 public class PharmMLResourceImpl implements IPharmMLResource {
 	
@@ -43,13 +42,7 @@ public class PharmMLResourceImpl implements IPharmMLResource {
 		if(idFactory != null){
 			return idFactory.getIdentifiable(id);
 		} else {
-			PharmMLElementWrapper wrappedDom = new PharmMLElementWrapper(getDom());
-			PharmMLElementWrapper foundWrappedEl = Utils.findById(wrappedDom, id);
-			if(foundWrappedEl != null && foundWrappedEl.getElement() instanceof Identifiable){
-				return (Identifiable) foundWrappedEl.getElement();
-			} else {
-				return null;
-			}
+			return Utils.findById(dom, id);
 		}
 	}
 

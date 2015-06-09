@@ -1,8 +1,11 @@
 package eu.ddmore.libpharmml.impl;
 
 import java.lang.reflect.Field;
+import java.util.Enumeration;
 
-import eu.ddmore.libpharmml.validation.PharmMLElementWrapper;
+import javax.swing.tree.TreeNode;
+
+import eu.ddmore.libpharmml.dom.Identifiable;
 
 class Utils {
 	
@@ -58,13 +61,17 @@ class Utils {
 		}
 	}
 	
-	@Deprecated
-	public static PharmMLElementWrapper findById(PharmMLElementWrapper wrappedEl, String id){
-		if(wrappedEl.getId() != null && wrappedEl.getId().equals(id)){
-			return wrappedEl;
+	public static Identifiable findById(TreeNode node, String id){
+		if(node instanceof Identifiable){
+			if(((Identifiable) node).getId() != null && 
+					((Identifiable) node).getId().equals(id)){
+				return (Identifiable) node;
+			}
 		}
-		for(PharmMLElementWrapper child : wrappedEl.getChildren()){
-			PharmMLElementWrapper foundChild = findById(child, id);
+		@SuppressWarnings("unchecked")
+		Enumeration<TreeNode> children = node.children();
+		while(children.hasMoreElements()){
+			Identifiable foundChild = findById(children.nextElement(), id);
 			if(foundChild != null){
 				return foundChild;
 			}
