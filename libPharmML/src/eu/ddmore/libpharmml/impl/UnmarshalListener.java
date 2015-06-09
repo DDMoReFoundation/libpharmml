@@ -14,8 +14,8 @@ import javax.xml.bind.Unmarshaller.Listener;
 
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.IdFactory;
+import eu.ddmore.libpharmml.dom.AbstractTreeNode;
 import eu.ddmore.libpharmml.dom.Identifiable;
-import eu.ddmore.libpharmml.dom.commontypes.AbstractTreeNode;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.exceptions.AnnotationException;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;

@@ -20,6 +20,7 @@ package eu.ddmore.libpharmml.dom.commontypes;
 
 import javax.xml.bind.annotation.XmlTransient;
 
+import eu.ddmore.libpharmml.dom.AbstractTreeNode;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 

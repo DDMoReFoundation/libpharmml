@@ -1,4 +1,4 @@
-package eu.ddmore.libpharmml.dom.commontypes;
+package eu.ddmore.libpharmml.dom;
 
 import java.util.Collections;
 import java.util.Enumeration;

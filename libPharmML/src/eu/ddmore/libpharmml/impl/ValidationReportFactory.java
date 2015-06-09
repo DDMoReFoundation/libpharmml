@@ -27,7 +27,7 @@ import javax.xml.bind.ValidationEventLocator;
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.IValidationError;
 import eu.ddmore.libpharmml.IValidationReport;
-import eu.ddmore.libpharmml.dom.commontypes.AbstractTreeNode;
+import eu.ddmore.libpharmml.dom.AbstractTreeNode;
 
 public class ValidationReportFactory implements IErrorHandler {
 	public static final String SCHEMA_ERR_CODE = "SCHEMA";

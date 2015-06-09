@@ -20,7 +20,7 @@ package eu.ddmore.libpharmml;
 
 import javax.xml.bind.ValidationEventLocator;
 
-import eu.ddmore.libpharmml.dom.commontypes.AbstractTreeNode;
+import eu.ddmore.libpharmml.dom.AbstractTreeNode;
 
 public interface IErrorHandler {
 	
