@@ -373,5 +373,14 @@ public abstract class PharmMLRootType extends PharmMLElement implements Identifi
     public void setId(String value) {
         this.id = value;
     }
+    
+    @Override
+    public String toString() {
+    	if(id != null){
+    		return super.toString()+"#"+id;
+    	} else {
+    		return super.toString();
+    	}
+    }
 
 }
