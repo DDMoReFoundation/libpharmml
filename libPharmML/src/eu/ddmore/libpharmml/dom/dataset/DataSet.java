@@ -27,11 +27,9 @@
 package eu.ddmore.libpharmml.dom.dataset;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -294,100 +292,45 @@ public class DataSet
         this.externalFile = value;
     }
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void validate(IErrorHandler errorHandler) {		
-		boolean DS1 = false;
-		boolean DS2 = false;
-//		boolean DS6 = false; added for each cell
-		boolean DS8 = false;
 		
-		// DS1 & DS2
-//		ColumnsDefinitionType colDef = getDefinition();
-//		if(colDef != null){
-//			List<ColumnDefnType> columns = colDef.getColumn();
-			List<ColumnDefinition> columns = getListOfColumnDefinition();
-			if(columns != null && columns.size() > 0){
-				for(int i=0;i<columns.size();i++){
-					ColumnDefinition column = columns.get(i);
-					if(i == 0){
-						if(!column.getColumnNum().equals(BigInteger.valueOf(1))){
-							DS2 = true;
-						}
-					} else {
-						BigInteger previousNum = columns.get(i-1).getColumnNum();
-						if(previousNum != null && !column.getColumnNum().equals(previousNum.add(BigInteger.valueOf(1)))){
-							DS2 = true;
-						}
-						if(previousNum != null && (column.getColumnNum().compareTo(previousNum) == -1)){
-							DS1 = true;
-						}
-					}
-				}
-			}
-//		}
+		boolean DS1a = false;
 		
-		// DS6 cell.type = column.type
-		// DS8 row.size() = columns.size()
-//		int colNum = colDef.getColumn().size();
-		int colNum = getListOfColumnDefinition().size();
-//		if(getTable() != null && getTable().getRow() != null){
-			for(DatasetRow row : getListOfRow()){
-				if(row.size() != colNum){
-					DS8 = true;
-				}
-				List<Scalar> listOfValue;
-				if(getUnmarshalVersion() != null && getUnmarshalVersion().equals(PharmMLVersion.V0_2_1)){
-					listOfValue = new ArrayList<Scalar>();
-					for(JAXBElement<?> jaxbEl : row.getScalarOrTable()){
-						if(jaxbEl.getValue() instanceof Scalar){
-							listOfValue.add((Scalar) jaxbEl.getValue());
-						}
-					}
+		boolean hasIdColumn = false;
+		for(ColumnDefinition col : getListOfColumnDefinition()){
+			if(col.getColumnType() != null && col.getColumnType().equals(ColumnType.ID)){
+				if(hasIdColumn){
+					DS1a = true;
 				} else {
-					listOfValue = row.getListOfValue();
+					hasIdColumn = true;
 				}
-				for(int i=0;i<colNum;i++){
-					try{
-						Scalar cell = listOfValue.get(i);
-//						SymbolTypeType columnDataType = colDef.getColumn().get(i).getValueType();
-						SymbolType columnDataType = getListOfColumnDefinition().get(i).getValueType();
-						if(!cell.getClass().equals(columnDataType.getDataType())){
-//							DS6 = true;
-							errorHandler.handleError("DS6",
-									"Cell value "+cell+" ("+cell.getClass()+
-									") is not type compatible with the column definition ("+
-											columnDataType.value()+")", this);
-						}
-					} catch (IndexOutOfBoundsException e) {
-						DS8 = true;
-						break;
+			}
+		}
+		
+		for(DatasetRow row : getListOfRow()){
+			int n = 0;
+			try {
+				for(Scalar value : row.getListOfValue()){
+					n++;
+					ColumnDefinition col = getListOfColumnDefinition().get(n-1);
+					if(col.getValueType() != null && !value.getClass().equals(col.getValueType().getDataType())){
+						errorHandler.handleError("DS2", "Each cell must contain a value that is type compatible with the column definition.", this);
 					}
 				}
+				if(n != getListOfColumnDefinition().size()){
+					errorHandler.handleError("DS3","Each row must define a cell for each column.",this);
+				}
+			} catch (IndexOutOfBoundsException e) {
+				errorHandler.handleError("DS3","Each row must define a cell for each column.",this);
 			}
-//		}
+		}
 		
-		if(DS1){
-			errorHandler.handleError("DS1",
-					"Columns must be ordered. The order is specified by the columnNum attribute.",
-					this);
+		if(DS1a){
+			errorHandler.handleError("DS1", "Only one column with columnType=\"id\" attribute is allowed", this);
 		}
-		if(DS2){
-			errorHandler.handleError("DS2",
-					"Columns must be numbered sequentially from 1, with no gaps in the sequence.",
-					this);
-		}
-//		if(DS6){
-//			errors.add(new ValidationErrorImpl("DS6",
-//					"Each cell must contain a value that is type compatible with the column definition.",
-//					this));
-//		}
-		if(DS8){
-			errorHandler.handleError("DS8",
-					"Each row must define a cell for each column (column n:"+colNum+").",
-					this);
-		}
-			}
+		
+	}
 	
 	/**
 	 * Updates the DOM types of all the values stored in this dataset, following the valueType of each
@@ -460,7 +403,7 @@ public class DataSet
 
 		@Override
 		public ColumnsDefinitionType marshal(WrappedList<ColumnDefinition> v) throws Exception {
-			if(v == null){
+			if(v == null || v.size() == 0){
 				return null;
 			} else {
 				ColumnsDefinitionType columnDef = new ColumnsDefinitionType();
@@ -488,7 +431,7 @@ public class DataSet
 
 		@Override
 		public DataSetTableType marshal(WrappedList<DatasetRow> v) throws Exception {
-			if(v == null){
+			if(v == null || v.size() == 0){
 				return null;
 			} else {
 				DataSetTableType table = new DataSetTableType();
