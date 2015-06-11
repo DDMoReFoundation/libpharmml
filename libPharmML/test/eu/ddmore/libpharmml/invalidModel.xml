@@ -160,7 +160,7 @@
                             <ct:Assign><ct:SymbRef symbIdRef="pop_V"/></ct:Assign>
                         </PopulationParameter>
                         <Covariate>
-                            <ct:SymbRef blkIdRef="cm1" symbIdRef="sex"/>
+                            <ct:SymbRef blkIdRef="cm1" symbIdRef="Sex"/>
                             <FixedEffect>
                                 <ct:SymbRef symbIdRef="beta_V"/>
                                 <Category catId="F"/>
@@ -228,7 +228,7 @@
                             <ct:Assign><ct:SymbRef symbIdRef="pop_CL"/></ct:Assign>
                         </PopulationParameter>
                         <Covariate>
-                            <ct:SymbRef blkIdRef="cm1" symbIdRef="sex"/>
+                            <ct:SymbRef blkIdRef="cm1" symbIdRef="Sex"/>
                             <FixedEffect>
                                 <ct:SymbRef symbIdRef="beta_CL"/>
                                 <Category catId="F"/>
@@ -281,7 +281,7 @@
                                             </Uniop>
                                             <Binop op="minus">
                                                 <ct:SymbRef symbIdRef="t"/>
-                                                <ct:SymbRef symbIdRef="t_D"/>
+                                                <ct:SymbRef symbIdRef="tD"/>
                                             </Binop>
                                         </Binop>
                                     </Uniop>
@@ -292,7 +292,7 @@
                                             </Uniop>
                                             <Binop op="minus">
                                                 <ct:SymbRef symbIdRef="t"/>
-                                                <ct:SymbRef symbIdRef="t_D"/>
+                                                <ct:SymbRef symbIdRef="tD"/>
                                             </Binop>
                                         </Binop>
                                     </Uniop>
@@ -522,14 +522,14 @@
             
             <ColumnMapping>
                 <ds:ColumnRef columnIdRef="EPOCH"/>
-                <ct:SymbRef symbIdRef="Occasion"/>
+                <ct:SymbRef blkIdRef="cm1" symbIdRef="Occasion"/>
                 <ds:CategoryMapping>
                     <ds:Map dataSymbol="ep1" modelSymbol="occ1"/>
                     <ds:Map dataSymbol="ep3" modelSymbol="occ2"/>
                 </ds:CategoryMapping>
             </ColumnMapping>
             
-            <ds:DataSet>
+            <ds:DataSet id="ds1">
                 <ds:Definition>
                     <ds:Column columnId="ID" columnType="id" valueType="string" columnNum="1"/>
                     <ds:Column columnId="ARM" columnType="arm" valueType="id" columnNum="2"/>

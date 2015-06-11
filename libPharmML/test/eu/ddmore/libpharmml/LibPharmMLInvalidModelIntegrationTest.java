@@ -38,7 +38,7 @@ public class LibPharmMLInvalidModelIntegrationTest {
 	private static final String INVALID_MODEL_FILE = "invalidModel.xml";
 	private static final String INVALID_MDL_NAME = "Invalid Model";
 	private static final String EXPECTED_ERR_CODE = "SCHEMA";
-	private static final int EXPECTED_NUM_ERRORS = 4;
+	private static final int EXPECTED_NUM_ERRORS = 7;
 //	private IValidationError EXPECTED_ERRORS[] = {
 //		new ValidationErrorImpl(EXPECTED_ERR_CODE, "cvc-datatype-valid.1.2.1: '1F' is not a valid value for 'NCName'."),	
 //		new ValidationErrorImpl(EXPECTED_ERR_CODE, "cvc-attribute.3: The value '1F' of attribute 'catId' on element 'Category' is not valid with respect to its type, 'SymbolIdType'."),	
