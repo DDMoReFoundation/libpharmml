@@ -69,7 +69,9 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 			
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			IMarshaller m = new MarshallerImpl();
-			m.marshall(dom, baos,new MarshalListener(docVersion, new IdFactoryImpl()));
+			MarshalListener ml = new MarshalListener(docVersion, new IdFactoryImpl());
+			ml.autosetId(false);
+			m.marshall(dom, baos, ml);
 			Source source = new StreamSource(new ByteArrayInputStream(baos.toByteArray()));
 			
 	 

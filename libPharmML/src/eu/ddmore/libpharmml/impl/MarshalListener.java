@@ -79,7 +79,7 @@ public class MarshalListener extends Listener {
 			if(((Identifiable) source).getId() == null && autoset_id){
 				String id = idFactory.generateAndStoreIdentifiable((Identifiable) source);
 				LoggerWrapper.getLogger().info("Assigning id \""+id+"\" to "+source.getClass()+".");
-			} else {
+			} else if (((Identifiable) source).getId() != null ){
 				try {
 					idFactory.storeIdentifiable((Identifiable) source);
 				} catch (DuplicateIdentifierException e) {
