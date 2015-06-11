@@ -403,7 +403,7 @@ public class DataSet
 
 		@Override
 		public ColumnsDefinitionType marshal(WrappedList<ColumnDefinition> v) throws Exception {
-			if(v == null || v.size() == 0){
+			if(v == null || (v.size() == 0 && v.getId() == null)){
 				return null;
 			} else {
 				ColumnsDefinitionType columnDef = new ColumnsDefinitionType();
@@ -431,7 +431,7 @@ public class DataSet
 
 		@Override
 		public DataSetTableType marshal(WrappedList<DatasetRow> v) throws Exception {
-			if(v == null || v.size() == 0){
+			if(v == null || (v.size() == 0 && v.getId() == null)){
 				return null;
 			} else {
 				DataSetTableType table = new DataSetTableType();
