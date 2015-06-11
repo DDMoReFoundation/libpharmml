@@ -236,7 +236,7 @@
                                             <ct:SymbRef symbIdRef="t"/>
                                             <ct:SymbRef symbIdRef="tD"/>
                                         </math:Binop>
-                                        <ct:SymbRef symbIdRef="Tlag"/>
+                                        <ct:SymbRef blkIdRef="pm1" symbIdRef="Tlag"/>
                                     </math:LogicBinop>
                                 </math:Condition>
                             </math:Piece>
@@ -264,7 +264,7 @@
                                                 <math:Binop op="minus">
                                                     <math:Binop op="minus">
                                                         <ct:SymbRef symbIdRef="t"/>
-                                                        <ct:SymbRef blkIdRef="pm1" symbIdRef="tD"/>
+                                                        <ct:SymbRef symbIdRef="tD"/>
                                                     </math:Binop>
                                                     <ct:SymbRef blkIdRef="pm1" symbIdRef="Tlag"/>
                                                 </math:Binop>
@@ -278,7 +278,7 @@
                                                 <math:Binop op="minus">
                                                     <math:Binop op="minus">
                                                         <ct:SymbRef symbIdRef="t"/>
-                                                        <ct:SymbRef blkIdRef="pm1" symbIdRef="tD"/>
+                                                        <ct:SymbRef symbIdRef="tD"/>
                                                     </math:Binop>
                                                     <ct:SymbRef blkIdRef="pm1" symbIdRef="Tlag"/>
                                                 </math:Binop>
@@ -316,7 +316,7 @@
                 </RandomVariable>
                 <Standard symbId="C_obs">
                     <Output>
-                        <ct:SymbRef symbIdRef="C"/>
+                        <ct:SymbRef blkIdRef="sm1" symbIdRef="C"/>
                     </Output>
                     <ErrorModel>
                         <ct:Assign>

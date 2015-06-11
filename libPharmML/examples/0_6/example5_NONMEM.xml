@@ -111,8 +111,8 @@
             <SimpleParameter symbId="omega_KQPP"/>
             <SimpleParameter symbId="pop_KPQ"/>
             <SimpleParameter symbId="omega_KPQ"/>
-            <SimpleParameter symbId="pop_GAMA"/>
-            <SimpleParameter symbId="omega_GAMA"/>
+            <SimpleParameter symbId="pop_GAMMA"/>
+            <SimpleParameter symbId="omega_GAMMA"/>
             <SimpleParameter symbId="pop_DELTAQP"/>
             <SimpleParameter symbId="omega_DELTAQP"/>
             
@@ -532,7 +532,7 @@
             </ColumnMapping>
             <ColumnMapping>
                 <ColumnRef xmlns="http://www.pharmml.org/pharmml/0.6/Dataset" columnIdRef="AMT"/>
-                <ct:SymbRef blkIdRef="om1" symbIdRef="C"/>
+                <ct:SymbRef blkIdRef="sm1" symbIdRef="C"/>
             </ColumnMapping>
             
             <!--columns: ID TIME DV MDV DOSE EVID-->

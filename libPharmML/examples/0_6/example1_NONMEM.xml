@@ -412,8 +412,8 @@
                         <ct:Assign>
                             <Equation xmlns="http://www.pharmml.org/pharmml/0.6/Maths">
                                 <Binop op="divide">
-                                    <ct:SymbRef symbIdRef="Rin"/>
-                                    <ct:SymbRef symbIdRef="kout"/>
+                                    <ct:SymbRef blkIdRef="p1" symbIdRef="Rin"/>
+                                    <ct:SymbRef blkIdRef="p1" symbIdRef="kout"/>
                                 </Binop>
                             </Equation>
                         </ct:Assign>
@@ -431,7 +431,7 @@
                     <Equation xmlns="http://www.pharmml.org/pharmml/0.6/Maths">
                         <Binop op="divide">
                             <ct:SymbRef symbIdRef="Ac"/>
-                            <ct:SymbRef symbIdRef="V"/>
+                            <ct:SymbRef blkIdRef="p1" symbIdRef="V"/>
                         </Binop>
                     </Equation>
                 </ct:Assign>

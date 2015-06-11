@@ -111,8 +111,8 @@
             <SimpleParameter symbId="omega_KQPP"/>
             <SimpleParameter symbId="pop_KPQ"/>
             <SimpleParameter symbId="omega_KPQ"/>
-            <SimpleParameter symbId="pop_GAMA"/>
-            <SimpleParameter symbId="omega_GAMA"/>
+            <SimpleParameter symbId="pop_GAMMA"/>
+            <SimpleParameter symbId="omega_GAMMA"/>
             <SimpleParameter symbId="pop_DELTAQP"/>
             <SimpleParameter symbId="omega_DELTAQP"/>
             
