@@ -18,12 +18,15 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml.impl;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.util.JAXBSource;
+//import javax.xml.bind.JAXBContext;
+//import javax.xml.bind.JAXBException;
+//import javax.xml.bind.util.JAXBSource;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.Validator;
 
@@ -40,7 +43,7 @@ import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory.NamespaceType;
 import eu.ddmore.libpharmml.validation.PharmMLValidator;
 
 public class PharmMLValidatorImpl implements IPharmMLValidator {
-	private static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
+//	private static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
 
 	@Override
 	public IValidationReport createValidationReport(IPharmMLResource resource) {
@@ -61,13 +64,13 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 			// This step is necessary as it may need namespace transformation prior to
 			// schema validation.
 			
-			JAXBContext jc = JAXBContext.newInstance(CONTEXT_NAME);
-			JAXBSource source = new JAXBSource(jc, dom);
+//			JAXBContext jc = JAXBContext.newInstance(CONTEXT_NAME);
+//			JAXBSource source = new JAXBSource(jc, dom);
 			
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			IMarshaller m = new MarshallerImpl();
-			m.marshall(dom, baos);
-//			Source source = new StreamSource(new ByteArrayInputStream(baos.toByteArray()));
+			m.marshall(dom, baos,new MarshalListener(docVersion, new IdFactoryImpl()));
+			Source source = new StreamSource(new ByteArrayInputStream(baos.toByteArray()));
 			
 	 
 			Schema schema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(docVersion,NamespaceType.DEFAULT);
@@ -110,8 +113,8 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 		}
 		catch (IOException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		} catch (JAXBException e) {
-			throw new RuntimeException(e.getMessage(), e);
+//		} catch (JAXBException e) {
+//			throw new RuntimeException(e.getMessage(), e);
         } catch (SAXException e) {
 			throw new RuntimeException(e.getMessage(), e);
         }
