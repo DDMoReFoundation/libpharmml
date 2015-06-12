@@ -41,8 +41,8 @@ import org.junit.runners.Parameterized.Parameters;
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.PharmMLVersionFactory;
 import eu.ddmore.libpharmml.TestDomFactory;
+import eu.ddmore.libpharmml.dom.AbstractTreeNode;
 import eu.ddmore.libpharmml.dom.PharmML;
-import eu.ddmore.libpharmml.dom.commontypes.AbstractTreeNode;
 
 @RunWith(Parameterized.class)
 public class MarshallerImplValidDomTest{

@@ -36,8 +36,8 @@ import org.junit.Test;
 
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.TestDomFactory;
+import eu.ddmore.libpharmml.dom.AbstractTreeNode;
 import eu.ddmore.libpharmml.dom.PharmML;
-import eu.ddmore.libpharmml.dom.commontypes.AbstractTreeNode;
 
 public class MarshallerImplInvalidDomTest {
 	private static final String INVALID_MODEL_FILE = "invalidModel.xml";
