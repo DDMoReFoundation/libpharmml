@@ -36,6 +36,11 @@ import eu.ddmore.libpharmml.impl.TestResourceFactory;
 
 public class LibPharmMLInvalidModelIntegrationTest {
 	private static final String INVALID_MODEL_FILE = "invalidModel.xml";
+	private static final String INVALID_DATASET_FILE = "invalidDataset.xml";
+	private static final int INVALID_DATASET_NUM_ERRORS = 4;
+	private static final String[] INVALID_DATASET_ERRORS = {
+		"DS2","DS3","DS3","DS1"
+	};
 	private static final String INVALID_MDL_NAME = "Invalid Model";
 	private static final String EXPECTED_ERR_CODE = "SCHEMA";
 	private static final int EXPECTED_NUM_ERRORS = 7;
@@ -107,6 +112,23 @@ public class LibPharmMLInvalidModelIntegrationTest {
 		OutputStream os = new FileOutputStream(tmpFile);
 		this.testInstance.save(os, testResource);
 		os.close();
+	}
+	
+	@Test
+	public void testValidateInvalidDataset() throws Exception {
+		InputStream in = this.getClass().getResourceAsStream(INVALID_DATASET_FILE);
+		IPharmMLResource res = this.testInstance.createDomFromResource(in);
+		in.close();
+		
+		IValidationReport rep = testInstance.getValidator().createValidationReport(res);
+		assertEquals(INVALID_DATASET_NUM_ERRORS, rep.numErrors());
+		checkErrors(INVALID_DATASET_ERRORS, rep);
+	}
+	
+	private void checkErrors(String[] expected, IValidationReport actual){
+		for(int i=0;i<expected.length;i++){
+			assertEquals(expected[i], actual.getError(i+1).getRuleId());
+		}
 	}
 
 }
