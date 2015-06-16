@@ -75,7 +75,7 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 			Source source = new StreamSource(new ByteArrayInputStream(baos.toByteArray()));
 			
 	 
-			Schema schema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(docVersion,NamespaceType.DEFAULT);
+			Schema schema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(docVersion,NamespaceType.OLD);
 			Validator validator = schema.newValidator();
 			final ValidationReportFactory rptFact = new ValidationReportFactory();
 			validator.setErrorHandler(new ErrorHandler() {
@@ -109,7 +109,12 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 //				rptFact.addError(error);
 //			}
 			
-			PharmMLValidator.validate(dom,rptFact);
+			if(docVersion.isEqualOrLaterThan(PharmMLVersion.V0_6)){
+				PharmMLValidator.validate(dom,rptFact);
+			} else {
+				LoggerWrapper.getLogger().info("Version is below "+PharmMLVersion.V0_6+", no complex validation performed.");
+			}
+			
 			
 			return rptFact.createReport();
 		}

@@ -94,7 +94,7 @@ public class UnmarshalListener extends Listener {
 		}
 		
 		// Validating if possible
-		if(target instanceof Validatable){
+		if(target instanceof Validatable && docVersion.isEqualOrLaterThan(PharmMLVersion.V0_6)){
 			((Validatable) target).validate(errorHandler);
 		}
 		

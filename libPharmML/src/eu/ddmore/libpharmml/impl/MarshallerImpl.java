@@ -171,8 +171,13 @@ public class MarshallerImpl implements IMarshaller {
 			
 			// Not calling the full validator, as the validation is performed but the
 			// UnmarshalListener.
-			SymbolResolver sr = new SymbolResolver(doc, errorHandler);
-			sr.validateAll();
+			if(version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
+				SymbolResolver sr = new SymbolResolver(doc, errorHandler);
+				sr.validateAll();
+			} else {
+				LoggerWrapper.getLogger().info("Version is below "+PharmMLVersion.V0_6+", no complex validation performed.");
+			}
+			
 
 			return doc;
 		} catch (JAXBException e) {
