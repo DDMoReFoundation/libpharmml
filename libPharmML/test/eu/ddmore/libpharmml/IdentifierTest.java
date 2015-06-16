@@ -57,7 +57,7 @@ public class IdentifierTest {
 		testInstance.save(new FileOutputStream(tmpFile), testResource);
 		
 		IPharmMLResource newResource = testInstance.createDomFromResource(new FileInputStream(tmpFile));
-		assertEquals("Number of generated ids",560, newResource.getIdFactory().getListOfIdentifiable().size());
+		assertEquals("Number of generated ids",562, newResource.getIdFactory().getListOfIdentifiable().size());
 		assertNotNull("Previous id found", newResource.find("e1"));
 	}
 
