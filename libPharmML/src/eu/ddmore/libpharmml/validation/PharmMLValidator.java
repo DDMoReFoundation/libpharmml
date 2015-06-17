@@ -69,7 +69,6 @@ public class PharmMLValidator {
 			for(ColumnDefinition column : dm.getDataSet().getListOfColumnDefinition()){
 				if(column.getColumnId() != null){
 					columnIds.add(column.getColumnId());
-					// TODO: control of columnId unicity
 				}
 			}
 		}
