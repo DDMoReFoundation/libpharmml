@@ -28,8 +28,10 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.dom.dataset.DatasetMap;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.util.SubList;
 
 
 /**
@@ -72,7 +74,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "codeInjection"
 })
 public class ExternalDataSet
-    extends PharmMLRootType
+    extends PharmMLRootType implements DatasetMap
 {
 
     @XmlElements({
@@ -279,6 +281,13 @@ public class ExternalDataSet
 				.addIfNotNull(listOfColumnMappingOrColumnTransformationOrMultipleDVMapping)
 				.addIfNotNull(dataSet)
 				.addIfNotNull(codeInjection);
+	}
+
+	@Override
+	public List<ColumnMapping> getListOfColumnMapping() {
+		// TODO do something smarter here
+		return new SubList<ColumnMapping>(getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping(),
+				ColumnMapping.class);
 	}
 
 }

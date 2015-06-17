@@ -39,6 +39,7 @@ import eu.ddmore.libpharmml.dom.commontypes.LevelReference;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.dom.dataset.DatasetMap;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -78,7 +79,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "dataSet"
 })
 public class Population
-    extends PharmMLRootType
+    extends PharmMLRootType implements DatasetMap
 {
 
     @XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT)
@@ -150,32 +151,10 @@ public class Population
     }
 
     /**
-     * Gets the value of the columnMapping property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the columnMapping property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getColumnMapping().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link ColumnMapping }
-     * 
-     * @since PharmML 0.3.
+     * @deprecated Use {@link #getListOfColumnMapping()}.
      */
     public List<ColumnMapping> getColumnMapping() {
-        if (columnMapping == null) {
-            columnMapping = new ArrayList<ColumnMapping>();
-        }
-        return this.columnMapping;
+        return getListOfColumnMapping();
     }
 	
 	/**
@@ -238,6 +217,14 @@ public class Population
 				.addIfNotNull(demographic)
 				.addIfNotNull(columnMapping)
 				.addIfNotNull(dataSet);
+	}
+
+	@Override
+	public List<ColumnMapping> getListOfColumnMapping() {
+		if (columnMapping == null) {
+            columnMapping = new ArrayList<ColumnMapping>();
+        }
+        return this.columnMapping;
 	}
 
 }

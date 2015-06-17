@@ -39,6 +39,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.dom.dataset.DatasetMap;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -77,7 +78,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "dataSet"
 })
 public class LookupTable
-    extends PharmMLRootType
+    extends PharmMLRootType implements DatasetMap
 {
 
     @XmlElement(name = "ColumnMapping")
@@ -90,32 +91,10 @@ public class LookupTable
     protected DataSet dataSet;
 
     /**
-     * Gets the value of the columnMapping property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the columnMapping property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getColumnMapping().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link ColumnMapping }
-     * 
-     * 
+     * @deprecated {@link #getListOfColumnMapping()}.
      */
     public List<ColumnMapping> getColumnMapping() {
-        if (columnMapping == null) {
-            columnMapping = new ArrayList<ColumnMapping>();
-        }
-        return this.columnMapping;
+        return getListOfColumnMapping();
     }
 
     /**
@@ -210,6 +189,14 @@ public class LookupTable
 				.addIfNotNull(target)
 				.addIfNotNull(listOfColumnTransformation)
 				.addIfNotNull(dataSet);
+	}
+
+	@Override
+	public List<ColumnMapping> getListOfColumnMapping() {
+		if (columnMapping == null) {
+            columnMapping = new ArrayList<ColumnMapping>();
+        }
+        return this.columnMapping;
 	}
 
 }

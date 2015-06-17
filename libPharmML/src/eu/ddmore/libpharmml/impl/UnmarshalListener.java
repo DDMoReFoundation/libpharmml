@@ -17,9 +17,12 @@ import eu.ddmore.libpharmml.IdFactory;
 import eu.ddmore.libpharmml.dom.AbstractTreeNode;
 import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
+import eu.ddmore.libpharmml.dom.dataset.DatasetMap;
+import eu.ddmore.libpharmml.dom.modellingsteps.TargetTool;
 import eu.ddmore.libpharmml.exceptions.AnnotationException;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
+import eu.ddmore.libpharmml.validation.PharmMLValidator;
 import eu.ddmore.libpharmml.validation.Validatable;
 import eu.ddmore.libpharmml.validation.exceptions.DuplicateIdentifierException;
 
@@ -105,6 +108,21 @@ public class UnmarshalListener extends Listener {
 			}
 		}
 		
+		if(target instanceof DatasetMap){
+			validateDatasetMap((DatasetMap) target);
+		}
+		if(target instanceof TargetTool){
+			// TODO: put TargetTool is the same process as DatasetMap
+			validateTargetTool((TargetTool) target);
+		}
+		
+	}
+	
+	private void validateDatasetMap(DatasetMap dm){
+		PharmMLValidator.validateDatasetMap(dm, errorHandler);
+	}
+	private void validateTargetTool(TargetTool tt){
+		PharmMLValidator.validateTargetTool(tt, errorHandler);
 	}
 
 }

@@ -1,11 +1,17 @@
 package eu.ddmore.libpharmml.validation;
 
 import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.swing.tree.TreeNode;
 
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.PharmML;
+import eu.ddmore.libpharmml.dom.dataset.ColumnDefinition;
+import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
+import eu.ddmore.libpharmml.dom.dataset.DatasetMap;
+import eu.ddmore.libpharmml.dom.modellingsteps.TargetTool;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 
 /**
@@ -41,11 +47,62 @@ public class PharmMLValidator {
 			LoggerWrapper.getLogger().info("Validating "+el);
 			((Validatable)el).validate(errorHandler);
 		}
+		if(el instanceof DatasetMap){
+			LoggerWrapper.getLogger().info("Validating "+el);
+			validateDatasetMap((DatasetMap) el, errorHandler);
+		}
+		if(el instanceof TargetTool){
+			// TODO: put TargetTool is the same process as DatasetMap
+			LoggerWrapper.getLogger().info("Validating "+el);
+			validateTargetTool((TargetTool) el, errorHandler);
+		}
 		@SuppressWarnings("unchecked")
 		Enumeration<TreeNode> children = el.children();
 		while(children.hasMoreElements()){
 			recursiveValidate(errorHandler, children.nextElement());
 		}
+	}
+	
+	public static void validateDatasetMap(DatasetMap dm, IErrorHandler errorHandler){
+		Set<String> columnIds = new HashSet<String>();
+		if(dm.getDataSet() != null){
+			for(ColumnDefinition column : dm.getDataSet().getListOfColumnDefinition()){
+				if(column.getColumnId() != null){
+					columnIds.add(column.getColumnId());
+					// TODO: control of columnId unicity
+				}
+			}
+		}
+		for(ColumnMapping cm : dm.getListOfColumnMapping()){
+			if(cm.getColumnRef() != null && cm.getColumnRef().getColumnIdRef() != null){
+				if(!columnIds.contains(cm.getColumnRef().getColumnIdRef())){
+					errorHandler.handleError("S13", "The column reference \""+cm.getColumnRef().getColumnIdRef()+"\" does not resolve to"
+							+ " a column in the associated dataset.", cm);
+				}
+			}
+		}
+		
+	}
+	
+	public static void validateTargetTool(TargetTool tt, IErrorHandler errorHandler){
+		Set<String> columnIds = new HashSet<String>();
+		if(tt.getTargetToolData() != null && tt.getTargetToolData().getDefinition() != null){
+			for(ColumnDefinition column : tt.getTargetToolData().getDefinition().getColumn()){
+				if(column.getColumnId() != null){
+					columnIds.add(column.getColumnId());
+					// TODO: control of columnId unicity
+				}
+			}
+		}
+		for(ColumnMapping cm : tt.getColumnMapping()){
+			if(cm.getColumnRef() != null && cm.getColumnRef().getColumnIdRef() != null){
+				if(!columnIds.contains(cm.getColumnRef().getColumnIdRef())){
+					errorHandler.handleError("S13", "The column reference \""+cm.getColumnRef().getColumnIdRef()+"\" does not resolve to"
+							+ " a column in the associated dataset.", cm);
+				}
+			}
+		}
+		
 	}
 
 }
