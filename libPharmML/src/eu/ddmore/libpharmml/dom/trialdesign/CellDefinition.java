@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -76,7 +77,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "segmentRef"
 })
 public class CellDefinition
-    extends PharmMLRootType
+    extends PharmMLRootType implements PharmMLObject
 {
 
     @XmlElement(name = "EpochRef", required = true)

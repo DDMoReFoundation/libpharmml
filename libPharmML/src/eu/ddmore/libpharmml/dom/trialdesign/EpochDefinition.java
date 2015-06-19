@@ -33,7 +33,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
+import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 
 
 /**
@@ -65,7 +67,7 @@ import eu.ddmore.libpharmml.dom.commontypes.IntValue;
     "order"
 })
 public class EpochDefinition
-    extends StudyPeriod
+    extends StudyPeriod implements PharmMLObject
 {
 
     @XmlElement(name = "Order", required = true)

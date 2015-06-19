@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -72,7 +73,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "activityRef"
 })
 public class SegmentDefinition
-    extends PharmMLRootType
+    extends PharmMLRootType implements PharmMLObject
 {
 
     @XmlElement(name = "ActivityRef", required = true)

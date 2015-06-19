@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 
 
 /**
@@ -64,7 +65,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ArmDefnType")
 public class ArmDefinition
-    extends PharmMLRootType
+    extends PharmMLRootType implements PharmMLObject
 {
 
     @XmlAttribute(name = "oid", required = true)

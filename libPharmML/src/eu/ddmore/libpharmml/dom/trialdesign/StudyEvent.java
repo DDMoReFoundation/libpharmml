@@ -28,6 +28,7 @@ package eu.ddmore.libpharmml.dom.trialdesign;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -36,8 +37,10 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 
 
 /**
@@ -72,7 +75,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
     Observations.class
 })
 public abstract class StudyEvent
-    extends PharmMLRootType
+    extends PharmMLRootType implements PharmMLObject
 {
 
     @XmlElement(name = "ArmRef", required = true)

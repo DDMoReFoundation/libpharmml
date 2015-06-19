@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableAssignment;
+import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
@@ -83,7 +84,7 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
     Estimation.class
 })
 public abstract class CommonModellingStep
-    extends PharmMLRootType
+    extends PharmMLRootType implements PharmMLObject
 {
 
     @XmlElement(name = "TargetToolReference")

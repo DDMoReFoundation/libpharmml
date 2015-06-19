@@ -29,6 +29,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.dataset.DatasetMap;
+import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.SubList;
@@ -74,7 +75,7 @@ import eu.ddmore.libpharmml.util.SubList;
     "codeInjection"
 })
 public class ExternalDataSet
-    extends PharmMLRootType implements DatasetMap
+    extends PharmMLRootType implements DatasetMap, PharmMLObject
 {
 
     @XmlElements({
