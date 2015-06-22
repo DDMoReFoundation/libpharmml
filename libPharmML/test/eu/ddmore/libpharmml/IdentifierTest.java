@@ -60,5 +60,20 @@ public class IdentifierTest {
 		assertEquals("Number of generated ids",562, newResource.getIdFactory().getListOfIdentifiable().size());
 		assertNotNull("Previous id found", newResource.find("e1"));
 	}
+	
+	@Test
+	public void testAutosetIdOff() throws IOException{
+		File tmpFile = File.createTempFile("tst", ".xml");
+		LoggerWrapper.getLogger().warning(tmpFile.getAbsolutePath());
+		tmpFile.deleteOnExit();
+		testResource.setParameter(IPharmMLResource.AUTOSET_ID, false);
+		testInstance.save(new FileOutputStream(tmpFile), testResource);
+		testResource.setParameter(IPharmMLResource.AUTOSET_ID, true);
+		
+		IPharmMLResource newResource = testInstance.createDomFromResource(new FileInputStream(tmpFile));
+		assertEquals("Number of ids",2, newResource.getIdFactory().getListOfIdentifiable().size());
+		assertNotNull("Previous id found", newResource.find("e1"));
+		assertNull("No new id", newResource.find("i10"));
+	}
 
 }
