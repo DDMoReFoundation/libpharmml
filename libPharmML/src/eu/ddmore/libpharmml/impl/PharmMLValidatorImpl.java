@@ -76,9 +76,9 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 			
 	 
 			Schema schema = PharmMLSchemaFactory.getInstance().createPharmMlSchema(docVersion,NamespaceType.OLD);
-			Validator validator = schema.newValidator();
+			Validator schemaValidator = schema.newValidator();
 			final ValidationReportFactory rptFact = new ValidationReportFactory();
-			validator.setErrorHandler(new ErrorHandler() {
+			schemaValidator.setErrorHandler(new ErrorHandler() {
 				
 				@Override
 				public void warning(SAXParseException exception) throws SAXException {
@@ -95,7 +95,7 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 					rptFact.handleError(ValidationReportFactory.SCHEMA_ERR_CODE, exception.getMessage());
 				}
 			});
-			validator.validate(source);
+			schemaValidator.validate(source);
 			
 			// symbol resolution
 			// TODO: re-enable symbol resolution. Need to be fixed
@@ -110,7 +110,8 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 //			}
 			
 			if(docVersion.isEqualOrLaterThan(PharmMLVersion.V0_6)){
-				PharmMLValidator.validate(dom,rptFact);
+				PharmMLValidator pharmmlValidator = new PharmMLValidator(dom);
+				pharmmlValidator.validate(rptFact);
 			} else {
 				LoggerWrapper.getLogger().info("Version is below "+PharmMLVersion.V0_6+", no complex validation performed.");
 			}

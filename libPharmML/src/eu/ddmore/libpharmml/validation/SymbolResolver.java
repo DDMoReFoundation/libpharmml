@@ -14,11 +14,14 @@ import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.dom.commontypes.Block;
 import eu.ddmore.libpharmml.dom.commontypes.FunctionDefinition;
 import eu.ddmore.libpharmml.dom.commontypes.FunctionParameter;
+import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.Symbol;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolScope;
 import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
 import eu.ddmore.libpharmml.dom.maths.FunctionCallType.FunctionArgument;
+import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
+import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
 import eu.ddmore.libpharmml.exceptions.DuplicatedBlockException;
 import eu.ddmore.libpharmml.exceptions.DuplicatedSymbolException;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
@@ -29,13 +32,16 @@ import eu.ddmore.libpharmml.impl.LoggerWrapper;
  */
 public class SymbolResolver {
 	
-	private final IErrorHandler errorHandler;
+	private IErrorHandler errorHandler;
 	
 	private ValidationBlock globalBlock;
 	private List<ValidationBlock> anonymousBlocks;
 	private Map<String,ValidationBlock> blocks; // refered by SymbRef elements
 	private Map<String,ValidationBlock> functions; // only refered by FunctionCall elements
 	private List<FunctionCallType> functionCalls;
+	
+	private List<ReferenceContainer> containers;
+	private Map<String,PharmMLObject> objects;
 		
 	public SymbolResolver(PharmML dom, IErrorHandler errorHandler){
 		blocks = new Hashtable<String,ValidationBlock>();
@@ -44,6 +50,9 @@ public class SymbolResolver {
 		anonymousBlocks = new ArrayList<ValidationBlock>();
 		globalBlock = new ValidationBlock(null);
 		this.errorHandler = errorHandler;
+		
+		containers = new ArrayList<ReferenceContainer>();
+		objects = new Hashtable<String, PharmMLObject>();
 		
 		init(dom);
 	}
@@ -115,6 +124,15 @@ public class SymbolResolver {
 		if(node instanceof SymbolRef){
 			currentScope.addReference((SymbolRef) node);
 		}
+		
+		if(node instanceof PharmMLObject){
+			storeObject((PharmMLObject) node);
+		}
+		
+		if(node instanceof ReferenceContainer){
+			storeReferenceContainer((ReferenceContainer) node);
+		}
+		
 		@SuppressWarnings("unchecked")
 		Enumeration<TreeNode> children = node.children();
 		while(children.hasMoreElements()){
@@ -153,6 +171,14 @@ public class SymbolResolver {
 		functionCalls.add(fc);
 	}
 	
+	private void storeObject(PharmMLObject o){
+		objects.put(o.getOid(), o);
+	}
+	
+	private void storeReferenceContainer(ReferenceContainer rc){
+		containers.add(rc);
+	}
+	
 	private void handleException(DuplicatedSymbolException e){
 		errorHandler.handleError("S1", "Symbols must be unique within their scope ("+e.getDuplicatedSymbol().getSymbId()+").", 
 				(AbstractTreeNode) e.getDuplicatedSymbol());
@@ -161,6 +187,14 @@ public class SymbolResolver {
 	private void handleException(DuplicatedBlockException e){
 		errorHandler.handleError("S1", "Blocks must be unique ("+e.getDuplicatedBlock().getBlkId()+").", 
 				(AbstractTreeNode) e.getDuplicatedBlock());
+	}
+	
+	public void handleUnresolvedObject(OidRef oidRef){
+		errorHandler.handleError("S2", "Object reference (oidRef) \""+oidRef.getOidRef()+"\" is not resolved.", oidRef);
+	}
+	
+	public void handleIncompatibleObject(OidRef oidref, PharmMLObject o, TreeNode parent){
+		errorHandler.handleError("S5", "Element using oidRef=\""+oidref.getOidRef()+"\" within "+parent+" object is incompatible with the referred object type ("+o.getClass().getSimpleName()+").", oidref);
 	}
 	
 	private void handleUnresolvedSymbol(SymbolRef symbolRef, ValidationBlock within){
@@ -179,9 +213,14 @@ public class SymbolResolver {
 		return (globalBlock.containsSymbol(symbId));
 	}
 	
+	/**
+	 * Executes {@link #validateSymbols()}, {@link #validateFunctionCalls()} and
+	 * {@link #validateObjectReferences()}.
+	 */
 	public void validateAll(){
 		validateSymbols();
 		validateFunctionCalls();
+		validateObjectReferences();
 	}
 	
 	public void validateSymbols(){
@@ -228,6 +267,20 @@ public class SymbolResolver {
 		}
 	}
 	
+	public void validateObjectReferences(){
+		for(ReferenceContainer rc : containers){
+			rc.validateReferences(this, errorHandler);
+		}
+	}
+	
+	public PharmMLObject getObject(String oid){
+		return objects.get(oid);
+	}
+	
+	public boolean containsObject(String oid){
+		return objects.containsKey(oid);
+	}
+
 //	public ValidationBlock addBlock(SymbolScope scope) throws DuplicatedBlockException{
 //		ValidationBlock valBlock;
 //		if(scope instanceof Block && ((Block) scope).getBlkId() != null){

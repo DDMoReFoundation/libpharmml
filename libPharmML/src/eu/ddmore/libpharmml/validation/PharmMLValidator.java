@@ -22,15 +22,20 @@ import eu.ddmore.libpharmml.impl.LoggerWrapper;
  */
 public class PharmMLValidator {
 	
+	private final PharmML dom;
+	
+	public PharmMLValidator(PharmML dom){
+		this.dom = dom;
+	}
+	
 	/**
 	 * Validates a whole PharmML DOM by browsing it recursively, seeking for validatable objects.
 	 * 
 	 * <p>When an object implementing the {@link Validatable} interface is met, the validation errors
 	 * that may be found are added to a master list, which is returned at the end of the process.
-	 * @param dom The PharmML root object of the document.
 	 * @param errorHandler
 	 */
-	public static void validate(PharmML dom, IErrorHandler errorHandler){	
+	public void validate(IErrorHandler errorHandler){	
 		SymbolResolver sr = new SymbolResolver(dom, errorHandler);
 		sr.validateAll();
 		recursiveValidate(errorHandler, dom);
@@ -42,7 +47,7 @@ public class PharmMLValidator {
 	 * @param wEl The element to validate. Its mapped children are fetched and this method
 	 * is executed on each child.
 	 */
-	private static void recursiveValidate(IErrorHandler errorHandler, TreeNode el){
+	private void recursiveValidate(IErrorHandler errorHandler, TreeNode el){
 		if(el instanceof Validatable){
 			LoggerWrapper.getLogger().info("Validating "+el);
 			((Validatable)el).validate(errorHandler);

@@ -38,10 +38,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
+import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.validation.SymbolResolver;
 
 
 /**
@@ -77,7 +80,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "segmentRef"
 })
 public class CellDefinition
-    extends PharmMLRootType implements PharmMLObject
+    extends PharmMLRootType implements PharmMLObject, ReferenceContainer
 {
 
     @XmlElement(name = "EpochRef", required = true)
@@ -202,6 +205,47 @@ public class CellDefinition
 				.addIfNotNull(epochRef)
 				.addIfNotNull(armRef)
 				.addIfNotNull(segmentRef);
+	}
+
+	@Override
+	public void validateReferences(SymbolResolver sr, IErrorHandler errorHandler) {
+		if(getEpochRef() != null && getEpochRef().getOidRef() != null){
+			String oidRef = getEpochRef().getOidRef();
+			if(sr.containsObject(oidRef)){
+				PharmMLObject object = sr.getObject(oidRef);
+				if(!(object instanceof EpochDefinition)){
+					sr.handleIncompatibleObject(getEpochRef(), object, this);
+				}
+			} else {
+				sr.handleUnresolvedObject(getEpochRef());
+			}
+		}
+		for(OidRef oidref : getArmRef()){
+			String oid = oidref.getOidRef();
+			if(oid != null){
+				if(sr.containsObject(oid)){
+					PharmMLObject object = sr.getObject(oid);
+					if(!(object instanceof ArmDefinition)){
+						sr.handleIncompatibleObject(oidref, object, this);
+					}
+				} else {
+					sr.handleUnresolvedObject(oidref);
+				}
+			}
+		}
+		for(OidRef oidref : getSegmentRef()){
+			String oid = oidref.getOidRef();
+			if(oid != null){
+				if(sr.containsObject(oid)){
+					PharmMLObject object = sr.getObject(oid);
+					if(!(object instanceof SegmentDefinition)){
+						sr.handleIncompatibleObject(oidref, object, this);
+					}
+				} else {
+					sr.handleUnresolvedObject(oidref);
+				}
+			}
+		}
 	}
 
 }
