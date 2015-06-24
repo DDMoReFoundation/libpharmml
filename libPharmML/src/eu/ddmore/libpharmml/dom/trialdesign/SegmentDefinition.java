@@ -38,10 +38,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
+import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.validation.SymbolResolver;
 
 
 /**
@@ -73,7 +76,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "activityRef"
 })
 public class SegmentDefinition
-    extends PharmMLRootType implements PharmMLObject
+    extends PharmMLRootType implements PharmMLObject, ReferenceContainer
 {
 
     @XmlElement(name = "ActivityRef", required = true)
@@ -139,6 +142,22 @@ public class SegmentDefinition
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(activityRef);
+	}
+    
+    @Override
+	public void validateReferences(SymbolResolver sr, IErrorHandler errorHandler) {
+		for(OidRef oidref : activityRef){
+			if(oidref.getOidRef() != null){
+				if(sr.containsObject(oidref.getOidRef())){
+					PharmMLObject object = sr.getObject(oidref.getOidRef());
+					if(!(object instanceof Activity)){
+						sr.handleIncompatibleObject(oidref, object, this);
+					}
+				} else {
+					sr.handleUnresolvedObject(oidref);
+				}
+			}
+		}
 	}
 
 }

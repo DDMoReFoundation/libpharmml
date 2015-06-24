@@ -273,10 +273,20 @@ public class SymbolResolver {
 		}
 	}
 	
+	/**
+	 * Fetch the object with the given oid attribute.
+	 * @param oid Unique idenfitier of the object.
+	 * @return A {@link PharmMLObject}, or null if the oid does not exist.
+	 */
 	public PharmMLObject getObject(String oid){
 		return objects.get(oid);
 	}
 	
+	/**
+	 * Checks if an object with the given oid exists.
+	 * @param oid The searched oid.
+	 * @return true if the oid has been given, else false.
+	 */
 	public boolean containsObject(String oid){
 		return objects.containsKey(oid);
 	}

@@ -35,10 +35,14 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
+import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.validation.SymbolResolver;
 
 
 /**
@@ -69,7 +73,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "oidRef"
 })
 public class DependentsType
-    extends PharmMLRootType
+    extends PharmMLRootType implements ReferenceContainer
 {
 
     @XmlElement(name = "OidRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
@@ -110,6 +114,22 @@ public class DependentsType
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(oidRef);
+	}
+
+	@Override
+	public void validateReferences(SymbolResolver sr, IErrorHandler errorHandler) {
+		for(OidRef oidref : oidRef){
+			if(oidref.getOidRef() != null){
+				if(sr.containsObject(oidref.getOidRef())){
+					PharmMLObject object = sr.getObject(oidref.getOidRef());
+					if(!(object instanceof Simulation || object instanceof Estimation)){
+						sr.handleIncompatibleObject(oidref, object, this);
+					}
+				} else {
+					sr.handleUnresolvedObject(oidref);
+				}
+			}
+		}
 	}
 
 }

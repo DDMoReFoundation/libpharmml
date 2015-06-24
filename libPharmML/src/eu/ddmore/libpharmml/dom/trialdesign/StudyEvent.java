@@ -38,9 +38,12 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
+import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
+import eu.ddmore.libpharmml.validation.SymbolResolver;
 
 
 /**
@@ -75,7 +78,7 @@ import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
     Observations.class
 })
 public abstract class StudyEvent
-    extends PharmMLRootType implements PharmMLObject
+    extends PharmMLRootType implements PharmMLObject, ReferenceContainer
 {
 
     @XmlElement(name = "ArmRef", required = true)
@@ -136,5 +139,21 @@ public abstract class StudyEvent
     public void setOid(String value) {
         this.oid = value;
     }
+    
+    @Override
+	public void validateReferences(SymbolResolver sr, IErrorHandler errorHandler) {
+		for(OidRef oidref : armRef){
+			if(oidref.getOidRef() != null){
+				if(sr.containsObject(oidref.getOidRef())){
+					PharmMLObject object = sr.getObject(oidref.getOidRef());
+					if(!(object instanceof ArmDefinition)){
+						sr.handleIncompatibleObject(oidref, object, this);
+					}
+				} else {
+					sr.handleUnresolvedObject(oidref);
+				}
+			}
+		}
+	}
 
 }

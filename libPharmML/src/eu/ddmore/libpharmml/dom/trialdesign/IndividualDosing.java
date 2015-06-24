@@ -35,14 +35,18 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.dataset.DatasetMap;
+import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
+import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.validation.SymbolResolver;
 
 
 /**
@@ -80,7 +84,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 	"dataSet"
 })
 public class IndividualDosing
-    extends PharmMLRootType implements DatasetMap
+    extends PharmMLRootType implements DatasetMap, ReferenceContainer
 {
 
     @XmlElement(name = "ActivityRef", required = true)
@@ -379,5 +383,19 @@ public class IndividualDosing
             columnMapping = new ArrayList<ColumnMapping>();
         }
         return this.columnMapping;
+	}
+
+	@Override
+	public void validateReferences(SymbolResolver sr, IErrorHandler errorHandler) {
+		if(activityRef != null && activityRef.getOidRef() != null){
+			if(sr.containsObject(activityRef.getOidRef())){
+				PharmMLObject object = sr.getObject(activityRef.getOidRef());
+				if(!(object instanceof Activity)){
+					sr.handleIncompatibleObject(activityRef, object, this);
+				}
+			} else {
+				sr.handleUnresolvedObject(activityRef);
+			}
+		}
 	}
 }

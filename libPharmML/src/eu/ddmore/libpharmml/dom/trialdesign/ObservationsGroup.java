@@ -37,10 +37,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
+import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.validation.SymbolResolver;
 
 
 /**
@@ -76,7 +79,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "period"
 })
 public class ObservationsGroup
-    extends PharmMLRootType implements PharmMLObject
+    extends PharmMLRootType implements PharmMLObject, ReferenceContainer
 {
 
     @XmlElement(name = "EpochRef")
@@ -164,6 +167,20 @@ public class ObservationsGroup
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(epochRef)
 				.addIfNotNull(period);
+	}
+
+	@Override
+	public void validateReferences(SymbolResolver sr, IErrorHandler errorHandler) {
+		if(epochRef != null && epochRef.getOidRef() != null){
+			if(sr.containsObject(epochRef.getOidRef())){
+				PharmMLObject object = sr.getObject(epochRef.getOidRef());
+				if(!(object instanceof EpochDefinition)){
+					sr.handleIncompatibleObject(epochRef, object, this);
+				}
+			} else {
+				sr.handleUnresolvedObject(epochRef);
+			}
+		}
 	}
 
 }
