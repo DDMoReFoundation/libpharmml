@@ -41,6 +41,19 @@ public class LibPharmMLInvalidModelIntegrationTest {
 	private static final String[] INVALID_DATASET_ERRORS = {
 		"DS2","DS3","DS3","DS1"
 	};
+	
+	private static final String INVALID_CMAPPING_FILE = "invalidColumnMapping.xml";
+	private static final int INVALID_CMAPPING_NUM_ERRORS = 1;
+	private static final String[] INVALID_CMAPPING_ERRORS = {
+		"S13"
+	};
+	
+	private static final String INVALID_OREF_FILE = "invalidObjectRef.xml";
+	private static final int INVALID_OREF_NUM_ERRORS = 5;
+	private static final String[] INVALID_OREF_ERRORS = {
+		"SCHEMA","SCHEMA","S5","S5","S2"
+	};
+	
 	private static final String INVALID_MDL_NAME = "Invalid Model";
 //	private static final String EXPECTED_ERR_CODE = "SCHEMA";
 	private static final int EXPECTED_NUM_ERRORS = 7;
@@ -123,6 +136,28 @@ public class LibPharmMLInvalidModelIntegrationTest {
 		IValidationReport rep = testInstance.getValidator().createValidationReport(res);
 		assertEquals(INVALID_DATASET_NUM_ERRORS, rep.numErrors());
 		checkErrors(INVALID_DATASET_ERRORS, rep);
+	}
+	
+	@Test
+	public void testValidateInvalidColumnMapping() throws Exception {
+		InputStream in = this.getClass().getResourceAsStream(INVALID_CMAPPING_FILE);
+		IPharmMLResource res = this.testInstance.createDomFromResource(in);
+		in.close();
+		
+		IValidationReport rep = testInstance.getValidator().createValidationReport(res);
+		assertEquals(INVALID_CMAPPING_NUM_ERRORS, rep.numErrors());
+		checkErrors(INVALID_CMAPPING_ERRORS, rep);
+	}
+	
+	@Test
+	public void testValidateInvalidObjectReference() throws Exception {
+		InputStream in = this.getClass().getResourceAsStream(INVALID_OREF_FILE);
+		IPharmMLResource res = this.testInstance.createDomFromResource(in);
+		in.close();
+		
+		IValidationReport rep = testInstance.getValidator().createValidationReport(res);
+		assertEquals(INVALID_OREF_NUM_ERRORS, rep.numErrors());
+		checkErrors(INVALID_OREF_ERRORS, rep);
 	}
 	
 	private void checkErrors(String[] expected, IValidationReport actual){
