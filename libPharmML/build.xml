@@ -136,14 +136,8 @@
          debug="on"/>
 		<copy todir="${src.bin.dir}">
 			<fileset dir="${src.dir}">
-				<exclude name="**/*.java" />
-				<exclude name="**/*.class" />
-			</fileset>
-		</copy>
-		<copy todir="${src.bin.dir}/${impl.pkg.path}">
-			<fileset dir="${src.dir}/${impl.pkg.path}">
-        		<include name="*"/>
-        		<exclude name="*.xpr"/>
+				<exclude name="**/**.java" />
+				<exclude name="**/**.class" />
 			</fileset>
 		</copy>
 	</target>
