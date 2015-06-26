@@ -141,7 +141,7 @@ public class StringValue extends PharmMLElement implements Scalar, Identifiable 
 	
 	@Override
 	public String toString() {
-		return super.toString()+" ["+value+"]";
+		return value;
 	}
 	
 	@Override

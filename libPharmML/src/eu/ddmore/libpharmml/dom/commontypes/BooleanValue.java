@@ -86,7 +86,7 @@ public abstract class BooleanValue
 	
 	@Override
 	public String toString() {
-		return super.toString()+" ["+valueToString()+"]"; 
+		return valueToString(); 
 	}
 
 }

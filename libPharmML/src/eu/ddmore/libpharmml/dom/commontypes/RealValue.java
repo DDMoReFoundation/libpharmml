@@ -132,7 +132,7 @@ public class RealValue extends PharmMLElement implements Scalar, VectorValue, Id
     
     @Override
     public String toString() {
-    	return super.toString()+" ["+valueToString()+"]";
+    	return valueToString();
     }
 
 	@Override

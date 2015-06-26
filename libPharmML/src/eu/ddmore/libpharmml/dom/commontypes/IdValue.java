@@ -147,7 +147,7 @@ public class IdValue extends PharmMLElement implements Scalar, Identifiable {
 	
 	@Override
 	public String toString() {
-		return super.toString()+" ["+String.valueOf(value)+"]";
+		return String.valueOf(value);
 	}
 	
 	@Override
