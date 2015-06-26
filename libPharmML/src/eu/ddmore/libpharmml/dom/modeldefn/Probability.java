@@ -243,7 +243,7 @@ public class Probability
      * 
      * @return
      *     possible object is
-     *     {@link LinkFunctionType }
+     *     {@link LinkFunction }
      *     
      */
     public LinkFunction getLinkFunction() {
@@ -255,7 +255,7 @@ public class Probability
      * 
      * @param value
      *     allowed object is
-     *     {@link LinkFunctionType }
+     *     {@link LinkFunction }
      *     
      */
     public void setLinkFunction(LinkFunction value) {

@@ -81,7 +81,7 @@ public class Piece
      * 
      * @return
      *     possible object is
-     *     {@link CategoryMappingType }
+     *     {@link CategoryMapping }
      *     
      * @since PharmML 0.6
      */
@@ -94,7 +94,7 @@ public class Piece
      * 
      * @param value
      *     allowed object is
-     *     {@link CategoryMappingType }
+     *     {@link CategoryMapping }
      * 
      * @since PharmML 0.6
      */

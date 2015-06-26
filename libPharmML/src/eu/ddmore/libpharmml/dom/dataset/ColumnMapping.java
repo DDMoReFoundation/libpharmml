@@ -221,7 +221,7 @@ public class ColumnMapping
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link TargetMappingType }
+     * {@link TargetMapping }
      * 
      * @since PharmML 0.5
      */

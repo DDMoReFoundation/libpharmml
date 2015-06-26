@@ -326,7 +326,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModellingStepType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CommonModellingStep }{@code >}}
      * 
      */
 	@XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MSTEPS, name = "CommonModellingStep")

@@ -76,7 +76,7 @@ public class MasterObjectFactory {
 	/**
 	 * Creates a proper {@link JAXBElement} from {@link Scalar}
 	 * @param scalar
-	 * @return
+	 * @return An instance of {@link JAXBElement} containing the provided scalar.
 	 */
 	public static JAXBElement<? extends Scalar> createScalar(Scalar scalar){
 		JAXBElement<? extends Scalar> element;
@@ -110,7 +110,7 @@ public class MasterObjectFactory {
      *     {@link BinomialDistribution }
      *     {@link DiscreteUnivariateMixtureModel }.
 	 * @param distrib
-	 * @return
+	 * @return a {@link JAXBElement} instance containing the provided object.
 	 */
 	public static JAXBElement<? extends AbstractDiscreteUnivariateDistributionType> createDiscreteUnivariateDistribution(AbstractDiscreteUnivariateDistributionType distrib){
 		JAXBElement<? extends AbstractDiscreteUnivariateDistributionType> element;
@@ -138,7 +138,7 @@ public class MasterObjectFactory {
      *     {@link WishartDistribution }
      *     {@link DiscreteMultivariateMixtureModel }.
 	 * @param distrib
-	 * @return
+	 * @return a {@link JAXBElement} instance containing the provided object.
 	 */
 	public static JAXBElement<? extends AbstractDiscreteMultivariateDistributionType> createDiscreteMultivariateDistribution(AbstractDiscreteMultivariateDistributionType distrib){
 		JAXBElement<? extends AbstractDiscreteMultivariateDistributionType> element;
@@ -159,7 +159,7 @@ public class MasterObjectFactory {
 	 * Authorized types are {@link BernoulliDistribution }
      *     {@link CategoricalUnivariateMixtureModel }.
 	 * @param distrib
-	 * @return
+	 * @return a {@link JAXBElement} instance containing the provided object.
 	 */
 	public static JAXBElement<? extends AbstractCategoricalUnivariateDistributionType> createCategoricalUnivariateDistribution(AbstractCategoricalUnivariateDistributionType distrib){
 		JAXBElement<? extends AbstractCategoricalUnivariateDistributionType> element;
@@ -178,7 +178,7 @@ public class MasterObjectFactory {
 	 * Authorized types are {@link CategoricalDistribution }
      *     {@link CategoricalMultivariateMixtureModel }.
 	 * @param distrib
-	 * @return
+	 * @return a {@link JAXBElement} instance containing the provided object.
 	 */
 	public static JAXBElement<? extends AbstractCategoricalMultivariateDistributionType> createCategoricalMultivariateDistribution(AbstractCategoricalMultivariateDistributionType distrib){
 		JAXBElement<? extends AbstractCategoricalMultivariateDistributionType> element;

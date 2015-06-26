@@ -81,7 +81,7 @@ public class CovariateTransformation
      * 
      * @return
      *     possible object is
-     *     {@link TransformedCovariateType }
+     *     {@link TransformedCovariate }
      *     
      */
     public TransformedCovariate getTransformedCovariate() {
@@ -93,7 +93,7 @@ public class CovariateTransformation
      * 
      * @param value
      *     allowed object is
-     *     {@link TransformedCovariateType }
+     *     {@link TransformedCovariate }
      *     
      */
     public void setTransformedCovariate(TransformedCovariate value) {

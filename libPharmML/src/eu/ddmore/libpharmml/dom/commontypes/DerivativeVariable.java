@@ -206,7 +206,7 @@ public class DerivativeVariable
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      * @deprecated Since PharmML 0.4.1
      *     
@@ -220,7 +220,7 @@ public class DerivativeVariable
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      *     
      * @deprecated Since PharmML 0.4.1

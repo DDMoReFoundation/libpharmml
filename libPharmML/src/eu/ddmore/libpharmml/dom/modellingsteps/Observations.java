@@ -137,7 +137,7 @@ public class Observations
      * 
      * @return
      *     possible object is
-     *     {@link DiscreteObservationType }
+     *     {@link DiscreteObservation }
      *     
      */
     public DiscreteObservation getDiscrete() {
@@ -149,7 +149,7 @@ public class Observations
      * 
      * @param value
      *     allowed object is
-     *     {@link DiscreteObservationType }
+     *     {@link DiscreteObservation }
      *     
      */
     public void setDiscrete(DiscreteObservation value) {

@@ -97,7 +97,7 @@ public class MatrixRow
      * 
      * @return
      *     possible object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public MatrixVectorIndex getRowIndex() {
@@ -109,7 +109,7 @@ public class MatrixRow
      * 
      * @param value
      *     allowed object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public void setRowIndex(MatrixVectorIndex value) {

@@ -69,7 +69,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AbsorptionOralMacroType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link AbsorptionOralMacro }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Absorption", scope = PKMacroList.class)
@@ -78,7 +78,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EliminationMacroType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link EliminationMacro }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Elimination", scope = PKMacroList.class)
@@ -87,7 +87,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CompartmentMacroType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CompartmentMacro }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Compartment", scope = PKMacroList.class)
@@ -96,7 +96,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IVMacroType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link IVMacro }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "IV", scope = PKMacroList.class)
@@ -105,7 +105,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EffectMacroType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link EffectMacro }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Effect", scope = PKMacroList.class)
@@ -114,7 +114,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TransferMacroType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link TransferMacro }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Transfer", scope = PKMacroList.class)
@@ -123,7 +123,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PeripheralMacroType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link PeripheralMacro }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Peripheral", scope = PKMacroList.class)
@@ -132,7 +132,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DepotMacroType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DepotMacro }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Depot", scope = PKMacroList.class)
@@ -141,7 +141,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AbsorptionOralMacroType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link AbsorptionOralMacro }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Oral", scope = PKMacroList.class)

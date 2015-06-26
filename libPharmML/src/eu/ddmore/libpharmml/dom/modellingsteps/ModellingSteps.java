@@ -123,7 +123,7 @@ public class ModellingSteps
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link MONOLIXdataSetType }
+     * {@link MONOLIXdataSet }
      * 
      * @deprecated Since PharmML 0.6, external datasets are available via {@link #getListOfExternalDataSet()}.
      */
@@ -184,7 +184,7 @@ public class ModellingSteps
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ExternalDataSetType }
+     * {@link ExternalDataSet }
      * 
      * 
      */

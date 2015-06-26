@@ -377,7 +377,7 @@ public class Expression
      * 
      * @return
      *     possible object is
-     *     {@link SumType }
+     *     {@link Sum }
      *     
      * @deprecated Must use {@link #getValue()} instead.
      */
@@ -395,7 +395,7 @@ public class Expression
      * 
      * @param value
      *     allowed object is
-     *     {@link SumType }
+     *     {@link Sum }
      *     
      * @deprecated Must use {@link #setValue(ExpressionValue)} instead.
      */
@@ -441,7 +441,7 @@ public class Expression
      * 
      * @return
      *     possible object is
-     *     {@link VectorSelectorType }
+     *     {@link VectorSelector }
      *     
      * @deprecated Must use {@link #getValue()} instead.
      */
@@ -459,7 +459,7 @@ public class Expression
      * 
      * @param value
      *     allowed object is
-     *     {@link VectorSelectorType }
+     *     {@link VectorSelector }
      *     
      * @deprecated Must use {@link #setValue(ExpressionValue)} instead.
      */

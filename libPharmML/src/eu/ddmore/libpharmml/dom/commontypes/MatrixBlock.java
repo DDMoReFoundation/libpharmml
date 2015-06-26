@@ -116,7 +116,7 @@ public class MatrixBlock
      * 
      * @return
      *     possible object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public MatrixVectorIndex getBlockStartRow() {
@@ -128,7 +128,7 @@ public class MatrixBlock
      * 
      * @param value
      *     allowed object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public void setBlockStartRow(MatrixVectorIndex value) {
@@ -140,7 +140,7 @@ public class MatrixBlock
      * 
      * @return
      *     possible object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public MatrixVectorIndex getBlockStartColumn() {
@@ -152,7 +152,7 @@ public class MatrixBlock
      * 
      * @param value
      *     allowed object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public void setBlockStartColumn(MatrixVectorIndex value) {

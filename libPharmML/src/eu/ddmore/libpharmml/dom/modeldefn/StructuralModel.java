@@ -189,12 +189,9 @@ public class StructuralModel
     }
 
     /**
-     * Gets the value of the pKmacros property.
+     * Gets the list of PK macros within this structural model.
      * 
-     * @return
-     *     possible object is
-     *     {@link PKmacroType }
-     *     
+     * @return The list of macro wrapped in a {@link PKMacroList} instance.
      */
     public PKMacroList getPKmacros() {
         return pKmacros;
@@ -205,7 +202,7 @@ public class StructuralModel
      * 
      * @param value
      *     allowed object is
-     *     {@link PKmacroType }
+     *     {@link PKMacroList }
      *     
      */
     public void setPKmacros(PKMacroList value) {

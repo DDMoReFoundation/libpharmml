@@ -349,7 +349,7 @@ public class LogicExpression
      * 
      * @return
      *     possible object is
-     *     {@link SumType }
+     *     {@link Sum }
      *     
      */
     public Sum getSum() {
@@ -361,7 +361,7 @@ public class LogicExpression
      * 
      * @param value
      *     allowed object is
-     *     {@link SumType }
+     *     {@link Sum }
      *     
      */
     public void setSum(Sum value) {
@@ -397,7 +397,7 @@ public class LogicExpression
      * 
      * @return
      *     possible object is
-     *     {@link VectorSelectorType }
+     *     {@link VectorSelector }
      *     
      */
     public VectorSelector getVectorSelector() {
@@ -409,7 +409,7 @@ public class LogicExpression
      * 
      * @param value
      *     allowed object is
-     *     {@link VectorSelectorType }
+     *     {@link VectorSelector }
      *     
      */
     public void setVectorSelector(VectorSelector value) {

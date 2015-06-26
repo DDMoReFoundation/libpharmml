@@ -146,7 +146,7 @@ public class NONMEMdataSet
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ColumnTransformationType }
+     * {@link ColumnTransformation }
      * 
      * 
      */

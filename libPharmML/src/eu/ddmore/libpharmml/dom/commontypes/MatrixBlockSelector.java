@@ -129,7 +129,7 @@ public class MatrixBlockSelector
      * 
      * @return
      *     possible object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public MatrixVectorIndex getBlockStartRow() {
@@ -141,7 +141,7 @@ public class MatrixBlockSelector
      * 
      * @param value
      *     allowed object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public void setBlockStartRow(MatrixVectorIndex value) {
@@ -153,7 +153,7 @@ public class MatrixBlockSelector
      * 
      * @return
      *     possible object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public MatrixVectorIndex getBlockStartColumn() {
@@ -165,7 +165,7 @@ public class MatrixBlockSelector
      * 
      * @param value
      *     allowed object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public void setBlockStartColumn(MatrixVectorIndex value) {
@@ -177,7 +177,7 @@ public class MatrixBlockSelector
      * 
      * @return
      *     possible object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public MatrixVectorIndex getRowsNumber() {
@@ -189,7 +189,7 @@ public class MatrixBlockSelector
      * 
      * @param value
      *     allowed object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public void setRowsNumber(MatrixVectorIndex value) {
@@ -201,7 +201,7 @@ public class MatrixBlockSelector
      * 
      * @return
      *     possible object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public MatrixVectorIndex getColumnsNumber() {
@@ -213,7 +213,7 @@ public class MatrixBlockSelector
      * 
      * @param value
      *     allowed object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public void setColumnsNumber(MatrixVectorIndex value) {

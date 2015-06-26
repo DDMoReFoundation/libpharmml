@@ -89,7 +89,7 @@ public class PharmMLSchemaFactory {
 	
 	/**
 	 * @deprecated
-	 * Since version 0.3, libPharmML handles multiple versions of PharmML schemas. Replaced by {@link #createPharmMlSchema(PharmMLVersion)}.
+	 * Since version 0.3, libPharmML handles multiple versions of PharmML schemas. Replaced by {@link #createPharmMlSchema(PharmMLVersion, NamespaceType)}.
 	 * @return
 	 * 		{@link Schema} for version 0.2 of PharmML
 	 */

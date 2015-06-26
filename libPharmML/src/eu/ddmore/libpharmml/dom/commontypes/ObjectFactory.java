@@ -587,7 +587,7 @@ public class ObjectFactory {
         return new JAXBElement<Object>(_VectorValue_QNAME, Object.class, null, value);
     }
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SumType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Sum }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_CT, name = "Sum")
@@ -603,7 +603,7 @@ public class ObjectFactory {
         return new JAXBElement<Product>(_Product_QNAME, Product.class, null, value);
     }
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MatrixSelectorType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link MatrixSelector }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_CT, name = "MatrixSelector")
@@ -611,7 +611,7 @@ public class ObjectFactory {
         return new JAXBElement<MatrixSelector>(_MatrixSelector_QNAME, MatrixSelector.class, null, value);
     }
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VectorSelectorType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link VectorSelector }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_CT, name = "VectorSelector")
@@ -635,7 +635,7 @@ public class ObjectFactory {
         return new JAXBElement<Delay>(_Delay_QNAME, Delay.class, null, value);
     }
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MatrixVectorIndexType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link MatrixVectorIndex }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_CT, name = "SegmentLength", scope = VectorSegmentSelector.class)
@@ -643,7 +643,7 @@ public class ObjectFactory {
         return new JAXBElement<MatrixVectorIndex>(_VectorSegmentSelectorTypeSegmentLength_QNAME, MatrixVectorIndex.class, VectorSegmentSelector.class, value);
     }
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MatrixVectorIndexType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link MatrixVectorIndex }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_CT, name = "StartIndex", scope = VectorSegmentSelector.class)

@@ -94,7 +94,7 @@ public class ExternalDataSetReference
      * 
      * @return
      *     possible object is
-     *     {@link OidRefType }
+     *     {@link OidRef }
      *     
      */
     public OidRef getOidRef() {
@@ -106,7 +106,7 @@ public class ExternalDataSetReference
      * 
      * @param value
      *     allowed object is
-     *     {@link OidRefType }
+     *     {@link OidRef }
      *     
      */
     public void setOidRef(OidRef value) {

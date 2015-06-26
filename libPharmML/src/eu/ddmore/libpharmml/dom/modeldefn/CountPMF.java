@@ -311,7 +311,7 @@ public class CountPMF
      * {@link PoissonDistribution },
      * {@link BinomialDistribution } or
      * {@link DiscreteUnivariateMixtureModel }.
-     * @return
+     * @return The distribution
      */
     public AbstractDiscreteUnivariateDistributionType getDistribution(){
     	return this.distribution;

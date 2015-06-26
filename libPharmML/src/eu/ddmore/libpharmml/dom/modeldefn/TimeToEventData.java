@@ -91,7 +91,7 @@ public class TimeToEventData
      * 
      * @return
      *     possible object is
-     *     {@link CommonDiscreteVariableType }
+     *     {@link CommonDiscreteVariable }
      *     
      */
     public CommonDiscreteVariable getEventVariable() {
@@ -103,7 +103,7 @@ public class TimeToEventData
      * 
      * @param value
      *     allowed object is
-     *     {@link CommonDiscreteVariableType }
+     *     {@link CommonDiscreteVariable }
      *     
      */
     public void setEventVariable(CommonDiscreteVariable value) {
@@ -128,7 +128,7 @@ public class TimeToEventData
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link TTEFunctionType }
+     * {@link TTEFunction }
      * 
      * 
      */
@@ -157,7 +157,7 @@ public class TimeToEventData
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link TTEFunctionType }
+     * {@link TTEFunction }
      * 
      * 
      */
@@ -186,7 +186,7 @@ public class TimeToEventData
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CensoringType }
+     * {@link Censoring }
      * 
      * 
      */
@@ -215,7 +215,7 @@ public class TimeToEventData
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CensoringFeatureType }
+     * {@link CensoringFeature }
      * 
      * 
      */

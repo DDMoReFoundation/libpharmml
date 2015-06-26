@@ -24,7 +24,7 @@ import eu.ddmore.libpharmml.IErrorHandler;
  * Interface implemented by each validatable element.
  * 
  * During the validation process, the DOM tree is browsed. If a node implements this
- * interface, then the method {@link #validate()} is executed.
+ * interface, then the method {@link #validate(IErrorHandler)} is executed.
  * 
  * @author F. Yvon
  *

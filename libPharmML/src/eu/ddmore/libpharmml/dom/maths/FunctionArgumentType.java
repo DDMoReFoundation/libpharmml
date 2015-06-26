@@ -303,7 +303,7 @@ public class FunctionArgumentType extends PharmMLElement implements Symbol {
      * 
      * @return
      *     possible object is
-     *     {@link SumType }
+     *     {@link Sum }
      *     
      */
     public Sum getSum() {
@@ -315,7 +315,7 @@ public class FunctionArgumentType extends PharmMLElement implements Symbol {
      * 
      * @param value
      *     allowed object is
-     *     {@link SumType }
+     *     {@link Sum }
      *     
      */
     public void setSum(Sum value) {
@@ -351,7 +351,7 @@ public class FunctionArgumentType extends PharmMLElement implements Symbol {
      * 
      * @return
      *     possible object is
-     *     {@link VectorSelectorType }
+     *     {@link VectorSelector }
      *     
      */
     public VectorSelector getVectorSelector() {
@@ -363,7 +363,7 @@ public class FunctionArgumentType extends PharmMLElement implements Symbol {
      * 
      * @param value
      *     allowed object is
-     *     {@link VectorSelectorType }
+     *     {@link VectorSelector }
      *     
      */
     public void setVectorSelector(VectorSelector value) {

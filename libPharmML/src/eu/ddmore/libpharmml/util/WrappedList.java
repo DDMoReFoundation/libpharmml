@@ -26,7 +26,6 @@ import java.util.ListIterator;
 
 import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.namespace.QName;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
@@ -49,8 +48,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  * 
  * @since libPharmML 0.4
  *
- * @param <E> The class of the wrapped elements. Whatever is this class, the name and namespace
- * of these elements is set by the {@link QName} property, readable through {@link #getWrappedQName()}.
+ * @param <E> The class of the wrapped elements.
  */
 @XmlTransient
 public class WrappedList<E extends TreeNode> extends PharmMLRootType implements List<E>{

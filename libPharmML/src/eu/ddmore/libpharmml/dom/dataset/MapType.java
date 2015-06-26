@@ -133,7 +133,7 @@ public class MapType
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
     public Integer getAdmNumber() {
@@ -145,7 +145,7 @@ public class MapType
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
     public void setAdmNumber(Integer value) {

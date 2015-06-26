@@ -183,7 +183,7 @@ public class MatrixSelector
      * 
      * @return
      *     possible object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public MatrixVectorIndex getRow() {
@@ -195,7 +195,7 @@ public class MatrixSelector
      * 
      * @param value
      *     allowed object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public void setRow(MatrixVectorIndex value) {
@@ -207,7 +207,7 @@ public class MatrixSelector
      * 
      * @return
      *     possible object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public MatrixVectorIndex getColumn() {
@@ -219,7 +219,7 @@ public class MatrixSelector
      * 
      * @param value
      *     allowed object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public void setColumn(MatrixVectorIndex value) {

@@ -316,7 +316,7 @@ public class EquationType
      * 
      * @return
      *     possible object is
-     *     {@link SumType }
+     *     {@link Sum }
      *     
      */
     public Sum getSum() {
@@ -328,7 +328,7 @@ public class EquationType
      * 
      * @param value
      *     allowed object is
-     *     {@link SumType }
+     *     {@link Sum }
      *     
      */
     public void setSum(Sum value) {
@@ -388,7 +388,7 @@ public class EquationType
      * 
      * @return
      *     possible object is
-     *     {@link VectorSelectorType }
+     *     {@link VectorSelector }
      *     
      */
     public VectorSelector getVectorSelector() {
@@ -400,7 +400,7 @@ public class EquationType
      * 
      * @param value
      *     allowed object is
-     *     {@link VectorSelectorType }
+     *     {@link VectorSelector }
      *     
      */
     public void setVectorSelector(VectorSelector value) {

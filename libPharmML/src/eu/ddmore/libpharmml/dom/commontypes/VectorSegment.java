@@ -31,6 +31,7 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
+import eu.ddmore.libpharmml.dom.commontypes.Vector;
 
 /**
  * 
@@ -56,7 +57,7 @@ import eu.ddmore.libpharmml.util.annotations.RenamedElement;
  * &lt;/complexType>
  * </pre>
  * 
- * @see {@link Vector}
+ * @see Vector
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VectorSegmentType", propOrder = {

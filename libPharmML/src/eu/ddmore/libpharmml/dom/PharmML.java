@@ -388,7 +388,7 @@ public class PharmML extends PharmMLElement implements Identifiable {
     
     /**                                                              
      * Creates a new {@link Name} name element, adds it to the current object and returns it.
-     * @param Name of the model.
+     * @param name Name of the model.
      * @return The created {@link Name} object.                                                    
      */                                                                                            
     public Name createName(String name){                                                                      

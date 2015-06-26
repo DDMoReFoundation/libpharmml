@@ -39,7 +39,7 @@ public interface IPharmMLResource {
 	 * errors in the PharmML document before the unmarshalling process. This means that elements
 	 * that are not unmarshalled into the DOM because of the lack of mapped Java class (i.e. unknown
 	 * in the schema definitions) will be highlighted within this report.
-	 * @return
+	 * @return The creation report as {@link IValidationReport} implementation.
 	 */
 	IValidationReport getCreationReport();
 	

@@ -44,8 +44,16 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.commontypes.Delay;
+import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.Product;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
+import eu.ddmore.libpharmml.dom.commontypes.Sum;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
+import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
+import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
+import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
@@ -285,10 +293,10 @@ public class Binop
      *   {@link Sum},
      *   {@link SymbolRef},
      *   {@link VectorSelector},
-     *   {@link ColumnRef},
+     *   {@link ColumnReference},
      *   {@link Binop},
      *   {@link Constant},
-     *   {@link FunctionCall},
+     *   {@link FunctionCallType},
      *   {@link Uniop},
      *   {@link Probability}
      */
@@ -307,10 +315,10 @@ public class Binop
      *   {@link Sum},
      *   {@link SymbolRef},
      *   {@link VectorSelector},
-     *   {@link ColumnRef},
+     *   {@link ColumnReference},
      *   {@link Binop},
      *   {@link Constant},
-     *   {@link FunctionCall},
+     *   {@link FunctionCallType},
      *   {@link Uniop},
      *   {@link Probability}
      */
@@ -329,10 +337,10 @@ public class Binop
      *   {@link Sum},
      *   {@link SymbolRef},
      *   {@link VectorSelector},
-     *   {@link ColumnRef},
+     *   {@link ColumnReference},
      *   {@link Binop},
      *   {@link Constant},
-     *   {@link FunctionCall},
+     *   {@link FunctionCallType},
      *   {@link Uniop},
      *   {@link Probability}
      */
@@ -351,10 +359,10 @@ public class Binop
      *   {@link Sum},
      *   {@link SymbolRef},
      *   {@link VectorSelector},
-     *   {@link ColumnRef},
+     *   {@link ColumnReference},
      *   {@link Binop},
      *   {@link Constant},
-     *   {@link FunctionCall},
+     *   {@link FunctionCallType},
      *   {@link Uniop},
      *   {@link Probability}
      */

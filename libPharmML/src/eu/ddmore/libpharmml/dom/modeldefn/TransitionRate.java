@@ -84,7 +84,7 @@ public class TransitionRate
      * 
      * @return
      *     possible object is
-     *     {@link CommonDiscreteStateType }
+     *     {@link CommonDiscreteState }
      *     
      */
     public CommonDiscreteState getCurrentState() {
@@ -96,7 +96,7 @@ public class TransitionRate
      * 
      * @param value
      *     allowed object is
-     *     {@link CommonDiscreteStateType }
+     *     {@link CommonDiscreteState }
      *     
      */
     public void setCurrentState(CommonDiscreteState value) {
@@ -121,7 +121,7 @@ public class TransitionRate
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CommonDiscreteStateType }
+     * {@link CommonDiscreteState }
      * 
      * 
      */
@@ -150,7 +150,7 @@ public class TransitionRate
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CommonDiscreteStateType }
+     * {@link CommonDiscreteState }
      * 
      * 
      */

@@ -162,7 +162,7 @@ public class Uniop
      *     allowed object is
      *     {@link String }
      * 
-     * @deprecated Operator must now be accessed through {@link #setOperator()} (since libPharmML 0.4).
+     * @deprecated Operator must now be accessed through {@link #setOperator(Unioperator)} (since libPharmML 0.4).
      */
     @Deprecated
     public void setOp(String value) {

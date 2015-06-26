@@ -145,9 +145,9 @@ public class ExternalDataSet
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ColumnMappingType }
-     * {@link ColumnTransformationType }
-     * {@link MultipleDVMappingType }
+     * {@link ColumnMapping }
+     * {@link ColumnTransformation }
+     * {@link MultipleDVMapping }
      * 
      * 
      */
@@ -165,7 +165,7 @@ public class ExternalDataSet
      * 
      * @return
      *     possible object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
     public DataSet getDataSet() {
@@ -177,7 +177,7 @@ public class ExternalDataSet
      * 
      * @param value
      *     allowed object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
     public void setDataSet(DataSet value) {
@@ -189,7 +189,7 @@ public class ExternalDataSet
      * 
      * @return
      *     possible object is
-     *     {@link CodeInjectionType }
+     *     {@link CodeInjection }
      *     
      */
     public CodeInjection getCodeInjection() {
@@ -201,7 +201,7 @@ public class ExternalDataSet
      * 
      * @param value
      *     allowed object is
-     *     {@link CodeInjectionType }
+     *     {@link CodeInjection }
      *     
      */
     public void setCodeInjection(CodeInjection value) {
@@ -213,7 +213,7 @@ public class ExternalDataSet
      * 
      * @return
      *     possible object is
-     *     {@link ToolNameType }
+     *     {@link ToolName }
      *     
      */
     public ToolName getToolName() {
@@ -225,7 +225,7 @@ public class ExternalDataSet
      * 
      * @param value
      *     allowed object is
-     *     {@link ToolNameType }
+     *     {@link ToolName }
      *     
      */
     public void setToolName(ToolName value) {

@@ -69,7 +69,6 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
  * &lt;/complexType>
  * </pre>
  * 
- * Note that this class inherits from {@link ModellingStepType} which is deprecated, to ensure backwards compatiblity.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CommonModellingStepType", propOrder = {
@@ -133,7 +132,7 @@ public abstract class CommonModellingStep
      * 
      * @return
      *     possible object is
-     *     {@link ExternalDataSetReferenceType }
+     *     {@link ExternalDataSetReference }
      *     
      */
     public ExternalDataSetReference getExternalDataSetReference() {
@@ -145,7 +144,7 @@ public abstract class CommonModellingStep
      * 
      * @param value
      *     allowed object is
-     *     {@link ExternalDataSetReferenceType }
+     *     {@link ExternalDataSetReference }
      *     
      */
     public void setExternalDataSetReference(ExternalDataSetReference value) {
@@ -157,7 +156,7 @@ public abstract class CommonModellingStep
      * 
      * @return
      *     possible object is
-     *     {@link MONOLIXdataSetReferenceType }
+     *     {@link MONOLIXdataSetReference }
      *     
      * @deprecated Use {@link #getExternalDataSetReference()}.
      */
@@ -171,7 +170,7 @@ public abstract class CommonModellingStep
      * 
      * @param value
      *     allowed object is
-     *     {@link MONOLIXdataSetReferenceType }
+     *     {@link MONOLIXdataSetReference }
      * 
      * @deprecated Use {@link #setExternalDataSetReference(ExternalDataSetReference)} instead.
      */

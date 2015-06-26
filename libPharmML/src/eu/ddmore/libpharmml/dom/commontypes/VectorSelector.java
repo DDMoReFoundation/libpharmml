@@ -137,7 +137,7 @@ public class VectorSelector
      * 
      * @return
      *     possible object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public MatrixVectorIndex getHead() {
@@ -149,7 +149,7 @@ public class VectorSelector
      * 
      * @param value
      *     allowed object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public void setHead(MatrixVectorIndex value) {
@@ -174,7 +174,7 @@ public class VectorSelector
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link MatrixVectorIndexType }
+     * {@link MatrixVectorIndex }
      * {@link VectorSegmentSelector }
      * 
      * 
@@ -191,7 +191,7 @@ public class VectorSelector
      * 
      * @return
      *     possible object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public MatrixVectorIndex getTail() {
@@ -203,7 +203,7 @@ public class VectorSelector
      * 
      * @param value
      *     allowed object is
-     *     {@link MatrixVectorIndexType }
+     *     {@link MatrixVectorIndex }
      *     
      */
     public void setTail(MatrixVectorIndex value) {

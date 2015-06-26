@@ -35,7 +35,7 @@ public interface ILibPharmML {
 	 * validate that the DOM will generate a valid PharmML document. To ensure this the client must
 	 * explicitly validate the DOM before saving it. 
 	 * @param opStr The output stream to use.
-	 * @param DOM The DOM to be saved.
+	 * @param resource The DOM to be saved.
 	 * @throws RuntimeException if there is any error preventing the writing of the DOM to the output stream.
 	 * 			Note that another exception such as an IOException may be chained to the RuntimeException.
 	 */

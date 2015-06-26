@@ -126,7 +126,7 @@ public class DatasetRow extends PharmMLRootType{
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * 
      * @deprecated Since version 0.3. This method should only be used with 0.2 PharmML documents. 
-     * Use {@link #getScalar()} instead.
+     * Use {@link #getListOfValue()} instead.
      */
     @Deprecated
 	public List<JAXBElement<?>> getScalarOrTable() {
