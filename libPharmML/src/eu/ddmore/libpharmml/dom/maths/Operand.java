@@ -18,7 +18,6 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.dom.maths;
 
-import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 
 /**
@@ -27,7 +26,7 @@ import javax.xml.bind.JAXBElement;
  * @author florent
  *
  */
-public interface Operand extends TreeNode {
+public interface Operand {
 
 	// TODO: experiment, put this method in PharmMLElement
 	/**

@@ -56,7 +56,6 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.XMLFilter;
-import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -508,9 +507,14 @@ public class Binop
 
 	@Override
 	protected List<TreeNode> listChildren() {
-		return new ChainedList<TreeNode>()
-				.addIfNotNull(operand1)
-				.addIfNotNull(operand2);
+		List<TreeNode> children = new ArrayList<TreeNode>();
+		if(operand1 instanceof TreeNode){
+			children.add((TreeNode) operand1);
+		}
+		if(operand2 instanceof TreeNode){
+			children.add((TreeNode) operand2);
+		}
+		return children;
 	}
 
 }
