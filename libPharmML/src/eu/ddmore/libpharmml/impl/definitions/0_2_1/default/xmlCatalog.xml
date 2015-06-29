@@ -6,7 +6,7 @@
     
     <system
         systemId="http://www.uncertml.org/3.0" 
-        uri="UncertML30.xsd"/>
+        uri="../../uncertweb/UncertML30.xsd"/>
 
     <system systemId="http://www.pharmml.org/pharmml/0.6/Dataset" uri="dataset.xsd"/>
 
