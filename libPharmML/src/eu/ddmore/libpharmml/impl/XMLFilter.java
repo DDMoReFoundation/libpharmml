@@ -131,36 +131,12 @@ public class XMLFilter extends XMLFilterImpl {
         super.endElement(filterInputNamespace(arg0), arg1, arg2);
     }
 
-//    @Override
-//    public void startPrefixMapping(String prefix, String url)
-//            throws SAXException {
-//
-//
-//        if (addNamespace) {
-//            this.startControlledPrefixMapping();
-//        } else {
-//            //Remove the namespace, i.e. don´t call startPrefixMapping for parent!
-//        }
-//
-//    }
-
-//    private void startControlledPrefixMapping() throws SAXException {
-//
-//        if (this.addNamespace && !this.addedNamespace) {
-//            //We should add namespace since it is set and has not yet been done.
-//            super.startPrefixMapping("", this.usedNamespaceUri);
-//
-//            //Make sure we dont do it twice
-//            this.addedNamespace = true;
-//        }
-//    }
-
     /**
      * Transform the document namespace to the default one used by JAXB.
      * @param ns Document namespace
      * @return Default namespace
      */
-    private String filterInputNamespace(String ns){
+    protected String filterInputNamespace(String ns){
     	if(ns == null){
     		return null;
     	}
@@ -183,29 +159,15 @@ public class XMLFilter extends XMLFilterImpl {
     	}
     }
     
-//    private String filterOutputNamespace(String ns){
-//    	if(ns == null){
-//    		return null;
-//    	}
-//    	if(ns.equals(NS_OLD_CT)){
-//    		return NS_DOC_CT;
-//    	} else if(ns.equals(NS_OLD_DS)){
-//        	return NS_DOC_DS;
-//    	} else if(ns.equals(NS_OLD_MATH)){
-//        	return NS_DOC_MATH;
-//    	} else if(ns.equals(NS_OLD_MDEF)){
-//        	return NS_DOC_MDEF;
-//    	} else if(ns.equals(NS_OLD_MSTEPS)){
-//        	return NS_DOC_MSTEPS;
-//    	} else if(ns.equals(NS_OLD_TD)){
-//        	return NS_DOC_TD;
-//    	} else if(ns.equals(NS_OLD_MML)){
-//        	return NS_DOC_MML;
-//    	} else {
-//    		return ns;
-//    	}
-//    }
-    
+    /**
+     * Converts the given input stream to a filtered stream reader. The input stream must
+     * be a model encoded with the version used to construct this {@link XMLFilter}. The output
+     * of this method is the same model, but with the namespaces changed to the default ones, i.e.
+     * the namespaces used by JAXB annotations in libPharmML.
+     * @param is {@link InputStream} of a PharmML model.
+     * @return {@link XMLStreamReader} implementation resulting of the namespace filtering of the input model.
+     * @throws XMLStreamException If error in parsing.
+     */
     public XMLStreamReader getXMLStreamReader(final InputStream is) throws XMLStreamException{
     	
     	XMLStreamReader filterReader = new XMLStreamReader(){

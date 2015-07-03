@@ -54,20 +54,9 @@ public class PharmMLSchemaFactory {
 	 */
 	public Schema createPharmMlSchema(PharmMLVersion version, NamespaceType type){
 		try {
-			String catalogLocation;
-			String systemURI;
-			if(version.isEqualOrLaterThan(PharmMLVersion.DEFAULT)){
-				catalogLocation = version.getCatalogLocation();
-				systemURI = XMLFilter.NS_DEFAULT_MML;
-			} else {
-				if(type.equals(NamespaceType.DEFAULT)){
-					catalogLocation = version.getDefaultCatalogLocation();
-					systemURI = XMLFilter.NS_DEFAULT_MML;
-				} else {
-					catalogLocation = version.getCatalogLocation();
-					systemURI = XMLFilter.NS_OLD_MML;
-				}
-			}
+			String[] locationData = resolveCatalogLocation(version, type);
+			String catalogLocation = locationData[0];
+			String systemURI = locationData[1];
 			URL url = getClass().getResource(catalogLocation);
 			String[] catalogs = { url.toExternalForm() };
 			XMLCatalogResolver resolver = new XMLCatalogResolver();
@@ -85,6 +74,32 @@ public class PharmMLSchemaFactory {
 		} catch (SAXException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}
+	}
+	
+	/**
+	 * Gets the right catalog location and system URI for the given PharmML version
+	 * and the given namespace type.
+	 * @param version The {@link PharmMLVersion} enum value.
+	 * @param type {@link NamespaceType} enum value.
+	 * @return An array of {@link String}, where the 1st value is the catalog location
+	 * and the 2nd value is the system URI.
+	 */
+	public String[] resolveCatalogLocation(PharmMLVersion version, NamespaceType type){
+		String catalogLocation;
+		String systemURI;
+		if(version.isEqualOrLaterThan(PharmMLVersion.DEFAULT)){
+			catalogLocation = version.getCatalogLocation();
+			systemURI = XMLFilter.NS_DEFAULT_MML;
+		} else {
+			if(type.equals(NamespaceType.DEFAULT)){
+				catalogLocation = version.getDefaultCatalogLocation();
+				systemURI = XMLFilter.NS_DEFAULT_MML;
+			} else {
+				catalogLocation = version.getCatalogLocation();
+				systemURI = XMLFilter.NS_OLD_MML;
+			}
+		}
+		return new String[] {catalogLocation, systemURI};
 	}
 	
 	/**
