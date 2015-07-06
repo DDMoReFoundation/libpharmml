@@ -19,8 +19,8 @@
 	<property name="test.bin.dir" location="${build.dir}/test"/>
 	<property name="docs.build.dir" location="${build.dir}/docs"/>
 	<property name="test.output.dir" location="${build.dir}/test_output"/>
-	<!--<property name="jaxb.gen.dir" location="${src.dir}/eu/ddmore/libpharmml/dom"/>-->
-	<property name="schema.dir" location="definitions"/>
+	<property name="jaxb.gen.dir" location="./jaxb_gen"/>
+	<property name="schema.dir" location="${src.dir}/eu/ddmore/libpharmml/impl/definitions/0_7"/>
 	<property name="schema.file" location="${schema.dir}/pharmml.xsd"/>
 	<property name="catalog.file" location="${schema.dir}/xmlCatalog.xml"/>
 	<property name="impl.pkg.path" value="eu/ddmore/libpharmml/impl"/>
@@ -53,11 +53,11 @@
 		<fileset dir="${ivy.lib.dir}/test-build"/>
 	</path>
 
-<!--	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
 		<classpath>
 			<fileset dir="${lib.dir}" includes="jaxb*.jar"/>
 		</classpath>
-	</taskdef>-->
+	</taskdef>
 
 	<target name="build-all" depends="clean,run-tests,jar-all" description="Build everything">
 	</target>
@@ -90,9 +90,9 @@
 	<!-- - - - - - - - - - - - - - - - - - 
           target: clean-jaxb                      
          - - - - - - - - - - - - - - - - - -->
-<!--	<target name="clean-jaxb">
+	<target name="clean-jaxb">
 		<delete quiet="false" verbose="true" dir="${jaxb.gen.dir}"/>
-	</target>-->
+	</target>
 
 
 
@@ -110,14 +110,14 @@
 	<!-- - - - - - - - - - - - - - - - - - 
           target: jaxb-gen                      
          - - - - - - - - - - - - - - - - - -->
-<!--	<target name="jaxb-gen">
-		<xjc destdir="${src.dir}" removeOldOutput="yes" catalog="${catalog.file}"
-			 binding="binding.xjb" extension="true">-->
+	<target name="jaxb-gen">
+		<xjc destdir="${jaxb.gen.dir}" removeOldOutput="yes" catalog="${catalog.file}"
+			 binding="binding.xjb" extension="true">
 			<!-- package="${jaxb.gen.package}"  -->
-<!--			<schema dir="${schema.dir}" includes="pharmml.xsd"/>
+			<schema dir="${schema.dir}" includes="pharmml.xsd"/>
 			<produces dir="${jaxb.gen.dir}" includes="**/*"/>
 		</xjc>
-	</target>-->
+	</target>
 
 	<target name="retrieve" depends="">
 		<ivy:retrieve pattern="${ivy.lib.dir}/[conf]/[artifact].[ext]"/>
