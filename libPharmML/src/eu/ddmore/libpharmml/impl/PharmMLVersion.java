@@ -55,12 +55,16 @@ public enum PharmMLVersion {
 	/**
 	 * PharmML 0.6
 	 */
-	V0_6("0.6","MarshallerImpl.xmlCatalogLocation.0.6",8);
+	V0_6("0.6","MarshallerImpl.xmlCatalogLocation.0.6",8),
+	/**
+	 * PharmML 0.7
+	 */
+	V0_7("0.7","MarshallerImpl.xmlCatalogLocation.0.7",9);
 	
 	/**
 	 * The latest version of PharmML. Current is 0.6.
 	 */
-	public static final PharmMLVersion DEFAULT = PharmMLVersion.V0_6;
+	public static final PharmMLVersion DEFAULT = PharmMLVersion.V0_7;
 	
 	private final String version;
 	private final String catalogLocation;
