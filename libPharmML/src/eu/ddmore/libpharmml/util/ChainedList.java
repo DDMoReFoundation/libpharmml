@@ -35,6 +35,12 @@ public class ChainedList<T> extends ArrayList<T> {
 	 * 
 	 */
 	private static final long serialVersionUID = -7322317602466355646L;
+	
+	public ChainedList(){}
+	
+	public ChainedList(List<? extends T> list){
+		addIfNotNull(list);
+	}
 
 	public ChainedList<T> addIfNotNull(T element){
 		if(element != null){
