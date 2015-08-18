@@ -84,7 +84,8 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated Since PharmML 0.7.1, equation elements has been removed as they were semantically
+ * incorrect.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EquationType", propOrder = {
@@ -106,6 +107,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlSeeAlso({
     Equation.class
 })
+@Deprecated
 public class EquationType
     extends PharmMLRootType
 {

@@ -51,8 +51,10 @@ import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated Since PharmML 0.7.1, equation elements has been removed as they were semantically
+ * incorrect.
  */
+@Deprecated
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 @XmlRootElement(name = "Equation")
