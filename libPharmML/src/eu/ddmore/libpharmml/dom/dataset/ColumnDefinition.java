@@ -69,7 +69,7 @@ public class ColumnDefinition
     @XmlAttribute(name = "columnId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String columnId;
-    @XmlAttribute(name = "columnType", required = true)
+    @XmlAttribute(name = "columnType") // required < PharmML 0.7.1
     protected ColumnType columnType;
     @XmlAttribute(name = "valueType", required = true)
     protected SymbolType valueType;
@@ -78,9 +78,23 @@ public class ColumnDefinition
      * Empty constructor
      */
     public ColumnDefinition(){}
-
+    
     /**
      * Creates a new column definition with all the required attributes.
+     * @param columnId Identifier of the column.
+     * @param columnType Type of the column.
+     * @param valueType Type of the values within this column. The scalar elements within
+     * this column must fit with this value type.
+     * @param columnNum The column number. Needed to map the column into the dataset.
+     */
+    public ColumnDefinition(String columnId, SymbolType valueType, Integer columnNum){
+    	this.columnId = columnId;
+    	this.valueType = valueType;
+    	this.columnNum = BigInteger.valueOf(columnNum);
+    }
+
+    /**
+     * Creates a new column definition with all the required attributes and the column type.
      * @param columnId Identifier of the column.
      * @param columnType Type of the column.
      * @param valueType Type of the values within this column. The scalar elements within
@@ -119,7 +133,8 @@ public class ColumnDefinition
     }
 
     /**
-     * Gets the value of the columnType property.
+     * The column type for this column. Optional if mapping of this column is defined then it is not 
+     * required. This helps avoiding redundancies or inconsistencies.
      * 
      * @return
      *     possible object is
@@ -131,7 +146,8 @@ public class ColumnDefinition
     }
 
     /**
-     * Sets the value of the columnType property.
+     * The column type for this column. Optional if mapping of this column is defined then it is not 
+     * required. This helps avoiding redundancies or inconsistencies.
      * 
      * @param value
      *     allowed object is
