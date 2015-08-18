@@ -36,12 +36,14 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.Assignable;
 import eu.ddmore.libpharmml.dom.commontypes.Interpolation;
+import eu.ddmore.libpharmml.dom.commontypes.Interval;
 import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.Sequence;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.Vector;
+import eu.ddmore.libpharmml.dom.maths.Constant;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
@@ -69,8 +71,9 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated Since PharmML 0.7, {@link SimpleParameter} has been renamed to {@link PopulationParameter}.
  */
+@Deprecated
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SimpleParameterType", propOrder = {
     "assign"
@@ -160,6 +163,20 @@ public class SimpleParameter
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(super.listChildren())
 				.addIfNotNull(assign);
+	}
+
+	@Override
+	public Rhs assign(Constant constant) {
+		Rhs rhs = new Rhs(constant);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Interval interval) {
+		Rhs rhs = new Rhs(interval);
+		setAssign(rhs);
+		return rhs;
 	}
 
 }

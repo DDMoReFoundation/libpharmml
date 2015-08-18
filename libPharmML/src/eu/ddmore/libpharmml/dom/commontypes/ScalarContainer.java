@@ -23,8 +23,6 @@ import javax.xml.bind.annotation.XmlTransient;
 /**
  * Interface for XML binded elements that contain a scalar value.
  * It provides a set of methods to create XML elements from primitive types.
- * 
- * @author F. Yvon
  */
 @XmlTransient
 public interface ScalarContainer {
@@ -64,6 +62,12 @@ public interface ScalarContainer {
 	 * @return The created {@link BooleanValue} element.
 	 */
 	public BooleanValue createBooleanValue(boolean value);
-
+	
+	/**
+	 * Creates a {@link MissingValue} element with the given symbol.
+	 * @param symbol The {@link MissingValueSymbol} of the missing value.
+	 * @return The created {@link MissingValue} element.
+	 */
+	public MissingValue createMissingValue(MissingValueSymbol symbol);
 	
 }

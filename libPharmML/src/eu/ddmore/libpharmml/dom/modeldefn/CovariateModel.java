@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.Block;
+import eu.ddmore.libpharmml.dom.commontypes.CovariateModelRef;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.impl.XMLFilter;
@@ -73,23 +74,59 @@ import eu.ddmore.libpharmml.util.ChainedList;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CovariateModelType", propOrder = {
+	"covariateModelRef",
     "name",
     "simpleParameter",
+    "listOfPopulationParameter",
     "covariate"
 })
 public class CovariateModel
     extends PharmMLRootType implements Block
 {
 
+	@XmlElement(name = "CovariateModelRef")
+    protected CovariateModelRef covariateModelRef; // PharmML 0.7
+	
     @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Name name;
+    @Deprecated
     @XmlElement(name = "SimpleParameter")
     protected List<SimpleParameter> simpleParameter;
+    
+    @XmlElement(name = "PopulationParameter")
+    protected List<PopulationParameter> listOfPopulationParameter; // PharmML 0.7
+    
     @XmlElement(name = "Covariate", required = true)
     protected List<CovariateDefinition> covariate;
     @XmlAttribute(name = "blkId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String blkId;
+    
+    /**
+     * Gets the value of the covariateModelRef property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CovariateModelRef }
+     *    
+     * @since PharmML 0.7
+     */
+    public CovariateModelRef getCovariateModelRef() {
+        return covariateModelRef;
+    }
+
+    /**
+     * Sets the value of the covariateModelRef property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CovariateModelRef }
+     * 
+     * @since PharmML 0.7
+     */
+    public void setCovariateModelRef(CovariateModelRef value) {
+        this.covariateModelRef = value;
+    }
 
     /**
      * Gets the value of the name property.
@@ -116,7 +153,9 @@ public class CovariateModel
     }
 
     /**
-     * The definition of parameters in the covariate block. Typically these will define parameters used by the covariate definitions.Gets the value of the simpleParameter property.
+     * The definition of parameters in the covariate block. Typically these will 
+     * define parameters used by the covariate definitions. Gets the value of the 
+     * simpleParameter property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
@@ -135,13 +174,45 @@ public class CovariateModel
      * Objects of the following type(s) are allowed in the list
      * {@link SimpleParameter }
      * 
-     * 
+     * @deprecated Since PharmML 0.7, parameters are located within {@link #getListOfPopulationParameter()}.
      */
+    @Deprecated
     public List<SimpleParameter> getSimpleParameter() {
         if (simpleParameter == null) {
             simpleParameter = new ArrayList<SimpleParameter>();
         }
         return this.simpleParameter;
+    }
+    
+    /**
+     * The definition of parameters in the covariate block. Typically these will 
+     * define parameters used by the covariate definitions. Gets the value of 
+     * the populationParameter property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the populationParameter property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListOfPopulationParameter().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link PopulationParameter }
+     * 
+     * @since PharmML 0.7
+     */
+    public List<PopulationParameter> getListOfPopulationParameter() {
+        if (listOfPopulationParameter == null) {
+        	listOfPopulationParameter = new ArrayList<PopulationParameter>();
+        }
+        return this.listOfPopulationParameter;
     }
 
     /**
@@ -156,7 +227,7 @@ public class CovariateModel
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getCovariate().add(newItem);
+     *    getListOfCovariate().add(newItem);
      * </pre>
      * 
      * 
@@ -166,11 +237,19 @@ public class CovariateModel
      * 
      * 
      */
-    public List<CovariateDefinition> getCovariate() {
+    public List<CovariateDefinition> getListOfCovariate() {
         if (covariate == null) {
             covariate = new ArrayList<CovariateDefinition>();
         }
         return this.covariate;
+    }
+    
+    /**
+     * @deprecated Use {@link #getListOfCovariate()}.
+     */
+    @Deprecated
+    public List<CovariateDefinition> getCovariate() {
+        return getListOfCovariate();
     }
 
     /**
@@ -200,8 +279,10 @@ public class CovariateModel
     @Override
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
+				.addIfNotNull(covariateModelRef)
 				.addIfNotNull(name)
 				.addIfNotNull(simpleParameter)
+				.addIfNotNull(listOfPopulationParameter)
 				.addIfNotNull(covariate);
 	}
 

@@ -34,11 +34,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.maths.Equation;
-import eu.ddmore.libpharmml.dom.modellingsteps.InitialEstimate;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -70,9 +68,9 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "scalar",
     "symbRef"
 })
-@XmlSeeAlso({
-    InitialEstimate.class
-})
+//@XmlSeeAlso({
+//    InitialEstimate.class // was the case before 0.7. Now extends Rhs
+//})
 public class ScalarRhs
     extends PharmMLRootType
 {
@@ -80,7 +78,7 @@ public class ScalarRhs
     @XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
     protected Equation equation;
     @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
-    protected JAXBElement<?> scalar;
+    protected Scalar scalar;
     @XmlElement(name = "SymbRef")
     protected SymbolRef symbRef;
 
@@ -112,18 +110,10 @@ public class ScalarRhs
      * A scalar value.
      * 
      * @return
-     *     possible object is
-     *     {@link JAXBElement }{@code <}{@link IdValue }{@code >}
-     *     {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
-     *     {@link JAXBElement }{@code <}{@link StringValue }{@code >}
-     *     {@link JAXBElement }{@code <}{@link IntValue }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link RealValue }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
-     *     {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
+     *     a {@link Scalar} implementation.
      *     
      */
-    public JAXBElement<?> getScalar() {
+    public Scalar getScalar() {
         return scalar;
     }
 
@@ -142,7 +132,7 @@ public class ScalarRhs
      *     {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
      *     
      */
-    public void setScalar(JAXBElement<?> value) {
+    public void setScalar(Scalar value) {
         this.scalar = value;
     }
 
@@ -174,10 +164,8 @@ public class ScalarRhs
 	protected List<TreeNode> listChildren() {
 		List<TreeNode> list = new ChainedList<TreeNode>()
 				.addIfNotNull(equation)
+				.addIfNotNull(scalar)
 				.addIfNotNull(symbRef);
-		if(scalar != null && scalar.getValue() instanceof TreeNode){
-			list.add((TreeNode) scalar.getValue());
-		}
 		return list;
 	}
 

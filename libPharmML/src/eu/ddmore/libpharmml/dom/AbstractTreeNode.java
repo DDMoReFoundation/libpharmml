@@ -98,6 +98,11 @@ public abstract class AbstractTreeNode implements TreeNode{
 			}};
 	}
 	
+	/**
+	 * This method should be reimplemented by any class that inherits from this class.
+	 * This method is used by {@link #children()} to list the content of the element.
+	 * @return The list of all the children of this element.
+	 */
 	protected List<TreeNode> listChildren(){
 		return Collections.emptyList();
 	}

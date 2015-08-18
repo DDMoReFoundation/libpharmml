@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.Interpolation;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractContinuousUnivariateDistributionType;
 import eu.ddmore.libpharmml.dom.uncertml.BetaDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.CauchyDistribution;
@@ -71,11 +72,12 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="ContinuousCovariateType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.7/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.uncertml.org/3.0}AbstractContinuousUnivariateDistribution" minOccurs="0"/>
- *         &lt;element name="Transformation" type="{http://www.pharmml.org/2013/03/ModelDefinition}CovariateTransformationType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Interpolation" minOccurs="0"/>
+ *         &lt;element name="Distribution" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DistributionType" minOccurs="0"/>
+ *         &lt;element name="Transformation" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}CovariateTransformationType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Interpolation" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Assign" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -87,8 +89,10 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ContinuousCovariateType", propOrder = {
     "abstractContinuousUnivariateDistribution",
+    "distribution",
     "listOfTransformation",
-    "interpolation"
+    "interpolation",
+    "assign"
 })
 public class ContinuousCovariate
     extends PharmMLRootType
@@ -96,10 +100,15 @@ public class ContinuousCovariate
 
     @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractContinuousUnivariateDistributionType> abstractContinuousUnivariateDistribution;
+    
+    @XmlElement(name = "Distribution") // PharmML 0.7
+    protected Distribution distribution;
     @XmlElement(name = "Transformation")
     protected List<CovariateTransformation> listOfTransformation;
     @XmlElement(name = "Interpolation", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Interpolation interpolation;
+    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT) // PharmML 0.7
+    protected Rhs assign;
 
     /**
      * The distribution that the continuous covariate follows.
@@ -125,7 +134,10 @@ public class ContinuousCovariate
      *     {@link JAXBElement }{@code <}{@link FDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractContinuousUnivariateDistributionType }{@code >}
      *     
+     * @deprecated Since PharmML 0.7. Distributions are included within {@link Distribution} via
+     * {@link #getDistribution()}.
      */
+    @Deprecated
     public JAXBElement<? extends AbstractContinuousUnivariateDistributionType> getAbstractContinuousUnivariateDistribution() {
         return abstractContinuousUnivariateDistribution;
     }
@@ -154,9 +166,37 @@ public class ContinuousCovariate
      *     {@link JAXBElement }{@code <}{@link FDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link AbstractContinuousUnivariateDistributionType }{@code >}
      *     
+     * @deprecated Since PharmML 0.7. Distributions are included within {@link Distribution} via
+     * {@link #setDistribution(Distribution)}.
      */
     public void setAbstractContinuousUnivariateDistribution(JAXBElement<? extends AbstractContinuousUnivariateDistributionType> value) {
         this.abstractContinuousUnivariateDistribution = value;
+    }
+    
+    /**
+     * Gets the value of the distribution property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Distribution }
+     * 
+     * @since PharmML 0.7
+     */
+    public Distribution getDistribution() {
+        return distribution;
+    }
+
+    /**
+     * Sets the value of the distribution property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Distribution }
+     *   
+     * @since PharmML 0.7
+     */
+    public void setDistribution(Distribution value) {
+        this.distribution = value;
     }
 
     /**
@@ -195,7 +235,7 @@ public class ContinuousCovariate
     }
     
     /**
-     * Gets the value of the transformation property.
+     * The transformation to be applied when the covariate is used.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
@@ -246,13 +286,41 @@ public class ContinuousCovariate
     public void setInterpolation(Interpolation value) {
         this.interpolation = value;
     }
+    
+    /**
+     * Gets the value of the assign property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Rhs }
+     *
+     * @since PharmML 0.7
+     */
+    public Rhs getAssign() {
+        return assign;
+    }
+
+    /**
+     * Sets the value of the assign property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Rhs }
+     *   
+     * @since PharmML 0.7
+     */
+    public void setAssign(Rhs value) {
+        this.assign = value;
+    }
 
 	@Override
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
 				.addJAXBIfNotNull(abstractContinuousUnivariateDistribution)
+				.addIfNotNull(distribution)
 				.addIfNotNull(listOfTransformation)
-				.addIfNotNull(interpolation);
+				.addIfNotNull(interpolation)
+				.addIfNotNull(assign);
 	}
 
 }

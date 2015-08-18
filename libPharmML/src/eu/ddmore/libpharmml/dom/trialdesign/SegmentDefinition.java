@@ -69,12 +69,14 @@ import eu.ddmore.libpharmml.validation.SymbolResolver;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated Since PharmML 0.7, {@link TrialDesign} structure has been completely redefined. See PharmML
+ * 0.7 change document, chapter 5.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SegmentDefnType", propOrder = {
     "activityRef"
 })
+@Deprecated
 public class SegmentDefinition
     extends PharmMLRootType implements PharmMLObject, ReferenceContainer
 {

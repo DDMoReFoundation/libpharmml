@@ -35,13 +35,15 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.commontypes.LevelReference;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
  * 
- *                 Type defines a categorical covariate.
+ * Type defines a categorical covariate.
  *             
  * 
  * <p>Java class for CategoricalCovariateType complex type.
@@ -51,9 +53,10 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="CategoricalCovariateType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.7/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="Category" type="{http://www.pharmml.org/2013/03/ModelDefinition}CategoryType" maxOccurs="unbounded"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}VariabilityReference" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Category" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}CategoryType" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -64,17 +67,59 @@ import eu.ddmore.libpharmml.util.ChainedList;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CategoricalCovariateType", propOrder = {
-    "category"
+	"listOfVariabilityReference",
+    "listOfCategory"
 })
 public class CategoricalCovariate
     extends PharmMLRootType
 {
 
+	@XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT)
+    protected List<LevelReference> listOfVariabilityReference;
     @XmlElement(name = "Category", required = true)
-    protected List<Category> category;
+    protected List<Category> listOfCategory;
+    
+    /**
+     * The level of random variability associated with a categorical covariate 
+     * defined in the trial design.Gets the value of the variabilityReference property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the variabilityReference property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListOfVariabilityReference().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link LevelReference }
+     * 
+     * @since PharmML 0.7
+     */
+    public List<LevelReference> getListOfVariabilityReference() {
+        if (listOfVariabilityReference == null) {
+        	listOfVariabilityReference = new ArrayList<LevelReference>();
+        }
+        return this.listOfVariabilityReference;
+    }
+
 
     /**
-     * Gets the value of the category property.
+     * @deprecated Use {@link #getListOfCategory()}.
+     */
+    @Deprecated
+    public List<Category> getCategory() {
+        return getListOfCategory();
+    }
+    
+    /**
+     * A category of the categorical covariate.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
@@ -85,7 +130,7 @@ public class CategoricalCovariate
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getCategory().add(newItem);
+     *    getListOfCategory().add(newItem);
      * </pre>
      * 
      * 
@@ -95,16 +140,18 @@ public class CategoricalCovariate
      * 
      * 
      */
-    public List<Category> getCategory() {
-        if (category == null) {
-            category = new ArrayList<Category>();
+    public List<Category> getListOfCategory() {
+        if (listOfCategory == null) {
+        	listOfCategory = new ArrayList<Category>();
         }
-        return this.category;
+        return this.listOfCategory;
     }
 
 	@Override
 	protected List<TreeNode> listChildren() {
-		return new ChainedList<TreeNode>().addIfNotNull(category);
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(listOfVariabilityReference)
+				.addIfNotNull(listOfCategory);
 	}
 
 }

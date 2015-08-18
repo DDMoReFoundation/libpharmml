@@ -68,7 +68,8 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated Since PharmML 0.7, {@link TrialDesign} structure has been completely redefined. See PharmML
+ * 0.7 change document, chapter 5.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TrialStructureType", propOrder = {
@@ -79,6 +80,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "activity",
     "studyEvent"
 })
+@Deprecated
 public class TrialStructure
     extends PharmMLRootType
 {
@@ -263,7 +265,7 @@ public class TrialStructure
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link Observations }{@code >}
+     * {@link JAXBElement }{@code <}{@link D_Observations }{@code >}
      * {@link JAXBElement }{@code <}{@link StudyEvent }{@code >}
      * 
      * 

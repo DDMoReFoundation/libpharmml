@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -45,9 +46,11 @@ public class VectorElements extends PharmMLRootType implements ScalarContainer {
 		
 	//-------
 	@XmlElementRefs({
-		@XmlElementRef(name = "VectorValue", namespace = XMLFilter.NS_DEFAULT_CT, type=JAXBElement.class),
-		@XmlElementRef(name = "Sequence", namespace = XMLFilter.NS_DEFAULT_CT, type=JAXBElement.class)
-	})
+        @XmlElementRef(name = "Sequence", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH, type = Equation.class, required = false),
+        @XmlElementRef(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+    })
 	protected List<JAXBElement<? extends VectorValue>> jaxb_elements;
 	@XmlTransient
 	protected List<VectorValue> elements;
@@ -111,6 +114,13 @@ public class VectorElements extends PharmMLRootType implements ScalarContainer {
 		}
 		getListOfElements().add(wValue);
 		return wValue;
+	}
+	
+	@Override
+	public MissingValue createMissingValue(MissingValueSymbol symbol) {
+		MissingValue mValue = new MissingValue(symbol);
+		getListOfElements().add(mValue);
+		return mValue;
 	}
 	
 	public SymbolRef createSymbolRef(String symbId){

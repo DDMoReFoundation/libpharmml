@@ -26,7 +26,7 @@
 
 package eu.ddmore.libpharmml.dom.dataset;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
@@ -38,8 +38,10 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.commontypes.MissingDataAttribute;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -81,7 +83,8 @@ import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
     "url",
     "path",
     "format",
-    "delimiter"
+    "delimiter",
+    "listOfMissingData"
 })
 public class ExternalFile
     extends PharmMLRootType implements PharmMLObject
@@ -102,6 +105,10 @@ public class ExternalFile
     @XmlElement(required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String delimiter;
+    
+    @XmlElement(name = "MissingData") // since PharmML 0.7
+    protected List<MissingDataMap> listOfMissingData;
+    
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
@@ -238,6 +245,35 @@ public class ExternalFile
     public void setDelimiter(String value) {
         this.delimiter = value;
     }
+    
+    /**
+     * The mapping of symbols used in dataset and allowed missing categories.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the missingData property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListOfMissingData().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link MissingDataMap }
+     * 
+     * @since PharmML 0.7
+     */
+    public List<MissingDataMap> getListOfMissingData() {
+        if (listOfMissingData == null) {
+        	listOfMissingData = new ArrayList<MissingDataMap>();
+        }
+        return this.listOfMissingData;
+    }
 
     /**
      * Gets the value of the oid property.
@@ -282,7 +318,36 @@ public class ExternalFile
 
 	@Override
 	protected List<TreeNode> listChildren() {
-		return Collections.emptyList();
+		return new ChainedList<TreeNode>(super.listChildren())
+				.addIfNotNull(listOfMissingData);
+	}
+	
+	/**
+	 * Creates a new {@link MissingDataMap} empty object and adds it to the current
+	 * external file.
+	 * @return The created {@link MissingDataMap} instance.
+	 * @since PharmML 0.7
+	 */
+	public MissingDataMap createMissingData(){
+		MissingDataMap mdp = new MissingDataMap();
+		getListOfMissingData().add(mdp);
+		return mdp;
+	}
+	
+	/**
+	 * Creates a new {@link MissingDataMap} object and adds it to the current
+	 * external file.
+	 * @param dataCode Missing data representation in the dataset.
+	 * @param missingDataType The type of missing data that the code represents.
+	 * @return The created {@link MissingDataMap} instance.
+	 * @since PharmML 0.7
+	 */
+	public MissingDataMap createMissingData(String dataCode, MissingDataAttribute missingDataType){
+		MissingDataMap mdp = new MissingDataMap();
+		mdp.setDataCode(dataCode);
+		mdp.setMissingDataType(missingDataType);
+		getListOfMissingData().add(mdp);
+		return mdp;
 	}
 
 }

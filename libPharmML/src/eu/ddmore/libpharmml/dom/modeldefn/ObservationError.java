@@ -68,12 +68,14 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * 
  * 
  */
+@SuppressWarnings("deprecation")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ObservationErrorType", propOrder = {
     "symbol"
 })
 @XmlSeeAlso({
     GaussianObsError.class,
+    StructuredObsError.class,
     GeneralObsError.class
 })
 public abstract class ObservationError

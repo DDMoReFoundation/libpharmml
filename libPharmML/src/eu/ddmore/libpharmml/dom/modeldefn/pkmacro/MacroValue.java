@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.Assignable;
 import eu.ddmore.libpharmml.dom.commontypes.Interpolation;
+import eu.ddmore.libpharmml.dom.commontypes.Interval;
 import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
@@ -38,6 +39,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.Sequence;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.Vector;
+import eu.ddmore.libpharmml.dom.maths.Constant;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
@@ -301,6 +303,20 @@ public class MacroValue extends PharmMLRootType implements Assignable {
 				.addIfNotNull(assign)
 				.addIfNotNull(symbRef)
 				.addIfNotNull(scalar);
+	}
+
+	@Override
+	public Rhs assign(Constant constant) {
+		Rhs assign = new Rhs(constant);
+		setAssign(assign);
+		return assign;
+	}
+
+	@Override
+	public Rhs assign(Interval interval) {
+		Rhs assign = new Rhs(interval);
+		setAssign(assign);
+		return assign;
 	}
 
 }

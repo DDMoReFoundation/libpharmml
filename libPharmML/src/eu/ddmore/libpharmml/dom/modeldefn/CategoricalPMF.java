@@ -33,6 +33,7 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
@@ -98,7 +99,8 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "jaxb_abstractCategoricalUnivariateDistribution",
     "jaxb_abstractCategoricalMultivariateDistribution",
     "jaxb_abstractDiscreteUnivariateDistribution",
-    "jaxb_abstractDiscreteMultivariateDistribution"
+    "jaxb_abstractDiscreteMultivariateDistribution",
+    "distribution"
 })
 @XmlJavaTypeAdapter(CategoricalPMF.Adapter.class)
 public class CategoricalPMF
@@ -116,8 +118,11 @@ public class CategoricalPMF
     protected JAXBElement<? extends AbstractDiscreteMultivariateDistributionType> jaxb_abstractDiscreteMultivariateDistribution;
     
     @XmlTransient
-    protected AbstractDistributionType distribution;
+    protected AbstractDistributionType formerdistribution;
     // --------
+    
+    @XmlElement(name = "Distribution")
+    protected Distribution distribution;
     
     @XmlAttribute(name = "linkFunction", required = true)
     protected LinkFunction linkFunction;
@@ -147,22 +152,76 @@ public class CategoricalPMF
      * <li>{@link DiscreteMultivariateMixtureModel }</li>
      * <li>{@link MultinomialDistribution }</li></ul>
      * @return The distribution object that may cast to one of the types above.
+     * 
+     * @deprecated Since PharmML 0.7, the distribution is uncluded in a {@link Distribution}
+     * object. See {@link #getDistribution()}.
      */
-    public AbstractDistributionType getDistribution(){
-    	return this.distribution;
+    @Deprecated
+    public AbstractDistributionType getUncertMLDistribution(){
+    	return this.formerdistribution;
     }
     
+    /**
+     * @deprecated Since PharmML 0.7, the distribution is uncluded in a {@link Distribution}
+     * object. See {@link #getDistribution()}.
+     */
+    @Deprecated
     public void setDistribution(AbstractCategoricalUnivariateDistributionType distribution){
-    	this.distribution = distribution;
+    	this.formerdistribution = distribution;
     }
+    /**
+     * @deprecated Since PharmML 0.7, the distribution is uncluded in a {@link Distribution}
+     * object. See {@link #getDistribution()}.
+     */
+    @Deprecated
     public void setDistribution(AbstractCategoricalMultivariateDistributionType distribution){
-    	this.distribution = distribution;
+    	this.formerdistribution = distribution;
     }
+    /**
+     * @deprecated Since PharmML 0.7, the distribution is uncluded in a {@link Distribution}
+     * object. See {@link #getDistribution()}.
+     */
+    @Deprecated
     public void setDistribution(AbstractDiscreteUnivariateDistributionType distribution){
-    	this.distribution = distribution;
+    	this.formerdistribution = distribution;
     }
+    /**
+     * @deprecated Since PharmML 0.7, the distribution is uncluded in a {@link Distribution}
+     * object. See {@link #getDistribution()}.
+     */
+    @Deprecated
     public void setDistribution(AbstractDiscreteMultivariateDistributionType distribution){
-    	this.distribution = distribution;
+    	this.formerdistribution = distribution;
+    }
+    
+    /**
+     * Gets the value of the distribution property.
+     * 
+     * <p>Since PharmML 0.7, the distribution is wrapped in this {@link Distribution} object.
+     * In order to make libPharmML backwards compatible with model version prior to 0.7, the 
+     * distribution for those models is available via {@link #getUncertMLDistribution()}.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Distribution }
+     *     
+     * @since PharmML 0.7
+     */
+    public Distribution getDistribution() {
+        return distribution;
+    }
+
+    /**
+     * Sets the value of the distribution property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Distribution }
+     *     
+     * @since PharmML 0.7
+     */
+    public void setDistribution(Distribution value) {
+        this.distribution = value;
     }
 
     /**
@@ -194,13 +253,13 @@ public class CategoricalPMF
 		@Override
 		public CategoricalPMF unmarshal(CategoricalPMF v) throws Exception {
 			if(v.jaxb_abstractCategoricalMultivariateDistribution != null){
-				v.distribution = v.jaxb_abstractCategoricalMultivariateDistribution.getValue();
+				v.formerdistribution = v.jaxb_abstractCategoricalMultivariateDistribution.getValue();
 			} else if(v.jaxb_abstractCategoricalUnivariateDistribution != null){
-				v.distribution = v.jaxb_abstractCategoricalUnivariateDistribution.getValue();
+				v.formerdistribution = v.jaxb_abstractCategoricalUnivariateDistribution.getValue();
 			} else if(v.jaxb_abstractDiscreteMultivariateDistribution != null){
-				v.distribution = v.jaxb_abstractDiscreteMultivariateDistribution.getValue();
+				v.formerdistribution = v.jaxb_abstractDiscreteMultivariateDistribution.getValue();
 			} else if(v.jaxb_abstractDiscreteUnivariateDistribution != null){
-				v.distribution = v.jaxb_abstractDiscreteUnivariateDistribution.getValue();
+				v.formerdistribution = v.jaxb_abstractDiscreteUnivariateDistribution.getValue();
 			}
 			return v;
 		}
@@ -208,22 +267,22 @@ public class CategoricalPMF
 		@Override
 		public CategoricalPMF marshal(CategoricalPMF v) throws Exception {
 			if(v != null){
-				if(v.distribution instanceof AbstractCategoricalMultivariateDistributionType){
+				if(v.formerdistribution instanceof AbstractCategoricalMultivariateDistributionType){
 					v.jaxb_abstractCategoricalMultivariateDistribution = 
 							MasterObjectFactory.createCategoricalMultivariateDistribution(
-									(AbstractCategoricalMultivariateDistributionType) v.distribution);
-				} else if (v.distribution instanceof AbstractCategoricalUnivariateDistributionType){
+									(AbstractCategoricalMultivariateDistributionType) v.formerdistribution);
+				} else if (v.formerdistribution instanceof AbstractCategoricalUnivariateDistributionType){
 					v.jaxb_abstractCategoricalUnivariateDistribution =
 							MasterObjectFactory.createCategoricalUnivariateDistribution(
-									(AbstractCategoricalUnivariateDistributionType) v.distribution);
-				} else if (v.distribution instanceof AbstractDiscreteMultivariateDistributionType){
+									(AbstractCategoricalUnivariateDistributionType) v.formerdistribution);
+				} else if (v.formerdistribution instanceof AbstractDiscreteMultivariateDistributionType){
 					v.jaxb_abstractDiscreteMultivariateDistribution = 
 							MasterObjectFactory.createDiscreteMultivariateDistribution(
-									(AbstractDiscreteMultivariateDistributionType) v.distribution);
-				} else if (v.distribution instanceof AbstractDiscreteUnivariateDistributionType){
+									(AbstractDiscreteMultivariateDistributionType) v.formerdistribution);
+				} else if (v.formerdistribution instanceof AbstractDiscreteUnivariateDistributionType){
 					v.jaxb_abstractDiscreteUnivariateDistribution = 
 							MasterObjectFactory.createDiscreteUnivariateDistribution(
-									(AbstractDiscreteUnivariateDistributionType) v.distribution);
+									(AbstractDiscreteUnivariateDistributionType) v.formerdistribution);
 				}
 				return v;
 			} else {

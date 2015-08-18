@@ -41,6 +41,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.dom.trialdesign.CodeInjection;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
@@ -90,10 +91,10 @@ public class MONOLIXdataSet
     @XmlElement(name = "ColumnTransformation")
     protected List<ColumnTransformation> listOfColumnTransformation;
     @XmlElement(name = "MultipleDVMapping")
-    protected List<MultipleDVMapping> listOfMultipleDVMapping;
+    protected List<MSMultipleDVMapping> listOfMultipleDVMapping;
     @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
     protected DataSet dataSet;
-    @XmlElement(name = "CodeInjection")
+    @XmlElement(name = "CodeInjection", namespace = XMLFilter.NS_DEFAULT_MSTEPS) // NS < PharmML0.7
     protected CodeInjection codeInjection;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -188,13 +189,13 @@ public class MONOLIXdataSet
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link MultipleDVMapping }
+     * {@link MSMultipleDVMapping }
      * 
      * 
      */
-    public List<MultipleDVMapping> getListOfMultipleDVMapping() {
+    public List<MSMultipleDVMapping> getListOfMultipleDVMapping() {
         if (listOfMultipleDVMapping == null) {
-        	listOfMultipleDVMapping = new ArrayList<MultipleDVMapping>();
+        	listOfMultipleDVMapping = new ArrayList<MSMultipleDVMapping>();
         }
         return this.listOfMultipleDVMapping;
     }
@@ -295,11 +296,11 @@ public class MONOLIXdataSet
     }
 
     /**
-     * Creates a new empty {@link MultipleDVMapping} MultipleDVMapping element, adds it to the current object and returns it.
-     * @return The created {@link MultipleDVMapping} object.
+     * Creates a new empty {@link MSMultipleDVMapping} MultipleDVMapping element, adds it to the current object and returns it.
+     * @return The created {@link MSMultipleDVMapping} object.
      */
-    public MultipleDVMapping createMultipleDVMapping(){
-            MultipleDVMapping el = new MultipleDVMapping();
+    public MSMultipleDVMapping createMultipleDVMapping(){
+            MSMultipleDVMapping el = new MSMultipleDVMapping();
             getListOfMultipleDVMapping().add(el);
             return el;
     }
@@ -319,7 +320,7 @@ public class MONOLIXdataSet
      * @return The created {@link CodeInjection} object.
      */
     public CodeInjection createCodeInjection(){
-            CodeInjection el = new CodeInjection();
+    		CodeInjection el = new CodeInjection();
             this.codeInjection = el;
             return el;
     }

@@ -63,6 +63,9 @@ public class ColumnDefinition
     extends CommonColumnDefinition
 {
 
+	// CommonColumnDefinition inheritance removed since PharmML 0.7
+	// Now should be PharmMLRootType
+	
     @XmlAttribute(name = "columnId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String columnId;

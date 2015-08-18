@@ -37,8 +37,18 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.commontypes.Assignable;
+import eu.ddmore.libpharmml.dom.commontypes.Interpolation;
+import eu.ddmore.libpharmml.dom.commontypes.Interval;
+import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
+import eu.ddmore.libpharmml.dom.commontypes.Scalar;
+import eu.ddmore.libpharmml.dom.commontypes.Sequence;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
+import eu.ddmore.libpharmml.dom.commontypes.Vector;
+import eu.ddmore.libpharmml.dom.maths.Constant;
+import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -72,7 +82,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "assign"
 })
 public class OperationProperty
-    extends PharmMLRootType
+    extends PharmMLRootType implements Assignable
 {
 
     @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
@@ -80,6 +90,12 @@ public class OperationProperty
     @XmlAttribute(name = "name", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String name;
+    
+    public OperationProperty(){}
+    
+    public OperationProperty(String name){
+    	this.name = name;
+    }
 
     /**
      * 
@@ -137,4 +153,68 @@ public class OperationProperty
 				.addIfNotNull(assign);
 	}
 
+    @Override                                                        
+    public Rhs assign(Scalar scalar) {                               
+            Rhs rhs = new Rhs(scalar);                               
+            setAssign(rhs);                                          
+            return rhs;                                              
+    }                                                                
+
+    @Override
+    public Rhs assign(Equation equation) {
+            Rhs rhs = new Rhs(equation);  
+            setAssign(rhs);               
+            return rhs;                   
+    }                                     
+
+    @Override
+    public Rhs assign(SymbolRef symbolRef) {
+            Rhs rhs = new Rhs(symbolRef);   
+            setAssign(rhs);                 
+            return rhs;                     
+    }                                       
+
+    @Override
+    public Rhs assign(Sequence sequence) {
+            Rhs rhs = new Rhs(sequence);
+            setAssign(rhs);
+            return rhs;
+    }
+
+    @Override
+    public Rhs assign(Vector vector) {
+            Rhs rhs = new Rhs(vector);
+            setAssign(rhs);
+            return rhs;
+    }
+
+    @Override
+    public Rhs assign(Interpolation interpolation) {
+            Rhs rhs = new Rhs(interpolation);
+            setAssign(rhs);
+            return rhs;
+    }
+
+    @Override
+    public Rhs assign(Matrix matrix) {
+            Rhs rhs = new Rhs(matrix);
+            setAssign(rhs);
+            return rhs;
+    }
+
+    @Override
+    public Rhs assign(Constant constant) {
+            Rhs rhs = new Rhs(constant);
+            setAssign(rhs);
+            return rhs;
+    }
+
+    @Override
+    public Rhs assign(Interval interval) {
+            Rhs rhs = new Rhs(interval);
+            setAssign(rhs);
+            return rhs;
+    }
+
+    
 }

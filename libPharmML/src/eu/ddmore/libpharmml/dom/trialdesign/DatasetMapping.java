@@ -24,7 +24,7 @@
 //
 
 
-package eu.ddmore.libpharmml.dom.modellingsteps;
+package eu.ddmore.libpharmml.dom.trialdesign;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,15 +33,20 @@ import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableAssignment;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.dataset.DatasetMap;
+import eu.ddmore.libpharmml.dom.modellingsteps.MappingType;
+import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -70,6 +75,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * 
  * 
  */
+@SuppressWarnings("deprecation")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DatasetMappingType", propOrder = {
     "variableAssignment",
@@ -78,7 +84,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "dataSet"
 })
 public class DatasetMapping
-    extends PharmMLRootType implements DatasetMap
+    extends PharmMLRootType implements DatasetMap, PharmMLObject
 {
 
 	@XmlElement(name = "VariableAssignment", namespace = XMLFilter.NS_DEFAULT_CT)
@@ -87,10 +93,25 @@ public class DatasetMapping
 	@XmlElementRef(name = "Mapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = JAXBElement.class)
 	@Deprecated
     protected List<JAXBElement<? extends MappingType>> mapping;
-    @XmlElement(name = "ColumnMapping", required = true)
+    @XmlElement(name = "ColumnMapping", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
     protected List<ColumnMapping> columnMapping;
     @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
     protected DataSet dataSet;
+    
+    // PharmML 0.7
+    @XmlAttribute(name = "oid", required = true)
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String oid;
+    
+    /**
+     * Empty constructor
+     */
+    public DatasetMapping() {
+	}
+    
+    public DatasetMapping(String oid){
+    	this.oid = oid;
+	}
 
 	/**
      * 
@@ -193,6 +214,30 @@ public class DatasetMapping
         this.dataSet = value;
     }
     
+    /**
+     * Gets the value of the oid property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getOid() {
+        return oid;
+    }
+
+    /**
+     * Sets the value of the oid property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setOid(String value) {
+        this.oid = value;
+    }
+    
     @Override
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
@@ -206,6 +251,26 @@ public class DatasetMapping
             columnMapping = new ArrayList<ColumnMapping>();
         }
         return this.columnMapping;
+	}
+	
+	/**
+	 * Creates a new empty {@link ColumnMapping} columnMapping element, adds it to the current object and returns it.
+	 * @return The created {@link ColumnMapping} object.
+	 */
+	public ColumnMapping createColumnMapping(){
+	        ColumnMapping el = new ColumnMapping();
+	        getListOfColumnMapping().add(el);
+	        return el;
+	}
+
+	/**
+	 * Creates a new empty {@link DataSet} dataSet element, adds it to the current object and returns it.
+	 * @return The created {@link DataSet} object.
+	 */
+	public DataSet createDataSet(){
+	        DataSet el = new DataSet();
+	        this.dataSet = el;
+	        return el;
 	}
 
 }

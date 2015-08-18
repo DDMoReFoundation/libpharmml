@@ -39,6 +39,7 @@ import eu.ddmore.libpharmml.dom.dataset.DatasetMap;
 import eu.ddmore.libpharmml.dom.modellingsteps.TargetTool;
 import eu.ddmore.libpharmml.exceptions.AnnotationException;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
+import eu.ddmore.libpharmml.util.annotations.HasElementsRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 import eu.ddmore.libpharmml.validation.PharmMLValidator;
 import eu.ddmore.libpharmml.validation.Validatable;
@@ -69,38 +70,17 @@ public class UnmarshalListener extends Listener {
 		
 		// Checking for renamed elements
 		if(_class.isAnnotationPresent(HasElementRenamed.class)){
-			
-			try {
-			
+
 				Annotation annotation = _class.getAnnotation(HasElementRenamed.class);
-				HasElementRenamed hasElRenamedAnnot = (HasElementRenamed) annotation;
-				String transientField = hasElRenamedAnnot.transientField();
-				
-				List<PharmMLVersion> versionList = new ArrayList<PharmMLVersion>();
-				Map<PharmMLVersion,String> versionToField = new HashMap<PharmMLVersion,String>();
-				
-				for(RenamedElement renamedEl : hasElRenamedAnnot.mappedFields()){
-					versionList.add(renamedEl.since());
-					versionToField.put(renamedEl.since(), renamedEl.field());
-				}
-				
-				Collections.sort(versionList, Collections.reverseOrder());
-				for(PharmMLVersion version : versionList){
-					if(docVersion.isEqualOrLaterThan(version)){
-	
-							String mappedField = versionToField.get(version);
-							copyField(target, mappedField, transientField, true);
-							LoggerWrapper.getLogger().info("Using "+mappedField+" as "+ transientField+" in "+target);
-							break;
-	
-					}
-				}
-			
-			} catch (NoSuchFieldException e) {
-				throw new AnnotationException(target, "1 field does not exist.");
-			}
-			
+				handleAnnotation((HasElementRenamed) annotation, target);
+
 		}
+		if(_class.isAnnotationPresent(HasElementsRenamed.class)){
+
+			Annotation annotation = _class.getAnnotation(HasElementsRenamed.class);
+			handleAnnotation((HasElementsRenamed) annotation, target);
+
+	}
 		
 		// Storing id if present
 		if(target instanceof Identifiable){
@@ -134,6 +114,42 @@ public class UnmarshalListener extends Listener {
 			validateTargetTool((TargetTool) target);
 		}
 		
+	}
+	
+	private void handleAnnotation(HasElementRenamed annotation, Object target){
+		try {
+			
+			String transientField = annotation.transientField();
+			
+			List<PharmMLVersion> versionList = new ArrayList<PharmMLVersion>();
+			Map<PharmMLVersion,String> versionToField = new HashMap<PharmMLVersion,String>();
+			
+			for(RenamedElement renamedEl : annotation.mappedFields()){
+				versionList.add(renamedEl.since());
+				versionToField.put(renamedEl.since(), renamedEl.field());
+			}
+			
+			Collections.sort(versionList, Collections.reverseOrder());
+			for(PharmMLVersion version : versionList){
+				if(docVersion.isEqualOrLaterThan(version)){
+
+						String mappedField = versionToField.get(version);
+						copyField(target, mappedField, transientField, true);
+						LoggerWrapper.getLogger().info("Using "+mappedField+" as "+ transientField+" in "+target);
+						break;
+
+				}
+			}
+		
+		} catch (NoSuchFieldException e) {
+			throw new AnnotationException(target, "1 field does not exist.");
+		}
+	}
+	
+	private void handleAnnotation(HasElementsRenamed annotation, Object target){
+		for(HasElementRenamed singleAnnot : annotation.value()){
+			handleAnnotation(singleAnnot, target);
+		}
 	}
 	
 	private void validateDatasetMap(DatasetMap dm){

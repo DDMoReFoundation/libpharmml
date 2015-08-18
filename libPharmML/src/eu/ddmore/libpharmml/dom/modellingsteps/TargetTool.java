@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -42,8 +43,12 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.TargetToolDataSet;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
+import eu.ddmore.libpharmml.dom.trialdesign.CodeInjection;
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
+import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 
 
 /**
@@ -84,8 +89,13 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "targetToolName",
     "columnMapping",
     "targetToolData",
-    "codeInjection"
+    "msteps_codeInjection",
+    "design_codeInjection"
 })
+@HasElementRenamed(mappedFields = { 
+		@RenamedElement(field = "msteps_codeInjection"),
+		@RenamedElement(field = "design_codeInjection", since = PharmMLVersion.V0_7)}, 
+		transientField = "codeInjection")
 public class TargetTool
     extends PharmMLRootType implements PharmMLObject
 {
@@ -96,11 +106,18 @@ public class TargetTool
     protected List<ColumnMapping> columnMapping;
     @XmlElement(name = "TargetToolData", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
     protected TargetToolDataSet targetToolData;
-    @XmlElement(name = "CodeInjection")
-    protected CodeInjection codeInjection;
+//    @XmlElement(name = "CodeInjection")
+//    protected CodeInjection codeInjection;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
+    
+    @XmlElement(name = "CodeInjection", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
+    protected CodeInjection msteps_codeInjection;
+    @XmlElement(name = "CodeInjection", namespace = XMLFilter.NS_DEFAULT_TD)
+    protected CodeInjection design_codeInjection;
+    @XmlTransient
+    protected CodeInjection codeInjection;
 
     /**
      * Gets the value of the targetToolName property.

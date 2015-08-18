@@ -24,6 +24,7 @@ import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
+import eu.ddmore.libpharmml.dom.commontypes.MissingValue;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.Sequence;
@@ -31,13 +32,16 @@ import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
+import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.dom.modeldefn.CommonParameter;
-import eu.ddmore.libpharmml.dom.modeldefn.GaussianObsError;
+import eu.ddmore.libpharmml.dom.modeldefn.DesignParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.GeneralObsError;
 import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.ObservationError;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomVariable;
+import eu.ddmore.libpharmml.dom.modeldefn.PopulationParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameter;
+import eu.ddmore.libpharmml.dom.modeldefn.StructuredObsError;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractCategoricalMultivariateDistributionType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractCategoricalUnivariateDistributionType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractDiscreteMultivariateDistributionType;
@@ -62,6 +66,7 @@ import eu.ddmore.libpharmml.dom.uncertml.WishartDistribution;
  * @author Florent Yvon
  *
  */
+@SuppressWarnings("deprecation")
 public class MasterObjectFactory {
 	
 	public static ObjectFactory ROOT_OF = new ObjectFactory();
@@ -94,8 +99,47 @@ public class MasterObjectFactory {
 			} else {
 				element = COMMONTYPES_OF.createFalse((FalseBoolean) scalar);
 			}
+		} else if(scalar instanceof MissingValue){
+			element = createMissingValue((MissingValue) scalar);
 		} else {
 			throw new IllegalArgumentException("Unknown scalar type");
+		}
+		return element;
+	}
+	
+	/**
+	 * Creates an instance of a {@link JAXBElement} containing the provided {@link MissingValue}.
+	 * The name of the element is set following the value of {@link MissingValue#getSymbol()}.
+	 * @param missingValue The {@link MissingValue} to wrap. The value of {@link MissingValue#getSymbol()}
+	 * must not be null.
+	 * @return A new instance of {@link JAXBElement}.
+	 */
+	public static JAXBElement<MissingValue> createMissingValue(MissingValue missingValue){
+		if(missingValue.getSymbol() == null){
+			throw new NullPointerException("MissingValue object has null symbol.");
+		}
+		JAXBElement<MissingValue> element;
+		switch (missingValue.getSymbol()){
+			case ALQ:
+				element = COMMONTYPES_OF.createALQ(missingValue);
+				break;
+			case BLQ:
+				element = COMMONTYPES_OF.createBLQ(missingValue);
+				break;
+			case MINUSINF:
+				element = COMMONTYPES_OF.createMinusInf(missingValue);
+				break;
+			case NA:
+				element = COMMONTYPES_OF.createNA(missingValue);
+				break;
+			case NaN:
+				element = COMMONTYPES_OF.createNaN(missingValue);
+				break;
+			case PLUSINF:
+				element = COMMONTYPES_OF.createPlusInf(missingValue);
+				break;
+			default:
+				throw new IllegalArgumentException("Missing value symbol is unknown");
 		}
 		return element;
 	}
@@ -196,8 +240,10 @@ public class MasterObjectFactory {
 		JAXBElement<? extends ObservationError> element;
 		if(model instanceof GeneralObsError){
 			element = MODELDEFN_OF.createGeneral((GeneralObsError) model);
-		} else if (model instanceof GaussianObsError){
-			element = MODELDEFN_OF.createStandard((GaussianObsError) model);
+		} else if (model instanceof StructuredObsError){
+			element = MODELDEFN_OF.createStandard((StructuredObsError) model);
+//		} else if (model instanceof GaussianObsError){
+//			element = MODELDEFN_OF.createStandard((GaussianObsError) model);
 		} else {
 			element = MODELDEFN_OF.createObservationError(model);
 		} 
@@ -212,6 +258,10 @@ public class MasterObjectFactory {
 			element = MODELDEFN_OF.createSimpleParameter((SimpleParameter) param);
 		} else if(param instanceof IndividualParameter){
 			element = MODELDEFN_OF.createIndividualParameter((IndividualParameter) param);
+		} else if(param instanceof PopulationParameter){
+			element = MODELDEFN_OF.createPopulationParameter((PopulationParameter) param);
+		} else if(param instanceof DesignParameter){
+			element = MODELDEFN_OF.createDesignParameter((DesignParameter) param);
 		} else {
 			element = MODELDEFN_OF.createCommonParameterElement(param);
 		}
@@ -226,6 +276,8 @@ public class MasterObjectFactory {
 			element = COMMONTYPES_OF.createSymbRef((SymbolRef) value);
 		} else if(value instanceof Sequence){
 			element = COMMONTYPES_OF.createSequence((Sequence) value);
+		} else if(value instanceof Equation){
+			element = MATHS_OF.createEquation((Equation) value);
 		} else {
 			throw new RuntimeException("Unknown VectorValue type");
 		}

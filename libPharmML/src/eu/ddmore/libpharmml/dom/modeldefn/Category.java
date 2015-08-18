@@ -35,12 +35,16 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
+import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
+import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.validation.SymbolResolver;
 
 
 /**
@@ -55,11 +59,16 @@ import eu.ddmore.libpharmml.util.ChainedList;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Name" minOccurs="0"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Description" minOccurs="0"/>
- *         &lt;element name="Probability" type="{http://www.pharmml.org/2013/03/CommonTypes}ScalarRhs" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Name" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Description" minOccurs="0"/>
+ *         &lt;element name="Probability" type="{http://www.pharmml.org/pharmml/0.7/CommonTypes}ScalarRhs" minOccurs="0"/>
+ *         &lt;choice>
+ *           &lt;element name="InterventionRef" type="{http://www.pharmml.org/pharmml/0.7/CommonTypes}OidRefType" minOccurs="0"/>
+ *           &lt;element name="InterventionSequence" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}InterventionSequenceType" minOccurs="0"/>
+ *           &lt;element name="OccasionRef" type="{http://www.pharmml.org/pharmml/0.7/CommonTypes}OidRefType" minOccurs="0"/>
+ *         &lt;/choice>
  *       &lt;/sequence>
- *       &lt;attribute name="catId" use="required" type="{http://www.pharmml.org/2013/03/CommonTypes}SymbolIdType" />
+ *       &lt;attribute name="catId" use="required" type="{http://www.pharmml.org/pharmml/0.7/CommonTypes}CatIdType" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -69,11 +78,14 @@ import eu.ddmore.libpharmml.util.ChainedList;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CategoryType", propOrder = {
-    "name",
+	"name",
     "description",
-    "probability"
+    "probability",
+    "interventionRef",
+    "interventionSequence",
+    "occasionRef"
 })
-public class Category extends PharmMLElement {
+public class Category extends PharmMLElement implements ReferenceContainer {
 
     @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Name name;
@@ -81,6 +93,16 @@ public class Category extends PharmMLElement {
     protected AnnotationType description;
     @XmlElement(name = "Probability")
     protected ScalarRhs probability;
+    
+    // PharmML 0.7 -----------------------------
+    @XmlElement(name = "InterventionRef")
+    protected OidRef interventionRef;
+    @XmlElement(name = "InterventionSequence")
+    protected InterventionSequence interventionSequence;
+    @XmlElement(name = "OccasionRef")
+    protected OidRef occasionRef;
+    // -----------------------------------------
+    
     @XmlAttribute(name = "catId", required = true)
     protected String catId;
 
@@ -155,9 +177,87 @@ public class Category extends PharmMLElement {
     public void setProbability(ScalarRhs value) {
         this.probability = value;
     }
+    
+    /**
+     * Refers to one(!) intervention which will be treated as covariate. 
+     * 
+     * @return
+     *     possible object is
+     *     {@link OidRef }
+     *     
+     * @since PharmML 0.7
+     */
+    public OidRef getInterventionRef() {
+        return interventionRef;
+    }
 
     /**
-     * Gets the value of the catId property.
+     * Refers to one(!) intervention which will be treated as covariate. 
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link OidRef }
+     *     
+     * @since PharmML 0.7
+     */
+    public void setInterventionRef(OidRef value) {
+        this.interventionRef = value;
+    }
+
+    /**
+     * Gets the value of the interventionSequence property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link InterventionSequence }
+     *     
+     * @since PharmML 0.7
+     */
+    public InterventionSequence getInterventionSequence() {
+        return interventionSequence;
+    }
+
+    /**
+     * Sets the value of the interventionSequence property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link InterventionSequence }
+     *     
+     * @since PharmML 0.7
+     */
+    public void setInterventionSequence(InterventionSequence value) {
+        this.interventionSequence = value;
+    }
+
+    /**
+     * Refers to the occasion which will be treated as covariate.
+     * 
+     * @return
+     *     possible object is
+     *     {@link OidRef }
+     *     
+     * @since PharmML 0.7
+     */
+    public OidRef getOccasionRef() {
+        return occasionRef;
+    }
+
+    /**
+     * Refers to the occasion which will be treated as covariate.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link OidRef }
+     *     
+     * @since PharmML 0.7
+     */
+    public void setOccasionRef(OidRef value) {
+        this.occasionRef = value;
+    }
+
+    /**
+     * The identifier of the category.
      * 
      * @return
      *     possible object is
@@ -169,7 +269,7 @@ public class Category extends PharmMLElement {
     }
 
     /**
-     * Sets the value of the catId property.
+     * The identifier of the category.
      * 
      * @param value
      *     allowed object is
@@ -185,7 +285,16 @@ public class Category extends PharmMLElement {
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(name)
 				.addIfNotNull(description)
-				.addIfNotNull(probability);
+				.addIfNotNull(probability)
+				.addIfNotNull(interventionRef)
+				.addIfNotNull(interventionSequence)
+				.addIfNotNull(occasionRef);
+	}
+
+	@Override
+	public void validateReferences(SymbolResolver sr, IErrorHandler errorHandler) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

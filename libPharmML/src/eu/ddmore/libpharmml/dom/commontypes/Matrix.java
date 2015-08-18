@@ -85,14 +85,15 @@ import eu.ddmore.libpharmml.util.SubList;
  * <pre>
  * &lt;complexType name="MatrixType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.7/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="RowNames" type="{http://www.pharmml.org/2013/03/CommonTypes}MatrixColumnRowNames" minOccurs="0"/>
- *         &lt;element name="ColumnNames" type="{http://www.pharmml.org/2013/03/CommonTypes}MatrixColumnRowNames" minOccurs="0"/>
+ *         &lt;element name="RowNames" type="{http://www.pharmml.org/pharmml/0.7/CommonTypes}MatrixColumnRowNames" minOccurs="0"/>
+ *         &lt;element name="ColumnNames" type="{http://www.pharmml.org/pharmml/0.7/CommonTypes}MatrixColumnRowNames" minOccurs="0"/>
  *         &lt;choice maxOccurs="unbounded" minOccurs="0">
- *           &lt;element name="MatrixRow" type="{http://www.pharmml.org/2013/03/CommonTypes}MatrixRowType" maxOccurs="unbounded"/>
- *           &lt;element name="MatrixCell" type="{http://www.pharmml.org/2013/03/CommonTypes}MatrixCellType" maxOccurs="unbounded"/>
- *           &lt;element name="MatrixBlock" type="{http://www.pharmml.org/2013/03/CommonTypes}MatrixBlockType" maxOccurs="unbounded"/>
+ *           &lt;element name="MatrixColumn" type="{http://www.pharmml.org/pharmml/0.7/CommonTypes}MatrixColumnType" maxOccurs="unbounded"/>
+ *           &lt;element name="MatrixRow" type="{http://www.pharmml.org/pharmml/0.7/CommonTypes}MatrixRowType" maxOccurs="unbounded"/>
+ *           &lt;element name="MatrixCell" type="{http://www.pharmml.org/pharmml/0.7/CommonTypes}MatrixCellType" maxOccurs="unbounded"/>
+ *           &lt;element name="MatrixBlock" type="{http://www.pharmml.org/pharmml/0.7/CommonTypes}MatrixBlockType" maxOccurs="unbounded"/>
  *         &lt;/choice>
  *       &lt;/sequence>
  *       &lt;attribute name="diagDefault" type="{http://www.w3.org/2001/XMLSchema}double" default="0" />
@@ -110,7 +111,6 @@ import eu.ddmore.libpharmml.util.SubList;
  *           &lt;/restriction>
  *         &lt;/simpleType>
  *       &lt;/attribute>
- *       &lt;attribute name="symbId" type="{http://www.pharmml.org/2013/03/CommonTypes}SymbolIdType" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -133,6 +133,7 @@ public class Matrix
     @XmlElement(name = "ColumnNames")
     protected MatrixColumnRowNames columnNames;
     @XmlElements({
+    	@XmlElement(name = "MatrixColumn", type = MatrixColumn.class),
         @XmlElement(name = "MatrixRow", type = MatrixRow.class),
         @XmlElement(name = "MatrixCell", type = MatrixCell.class),
         @XmlElement(name = "MatrixBlock", type = MatrixBlock.class)
@@ -325,6 +326,7 @@ public class Matrix
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
+     * {@link MatrixColumn }
      * {@link MatrixRow }
      * {@link MatrixCell }
      * {@link MatrixBlock }
@@ -697,6 +699,12 @@ public class Matrix
     	MatrixRow row = createMatrixRow(values);
     	row.setRowIndex(index);
     	return row;
+    }
+    
+    public MatrixColumn createMatrixColumn(){
+    	MatrixColumn column = new MatrixColumn();
+    	getListOfMatrixElements().add(column);
+    	return column;
     }
     
     /**

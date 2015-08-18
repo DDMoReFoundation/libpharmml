@@ -66,13 +66,21 @@ public class PharmMLSchemaFactory {
 			StreamSource src = new StreamSource(val);
 			SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 			sf.setResourceResolver(resolver);
-			Schema mySchema = sf.newSchema(new StreamSource[] { src });
+			Schema mySchema;
+			try {
+				mySchema = sf.newSchema(new StreamSource[] { src });
+			} catch (SAXException e) {
+				LoggerWrapper.getLogger().severe("Could not find "+type+" schemas for version "+version.getValue());
+				LoggerWrapper.getLogger().info("-src: "+src+" -catalogs: "+catalogs+ " -url: "+url+ " -catalogLocation: "+catalogLocation+" -systemURI: "+systemURI);
+				throw new RuntimeException(e.getMessage(), e);
+			}
 
 			return mySchema;
 		} catch (IOException e) {
 			throw new RuntimeException(e.getMessage(), e);
-		} catch (SAXException e) {
-			throw new RuntimeException(e.getMessage(), e);
+//		} catch (SAXException e) {
+//			LoggerWrapper.getLogger().severe("Could not find "+type+" schemas for version "+version.getValue());
+//			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
 	
@@ -96,7 +104,7 @@ public class PharmMLSchemaFactory {
 				systemURI = XMLFilter.NS_DEFAULT_MML;
 			} else {
 				catalogLocation = version.getCatalogLocation();
-				systemURI = XMLFilter.NS_OLD_MML;
+				systemURI = new XMLFilter(version).getMMLNamespaceURI();
 			}
 		}
 		return new String[] {catalogLocation, systemURI};

@@ -64,17 +64,17 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated Since PharmML 0.7, column definition are available within {@link HeaderColumnsDefinition}.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ColumnsDefinitionType", propOrder = {
 	"columnOrTable",
     "column"
 })
+@Deprecated
 public class ColumnsDefinitionType
     extends PharmMLRootType
 {
-	@SuppressWarnings("deprecation")
 	@XmlElements({
         @XmlElement(name = "Column", type = ColumnDefinition.class),
         @XmlElement(name = "Table", type = DataSetTableDefnType.class)

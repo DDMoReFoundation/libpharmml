@@ -67,6 +67,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlType(name = "NONMEMdataSetReferenceType", propOrder = {
     "oidRef"
 })
+@Deprecated
 public class NONMEMdataSetReference
     extends PharmMLRootType
 {

@@ -21,6 +21,8 @@ package eu.ddmore.libpharmml.dom.commontypes;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.exceptions.UndeclaredInterfaceImplementer;
 
 public class VectorValueAdapter extends XmlAdapter<JAXBElement<?>, VectorValue>{
@@ -38,6 +40,8 @@ public class VectorValueAdapter extends XmlAdapter<JAXBElement<?>, VectorValue>{
 			return new VectorCellValueAdapter().marshal((VectorCellValue) v);
 		} else if (v instanceof Sequence){
 			return of.createSequence((Sequence) v);
+		} else if (v instanceof Equation){
+			return MasterObjectFactory.MATHS_OF.createEquation((Equation) v);
 		} else {
 			throw new UndeclaredInterfaceImplementer(this, v);
 		}

@@ -41,6 +41,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.dom.trialdesign.CodeInjection;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
@@ -90,10 +91,10 @@ public class NONMEMdataSet
     @XmlElement(name = "ColumnTransformation")
     protected List<ColumnTransformation> listOfColumnTransformation;
     @XmlElement(name = "MultipleDVMapping")
-    protected List<MultipleDVMapping> multipleDVMapping;
+    protected List<MSMultipleDVMapping> multipleDVMapping;
     @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
     protected DataSet dataSet;
-    @XmlElement(name = "CodeInjection")
+    @XmlElement(name = "CodeInjection", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
     protected CodeInjection codeInjection;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -175,13 +176,13 @@ public class NONMEMdataSet
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link MultipleDVMapping }
+     * {@link MSMultipleDVMapping }
      * 
      * 
      */
-    public List<MultipleDVMapping> getMultipleDVMapping() {
+    public List<MSMultipleDVMapping> getMultipleDVMapping() {
         if (multipleDVMapping == null) {
-            multipleDVMapping = new ArrayList<MultipleDVMapping>();
+            multipleDVMapping = new ArrayList<MSMultipleDVMapping>();
         }
         return this.multipleDVMapping;
     }

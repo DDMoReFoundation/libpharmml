@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixCellValue;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixRowValue;
 import eu.ddmore.libpharmml.dom.commontypes.OperationVariable;
+import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
 
 
 /**
@@ -56,8 +57,13 @@ import eu.ddmore.libpharmml.dom.commontypes.OperationVariable;
 @XmlType(name = "")
 @XmlRootElement(name = "Equation")
 public class Equation
-    extends EquationType implements MatrixCellValue, MatrixRowValue, OperationVariable
+    extends EquationType implements MatrixCellValue, MatrixRowValue, OperationVariable, VectorValue
 {
+
+	@Override
+	public String asString() {
+		return toString();
+	}
 
 
 }

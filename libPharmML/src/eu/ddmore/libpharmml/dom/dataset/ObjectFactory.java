@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-import eu.ddmore.libpharmml.impl.XMLFilter;
+import static eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_DS;;
 
 
 /**
@@ -50,20 +50,26 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
  */
 @XmlRegistry
 public class ObjectFactory {
+	
+	private final static ObjectFactory instance = new ObjectFactory();
 
-    private final static QName _Table_QNAME = new QName(XMLFilter.NS_DEFAULT_DS, "Table");
-    private final static QName _Definition_QNAME = new QName(XMLFilter.NS_DEFAULT_DS, "Definition");
-    private final static QName _TargetToolData_QNAME = new QName(XMLFilter.NS_DEFAULT_DS, "TargetToolData");
-    private final static QName _ColumnRef_QNAME = new QName(XMLFilter.NS_DEFAULT_DS, "ColumnRef");
-    private final static QName _ImportData_QNAME = new QName(XMLFilter.NS_DEFAULT_DS, "ImportData");
-    private final static QName _DataSet_QNAME = new QName(XMLFilter.NS_DEFAULT_DS, "DataSet");
-    private final static QName _ImportTargetData_QNAME = new QName(XMLFilter.NS_DEFAULT_DS, "ImportTargetData");
+    private final static QName _Table_QNAME = new QName(NS_DEFAULT_DS, "Table");
+    private final static QName _Definition_QNAME = new QName(NS_DEFAULT_DS, "Definition");
+    private final static QName _TargetToolData_QNAME = new QName(NS_DEFAULT_DS, "TargetToolData");
+    private final static QName _ColumnRef_QNAME = new QName(NS_DEFAULT_DS, "ColumnRef");
+    private final static QName _ImportData_QNAME = new QName(NS_DEFAULT_DS, "ImportData");
+    private final static QName _DataSet_QNAME = new QName(NS_DEFAULT_DS, "DataSet");
+    private final static QName _ImportTargetData_QNAME = new QName(NS_DEFAULT_DS, "ImportTargetData");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.dataset
      * 
      */
     public ObjectFactory() {
+    }
+    
+    public static ObjectFactory getInstance(){
+    	return instance;
     }
 
     /**
@@ -91,11 +97,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataSetTableType }
+     * Create an instance of {@link DataSetTable }
      * 
      */
-    public DataSetTableType createDataSetTableType() {
-        return new DataSetTableType();
+    public DataSetTable createDataSetTableType() {
+        return new DataSetTable();
     }
 
     /**
@@ -110,6 +116,7 @@ public class ObjectFactory {
      * Create an instance of {@link ColumnsDefinitionType }
      * 
      */
+    @Deprecated
     public ColumnsDefinitionType createColumnsDefinitionType() {
         return new ColumnsDefinitionType();
     }
@@ -169,30 +176,54 @@ public class ObjectFactory {
     public MapType createMapType() {
         return new MapType();
     }
-
+    
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DataSetTableType }{@code >}}
+     * Create an instance of {@link MissingDataMap }
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_DS, name = "Table")
-    public JAXBElement<DataSetTableType> createTable(DataSetTableType value) {
-        return new JAXBElement<DataSetTableType>(_Table_QNAME, DataSetTableType.class, null, value);
+    public MissingDataMap createMissingDataMapType() {
+        return new MissingDataMap();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ColumnsDefinitionType }{@code >}}
+     * Create an instance of {@link HeaderDefinition }
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_DS, name = "Definition")
-    public JAXBElement<ColumnsDefinitionType> createDefinition(ColumnsDefinitionType value) {
-        return new JAXBElement<ColumnsDefinitionType>(_Definition_QNAME, ColumnsDefinitionType.class, null, value);
+    public HeaderDefinition createHeaderDefinition() {
+        return new HeaderDefinition();
+    }
+
+    /**
+     * Create an instance of {@link HeaderRow }
+     * 
+     */
+    public HeaderRow createHeaderRow() {
+        return new HeaderRow();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DataSetTable }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = NS_DEFAULT_DS, name = "Table")
+    public JAXBElement<DataSetTable> createTable(DataSetTable value) {
+        return new JAXBElement<DataSetTable>(_Table_QNAME, DataSetTable.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HeaderColumnsDefinition }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = NS_DEFAULT_DS, name = "Definition")
+    public JAXBElement<HeaderColumnsDefinition> createDefinition(HeaderColumnsDefinition value) {
+        return new JAXBElement<HeaderColumnsDefinition>(_Definition_QNAME, HeaderColumnsDefinition.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link TargetToolDataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_DS, name = "TargetToolData")
+    @XmlElementDecl(namespace = NS_DEFAULT_DS, name = "TargetToolData")
     public JAXBElement<TargetToolDataSet> createTargetToolData(TargetToolDataSet value) {
         return new JAXBElement<TargetToolDataSet>(_TargetToolData_QNAME, TargetToolDataSet.class, null, value);
     }
@@ -201,7 +232,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ColumnReference }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_DS, name = "ColumnRef")
+    @XmlElementDecl(namespace = NS_DEFAULT_DS, name = "ColumnRef")
     public JAXBElement<ColumnReference> createColumnRef(ColumnReference value) {
         return new JAXBElement<ColumnReference>(_ColumnRef_QNAME, ColumnReference.class, null, value);
     }
@@ -210,7 +241,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ExternalFile }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_DS, name = "ImportData")
+    @XmlElementDecl(namespace = NS_DEFAULT_DS, name = "ImportData")
     public JAXBElement<ExternalFile> createImportData(ExternalFile value) {
         return new JAXBElement<ExternalFile>(_ImportData_QNAME, ExternalFile.class, null, value);
     }
@@ -219,7 +250,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_DS, name = "DataSet")
+    @XmlElementDecl(namespace = NS_DEFAULT_DS, name = "DataSet")
     public JAXBElement<DataSet> createDataSet(DataSet value) {
         return new JAXBElement<DataSet>(_DataSet_QNAME, DataSet.class, null, value);
     }
@@ -228,7 +259,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ImportTargetData }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_DS, name = "ImportTargetData")
+    @XmlElementDecl(namespace = NS_DEFAULT_DS, name = "ImportTargetData")
     public JAXBElement<ImportTargetData> createImportTargetData(ImportTargetData value) {
         return new JAXBElement<ImportTargetData>(_ImportTargetData_QNAME, ImportTargetData.class, null, value);
     }

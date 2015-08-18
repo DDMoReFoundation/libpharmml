@@ -68,7 +68,8 @@ import eu.ddmore.libpharmml.validation.SymbolResolver;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated Since PharmML 0.7, {@link TrialDesign} structure has been completely redefined. See PharmML
+ * 0.7 change document, chapter 5.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "StudyEventType", propOrder = {
@@ -77,6 +78,7 @@ import eu.ddmore.libpharmml.validation.SymbolResolver;
 @XmlSeeAlso({
     Observations.class
 })
+@Deprecated
 public abstract class StudyEvent
     extends PharmMLRootType implements PharmMLObject, ReferenceContainer
 {
@@ -109,6 +111,7 @@ public abstract class StudyEvent
      * 
      * 
      */
+    @Deprecated
     public List<OidRef> getArmRef() {
         if (armRef == null) {
             armRef = new ArrayList<OidRef>();
@@ -124,6 +127,7 @@ public abstract class StudyEvent
      *     {@link String }
      *     
      */
+    @Deprecated
     public String getOid() {
         return oid;
     }
@@ -136,24 +140,27 @@ public abstract class StudyEvent
      *     {@link String }
      *     
      */
+    @Deprecated
     public void setOid(String value) {
         this.oid = value;
     }
     
     @Override
 	public void validateReferences(SymbolResolver sr, IErrorHandler errorHandler) {
-		for(OidRef oidref : armRef){
-			if(oidref.getOidRef() != null){
-				if(sr.containsObject(oidref.getOidRef())){
-					PharmMLObject object = sr.getObject(oidref.getOidRef());
-					if(!(object instanceof ArmDefinition)){
-						sr.handleIncompatibleObject(oidref, object, this);
-					}
-				} else {
-					sr.handleUnresolvedObject(oidref);
-				}
-			}
-		}
+    	if(armRef != null){
+    		for(OidRef oidref : armRef){
+    			if(oidref.getOidRef() != null){
+    				if(sr.containsObject(oidref.getOidRef())){
+    					PharmMLObject object = sr.getObject(oidref.getOidRef());
+    					if(!(object instanceof ArmDefinition)){
+    						sr.handleIncompatibleObject(oidref, object, this);
+    					}
+    				} else {
+    					sr.handleUnresolvedObject(oidref);
+    				}
+    			}
+    		}
+    	}
 	}
 
 }

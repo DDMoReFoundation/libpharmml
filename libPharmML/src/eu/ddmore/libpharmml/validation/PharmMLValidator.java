@@ -109,7 +109,7 @@ public class PharmMLValidator {
 	public static void validateTargetTool(TargetTool tt, IErrorHandler errorHandler){
 		Set<String> columnIds = new HashSet<String>();
 		if(tt.getTargetToolData() != null && tt.getTargetToolData().getDefinition() != null){
-			for(ColumnDefinition column : tt.getTargetToolData().getDefinition().getColumn()){
+			for(ColumnDefinition column : tt.getTargetToolData().getDefinition().getListOfColumn()){
 				if(column.getColumnId() != null){
 					columnIds.add(column.getColumnId());
 					// TODO: control of columnId unicity

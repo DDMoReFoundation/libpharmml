@@ -24,39 +24,38 @@
 //
 
 
-package eu.ddmore.libpharmml.dom.modellingsteps;
+package eu.ddmore.libpharmml.dom.trialdesign;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.Sequence;
-import eu.ddmore.libpharmml.dom.commontypes.Vector;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
  * 
- *                 Timepoints.
+ *                 Type defining the type of a continuous observation variable to be simulated.
  *             
  * 
- * <p>Java class for TimepointsType complex type.
+ * <p>Java class for ContinuousObservationType complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="TimepointsType">
+ * &lt;complexType name="ContinuousObservationType">
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Arrays"/>
+ *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -66,51 +65,59 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TimepointsType", propOrder = {
-    "arrays"
+@XmlType(name = "ContinuousObservationType", propOrder = {
+    "listOfSymbRef"
 })
-public class Timepoints
+public class ContinuousObservation
     extends PharmMLRootType
 {
 
-    @XmlElementRef(name = "Arrays", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class)
-    protected JAXBElement<?> arrays;
+    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    protected List<SymbolRef> listOfSymbRef;
 
     /**
-     * Gets the value of the arrays property.
      * 
-     * @return
-     *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Sequence }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Vector }{@code >}
-     *     
+     *                         Refers to the variable to be observed. 
+     *                     Gets the value of the symbRef property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the symbRef property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getSymbRef().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link SymbolRef }
+     * 
+     * 
      */
-    public JAXBElement<?> getArrays() {
-        return arrays;
+    public List<SymbolRef> getListOfSymbRef() {
+        if (listOfSymbRef == null) {
+        	listOfSymbRef = new ArrayList<SymbolRef>();
+        }
+        return this.listOfSymbRef;
     }
-
+    
     /**
-     * Sets the value of the arrays property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Object }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Sequence }{@code >}
-     *     {@link JAXBElement }{@code <}{@link Vector }{@code >}
-     *     
+     * @deprecated Use {@link #getListOfSymbRef()}.
+     * @return
      */
-    public void setArrays(JAXBElement<?> value) {
-        this.arrays = value;
+    public List<SymbolRef> getSymbRef(){
+    	return getListOfSymbRef();
     }
     
     @Override
-    protected List<TreeNode> listChildren() {
-    	List<TreeNode> list = new ChainedList<TreeNode>();
-    	if(arrays != null && arrays.getValue() instanceof TreeNode){
-    		list.add((TreeNode) arrays.getValue());
-    	}
-    	return list;
-    }
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>()
+				.addIfNotNull(listOfSymbRef);
+	}
 
 }

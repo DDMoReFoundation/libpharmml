@@ -67,6 +67,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * 
  * 
  */
+@SuppressWarnings("deprecation")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CommonParameterType", propOrder = {
     "symbol"
@@ -74,6 +75,8 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlSeeAlso({
     ParameterRandomVariable.class,
     SimpleParameter.class,
+    DesignParameter.class,
+    PopulationParameter.class,
     IndividualParameter.class
 })
 public abstract class CommonParameter

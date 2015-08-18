@@ -35,6 +35,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.trialdesign.DatasetMapping;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -61,7 +63,6 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * &lt;/complexType>
  * </pre>
  * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EstimationStepType", propOrder = {
@@ -73,7 +74,8 @@ public class Estimation
     extends CommonModellingStep
 {
 
-    @XmlElement(name = "ObjectiveDataSet")
+    @XmlElement(name = "ObjectiveDataSet", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
+    @Deprecated
     protected List<DatasetMapping> objectiveDataSet;
     @XmlElement(name = "ParametersToEstimate", required = true)
     protected ToEstimate parametersToEstimate;
@@ -100,8 +102,9 @@ public class Estimation
      * Objects of the following type(s) are allowed in the list
      * {@link DatasetMapping }
      * 
-     * 
+     * @deprecated Since PharmML 0.7
      */
+    @Deprecated
     public List<DatasetMapping> getObjectiveDataSet() {
         if (objectiveDataSet == null) {
             objectiveDataSet = new ArrayList<DatasetMapping>();

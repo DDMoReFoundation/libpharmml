@@ -60,6 +60,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
  *               &lt;enumeration value="spline"/>
  *               &lt;enumeration value="pchip"/>
  *               &lt;enumeration value="cubic"/>
+ *               &lt;enumeration value="lastValue"/>
  *             &lt;/restriction>
  *           &lt;/simpleType>
  *         &lt;/element>
@@ -84,8 +85,17 @@ public class Interpolation
     @XmlElement(name = "Algorithm", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String algorithm;
-    @XmlElement(name = "InterpIndepVar", required = true)
+    @XmlElement(name = "InterpIndepVar")
     protected InterpolationIV interpIndepVar;
+    
+    /**
+     * Empty constructor
+     */
+    public Interpolation(){}
+    
+    public Interpolation(InterpolationAlgorithm algo){
+    	this.algorithm = algo.value();
+    }
 
     /**
      * Gets the value of the algorithm property.

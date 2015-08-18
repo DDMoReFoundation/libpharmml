@@ -190,7 +190,11 @@ public class SymbolResolver {
 	}
 	
 	private void storeObject(PharmMLObject o){
-		objects.put(o.getOid(), o);
+		if(o.getOid() != null){
+			objects.put(o.getOid(), o);
+		} else {
+			LoggerWrapper.getLogger().info("PharmMLObject with null oid won't be stored.");
+		}
 	}
 	
 	private void storeReferenceContainer(ReferenceContainer rc){

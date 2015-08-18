@@ -67,6 +67,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlType(name = "MONOLIXdataSetReferenceType", propOrder = {
     "oidRef"
 })
+@Deprecated
 public class MONOLIXdataSetReference
     extends PharmMLRootType
 {

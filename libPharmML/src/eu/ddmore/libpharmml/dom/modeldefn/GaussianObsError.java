@@ -23,7 +23,7 @@
 // Generated on: 2014.03.24 at 03:18:36 PM GMT 
 //
 
-
+// TO DELETE
 package eu.ddmore.libpharmml.dom.modeldefn;
 
 import java.util.List;
@@ -93,8 +93,9 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated GaussianObsError has been renamed to {@link StructuredObsError}.
  */
+@Deprecated
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GaussianObsError", propOrder = {
     "transformation",

@@ -100,6 +100,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "previousState",
     "condition",
     "abstractDiscreteUnivariateDistribution",
+    "distribution",
     "assign"
 })
 @XmlJavaTypeAdapter(CountPMF.Adapter.class)
@@ -118,10 +119,13 @@ public class CountPMF
     @XmlElement(name = "Condition")
     protected List<CommonDiscreteState> condition;
     
+    @XmlElement(name = "Distribution")
+    protected Distribution distribution;
+    
     @XmlElementRef(name = "AbstractDiscreteUnivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractDiscreteUnivariateDistributionType> abstractDiscreteUnivariateDistribution;
     @XmlTransient
-    protected AbstractDiscreteUnivariateDistributionType distribution;
+    protected AbstractDiscreteUnivariateDistributionType formerDistribution;
     
     @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Rhs assign;
@@ -263,44 +267,34 @@ public class CountPMF
         }
         return this.condition;
     }
+    
+    /**
+     * Gets the value of the distribution property.
+     * 
+     * <p>Since PharmML 0.7, the distribution is wrapped in this {@link Distribution} object.
+     * In order to make libPharmML backwards compatible with model version prior to 0.7, the 
+     * distribution for those models is available via {@link #getUncertMLDistribution()}
+     * 
+     * @return
+     *     possible object is
+     *     {@link Distribution }
+     *     
+     */
+    public Distribution getDistribution() {
+        return distribution;
+    }
 
-//    /**
-//     * 
-//     *                                     A discrete univariate probability distribution as defined by UncertML. 
-//     *                                 
-//     * 
-//     * @return
-//     *     possible object is
-//     *     {@link JAXBElement }{@code <}{@link GeometricDistribution }{@code >}
-//     *     {@link JAXBElement }{@code <}{@link HypergeometricDistribution }{@code >}
-//     *     {@link JAXBElement }{@code <}{@link NegativeBinomialDistribution }{@code >}
-//     *     {@link JAXBElement }{@code <}{@link AbstractDiscreteUnivariateDistributionType }{@code >}
-//     *     {@link JAXBElement }{@code <}{@link PoissonDistribution }{@code >}
-//     *     {@link JAXBElement }{@code <}{@link BinomialDistribution }{@code >}
-//     *     {@link JAXBElement }{@code <}{@link DiscreteUnivariateMixtureModel }{@code >}
-//     *     
-//     */
-//    protected JAXBElement<? extends AbstractDiscreteUnivariateDistributionType> getAbstractDiscreteUnivariateDistribution() {
-//        return abstractDiscreteUnivariateDistribution;
-//    }
-//
-//    /**
-//     * Sets the value of the abstractDiscreteUnivariateDistribution property.
-//     * 
-//     * @param value
-//     *     allowed object is
-//     *     {@link JAXBElement }{@code <}{@link GeometricDistribution }{@code >}
-//     *     {@link JAXBElement }{@code <}{@link HypergeometricDistribution }{@code >}
-//     *     {@link JAXBElement }{@code <}{@link NegativeBinomialDistribution }{@code >}
-//     *     {@link JAXBElement }{@code <}{@link AbstractDiscreteUnivariateDistributionType }{@code >}
-//     *     {@link JAXBElement }{@code <}{@link PoissonDistribution }{@code >}
-//     *     {@link JAXBElement }{@code <}{@link BinomialDistribution }{@code >}
-//     *     {@link JAXBElement }{@code <}{@link DiscreteUnivariateMixtureModel }{@code >}
-//     *     
-//     */
-//    protected void setAbstractDiscreteUnivariateDistribution(JAXBElement<? extends AbstractDiscreteUnivariateDistributionType> value) {
-//        this.abstractDiscreteUnivariateDistribution = value;
-//    }
+    /**
+     * Sets the value of the distribution property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Distribution }
+     *     
+     */
+    public void setDistribution(Distribution value) {
+        this.distribution = value;
+    }
     
     /**
      * Gets the value of the distribution property. Possible objects are
@@ -312,30 +306,23 @@ public class CountPMF
      * {@link BinomialDistribution } or
      * {@link DiscreteUnivariateMixtureModel }.
      * @return The distribution
+     * 
+     * @deprecated Since PharmML 0.7, the distribution is uncluded in a {@link Distribution}
+     * object. See {@link #getDistribution()}.
      */
-    public AbstractDiscreteUnivariateDistributionType getDistribution(){
-    	return this.distribution;
+    @Deprecated
+    public AbstractDiscreteUnivariateDistributionType getUncertMLDistribution(){
+    	return this.formerDistribution;
     }
     
     // A group of setters for each possible type as JAXBElement cannot be 
     // constructed straight from "Type" suffixed distributions 
-    public void setDistribution(GeometricDistribution distribution){
-    	this.distribution = distribution;
-    }
-    public void setDistribution(NegativeBinomialDistribution distribution){
-    	this.distribution = distribution;
-    }
-    public void setDistribution(PoissonDistribution distribution){
-    	this.distribution = distribution;
-    }
-    public void setDistribution(DiscreteUnivariateMixtureModel distribution){
-    	this.distribution = distribution;
-    }
-    public void setDistribution(BinomialDistribution distribution){
-    	this.distribution = distribution;
-    }
-    public void setDistribution(HypergeometricDistribution distribution){
-    	this.distribution = distribution;
+    /**
+     * @deprecated Since PharmML 0.7, the distribution is uncluded in a {@link Distribution}
+     * object. See {@link #getDistribution()}.
+     */
+    public void setDistribution(AbstractDiscreteUnivariateDistributionType distribution){
+    	this.formerDistribution = distribution;
     }
 
     /**
@@ -391,7 +378,7 @@ public class CountPMF
 		@Override
 		public CountPMF unmarshal(CountPMF v) throws Exception {
 			if(v.abstractDiscreteUnivariateDistribution != null){
-				v.distribution = v.abstractDiscreteUnivariateDistribution.getValue();
+				v.formerDistribution = v.abstractDiscreteUnivariateDistribution.getValue();
 			}
 			return v;
 		}
@@ -401,8 +388,8 @@ public class CountPMF
 			if(v == null){
 				return null;
 			}
-			if(v.distribution != null){
-				v.abstractDiscreteUnivariateDistribution = MasterObjectFactory.createDiscreteUnivariateDistribution(v.distribution);
+			if(v.formerDistribution != null){
+				v.abstractDiscreteUnivariateDistribution = MasterObjectFactory.createDiscreteUnivariateDistribution(v.formerDistribution);
 			}
 			return v;
 		}

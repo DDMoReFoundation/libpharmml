@@ -35,6 +35,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.trialdesign.ContinuousObservation;
+import eu.ddmore.libpharmml.dom.trialdesign.DiscreteObservation;
+import eu.ddmore.libpharmml.dom.trialdesign.Timepoints;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -63,7 +67,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated Since PharmML 0.7. Observations are now part of trial design.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ObservationsType", propOrder = {
@@ -71,15 +75,16 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "continuous",
     "discrete"
 })
+@Deprecated
 public class Observations
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Timepoints", required = true)
+    @XmlElement(name = "Timepoints", namespace = XMLFilter.NS_DEFAULT_MSTEPS, required = true)
     protected Timepoints timepoints;
-    @XmlElement(name = "Continuous")
+    @XmlElement(name = "Continuous", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
     protected ContinuousObservation continuous;
-    @XmlElement(name = "Discrete")
+    @XmlElement(name = "Discrete", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
     protected DiscreteObservation discrete;
 
     /**

@@ -20,6 +20,7 @@ package eu.ddmore.libpharmml.dom.commontypes;
 
 import javax.xml.bind.annotation.XmlTransient;
 
+import eu.ddmore.libpharmml.dom.maths.Constant;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 
 /**
@@ -76,7 +77,27 @@ public interface Assignable {
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
 	 * @param matrix The value of the assignment as a {@link Matrix}.
 	 * @return The created {@link Rhs} assign element.
+	 * 
+	 * @since PharmML 0.4.1
 	 */
 	public Rhs assign(Matrix matrix);
+	
+	/**
+	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
+	 * @param constant The value of the assignment as a {@link Constant}.
+	 * @return The created {@link Rhs} assign element.
+	 * 
+	 * @since PharmML 0.7
+	 */
+	public Rhs assign(Constant constant);
+	
+	/**
+	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
+	 * @param interval The value of the assignment as a {@link Interval}.
+	 * @return The created {@link Rhs} assign element.
+	 * 
+	 * @since PharmML 0.7
+	 */
+	public Rhs assign(Interval interval);
 	
 }

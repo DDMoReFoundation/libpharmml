@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
+import eu.ddmore.libpharmml.dom.trialdesign.Timepoints;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
@@ -96,14 +97,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Timepoints }
-     * 
-     */
-    public Timepoints createTimepointsType() {
-        return new Timepoints();
-    }
-
-    /**
      * Create an instance of {@link VariableMapping }
      * 
      */
@@ -129,14 +122,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ContinuousObservation }
-     * 
-     */
-    public ContinuousObservation createContinuousObservationType() {
-        return new ContinuousObservation();
-    }
-
-    /**
      * Create an instance of {@link SimulationOperation }
      * 
 	 * @since PharmML 0.3
@@ -159,14 +144,6 @@ public class ObjectFactory {
      */
     public TargetToolReference createTargetToolReferenceType() {
         return new TargetToolReference();
-    }
-
-    /**
-     * Create an instance of {@link CodeInjection }
-     * 
-     */
-    public CodeInjection createCodeInjectionType() {
-        return new CodeInjection();
     }
 
     /**
@@ -226,22 +203,13 @@ public class ObjectFactory {
     public InitialEstimate createInitialEstimateType() {
         return new InitialEstimate();
     }
-
-    /**
-     * Create an instance of {@link TargetToolSymbol }
-     * 
-	 * @since PharmML0.3
-     */
-    public TargetToolSymbol createTargetToolSymbolType() {
-        return new TargetToolSymbol();
-    }
     
     /**
-     * Create an instance of {@link MultipleDVMapping }
+     * Create an instance of {@link MSMultipleDVMapping }
      * 
      */
-    public MultipleDVMapping createMultipleDVMappingType() {
-        return new MultipleDVMapping();
+    public MSMultipleDVMapping createMultipleDVMappingType() {
+        return new MSMultipleDVMapping();
     }
     
     /**
@@ -253,16 +221,6 @@ public class ObjectFactory {
     }
 
 
-
-    /**
-     * Create an instance of {@link DatasetMapping }
-     * 
-	 * @since PharmML0.3
-     */
-    public DatasetMapping createDatasetMappingType() {
-        return new DatasetMapping();
-    }
-
     /**
      * Create an instance of {@link StepType }
      * 
@@ -270,24 +228,6 @@ public class ObjectFactory {
      */
     public StepType createStepType() {
         return new StepType();
-    }
-
-    /**
-     * Create an instance of {@link GenericCode }
-     * 
-	 * @since PharmML0.3
-     */
-    public GenericCode createGenericCodeType() {
-        return new GenericCode();
-    }
-
-    /**
-     * Create an instance of {@link SymbolMapping }
-     * 
-	 * @since PharmML0.3
-     */
-    public SymbolMapping createSymbolMappingType() {
-        return new SymbolMapping();
     }
 
     /**
@@ -382,14 +322,14 @@ public class ObjectFactory {
         return new JAXBElement<Estimation>(_EstimationStep_QNAME, Estimation.class, null, value);
     }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Timepoints }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MSTEPS, name = "Timepoints")
-    public JAXBElement<Timepoints> createTimepoints(Timepoints value) {
-        return new JAXBElement<Timepoints>(_Timepoints_QNAME, Timepoints.class, null, value);
-    }
+//    /**
+//     * Create an instance of {@link JAXBElement }{@code <}{@link Timepoints }{@code >}}
+//     * 
+//     */
+//    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MSTEPS, name = "Timepoints")
+//    public JAXBElement<Timepoints> createTimepoints(Timepoints value) {
+//        return new JAXBElement<Timepoints>(_Timepoints_QNAME, Timepoints.class, null, value);
+//    }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link MappingType }{@code >}}

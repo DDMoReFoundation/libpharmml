@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.maths.Constant;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -211,6 +212,7 @@ public class DerivativeVariable
      * @deprecated Since PharmML 0.4.1
      *     
      */
+    @Deprecated
     public Integer getCompartmentNo() {
         return compartmentNo;
     }
@@ -225,6 +227,7 @@ public class DerivativeVariable
      *     
      * @deprecated Since PharmML 0.4.1
      */
+    @Deprecated
     public void setCompartmentNo(Integer value) {
         this.compartmentNo = value;
     }
@@ -302,6 +305,20 @@ public class DerivativeVariable
 	@Override
 	public Rhs assign(Matrix matrix) {
 		Rhs rhs = new Rhs(matrix);
+		setAssign(rhs);
+		return rhs;
+	}
+	
+	@Override
+	public Rhs assign(Constant constant) {
+		Rhs rhs = new Rhs(constant);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Interval interval) {
+		Rhs rhs = new Rhs(interval);
 		setAssign(rhs);
 		return rhs;
 	}

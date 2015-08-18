@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  * 
  */
-@XmlType(name = "LRHSTransformationType")
+//@XmlType(name = "LRHSTransformationType")
 @XmlEnum
 public enum LRHSTransformation {
 

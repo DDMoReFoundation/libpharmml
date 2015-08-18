@@ -22,6 +22,7 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.impl.LoggerWrapper;
 
 /**
  * Adapter for converting scalar elements to JAXBElements.
@@ -36,7 +37,26 @@ public class ScalarAdapter extends XmlAdapter<JAXBElement<?>, Scalar>{
 		if(v == null){
 			return null;
 		} else {
-			return (Scalar) v.getValue();
+			Scalar value = (Scalar) v.getValue();
+			if(value instanceof MissingValue){
+				String name = v.getName().getLocalPart(); //TODO: control on namespace too
+				if(name.equals("NaN")){
+					((MissingValue) value).setSymbol(MissingValueSymbol.NaN);
+				} else if (name.equals("ALQ")){
+					((MissingValue) value).setSymbol(MissingValueSymbol.ALQ);
+				} else if (name.equals("plusInf")){
+					((MissingValue) value).setSymbol(MissingValueSymbol.PLUSINF);
+				} else if (name.equals("minusInf")){
+					((MissingValue) value).setSymbol(MissingValueSymbol.MINUSINF);
+				} else if (name.equals("BLQ")){
+					((MissingValue) value).setSymbol(MissingValueSymbol.BLQ);
+				} else if (name.equals("NA")){
+					((MissingValue) value).setSymbol(MissingValueSymbol.NA);
+				} else {
+					LoggerWrapper.getLogger().severe("Unknown name ("+v.getName()+")for missing value.");
+				}
+			}
+			return value;
 		}
 	}
 

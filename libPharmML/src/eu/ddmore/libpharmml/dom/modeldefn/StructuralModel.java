@@ -66,14 +66,15 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="StructuralModelType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.7/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Name" minOccurs="0"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}SimpleParameter" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}CommonVariable" maxOccurs="unbounded"/>
- *         &lt;element name="PKmacros" type="{http://www.pharmml.org/2013/03/ModelDefinition}PKmacroType" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Name" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}PopulationParameter" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}IndividualParameter" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}CommonVariable" maxOccurs="unbounded"/>
+ *         &lt;element name="PKmacros" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}PKmacroType" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.pharmml.org/2013/03/CommonTypes}BlockDefnGroup"/>
+ *       &lt;attGroup ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}BlockDefnGroup"/>
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -85,6 +86,8 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlType(name = "StructuralModelType", propOrder = {
     "name",
     "simpleParameter",
+    "populationParameter",
+    "individualParameter",
     "commonVariable",
     "pKmacros"
 })
@@ -94,8 +97,17 @@ public class StructuralModel
 
     @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Name name;
+    @Deprecated
     @XmlElement(name = "SimpleParameter")
     protected List<SimpleParameter> simpleParameter;
+    
+    // PharmML 0.7 -----------------------------
+    @XmlElement(name = "PopulationParameter")
+    protected List<PopulationParameter> populationParameter;
+    @XmlElement(name = "IndividualParameter")
+    protected List<IndividualParameter> individualParameter;
+    // -----------------------------------------
+    
     @XmlElementRef(name = "CommonVariable", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class)
     protected List<JAXBElement<? extends CommonVariableDefinition>> commonVariable;
     @XmlElement(name = "PKmacros")
@@ -148,13 +160,73 @@ public class StructuralModel
      * Objects of the following type(s) are allowed in the list
      * {@link SimpleParameter }
      * 
-     * 
+     * @deprecated Since PharmML 0.7, parameters are located within {@link #getListOfIndividualParameter()}
+     * or {@link #getListOfPopulationParameter()}.
      */
+    @Deprecated
     public List<SimpleParameter> getSimpleParameter() {
         if (simpleParameter == null) {
             simpleParameter = new ArrayList<SimpleParameter>();
         }
         return this.simpleParameter;
+    }
+    
+    /**
+     * A parameter definition.Gets the value of the populationParameter property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the populationParameter property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListOfPopulationParameter().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link PopulationParameter }
+     * 
+     * 
+     */
+    public List<PopulationParameter> getListOfPopulationParameter() {
+        if (populationParameter == null) {
+            populationParameter = new ArrayList<PopulationParameter>();
+        }
+        return this.populationParameter;
+    }
+
+    /**
+     * A parameter definition.Gets the value of the individualParameter property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the individualParameter property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListOfIndividualParameter().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link IndividualParameter }
+     * 
+     * 
+     */
+    public List<IndividualParameter> getListOfIndividualParameter() {
+        if (individualParameter == null) {
+            individualParameter = new ArrayList<IndividualParameter>();
+        }
+        return this.individualParameter;
     }
 
     /**
@@ -243,15 +315,35 @@ public class StructuralModel
     	return macros;
     }
     
+    /**
+     * @deprecated See {@link #createIndividualParameter()} and {@link #createPopulationParameter()}.
+     */
+    @Deprecated
     public SimpleParameter createSimpleParameter(){
     	SimpleParameter param = new SimpleParameter();
     	getSimpleParameter().add(param);
     	return param;
     }
     
+    /**
+     * @deprecated See {@link #createIndividualParameter()} and {@link #createPopulationParameter()}.
+     */
+    @Deprecated
     public SimpleParameter createSimpleParameter(String symbId){
     	SimpleParameter param = createSimpleParameter();
     	param.setSymbId(symbId);
+    	return param;
+    }
+    
+    public IndividualParameter createIndividualParameter(){
+    	IndividualParameter param = new IndividualParameter();
+    	getListOfIndividualParameter().add(param);
+    	return param;
+    }
+    
+    public PopulationParameter createPopulationParameter(){
+    	PopulationParameter param = new PopulationParameter();
+    	getListOfPopulationParameter().add(param);
     	return param;
     }
     
@@ -310,7 +402,9 @@ public class StructuralModel
 	protected List<TreeNode> listChildren() {
 		ChainedList<TreeNode> list = new ChainedList<TreeNode>()
 				.addIfNotNull(name)
-				.addIfNotNull(simpleParameter);
+				.addIfNotNull(simpleParameter)
+				.addIfNotNull(populationParameter)
+				.addIfNotNull(individualParameter);
 		for(JAXBElement<? extends CommonVariableDefinition> el : getCommonVariable()){
 			list.add(el.getValue());
 		}

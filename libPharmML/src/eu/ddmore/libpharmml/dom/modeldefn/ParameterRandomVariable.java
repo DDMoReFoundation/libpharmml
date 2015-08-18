@@ -26,6 +26,7 @@
 
 package eu.ddmore.libpharmml.dom.modeldefn;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
@@ -83,14 +84,12 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="ParameterRandomVariableType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/ModelDefinition}CommonParameterType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}CommonParameterType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}VariabilityReference"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}VariabilityReference" maxOccurs="unbounded"/>
+ *         &lt;element name="LHSTransformation" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}LHSTransformationType" minOccurs="0"/>
  *         &lt;choice>
- *           &lt;element ref="{http://www.uncertml.org/3.0}AbstractContinuousUnivariateDistribution"/>
- *           &lt;element ref="{http://www.uncertml.org/3.0}AbstractContinuousMultivariateDistribution"/>
- *           &lt;element ref="{http://www.uncertml.org/3.0}AbstractCategoricalUnivariateDistribution"/>
- *           &lt;element ref="{http://www.uncertml.org/3.0}AbstractCategoricalMultivariateDistribution"/>
+ *           &lt;element name="Distribution" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DistributionType"/>
  *         &lt;/choice>
  *       &lt;/sequence>
  *     &lt;/extension>
@@ -102,39 +101,87 @@ import eu.ddmore.libpharmml.util.ChainedList;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ParameterRandomVariableType", propOrder = {
-    "variabilityReference",
+    "listOfVariabilityReference",
     "abstractContinuousUnivariateDistribution",
     "abstractContinuousMultivariateDistribution",
     "abstractCategoricalUnivariateDistribution",
-    "abstractCategoricalMultivariateDistribution"
+    "abstractCategoricalMultivariateDistribution",
+    "lhsTransformation",
+    "distribution"
 })
 public class ParameterRandomVariable
     extends CommonParameter
 {
 
-    @XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
-    protected LevelReference variabilityReference;
+	@XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    protected List<LevelReference> listOfVariabilityReference;
+    @Deprecated
     @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractContinuousUnivariateDistributionType> abstractContinuousUnivariateDistribution;
+    @Deprecated
     @XmlElementRef(name = "AbstractContinuousMultivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractContinuousMultivariateDistributionType> abstractContinuousMultivariateDistribution;
+    @Deprecated
     @XmlElementRef(name = "AbstractCategoricalUnivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractCategoricalUnivariateDistributionType> abstractCategoricalUnivariateDistribution;
+    @Deprecated
     @XmlElementRef(name = "AbstractCategoricalMultivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractCategoricalMultivariateDistributionType> abstractCategoricalMultivariateDistribution;
 
+    // PharmML 0.7
+    @XmlElement(name = "LHSTransformation")
+    protected LHSTransformationType lhsTransformation;
+    @XmlElement(name = "Distribution")
+    protected Distribution distribution;
+    
+    
+    /**
+     * The level of random variability that describes this random variable.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the variabilityReference property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListOfVariabilityReference().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link LevelReference}
+     * 
+     * 
+     */
+    public List<LevelReference> getListOfVariabilityReference() {
+        if (listOfVariabilityReference == null) {
+        	listOfVariabilityReference = new ArrayList<LevelReference>();
+        }
+        return this.listOfVariabilityReference;
+    }
+    
     /**
      * 
-     *                                 The level of random variability that describes this random variable.
+     * The level of random variability that describes this random variable.
      *                             
      * 
      * @return
      *     possible object is
      *     {@link LevelReference }
      *     
+     * @deprecated Since PharmML 0.7, variability references can be multiple. See {@link #getListOfVariabilityReference()}.
      */
+    @Deprecated
     public LevelReference getVariabilityReference() {
-        return variabilityReference;
+        if(getListOfVariabilityReference().size() > 0){
+        	return getListOfVariabilityReference().get(0);
+        } else {
+        	return null;
+        }
     }
 
     /**
@@ -144,9 +191,12 @@ public class ParameterRandomVariable
      *     allowed object is
      *     {@link LevelReference }
      *     
+     * @deprecated Since PharmML 0.7, variability references can be multiple. See {@link #getListOfVariabilityReference()}.
      */
+    @Deprecated
     public void setVariabilityReference(LevelReference value) {
-        this.variabilityReference = value;
+        getListOfVariabilityReference().clear();
+        getListOfVariabilityReference().add(value);
     }
 
     /**
@@ -176,6 +226,7 @@ public class ParameterRandomVariable
      *     {@link JAXBElement }{@code <}{@link WeibullDistribution }{@code >}
      *     
      */
+    @Deprecated
     public JAXBElement<? extends AbstractContinuousUnivariateDistributionType> getAbstractContinuousUnivariateDistribution() {
         return abstractContinuousUnivariateDistribution;
     }
@@ -205,6 +256,7 @@ public class ParameterRandomVariable
      *     {@link JAXBElement }{@code <}{@link WeibullDistribution }{@code >}
      *     
      */
+    @Deprecated
     public void setAbstractContinuousUnivariateDistribution(JAXBElement<? extends AbstractContinuousUnivariateDistributionType> value) {
         this.abstractContinuousUnivariateDistribution = value;
     }
@@ -224,6 +276,7 @@ public class ParameterRandomVariable
      *     {@link JAXBElement }{@code <}{@link MultivariateNormalDistribution }{@code >}
      *     
      */
+    @Deprecated
     public JAXBElement<? extends AbstractContinuousMultivariateDistributionType> getAbstractContinuousMultivariateDistribution() {
         return abstractContinuousMultivariateDistribution;
     }
@@ -241,6 +294,7 @@ public class ParameterRandomVariable
      *     {@link JAXBElement }{@code <}{@link MultivariateNormalDistribution }{@code >}
      *     
      */
+    @Deprecated
     public void setAbstractContinuousMultivariateDistribution(JAXBElement<? extends AbstractContinuousMultivariateDistributionType> value) {
         this.abstractContinuousMultivariateDistribution = value;
     }
@@ -257,6 +311,7 @@ public class ParameterRandomVariable
      *     {@link JAXBElement }{@code <}{@link CategoricalUnivariateMixtureModel }{@code >}
      *     
      */
+    @Deprecated
     public JAXBElement<? extends AbstractCategoricalUnivariateDistributionType> getAbstractCategoricalUnivariateDistribution() {
         return abstractCategoricalUnivariateDistribution;
     }
@@ -271,6 +326,7 @@ public class ParameterRandomVariable
      *     {@link JAXBElement }{@code <}{@link CategoricalUnivariateMixtureModel }{@code >}
      *     
      */
+    @Deprecated
     public void setAbstractCategoricalUnivariateDistribution(JAXBElement<? extends AbstractCategoricalUnivariateDistributionType> value) {
         this.abstractCategoricalUnivariateDistribution = value;
     }
@@ -287,6 +343,7 @@ public class ParameterRandomVariable
      *     {@link JAXBElement }{@code <}{@link CategoricalDistribution }{@code >}
      *     
      */
+    @Deprecated
     public JAXBElement<? extends AbstractCategoricalMultivariateDistributionType> getAbstractCategoricalMultivariateDistribution() {
         return abstractCategoricalMultivariateDistribution;
     }
@@ -301,18 +358,74 @@ public class ParameterRandomVariable
      *     {@link JAXBElement }{@code <}{@link CategoricalDistribution }{@code >}
      *     
      */
+    @Deprecated
     public void setAbstractCategoricalMultivariateDistribution(JAXBElement<? extends AbstractCategoricalMultivariateDistributionType> value) {
         this.abstractCategoricalMultivariateDistribution = value;
     }
     
+    /**
+     * Gets the value of the lhsTransformation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link LHSTransformationType }
+     *     
+     * @since PharmML 0.7
+     */
+    public LHSTransformationType getLHSTransformation() {
+        return lhsTransformation;
+    }
+
+    /**
+     * Sets the value of the lhsTransformation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link LHSTransformationType }
+     *     
+     * @since PharmML 0.7
+     */
+    public void setLHSTransformation(LHSTransformationType value) {
+        this.lhsTransformation = value;
+    }
+
+    /**
+     * Gets the value of the distribution property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Distribution }
+     *     
+     * @since PharmML 0.7
+     */
+    public Distribution getDistribution() {
+        return distribution;
+    }
+
+    /**
+     * Sets the value of the distribution property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Distribution }
+     *     
+     * @since PharmML 0.7
+     */
+    public void setDistribution(Distribution value) {
+        this.distribution = value;
+    }
+
+    
     @Override
 	protected List<TreeNode> listChildren() {
-		return new ChainedList<TreeNode>()
-				.addIfNotNull(variabilityReference)
+		return new ChainedList<TreeNode>(super.listChildren())
+				.addIfNotNull(listOfVariabilityReference)
 				.addJAXBIfNotNull(abstractContinuousUnivariateDistribution)
 				.addJAXBIfNotNull(abstractContinuousMultivariateDistribution)
 				.addJAXBIfNotNull(abstractCategoricalUnivariateDistribution)
-				.addJAXBIfNotNull(abstractCategoricalMultivariateDistribution);
+				.addJAXBIfNotNull(abstractCategoricalMultivariateDistribution)
+				.addIfNotNull(lhsTransformation)
+				.addIfNotNull(description);
 	}
 
 }

@@ -41,9 +41,12 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
+import eu.ddmore.libpharmml.dom.commontypes.CategoryRef;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
+import eu.ddmore.libpharmml.dom.commontypes.MissingValue;
+import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
@@ -64,39 +67,43 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="LogicBinOpType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.7/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;choice>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}LogicBinop"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}LogicUniop"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Scalar"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Constant"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/08/Dataset}ColumnRef"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Binop"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Uniop"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}FunctionCall"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Sum"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Product"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}VectorSelector"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}MatrixSelector"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}Probability"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}LogicBinop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}LogicUniop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Scalar"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Constant"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}SymbRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}CatRef"/>
+ *           &lt;element name="ArmRef" type="{http://www.pharmml.org/pharmml/0.7/CommonTypes}OidRefType"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Dataset}ColumnRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Binop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Uniop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}FunctionCall"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Sum"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Product"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}VectorSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}MatrixSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}Probability"/>
  *         &lt;/choice>
  *         &lt;choice>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}LogicBinop"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}LogicUniop"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Scalar"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Constant"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/08/Dataset}ColumnRef"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Binop"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Uniop"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}FunctionCall"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Sum"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Product"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}VectorSelector"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}MatrixSelector"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}Probability"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}LogicBinop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}LogicUniop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Scalar"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Constant"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}SymbRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}CatRef"/>
+ *           &lt;element name="ArmRef" type="{http://www.pharmml.org/pharmml/0.7/CommonTypes}OidRefType"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Dataset}ColumnRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Binop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Uniop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}FunctionCall"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Sum"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Product"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}VectorSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}MatrixSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}Probability"/>
  *         &lt;/choice>
  *       &lt;/sequence>
  *       &lt;attribute name="op" use="required">
@@ -144,12 +151,23 @@ public class LogicBinOp
         @XmlElementRef(name = "Probability", namespace = XMLFilter.NS_DEFAULT_MDEF, type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Product", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
         @XmlElementRef(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "ColumnRef", namespace = XMLFilter.NS_DEFAULT_DS, type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "ColumnRef", namespace = XMLFilter.NS_DEFAULT_DS, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "ArmRef", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "CatRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
     })
     protected List<JAXBElement<?>> content;
     @XmlAttribute(name = "op", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String op;
+    
+    /**
+     * Empty constructor.
+     */
+    public LogicBinOp(){};
+    
+    public LogicBinOp(LogicOperator op){
+    	this.op = op.value();
+    }
 
     /**
      * Gets the value of the content property.
@@ -185,6 +203,9 @@ public class LogicBinOp
      * {@link JAXBElement }{@code <}{@link Constant }{@code >}
      * {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
      * {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
+     * {@link JAXBElement }{@code <}{@link MissingValue }{@code >}
+     * {@link JAXBElement }{@code <}{@link OidRef }{@code >}
+     * {@link JAXBElement }{@code <}{@link CategoryRef }{@code >}
      * 
      * <p>
      * In order to be compliant with the PharmML specification (>= 0.3.1), only 1 {@link ColumnReference } is allowed in the content,

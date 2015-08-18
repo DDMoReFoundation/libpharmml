@@ -32,6 +32,9 @@ public class MatrixRowValueAdapter extends XmlAdapter<JAXBElement<?>, MatrixRowV
 	@Override
 	public MatrixRowValue unmarshal(JAXBElement<?> v) throws Exception {
 		Object el = v.getValue();
+		if(el instanceof Scalar){
+			return new ScalarAdapter().unmarshal(v);
+		}
 		if(el instanceof MatrixRowValue){
 			return (MatrixRowValue) el;
 		} else {

@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.trialdesign.ExternalDataSet;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 //import eu.ddmore.libpharmml.dom.commontypes.ToolName;
 //import eu.ddmore.libpharmml.impl.LoggerWrapper;
@@ -94,7 +95,8 @@ public class ModellingSteps
     @XmlElement(name = "NONMEMdataSet")
     private List<NONMEMdataSet> listOfNonmemDataset;
     
-    @XmlElement(name = "ExternalDataSet")
+    @XmlElement(name = "ExternalDataSet", namespace = XMLFilter.NS_DEFAULT_MSTEPS) // NS < PharmML0.7
+    @Deprecated
     protected List<ExternalDataSet> listOfExternalDataset;
     // --------------
     
@@ -186,8 +188,9 @@ public class ModellingSteps
      * Objects of the following type(s) are allowed in the list
      * {@link ExternalDataSet }
      * 
-     * 
+     * @deprecated Since PharmML 0.7
      */
+    @Deprecated
     public List<ExternalDataSet> getListOfExternalDataSet() {
         if (listOfExternalDataset == null) {
             listOfExternalDataset = new ArrayList<ExternalDataSet>();

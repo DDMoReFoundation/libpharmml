@@ -37,8 +37,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.XMLFilterImpl;
 
-//import com.sun.xml.internal.txw2.output.IndentingXMLStreamWriter;
-
 public class XMLFilter extends XMLFilterImpl {
 	
 	static final private String NS_PATTERN_ROOT = "http://www.pharmml.org/pharmml/%s/";
@@ -59,6 +57,7 @@ public class XMLFilter extends XMLFilterImpl {
 	static final public String NS_DEFAULT_MSTEPS = "http://www.pharmml.org/pharmml/0.7/ModellingSteps";
 	static final public String NS_DEFAULT_MML = "http://www.pharmml.org/pharmml/0.7/PharmML";
 	static final public String NS_DEFAULT_UNCERTML = "http://www.uncertml.org/3.0";
+	static final public String NS_DEFAULT_PROBONTO = "http://www.pharmml.org/probonto/ProbOnto";
 	
 	final protected String NS_DOC_ROOT;
 	final protected String NS_DOC_CT;
@@ -68,6 +67,7 @@ public class XMLFilter extends XMLFilterImpl {
 	final protected String NS_DOC_TD;
 	final protected String NS_DOC_MSTEPS;
 	final protected String NS_DOC_MML;
+	final protected String NS_DOC_PROBONTO;
 
 	static final private String NS_OLD_ROOT = "http://www.pharmml.org/2013/03/";
 	
@@ -87,14 +87,15 @@ public class XMLFilter extends XMLFilterImpl {
         }
                 
         if(writtenVersion.isEqualOrLaterThan(PharmMLVersion.V0_6)){
-        	NS_DOC_ROOT = String.format(NS_PATTERN_ROOT, writtenVersion);
-        	NS_DOC_CT = String.format(NS_PATTERN_CT, writtenVersion);
-        	NS_DOC_DS = String.format(NS_PATTERN_DS, writtenVersion);
-        	NS_DOC_MATH = String.format(NS_PATTERN_MATH, writtenVersion);
-        	NS_DOC_MDEF = String.format(NS_PATTERN_MDEF, writtenVersion);
-        	NS_DOC_TD = String.format(NS_PATTERN_TD, writtenVersion);
-        	NS_DOC_MSTEPS = String.format(NS_PATTERN_MSTEPS, writtenVersion);
-        	NS_DOC_MML = String.format(NS_PATTERN_MML, writtenVersion);
+        	NS_DOC_ROOT = String.format(NS_PATTERN_ROOT, writtenVersion.getValue());
+        	NS_DOC_CT = String.format(NS_PATTERN_CT, writtenVersion.getValue());
+        	NS_DOC_DS = String.format(NS_PATTERN_DS, writtenVersion.getValue());
+        	NS_DOC_MATH = String.format(NS_PATTERN_MATH, writtenVersion.getValue());
+        	NS_DOC_MDEF = String.format(NS_PATTERN_MDEF, writtenVersion.getValue());
+        	NS_DOC_TD = String.format(NS_PATTERN_TD, writtenVersion.getValue());
+        	NS_DOC_MSTEPS = String.format(NS_PATTERN_MSTEPS, writtenVersion.getValue());
+        	NS_DOC_MML = String.format(NS_PATTERN_MML, writtenVersion.getValue());
+        	NS_DOC_PROBONTO = NS_DOC_MSTEPS;
         } else {
         	NS_DOC_ROOT = NS_OLD_ROOT;
         	NS_DOC_CT = NS_OLD_CT;
@@ -104,6 +105,7 @@ public class XMLFilter extends XMLFilterImpl {
         	NS_DOC_TD = NS_OLD_TD;
         	NS_DOC_MSTEPS = NS_OLD_MSTEPS;
         	NS_DOC_MML = NS_OLD_MML;
+        	NS_DOC_PROBONTO = null; // didn't exist before 0.7
         }
         
     }
@@ -397,6 +399,14 @@ public class XMLFilter extends XMLFilterImpl {
     	}
     	br.close();
     	osw.close();
+    }
+    
+    /**
+     * Gets the URI corresponding to the version used to construct this filter.
+     * @return The full namespace URI of PharmML root domain (mml).
+     */
+    public String getMMLNamespaceURI(){
+    	return NS_DOC_MML;
     }
 
 }

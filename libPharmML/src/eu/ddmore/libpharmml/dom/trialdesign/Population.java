@@ -68,7 +68,8 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated Since PharmML 0.7, {@link TrialDesign} structure has been completely redefined. See PharmML
+ * 0.7 change document, chapter 5.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PopulationType", propOrder = {
@@ -78,6 +79,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "individualTemplate",
     "dataSet"
 })
+@Deprecated
 public class Population
     extends PharmMLRootType implements DatasetMap
 {

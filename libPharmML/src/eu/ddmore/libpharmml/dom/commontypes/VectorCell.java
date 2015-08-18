@@ -227,6 +227,13 @@ public class VectorCell extends PharmMLRootType implements ScalarContainer {
 		setValue(wValue);
 		return wValue;
 	}
+	
+	@Override
+	public MissingValue createMissingValue(MissingValueSymbol symbol) {
+		MissingValue mValue = new MissingValue(symbol);
+		this.value = mValue;
+		return mValue;
+	}
 
 	@Override
 	protected List<TreeNode> listChildren() {

@@ -116,7 +116,7 @@ public class DatasetRow extends PharmMLRootType{
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link IdValue }{@code >}
-     * {@link JAXBElement }{@code <}{@link DataSetTableType }{@code >}
+     * {@link JAXBElement }{@code <}{@link DataSetTable }{@code >}
      * {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
      * {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValue }{@code >}
