@@ -60,7 +60,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated Since PharmML 0.7.1.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ScalarRhs", propOrder = {
@@ -71,6 +71,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 //@XmlSeeAlso({
 //    InitialEstimate.class // was the case before 0.7. Now extends Rhs
 //})
+@Deprecated
 public class ScalarRhs
     extends PharmMLRootType
 {
