@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.StandardAssignable;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -69,9 +70,9 @@ public class Occasion
 {
 
     @XmlElement(name = "Start")
-    protected Timepoints start;
+    protected StandardAssignable start;
     @XmlElement(name = "End")
-    protected Timepoints end;
+    protected StandardAssignable end;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
@@ -81,10 +82,10 @@ public class Occasion
      * 
      * @return
      *     possible object is
-     *     {@link Timepoints }
+     *     {@link StandardAssignable }
      *     
      */
-    public Timepoints getStart() {
+    public StandardAssignable getStart() {
         return start;
     }
 
@@ -93,10 +94,10 @@ public class Occasion
      * 
      * @param value
      *     allowed object is
-     *     {@link Timepoints }
+     *     {@link StandardAssignable }
      *     
      */
-    public void setStart(Timepoints value) {
+    public void setStart(StandardAssignable value) {
         this.start = value;
     }
 
@@ -105,10 +106,10 @@ public class Occasion
      * 
      * @return
      *     possible object is
-     *     {@link Timepoints }
+     *     {@link StandardAssignable }
      *     
      */
-    public Timepoints getEnd() {
+    public StandardAssignable getEnd() {
         return end;
     }
 
@@ -117,10 +118,10 @@ public class Occasion
      * 
      * @param value
      *     allowed object is
-     *     {@link Timepoints }
+     *     {@link StandardAssignable }
      *     
      */
-    public void setEnd(Timepoints value) {
+    public void setEnd(StandardAssignable value) {
         this.end = value;
     }
 
@@ -156,21 +157,21 @@ public class Occasion
     }
     
     /**
-     * Creates a new empty {@link Timepoints} start element, adds it to the current object and returns it.
-     * @return The created {@link Timepoints} object.
+     * Creates a new empty {@link StandardAssignable} start element, adds it to the current object and returns it.
+     * @return The created {@link StandardAssignable} object.
      */
-    public Timepoints createStart(){
-            Timepoints el = new Timepoints();
+    public StandardAssignable createStart(){
+    	StandardAssignable el = new StandardAssignable();
             this.start = el;
             return el;
     }
 
     /**
-     * Creates a new empty {@link Timepoints} end element, adds it to the current object and returns it.
-     * @return The created {@link Timepoints} object.
+     * Creates a new empty {@link StandardAssignable} end element, adds it to the current object and returns it.
+     * @return The created {@link StandardAssignable} object.
      */
-    public Timepoints createEnd(){
-            Timepoints el = new Timepoints();
+    public StandardAssignable createEnd(){
+    	StandardAssignable el = new StandardAssignable();
             this.end = el;
             return el;
     }

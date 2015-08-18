@@ -83,7 +83,7 @@ public class Observation
     @XmlElement(name = "NumberTimes")
     protected StandardAssignable numberTimes;
     @XmlElement(name = "ObservationTimes")
-    protected Timepoints observationTimes;
+    protected StandardAssignable observationTimes;
     @XmlElement(name = "Continuous")
     protected ContinuousObservation continuous;
     @XmlElement(name = "Discrete")
@@ -145,10 +145,10 @@ public class Observation
      * 
      * @return
      *     possible object is
-     *     {@link Timepoints }
+     *     {@link StandardAssignable }
      *     
      */
-    public Timepoints getObservationTimes() {
+    public StandardAssignable getObservationTimes() {
         return observationTimes;
     }
 
@@ -157,10 +157,10 @@ public class Observation
      * 
      * @param value
      *     allowed object is
-     *     {@link Timepoints }
+     *     {@link StandardAssignable }
      *     
      */
-    public void setObservationTimes(Timepoints value) {
+    public void setObservationTimes(StandardAssignable value) {
         this.observationTimes = value;
     }
 
@@ -269,11 +269,11 @@ public class Observation
     }
 
     /**
-     * Creates a new empty {@link Timepoints} observationTimes element, adds it to the current object and returns it.
-     * @return The created {@link Timepoints} object.
+     * Creates a new empty {@link StandardAssignable} observationTimes element, adds it to the current object and returns it.
+     * @return The created {@link StandardAssignable} object.
      */
-    public Timepoints createObservationTimes(){
-            Timepoints el = new Timepoints();
+    public StandardAssignable createObservationTimes(){
+    	StandardAssignable el = new StandardAssignable();
             this.observationTimes = el;
             return el;
     }

@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.StandardAssignable;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -66,7 +67,7 @@ public class ObservationSequence
     @XmlElement(name = "ObservationList", required = true)
     protected ObservationList observationList;
     @XmlElement(name = "Start")
-    protected Timepoints start;
+    protected StandardAssignable start;
 
     /**
      * Gets the value of the observationList property.
@@ -97,10 +98,10 @@ public class ObservationSequence
      * 
      * @return
      *     possible object is
-     *     {@link Timepoints }
+     *     {@link StandardAssignable }
      *     
      */
-    public Timepoints getStart() {
+    public StandardAssignable getStart() {
         return start;
     }
 
@@ -109,10 +110,10 @@ public class ObservationSequence
      * 
      * @param value
      *     allowed object is
-     *     {@link Timepoints }
+     *     {@link StandardAssignable }
      *     
      */
-    public void setStart(Timepoints value) {
+    public void setStart(StandardAssignable value) {
         this.start = value;
     }
     
@@ -134,11 +135,11 @@ public class ObservationSequence
     }
 
     /**
-     * Creates a new empty {@link Timepoints} start element, adds it to the current object and returns it.
-     * @return The created {@link Timepoints} object.
+     * Creates a new empty {@link StandardAssignable} start element, adds it to the current object and returns it.
+     * @return The created {@link StandardAssignable} object.
      */
-    public Timepoints createStart(){
-            Timepoints el = new Timepoints();
+    public StandardAssignable createStart(){
+    	StandardAssignable el = new StandardAssignable();
             this.start = el;
             return el;
     }

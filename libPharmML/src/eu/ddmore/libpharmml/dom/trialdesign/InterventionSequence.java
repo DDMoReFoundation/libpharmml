@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.StandardAssignable;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -66,7 +67,7 @@ public class InterventionSequence
     @XmlElement(name = "InterventionList", required = true)
     protected InterventionList interventionList;
     @XmlElement(name = "Start")
-    protected Timepoints start;
+    protected StandardAssignable start;
 
     /**
      * Gets the value of the interventionList property.
@@ -97,10 +98,10 @@ public class InterventionSequence
      * 
      * @return
      *     possible object is
-     *     {@link Timepoints }
+     *     {@link StandardAssignable }
      *     
      */
-    public Timepoints getStart() {
+    public StandardAssignable getStart() {
         return start;
     }
 
@@ -109,10 +110,10 @@ public class InterventionSequence
      * 
      * @param value
      *     allowed object is
-     *     {@link Timepoints }
+     *     {@link StandardAssignable }
      *     
      */
-    public void setStart(Timepoints value) {
+    public void setStart(StandardAssignable value) {
         this.start = value;
     }
     

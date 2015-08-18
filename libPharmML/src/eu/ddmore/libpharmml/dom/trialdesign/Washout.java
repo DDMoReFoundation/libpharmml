@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.StandardAssignable;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -71,9 +72,9 @@ public class Washout
 	@XmlElement(name = "VariableToReset")
     protected List<VariableToReset> listOfVariableToReset;
     @XmlElement(name = "Start")
-    protected Timepoints start;
+    protected StandardAssignable start;
     @XmlElement(name = "End")
-    protected Timepoints end;
+    protected StandardAssignable end;
 
     /**
      * Gets the value of the variableToReset property.
@@ -109,10 +110,10 @@ public class Washout
      * 
      * @return
      *     possible object is
-     *     {@link Timepoints }
+     *     {@link StandardAssignable }
      *     
      */
-    public Timepoints getStart() {
+    public StandardAssignable getStart() {
         return start;
     }
 
@@ -121,10 +122,10 @@ public class Washout
      * 
      * @param value
      *     allowed object is
-     *     {@link Timepoints }
+     *     {@link StandardAssignable }
      *     
      */
-    public void setStart(Timepoints value) {
+    public void setStart(StandardAssignable value) {
         this.start = value;
     }
 
@@ -133,10 +134,10 @@ public class Washout
      * 
      * @return
      *     possible object is
-     *     {@link Timepoints }
+     *     {@link StandardAssignable }
      *     
      */
-    public Timepoints getEnd() {
+    public StandardAssignable getEnd() {
         return end;
     }
 
@@ -145,10 +146,10 @@ public class Washout
      * 
      * @param value
      *     allowed object is
-     *     {@link Timepoints }
+     *     {@link StandardAssignable }
      *     
      */
-    public void setEnd(Timepoints value) {
+    public void setEnd(StandardAssignable value) {
         this.end = value;
     }
 
@@ -171,21 +172,21 @@ public class Washout
 	}
 
 	/**
-	 * Creates a new empty {@link Timepoints} start element, adds it to the current object and returns it.
-	 * @return The created {@link Timepoints} object.
+	 * Creates a new empty {@link StandardAssignable} start element, adds it to the current object and returns it.
+	 * @return The created {@link StandardAssignable} object.
 	 */
-	public Timepoints createStart(){
-	        Timepoints el = new Timepoints();
+	public StandardAssignable createStart(){
+			StandardAssignable el = new StandardAssignable();
 	        this.start = el;
 	        return el;
 	}
 
 	/**
-	 * Creates a new empty {@link Timepoints} end element, adds it to the current object and returns it.
-	 * @return The created {@link Timepoints} object.
+	 * Creates a new empty {@link StandardAssignable} end element, adds it to the current object and returns it.
+	 * @return The created {@link StandardAssignable} object.
 	 */
-	public Timepoints createEnd(){
-	        Timepoints el = new Timepoints();
+	public StandardAssignable createEnd(){
+			StandardAssignable el = new StandardAssignable();
 	        this.end = el;
 	        return el;
 	}

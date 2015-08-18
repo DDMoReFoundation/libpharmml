@@ -628,6 +628,7 @@ public class ObjectFactory {
      * Create an instance of {@link Timepoints }
      * 
      */
+    @Deprecated
     public Timepoints createTimepointsType() {
         return new Timepoints();
     }

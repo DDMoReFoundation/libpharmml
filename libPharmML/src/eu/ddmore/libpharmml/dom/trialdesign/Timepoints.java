@@ -36,6 +36,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.Sequence;
+import eu.ddmore.libpharmml.dom.commontypes.StandardAssignable;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.dom.maths.Constant;
@@ -65,8 +66,9 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated Since PharmML 0.7.1, timepoints use the class {@link StandardAssignable}.
  */
+@Deprecated
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TimepointsType", propOrder = {
     "assign",
