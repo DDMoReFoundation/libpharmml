@@ -20,6 +20,7 @@ package eu.ddmore.libpharmml;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static eu.ddmore.libpharmml.AssertUtil.assertInvalid;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -88,8 +89,9 @@ public class LibPharmMLInvalidModelIntegrationTest {
 		IPharmMLResource res = this.testInstance.createDomFromResource(in);
 		in.close();
 		assertEquals("expected model", INVALID_MDL_NAME, res.getDom().getName().getValue());
-		assertFalse("Valid model", res.getCreationReport().isValid());
-		assertEquals("Valid model", EXPECTED_NUM_ERRORS, res.getCreationReport().numErrors());
+//		assertFalse("Valid model", res.getCreationReport().isValid());
+//		assertEquals("Valid model", EXPECTED_NUM_ERRORS, res.getCreationReport().numErrors());
+		assertInvalid(EXPECTED_NUM_ERRORS, res.getCreationReport());
 //		Iterator<IValidationError> iter = res.getCreationReport().errorIterator();
 //		int errorReadCnt = 0;
 ////		while(iter.hasNext()){
@@ -104,8 +106,9 @@ public class LibPharmMLInvalidModelIntegrationTest {
 	public void testValidateInvalidModel() throws IOException {
 		IPharmMLValidator validator = this.testInstance.getValidator();
 		IValidationReport rpt = validator.createValidationReport(this.testResource);
-		assertFalse("Valid model", rpt.isValid());
-		assertEquals("Valid model", 2, rpt.numErrors());
+//		assertFalse("Valid model", rpt.isValid());
+//		assertEquals("Valid model", 2, rpt.numErrors());
+		assertInvalid(2, rpt);
 		/** @TODO: This really should go in a separate test fixture. I've commented this out for now as
 		 * it broke during refactoring. */
 //		Iterator<IValidationError> iter = rpt.errorIterator();

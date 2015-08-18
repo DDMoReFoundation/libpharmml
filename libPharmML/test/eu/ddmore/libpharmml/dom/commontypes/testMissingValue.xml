@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mml:PharmML xmlns:msteps="http://www.pharmml.org/pharmml/0.7/ModellingSteps" xmlns:td="http://www.pharmml.org/pharmml/0.7/TrialDesign" xmlns:uncert="http://www.uncertml.org/3.0" xmlns:ds="http://www.pharmml.org/pharmml/0.7/Dataset" xmlns:mdef="http://www.pharmml.org/pharmml/0.7/ModelDefinition" xmlns:ct="http://www.pharmml.org/pharmml/0.7/CommonTypes" xmlns:math="http://www.pharmml.org/pharmml/0.7/Maths" xmlns:mml="http://www.pharmml.org/pharmml/0.7/PharmML" writtenVersion="0.7">
+    <ct:Name>Stub Model</ct:Name>
+    <ct:FunctionDefinition symbolType="real" symbId="fd1">
+        <ct:FunctionArgument symbolType="real" symbId="fa1"/>
+        <ct:Definition id="testRhs">
+            <ct:NA id="mv1"/>
+        </ct:Definition>
+    </ct:FunctionDefinition>
+    <mdef:ModelDefinition>
+        <mdef:ParameterModel blkId="p1">
+            <mdef:SimpleParameter symbId="a"/>
+        </mdef:ParameterModel>
+        <mdef:StructuralModel blkId="main">
+            <ct:Variable symbolType="real" symbId="x"/>
+        </mdef:StructuralModel>
+    </mdef:ModelDefinition>
+</mml:PharmML>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mml:PharmML xmlns:msteps="http://www.pharmml.org/pharmml/0.7/ModellingSteps" xmlns:td="http://www.pharmml.org/pharmml/0.7/TrialDesign" xmlns:uncert="http://www.uncertml.org/3.0" xmlns:ds="http://www.pharmml.org/pharmml/0.7/Dataset" xmlns:mdef="http://www.pharmml.org/pharmml/0.7/ModelDefinition" xmlns:ct="http://www.pharmml.org/pharmml/0.7/CommonTypes" xmlns:math="http://www.pharmml.org/pharmml/0.7/Maths" xmlns:mml="http://www.pharmml.org/pharmml/0.7/PharmML" writtenVersion="0.7">
+    <ct:Name>Stub Model</ct:Name>
+    <mdef:ModelDefinition>
+        <mdef:StructuralModel blkId="sm1">
+            <ct:Variable symbolType="real" symbId="var1">
+                <ct:Assign>
+                    <ct:Matrix numbCols="10" numbRows="16" matrixType="Any">
+                        <ct:MatrixRow>
+                            <ct:Int>1</ct:Int>
+                            <ct:Real>23.2</ct:Real>
+                        </ct:MatrixRow>
+                        <ct:MatrixBlock>
+                            <ct:BlockStartRow>
+<ct:Int>3</ct:Int>
+                            </ct:BlockStartRow>
+                            <ct:BlockStartColumn>
+<ct:Int>4</ct:Int>
+                            </ct:BlockStartColumn>
+                        </ct:MatrixBlock>
+                        <ct:MatrixColumn>
+                            <ct:Int>10</ct:Int>
+                            <ct:Real>432.74</ct:Real>
+                            <ct:SymbRef symbIdRef="foo"/>
+                            <ct:NaN/>
+                        </ct:MatrixColumn>
+                        <ct:MatrixRow default="34.0">
+                            <ct:RowIndex>
+<ct:Int>6</ct:Int>
+                            </ct:RowIndex>
+                            <ct:Int>10</ct:Int>
+                            <ct:Real>432.74</ct:Real>
+                            <ct:SymbRef symbIdRef="foo"/>
+                            <ct:NaN/>
+                        </ct:MatrixRow>
+                    </ct:Matrix>
+                </ct:Assign>
+            </ct:Variable>
+        </mdef:StructuralModel>
+    </mdef:ModelDefinition>
+</mml:PharmML>

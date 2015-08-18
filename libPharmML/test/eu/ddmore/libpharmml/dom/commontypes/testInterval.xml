@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mml:PharmML xmlns:msteps="http://www.pharmml.org/pharmml/0.7/ModellingSteps" xmlns:td="http://www.pharmml.org/pharmml/0.7/TrialDesign" xmlns:uncert="http://www.uncertml.org/3.0" xmlns:ds="http://www.pharmml.org/pharmml/0.7/Dataset" xmlns:mdef="http://www.pharmml.org/pharmml/0.7/ModelDefinition" xmlns:ct="http://www.pharmml.org/pharmml/0.7/CommonTypes" xmlns:math="http://www.pharmml.org/pharmml/0.7/Maths" xmlns:mml="http://www.pharmml.org/pharmml/0.7/PharmML" writtenVersion="0.7">
+    <ct:Name>Stub Model</ct:Name>
+    <mdef:ModelDefinition>
+        <mdef:StructuralModel blkId="sm1">
+            <ct:Variable symbolType="real" symbId="var1">
+                <ct:Assign>
+                    <ct:Interval>
+                        <ct:IntervalLength>
+                            <ct:Assign>
+<ct:Int>20</ct:Int>
+                            </ct:Assign>
+                        </ct:IntervalLength>
+                        <ct:LeftEndpoint type="open">
+                            <ct:Assign>
+<ct:Int>10</ct:Int>
+                            </ct:Assign>
+                        </ct:LeftEndpoint>
+                        <ct:RightEndpoint>
+                            <ct:Assign>
+<ct:Int>30</ct:Int>
+                            </ct:Assign>
+                        </ct:RightEndpoint>
+                    </ct:Interval>
+                </ct:Assign>
+            </ct:Variable>
+        </mdef:StructuralModel>
+    </mdef:ModelDefinition>
+</mml:PharmML>

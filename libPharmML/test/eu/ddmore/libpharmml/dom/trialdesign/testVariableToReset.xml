@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mml:PharmML xmlns:msteps="http://www.pharmml.org/pharmml/0.7/ModellingSteps" xmlns:td="http://www.pharmml.org/pharmml/0.7/TrialDesign" xmlns:uncert="http://www.uncertml.org/3.0" xmlns:ds="http://www.pharmml.org/pharmml/0.7/Dataset" xmlns:mdef="http://www.pharmml.org/pharmml/0.7/ModelDefinition" xmlns:ct="http://www.pharmml.org/pharmml/0.7/CommonTypes" xmlns:math="http://www.pharmml.org/pharmml/0.7/Maths" xmlns:mml="http://www.pharmml.org/pharmml/0.7/PharmML" writtenVersion="0.7">
+    <ct:Name>Stub Model</ct:Name>
+    <mdef:ModelDefinition>
+        <mdef:ParameterModel blkId="p1">
+            <mdef:SimpleParameter symbId="a"/>
+        </mdef:ParameterModel>
+        <mdef:StructuralModel blkId="main">
+            <ct:Variable symbolType="real" symbId="x"/>
+        </mdef:StructuralModel>
+    </mdef:ModelDefinition>
+    <td:TrialDesign>
+        <td:Interventions>
+            <td:Action oid="a1">
+                <td:Washout>
+                    <td:VariableToReset>
+                        <td:FullReset/>
+                    </td:VariableToReset>
+                </td:Washout>
+            </td:Action>
+            <td:Action oid="a2">
+                <td:Washout>
+                    <td:VariableToReset>
+                        <ct:SymbRef symbIdRef="W"/>
+                        <td:ResetValue>70</td:ResetValue>
+                        <td:ResetTime>.1</td:ResetTime>
+                    </td:VariableToReset>
+                </td:Washout>
+            </td:Action>
+        </td:Interventions>
+    </td:TrialDesign>
+</mml:PharmML>

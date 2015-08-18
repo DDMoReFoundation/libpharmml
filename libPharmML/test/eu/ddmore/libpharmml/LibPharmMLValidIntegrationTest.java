@@ -20,6 +20,7 @@ package eu.ddmore.libpharmml;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static eu.ddmore.libpharmml.AssertUtil.assertValid;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -132,7 +133,7 @@ public class LibPharmMLValidIntegrationTest {
 		IPharmMLResource res = this.testInstance.createDomFromResource(in);
 		in.close();
 		assertEquals("expected model", VALID_MDL_NAME, res.getDom().getName().getValue());
-		assertTrue("Valid model", res.getCreationReport().isValid());
+		assertValid(res.getCreationReport());
 		assertEquals("Valid model", 0, res.getCreationReport().numErrors());
 	}
 
@@ -140,7 +141,7 @@ public class LibPharmMLValidIntegrationTest {
 	public void testValidateValidModel() throws IOException{
 		IPharmMLValidator validator = this.testInstance.getValidator();
 		IValidationReport rpt = validator.createValidationReport(testResource);
-		assertTrue("Valid model", rpt.isValid());
+		assertValid(rpt);
 		assertEquals("Valid model", 0, rpt.numErrors());
 	}
 	

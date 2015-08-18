@@ -35,6 +35,16 @@ public class PharmMLVersionFactory {
 		return param;
 	}
 	
+	public static Collection<PharmMLVersion[]> getParameterizedVersionsFrom(PharmMLVersion from){
+		Collection<PharmMLVersion[]> param = new ArrayList<PharmMLVersion[]>();
+		for(PharmMLVersion version : PharmMLVersion.values()){
+			if(getExampleDir(version) != null && version.isEqualOrLaterThan(from)){
+				param.add(new PharmMLVersion[]{version});
+			}
+		}
+		return param;
+	}
+	
 	public static String getExampleDir(PharmMLVersion version){
 		switch(version){
 		case V0_2_1:
@@ -43,6 +53,8 @@ public class PharmMLVersionFactory {
 			return "examples/0_3";
 		case V0_6:
 			return "examples/0_6";
+		case V0_7:
+			return "examples/0_7";
 		default:
 			return null;
 		}

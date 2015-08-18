@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mml:PharmML xmlns:msteps="http://www.pharmml.org/pharmml/0.7/ModellingSteps" xmlns:td="http://www.pharmml.org/pharmml/0.7/TrialDesign" xmlns:uncert="http://www.uncertml.org/3.0" xmlns:ds="http://www.pharmml.org/pharmml/0.7/Dataset" xmlns:mdef="http://www.pharmml.org/pharmml/0.7/ModelDefinition" xmlns:ct="http://www.pharmml.org/pharmml/0.7/CommonTypes" xmlns:math="http://www.pharmml.org/pharmml/0.7/Maths" xmlns:mml="http://www.pharmml.org/pharmml/0.7/PharmML" writtenVersion="0.7">
+    <ct:Name>Stub Model</ct:Name>
+    <mdef:ModelDefinition>
+        <mdef:StructuralModel blkId="sm1">
+            <ct:Variable symbolType="real" symbId="var1">
+                <ct:Assign>
+                    <ct:Vector default="77.0" length="10">
+                        <ct:VectorElements>
+                            <ct:ALQ/>
+                            <ct:Int>20</ct:Int>
+                            <ct:Real>23.3</ct:Real>
+                            <ct:String>stringvalue</ct:String>
+                        </ct:VectorElements>
+                    </ct:Vector>
+                </ct:Assign>
+            </ct:Variable>
+            <ct:Variable symbolType="real" symbId="var2">
+                <ct:Assign>
+                    <ct:Vector default="77.0" length="10">
+                        <ct:VectorCell>
+                            <ct:CellIndex>
+<ct:Int>1</ct:Int>
+                            </ct:CellIndex>
+                            <ct:False/>
+                        </ct:VectorCell>
+                        <ct:VectorCell>
+                            <ct:CellIndex>
+<ct:Int>2</ct:Int>
+                            </ct:CellIndex>
+                            <ct:Int>36</ct:Int>
+                        </ct:VectorCell>
+                        <ct:VectorCell>
+                            <ct:CellIndex>
+<ct:Int>3</ct:Int>
+                            </ct:CellIndex>
+                            <ct:String>stringvalue</ct:String>
+                        </ct:VectorCell>
+                        <ct:VectorCell>
+                            <ct:CellIndex>
+<ct:Int>4</ct:Int>
+                            </ct:CellIndex>
+                            <ct:Id>an_id</ct:Id>
+                        </ct:VectorCell>
+                        <ct:VectorCell>
+                            <ct:CellIndex>
+<ct:Int>5</ct:Int>
+                            </ct:CellIndex>
+                            <ct:Real>89.0</ct:Real>
+                        </ct:VectorCell>
+                        <ct:VectorSegment default="0.0">
+                            <ct:SegmentStartIndex>
+<ct:Int>1</ct:Int>
+                            </ct:SegmentStartIndex>
+                            <ct:SegmentLength>
+<ct:Int>10</ct:Int>
+                            </ct:SegmentLength>
+                            <ct:VectorElements>
+<ct:Int>1</ct:Int>
+<ct:Int>2</ct:Int>
+<ct:Int>3</ct:Int>
+                            </ct:VectorElements>
+                        </ct:VectorSegment>
+                        <ct:VectorSegment default="0.0">
+                            <ct:SegmentStartIndex>
+<ct:Int>1</ct:Int>
+                            </ct:SegmentStartIndex>
+                            <ct:SegmentLength>
+<ct:Int>10</ct:Int>
+                            </ct:SegmentLength>
+                            <ct:VectorElements>
+<ct:Int>1</ct:Int>
+<ct:Int>2</ct:Int>
+<ct:Int>3</ct:Int>
+                            </ct:VectorElements>
+                        </ct:VectorSegment>
+                    </ct:Vector>
+                </ct:Assign>
+            </ct:Variable>
+        </mdef:StructuralModel>
+    </mdef:ModelDefinition>
+</mml:PharmML>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mml:PharmML xmlns:msteps="http://www.pharmml.org/pharmml/0.6/ModellingSteps" xmlns:td="http://www.pharmml.org/pharmml/0.6/TrialDesign" xmlns:uncert="http://www.uncertml.org/3.0" xmlns:ds="http://www.pharmml.org/pharmml/0.6/Dataset" xmlns:mdef="http://www.pharmml.org/pharmml/0.6/ModelDefinition" xmlns:ct="http://www.pharmml.org/pharmml/0.6/CommonTypes" xmlns:math="http://www.pharmml.org/pharmml/0.6/Maths" xmlns:mml="http://www.pharmml.org/pharmml/0.6/PharmML" writtenVersion="0.6">
+    <ct:Name>Stub Model</ct:Name>
+    <mdef:ModelDefinition>
+        <mdef:ParameterModel blkId="p1">
+            <mdef:SimpleParameter symbId="a"/>
+        </mdef:ParameterModel>
+        <mdef:StructuralModel blkId="main">
+            <ct:Variable symbolType="real" symbId="x"/>
+        </mdef:StructuralModel>
+    </mdef:ModelDefinition>
+    <td:TrialDesign>
+        <td:ExternalDataSet toolName="BUGS" oid="d1">
+            <msteps:CodeInjection>
+                <msteps:SymbolMapping id="smt1"/>
+                <msteps:TargetCode>
+                    <msteps:Code>test code;</msteps:Code>
+                </msteps:TargetCode>
+            </msteps:CodeInjection>
+        </td:ExternalDataSet>
+    </td:TrialDesign>
+</mml:PharmML>
