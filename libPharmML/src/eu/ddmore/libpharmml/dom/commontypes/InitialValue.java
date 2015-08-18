@@ -56,8 +56,9 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated Since PharmML 0.7.1, initial value uses the class {@link StandardAssignable}.
  */
+@Deprecated
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "InitialValueType", propOrder = {
     "assign"

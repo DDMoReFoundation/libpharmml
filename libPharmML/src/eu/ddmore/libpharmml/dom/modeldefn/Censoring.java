@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.StandardAssignable;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -86,11 +87,11 @@ public class Censoring
 {
 
     @XmlElement(name = "IntervalLength")
-    protected List<CensoringFeature> intervalLength;
+    protected List<StandardAssignable> intervalLength;
     @XmlElement(name = "LeftCensoringTime")
-    protected List<CensoringFeature> leftCensoringTime;
+    protected List<StandardAssignable> leftCensoringTime;
     @XmlElement(name = "RightCensoringTime")
-    protected List<CensoringFeature> rightCensoringTime;
+    protected List<StandardAssignable> rightCensoringTime;
     @XmlAttribute(name = "censoringType")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String censoringType;
@@ -113,13 +114,13 @@ public class Censoring
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CensoringFeature }
+     * {@link StandardAssignable }
      * 
      * 
      */
-    public List<CensoringFeature> getListOfIntervalLength() {
+    public List<StandardAssignable> getListOfIntervalLength() {
         if (intervalLength == null) {
-            intervalLength = new ArrayList<CensoringFeature>();
+            intervalLength = new ArrayList<StandardAssignable>();
         }
         return this.intervalLength;
     }
@@ -142,13 +143,13 @@ public class Censoring
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CensoringFeature }
+     * {@link StandardAssignable }
      * 
      * 
      */
-    public List<CensoringFeature> getListOfLeftCensoringTime() {
+    public List<StandardAssignable> getListOfLeftCensoringTime() {
         if (leftCensoringTime == null) {
-            leftCensoringTime = new ArrayList<CensoringFeature>();
+            leftCensoringTime = new ArrayList<StandardAssignable>();
         }
         return this.leftCensoringTime;
     }
@@ -175,9 +176,9 @@ public class Censoring
      * 
      * 
      */
-    public List<CensoringFeature> getListOfRightCensoringTime() {
+    public List<StandardAssignable> getListOfRightCensoringTime() {
         if (rightCensoringTime == null) {
-            rightCensoringTime = new ArrayList<CensoringFeature>();
+            rightCensoringTime = new ArrayList<StandardAssignable>();
         }
         return this.rightCensoringTime;
     }

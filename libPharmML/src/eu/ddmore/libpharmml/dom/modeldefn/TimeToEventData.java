@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.commontypes.StandardAssignable;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -84,7 +85,7 @@ public class TimeToEventData
     @XmlElement(name = "Censoring")
     protected List<Censoring> censoring;
     @XmlElement(name = "MaximumNumberEvents")
-    protected List<CensoringFeature> maximumNumberEvents;
+    protected List<StandardAssignable> maximumNumberEvents;
 
     /**
      * Gets the value of the eventVariable property.
@@ -215,13 +216,13 @@ public class TimeToEventData
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CensoringFeature }
+     * {@link StandardAssignable }
      * 
      * 
      */
-    public List<CensoringFeature> getListOfMaximumNumberEvents() {
+    public List<StandardAssignable> getListOfMaximumNumberEvents() {
         if (maximumNumberEvents == null) {
-            maximumNumberEvents = new ArrayList<CensoringFeature>();
+            maximumNumberEvents = new ArrayList<StandardAssignable>();
         }
         return this.maximumNumberEvents;
     }
@@ -289,11 +290,11 @@ public class TimeToEventData
     }
 
     /**
-     * Creates a new empty {@link CensoringFeature} maximumNumberEvents element, adds it to the current {@link TimeToEventData} object and returns it.
-     * @return The created {@link CensoringFeature} object.
+     * Creates a new empty {@link StandardAssignable} maximumNumberEvents element, adds it to the current {@link TimeToEventData} object and returns it.
+     * @return The created {@link StandardAssignable} object.
      */
-    public CensoringFeature createMaximumNumberEvents(){
-            CensoringFeature el = new CensoringFeature();
+    public StandardAssignable createMaximumNumberEvents(){
+    		StandardAssignable el = new StandardAssignable();
             getListOfMaximumNumberEvents().add(el);
             return el;
     }
