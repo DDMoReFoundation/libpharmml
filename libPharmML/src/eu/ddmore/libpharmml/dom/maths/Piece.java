@@ -32,6 +32,7 @@ import eu.ddmore.libpharmml.dom.dataset.CategoryMapping;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.dom.modeldefn.UncertML;
 import eu.ddmore.libpharmml.dom.probonto.ProbOnto;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -73,7 +74,7 @@ public class Piece
 
     @XmlElement(name = "UncertML")
     protected UncertML uncertML;
-    @XmlElement(name = "ProbOnto")
+    @XmlElement(name = "ProbOnto", namespace = XMLFilter.NS_DEFAULT_PROBONTO)
     protected ProbOnto probOnto;
     @XmlElement(name = "CategoryMapping")
     protected CategoryMapping categoryMapping;

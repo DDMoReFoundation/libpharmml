@@ -30,6 +30,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.probonto.DistributionName;
 import eu.ddmore.libpharmml.dom.probonto.ProbOnto;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -71,7 +72,7 @@ public class Distribution
 
     @XmlElement(name = "UncertML")
     protected UncertML uncertML;
-    @XmlElement(name = "ProbOnto")
+    @XmlElement(name = "ProbOnto", namespace = XMLFilter.NS_DEFAULT_PROBONTO)
     protected ProbOnto probOnto;
     @XmlElement(name = "Piecewise")
     protected Piecewise piecewise;
