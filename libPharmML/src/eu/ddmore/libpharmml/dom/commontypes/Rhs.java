@@ -31,13 +31,19 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.maths.Constant;
 import eu.ddmore.libpharmml.dom.maths.Equation;
+import eu.ddmore.libpharmml.dom.maths.Binop;
+import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
+import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
+import eu.ddmore.libpharmml.dom.maths.Piecewise;
+import eu.ddmore.libpharmml.dom.maths.Uniop;
+import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.dom.modellingsteps.InitialEstimate;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
- * <p>Java class for Rhs complex type.
+ * Class defining a right-hand side assignment in an equation.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
@@ -52,6 +58,19 @@ import eu.ddmore.libpharmml.util.ChainedList;
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Sequence"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Vector"/>
  *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Interpolation"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Matrix"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Interpolation"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Binop"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Uniop"/>
+ *         &lt;element name="Piecewise" type="{http://www.pharmml.org/pharmml/0.7/Maths}PiecewiseType"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}FunctionCall"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Sum"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Product"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Delay"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}VectorSelector"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}MatrixSelector"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}MatrixUniop"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}Probability"/>
  *       &lt;/choice>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -62,15 +81,26 @@ import eu.ddmore.libpharmml.util.ChainedList;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Rhs", propOrder = {
-    "equation",
     "constant",
     "scalar",
     "symbRef",
     "sequence",
     "interval",
     "vector",
+    "matrix",
     "interpolation",
-    "matrix"
+    "binop",
+    "uniop",
+    "piecewise",
+    "functionCall",
+    "sum",
+    "product",
+    "delay",
+    "vectorSelector",
+    "matrixSelector",
+    "matrixUniop",
+    "probability",
+    "equation" // < PharmML 0.7.1
 })
 @XmlSeeAlso({
     InitialEstimate.class
@@ -79,7 +109,7 @@ public class Rhs
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
+	@XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
     protected Equation equation;
     @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected Scalar scalar;
@@ -99,6 +129,30 @@ public class Rhs
     protected Constant constant;
     @XmlElement(name = "Interval")
     protected Interval interval;
+    
+    // PharmML 0.7.1
+    @XmlElement(name = "Binop", namespace = XMLFilter.NS_DEFAULT_MATH)
+    protected Binop binop;
+    @XmlElement(name = "Uniop", namespace = XMLFilter.NS_DEFAULT_MATH)
+    protected Uniop uniop;
+    @XmlElement(name = "Piecewise")
+    protected Piecewise piecewise;
+    @XmlElement(name = "FunctionCall", namespace = XMLFilter.NS_DEFAULT_MATH)
+    protected FunctionCallType functionCall;
+    @XmlElement(name = "Sum")
+    protected Sum sum;
+    @XmlElement(name = "Product")
+    protected Product product;
+    @XmlElement(name = "Delay")
+    protected Delay delay;
+    @XmlElement(name = "VectorSelector")
+    protected VectorSelector vectorSelector;
+    @XmlElement(name = "MatrixSelector")
+    protected MatrixSelector matrixSelector;
+    @XmlElement(name = "MatrixUniop", namespace = XMLFilter.NS_DEFAULT_MATH)
+    protected MatrixUniOp matrixUniop;
+    @XmlElement(name = "Probability", namespace = XMLFilter.NS_DEFAULT_MDEF)
+    protected Probability probability;
     
     /**
      * Empty constructor.
@@ -181,6 +235,116 @@ public class Rhs
      */
     public Rhs(Constant constant){
     	this.constant = constant;
+    }
+    
+    /**
+     * Constructs a right-hand side assignment with a {@link Binop}.
+     * @param binop
+     * 
+     * @since PharmML 0.7.1
+     */
+    public Rhs(Binop binop){
+    	this.binop = binop;
+    }
+    
+    /**
+     * Constructs a right-hand side assignment with a {@link Uniop}.
+     * @param uniop
+     * 
+     * @since PharmML 0.7.1
+     */
+    public Rhs(Uniop uniop){
+    	this.uniop = uniop;
+    }
+    
+    /**
+     * Constructs a right-hand side assignment with a {@link Piecewise}.
+     * @param pw
+     * 
+     * @since PharmML 0.7.1
+     */
+    public Rhs(Piecewise pw){
+    	this.piecewise = pw;
+    }
+    
+    /**
+     * Constructs a right-hand side assignment with a {@link FunctionCallType}.
+     * @param functionCall
+     * 
+     * @since PharmML 0.7.1
+     */
+    public Rhs(FunctionCallType functionCall){
+    	this.functionCall = functionCall;
+    }
+    
+    /**
+     * Constructs a right-hand side assignment with a {@link Sum}.
+     * @param sum
+     * 
+     * @since PharmML 0.7.1
+     */
+    public Rhs(Sum sum){
+    	this.sum = sum;
+    }
+    
+    /**
+     * Constructs a right-hand side assignment with a {@link Product}.
+     * @param product
+     * 
+     * @since PharmML 0.7.1
+     */
+    public Rhs(Product product){
+    	this.product = product;
+    }
+    
+    /**
+     * Constructs a right-hand side assignment with a {@link Delay}.
+     * @param delay
+     * 
+     * @since PharmML 0.7.1
+     */
+    public Rhs(Delay delay){
+    	this.delay = delay;
+    }
+    
+    /**
+     * Constructs a right-hand side assignment with a {@link VectorSelector}.
+     * @param vectorSelector
+     * 
+     * @since PharmML 0.7.1
+     */
+    public Rhs(VectorSelector vectorSelector){
+    	this.vectorSelector = vectorSelector;
+    }
+    
+    /**
+     * Constructs a right-hand side assignment with a {@link MatrixSelector}.
+     * @param matrixSelector
+     * 
+     * @since PharmML 0.7.1
+     */
+    public Rhs(MatrixSelector matrixSelector){
+    	this.matrixSelector = matrixSelector;
+    }
+    
+    /**
+     * Constructs a right-hand side assignment with a {@link MatrixUniOp}.
+     * @param matrixUniop
+     * 
+     * @since PharmML 0.7.1
+     */
+    public Rhs(MatrixUniOp matrixUniop){
+    	this.matrixUniop = matrixUniop;
+    }
+    
+    /**
+     * Constructs a right-hand side assignment with a {@link Binop}.
+     * @param binop
+     * 
+     * @since PharmML 0.7.1
+     */
+    public Rhs(Probability probability){
+    	this.probability = probability;
     }
     
     /**
@@ -422,15 +586,148 @@ public class Rhs
     }
     
     /**
+     * @since PharmML 0.7.1
+     * @return A {@link Binop} object.
+     */
+    public Binop getBinop() {
+		return binop;
+	}
+
+	public void setBinop(Binop binop) {
+		this.binop = binop;
+	}
+
+	/**
+     * @since PharmML 0.7.1
+     * @return A {@link Uniop} object.
+     */
+	public Uniop getUniop() {
+		return uniop;
+	}
+
+	public void setUniop(Uniop uniop) {
+		this.uniop = uniop;
+	}
+
+	/**
+     * @since PharmML 0.7.1
+     * @return A {@link Piecewise} object.
+     */
+	public Piecewise getPiecewise() {
+		return piecewise;
+	}
+
+	public void setPiecewise(Piecewise piecewise) {
+		this.piecewise = piecewise;
+	}
+
+	/**
+     * @since PharmML 0.7.1
+     * @return A {@link FunctionCallType} object.
+     */
+	public FunctionCallType getFunctionCall() {
+		return functionCall;
+	}
+
+	public void setFunctionCall(FunctionCallType functionCall) {
+		this.functionCall = functionCall;
+	}
+
+	/**
+     * @since PharmML 0.7.1
+     * @return A {@link Sum} object.
+     */
+	public Sum getSum() {
+		return sum;
+	}
+
+	public void setSum(Sum sum) {
+		this.sum = sum;
+	}
+
+	/**
+     * @since PharmML 0.7.1
+     * @return A {@link Product} object.
+     */
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	/**
+     * @since PharmML 0.7.1
+     * @return A {@link Delay} object.
+     */
+	public Delay getDelay() {
+		return delay;
+	}
+
+	public void setDelay(Delay delay) {
+		this.delay = delay;
+	}
+
+	/**
+     * @since PharmML 0.7.1
+     * @return A {@link VectorSelector} object.
+     */
+	public VectorSelector getVectorSelector() {
+		return vectorSelector;
+	}
+
+	public void setVectorSelector(VectorSelector vectorSelector) {
+		this.vectorSelector = vectorSelector;
+	}
+
+	/**
+     * @since PharmML 0.7.1
+     * @return A {@link MatrixSelector} object.
+     */
+	public MatrixSelector getMatrixSelector() {
+		return matrixSelector;
+	}
+
+	public void setMatrixSelector(MatrixSelector matrixSelector) {
+		this.matrixSelector = matrixSelector;
+	}
+
+	/**
+     * @since PharmML 0.7.1
+     * @return A {@link MatrixUniOp} object.
+     */
+	public MatrixUniOp getMatrixUniop() {
+		return matrixUniop;
+	}
+
+	public void setMatrixUniop(MatrixUniOp matrixUniop) {
+		this.matrixUniop = matrixUniop;
+	}
+
+	/**
+     * @since PharmML 0.7.1
+     * @return A {@link Probability} object.
+     */
+	public Probability getProbability() {
+		return probability;
+	}
+
+	public void setContent(Probability probability) {
+		this.probability = probability;
+	}
+
+	/**
      * Gets the unique content of this Rhs. Each mapped attribute is checked and the first checked one
      * that is not null is returned. Only one is returned even if 2 or more attributes have been set.
      * If there is no content, this method returns null.
      * @return Possible return types are {@link Equation}, {@link Scalar}, {@link SymbolRef}, 
      * {@link Vector}, {@link Matrix}, {@link Interpolation}, {@link Interval},
-     * {@link Constant} and {@link Sequence}.
+     * {@link Constant}, {@link Sequence}, {@link Binop}, {@link Uniop}, {@link Piecewise},
+     * {@link FunctionCallType}, {@link Sum}, {@link Product}, {@link Delay}, {@link VectorSelector},
+     * {@link MatrixSelector}, {@link MatrixUniOp} and {@link Probability}.
      */
     public Object getContent(){
-    	if(equation != null) return equation;
     	if(scalar != null) return scalar;
     	if(symbRef != null) return symbRef;
     	if(vector != null) return vector;
@@ -439,20 +736,67 @@ public class Rhs
     	if(sequence != null) return sequence;
     	if(interval != null) return interval;
     	if(constant != null) return constant;
+    	if(binop != null) return binop;
+    	if(uniop != null) return uniop;
+    	if(piecewise != null) return piecewise;
+    	if(functionCall != null) return functionCall;
+    	if(sum != null) return sum;
+    	if(product != null) return product;
+    	if(delay != null) return delay;
+    	if(vectorSelector != null) return vectorSelector;
+    	if(matrixSelector != null) return matrixSelector;
+    	if(matrixUniop != null) return matrixUniop;
+    	if(probability != null) return probability;
+    	if(equation != null) return equation;
     	else return null;
+    }
+    
+    public void clearContent(){
+    	this.equation = null;
+		this.scalar = null;
+		this.symbRef = null;
+		this.sequence = null;
+		this.vector = null;
+		this.interpolation = null;
+		this.matrix = null;
+		this.constant = null;
+		this.interval = null;
+		this.binop = null;
+		this.uniop = null;
+		this.piecewise = null;
+		this.functionCall = null;
+		this.sum = null;
+		this.product = null;
+		this.delay = null;
+		this.vectorSelector = null;
+		this.matrixSelector = null;
+		this.matrixUniop = null;
+		this.probability = null;
     }
 
 	@Override
 	protected List<TreeNode> listChildren() {
-		List<TreeNode> list = new ChainedList<TreeNode>()
-				.addIfNotNull(equation)
+		List<TreeNode> list = new ChainedList<TreeNode>(super.listChildren())
 				.addIfNotNull(scalar)
 				.addIfNotNull(symbRef)
 				.addIfNotNull(sequence)
 				.addIfNotNull(interval)
 				.addIfNotNull(vector)
 				.addIfNotNull(interpolation)
-				.addIfNotNull(matrix);
+				.addIfNotNull(matrix)
+				.addIfNotNull(constant)
+				.addIfNotNull(binop)
+				.addIfNotNull(uniop)
+				.addIfNotNull(piecewise)
+				.addIfNotNull(functionCall)
+				.addIfNotNull(sum)
+				.addIfNotNull(product)
+				.addIfNotNull(delay)
+				.addIfNotNull(vectorSelector)
+				.addIfNotNull(matrixSelector)
+				.addIfNotNull(matrixUniop)
+				.addIfNotNull(probability)
+				.addIfNotNull(equation);
 		return list;
 	}
 
