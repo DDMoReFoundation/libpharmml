@@ -40,7 +40,7 @@ public class ExternalDatasetTest {
 	@Before
 	public void setUp() throws Exception {
 		this.libPharmML = PharmMlFactory.getInstance().createLibPharmML();
-		this.resource7 = libPharmML.createDom(PharmMLVersion.V0_7);
+		this.resource7 = libPharmML.createDom(PharmMLVersion.V0_7_1);
 		this.resource7.setParameter(IPharmMLResource.AUTOSET_ID, false);
 		this.resource6 = libPharmML.createDom(PharmMLVersion.V0_6);
 		this.resource6.setParameter(IPharmMLResource.AUTOSET_ID, false);

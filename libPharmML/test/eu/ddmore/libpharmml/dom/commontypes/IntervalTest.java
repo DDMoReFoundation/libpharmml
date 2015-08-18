@@ -65,7 +65,7 @@ public class IntervalTest {
 	public static Collection<Object[]> parameters(){
 		
 		return Arrays.asList(new Object[][] {
-				{PharmMLVersion.V0_7}
+				{PharmMLVersion.V0_7_1}
 		});
 	}
 	

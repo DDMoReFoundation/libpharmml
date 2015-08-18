@@ -92,7 +92,7 @@ import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 })
 @HasElementRenamed(mappedFields = { 
 		@RenamedElement(field = "msteps_codeInjection"),
-		@RenamedElement(field = "design_codeInjection", since = PharmMLVersion.V0_7)}, 
+		@RenamedElement(field = "design_codeInjection", since = PharmMLVersion.V0_7_1)}, 
 		transientField = "codeInjection")
 public class ExternalDataSet
     extends PharmMLRootType implements DatasetMap, PharmMLObject

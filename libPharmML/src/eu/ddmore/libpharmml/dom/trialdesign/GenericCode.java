@@ -71,11 +71,11 @@ import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 @HasElementsRenamed({
 	@HasElementRenamed(mappedFields = { 
 			@RenamedElement(field = "msteps_listOfSymbol"),
-			@RenamedElement(field = "design_listOfSymbol", since = PharmMLVersion.V0_7)},
+			@RenamedElement(field = "design_listOfSymbol", since = PharmMLVersion.V0_7_1)},
 			transientField = "listOfSymbol"),
 	@HasElementRenamed(mappedFields = { 
 			@RenamedElement(field = "msteps_code"),
-			@RenamedElement(field = "design_code", since = PharmMLVersion.V0_7)},
+			@RenamedElement(field = "design_code", since = PharmMLVersion.V0_7_1)},
 			transientField = "code")
 })
 public class GenericCode
