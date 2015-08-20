@@ -22,12 +22,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -67,8 +71,10 @@ public class FunctionDefinition
 
     @XmlElement(name = "FunctionArgument")
     protected List<FunctionParameter> functionArgument;
+    
     @XmlElement(name = "Definition")
-    protected ScalarRhs definition;
+    protected StandardAssignable definition;
+    
     @XmlAttribute(name = "symbolType", required = true)
     protected SymbolType symbolType;
 
@@ -106,10 +112,10 @@ public class FunctionDefinition
      * 
      * @return
      *     possible object is
-     *     {@link ScalarRhs }
+     *     {@link StandardAssignable }
      *     
      */
-    public ScalarRhs getDefinition() {
+    public StandardAssignable getDefinition() {
         return definition;
     }
 
@@ -118,10 +124,10 @@ public class FunctionDefinition
      * 
      * @param value
      *     allowed object is
-     *     {@link ScalarRhs }
+     *     {@link StandardAssignable }
      *     
      */
-    public void setDefinition(ScalarRhs value) {
+    public void setDefinition(StandardAssignable value) {
         this.definition = value;
     }
 
@@ -172,13 +178,13 @@ public class FunctionDefinition
     }
 
     /**
-     * Creates a new empty {@link ScalarRhs} definition element, adds it to the current object and returns it.
-     * @return The created {@link ScalarRhs} object.
+     * Creates a new empty {@link StandardAssignable} definition element, adds it to the current object and returns it.
+     * @return The created {@link StandardAssignable} object.
      */
-    public ScalarRhs createDefinition(){
-            ScalarRhs el = new ScalarRhs();
-            this.definition = el;
-            return el;
+    public StandardAssignable createDefinition(){
+    	StandardAssignable el = new StandardAssignable();
+        this.definition = el;
+        return el;
     }
 
 
@@ -187,6 +193,45 @@ public class FunctionDefinition
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(functionArgument)
 				.addIfNotNull(definition);
+	}
+	
+	// FIXME: The following section is dirty and needs to be fixed. This is meant
+	// to support backwards compatibility when definition was ScalarRhs
+	
+	protected void afterUnmarshal(Unmarshaller u, Object parent) {
+		if(definition != null){
+			PharmMLVersion version = getUnmarshalVersion();
+			if(!version.isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
+				definition.fromScalarRhs();
+			}
+		}
+		
+		
+	}
+	
+	@XmlTransient
+	private Rhs saved_rhs;
+	
+	protected void beforeMarshal(Marshaller m){
+		if(definition != null){
+			PharmMLVersion version = getMarshalVersion();
+			if(!version.isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
+				saved_rhs = definition.toScalarRhs();
+			}
+		}
+	}
+	
+	protected void afterMarshal(Marshaller m){
+		if(definition != null){
+			PharmMLVersion version = getMarshalVersion();
+			if(!version.isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
+				definition.fromScalarRhs();
+			}
+			if(saved_rhs != null){
+				definition.setAssign(saved_rhs);
+				saved_rhs = null;
+			}
+		}
 	}
 
 }

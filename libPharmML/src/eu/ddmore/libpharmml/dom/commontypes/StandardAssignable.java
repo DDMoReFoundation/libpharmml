@@ -21,14 +21,17 @@ package eu.ddmore.libpharmml.dom.commontypes;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.maths.Constant;
 import eu.ddmore.libpharmml.dom.maths.Equation;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -55,7 +58,10 @@ import eu.ddmore.libpharmml.util.ChainedList;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "StandardAssignType", propOrder = {
-    "assign"
+    "assign",
+    "equation",
+    "scalar",
+    "symbRef"
 })
 @XmlSeeAlso({
     Endpoint.class
@@ -66,6 +72,51 @@ public class StandardAssignable
 
     @XmlElement(name = "Assign", required = true)
     protected Rhs assign;
+    
+    // The following attributes are meant to support the backward compatiblity before version 0.7.1.
+    // When ScalarRhs attributes changed to StandardAssignable.
+    @XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
+    protected Equation equation;
+    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+    protected Scalar scalar;
+    @XmlElement(name = "SymbRef")
+    protected SymbolRef symbRef;
+    
+    /**
+     * For backwards compatiblity only. Do not use.
+     * @return
+     */
+    public Rhs toScalarRhs(){
+    	Rhs saved_assign = null;
+    	if(assign != null){
+    		if(assign.getScalar() != null){
+    			scalar = assign.getScalar();
+    		} else if(assign.getSymbRef() != null){
+    			symbRef = assign.getSymbRef();
+    		} else {
+    			equation = Equation.fromRhs(assign);
+    		}
+    		saved_assign = assign;
+    		assign = null;
+    	}
+    	return saved_assign;
+    }
+    
+    /**
+     * For backwards compatiblity only. Do not use.
+     */
+    public void fromScalarRhs(){
+    	if(equation != null){
+    		assign = Equation.toRhs(equation);
+    	} else if (scalar != null){
+    		assign = new Rhs(scalar);
+    	} else if (symbRef != null){
+    		assign = new Rhs(symbRef);
+    	}
+    	equation = null;
+    	scalar = null;
+    	symbRef = null;
+    }
 
     /**
      * Gets the value of the assign property.

@@ -723,7 +723,7 @@ public class Rhs
 		return probability;
 	}
 
-	public void setContent(Probability probability) {
+	public void setProbability(Probability probability) {
 		this.probability = probability;
 	}
 
