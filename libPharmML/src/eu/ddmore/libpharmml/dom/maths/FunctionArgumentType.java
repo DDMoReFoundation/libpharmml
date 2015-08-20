@@ -92,6 +92,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlType(name = "FunctionArgumentType", propOrder = {
     "symbol",
     "description",
+    "assign",
     "equation",
     "scalar",
     "constant",
