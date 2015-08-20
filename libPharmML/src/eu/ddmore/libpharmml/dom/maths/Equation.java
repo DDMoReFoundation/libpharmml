@@ -31,9 +31,12 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixCellValue;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixRowValue;
+import eu.ddmore.libpharmml.dom.commontypes.ObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.OperationVariable;
+import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
 
 
@@ -67,5 +70,33 @@ public class Equation
 		return toString();
 	}
 
+	/**
+	 * For backwards compatiblity.
+	 * @param rhs
+	 * @return
+	 */
+	public static Equation fromRhs(Rhs rhs){
+		Equation eq = new Equation();
+		
+		eq.setBinop(rhs.getBinop());
+		eq.setDelay(rhs.getDelay());
+		eq.setDescription(rhs.getDescription());
+		eq.setFunctionCall(rhs.getFunctionCall());
+		eq.setId(rhs.getId());
+		eq.setMatrixSelector(rhs.getMatrixSelector());
+		eq.setMatrixUniop(rhs.getMatrixUniop());
+		eq.setPiecewise(rhs.getPiecewise());
+		eq.setProbability(rhs.getProbability());
+		eq.setProduct(rhs.getProduct());
+		if(rhs.getScalar() != null){
+			eq.setScalar(MasterObjectFactory.createScalar(rhs.getScalar()));
+		}
+		eq.setSum(rhs.getSum());
+		eq.setSymbRef(rhs.getSymbRef());
+		eq.setUniop(rhs.getUniop());
+		eq.setVectorSelector(rhs.getVectorSelector());
+		
+		return eq;
+	}
 
 }

@@ -27,7 +27,6 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
 
 /**
  * Abstract class for regrouping common properties in formulas.
- * @author F. Yvon
  */
 @XmlTransient
 public abstract class AbstractFormula extends PharmMLRootType {
@@ -35,9 +34,11 @@ public abstract class AbstractFormula extends PharmMLRootType {
 //	@XmlElement(name = "SymbRef", required = true)
 //    protected SymbolRefType symbRef;
 	
+	// FIXME: Equation conversion
 	@XmlElements({ 
 		@XmlElement(name = "SymbRef", type = SymbolRef.class),
-		@XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH ,type = Equation.class)
+		@XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH ,type = Equation.class),
+		@XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, type = Rhs.class)
 		})
 	public OperationVariable variable;
 	

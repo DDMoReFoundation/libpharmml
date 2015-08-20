@@ -33,14 +33,19 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.maths.Equation;
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
+import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 
 
 /**
@@ -67,49 +72,89 @@ import eu.ddmore.libpharmml.util.ChainedList;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ColumnTransformationType", propOrder = {
-    "equation"
+		"mapped_assign",
+	    "mapped_equation",
 })
+@HasElementRenamed(
+		mappedFields = { 
+				@RenamedElement(field = "mapped_equation"),
+				@RenamedElement(field = "mapped_assign", since = PharmMLVersion.V0_7_1)
+				},
+		transientField = "assign")
 public class ColumnTransformation
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH, required = true)
-    protected Equation equation;
+	@XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
+    protected Rhs mapped_equation;
+    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT) // PharmML 0.7.1
+    protected Rhs mapped_assign;
+    @XmlTransient
+    protected Rhs assign;
+    
     @XmlAttribute(name = "transformId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String transformId;
     
     public ColumnTransformation(){}
     
-    public ColumnTransformation(Equation equation, String transformId){
-    	this.equation = equation;
-    	this.transformId = transformId;
-    }
+//    public ColumnTransformation(Equation equation, String transformId){
+//    	this.equation = equation;
+//    	this.transformId = transformId;
+//    }
 
+//    /**
+//     * 
+//     *                                 The transformation is defined as an equation that must include a reference to the column, defined by the parent of this element.  
+//     *                             
+//     * 
+//     * @return
+//     *     possible object is
+//     *     {@link Equation }
+//     *     
+//     */
+//    public Equation getEquation() {
+//        return equation;
+//    }
+//
+//    /**
+//     * Sets the value of the equation property.
+//     * 
+//     * @param value
+//     *     allowed object is
+//     *     {@link Equation }
+//     *     
+//     */
+//    public void setEquation(Equation value) {
+//        this.equation = value;
+//    }
+    
     /**
-     * 
-     *                                 The transformation is defined as an equation that must include a reference to the column, defined by the parent of this element.  
-     *                             
+     * The transformation is defined as an expression that must include 
+     * a reference to the column, defined by the parent of this element.
      * 
      * @return
      *     possible object is
-     *     {@link Equation }
+     *     {@link Rhs }
      *     
+     * @since PharmML 0.7.1
      */
-    public Equation getEquation() {
-        return equation;
+    public Rhs getAssign() {
+        return assign;
     }
 
     /**
-     * Sets the value of the equation property.
+     * The transformation is defined as an expression that must include 
+     * a reference to the column, defined by the parent of this element.
      * 
      * @param value
      *     allowed object is
-     *     {@link Equation }
+     *     {@link Rhs }
      *     
+     * @since PharmML 0.7.1
      */
-    public void setEquation(Equation value) {
-        this.equation = value;
+    public void setAssign(Rhs value) {
+        this.assign = value;
     }
 
     /**
@@ -136,20 +181,20 @@ public class ColumnTransformation
         this.transformId = value;
     }
     
-    /**
-     * Creates a new empty {@link Equation} equation element, adds it to the current object and returns it.
-     * @return The created {@link Equation} object.
-     */
-    public Equation createEquation(){
-            Equation el = new Equation();
-            this.equation = el;
-            return el;
-    }
+//    /**
+//     * Creates a new empty {@link Equation} equation element, adds it to the current object and returns it.
+//     * @return The created {@link Equation} object.
+//     */
+//    public Equation createEquation(){
+//            Equation el = new Equation();
+//            this.equation = el;
+//            return el;
+//    }
 
 	@Override
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
-				.addIfNotNull(equation);
+				.addIfNotNull(assign);
 	}
 
 

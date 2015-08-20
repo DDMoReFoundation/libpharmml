@@ -86,7 +86,8 @@ public class MatrixRow
     @XmlElementRefs({
         @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Sequence", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     })
     protected List<MatrixRowValue> listOfValues;
     @XmlAttribute(name = "default")

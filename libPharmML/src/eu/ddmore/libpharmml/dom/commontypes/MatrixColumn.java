@@ -31,15 +31,14 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 
-import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
  * This type specifies a column of values in a matrix. The column can contain 
- *                 indexed cells or scalars/symbols filling the whole column. Index of the matrix column is optional. 
- *                 If cells are defined inside column, the cells will be indexed relative to the column.
+ * indexed cells or scalars/symbols filling the whole column. Index of the matrix column is optional. 
+ * If cells are defined inside column, the cells will be indexed relative to the column.
  * 
  * <p>Java class for MatrixColumnType complex type.
  * 
@@ -80,7 +79,7 @@ public class MatrixColumn
     @XmlElementRefs({
         @XmlElementRef(name = "Sequence", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH, type = Equation.class, required = false),
+        @XmlElementRef(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
         @XmlElementRef(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     })
     protected List<MatrixRowValue> scalarOrSequenceOrSymbRef;
@@ -128,24 +127,17 @@ public class MatrixColumn
      * 
      * 
      * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link MissingValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link BooleanType }{@code >}
-     * {@link JAXBElement }{@code <}{@link SymbolRefType }{@code >}
-     * {@link JAXBElement }{@code <}{@link MissingValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link MissingValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link FalseBooleanType }{@code >}
-     * {@link JAXBElement }{@code <}{@link MissingValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link Object }{@code >}
-     * {@link JAXBElement }{@code <}{@link SequenceType }{@code >}
-     * {@link JAXBElement }{@code <}{@link IntValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link MissingValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link TrueBooleanType }{@code >}
-     * {@link Equation }
-     * {@link JAXBElement }{@code <}{@link MissingValueType }{@code >}
-     * {@link JAXBElement }{@code <}{@link IdValueType }{@code >}
+     * Objects of the following type(s) are allowed in the list:
+     * {@link StringValue },
+     * {@link SymbolRef },
+     * {@link RealValue },
+     * {@link MissingValue },
+     * {@link FalseBoolean },
+     * {@link Sequence },
+     * {@link IntValue },
+     * {@link TrueBoolean },
+     * {@link Rhs},
+     * {@link IdValue }
      * 
      * 
      */

@@ -25,9 +25,7 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
 
 /**
  * Interface for object types that can be used as value within in a matrix cell.
- * @author F. Yvon
- * 
- *  * Possible implementations:
+ * Possible implementations:
  * 		{@link Scalar},
  * 		{@link Sequence},
  * 		{@link SymbolRef},

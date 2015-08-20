@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.exceptions.UndeclaredInterfaceImplementer;
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 public class VectorValueAdapter extends XmlAdapter<JAXBElement<?>, VectorValue>{
 	
@@ -40,6 +41,13 @@ public class VectorValueAdapter extends XmlAdapter<JAXBElement<?>, VectorValue>{
 			return new VectorCellValueAdapter().marshal((VectorCellValue) v);
 		} else if (v instanceof Sequence){
 			return of.createSequence((Sequence) v);
+		} else if (v instanceof Rhs){
+			PharmMLVersion version = ((PharmMLElement)v).getMarshalVersion();
+			if(version.isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
+				return MasterObjectFactory.COMMONTYPES_OF.createAssign((Rhs) v);
+			} else {
+				return MasterObjectFactory.MATHS_OF.createEquation(Equation.fromRhs((Rhs) v));
+			}
 		} else if (v instanceof Equation){
 			return MasterObjectFactory.MATHS_OF.createEquation((Equation) v);
 		} else {

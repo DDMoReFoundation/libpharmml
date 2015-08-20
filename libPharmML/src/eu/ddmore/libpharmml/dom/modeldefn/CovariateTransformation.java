@@ -32,12 +32,17 @@ import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.maths.Equation;
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
+import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 
 
 /**
@@ -65,16 +70,28 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CovariateTransformationType", propOrder = {
     "transformedCovariate",
-    "equation"
+    "mapped_assign",
+    "mapped_equation"
 })
+@HasElementRenamed(
+		mappedFields = { 
+				@RenamedElement(field = "mapped_equation"),
+				@RenamedElement(field = "mapped_assign", since = PharmMLVersion.V0_7_1)
+				},
+		transientField = "assign")
 public class CovariateTransformation
     extends PharmMLRootType
 {
 
     @XmlElement(name = "TransformedCovariate", required = true)
     protected TransformedCovariate transformedCovariate;
-    @XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH, required = true)
-    protected Equation equation;
+    
+    @XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
+    protected Rhs mapped_equation;
+    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT) // PharmML 0.7.1
+    protected Rhs mapped_assign;
+    @XmlTransient
+    protected Rhs assign;
 
     /**
      * Gets the value of the transformedCovariate property.
@@ -99,38 +116,67 @@ public class CovariateTransformation
     public void setTransformedCovariate(TransformedCovariate value) {
         this.transformedCovariate = value;
     }
-
+    
     /**
-     * 
-     *                                 The transformation is defined as an equation that must include a reference to the covariate variable, defined by the parent of this element.  
-     *                             
+     * The transformation is defined as an expression that must include 
+     * a reference to the covariate variable, defined by the parent of this element.
      * 
      * @return
      *     possible object is
-     *     {@link Equation }
+     *     {@link Rhs }
      *     
+     * @since PharmML 0.7.1
      */
-    public Equation getEquation() {
-        return equation;
+    public Rhs getAssign() {
+        return assign;
     }
 
     /**
-     * Sets the value of the equation property.
+     * The transformation is defined as an expression that must include 
+     * a reference to the covariate variable, defined by the parent of this element.
      * 
      * @param value
      *     allowed object is
-     *     {@link Equation }
+     *     {@link Rhs }
      *     
+     * @since PharmML 0.7.1
      */
-    public void setEquation(Equation value) {
-        this.equation = value;
+    public void setAssign(Rhs value) {
+        this.assign = value;
     }
+
+
+//    /**
+//     * 
+//     *                                 The transformation is defined as an equation that must include a reference to the covariate variable, defined by the parent of this element.  
+//     *                             
+//     * 
+//     * @return
+//     *     possible object is
+//     *     {@link Equation }
+//     *     
+//     */
+//    public Equation getEquation() {
+//        return equation;
+//    }
+//
+//    /**
+//     * Sets the value of the equation property.
+//     * 
+//     * @param value
+//     *     allowed object is
+//     *     {@link Equation }
+//     *     
+//     */
+//    public void setEquation(Equation value) {
+//        this.equation = value;
+//    }
     
     @Override
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(transformedCovariate)
-				.addIfNotNull(equation);
+				.addIfNotNull(assign);
 	}
 
 }

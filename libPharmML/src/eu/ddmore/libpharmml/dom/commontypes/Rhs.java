@@ -106,28 +106,31 @@ import eu.ddmore.libpharmml.util.ChainedList;
     InitialEstimate.class
 })
 public class Rhs
-    extends PharmMLRootType
+    extends PharmMLRootType implements MatrixCellValue, MatrixRowValue, OperationVariable, VectorValue
 {
 
+	// Here all the namespaces are specified, as Rhs may be used as math:Equation elements
+	// in versions < 0.7.1.
+	
 	@XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
     protected Equation equation;
     @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected Scalar scalar;
-    @XmlElement(name = "SymbRef")
+    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
     protected SymbolRef symbRef;
-    @XmlElement(name = "Sequence")
+    @XmlElement(name = "Sequence", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Sequence sequence;
-    @XmlElement(name = "Vector")
+    @XmlElement(name = "Vector", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Vector vector;
-    @XmlElement(name = "Interpolation")
+    @XmlElement(name = "Interpolation", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Interpolation interpolation;
-    @XmlElement(name = "Matrix")
+    @XmlElement(name = "Matrix", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Matrix matrix;
     
     // PharmML 0.7
     @XmlElement(name = "Constant", namespace = XMLFilter.NS_DEFAULT_MATH)
     protected Constant constant;
-    @XmlElement(name = "Interval")
+    @XmlElement(name = "Interval", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Interval interval;
     
     // PharmML 0.7.1
@@ -135,19 +138,19 @@ public class Rhs
     protected Binop binop;
     @XmlElement(name = "Uniop", namespace = XMLFilter.NS_DEFAULT_MATH)
     protected Uniop uniop;
-    @XmlElement(name = "Piecewise")
+    @XmlElement(name = "Piecewise", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Piecewise piecewise;
     @XmlElement(name = "FunctionCall", namespace = XMLFilter.NS_DEFAULT_MATH)
     protected FunctionCallType functionCall;
-    @XmlElement(name = "Sum")
+    @XmlElement(name = "Sum", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Sum sum;
-    @XmlElement(name = "Product")
+    @XmlElement(name = "Product", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Product product;
-    @XmlElement(name = "Delay")
+    @XmlElement(name = "Delay", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Delay delay;
-    @XmlElement(name = "VectorSelector")
+    @XmlElement(name = "VectorSelector", namespace = XMLFilter.NS_DEFAULT_CT)
     protected VectorSelector vectorSelector;
-    @XmlElement(name = "MatrixSelector")
+    @XmlElement(name = "MatrixSelector", namespace = XMLFilter.NS_DEFAULT_CT)
     protected MatrixSelector matrixSelector;
     @XmlElement(name = "MatrixUniop", namespace = XMLFilter.NS_DEFAULT_MATH)
     protected MatrixUniOp matrixUniop;
@@ -162,7 +165,10 @@ public class Rhs
     /**
      * Constructs a right-hand side assignment with a {@link Equation}.
      * @param equation The {@link Equation} to be assigned.
+     * 
+     * @deprecated Since PharmML 0.7.1, equations have been removed.
      */
+    @Deprecated
     public Rhs(Equation equation){
     	this.equation = equation;
     }
@@ -354,7 +360,9 @@ public class Rhs
      *     possible object is
      *     {@link Equation }
      *     
+     * @deprecated Since PharmML 0.7.1, equations have been removed.
      */
+    @Deprecated
     public Equation getEquation() {
         return equation;
     }
@@ -366,7 +374,9 @@ public class Rhs
      *     allowed object is
      *     {@link Equation }
      *     
+     * @deprecated Since PharmML 0.7.1, equations have been removed.
      */
+    @Deprecated
     public void setEquation(Equation value) {
         this.equation = value;
     }
@@ -798,6 +808,11 @@ public class Rhs
 				.addIfNotNull(probability)
 				.addIfNotNull(equation);
 		return list;
+	}
+
+	@Override
+	public String asString() {
+		return "Assign:"+String.valueOf(getContent());
 	}
 
 }

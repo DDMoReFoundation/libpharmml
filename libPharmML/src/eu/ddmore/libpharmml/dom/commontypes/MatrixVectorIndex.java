@@ -24,11 +24,15 @@ import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.maths.Equation;
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
+import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 
 
 /**
@@ -54,14 +58,25 @@ import eu.ddmore.libpharmml.util.ChainedList;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MatrixVectorIndex", propOrder = {
-	    "equation",
+		"mapped_assign",
+	    "mapped_equation",
 	    "intValue",
 	    "symbRef"
 	})
+@HasElementRenamed(
+		mappedFields = { 
+				@RenamedElement(field = "mapped_equation"),
+				@RenamedElement(field = "mapped_assign", since = PharmMLVersion.V0_7_1)
+				},
+		transientField = "assign")
 public class MatrixVectorIndex extends PharmMLRootType {
 	
 	@XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
-    protected Equation equation;
+    protected Rhs mapped_equation;
+    @XmlElement(name = "Assign") // PharmML 0.7.1
+    protected Rhs mapped_assign;
+    @XmlTransient
+    protected Rhs assign;
 	
 	@XmlElement(name = "Int")
 	protected IntValue intValue;
@@ -85,33 +100,59 @@ public class MatrixVectorIndex extends PharmMLRootType {
 		symbRef = symbolRef;
 	}
 	
-	public MatrixVectorIndex(Equation equation){
-		this.equation = equation;
-	}
+//	public MatrixVectorIndex(Equation equation){
+//		this.equation = equation;
+//	}
 	
 	/**
      * A mathematical expression.
      * 
      * @return
      *     possible object is
-     *     {@link Equation }
+     *     {@link Rhs }
      *     
+     * @since PharmML 0.7.1
      */
-    public Equation getEquation() {
-        return equation;
+    public Rhs getAssign() {
+        return assign;
     }
 
     /**
-     * Sets the value of the equation property.
+     * Sets the value of the assign property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Equation }
+     *     {@link Rhs }
      *     
+     * @since PharmML 0.7.1
      */
-    public void setEquation(Equation value) {
-        this.equation = value;
+    public void setAssign(Rhs value) {
+        this.assign = value;
     }
+	
+//	/**
+//     * A mathematical expression.
+//     * 
+//     * @return
+//     *     possible object is
+//     *     {@link Equation }
+//     *     
+//     */
+//    public Equation getEquation() {
+//        return equation;
+//    }
+//
+//    /**
+//     * Sets the value of the equation property.
+//     * 
+//     * @param value
+//     *     allowed object is
+//     *     {@link Equation }
+//     *     
+//     */
+//    public void setEquation(Equation value) {
+//        this.equation = value;
+//    }
 	
 	public IntValue getIntValue(){
 		return intValue;
@@ -130,7 +171,7 @@ public class MatrixVectorIndex extends PharmMLRootType {
 	@Override
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
-				.addIfNotNull(equation)
+				.addIfNotNull(assign)
 				.addIfNotNull(intValue)
 				.addIfNotNull(symbRef);
 	}

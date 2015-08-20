@@ -77,6 +77,7 @@ public class MatrixCell
     protected MatrixVectorIndex cellColumn;
     @XmlElementRefs({
     		@XmlElementRef(name = "VectorCellValue", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class),
+    		@XmlElementRef(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class), // PharmML 0.7.1
     		@XmlElementRef(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class)
     })
     protected MatrixCellValue value;
