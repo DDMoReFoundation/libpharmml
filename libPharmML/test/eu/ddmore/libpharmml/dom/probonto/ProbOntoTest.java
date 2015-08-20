@@ -91,7 +91,7 @@ public class ProbOntoTest {
 		DistributionBound upper = probonto.createUpperTruncationBound();
 		upper.assign(new SymbolRef("upperSymbol"));
 		
-		MixtureComponent mixt = probonto.createMixtureComponent(DistributionName.BETA);
+		MixtureComponent mixt = probonto.createMixtureComponent(DistributionName.BERNOULLI_1);
 		mixt.createParameter(ParameterName.INVERSE_SCALE_MATRIX).assign(new MissingValue(MissingValueSymbol.PLUSINF));
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();

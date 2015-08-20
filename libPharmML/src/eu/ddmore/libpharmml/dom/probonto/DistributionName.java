@@ -31,53 +31,62 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;simpleType name="DistroNameType">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}Name">
- *     &lt;enumeration value="Bernoulli"/>
- *     &lt;enumeration value="Binomial"/>
- *     &lt;enumeration value="CategoricalOrdered"/>
- *     &lt;enumeration value="CategoricalNonordered"/>
- *     &lt;enumeration value="GeneralizedPoisson"/>
- *     &lt;enumeration value="Geometric"/>
- *     &lt;enumeration value="Hypergeometric"/>
+ *     &lt;enumeration value="Bernoulli1"/>
+ *     &lt;enumeration value="Binomial1"/>
+ *     &lt;enumeration value="CategoricalOrdered1"/>
+ *     &lt;enumeration value="CategoricalNonordered1"/>
+ *     &lt;enumeration value="GeneralizedPoisson1"/>
+ *     &lt;enumeration value="Geometric1"/>
+ *     &lt;enumeration value="Hypergeometric1"/>
+ *     &lt;enumeration value="InverseBinomial1"/>
  *     &lt;enumeration value="NegativeBinomial1"/>
  *     &lt;enumeration value="NegativeBinomial2"/>
- *     &lt;enumeration value="Poisson"/>
+ *     &lt;enumeration value="Poisson1"/>
  *     &lt;enumeration value="UniformDiscrete1"/>
  *     &lt;enumeration value="UniformDiscrete2"/>
- *     &lt;enumeration value="ZeroInflatedNegativeBinomial"/>
- *     &lt;enumeration value="ZeroInflatedPoisson"/>
- *     &lt;enumeration value="Beta"/>
- *     &lt;enumeration value="Cauchy"/>
- *     &lt;enumeration value="ChiSquared"/>
- *     &lt;enumeration value="Exponential"/>
- *     &lt;enumeration value="F"/>
- *     &lt;enumeration value="Gamma"/>
- *     &lt;enumeration value="GeneralizedGamma"/>
- *     &lt;enumeration value="Gompertz"/>
- *     &lt;enumeration value="Gumbel"/>
- *     &lt;enumeration value="InverseGamma"/>
+ *     &lt;enumeration value="ZeroInflatedNegativeBinomial1"/>
+ *     &lt;enumeration value="ZeroInflatedPoisson1"/>
+ *     &lt;enumeration value="Beta1"/>
+ *     &lt;enumeration value="BirnbaumSaunders1"/>
+ *     &lt;enumeration value="Cauchy1"/>
+ *     &lt;enumeration value="ChiSquared1"/>
+ *     &lt;enumeration value="Exponential1"/>
+ *     &lt;enumeration value="F1"/>
+ *     &lt;enumeration value="Gamma1"/>
+ *     &lt;enumeration value="GeneralizedGamma1"/>
+ *     &lt;enumeration value="GeneralizedGamma2"/>
+ *     &lt;enumeration value="Gompertz1"/>
+ *     &lt;enumeration value="Gumbel1"/>
+ *     &lt;enumeration value="InverseGamma1"/>
+ *     &lt;enumeration value="InverseGaussian1"/>
  *     &lt;enumeration value="Laplace1"/>
  *     &lt;enumeration value="Laplace2"/>
+ *     &lt;enumeration value="Logistic1"/>
+ *     &lt;enumeration value="LogLogistic1"/>
  *     &lt;enumeration value="LogNormal1"/>
  *     &lt;enumeration value="LogNormal2"/>
  *     &lt;enumeration value="LogNormal3"/>
  *     &lt;enumeration value="LogNormal4"/>
  *     &lt;enumeration value="LogNormal5"/>
- *     &lt;enumeration value="Logistic"/>
+ *     &lt;enumeration value="LogUniform"/>
+ *     &lt;enumeration value="Nokagami1"/>
  *     &lt;enumeration value="Normal1"/>
  *     &lt;enumeration value="Normal2"/>
  *     &lt;enumeration value="Normal3"/>
- *     &lt;enumeration value="NormalInverseGamma"/>
- *     &lt;enumeration value="Pareto"/>
- *     &lt;enumeration value="Rayleigh"/>
- *     &lt;enumeration value="StandardNormal"/>
- *     &lt;enumeration value="StandardUniform"/>
- *     &lt;enumeration value="StudentT"/>
- *     &lt;enumeration value="Uniform"/>
+ *     &lt;enumeration value="NormalInverseGamma1"/>
+ *     &lt;enumeration value="Pareto1"/>
+ *     &lt;enumeration value="Rayleigh1"/>
+ *     &lt;enumeration value="StandardNormal1"/>
+ *     &lt;enumeration value="StandardUniform1"/>
+ *     &lt;enumeration value="StudentT1"/>
+ *     &lt;enumeration value="Triangular1"/>
+ *     &lt;enumeration value="TruncatedNormal1"/>
+ *     &lt;enumeration value="Uniform1"/>
  *     &lt;enumeration value="Weibull1"/>
  *     &lt;enumeration value="Weibull2"/>
- *     &lt;enumeration value="Multinomial"/>
- *     &lt;enumeration value="Dirichlet"/>
- *     &lt;enumeration value="InverseWishart"/>
+ *     &lt;enumeration value="Multinomial1"/>
+ *     &lt;enumeration value="Dirichlet1"/>
+ *     &lt;enumeration value="InverseWishart1"/>
  *     &lt;enumeration value="MultivariateNormal1"/>
  *     &lt;enumeration value="MultivariateNormal2"/>
  *     &lt;enumeration value="MultivariateStudentT1"/>
@@ -95,57 +104,70 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum DistributionName {
 
-    @XmlEnumValue("Bernoulli")
-    BERNOULLI("Bernoulli"),
-    @XmlEnumValue("Binomial")
-    BINOMIAL("Binomial"),
-    @XmlEnumValue("CategoricalOrdered")
-    CATEGORICAL_ORDERED("CategoricalOrdered"),
-    @XmlEnumValue("CategoricalNonordered")
-    CATEGORICAL_NONORDERED("CategoricalNonordered"),
-    @XmlEnumValue("GeneralizedPoisson")
-    GENERALIZED_POISSON("GeneralizedPoisson"),
-    @XmlEnumValue("Geometric")
-    GEOMETRIC("Geometric"),
-    @XmlEnumValue("Hypergeometric")
-    HYPERGEOMETRIC("Hypergeometric"),
+    @XmlEnumValue("Bernoulli1")
+    BERNOULLI_1("Bernoulli1"),
+    @XmlEnumValue("Binomial1")
+    BINOMIAL_1("Binomial1"),
+    @XmlEnumValue("CategoricalOrdered1")
+    CATEGORICAL_ORDERED_1("CategoricalOrdered1"),
+    @XmlEnumValue("CategoricalNonordered1")
+    CATEGORICAL_NONORDERED_1("CategoricalNonordered1"),
+    @XmlEnumValue("GeneralizedPoisson1")
+    GENERALIZED_POISSON_1("GeneralizedPoisson1"),
+    @XmlEnumValue("Geometric1")
+    GEOMETRIC_1("Geometric1"),
+    @XmlEnumValue("Hypergeometric1")
+    HYPERGEOMETRIC_1("Hypergeometric1"),
+    @XmlEnumValue("InverseBinomial1")
+    INVERSE_BINOMIAL_1("InverseBinomial1"),
     @XmlEnumValue("NegativeBinomial1")
     NEGATIVE_BINOMIAL_1("NegativeBinomial1"),
     @XmlEnumValue("NegativeBinomial2")
     NEGATIVE_BINOMIAL_2("NegativeBinomial2"),
-    @XmlEnumValue("Poisson")
-    POISSON("Poisson"),
+    @XmlEnumValue("Poisson1")
+    POISSON_1("Poisson1"),
     @XmlEnumValue("UniformDiscrete1")
     UNIFORM_DISCRETE_1("UniformDiscrete1"),
     @XmlEnumValue("UniformDiscrete2")
     UNIFORM_DISCRETE_2("UniformDiscrete2"),
-    @XmlEnumValue("ZeroInflatedNegativeBinomial")
-    ZERO_INFLATED_NEGATIVE_BINOMIAL("ZeroInflatedNegativeBinomial"),
-    @XmlEnumValue("ZeroInflatedPoisson")
-    ZERO_INFLATED_POISSON("ZeroInflatedPoisson"),
-    @XmlEnumValue("Beta")
-    BETA("Beta"),
-    @XmlEnumValue("Cauchy")
-    CAUCHY("Cauchy"),
-    @XmlEnumValue("ChiSquared")
-    CHI_SQUARED("ChiSquared"),
-    @XmlEnumValue("Exponential")
-    EXPONENTIAL("Exponential"),
-    F("F"),
-    @XmlEnumValue("Gamma")
-    GAMMA("Gamma"),
-    @XmlEnumValue("GeneralizedGamma")
-    GENERALIZED_GAMMA("GeneralizedGamma"),
-    @XmlEnumValue("Gompertz")
-    GOMPERTZ("Gompertz"),
-    @XmlEnumValue("Gumbel")
-    GUMBEL("Gumbel"),
-    @XmlEnumValue("InverseGamma")
-    INVERSE_GAMMA("InverseGamma"),
+    @XmlEnumValue("ZeroInflatedNegativeBinomial1")
+    ZERO_INFLATED_NEGATIVE_BINOMIAL_1("ZeroInflatedNegativeBinomial1"),
+    @XmlEnumValue("ZeroInflatedPoisson1")
+    ZERO_INFLATED_POISSON_1("ZeroInflatedPoisson1"),
+    @XmlEnumValue("Beta1")
+    BETA_1("Beta1"),
+    @XmlEnumValue("BirnbaumSaunders1")
+    BIRNBAUM_SAUNDERS_1("BirnbaumSaunders1"),
+    @XmlEnumValue("Cauchy1")
+    CAUCHY_1("Cauchy1"),
+    @XmlEnumValue("ChiSquared1")
+    CHI_SQUARED_1("ChiSquared1"),
+    @XmlEnumValue("Exponential1")
+    EXPONENTIAL_1("Exponential1"),
+    @XmlEnumValue("F1")
+    F_1("F1"),
+    @XmlEnumValue("Gamma1")
+    GAMMA_1("Gamma1"),
+    @XmlEnumValue("GeneralizedGamma1")
+    GENERALIZED_GAMMA_1("GeneralizedGamma1"),
+    @XmlEnumValue("GeneralizedGamma2")
+    GENERALIZED_GAMMA_2("GeneralizedGamma2"),
+    @XmlEnumValue("Gompertz1")
+    GOMPERTZ_1("Gompertz1"),
+    @XmlEnumValue("Gumbel1")
+    GUMBEL_1("Gumbel1"),
+    @XmlEnumValue("InverseGamma1")
+    INVERSE_GAMMA_1("InverseGamma1"),
+    @XmlEnumValue("InverseGaussian1")
+    INVERSE_GAUSSIAN_1("InverseGaussian1"),
     @XmlEnumValue("Laplace1")
     LAPLACE_1("Laplace1"),
     @XmlEnumValue("Laplace2")
     LAPLACE_2("Laplace2"),
+    @XmlEnumValue("Logistic1")
+    LOGISTIC_1("Logistic1"),
+    @XmlEnumValue("LogLogistic1")
+    LOG_LOGISTIC_1("LogLogistic1"),
     @XmlEnumValue("LogNormal1")
     LOG_NORMAL_1("LogNormal1"),
     @XmlEnumValue("LogNormal2")
@@ -156,38 +178,44 @@ public enum DistributionName {
     LOG_NORMAL_4("LogNormal4"),
     @XmlEnumValue("LogNormal5")
     LOG_NORMAL_5("LogNormal5"),
-    @XmlEnumValue("Logistic")
-    LOGISTIC("Logistic"),
+    @XmlEnumValue("LogUniform")
+    LOG_UNIFORM("LogUniform"),
+    @XmlEnumValue("Nokagami1")
+    NOKAGAMI_1("Nokagami1"),
     @XmlEnumValue("Normal1")
     NORMAL_1("Normal1"),
     @XmlEnumValue("Normal2")
     NORMAL_2("Normal2"),
     @XmlEnumValue("Normal3")
     NORMAL_3("Normal3"),
-    @XmlEnumValue("NormalInverseGamma")
-    NORMAL_INVERSE_GAMMA("NormalInverseGamma"),
-    @XmlEnumValue("Pareto")
-    PARETO("Pareto"),
-    @XmlEnumValue("Rayleigh")
-    RAYLEIGH("Rayleigh"),
-    @XmlEnumValue("StandardNormal")
-    STANDARD_NORMAL("StandardNormal"),
-    @XmlEnumValue("StandardUniform")
-    STANDARD_UNIFORM("StandardUniform"),
-    @XmlEnumValue("StudentT")
-    STUDENT_T("StudentT"),
-    @XmlEnumValue("Uniform")
-    UNIFORM("Uniform"),
+    @XmlEnumValue("NormalInverseGamma1")
+    NORMAL_INVERSE_GAMMA_1("NormalInverseGamma1"),
+    @XmlEnumValue("Pareto1")
+    PARETO_1("Pareto1"),
+    @XmlEnumValue("Rayleigh1")
+    RAYLEIGH_1("Rayleigh1"),
+    @XmlEnumValue("StandardNormal1")
+    STANDARD_NORMAL_1("StandardNormal1"),
+    @XmlEnumValue("StandardUniform1")
+    STANDARD_UNIFORM_1("StandardUniform1"),
+    @XmlEnumValue("StudentT1")
+    STUDENT_T_1("StudentT1"),
+    @XmlEnumValue("Triangular1")
+    TRIANGULAR_1("Triangular1"),
+    @XmlEnumValue("TruncatedNormal1")
+    TRUNCATED_NORMAL_1("TruncatedNormal1"),
+    @XmlEnumValue("Uniform1")
+    UNIFORM_1("Uniform1"),
     @XmlEnumValue("Weibull1")
     WEIBULL_1("Weibull1"),
     @XmlEnumValue("Weibull2")
     WEIBULL_2("Weibull2"),
-    @XmlEnumValue("Multinomial")
-    MULTINOMIAL("Multinomial"),
-    @XmlEnumValue("Dirichlet")
-    DIRICHLET("Dirichlet"),
-    @XmlEnumValue("InverseWishart")
-    INVERSE_WISHART("InverseWishart"),
+    @XmlEnumValue("Multinomial1")
+    MULTINOMIAL_1("Multinomial1"),
+    @XmlEnumValue("Dirichlet1")
+    DIRICHLET_1("Dirichlet1"),
+    @XmlEnumValue("InverseWishart1")
+    INVERSE_WISHART_1("InverseWishart1"),
     @XmlEnumValue("MultivariateNormal1")
     MULTIVARIATE_NORMAL_1("MultivariateNormal1"),
     @XmlEnumValue("MultivariateNormal2")
