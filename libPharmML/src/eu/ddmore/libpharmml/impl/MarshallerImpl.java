@@ -240,7 +240,7 @@ public class MarshallerImpl implements IMarshaller {
 		while(children.hasMoreElements()){
 			TreeNode child = children.nextElement();
 			if(child instanceof PharmMLElement){
-				setMarshalVersion((PharmMLElement) children.nextElement(), version);
+				setMarshalVersion((PharmMLElement) child, version);
 			}
 		}
 	}
