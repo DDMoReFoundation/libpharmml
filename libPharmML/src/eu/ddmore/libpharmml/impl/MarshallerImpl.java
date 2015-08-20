@@ -23,7 +23,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Enumeration;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -40,6 +42,7 @@ import javax.xml.validation.Schema;
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.IMarshaller;
 import eu.ddmore.libpharmml.dom.PharmML;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory.NamespaceType;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
 
@@ -62,6 +65,7 @@ public class MarshallerImpl implements IMarshaller {
 //			}
 //			
 			PharmMLVersion version = PharmMLVersion.getEnum(dom.getWrittenVersion());
+			setMarshalVersion(dom, version);
 //			MarshalListener mListener;
 //			if(version != null){
 //				mListener = new MarshalListener(version,idFactory);
@@ -228,6 +232,17 @@ public class MarshallerImpl implements IMarshaller {
 		}		
 		baos.flush();	
 		return baos.toByteArray();
+	}
+	
+	private void setMarshalVersion(PharmMLElement node, PharmMLVersion version){
+		node.setMarshalVersion(version);
+		Enumeration<TreeNode> children = node.children();
+		while(children.hasMoreElements()){
+			TreeNode child = children.nextElement();
+			if(child instanceof PharmMLElement){
+				setMarshalVersion((PharmMLElement) children.nextElement(), version);
+			}
+		}
 	}
 
 }
