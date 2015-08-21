@@ -31,7 +31,7 @@ public class MissingValueTest {
 	
 	private ILibPharmML libPharmML;
 	private IPharmMLResource resource;
-	private ScalarRhs rhs;
+	private StandardAssignable rhs;
 	
 	private static final String TESTFILE = "testMissingValue.xml";
 	
@@ -80,7 +80,7 @@ public class MissingValueTest {
 	private void testSymbolMarshalsTo(MissingValueSymbol symbol, String qname){
 		MissingValue mv = new MissingValue(symbol);
 		mv.setId("mv1");
-		rhs.setScalar(mv);
+		rhs.assign(mv);
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		libPharmML.save(baos, resource);
 		assertThat(baos.toString(), containsString("<ct:"+qname+" id=\"mv1\"/>"));
@@ -93,9 +93,9 @@ public class MissingValueTest {
 		
 		FunctionDefinition fd = resource.getDom().getListOfFunctionDefinition().get(0);
 		assertNotNull(fd);
-		ScalarRhs def = fd.getDefinition();
+		StandardAssignable def = fd.getDefinition();
 		assertNotNull(def);
-		Scalar value = def.getScalar();
+		Scalar value = def.getAssign().getScalar();
 		assertNotNull(value);
 		assertThat(value, instanceOf(MissingValue.class));
 		assertEquals(MissingValueSymbol.NA, ((MissingValue)value).getSymbol());
