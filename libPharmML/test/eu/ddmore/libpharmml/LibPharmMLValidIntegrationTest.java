@@ -134,7 +134,8 @@ public class LibPharmMLValidIntegrationTest {
 		in.close();
 		assertEquals("expected model", VALID_MDL_NAME, res.getDom().getName().getValue());
 		assertValid(res.getCreationReport());
-		assertEquals("Valid model", 0, res.getCreationReport().numErrors());
+//		assertEquals("Valid model", 0, res.getCreationReport().numErrors());
+		assertValid(res.getCreationReport());
 	}
 
 	@Test

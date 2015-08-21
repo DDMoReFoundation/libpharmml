@@ -22,7 +22,7 @@ public class Validate {
 		
 		LoggerWrapper.getLogger().setLevel(Level.ALL);
 		
-		String fileName = "/homes/florent/git/libPharmML/libPharmML/examples/0_7/example4.xml";
+		String fileName = "/tmp/tst8499896253297435331xml";
 		
 		InputStream in = new FileInputStream(fileName);
 		IPharmMLResource pmlResource = libPharmML.createDomFromResource(in);
