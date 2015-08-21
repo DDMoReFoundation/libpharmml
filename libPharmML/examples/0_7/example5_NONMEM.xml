@@ -4,7 +4,8 @@
     xsi:schemaLocation="http://www.pharmml.org/pharmml/0.7/PharmML http://www.pharmml.org/pharmml/0.7/PharmML"
     xmlns:ct="http://www.pharmml.org/pharmml/0.7/CommonTypes"
     xmlns:math="http://www.pharmml.org/pharmml/0.7/Maths"
-    implementedBy="MJS" writtenVersion="0.7"
+    xmlns:po="http://www.pharmml.org/probonto/ProbOnto"
+    implementedBy="MJS" writtenVersion="0.7.1"
     metadataFile="example5_NONMEM.rdf" id="i1">
     
     <!-- MODEL NAME -->
@@ -20,10 +21,12 @@
     <ct:FunctionDefinition symbId="constantErrorModel" symbolType="real">
         <ct:FunctionArgument symbId="a" symbolType="real"/>
         <ct:Definition>
-            <ct:SymbRef symbIdRef="a"/>
+            <ct:Assign>
+                <ct:SymbRef symbIdRef="a"/>
+            </ct:Assign>
         </ct:Definition>
     </ct:FunctionDefinition>
-
+    
     <!-- BLOCK I: MODEL DEFINITION -->
     <ModelDefinition  xmlns="http://www.pharmml.org/pharmml/0.7/ModelDefinition">
         
@@ -50,18 +53,18 @@
                     <ct:SymbRef blkIdRef="vm1" symbIdRef="indiv"/>
                 </ct:VariabilityReference>
                 <Distribution>
-                    <ProbOnto name="Normal1">
-                        <Parameter name="mean">
+                    <po:ProbOnto name="Normal1">
+                        <po:Parameter name="mean">
                             <ct:Assign>
                                 <ct:Real>0</ct:Real>
                             </ct:Assign>
-                        </Parameter>
-                        <Parameter name="stdev">
+                        </po:Parameter>
+                        <po:Parameter name="stdev">
                             <ct:Assign>
                                 <ct:SymbRef symbIdRef="omega_P0"/>
                             </ct:Assign>
-                        </Parameter>
-                    </ProbOnto>
+                        </po:Parameter>
+                    </po:ProbOnto>
                 </Distribution>
             </RandomVariable>
             <IndividualParameter symbId="P0">
@@ -87,18 +90,18 @@
                     <ct:SymbRef blkIdRef="vm1" symbIdRef="indiv"/>
                 </ct:VariabilityReference>
                 <Distribution>
-                    <ProbOnto name="Normal1">
-                        <Parameter name="mean">
+                    <po:ProbOnto name="Normal1">
+                        <po:Parameter name="mean">
                             <ct:Assign>
                                 <ct:Real>0</ct:Real>
                             </ct:Assign>
-                        </Parameter>
-                        <Parameter name="stdev">
+                        </po:Parameter>
+                        <po:Parameter name="stdev">
                             <ct:Assign>
                                 <ct:SymbRef symbIdRef="omega_Q0"/>
                             </ct:Assign>
-                        </Parameter>
-                    </ProbOnto>
+                        </po:Parameter>
+                    </po:ProbOnto>
                 </Distribution>
             </RandomVariable>
             <IndividualParameter symbId="Q0">
@@ -143,18 +146,18 @@
                     <ct:SymbRef blkIdRef="vm1" symbIdRef="indiv"/>
                 </ct:VariabilityReference>
                 <Distribution>
-                    <ProbOnto name="Normal1">
-                        <Parameter name="mean">
+                    <po:ProbOnto name="Normal1">
+                        <po:Parameter name="mean">
                             <ct:Assign>
                                 <ct:Real>0</ct:Real>
                             </ct:Assign>
-                        </Parameter>
-                        <Parameter name="stdev">
+                        </po:Parameter>
+                        <po:Parameter name="stdev">
                             <ct:Assign>
                                 <ct:SymbRef symbIdRef="omega_KDE"/>
                             </ct:Assign>
-                        </Parameter>
-                    </ProbOnto>
+                        </po:Parameter>
+                    </po:ProbOnto>
                 </Distribution>
             </RandomVariable>
             <IndividualParameter symbId="KDE">
@@ -179,18 +182,18 @@
                     <ct:SymbRef blkIdRef="vm1" symbIdRef="indiv"/>
                 </ct:VariabilityReference>
                 <Distribution>
-                    <ProbOnto name="Normal1">
-                        <Parameter name="mean">
+                    <po:ProbOnto name="Normal1">
+                        <po:Parameter name="mean">
                             <ct:Assign>
                                 <ct:Real>0</ct:Real>
                             </ct:Assign>
-                        </Parameter>
-                        <Parameter name="stdev">
+                        </po:Parameter>
+                        <po:Parameter name="stdev">
                             <ct:Assign>
                                 <ct:SymbRef symbIdRef="omega_LAMBDAP"/>
                             </ct:Assign>
-                        </Parameter>
-                    </ProbOnto>
+                        </po:Parameter>
+                    </po:ProbOnto>
                 </Distribution>
             </RandomVariable>
             <IndividualParameter symbId="LAMBDAP">
@@ -215,18 +218,18 @@
                     <ct:SymbRef blkIdRef="vm1" symbIdRef="indiv"/>
                 </ct:VariabilityReference>
                 <Distribution>
-                    <ProbOnto name="Normal1">
-                        <Parameter name="mean">
+                    <po:ProbOnto name="Normal1">
+                        <po:Parameter name="mean">
                             <ct:Assign>
                                 <ct:Real>0</ct:Real>
                             </ct:Assign>
-                        </Parameter>
-                        <Parameter name="stdev">
+                        </po:Parameter>
+                        <po:Parameter name="stdev">
                             <ct:Assign>
                                 <ct:SymbRef symbIdRef="omega_KQPP"/>
                             </ct:Assign>
-                        </Parameter>
-                    </ProbOnto>
+                        </po:Parameter>
+                    </po:ProbOnto>
                 </Distribution>
             </RandomVariable>
             <IndividualParameter symbId="KQPP">
@@ -251,18 +254,18 @@
                     <ct:SymbRef blkIdRef="vm1" symbIdRef="indiv"/>
                 </ct:VariabilityReference>
                 <Distribution>
-                    <ProbOnto name="Normal1">
-                        <Parameter name="mean">
+                    <po:ProbOnto name="Normal1">
+                        <po:Parameter name="mean">
                             <ct:Assign>
                                 <ct:Real>0</ct:Real>
                             </ct:Assign>
-                        </Parameter>
-                        <Parameter name="stdev">
+                        </po:Parameter>
+                        <po:Parameter name="stdev">
                             <ct:Assign>
                                 <ct:SymbRef symbIdRef="omega_KPQ"/>
                             </ct:Assign>
-                        </Parameter>
-                    </ProbOnto>
+                        </po:Parameter>
+                    </po:ProbOnto>
                 </Distribution>
             </RandomVariable>
             <IndividualParameter symbId="KPQ">
@@ -287,18 +290,18 @@
                     <ct:SymbRef blkIdRef="vm1" symbIdRef="indiv"/>
                 </ct:VariabilityReference>
                 <Distribution>
-                    <ProbOnto name="Normal1">
-                        <Parameter name="mean">
+                    <po:ProbOnto name="Normal1">
+                        <po:Parameter name="mean">
                             <ct:Assign>
                                 <ct:Real>0</ct:Real>
                             </ct:Assign>
-                        </Parameter>
-                        <Parameter name="stdev">
+                        </po:Parameter>
+                        <po:Parameter name="stdev">
                             <ct:Assign>
                                 <ct:SymbRef symbIdRef="omega_GAMMA"/>
                             </ct:Assign>
-                        </Parameter>
-                    </ProbOnto>
+                        </po:Parameter>
+                    </po:ProbOnto>
                 </Distribution>
             </RandomVariable>
             <IndividualParameter symbId="GAMMA">
@@ -323,18 +326,18 @@
                     <ct:SymbRef blkIdRef="vm1" symbIdRef="indiv"/>
                 </ct:VariabilityReference>
                 <Distribution>
-                    <ProbOnto name="Normal1">
-                        <Parameter name="mean">
+                    <po:ProbOnto name="Normal1">
+                        <po:Parameter name="mean">
                             <ct:Assign>
                                 <ct:Real>0</ct:Real>
                             </ct:Assign>
-                        </Parameter>
-                        <Parameter name="stdev">
+                        </po:Parameter>
+                        <po:Parameter name="stdev">
                             <ct:Assign>
                                 <ct:SymbRef symbIdRef="omega_DELTAQP"/>
                             </ct:Assign>
-                        </Parameter>
-                    </ProbOnto>
+                        </po:Parameter>
+                    </po:ProbOnto>
                 </Distribution>
             </RandomVariable>
             <IndividualParameter symbId="DELTAQP">
@@ -361,14 +364,12 @@
             <!-- dC/dt -->
             <ct:DerivativeVariable symbolType="real" symbId="C">
                 <ct:Assign>
-                    <math:Equation>
-                        <Binop xmlns="http://www.pharmml.org/pharmml/0.7/Maths" op="times">
-                            <Uniop op="minus">
-                                <ct:SymbRef blkIdRef="pm1" symbIdRef="KDE"/>
-                            </Uniop>
-                            <ct:SymbRef symbIdRef="C"/>
-                        </Binop>
-                    </math:Equation>
+                    <Binop xmlns="http://www.pharmml.org/pharmml/0.7/Maths" op="times">
+                        <Uniop op="minus">
+                            <ct:SymbRef blkIdRef="pm1" symbIdRef="KDE"/>
+                        </Uniop>
+                        <ct:SymbRef symbIdRef="C"/>
+                    </Binop>
                 </ct:Assign>
                 <ct:IndependentVariable>
                     <ct:SymbRef symbIdRef="time"/>
@@ -385,45 +386,43 @@
             <!-- dPT/dt -->
             <ct:DerivativeVariable symbolType="real" symbId="PT">
                 <ct:Assign>
-                    <math:Equation>
-                        <math:Binop op="plus">
+                    <math:Binop op="plus">
+                        <math:Binop op="times">
+                            <ct:SymbRef blkIdRef="pm1" symbIdRef="LAMBDAP"/>
                             <math:Binop op="times">
-                                <ct:SymbRef blkIdRef="pm1" symbIdRef="LAMBDAP"/>
-                                <math:Binop op="times">
-                                    <ct:SymbRef symbIdRef="PT"/>
-                                    <math:Binop op="minus">
-                                        <ct:Real>1</ct:Real>
-                                        <math:Binop op="divide">
-                                            <ct:SymbRef symbIdRef="PSTAR"/>
-                                            <ct:SymbRef blkIdRef="pm1" symbIdRef="K"/>
-                                        </math:Binop>
+                                <ct:SymbRef symbIdRef="PT"/>
+                                <math:Binop op="minus">
+                                    <ct:Real>1</ct:Real>
+                                    <math:Binop op="divide">
+                                        <ct:SymbRef symbIdRef="PSTAR"/>
+                                        <ct:SymbRef blkIdRef="pm1" symbIdRef="K"/>
                                     </math:Binop>
                                 </math:Binop>
                             </math:Binop>
-                            <math:Binop op="minus">
+                        </math:Binop>
+                        <math:Binop op="minus">
+                            <math:Binop op="times">
+                                <ct:SymbRef blkIdRef="pm1" symbIdRef="KQPP"/>
+                                <ct:SymbRef symbIdRef="QP"/>
+                            </math:Binop>
+                            <math:Binop op="plus">
                                 <math:Binop op="times">
-                                    <ct:SymbRef blkIdRef="pm1" symbIdRef="KQPP"/>
-                                    <ct:SymbRef symbIdRef="QP"/>
+                                    <ct:SymbRef blkIdRef="pm1" symbIdRef="KPQ"/>
+                                    <ct:SymbRef symbIdRef="PT"/>
                                 </math:Binop>
-                                <math:Binop op="plus">
+                                <math:Binop op="times">
+                                    <ct:SymbRef blkIdRef="pm1" symbIdRef="GAMMA"/>
                                     <math:Binop op="times">
-                                        <ct:SymbRef blkIdRef="pm1" symbIdRef="KPQ"/>
-                                        <ct:SymbRef symbIdRef="PT"/>
-                                    </math:Binop>
-                                    <math:Binop op="times">
-                                        <ct:SymbRef blkIdRef="pm1" symbIdRef="GAMMA"/>
+                                        <ct:SymbRef symbIdRef="C"/>
                                         <math:Binop op="times">
-                                            <ct:SymbRef symbIdRef="C"/>
-                                            <math:Binop op="times">
-                                                <ct:SymbRef blkIdRef="pm1" symbIdRef="KDE"/>
-                                                <ct:SymbRef symbIdRef="PT"/>
-                                            </math:Binop>
+                                            <ct:SymbRef blkIdRef="pm1" symbIdRef="KDE"/>
+                                            <ct:SymbRef symbIdRef="PT"/>
                                         </math:Binop>
                                     </math:Binop>
                                 </math:Binop>
                             </math:Binop>
                         </math:Binop>
-                    </math:Equation>
+                    </math:Binop>
                 </ct:Assign>
                 <ct:IndependentVariable>
                     <ct:SymbRef symbIdRef="time"/>
@@ -440,24 +439,22 @@
             <!-- dQ/dt --> 
             <ct:DerivativeVariable symbolType="real" symbId="Q">
                 <ct:Assign>
-                    <math:Equation>
-                        <math:Binop op="minus">
+                    <math:Binop op="minus">
+                        <math:Binop op="times">
+                            <ct:SymbRef blkIdRef="pm1" symbIdRef="KPQ"/>
+                            <ct:SymbRef symbIdRef="PT"/>
+                        </math:Binop>
+                        <math:Binop op="times">
+                            <ct:SymbRef  blkIdRef="pm1" symbIdRef="GAMMA"/>
                             <math:Binop op="times">
-                                <ct:SymbRef blkIdRef="pm1" symbIdRef="KPQ"/>
-                                <ct:SymbRef symbIdRef="PT"/>
-                            </math:Binop>
-                            <math:Binop op="times">
-                                <ct:SymbRef  blkIdRef="pm1" symbIdRef="GAMMA"/>
+                                <ct:SymbRef symbIdRef="C"/>
                                 <math:Binop op="times">
-                                    <ct:SymbRef symbIdRef="C"/>
-                                    <math:Binop op="times">
-                                        <ct:SymbRef blkIdRef="pm1" symbIdRef="KDE"/>
-                                        <ct:SymbRef symbIdRef="Q"/>
-                                    </math:Binop>
+                                    <ct:SymbRef blkIdRef="pm1" symbIdRef="KDE"/>
+                                    <ct:SymbRef symbIdRef="Q"/>
                                 </math:Binop>
                             </math:Binop>
                         </math:Binop>
-                    </math:Equation>
+                    </math:Binop>
                 </ct:Assign>
                 <ct:IndependentVariable>
                     <ct:SymbRef symbIdRef="time"/>
@@ -474,30 +471,28 @@
             <!-- dQP/dt -->
             <ct:DerivativeVariable symbolType="real" symbId="QP">
                 <ct:Assign>
-                    <math:Equation>
+                    <math:Binop op="minus">
                         <math:Binop op="minus">
-                            <math:Binop op="minus">
+                            <math:Binop op="times">
+                                <ct:SymbRef blkIdRef="pm1" symbIdRef="GAMMA"/>
                                 <math:Binop op="times">
-                                    <ct:SymbRef blkIdRef="pm1" symbIdRef="GAMMA"/>
+                                    <ct:SymbRef symbIdRef="C"/>
                                     <math:Binop op="times">
-                                        <ct:SymbRef symbIdRef="C"/>
-                                        <math:Binop op="times">
-                                            <ct:SymbRef blkIdRef="pm1" symbIdRef="KDE"/>
-                                            <ct:SymbRef symbIdRef="Q"/>
-                                        </math:Binop>
+                                        <ct:SymbRef blkIdRef="pm1" symbIdRef="KDE"/>
+                                        <ct:SymbRef symbIdRef="Q"/>
                                     </math:Binop>
-                                </math:Binop>
-                                <math:Binop op="times">
-                                    <ct:SymbRef blkIdRef="pm1" symbIdRef="KQPP"/>
-                                    <ct:SymbRef symbIdRef="QP"/>
                                 </math:Binop>
                             </math:Binop>
                             <math:Binop op="times">
-                                <ct:SymbRef blkIdRef="pm1" symbIdRef="DELTAQP"/>
+                                <ct:SymbRef blkIdRef="pm1" symbIdRef="KQPP"/>
                                 <ct:SymbRef symbIdRef="QP"/>
-                            </math:Binop>                        
+                            </math:Binop>
                         </math:Binop>
-                    </math:Equation>
+                        <math:Binop op="times">
+                            <ct:SymbRef blkIdRef="pm1" symbIdRef="DELTAQP"/>
+                            <ct:SymbRef symbIdRef="QP"/>
+                        </math:Binop>                        
+                    </math:Binop>
                 </ct:Assign>
                 <ct:IndependentVariable>
                     <ct:SymbRef symbIdRef="time"/>
@@ -514,15 +509,13 @@
             <!-- PSTAR -->
             <ct:Variable symbolType="real" symbId="PSTAR" >
                 <ct:Assign>
-                    <math:Equation>
+                    <math:Binop op="plus">
+                        <ct:SymbRef symbIdRef="PT"/>
                         <math:Binop op="plus">
-                            <ct:SymbRef symbIdRef="PT"/>
-                            <math:Binop op="plus">
-                                <ct:SymbRef symbIdRef="Q"/>
-                                <ct:SymbRef symbIdRef="QP"/>
-                            </math:Binop>
+                            <ct:SymbRef symbIdRef="Q"/>
+                            <ct:SymbRef symbIdRef="QP"/>
                         </math:Binop>
-                    </math:Equation>
+                    </math:Binop>
                 </ct:Assign>
             </ct:Variable>
         </StructuralModel>
@@ -536,18 +529,18 @@
                         <ct:SymbRef blkIdRef="vm2" symbIdRef="residual"/>
                     </ct:VariabilityReference>
                     <Distribution>
-                        <ProbOnto name="Normal1">
-                            <Parameter name="mean">
+                        <po:ProbOnto name="Normal1">
+                            <po:Parameter name="mean">
                                 <ct:Assign>
                                     <ct:Real>0</ct:Real>
                                 </ct:Assign>
-                            </Parameter>
-                            <Parameter name="stdev">
+                            </po:Parameter>
+                            <po:Parameter name="stdev">
                                 <ct:Assign>
                                     <ct:Real>1</ct:Real>
                                 </ct:Assign>
-                            </Parameter>
-                        </ProbOnto>
+                            </po:Parameter>
+                        </po:ProbOnto>
                     </Distribution>
                 </RandomVariable>
                 <Standard symbId="PSTAR_obs">
@@ -556,14 +549,12 @@
                     </Output>
                     <ErrorModel>
                         <ct:Assign>
-                            <math:Equation>
-                                <math:FunctionCall>
-                                    <ct:SymbRef symbIdRef="constantErrorModel"/>
-                                    <math:FunctionArgument symbId="a">
-                                        <ct:SymbRef symbIdRef="a"/>
-                                    </math:FunctionArgument>
-                                </math:FunctionCall>
-                            </math:Equation>
+                            <math:FunctionCall>
+                                <ct:SymbRef symbIdRef="constantErrorModel"/>
+                                <math:FunctionArgument symbId="a">
+                                    <ct:SymbRef symbIdRef="a"/>
+                                </math:FunctionArgument>
+                            </math:FunctionCall>
                         </ct:Assign>
                     </ErrorModel>
                     <ResidualError>
