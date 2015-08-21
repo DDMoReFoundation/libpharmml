@@ -20,7 +20,7 @@
 	<property name="docs.build.dir" location="${build.dir}/docs"/>
 	<property name="test.output.dir" location="${build.dir}/test_output"/>
 	<property name="jaxb.gen.dir" location="./jaxb_gen"/>
-	<property name="schema.dir" location="${src.dir}/eu/ddmore/libpharmml/impl/definitions/0_7"/>
+	<property name="schema.dir" location="${src.dir}/eu/ddmore/libpharmml/impl/definitions/0_7_1"/>
 	<property name="schema.file" location="${schema.dir}/pharmml.xsd"/>
 	<property name="catalog.file" location="${schema.dir}/xmlCatalog.xml"/>
 	<property name="impl.pkg.path" value="eu/ddmore/libpharmml/impl"/>
@@ -110,7 +110,8 @@
 	<!-- - - - - - - - - - - - - - - - - - 
           target: jaxb-gen                      
          - - - - - - - - - - - - - - - - - -->
-	<target name="jaxb-gen">
+	<target name="jaxb-gen" depends="clean-jaxb">
+		<mkdir dir="${jaxb.gen.dir}"/>
 		<xjc destdir="${jaxb.gen.dir}" removeOldOutput="yes" catalog="${catalog.file}"
 			 binding="binding.xjb" extension="true">
 			<!-- package="${jaxb.gen.package}"  -->

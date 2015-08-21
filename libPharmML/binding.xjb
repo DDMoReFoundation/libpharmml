@@ -3,7 +3,7 @@
 			   xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
                xmlns:math="http://www.pharmml.org/pharmml/0.7/Maths"
                xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <jxb:bindings schemaLocation="./src/eu/ddmore/libpharmml/impl/definitions/0_7/pharmml.xsd" node="/xs:schema">
+  <jxb:bindings schemaLocation="./src/eu/ddmore/libpharmml/impl/definitions/0_7_1/pharmml.xsd" node="/xs:schema">
 	<jxb:globalBindings choiceContentProperty="false">
 		<!-- This instruction changes the code generation to try and use classes for elements as
 			 much as possible and minimise the use of JAXBElement etc. It also pluralises method
