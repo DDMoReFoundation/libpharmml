@@ -30,10 +30,11 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
  * 		{@link Scalar},
  * 		{@link Sequence},
  * 		{@link SymbolRef},
+ * 		{@link Rhs},
  * 		{@link Equation}
  * 
- * @author F. Yvon
  */
+@SuppressWarnings("deprecation")
 @XmlJavaTypeAdapter(MatrixRowValueAdapter.class)
 public interface MatrixRowValue extends TreeNode {
 
