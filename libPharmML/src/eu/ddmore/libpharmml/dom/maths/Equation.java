@@ -37,6 +37,7 @@ import eu.ddmore.libpharmml.dom.commontypes.MatrixRowValue;
 import eu.ddmore.libpharmml.dom.commontypes.ObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.OperationVariable;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
+import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
 
 
@@ -97,6 +98,35 @@ public class Equation
 		eq.setVectorSelector(rhs.getVectorSelector());
 		
 		return eq;
+	}
+	
+	/**
+	 * For backwards compatibility
+	 * @param eq
+	 * @return
+	 */
+	public static Rhs toRhs(Equation eq){
+		Rhs rhs = new Rhs();
+		
+		rhs.setBinop(eq.getBinop());
+		rhs.setDelay(eq.getDelay());
+		rhs.setDescription(eq.getDescription());
+		rhs.setFunctionCall(eq.getFunctionCall());
+		rhs.setId(eq.getId());
+		rhs.setMatrixSelector(eq.getMatrixSelector());
+		rhs.setMatrixUniop(eq.getMatrixUniop());
+		rhs.setPiecewise(eq.getPiecewise());
+		rhs.setProbability(eq.getProbability());
+		rhs.setProduct(eq.getProduct());
+		if(eq.getScalar() != null){
+			rhs.setScalar((Scalar) eq.getScalar().getValue());
+		}
+		rhs.setSum(eq.getSum());
+		rhs.setSymbRef(eq.getSymbRef());
+		rhs.setUniop(eq.getUniop());
+		rhs.setVectorSelector(eq.getVectorSelector());
+		
+		return rhs;
 	}
 
 }

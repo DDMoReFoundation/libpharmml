@@ -22,16 +22,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -73,6 +70,7 @@ public class FunctionDefinition
     protected List<FunctionParameter> functionArgument;
     
     @XmlElement(name = "Definition")
+    @XmlJavaTypeAdapter(StandardAssignableAdapted.ScalarRhsAdapter.class)
     protected StandardAssignable definition;
     
     @XmlAttribute(name = "symbolType", required = true)
@@ -195,43 +193,4 @@ public class FunctionDefinition
 				.addIfNotNull(definition);
 	}
 	
-	// FIXME: The following section is dirty and needs to be fixed. This is meant
-	// to support backwards compatibility when definition was ScalarRhs
-	
-	protected void afterUnmarshal(Unmarshaller u, Object parent) {
-		if(definition != null){
-			PharmMLVersion version = getUnmarshalVersion();
-			if(!version.isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
-				definition.fromScalarRhs();
-			}
-		}
-		
-		
-	}
-	
-	@XmlTransient
-	private Rhs saved_rhs;
-	
-	protected void beforeMarshal(Marshaller m){
-		if(definition != null){
-			PharmMLVersion version = getMarshalVersion();
-			if(!version.isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
-				saved_rhs = definition.toScalarRhs();
-			}
-		}
-	}
-	
-	protected void afterMarshal(Marshaller m){
-		if(definition != null){
-			PharmMLVersion version = getMarshalVersion();
-			if(!version.isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
-				definition.fromScalarRhs();
-			}
-			if(saved_rhs != null){
-				definition.setAssign(saved_rhs);
-				saved_rhs = null;
-			}
-		}
-	}
-
 }

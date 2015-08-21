@@ -33,9 +33,11 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
+import eu.ddmore.libpharmml.dom.commontypes.StandardAssignable;
+import eu.ddmore.libpharmml.dom.commontypes.StandardAssignableAdapted;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -81,9 +83,11 @@ public class Pairwise
     @XmlElement(name = "RandomVariable2", required = true)
     protected CorrelatedRandomVariable randomVariable2;
     @XmlElement(name = "CorrelationCoefficient")
-    protected ScalarRhs correlationCoefficient;
+    @XmlJavaTypeAdapter(StandardAssignableAdapted.ScalarRhsAdapter.class)
+    protected StandardAssignable correlationCoefficient;
     @XmlElement(name = "Covariance")
-    protected ScalarRhs covariance;
+    @XmlJavaTypeAdapter(StandardAssignableAdapted.ScalarRhsAdapter.class)
+    protected StandardAssignable covariance;
 
     /**
      * Gets the value of the randomVariable1 property.
@@ -138,10 +142,10 @@ public class Pairwise
      * 
      * @return
      *     possible object is
-     *     {@link ScalarRhs }
+     *     {@link StandardAssignable }
      *     
      */
-    public ScalarRhs getCorrelationCoefficient() {
+    public StandardAssignable getCorrelationCoefficient() {
         return correlationCoefficient;
     }
 
@@ -150,10 +154,10 @@ public class Pairwise
      * 
      * @param value
      *     allowed object is
-     *     {@link ScalarRhs }
+     *     {@link StandardAssignable }
      *     
      */
-    public void setCorrelationCoefficient(ScalarRhs value) {
+    public void setCorrelationCoefficient(StandardAssignable value) {
         this.correlationCoefficient = value;
     }
 
@@ -162,10 +166,10 @@ public class Pairwise
      * 
      * @return
      *     possible object is
-     *     {@link ScalarRhs }
+     *     {@link StandardAssignable }
      *     
      */
-    public ScalarRhs getCovariance() {
+    public StandardAssignable getCovariance() {
         return covariance;
     }
 
@@ -174,10 +178,10 @@ public class Pairwise
      * 
      * @param value
      *     allowed object is
-     *     {@link ScalarRhs }
+     *     {@link StandardAssignable }
      *     
      */
-    public void setCovariance(ScalarRhs value) {
+    public void setCovariance(StandardAssignable value) {
         this.covariance = value;
     }
     
