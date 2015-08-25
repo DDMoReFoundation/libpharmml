@@ -236,6 +236,7 @@ public class GaussianObsError
     @XmlType(name = "", propOrder = {
         "assign"
     })
+    @Deprecated
     public static class ErrorModel extends PharmMLElement {
 
         @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
@@ -297,6 +298,7 @@ public class GaussianObsError
     @XmlType(name = "", propOrder = {
         "symbRef"
     })
+    @Deprecated
     public static class Output extends PharmMLElement {
 
         @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
@@ -358,6 +360,7 @@ public class GaussianObsError
     @XmlType(name = "", propOrder = {
         "symbRef"
     })
+    @Deprecated
     public static class ResidualError extends PharmMLElement {
 
         @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)

@@ -225,6 +225,7 @@ public class ParameterRandomVariable
      *     {@link JAXBElement }{@code <}{@link FDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link WeibullDistribution }{@code >}
      *     
+     * @deprecated Since PharmML 0.7, the distributions are located in {@link #getDistribution()}.
      */
     @Deprecated
     public JAXBElement<? extends AbstractContinuousUnivariateDistributionType> getAbstractContinuousUnivariateDistribution() {
@@ -255,6 +256,7 @@ public class ParameterRandomVariable
      *     {@link JAXBElement }{@code <}{@link FDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link WeibullDistribution }{@code >}
      *     
+     * @deprecated Since PharmML 0.7, the distributions are located in {@link #setDistribution(Distribution)}.
      */
     @Deprecated
     public void setAbstractContinuousUnivariateDistribution(JAXBElement<? extends AbstractContinuousUnivariateDistributionType> value) {
@@ -275,6 +277,7 @@ public class ParameterRandomVariable
      *     {@link JAXBElement }{@code <}{@link NormalInverseGammaDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link MultivariateNormalDistribution }{@code >}
      *     
+     * @deprecated Since PharmML 0.7, the distributions are located in {@link #getDistribution()}.
      */
     @Deprecated
     public JAXBElement<? extends AbstractContinuousMultivariateDistributionType> getAbstractContinuousMultivariateDistribution() {
@@ -293,6 +296,7 @@ public class ParameterRandomVariable
      *     {@link JAXBElement }{@code <}{@link NormalInverseGammaDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link MultivariateNormalDistribution }{@code >}
      *     
+     * @deprecated Since PharmML 0.7, the distributions are located in {@link #setDistribution(Distribution)}.
      */
     @Deprecated
     public void setAbstractContinuousMultivariateDistribution(JAXBElement<? extends AbstractContinuousMultivariateDistributionType> value) {
@@ -310,6 +314,7 @@ public class ParameterRandomVariable
      *     {@link JAXBElement }{@code <}{@link BernoulliDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link CategoricalUnivariateMixtureModel }{@code >}
      *     
+     * @deprecated Since PharmML 0.7, the distributions are located in {@link #getDistribution()}.
      */
     @Deprecated
     public JAXBElement<? extends AbstractCategoricalUnivariateDistributionType> getAbstractCategoricalUnivariateDistribution() {
@@ -325,6 +330,7 @@ public class ParameterRandomVariable
      *     {@link JAXBElement }{@code <}{@link BernoulliDistribution }{@code >}
      *     {@link JAXBElement }{@code <}{@link CategoricalUnivariateMixtureModel }{@code >}
      *     
+     * @deprecated Since PharmML 0.7, the distributions are located in {@link #setDistribution(Distribution)}.
      */
     @Deprecated
     public void setAbstractCategoricalUnivariateDistribution(JAXBElement<? extends AbstractCategoricalUnivariateDistributionType> value) {
@@ -342,6 +348,7 @@ public class ParameterRandomVariable
      *     {@link JAXBElement }{@code <}{@link AbstractCategoricalMultivariateDistributionType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CategoricalDistribution }{@code >}
      *     
+     * @deprecated Since PharmML 0.7, the distributions are located in {@link #getDistribution()}.
      */
     @Deprecated
     public JAXBElement<? extends AbstractCategoricalMultivariateDistributionType> getAbstractCategoricalMultivariateDistribution() {
@@ -357,6 +364,7 @@ public class ParameterRandomVariable
      *     {@link JAXBElement }{@code <}{@link AbstractCategoricalMultivariateDistributionType }{@code >}
      *     {@link JAXBElement }{@code <}{@link CategoricalDistribution }{@code >}
      *     
+     * @deprecated Since PharmML 0.7, the distributions are located in {@link #setDistribution(Distribution)}.
      */
     @Deprecated
     public void setAbstractCategoricalMultivariateDistribution(JAXBElement<? extends AbstractCategoricalMultivariateDistributionType> value) {
