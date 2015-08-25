@@ -93,7 +93,7 @@ public class DatasetMapping
 	@XmlElementRef(name = "Mapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = JAXBElement.class)
 	@Deprecated
     protected List<JAXBElement<? extends MappingType>> mapping;
-    @XmlElement(name = "ColumnMapping", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
+    @XmlElement(name = "ColumnMapping", required = true)
     protected List<ColumnMapping> columnMapping;
     @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
     protected DataSet dataSet;
