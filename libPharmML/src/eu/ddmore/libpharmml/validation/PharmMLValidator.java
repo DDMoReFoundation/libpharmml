@@ -88,8 +88,8 @@ public class PharmMLValidator {
 	
 	public static void validateDatasetMap(DatasetMap dm, IErrorHandler errorHandler){
 		Set<String> columnIds = new HashSet<String>();
-		if(dm.getDataSet() != null){
-			for(ColumnDefinition column : dm.getDataSet().getListOfColumnDefinition()){
+		if(dm.getDataSet() != null && dm.getDataSet().getDefinition() != null){
+			for(ColumnDefinition column : dm.getDataSet().getDefinition().getListOfColumn()){
 				if(column.getColumnId() != null){
 					columnIds.add(column.getColumnId());
 				}
