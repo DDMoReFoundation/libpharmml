@@ -21,7 +21,19 @@ package eu.ddmore.libpharmml.dom.maths;
 public enum ConstantOperator {
 	
 	PI("pi"),
-	EXPONENTIALE("exponentiale");
+	EXPONENTIALE("exponentiale"),
+	/**
+	 * "notanumber"
+	 * @deprecated Since PharmML 0.7.1
+	 */
+	@Deprecated
+	NAN("notanumber"),
+	/**
+	 * "infinity"
+	 * @deprecated Since PharmML 0.7.1
+	 */
+	@Deprecated
+	INF("infinity");
 	
 	private String value;
 	
