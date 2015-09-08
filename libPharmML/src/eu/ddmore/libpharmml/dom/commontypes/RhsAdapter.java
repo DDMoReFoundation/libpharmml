@@ -75,6 +75,10 @@ public class RhsAdapter extends XmlAdapter<Rhs, Rhs>{
 			clone.setVector(v.getVector());
 			clone.setVectorSelector(v.getVectorSelector());
 			
+			if(v.getMarshalVersion() == null){
+				throw new IllegalStateException("marshalVersion is not set before marshalling in "+v+" (parent:"+v.getParent()+").");
+			}
+			
 			if(v.getMarshalVersion().isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
 				if(v.getContent() instanceof Equation){ // Should never happen
 					getLogger().info("Equation attribute is no more used.");
