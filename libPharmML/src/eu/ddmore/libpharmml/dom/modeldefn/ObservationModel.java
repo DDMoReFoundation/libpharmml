@@ -302,6 +302,7 @@ public class ObservationModel
     @Override
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
+				.addJAXBIfNotNull(observationError)
 				.addIfNotNull(continuousData)
 				.addIfNotNull(discrete);
 	}
