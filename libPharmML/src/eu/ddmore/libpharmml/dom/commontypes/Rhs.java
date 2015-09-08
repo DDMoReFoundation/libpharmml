@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.maths.Constant;
 import eu.ddmore.libpharmml.dom.maths.Equation;
@@ -105,6 +106,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlSeeAlso({
     InitialEstimate.class
 })
+@XmlJavaTypeAdapter(RhsAdapter.class)
 public class Rhs
     extends PharmMLRootType implements MatrixCellValue, MatrixRowValue, OperationVariable, VectorValue
 {
