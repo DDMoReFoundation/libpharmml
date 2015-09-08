@@ -232,7 +232,10 @@ public class GeneralObsError
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(super.listChildren())
-				.addIfNotNull(assign);
+				.addIfNotNull(listOfVariabilityReference)
+				.addIfNotNull(assign)
+				.addIfNotNull(lhsTransformation)
+				.addIfNotNull(distribution);
 	}
 
 }
