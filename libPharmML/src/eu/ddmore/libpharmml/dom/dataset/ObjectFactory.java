@@ -169,6 +169,15 @@ public class ObjectFactory {
     public MapType createMapType() {
         return new MapType();
     }
+    
+    /**
+     * Create an instance of {@link IgnoreLine }
+     * 
+     * @since PharmML 0.6ext
+     */
+    public IgnoreLine createIgnoreLine() {
+        return new IgnoreLine();
+    }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSetTableType }{@code >}}

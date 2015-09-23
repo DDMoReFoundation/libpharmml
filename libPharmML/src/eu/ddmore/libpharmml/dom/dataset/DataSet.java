@@ -89,7 +89,7 @@ import eu.ddmore.libpharmml.validation.Validatable;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DataSetType", propOrder = {
-    "wrappedListOfColumn",
+    "definition",
     "mapped_externalFile",
     "mapped_importData",
     "wrappedListOfRow"
@@ -106,8 +106,7 @@ public class DataSet
 //    protected ColumnsDefinitionType definition;
 	
 	@XmlElement(name = "Definition", required = true)
-	@XmlJavaTypeAdapter(DataSet.ColumnDefinitionAdapter.class)
-	protected WrappedList<ColumnDefinition> wrappedListOfColumn;
+    protected HeaderColumnsDefinition definition;
 	
 	// ExternalData renamed fields
 	@XmlElement(name = "ExternalFile")
@@ -120,6 +119,20 @@ public class DataSet
     @XmlElement(name = "Table")
     @XmlJavaTypeAdapter(DataSet.RowDefinitionAdapter.class)
     protected WrappedList<DatasetRow> wrappedListOfRow;
+    
+    /**
+     * Gets the value of the definition property. Contains a list of {@link ColumnDefinition}
+     * and {@link HeaderColumnsDefinition}.
+     * 
+     * @return
+     *     possible object is
+     *     {@link HeaderColumnsDefinition }
+     *     
+     * @since PharmML 0.6ext
+     */
+    public HeaderColumnsDefinition getDefinition() {
+        return definition;
+    }
     
     /**
      * Gets the list of rows in this dataset. The row definitions are wrapped into a &lt;Table>
@@ -139,20 +152,27 @@ public class DataSet
     }
     
     /**
-     * Gets the list of column definitions in this dataset. The definitions are wrapped in a 
-     * &lt;Definition> element.
-     * 
-     * <p>This methods returns a {@link WrappedList} instance. It is possible to add an id or a 
-     * description to the wrapper (i.e. the &lt;Definition> element) using this class. However, using
-     * the {@link List} interface may be more clear.
-     * 
-     * @return  A {@link WrappedList} object that contains instances of {@link ColumnDefinition}.
+     * @deprecated The list of column definitions is now available within {@link HeaderColumnsDefinition}
+     * via {@link #getDefinition()}.
      */
-    public WrappedList<ColumnDefinition> getListOfColumnDefinition(){
-    	if(wrappedListOfColumn == null){
-    		wrappedListOfColumn = new WrappedList<ColumnDefinition>();
+    @Deprecated
+    public List<ColumnDefinition> getListOfColumnDefinition(){
+    	if(definition == null){
+    		definition = new HeaderColumnsDefinition();
     	}
-    	return wrappedListOfColumn;
+    	return definition.getListOfColumn();
+    }
+    
+    /**
+     * Creates a new empty {@link HeaderColumnsDefinition} definition element, adds it to the current object and returns it.
+     * @return The created {@link HeaderColumnsDefinition} object.
+     * 
+     * @since PharmML 0.6ext
+     */
+    public HeaderColumnsDefinition createDefinition(){
+            HeaderColumnsDefinition el = new HeaderColumnsDefinition();
+            this.definition = el;
+            return el;
     }
     
     /**
@@ -163,7 +183,10 @@ public class DataSet
      * @param valueType The type of value in this column.
      * @param columnNum The column number. Needed to map the column into the dataset.
      * @return The created column as a {@link ColumnDefinition} object.
+     * 
+     * @deprecated Columns are now located within {@link HeaderColumnsDefinition} via {@link #getDefinition()}.
      */
+    @Deprecated
     public ColumnDefinition createColumnDefinition(String columnId, ColumnType columnType, SymbolType valueType, Integer columnNum){
     	ColumnDefinition column = new ColumnDefinition();
     	column.setColumnId(columnId);
@@ -446,7 +469,7 @@ public class DataSet
 	@Override
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
-				.addIfNotNull((TreeNode) wrappedListOfColumn)
+				.addIfNotNull(definition)
 				.addIfNotNull(externalFile)
 				.addIfNotNull((TreeNode) wrappedListOfRow);
 	}
