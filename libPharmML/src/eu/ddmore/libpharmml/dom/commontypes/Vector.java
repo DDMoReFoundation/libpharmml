@@ -373,9 +373,17 @@ public class Vector extends AbstractVector {
 
 	@Override
 	protected List<TreeNode> listChildren() {
-		return new ChainedList<TreeNode>()
+		List<TreeNode> list = new ChainedList<TreeNode>()
 				.addIfNotNull(vectorElements)
 				.addIfNotNull(vectorCellOrVectorSegment);
+		if(sequenceOrScalar != null){
+			for(JAXBElement<?> jaxbEl : sequenceOrScalar){
+				if(jaxbEl.getValue() instanceof TreeNode){
+					list.add((TreeNode) jaxbEl.getValue());
+				}
+			}
+		}
+		return list;
 	}
     
 
