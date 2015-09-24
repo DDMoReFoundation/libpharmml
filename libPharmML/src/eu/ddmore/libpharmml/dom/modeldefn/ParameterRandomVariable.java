@@ -433,7 +433,7 @@ public class ParameterRandomVariable
 				.addJAXBIfNotNull(abstractCategoricalUnivariateDistribution)
 				.addJAXBIfNotNull(abstractCategoricalMultivariateDistribution)
 				.addIfNotNull(lhsTransformation)
-				.addIfNotNull(description);
+				.addIfNotNull(distribution);
 	}
 
 }
