@@ -2,8 +2,10 @@ package eu.ddmore.libpharmml.dom.commontypes;
 
 import static eu.ddmore.libpharmml.impl.LoggerWrapper.getLogger;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
+import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
@@ -22,20 +24,55 @@ public class RhsAdapter extends XmlAdapter<Rhs, Rhs>{
 							+". (PharmML version:"+v.getUnmarshalVersion().getValue()+").");
 					v.setEquation(null);
 				} else {
-					getLogger().info("Equation content moved into "+v);
 					Equation eq = v.getEquation();
 					v.clearContent();
-					v.setBinop(eq.getBinop());
-					v.setUniop(eq.getUniop());
-					v.setPiecewise(eq.getPiecewise());
-					v.setFunctionCall(eq.getFunctionCall());
-					v.setSum(eq.getSum());
-					v.setProduct(eq.getProduct());
-					v.setDelay(eq.getDelay());
-					v.setVectorSelector(eq.getVectorSelector());
-					v.setMatrixSelector(eq.getMatrixSelector());
-					v.setMatrixUniop(eq.getMatrixUniop());
-					v.setProbability(eq.getProbability());
+					if(eq.getBinop() != null){
+						getLogger().info("Equation content (Binop) moved into "+v);
+						v.setBinop(eq.getBinop());
+					} else if (eq.getUniop() != null){
+						getLogger().info("Equation content (Uniop) moved into "+v);
+						v.setUniop(eq.getUniop());
+					} else if (eq.getPiecewise() != null){
+						getLogger().info("Equation content (Piecewise) moved into "+v);
+						v.setPiecewise(eq.getPiecewise());
+					} else if (eq.getFunctionCall() != null){
+						getLogger().info("Equation content (FunctionCall) moved into "+v);
+						v.setFunctionCall(eq.getFunctionCall());
+					} else if (eq.getSum() != null){
+						getLogger().info("Equation content (Sum) moved into "+v);
+						v.setSum(eq.getSum());
+					} else if (eq.getProduct() != null){
+						getLogger().info("Equation content (Product) moved into "+v);
+						v.setProduct(eq.getProduct());
+					} else if (eq.getDelay() != null){
+						getLogger().info("Equation content (Delay) moved into "+v);
+						v.setDelay(eq.getDelay());
+					} else if (eq.getVectorSelector() != null){
+						getLogger().info("Equation content (VectorSelector) moved into "+v);
+						v.setVectorSelector(eq.getVectorSelector());
+					} else if (eq.getMatrixSelector() != null){
+						getLogger().info("Equation content (MatrixSelector) moved into "+v);
+						v.setMatrixSelector(eq.getMatrixSelector());
+					} else if (eq.getMatrixUniop() != null){
+						getLogger().info("Equation content (MatrixUniop) moved into "+v);
+						v.setMatrixUniop(eq.getMatrixUniop());
+					} else if (eq.getProbability() != null){
+						getLogger().info("Equation content (Probability) moved into "+v);
+						v.setProbability(eq.getProbability());
+					} else if (eq.getScalarOrSymbRefOrBinop().size() > 0){
+						JAXBElement<?> jaxbEl = eq.getScalarOrSymbRefOrBinop().get(0);
+						Object value = jaxbEl.getValue();
+						if(value instanceof Scalar){
+							getLogger().info("Equation content (JAXBElement<Scalar>) moved into "+v);
+							v.setScalar((Scalar) value);
+						} else if (value instanceof SymbolRef){
+							getLogger().info("Equation content (JAXBElement<SymbolRef>) moved into "+v);
+							v.setSymbRef((SymbolRef) value);
+						} else if (value instanceof Binop){
+							getLogger().info("Equation content (JAXBElement<Binop>) moved into "+v);
+							v.setBinop((Binop) value);
+						}
+					}
 				}
 			} else {
 				v.setEquation(null);
@@ -153,6 +190,8 @@ public class RhsAdapter extends XmlAdapter<Rhs, Rhs>{
 					eq.setProbability(clone.getProbability());
 					clone.clearContent();
 					clone.setEquation(eq);
+				} else {
+					getLogger().info("No content detected. "+clone.getContent()+" "+v.getContent());
 				}
 			}
 			
