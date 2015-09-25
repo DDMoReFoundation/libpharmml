@@ -82,17 +82,17 @@ public class PharmMLValidatorImpl implements IPharmMLValidator {
 				
 				@Override
 				public void warning(SAXParseException exception) throws SAXException {
-					rptFact.handleWarning(exception.getMessage());
+					rptFact.handleWarning(exception.getMessage()+"["+exception.getLineNumber()+","+exception.getColumnNumber()+"].");
 				}
 				
 				@Override
 				public void fatalError(SAXParseException exception) throws SAXException {
-					rptFact.handleError(ValidationReportFactory.SCHEMA_ERR_CODE, exception.getMessage());
+					rptFact.handleError(ValidationReportFactory.SCHEMA_ERR_CODE, exception.getMessage()+"["+exception.getLineNumber()+","+exception.getColumnNumber()+"].");
 				}
 				
 				@Override
 				public void error(SAXParseException exception) throws SAXException {
-					rptFact.handleError(ValidationReportFactory.SCHEMA_ERR_CODE, exception.getMessage());
+					rptFact.handleError(ValidationReportFactory.SCHEMA_ERR_CODE, exception.getMessage()+"["+exception.getLineNumber()+","+exception.getColumnNumber()+"].");
 				}
 			});
 			schemaValidator.validate(source);
