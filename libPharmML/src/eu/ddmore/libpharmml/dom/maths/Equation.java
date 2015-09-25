@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.dom.maths;
 
+import static eu.ddmore.libpharmml.impl.LoggerWrapper.getLogger;
+
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -38,6 +41,7 @@ import eu.ddmore.libpharmml.dom.commontypes.ObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.OperationVariable;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
 
 
@@ -107,26 +111,41 @@ public class Equation
 	 */
 	public static Rhs toRhs(Equation eq){
 		Rhs rhs = new Rhs();
-		
-		rhs.setBinop(eq.getBinop());
-		rhs.setDelay(eq.getDelay());
-		rhs.setDescription(eq.getDescription());
-		rhs.setFunctionCall(eq.getFunctionCall());
-		rhs.setId(eq.getId());
-		rhs.setMatrixSelector(eq.getMatrixSelector());
-		rhs.setMatrixUniop(eq.getMatrixUniop());
-		rhs.setPiecewise(eq.getPiecewise());
-		rhs.setProbability(eq.getProbability());
-		rhs.setProduct(eq.getProduct());
+
 		if(eq.getScalar() != null){
 			rhs.setScalar((Scalar) eq.getScalar().getValue());
+		} else if(eq.getScalarOrSymbRefOrBinop().size() > 0){
+			JAXBElement<?> jaxbEl = eq.getScalarOrSymbRefOrBinop().get(0);
+			Object value = jaxbEl.getValue();
+			if(value instanceof Scalar){
+				rhs.setScalar((Scalar) value);
+			} else if (value instanceof SymbolRef){
+				rhs.setSymbRef((SymbolRef) value);
+			} else if (value instanceof Binop){
+				rhs.setBinop((Binop) value);
+			}
+		} else {
+			rhs.setBinop(eq.getBinop());
+			rhs.setDelay(eq.getDelay());
+			rhs.setDescription(eq.getDescription());
+			rhs.setFunctionCall(eq.getFunctionCall());
+			rhs.setId(eq.getId());
+			rhs.setMatrixSelector(eq.getMatrixSelector());
+			rhs.setMatrixUniop(eq.getMatrixUniop());
+			rhs.setPiecewise(eq.getPiecewise());
+			rhs.setProbability(eq.getProbability());
+			rhs.setProduct(eq.getProduct());
+			rhs.setSum(eq.getSum());
+			rhs.setSymbRef(eq.getSymbRef());
+			rhs.setUniop(eq.getUniop());
+			rhs.setVectorSelector(eq.getVectorSelector());
 		}
-		rhs.setSum(eq.getSum());
-		rhs.setSymbRef(eq.getSymbRef());
-		rhs.setUniop(eq.getUniop());
-		rhs.setVectorSelector(eq.getVectorSelector());
-		
+
 		return rhs;
+	}
+	
+	public void dump(){
+		
 	}
 
 }
