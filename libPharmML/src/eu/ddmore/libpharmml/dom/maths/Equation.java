@@ -26,9 +26,6 @@
 
 package eu.ddmore.libpharmml.dom.maths;
 
-import static eu.ddmore.libpharmml.impl.LoggerWrapper.getLogger;
-
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -37,11 +34,9 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixCellValue;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixRowValue;
-import eu.ddmore.libpharmml.dom.commontypes.ObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.OperationVariable;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
-import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
 
 
@@ -114,16 +109,6 @@ public class Equation
 
 		if(eq.getScalar() != null){
 			rhs.setScalar((Scalar) eq.getScalar().getValue());
-		} else if(eq.getScalarOrSymbRefOrBinop().size() > 0){
-			JAXBElement<?> jaxbEl = eq.getScalarOrSymbRefOrBinop().get(0);
-			Object value = jaxbEl.getValue();
-			if(value instanceof Scalar){
-				rhs.setScalar((Scalar) value);
-			} else if (value instanceof SymbolRef){
-				rhs.setSymbRef((SymbolRef) value);
-			} else if (value instanceof Binop){
-				rhs.setBinop((Binop) value);
-			}
 		} else {
 			rhs.setBinop(eq.getBinop());
 			rhs.setDelay(eq.getDelay());

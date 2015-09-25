@@ -18,17 +18,14 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.dom.maths;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
-import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
@@ -41,15 +38,12 @@ import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Product;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
-import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.Sum;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
-import eu.ddmore.libpharmml.impl.LoggerWrapper;
-import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -89,7 +83,6 @@ import eu.ddmore.libpharmml.util.ChainedList;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EquationType", propOrder = {
-	"scalarOrSymbRefOrBinop",
     "scalar",
     "symbRef",
     "binop",
@@ -138,17 +131,6 @@ public class EquationType
     protected MatrixUniOp matrixUniop;
     @XmlElement(name = "Probability", namespace = XMLFilter.NS_DEFAULT_MDEF)
     protected Probability probability;
-	
-	@XmlElementRefs({
-        @XmlElementRef(name = "Piecewise", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Uniop", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Binop", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "FunctionCall", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
-    })
-	@Deprecated
-    protected List<JAXBElement<?>> scalarOrSymbRefOrBinop;
 
     /**
      * Gets the value of the scalar property.
@@ -474,60 +456,6 @@ public class EquationType
      */
     public void setProbability(Probability value) {
         this.probability = value;
-    }
-	
-    @Deprecated
-	public List<JAXBElement<?>> getScalarOrSymbRefOrBinop() {
-        if (scalarOrSymbRefOrBinop == null) {
-            scalarOrSymbRefOrBinop = new ArrayList<JAXBElement<?>>();
-        }
-        return this.scalarOrSymbRefOrBinop;
-    }
-    
-    /**
-     * Method used to deal with different behaviour of this class with differents PharmML versions
-     * @param unmarshaller
-     * @param parent
-     */
-    protected void afterUnmarshal(Unmarshaller unmarshaller, Object parent){
-    	PharmMLVersion version = getUnmarshalVersion();
-    	switch(version){
-    	case V0_2_1:
-    		// do nothing, deprecated attribute is set in priority
-    		break;
-    	default:// >=0.3
-    		boolean firstElement = false;
-    		for(JAXBElement<?> element : getScalarOrSymbRefOrBinop()){
-    			if(!firstElement){
-        			if(element.getDeclaredType().equals(SymbolRef.class)){
-        				setSymbRef((SymbolRef)element.getValue()); 
-        				firstElement = true;
-        			} else if (element.getDeclaredType().equals(Binop.class)){
-        				setBinop((Binop)element.getValue());
-        				firstElement = true;
-        			} else if (element.getDeclaredType().equals(FunctionCallType.class)){
-        				setFunctionCall((FunctionCallType)element.getValue());
-        				firstElement = true;
-        			} else if (element.getDeclaredType().equals(Piecewise.class)){
-        				setPiecewise((Piecewise)element.getValue());
-        				firstElement = true;
-        			} else if (element.getDeclaredType().equals(Uniop.class)){
-        				setUniop((Uniop)element.getValue());
-        				firstElement = true;
-//        			} else if (element.getDeclaredType().equals(ScalarRhs.class)){
-//        				setScalar(element);
-//        				firstElement = true;
-        			} else if (element.getValue() instanceof Scalar){
-        				setScalar(element);
-        				firstElement = true;
-        			}
-    			} else {
-    				LoggerWrapper.getLogger().warning("Additionnal element "+element.getDeclaredType()+" ignored in "+this+
-    						". EquationType can only have 1 single child in PharmML "+version+".");
-    			}
-    		}
-    		getScalarOrSymbRefOrBinop().clear();
-    	}
     }
 
 	@Override

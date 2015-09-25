@@ -2,10 +2,8 @@ package eu.ddmore.libpharmml.dom.commontypes;
 
 import static eu.ddmore.libpharmml.impl.LoggerWrapper.getLogger;
 
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
@@ -59,19 +57,6 @@ public class RhsAdapter extends XmlAdapter<Rhs, Rhs>{
 					} else if (eq.getProbability() != null){
 						getLogger().info("Equation content (Probability) moved into "+v);
 						v.setProbability(eq.getProbability());
-					} else if (eq.getScalarOrSymbRefOrBinop().size() > 0){
-						JAXBElement<?> jaxbEl = eq.getScalarOrSymbRefOrBinop().get(0);
-						Object value = jaxbEl.getValue();
-						if(value instanceof Scalar){
-							getLogger().info("Equation content (JAXBElement<Scalar>) moved into "+v);
-							v.setScalar((Scalar) value);
-						} else if (value instanceof SymbolRef){
-							getLogger().info("Equation content (JAXBElement<SymbolRef>) moved into "+v);
-							v.setSymbRef((SymbolRef) value);
-						} else if (value instanceof Binop){
-							getLogger().info("Equation content (JAXBElement<Binop>) moved into "+v);
-							v.setBinop((Binop) value);
-						}
 					}
 				}
 			} else {
