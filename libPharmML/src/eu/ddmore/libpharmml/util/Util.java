@@ -26,6 +26,7 @@ public class Util {
 		to.setDescription(from.getDescription());
 		to.setId(from.getId());
 		to.setUnmarshalVersion(from.getUnmarshalVersion());
+		to.setMarshalVersion(from.getMarshalVersion());
 	}
 	
 }

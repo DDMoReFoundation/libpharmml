@@ -39,6 +39,7 @@ import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile.Delimiter;
+import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
@@ -103,29 +104,29 @@ public class DataSet
     @XmlElement(name = "Table")
     protected DataSetTable table;
     
-    /**
-     * @deprecated The list of row must now be get from {@link DataSetTable} via
-     * {@link #getTable()}.
-     */
-    @Deprecated
-    public List<DatasetRow> getListOfRow(){
-    	if(table == null){
-    		table = new DataSetTable();
-    	}
-    	return table.getListOfRow();
-    }
-    
-    /**
-     * @deprecated The list of column definitions is now available within {@link HeaderColumnsDefinition}
-     * via {@link #getDefinition()}.
-     */
-    @Deprecated
-    public List<ColumnDefinition> getListOfColumnDefinition(){
-    	if(definition == null){
-    		definition = new HeaderColumnsDefinition();
-    	}
-    	return definition.getListOfColumn();
-    }
+//    /**
+//     * @deprecated The list of row must now be get from {@link DataSetTable} via
+//     * {@link #getTable()}.
+//     */
+//    @Deprecated
+//    public List<DatasetRow> getListOfRow(){
+//    	if(table == null){
+//    		table = new DataSetTable();
+//    	}
+//    	return table.getListOfRow();
+//    }
+//    
+//    /**
+//     * @deprecated The list of column definitions is now available within {@link HeaderColumnsDefinition}
+//     * via {@link #getDefinition()}.
+//     */
+//    @Deprecated
+//    public List<ColumnDefinition> getListOfColumnDefinition(){
+//    	if(definition == null){
+//    		definition = new HeaderColumnsDefinition();
+//    	}
+//    	return definition.getListOfColumn();
+//    }
     
     /**
      * Gets the value of the definition property. Contains a list of {@link ColumnDefinition}
@@ -187,13 +188,18 @@ public class DataSet
     public DatasetRow createRow(String[] values){
     	DatasetRow row = new DatasetRow();
     	
+    	if(getDefinition() == null){
+    		throw new IllegalStateException("Can't create row from array without column definition.");
+    	}
+    	List<ColumnDefinition> listOfColumns = getDefinition().getListOfColumn();
+    	
     	int size = values.length;
-    	if(size != getListOfColumnDefinition().size()){
+    	if(size != listOfColumns.size()){
     		throw new IllegalStateException("Size of the array of values does not match the number of columns");
     	}
     	
     	for(int i=0;i<size;i++){
-    		SymbolType symbolType = getListOfColumnDefinition().get(i).getValueType();
+    		SymbolType symbolType = listOfColumns.get(i).getValueType();
     		if(symbolType == null){
     			throw new IllegalStateException("valueType attribute is undefined for column "+i+".");
     		}
@@ -201,7 +207,13 @@ public class DataSet
     		row.getListOfValue().add(value);
     	}
     	
-    	getListOfRow().add(row);
+    	DataSetTable table;
+    	if(getTable() == null){
+    		table = createTable();
+    	} else {
+    		table = getTable();
+    	}
+    	table.getListOfRow().add(row);
     	
     	return row;
     }
@@ -340,34 +352,41 @@ public class DataSet
 		
 		boolean DS1a = false;
 		
-		boolean hasIdColumn = false;
-		for(ColumnDefinition col : getListOfColumnDefinition()){
-			if(col.getColumnType() != null && col.getColumnType().equals(ColumnType.ID)){
-				if(hasIdColumn){
-					DS1a = true;
-				} else {
-					hasIdColumn = true;
+		if(getDefinition() != null){
+			boolean hasIdColumn = false;
+			List<ColumnDefinition> listOfColumn = getDefinition().getListOfColumn();
+			for(ColumnDefinition col : listOfColumn){
+				if(col.getColumnType() != null && col.getColumnType().equals(ColumnType.ID)){
+					if(hasIdColumn){
+						DS1a = true;
+					} else {
+						hasIdColumn = true;
+					}
+				}
+			}
+			if(getTable() != null){
+				for(DatasetRow row : getTable().getListOfRow()){
+					int n = 0;
+					try {
+						for(Scalar value : row.getListOfValue()){
+							n++;
+							ColumnDefinition col = listOfColumn.get(n-1);
+							if(col.getValueType() != null && !value.getClass().equals(col.getValueType().getDataType())){
+								errorHandler.handleError("DS2", "Each cell must contain a value that is type compatible with the column definition.", this);
+							}
+						}
+						if(n != listOfColumn.size()){
+							errorHandler.handleError("DS3","Each row must define a cell for each column.",this);
+						}
+					} catch (IndexOutOfBoundsException e) {
+						errorHandler.handleError("DS3","Each row must define a cell for each column.",this);
+					}
 				}
 			}
 		}
 		
-		for(DatasetRow row : getListOfRow()){
-			int n = 0;
-			try {
-				for(Scalar value : row.getListOfValue()){
-					n++;
-					ColumnDefinition col = getListOfColumnDefinition().get(n-1);
-					if(col.getValueType() != null && !value.getClass().equals(col.getValueType().getDataType())){
-						errorHandler.handleError("DS2", "Each cell must contain a value that is type compatible with the column definition.", this);
-					}
-				}
-				if(n != getListOfColumnDefinition().size()){
-					errorHandler.handleError("DS3","Each row must define a cell for each column.",this);
-				}
-			} catch (IndexOutOfBoundsException e) {
-				errorHandler.handleError("DS3","Each row must define a cell for each column.",this);
-			}
-		}
+		
+		
 		
 		if(DS1a){
 			errorHandler.handleError("DS1", "Only one column with columnType=\"id\" attribute is allowed", this);
@@ -384,15 +403,19 @@ public class DataSet
      * be converted to the type of the column.
 	 */
 	public void updateTypes(){
-		int columnSize = getListOfColumnDefinition().size();
-		for(DatasetRow row : getListOfRow()){
-			int size = Math.min(columnSize, row.getListOfValue().size());
-			for(int i=0;i<size;i++){
-				Scalar preValue = row.getListOfValue().get(i);
-				SymbolType symbolType = getListOfColumnDefinition().get(i).getValueType();
-				Scalar newValue = stringToScalar(symbolType, preValue.asString());
-				row.getListOfValue().set(i, newValue);
+		if(definition != null && table != null){
+			int columnSize = definition.getListOfColumn().size();
+			for(DatasetRow row : table.getListOfRow()){
+				int size = Math.min(columnSize, row.getListOfValue().size());
+				for(int i=0;i<size;i++){
+					Scalar preValue = row.getListOfValue().get(i);
+					SymbolType symbolType = definition.getListOfColumn().get(i).getValueType();
+					Scalar newValue = stringToScalar(symbolType, preValue.asString());
+					row.getListOfValue().set(i, newValue);
+				}
 			}
+		} else {
+			LoggerWrapper.getLogger().warning("Can't update dataset types without defined definition and table.");
 		}
 	}
 	

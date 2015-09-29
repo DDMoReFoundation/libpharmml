@@ -30,8 +30,10 @@ import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.ToolName;
 import eu.ddmore.libpharmml.dom.dataset.ColumnDefinition;
@@ -46,6 +48,7 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.SubList;
+import eu.ddmore.libpharmml.util.Util;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 
@@ -83,44 +86,17 @@ import eu.ddmore.libpharmml.util.annotations.RenamedElement;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ExternalDataSetType", propOrder = {
-    "listOfColumnMappingOrColumnTransformationOrMultipleDVMapping",
-    "dataSet",
-    "msteps_codeInjection",
-    "design_codeInjection"
-})
-@HasElementRenamed(mappedFields = { 
-		@RenamedElement(field = "msteps_codeInjection"),
-		@RenamedElement(field = "design_codeInjection", since = PharmMLVersion.V0_7_1)}, 
-		transientField = "codeInjection")
+@XmlJavaTypeAdapter(ExternalDataSet.Adapter.class)
+@XmlTransient
 public class ExternalDataSet
     extends PharmMLRootType implements DatasetMap, PharmMLObject
 {
 
-    @XmlElements({
-        @XmlElement(name = "ColumnMapping", type = ColumnMapping.class),
-        @XmlElement(name = "ColumnTransformation", type = ColumnTransformation.class),
-        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = MSMultipleDVMapping.class),
-        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_TD, type = MultipleDVMapping.class)
-    })
     protected List<PharmMLRootType> listOfColumnMappingOrColumnTransformationOrMultipleDVMapping;
-    @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
     protected DataSet dataSet;
-    
-    
-    @XmlElement(name = "CodeInjection", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
-    protected CodeInjection msteps_codeInjection;
-    @XmlElement(name = "CodeInjection", namespace = XMLFilter.NS_DEFAULT_TD)
-    protected CodeInjection design_codeInjection;
-    @XmlTransient
     protected CodeInjection codeInjection;
-    
-    
-    @XmlAttribute(name = "toolName", required = true)
+
     protected ToolName toolName;
-    @XmlAttribute(name = "oid", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
     
     /**
@@ -156,9 +132,10 @@ public class ExternalDataSet
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ColumnMapping }
-     * {@link ColumnTransformation }
-     * {@link MSMultipleDVMapping }
+     * {@link ColumnMapping },
+     * {@link ColumnTransformation },
+     * {@link MSMultipleDVMapping } (deprecated),
+     * {@link MultipleDVMapping}
      * 
      * 
      */
@@ -287,8 +264,14 @@ public class ExternalDataSet
     	return ct;
     }
     
-    public MSMultipleDVMapping createMultipleDVMapping(){
+    public MSMultipleDVMapping createMSMultipleDVMapping(){
     	MSMultipleDVMapping dvm = new MSMultipleDVMapping();
+    	getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping().add(dvm);
+    	return dvm;
+    }
+    
+    public MultipleDVMapping createMultipleDVMapping(){
+    	MultipleDVMapping dvm = new MultipleDVMapping();
     	getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping().add(dvm);
     	return dvm;
     }
@@ -318,6 +301,109 @@ public class ExternalDataSet
 		// TODO do something smarter here
 		return new SubList<ColumnMapping>(getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping(),
 				ColumnMapping.class);
+	}
+	
+	@XmlAccessorType(XmlAccessType.FIELD)
+	@XmlType(name = "ExternalDataSetType", propOrder = {
+	    "listOfColumnMappingOrColumnTransformationOrMultipleDVMapping6",
+	    "listOfColumnMappingOrColumnTransformationOrMultipleDVMapping7",
+	    "dataSet",
+	    "msteps_codeInjection",
+	    "design_codeInjection"
+	})
+	static class ExternalDatasetAdapted extends PharmMLRootType {
+		
+		@XmlElements({
+	        @XmlElement(name = "ColumnMapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = ColumnMapping.class),
+	        @XmlElement(name = "ColumnTransformation", type = ColumnTransformation.class),
+	        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = MSMultipleDVMapping.class),
+	        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_TD, type = MultipleDVMapping.class)
+	    })
+	    protected List<PharmMLRootType> listOfColumnMappingOrColumnTransformationOrMultipleDVMapping6;
+		
+		@XmlElements({
+	        @XmlElement(name = "ColumnMapping", namespace = XMLFilter.NS_DEFAULT_TD, type = ColumnMapping.class),
+	        @XmlElement(name = "ColumnTransformation", type = ColumnTransformation.class),
+	        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = MSMultipleDVMapping.class),
+	        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_TD, type = MultipleDVMapping.class)
+	    })
+	    protected List<PharmMLRootType> listOfColumnMappingOrColumnTransformationOrMultipleDVMapping7;
+		
+		
+	    @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
+	    protected DataSet dataSet;
+	    
+	    
+	    @XmlElement(name = "CodeInjection", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
+	    protected CodeInjection msteps_codeInjection;
+	    @XmlElement(name = "CodeInjection", namespace = XMLFilter.NS_DEFAULT_TD)
+	    protected CodeInjection design_codeInjection;
+	    
+	    
+	    @XmlAttribute(name = "toolName", required = true)
+	    protected ToolName toolName;
+	    @XmlAttribute(name = "oid", required = true)
+	    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	    protected String oid;
+	    
+	}
+	
+	static class Adapter extends XmlAdapter<ExternalDatasetAdapted, ExternalDataSet>{
+
+		@Override
+		public ExternalDataSet unmarshal(ExternalDatasetAdapted v) throws Exception {
+			if(v == null){
+				return null;
+			} else {
+				PharmMLVersion version = v.getUnmarshalVersion();
+				if(version == null){
+					throw new IllegalStateException("Unmarshal version is null");
+				}
+				ExternalDataSet eds = MasterObjectFactory.TRIALDESIGN_OF.createExternalDataSetType();
+				Util.cloneRoot(v, eds);
+				eds.setDataSet(v.dataSet);
+				eds.setOid(v.oid);
+				eds.setToolName(v.toolName);
+				if(version.isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
+					eds.setCodeInjection(v.design_codeInjection);
+					if(v.listOfColumnMappingOrColumnTransformationOrMultipleDVMapping7 != null){
+						eds.getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping().addAll(v.listOfColumnMappingOrColumnTransformationOrMultipleDVMapping7);
+					}
+				} else {
+					eds.setCodeInjection(v.msteps_codeInjection);
+					if(v.listOfColumnMappingOrColumnTransformationOrMultipleDVMapping6 != null){
+						eds.getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping().addAll(v.listOfColumnMappingOrColumnTransformationOrMultipleDVMapping6);
+					}
+				}
+				return eds;
+			}
+		}
+
+		@Override
+		public ExternalDatasetAdapted marshal(ExternalDataSet v) throws Exception {
+			if(v == null){
+				return null;
+			} else {
+				PharmMLVersion version = v.getMarshalVersion();
+				if(version == null){
+					throw new IllegalStateException("Marshal version is null");
+				}
+				ExternalDatasetAdapted adapted = new ExternalDatasetAdapted();
+				Util.cloneRoot(v, adapted);
+				adapted.dataSet = v.getDataSet();
+				adapted.oid = v.getOid();
+				adapted.toolName = v.getToolName();
+				if(version.isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
+					adapted.listOfColumnMappingOrColumnTransformationOrMultipleDVMapping7 = v.getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping();
+					adapted.design_codeInjection = v.getCodeInjection();
+				} else {
+					adapted.listOfColumnMappingOrColumnTransformationOrMultipleDVMapping6 = v.getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping();
+					adapted.msteps_codeInjection = v.getCodeInjection();
+				}
+				return adapted;
+			}
+		}
+		
 	}
 
 }
