@@ -315,7 +315,7 @@ public class ExternalDataSet
 		
 		@XmlElements({
 	        @XmlElement(name = "ColumnMapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = ColumnMapping.class),
-	        @XmlElement(name = "ColumnTransformation", type = ColumnTransformation.class),
+	        @XmlElement(name = "ColumnTransformation", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = ColumnTransformation.class),
 	        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = MSMultipleDVMapping.class),
 	        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_TD, type = MultipleDVMapping.class)
 	    })
@@ -323,7 +323,7 @@ public class ExternalDataSet
 		
 		@XmlElements({
 	        @XmlElement(name = "ColumnMapping", namespace = XMLFilter.NS_DEFAULT_TD, type = ColumnMapping.class),
-	        @XmlElement(name = "ColumnTransformation", type = ColumnTransformation.class),
+	        @XmlElement(name = "ColumnTransformation", namespace = XMLFilter.NS_DEFAULT_TD, type = ColumnTransformation.class),
 	        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = MSMultipleDVMapping.class),
 	        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_TD, type = MultipleDVMapping.class)
 	    })
