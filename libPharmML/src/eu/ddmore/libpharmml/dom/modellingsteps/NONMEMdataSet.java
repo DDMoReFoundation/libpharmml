@@ -42,6 +42,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.trialdesign.CodeInjection;
+import eu.ddmore.libpharmml.dom.trialdesign.MultipleDVMapping;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
@@ -91,7 +92,7 @@ public class NONMEMdataSet
     @XmlElement(name = "ColumnTransformation")
     protected List<ColumnTransformation> listOfColumnTransformation;
     @XmlElement(name = "MultipleDVMapping")
-    protected List<MSMultipleDVMapping> multipleDVMapping;
+    protected List<MultipleDVMapping> multipleDVMapping;
     @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
     protected DataSet dataSet;
     @XmlElement(name = "CodeInjection", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
@@ -180,9 +181,9 @@ public class NONMEMdataSet
      * 
      * 
      */
-    public List<MSMultipleDVMapping> getMultipleDVMapping() {
+    public List<MultipleDVMapping> getMultipleDVMapping() {
         if (multipleDVMapping == null) {
-            multipleDVMapping = new ArrayList<MSMultipleDVMapping>();
+            multipleDVMapping = new ArrayList<MultipleDVMapping>();
         }
         return this.multipleDVMapping;
     }

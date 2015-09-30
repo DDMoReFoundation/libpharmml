@@ -42,6 +42,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.trialdesign.CodeInjection;
+import eu.ddmore.libpharmml.dom.trialdesign.MultipleDVMapping;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
@@ -91,7 +92,7 @@ public class MONOLIXdataSet
     @XmlElement(name = "ColumnTransformation")
     protected List<ColumnTransformation> listOfColumnTransformation;
     @XmlElement(name = "MultipleDVMapping")
-    protected List<MSMultipleDVMapping> listOfMultipleDVMapping;
+    protected List<MultipleDVMapping> listOfMultipleDVMapping;
     @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
     protected DataSet dataSet;
     @XmlElement(name = "CodeInjection", namespace = XMLFilter.NS_DEFAULT_MSTEPS) // NS < PharmML0.7
@@ -189,13 +190,13 @@ public class MONOLIXdataSet
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link MSMultipleDVMapping }
+     * {@link MultipleDVMapping }
      * 
      * 
      */
-    public List<MSMultipleDVMapping> getListOfMultipleDVMapping() {
+    public List<MultipleDVMapping> getListOfMultipleDVMapping() {
         if (listOfMultipleDVMapping == null) {
-        	listOfMultipleDVMapping = new ArrayList<MSMultipleDVMapping>();
+        	listOfMultipleDVMapping = new ArrayList<MultipleDVMapping>();
         }
         return this.listOfMultipleDVMapping;
     }
@@ -296,11 +297,11 @@ public class MONOLIXdataSet
     }
 
     /**
-     * Creates a new empty {@link MSMultipleDVMapping} MultipleDVMapping element, adds it to the current object and returns it.
-     * @return The created {@link MSMultipleDVMapping} object.
+     * Creates a new empty {@link MultipleDVMapping} MultipleDVMapping element, adds it to the current object and returns it.
+     * @return The created {@link MultipleDVMapping} object.
      */
-    public MSMultipleDVMapping createMultipleDVMapping(){
-            MSMultipleDVMapping el = new MSMultipleDVMapping();
+    public MultipleDVMapping createMultipleDVMapping(){
+    		MultipleDVMapping el = new MultipleDVMapping();
             getListOfMultipleDVMapping().add(el);
             return el;
     }

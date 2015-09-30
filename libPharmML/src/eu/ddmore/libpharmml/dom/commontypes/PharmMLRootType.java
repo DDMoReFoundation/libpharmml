@@ -198,7 +198,7 @@ import eu.ddmore.libpharmml.dom.probonto.*;
 	MixtureComponent.class,
 	ModelDefinition.class,
 	ModellingSteps.class,
-	MSMultipleDVMapping.class,
+	MultipleDVMapping.class,
 	NONMEMdataSet.class,
 	NONMEMdataSetReference.class,
 	Observation.class,

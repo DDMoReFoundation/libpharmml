@@ -1,7 +1,7 @@
 package eu.ddmore.libpharmml.dom.trialdesign;
 
-import static org.hamcrest.core.StringContains.containsString;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
+import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
@@ -21,17 +21,16 @@ import eu.ddmore.libpharmml.PharmMlFactory;
 import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.ToolName;
-import eu.ddmore.libpharmml.dom.modellingsteps.MSMultipleDVMapping;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
-@SuppressWarnings("deprecation")
 public class ExternalDatasetTest {
 	
 	private ILibPharmML libPharmML;
 	private IPharmMLResource resource6;
 	private IPharmMLResource resource7;
 	private IPharmMLResource resourceDV;
+	private IPharmMLResource resourceDV_BC;
 	
 //	private static final String TESTFILE = "testExternalDataset.xml";
 //	private IPharmMLResource unmarshalResource;
@@ -46,6 +45,8 @@ public class ExternalDatasetTest {
 		this.resource6.setParameter(IPharmMLResource.AUTOSET_ID, false);
 		this.resourceDV = libPharmML.createDom(PharmMLVersion.DEFAULT);
 		this.resourceDV.setParameter(IPharmMLResource.AUTOSET_ID, false);
+		this.resourceDV_BC = libPharmML.createDom(PharmMLVersion.V0_6);
+		this.resourceDV_BC.setParameter(IPharmMLResource.AUTOSET_ID, false);
 
 		LoggerWrapper.getLogger().setLevel(Level.INFO);
 //		InputStream is = this.getClass().getResourceAsStream(TESTFILE);
@@ -152,6 +153,27 @@ public class ExternalDatasetTest {
 	
 	@Test
 	public void testMarshalDVMappingBC() throws Exception {
+		PharmML dom = resourceDV_BC.getDom();
+		TrialDesign td = dom.createTrialDesign();
+		ExternalDataSet dataset = td.createExternalDataSet("d1", ToolName.MONOLIX);
+		
+		MultipleDVMapping dvm = new MultipleDVMapping();
+		dataset.getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping().add(dvm);
+		
+		MultipleDVMapping dep_dvm = new MultipleDVMapping();
+		dataset.getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping().add(dep_dvm);
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		libPharmML.save(baos, resourceDV_BC);
+		
+//		System.out.print(baos);
+		
+//		assertThat(baos.toString(), containsString("<td:MultipleDVMapping/>"));
+		assertThat(baos.toString(), containsString("<msteps:MultipleDVMapping/>"));
+	}
+	
+	@Test
+	public void testMarshalDVMapping() throws Exception {
 		PharmML dom = resourceDV.getDom();
 		TrialDesign td = dom.createTrialDesign();
 		ExternalDataSet dataset = td.createExternalDataSet("d1", ToolName.MONOLIX);
@@ -159,7 +181,7 @@ public class ExternalDatasetTest {
 		MultipleDVMapping dvm = new MultipleDVMapping();
 		dataset.getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping().add(dvm);
 		
-		MSMultipleDVMapping dep_dvm = new MSMultipleDVMapping();
+		MultipleDVMapping dep_dvm = new MultipleDVMapping();
 		dataset.getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping().add(dep_dvm);
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -168,7 +190,7 @@ public class ExternalDatasetTest {
 //		System.out.print(baos);
 		
 		assertThat(baos.toString(), containsString("<td:MultipleDVMapping/>"));
-		assertThat(baos.toString(), containsString("<msteps:MultipleDVMapping/>"));
+//		assertThat(baos.toString(), containsString("<msteps:MultipleDVMapping/>"));
 	}
 	
 	@Test
@@ -185,9 +207,8 @@ public class ExternalDatasetTest {
 		assertNotNull(ed);
 		
 		List<PharmMLRootType> mappings = ed.getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping();
-		assertEquals(2, mappings.size());
+		assertEquals(1, mappings.size());
 		assertThat(mappings.get(0), instanceOf(MultipleDVMapping.class));
-		assertThat(mappings.get(1), instanceOf(MSMultipleDVMapping.class));
 	}
 	
 }

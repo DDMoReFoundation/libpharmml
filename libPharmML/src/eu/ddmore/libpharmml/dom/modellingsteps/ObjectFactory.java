@@ -203,15 +203,15 @@ public class ObjectFactory {
     public InitialEstimate createInitialEstimateType() {
         return new InitialEstimate();
     }
-    
-    /**
-     * Create an instance of {@link MSMultipleDVMapping }
-     * 
-     */
-    public MSMultipleDVMapping createMultipleDVMappingType() {
-        return new MSMultipleDVMapping();
-    }
-    
+//    
+//    /**
+//     * Create an instance of {@link MSMultipleDVMapping }
+//     * 
+//     */
+//    public MSMultipleDVMapping createMultipleDVMappingType() {
+//        return new MSMultipleDVMapping();
+//    }
+//    
     /**
      * Create an instance of {@link NONMEMdataSetReference }
      * 

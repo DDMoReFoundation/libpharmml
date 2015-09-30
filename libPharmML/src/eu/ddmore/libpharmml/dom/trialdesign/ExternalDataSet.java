@@ -42,15 +42,12 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.dataset.DatasetMap;
-import eu.ddmore.libpharmml.dom.modellingsteps.MSMultipleDVMapping;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.SubList;
 import eu.ddmore.libpharmml.util.Util;
-import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
-import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 
 
 /**
@@ -134,7 +131,6 @@ public class ExternalDataSet
      * Objects of the following type(s) are allowed in the list
      * {@link ColumnMapping },
      * {@link ColumnTransformation },
-     * {@link MSMultipleDVMapping } (deprecated),
      * {@link MultipleDVMapping}
      * 
      * 
@@ -264,12 +260,6 @@ public class ExternalDataSet
     	return ct;
     }
     
-    public MSMultipleDVMapping createMSMultipleDVMapping(){
-    	MSMultipleDVMapping dvm = new MSMultipleDVMapping();
-    	getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping().add(dvm);
-    	return dvm;
-    }
-    
     public MultipleDVMapping createMultipleDVMapping(){
     	MultipleDVMapping dvm = new MultipleDVMapping();
     	getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping().add(dvm);
@@ -316,15 +306,13 @@ public class ExternalDataSet
 		@XmlElements({
 	        @XmlElement(name = "ColumnMapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = ColumnMapping.class),
 	        @XmlElement(name = "ColumnTransformation", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = ColumnTransformation.class),
-	        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = MSMultipleDVMapping.class),
-	        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_TD, type = MultipleDVMapping.class)
+	        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = MultipleDVMapping.class)
 	    })
 	    protected List<PharmMLRootType> listOfColumnMappingOrColumnTransformationOrMultipleDVMapping6;
 		
 		@XmlElements({
 	        @XmlElement(name = "ColumnMapping", namespace = XMLFilter.NS_DEFAULT_TD, type = ColumnMapping.class),
 	        @XmlElement(name = "ColumnTransformation", namespace = XMLFilter.NS_DEFAULT_TD, type = ColumnTransformation.class),
-	        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = MSMultipleDVMapping.class),
 	        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_TD, type = MultipleDVMapping.class)
 	    })
 	    protected List<PharmMLRootType> listOfColumnMappingOrColumnTransformationOrMultipleDVMapping7;

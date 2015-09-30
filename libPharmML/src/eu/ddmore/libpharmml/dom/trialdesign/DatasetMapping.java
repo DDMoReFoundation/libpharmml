@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -47,8 +48,12 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.dataset.DatasetMap;
 import eu.ddmore.libpharmml.dom.modellingsteps.MappingType;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
+import eu.ddmore.libpharmml.util.annotations.HasElementsRenamed;
+import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 
 
 /**
@@ -80,9 +85,15 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlType(name = "DatasetMappingType", propOrder = {
     "variableAssignment",
     "mapping",
-	"columnMapping",
+	"msteps_columnMapping",
+	"td_columnMapping",
     "dataSet"
 })
+@HasElementsRenamed(value = { 
+		@HasElementRenamed(mappedFields = { 
+				@RenamedElement(field = "msteps_columnMapping"),
+				@RenamedElement(field = "td_columnMapping", since = PharmMLVersion.V0_7_1)}, 
+				transientField = "transient_columnMapping") })
 public class DatasetMapping
     extends PharmMLRootType implements DatasetMap, PharmMLObject
 {
@@ -93,8 +104,14 @@ public class DatasetMapping
 	@XmlElementRef(name = "Mapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = JAXBElement.class)
 	@Deprecated
     protected List<JAXBElement<? extends MappingType>> mapping;
+	
+    @XmlElement(name = "ColumnMapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, required = true)
+    protected List<ColumnMapping> msteps_columnMapping;
     @XmlElement(name = "ColumnMapping", required = true)
-    protected List<ColumnMapping> columnMapping;
+    protected List<ColumnMapping> td_columnMapping;
+    @XmlTransient
+    protected List<ColumnMapping> transient_columnMapping;
+    
     @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
     protected DataSet dataSet;
     
@@ -241,16 +258,16 @@ public class DatasetMapping
     @Override
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
-				.addIfNotNull(columnMapping)
+				.addIfNotNull(transient_columnMapping)
 				.addIfNotNull(dataSet);
 	}
 
 	@Override
 	public List<ColumnMapping> getListOfColumnMapping() {
-		if (columnMapping == null) {
-            columnMapping = new ArrayList<ColumnMapping>();
+		if (transient_columnMapping == null) {
+			transient_columnMapping = new ArrayList<ColumnMapping>();
         }
-        return this.columnMapping;
+        return this.transient_columnMapping;
 	}
 	
 	/**

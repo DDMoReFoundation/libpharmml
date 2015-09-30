@@ -32,13 +32,18 @@ import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
+import eu.ddmore.libpharmml.util.annotations.HasElementsRenamed;
+import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 
 
 /**
@@ -68,16 +73,28 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MultipleDVMappingType", propOrder = {
     "columnRef",
-    "piecewise"
+    "msteps_piecewise",
+    "default_piecewise"
 })
+@HasElementsRenamed(value = { 
+		@HasElementRenamed(
+						mappedFields = { 
+								@RenamedElement(field = "msteps_piecewise"),
+								@RenamedElement(field = "default_piecewise", since = PharmMLVersion.V0_7_1)}, 
+				transientField = "transient_piecewise") })
 public class MultipleDVMapping
     extends PharmMLRootType
 {
 
     @XmlElement(name = "ColumnRef", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
     protected ColumnReference columnRef;
-    @XmlElement(name = "Piecewise", required = true)
-    protected Piecewise piecewise;
+    
+    @XmlElement(name = "Piecewise", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
+    protected Piecewise msteps_piecewise;
+    @XmlElement(name = "Piecewise")
+    protected Piecewise default_piecewise;
+    @XmlTransient // required=true
+    protected Piecewise transient_piecewise;
 
     /**
      * 
@@ -114,7 +131,7 @@ public class MultipleDVMapping
      *     
      */
     public Piecewise getPiecewise() {
-        return piecewise;
+        return transient_piecewise;
     }
 
     /**
@@ -126,14 +143,14 @@ public class MultipleDVMapping
      *     
      */
     public void setPiecewise(Piecewise value) {
-        this.piecewise = value;
+        this.transient_piecewise = value;
     }
     
     @Override
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(columnRef)
-				.addIfNotNull(piecewise);
+				.addIfNotNull(transient_piecewise);
 	}
 
 }
