@@ -145,7 +145,11 @@ public class VariabilityLevelDefinition
      * @since PharmML 0.5.1
      */
     public Boolean isReferenceLevel() {
-        return referenceLevel;
+    	if(referenceLevel == null){
+    		return false;
+    	} else {
+    		return referenceLevel;
+    	}
     }
 
     /**
