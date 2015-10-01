@@ -20,6 +20,8 @@ import eu.ddmore.libpharmml.PharmMlFactory;
 import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.Binoperator;
+import eu.ddmore.libpharmml.dom.maths.Constant;
+import eu.ddmore.libpharmml.dom.maths.ConstantOperator;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.StructuralModel;
@@ -163,6 +165,70 @@ public class RhsTest {
 		assertNotNull(((DerivativeVariable) res.getDom().getModelDefinition().
 				getListOfStructuralModel().get(0).getCommonVariable().get(0).
 				getValue()).getAssign().getBinop());
+	}
+	
+	@Test
+	public void testMarshalScalarDefault() throws Exception {
+		Rhs rhs = new Rhs();
+		rhs.setScalar(new IntValue(10));
+		container.setAssign(rhs);
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		libPharmML.save(baos, resource);
+		
+		String output = baos.toString();
+		assertThat(output, not(containsString("<math:Equation>")));
+		assertThat(output, containsString("<ct:Int>10</ct:Int>"));
+
+		assertValid(libPharmML.getValidator().createValidationReport(resource));
+	}
+	
+	@Test
+	public void testMarshalSymbolRefDefault() throws Exception {
+		Rhs rhs = new Rhs();
+		rhs.setSymbRef(new SymbolRef("Ac"));
+		container.setAssign(rhs);
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		libPharmML.save(baos, resource);
+		
+		String output = baos.toString();
+		assertThat(output, not(containsString("<math:Equation>")));
+		assertThat(output, containsString("<ct:SymbRef symbIdRef=\"Ac\"/>"));
+
+		assertValid(libPharmML.getValidator().createValidationReport(resource));
+	}
+	
+	@Test
+	public void testMarshalVectorDefault() throws Exception {
+		Rhs rhs = new Rhs();
+		rhs.setVector(new Vector(new VectorValue[]{new IntValue(0),new IntValue(4)},2));
+		container.setAssign(rhs);
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		libPharmML.save(baos, resource);
+		
+		String output = baos.toString();
+		assertThat(output, not(containsString("<math:Equation>")));
+		assertThat(output, containsString("<ct:Vector"));
+
+		assertValid(libPharmML.getValidator().createValidationReport(resource));
+	}
+	
+	@Test
+	public void testMarshalConstantDefault() throws Exception {
+		Rhs rhs = new Rhs();
+		rhs.setConstant(new Constant(ConstantOperator.PI));
+		container.setAssign(rhs);
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		libPharmML.save(baos, resource);
+		
+		String output = baos.toString();
+		assertThat(output, not(containsString("<math:Equation>")));
+		assertThat(output, containsString("<math:Constant op=\"pi\"/>"));
+
+		assertValid(libPharmML.getValidator().createValidationReport(resource));
 	}
 	
 }
