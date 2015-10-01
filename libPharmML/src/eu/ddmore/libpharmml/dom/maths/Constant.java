@@ -114,17 +114,17 @@ public class Constant extends PharmMLElement implements Operand, ExpressionValue
         return op;
     }
 
-//    /**
-//     * Sets the value of the op property.
-//     * 
-//     * @param value
-//     *     allowed object is
-//     *     {@link String }
-//     *     
-//     */
-//    public void setOp(String value) {
-//        this.op = value;
-//    }
+    /**
+     * Sets the value of the op property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setOp(ConstantOperator op) {
+        this.op = op.value();
+    }
 
 	@Override
 	public JAXBElement<? extends Operand> toJAXBElement() {
