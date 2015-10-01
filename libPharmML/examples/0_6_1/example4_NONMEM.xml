@@ -6,7 +6,7 @@
     xmlns:ct="http://www.pharmml.org/pharmml/0.6/CommonTypes"
     xmlns:ds="http://www.pharmml.org/pharmml/0.6/Dataset"
     xmlns:design="http://www.pharmml.org/pharmml/0.6/TrialDesign"
-    implementedBy="MJS" writtenVersion="0.6" 
+    implementedBy="MJS" writtenVersion="0.6.1" 
     metadataFile="example4_NONMEM.rdf" id="i1">
     
     <!-- MODEL NAME -->
@@ -362,7 +362,7 @@
                 <ct:SymbRef blkIdRef="vm1" symbIdRef="indiv"/>
             </ColumnMapping>
             <ColumnMapping>
-                <ds:ColumnRef columnIdRef="TIME"/>
+                <ds:ColumnRef columnIdRef="Time"/>
                 <ct:SymbRef symbIdRef="t"/>
             </ColumnMapping>
             <ColumnMapping>

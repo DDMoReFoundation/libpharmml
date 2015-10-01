@@ -61,7 +61,8 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "HeaderColumnsDefinitionType", propOrder = {
     "listOfHeader",
-    "listOfColumn"
+    "listOfColumn",
+    "ignoreLine"
 })
 public class HeaderColumnsDefinition
     extends PharmMLRootType
@@ -71,6 +72,8 @@ public class HeaderColumnsDefinition
     protected List<HeaderDefinition> listOfHeader;
     @XmlElement(name = "Column", required = true)
     protected List<ColumnDefinition> listOfColumn;
+    @XmlElement(name = "IgnoreLine")
+    protected IgnoreLine ignoreLine;
 
     /**
      * Gets the value of the header property.
@@ -150,6 +153,30 @@ public class HeaderColumnsDefinition
     }
 
     /**
+     * Gets the value of the ignoreLine property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link IgnoreLine }
+     *     
+     */
+    public IgnoreLine getIgnoreLine() {
+        return ignoreLine;
+    }
+
+    /**
+     * Sets the value of the ignoreLine property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link IgnoreLine }
+     *     
+     */
+    public void setIgnoreLine(IgnoreLine value) {
+        this.ignoreLine = value;
+    }
+
+    /**
      * Creates a new empty {@link ColumnDefinition} listOfColumn element, adds it to the current object and returns it.
      * @return The created {@link ColumnDefinition} object.
      */
@@ -169,11 +196,25 @@ public class HeaderColumnsDefinition
         return el;
     }
     
+    public IgnoreLine createIgnoreLine(){
+    	IgnoreLine il = new IgnoreLine();
+    	this.ignoreLine = il;
+    	return il;
+    }
+    
+    public IgnoreLine createIgnoreLine(String symbol){
+    	IgnoreLine il = new IgnoreLine();
+    	il.setSymbol(symbol);
+    	this.ignoreLine = il;
+    	return il;
+    }
+    
     @Override
     protected List<TreeNode> listChildren() {
     	return new ChainedList<TreeNode>()
     			.addIfNotNull(listOfHeader)
-    			.addIfNotNull(listOfColumn);
+    			.addIfNotNull(listOfColumn)
+    			.addIfNotNull(ignoreLine);
     }
 
 }

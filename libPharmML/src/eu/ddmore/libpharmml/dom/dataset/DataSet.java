@@ -89,7 +89,6 @@ public class DataSet
     extends PharmMLRootType implements Validatable
 {
 
-	
 	// ExternalData renamed fields
 	@XmlElement(name = "ExternalFile")
     protected ExternalFile mapped_externalFile;
@@ -142,6 +141,7 @@ public class DataSet
     }
 
     /**
+<<<<<<< HEAD
      * Sets the value of the definition property.
      * 
      * @param value

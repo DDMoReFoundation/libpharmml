@@ -178,6 +178,7 @@ public class ObjectFactory {
     }
     
     /**
+<<<<<<< HEAD
      * Create an instance of {@link MissingDataMap }
      * 
      */
@@ -199,6 +200,15 @@ public class ObjectFactory {
      */
     public HeaderRow createHeaderRow() {
         return new HeaderRow();
+    }
+    
+    /**
+     * Create an instance of {@link IgnoreLine }
+     * 
+     * @since PharmML 0.6.1
+     */
+    public IgnoreLine createIgnoreLine() {
+        return new IgnoreLine();
     }
 
     /**

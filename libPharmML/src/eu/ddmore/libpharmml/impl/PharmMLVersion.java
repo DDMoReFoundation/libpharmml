@@ -27,39 +27,45 @@ public enum PharmMLVersion {
 	/**
 	 * PharmML 0.2.1
 	 */
-	V0_2_1("0.2.1","MarshallerImpl.xmlCatalogLocation.0.2.1",1),
+	V0_2_1("0.2.1",null,"MarshallerImpl.xmlCatalogLocation.0.2.1",1),
 	/**
 	 * PharmML 0.3
 	 */
-	V0_3("0.3","MarshallerImpl.xmlCatalogLocation.0.3",2),
+	V0_3("0.3",null,"MarshallerImpl.xmlCatalogLocation.0.3",2),
 	/**
 	 * PharmML 0.3.1
 	 */
-	V0_3_1("0.3.1","MarshallerImpl.xmlCatalogLocation.0.3.1",3),
+	V0_3_1("0.3.1",null,"MarshallerImpl.xmlCatalogLocation.0.3.1",3),
 	/**
 	 * PharmML 0.4
 	 */
-	V0_4("0.4","MarshallerImpl.xmlCatalogLocation.0.4",4),
+	V0_4("0.4",null,"MarshallerImpl.xmlCatalogLocation.0.4",4),
 	/**
 	 * PharmML 0.4.1
 	 */
-	V0_4_1("0.4.1","MarshallerImpl.xmlCatalogLocation.0.4.1",5),
+	V0_4_1("0.4.1",null,"MarshallerImpl.xmlCatalogLocation.0.4.1",5),
 	/**
 	 * PharmML 0.5
 	 */
-	V0_5("0.5","MarshallerImpl.xmlCatalogLocation.0.5",6),
+	V0_5("0.5",null,"MarshallerImpl.xmlCatalogLocation.0.5",6),
 	/**
 	 * PharmML 0.5.1
 	 */
-	V0_5_1("0.5.1","MarshallerImpl.xmlCatalogLocation.0.5.1",7),
+	V0_5_1("0.5.1",null,"MarshallerImpl.xmlCatalogLocation.0.5.1",7),
 	/**
 	 * PharmML 0.6
 	 */
-	V0_6("0.6","MarshallerImpl.xmlCatalogLocation.0.6",8),
+	V0_6("0.6","0.6","MarshallerImpl.xmlCatalogLocation.0.6",8),
+	
+	/**
+	 * PharmML 0.6.1
+	 */
+	V0_6_1("0.6.1","0.6","MarshallerImpl.xmlCatalogLocation.0.6",9),
+	
 	/**
 	 * PharmML 0.7
 	 */
-	V0_7_1("0.7.1","MarshallerImpl.xmlCatalogLocation.0.7.1",9);
+	V0_7_1("0.7.1","0.7","MarshallerImpl.xmlCatalogLocation.0.7.1",10);
 	
 	/**
 	 * The latest version of PharmML. Current is 0.7.1.
@@ -67,12 +73,14 @@ public enum PharmMLVersion {
 	public static final PharmMLVersion DEFAULT = PharmMLVersion.V0_7_1;
 	
 	private final String version;
+	private final String uriVersion;
 	private final String catalogLocation;
 	private final int index;
 //	private final String pharmml_URI;
 	
-	private PharmMLVersion(String version,String catalogMessage,int index) {
+	private PharmMLVersion(String version,String uriVersion,String catalogMessage,int index) {
 		this.version = version;
+		this.uriVersion = uriVersion;
 		this.catalogLocation = Messages.getString(catalogMessage);
 		this.index = index;
 //		if(index >= 8){
@@ -89,6 +97,15 @@ public enum PharmMLVersion {
 	 */
 	public String getValue(){
 		return version;
+	}
+	
+	/**
+	 * Gets the version written in PharmML namespace URIs. Usually only the 2 first digits on the full
+	 * version number. For versions older than 0.6, this method returns null.
+	 * @return A {@link String}.
+	 */
+	public String getURIVersion(){
+		return uriVersion;
 	}
 	
 	/**

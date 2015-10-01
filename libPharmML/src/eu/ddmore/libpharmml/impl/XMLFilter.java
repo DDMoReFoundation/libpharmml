@@ -87,15 +87,20 @@ public class XMLFilter extends XMLFilterImpl {
         }
                 
         if(writtenVersion.isEqualOrLaterThan(PharmMLVersion.V0_6)){
-        	NS_DOC_ROOT = String.format(NS_PATTERN_ROOT, writtenVersion.getValue());
-        	NS_DOC_CT = String.format(NS_PATTERN_CT, writtenVersion.getValue());
-        	NS_DOC_DS = String.format(NS_PATTERN_DS, writtenVersion.getValue());
-        	NS_DOC_MATH = String.format(NS_PATTERN_MATH, writtenVersion.getValue());
-        	NS_DOC_MDEF = String.format(NS_PATTERN_MDEF, writtenVersion.getValue());
-        	NS_DOC_TD = String.format(NS_PATTERN_TD, writtenVersion.getValue());
-        	NS_DOC_MSTEPS = String.format(NS_PATTERN_MSTEPS, writtenVersion.getValue());
-        	NS_DOC_MML = String.format(NS_PATTERN_MML, writtenVersion.getValue());
-        	NS_DOC_PROBONTO = NS_DOC_MSTEPS;
+        	NS_DOC_ROOT = String.format(NS_PATTERN_ROOT, writtenVersion.getURIVersion());
+        	NS_DOC_CT = String.format(NS_PATTERN_CT, writtenVersion.getURIVersion());
+        	NS_DOC_DS = String.format(NS_PATTERN_DS, writtenVersion.getURIVersion());
+        	NS_DOC_MATH = String.format(NS_PATTERN_MATH, writtenVersion.getURIVersion());
+        	NS_DOC_MDEF = String.format(NS_PATTERN_MDEF, writtenVersion.getURIVersion());
+        	NS_DOC_TD = String.format(NS_PATTERN_TD, writtenVersion.getURIVersion());
+        	NS_DOC_MSTEPS = String.format(NS_PATTERN_MSTEPS, writtenVersion.getURIVersion());
+        	NS_DOC_MML = String.format(NS_PATTERN_MML, writtenVersion.getURIVersion());
+        	if(writtenVersion.isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
+        		NS_DOC_PROBONTO = NS_DEFAULT_PROBONTO;
+        	} else {
+        		NS_DOC_PROBONTO = NS_DOC_MSTEPS;
+        	}
+        	
         } else {
         	NS_DOC_ROOT = NS_OLD_ROOT;
         	NS_DOC_CT = NS_OLD_CT;
