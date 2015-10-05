@@ -20,13 +20,16 @@ package eu.ddmore.libpharmml.dom.commontypes;
 
 import javax.xml.bind.annotation.XmlTransient;
 
+import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.Constant;
-import eu.ddmore.libpharmml.dom.maths.Equation;
+import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
+import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
+import eu.ddmore.libpharmml.dom.maths.Piecewise;
+import eu.ddmore.libpharmml.dom.maths.Uniop;
+import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 
 /**
  * Interface for every element that contains an assign element.
- * @author F. Yvon
- *
  */
 @XmlTransient
 public interface Assignable {
@@ -42,8 +45,11 @@ public interface Assignable {
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
 	 * @param equation The value of the assignment as a {@link Equation}.
 	 * @return The created {@link Rhs} assign element.
+	 * 
+	 * @deprecated Since PharmML 0.7.1, Equation is not used anymore. Use other assign(...) methods instead.
 	 */
-	public Rhs assign(Equation equation);
+	@Deprecated
+	public Rhs assign(eu.ddmore.libpharmml.dom.maths.Equation equation);
 	
 	/**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
@@ -99,5 +105,105 @@ public interface Assignable {
 	 * @since PharmML 0.7
 	 */
 	public Rhs assign(Interval interval);
+	
+	/**
+	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
+	 * @param interval The value of the assignment as a {@link Binop}.
+	 * @return The created {@link Rhs} assign element.
+	 * 
+	 * @since PharmML 0.7.1
+	 */
+	public Rhs assign(Binop binop);
+	
+	/**
+	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
+	 * @param interval The value of the assignment as a {@link Uniop}.
+	 * @return The created {@link Rhs} assign element.
+	 * 
+	 * @since PharmML 0.7.1
+	 */
+	public Rhs assign(Uniop uniop);
+	
+    /**
+	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
+	 * @param interval The value of the assignment as a {@link Piecewise}.
+	 * @return The created {@link Rhs} assign element.
+	 * 
+	 * @since PharmML 0.7.1
+	 */
+	public Rhs assign(Piecewise piecewise);
+
+    /**
+	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
+	 * @param interval The value of the assignment as a {@link FunctionCallType}.
+	 * @return The created {@link Rhs} assign element.
+	 * 
+	 * @since PharmML 0.7.1
+	 */
+	public Rhs assign(FunctionCallType functionCall);
+    
+    /**
+	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
+	 * @param interval The value of the assignment as a {@link Sum}.
+	 * @return The created {@link Rhs} assign element.
+	 * 
+	 * @since PharmML 0.7.1
+	 */
+	public Rhs assign(Sum sum);
+    
+    /**
+	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
+	 * @param interval The value of the assignment as a {@link Product}.
+	 * @return The created {@link Rhs} assign element.
+	 * 
+	 * @since PharmML 0.7.1
+	 */
+	public Rhs assign(Product product);
+    
+    /**
+	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
+	 * @param interval The value of the assignment as a {@link Delay}.
+	 * @return The created {@link Rhs} assign element.
+	 * 
+	 * @since PharmML 0.7.1
+	 */
+	public Rhs assign(Delay delay);
+	
+	/**
+	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
+	 * @param interval The value of the assignment as a {@link VectorSelector}.
+	 * @return The created {@link Rhs} assign element.
+	 * 
+	 * @since PharmML 0.7.1
+	 */
+	public Rhs assign(VectorSelector vectorSelector);
+    
+    /**
+	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
+	 * @param interval The value of the assignment as a {@link MatrixSelector}.
+	 * @return The created {@link Rhs} assign element.
+	 * 
+	 * @since PharmML 0.7.1
+	 */
+	public Rhs assign(MatrixSelector matrixSelector);
+	
+    /**
+	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
+	 * @param interval The value of the assignment as a {@link MatrixUniOp}.
+	 * @return The created {@link Rhs} assign element.
+	 * 
+	 * @since PharmML 0.7.1
+	 */
+	public Rhs assign(MatrixUniOp matrixUniop);
+
+    /**
+	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
+	 * @param interval The value of the assignment as a {@link Probability}.
+	 * @return The created {@link Rhs} assign element.
+	 * 
+	 * @since PharmML 0.7.1
+	 */
+	public Rhs assign(Probability probability);
+	
 	
 }

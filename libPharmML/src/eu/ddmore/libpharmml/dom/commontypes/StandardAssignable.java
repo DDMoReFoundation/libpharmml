@@ -29,8 +29,14 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.Constant;
 import eu.ddmore.libpharmml.dom.maths.Equation;
+import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
+import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
+import eu.ddmore.libpharmml.dom.maths.Piecewise;
+import eu.ddmore.libpharmml.dom.maths.Uniop;
+import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -200,5 +206,83 @@ public class StandardAssignable
 		this.assign = new Rhs(interval);
 		return this.assign;
 	}
+	
+	@Override
+	public Rhs assign(Binop binop) {
+		Rhs rhs = new Rhs(binop);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Uniop uniop) {
+		Rhs rhs = new Rhs(uniop);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Piecewise piecewise) {
+		Rhs rhs = new Rhs(piecewise);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(FunctionCallType functionCall) {
+		Rhs rhs = new Rhs(functionCall);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Sum sum) {
+		Rhs rhs = new Rhs(sum);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Product product) {
+		Rhs rhs = new Rhs(product);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Delay delay) {
+		Rhs rhs = new Rhs(delay);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(VectorSelector vectorSelector) {
+		Rhs rhs = new Rhs(vectorSelector);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(MatrixSelector matrixSelector) {
+		Rhs rhs = new Rhs(matrixSelector);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(MatrixUniOp matrixUniop) {
+		Rhs rhs = new Rhs(matrixUniop);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Probability probability) {
+		Rhs rhs = new Rhs(probability);
+		setAssign(rhs);
+		return rhs;
+	}
+
 
 }
