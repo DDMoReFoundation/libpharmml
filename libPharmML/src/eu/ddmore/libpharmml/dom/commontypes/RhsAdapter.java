@@ -36,6 +36,9 @@ public class RhsAdapter extends XmlAdapter<Rhs, Rhs>{
 					} else if (eq.getScalar() != null) {
 						getLogger().info("Scalar within Equation moved into "+v);
 						v.setScalar((Scalar) eq.getScalar().getValue());
+					} else if (eq.getSymbRef() != null) {
+						getLogger().info("Equation content (SymbolRef) moved into "+v);
+						v.setSymbRef(eq.getSymbRef());
 					} else if (eq.getFunctionCall() != null){
 						getLogger().info("Equation content (FunctionCall) moved into "+v);
 						v.setFunctionCall(eq.getFunctionCall());
