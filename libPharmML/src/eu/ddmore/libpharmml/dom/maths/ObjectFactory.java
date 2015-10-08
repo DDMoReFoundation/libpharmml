@@ -125,6 +125,7 @@ public class ObjectFactory {
      * Create an instance of {@link Equation }
      * 
      */
+    @Deprecated
     public Equation createEquation() {
         return new Equation();
     }
@@ -133,6 +134,7 @@ public class ObjectFactory {
      * Create an instance of {@link EquationType }
      * 
      */
+    @Deprecated
     public EquationType createEquationType() {
         return new EquationType();
     }
@@ -268,6 +270,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Equation }{@code >}}
      * 
      */
+    @Deprecated
     @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "Equation")
     public JAXBElement<Equation> createEquation(Equation value) {
         return new JAXBElement<Equation>(_Equation_QNAME, Equation.class, null, value);
@@ -277,6 +280,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Piecewise }{@code >}}
      * 
      */
+	@SuppressWarnings("deprecation")
 	@Deprecated
     @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "Piecewise", scope = EquationType.class)
     public JAXBElement<Piecewise> createEquationTypePiecewise(Piecewise value) {

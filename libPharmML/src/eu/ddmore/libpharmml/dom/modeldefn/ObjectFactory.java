@@ -321,6 +321,7 @@ public class ObjectFactory {
      * Create an instance of {@link CensoringFeature }
      * 
      */
+    @Deprecated
     public CensoringFeature createCensoringFeatureType() {
         return new CensoringFeature();
     }

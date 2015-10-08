@@ -298,6 +298,7 @@ public class ObjectFactory {
      * Create an instance of {@link InitialTime }
      * 
      */
+    @Deprecated
     public InitialTime createInitialTimeType() {
         return new InitialTime();
     }
@@ -306,6 +307,7 @@ public class ObjectFactory {
      * Create an instance of {@link ScalarRhs }
      * 
      */
+    @Deprecated
     public ScalarRhs createScalarRhs() {
         return new ScalarRhs();
     }
@@ -354,6 +356,7 @@ public class ObjectFactory {
      * Create an instance of {@link InitialValue }
      * 
      */
+    @Deprecated
     public InitialValue createInitialValueType() {
         return new InitialValue();
     }

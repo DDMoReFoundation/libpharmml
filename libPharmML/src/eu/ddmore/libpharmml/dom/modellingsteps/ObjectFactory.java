@@ -31,7 +31,6 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-import eu.ddmore.libpharmml.dom.trialdesign.Timepoints;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
@@ -61,7 +60,7 @@ public class ObjectFactory {
 	@Deprecated
     private final static QName _Operation_QNAME = new QName(XMLFilter.NS_DEFAULT_MSTEPS, "Operation");
     private final static QName _EstimationStep_QNAME = new QName(XMLFilter.NS_DEFAULT_MSTEPS, "EstimationStep");
-    private final static QName _Timepoints_QNAME = new QName(XMLFilter.NS_DEFAULT_MSTEPS, "Timepoints");
+//    private final static QName _Timepoints_QNAME = new QName(XMLFilter.NS_DEFAULT_MSTEPS, "Timepoints");
     private final static QName _Mapping_QNAME = new QName(XMLFilter.NS_DEFAULT_MSTEPS, "Mapping");
 
     /**
@@ -166,6 +165,7 @@ public class ObjectFactory {
      * Create an instance of {@link Observations }
      * 
      */
+    @Deprecated
     public Observations createObservationsType() {
         return new Observations();
     }
@@ -216,6 +216,7 @@ public class ObjectFactory {
      * Create an instance of {@link NONMEMdataSetReference }
      * 
      */
+    @Deprecated
     public NONMEMdataSetReference createNONMEMdataSetReferenceType() {
         return new NONMEMdataSetReference();
     }

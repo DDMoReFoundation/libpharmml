@@ -28,7 +28,6 @@ package eu.ddmore.libpharmml.dom.modeldefn;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
