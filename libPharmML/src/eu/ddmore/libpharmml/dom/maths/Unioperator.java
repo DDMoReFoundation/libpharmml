@@ -18,6 +18,8 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.dom.maths;
 
+import eu.ddmore.libpharmml.impl.LoggerWrapper;
+
 /**
  * Enumeration for handling operators within {@link Uniop} elements.
  * 
@@ -87,105 +89,71 @@ public enum Unioperator {
 		return operator;
 	}
 	
+	public String value(){
+		return operator;
+	}
+	
 	/**
-	 * Converts a string representation of a unioperator to a {@link Unioperator} object.
+	 * Converts a string representation of a unioperator to a {@link Unioperator} object. If the operator string
+	 * is unknown, this method returns null. The allowed input values are described in the following PharmML XSD
+	 * snippet:<br>
+	 * <pre>
+	 *             &lt;enumeration value="abs"/>
+	 *             &lt;enumeration value="exp"/>
+	 *             &lt;enumeration value="factorial"/>
+	 *             &lt;enumeration value="factln"/>
+	 *             &lt;enumeration value="gammaln"/>
+	 *             &lt;enumeration value="ln"/>
+	 *             &lt;enumeration value="log"/>
+	 *             &lt;enumeration value="logistic"/>
+	 *             &lt;enumeration value="logit"/>
+	 *             &lt;enumeration value="normcdf"/>
+	 *             &lt;enumeration value="probit"/>
+	 *             &lt;enumeration value="minus"/>
+	 *             &lt;enumeration value="sqrt"/>
+	 *             &lt;enumeration value="sin"/>
+	 *             &lt;enumeration value="cos"/>
+	 *             &lt;enumeration value="tan"/>
+	 *             &lt;enumeration value="sec"/>
+	 *             &lt;enumeration value="csc"/>
+	 *             &lt;enumeration value="cot"/>
+	 *             &lt;enumeration value="sinh"/>
+	 *             &lt;enumeration value="cosh"/>
+	 *             &lt;enumeration value="tanh"/>
+	 *             &lt;enumeration value="sech"/>
+	 *             &lt;enumeration value="csch"/>
+	 *             &lt;enumeration value="coth"/>
+	 *             &lt;enumeration value="arcsin"/>
+	 *             &lt;enumeration value="arccos"/>
+	 *             &lt;enumeration value="arctan"/>
+	 *             &lt;enumeration value="arcsec"/>
+	 *             &lt;enumeration value="arccsc"/>
+	 *             &lt;enumeration value="arccot"/>
+	 *             &lt;enumeration value="arcsinh"/>
+	 *             &lt;enumeration value="arccosh"/>
+	 *             &lt;enumeration value="arctanh"/>
+	 *             &lt;enumeration value="arcsech"/>
+	 *             &lt;enumeration value="arccsch"/>
+	 *             &lt;enumeration value="arccoth"/>
+	 *             &lt;enumeration value="floor"/>
+	 *             &lt;enumeration value="ceiling"/>
+	 *             </pre>
 	 * @param operator The operator as {@link String}, as it is written in a PharmML document.
 	 * @return The corresponding {@link Unioperator} object. null if the operator does not exist.
 	 */
 	public static Unioperator fromString(String operator){
 		if(operator != null){
-			if(operator.equals("abs")){
-			    return Unioperator.ABS;       
-			} else if(operator.equals("exp")){
-			    return Unioperator.EXP;       
-			} else if(operator.equals("factorial")){
-			    return Unioperator.FACTORIAL;       
-			} else if(operator.equals("factln")){   
-			    return Unioperator.FACTLN;          
-			} else if(operator.equals("gammaln")){  
-			    return Unioperator.GAMMALN;         
-			} else if(operator.equals("log")){      
-			    return Unioperator.LOG;             
-			} else if(operator.equals("log2")){     
-			    return Unioperator.LOG2;            
-			} else if(operator.equals("log10")){    
-			    return Unioperator.LOG10;           
-			} else if(operator.equals("logistic")){ 
-			    return Unioperator.LOGISTIC;        
-			} else if(operator.equals("logit")){    
-			    return Unioperator.LOGIT;           
-			} else if(operator.equals("normcdf")){  
-			    return Unioperator.NORMCDF;         
-			} else if(operator.equals("probit")){   
-			    return Unioperator.PROBIT;          
-			} else if(operator.equals("minus")){    
-			    return Unioperator.MINUS;           
-			} else if(operator.equals("sqrt")){     
-			    return Unioperator.SQRT;            
-			} else if(operator.equals("sin")){      
-			    return Unioperator.SIN;             
-			} else if(operator.equals("cos")){      
-			    return Unioperator.COS;             
-			} else if(operator.equals("tan")){
-			    return Unioperator.TAN;
-			} else if(operator.equals("cot")){
-			    return Unioperator.COT;
-			} else if(operator.equals("atan2")){
-			    return Unioperator.ATAN2;
-			} else if(operator.equals("sec")){
-			    return Unioperator.SEC;
-			} else if(operator.equals("csc")){
-			    return Unioperator.CSC;
-			} else if(operator.equals("sinh")){
-			    return Unioperator.SINH;
-			} else if(operator.equals("cosh")){
-			    return Unioperator.COSH;
-			} else if(operator.equals("tanh")){
-			    return Unioperator.TANH;
-			} else if(operator.equals("sech")){
-			    return Unioperator.SECH;
-			} else if(operator.equals("csch")){
-			    return Unioperator.CSCH;
-			} else if(operator.equals("coth")){
-			    return Unioperator.COTH;
-			} else if(operator.equals("arcsin")){
-			    return Unioperator.ARCSIN;
-			} else if(operator.equals("arccos")){
-			    return Unioperator.ARCCOS;
-			} else if(operator.equals("arctan")){
-			    return Unioperator.ARCTAN;
-			} else if(operator.equals("arcsec")){
-			    return Unioperator.ARCSEC;
-			} else if(operator.equals("arccsc")){
-			    return Unioperator.ARCCSC;
-			} else if(operator.equals("arccot")){
-			    return Unioperator.ARCCOT;
-			} else if(operator.equals("arcsinh")){
-			    return Unioperator.ARCSINH;
-			} else if(operator.equals("arccosh")){
-			    return Unioperator.ARCCOSH;
-			} else if(operator.equals("arctanh")){
-			    return Unioperator.ARCTANH;
-			} else if(operator.equals("arcsech")){
-			    return Unioperator.ARCSECH;
-			} else if(operator.equals("arccsch")){
-			    return Unioperator.ARCCSCH;
-			} else if(operator.equals("arccoth")){
-			    return Unioperator.ARCCOTH;
-			} else if(operator.equals("floor")){
-			    return Unioperator.FLOOR;
-			} else if(operator.equals("ceiling")){
-			    return Unioperator.CEILING;
-			} else if(operator.equals("heaviside")){
-			    return Unioperator.HEAVISIDE;
-			} else if(operator.equals("sign")){
-			    return Unioperator.SIGN;
-			} else {
-				return null;
+			for(Unioperator enu : values()){
+				if(operator.equals(enu.value())){
+					return enu;
+				}
 			}
-		} else {
-			return null;
+			if(operator.equals("ln")){ // BC, ln = log in PharmML
+				LoggerWrapper.getLogger().info("ln enum string value used as Unioperator.LOG");
+				return Unioperator.LOG;
+			}
 		}
+		return null;
 	}
 	
 }

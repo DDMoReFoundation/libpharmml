@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 
 /**
@@ -194,37 +195,19 @@ public class Uniop
 	protected void beforeMarshal(Marshaller m){
 		init();
 		super.beforeMarshal(m);
-//		if(operand1 != null){
-//			content.set(0, operand1.toJAXBElement());
-//		}
-//		if(operand2 != null){
-//			content.set(1, operand2.toJAXBElement());
-//		}
 		if(operator != null){
-			op = operator.getOperator();
+			if(getMarshalVersion() != null 
+					&& !getMarshalVersion().isEqualOrLaterThan(PharmMLVersion.V0_4)
+					&& operator.equals(Unioperator.LOG)){
+						op = "ln";
+			} else {
+				op = operator.getOperator();
+			}
 		}
 	}
 	
 	protected void afterUnmarshal(Unmarshaller u, Object parent) {
 		super.afterUnmarshal(u, parent);
-//		  if(content != null){
-//			  if(content.size() >= 1){
-//				  Object _operand = content.get(0).getValue();
-//				  if(_operand instanceof Operand){
-//					  operand1 = (Operand) _operand;
-//				  } else {
-//					  LoggerWrapper.getLogger().warning(_operand+" is not unmarshalled as it is not an Operand type.");
-//				  }
-//			  }
-//			  if(content.size() >= 2){
-//				  Object _operand = content.get(1).getValue();
-//				  if(_operand instanceof Operand){
-//					  operand2 = (Operand) _operand;
-//				  } else {
-//					  LoggerWrapper.getLogger().warning(_operand+" is not unmarshalled as it is not an Operand type.");
-//				  }
-//			  }
-//		  }
 		  if(op != null){
 			  operator = Unioperator.fromString(op);
 		  }
