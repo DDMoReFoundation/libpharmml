@@ -197,7 +197,7 @@ public class Uniop
 		super.beforeMarshal(m);
 		if(operator != null){
 			if(getMarshalVersion() != null 
-					&& !getMarshalVersion().isEqualOrLaterThan(PharmMLVersion.V0_4)
+					&& getMarshalVersion().isBetween(PharmMLVersion.V0_3, PharmMLVersion.V0_3_1)
 					&& operator.equals(Unioperator.LOG)){
 						op = "ln";
 			} else {

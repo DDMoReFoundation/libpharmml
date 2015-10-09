@@ -161,4 +161,14 @@ public enum PharmMLVersion {
 		return (this.index >= version.index);
 	}
 	
+	/**
+	 * Tests if this version is included within the given version interval.
+	 * @param from The lower limit, inclusive.
+	 * @param to The upper limit, inclusive.
+	 * @return true if the version is equal or superior to the 1st arg AND if it's equal or inferior to the 2nd arg.
+	 */
+	public boolean isBetween(PharmMLVersion from, PharmMLVersion to){
+		return (this.index >= from.index && this.index <= to.index);
+	}
+	
 }
