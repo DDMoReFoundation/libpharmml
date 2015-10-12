@@ -257,7 +257,7 @@ public class SymbolResolver {
 						targetBlock = this.blocks.get(ref.getBlkIdRef());
 					} else {
 						handleUnresolvedSymbol(ref, block);
-						return;
+						continue;
 					}
 				}
 				if(!(targetBlock.containsSymbol(ref.getSymbIdRef()) ||
