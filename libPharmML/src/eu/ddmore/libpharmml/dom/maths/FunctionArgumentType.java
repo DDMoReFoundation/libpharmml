@@ -121,7 +121,7 @@ public class FunctionArgumentType extends PharmMLElement implements Symbol, Assi
     @XmlElement(name = "Description", namespace = XMLFilter.NS_DEFAULT_CT)
     protected AnnotationType description;
     
-    @XmlElement(name = "Assign") // PharmML 0.7.1
+    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT) // PharmML 0.7.1
     protected Rhs assign;
     @Deprecated
     @XmlElement(name = "Equation") // < PharmML 0.7.1
