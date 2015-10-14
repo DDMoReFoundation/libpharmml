@@ -33,21 +33,29 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
+import eu.ddmore.libpharmml.dom.commontypes.Assignable;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
+import eu.ddmore.libpharmml.dom.commontypes.Delay;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
+import eu.ddmore.libpharmml.dom.commontypes.Interpolation;
+import eu.ddmore.libpharmml.dom.commontypes.Interval;
+import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.commontypes.Product;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
+import eu.ddmore.libpharmml.dom.commontypes.Scalar;
+import eu.ddmore.libpharmml.dom.commontypes.Sequence;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.Sum;
 import eu.ddmore.libpharmml.dom.commontypes.Symbol;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolName;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
+import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.impl.XMLFilter;
@@ -106,7 +114,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlSeeAlso({
     eu.ddmore.libpharmml.dom.maths.FunctionCallType.FunctionArgument.class
 })
-public class FunctionArgumentType extends PharmMLElement implements Symbol {
+public class FunctionArgumentType extends PharmMLElement implements Symbol, Assignable {
 
     @XmlElement(name = "Symbol", namespace = XMLFilter.NS_DEFAULT_CT)
     protected SymbolName symbol;
@@ -504,6 +512,7 @@ public class FunctionArgumentType extends PharmMLElement implements Symbol {
 	@Override
 	protected List<TreeNode> listChildren() {
 		List<TreeNode> list = new ChainedList<TreeNode>()
+				.addIfNotNull(assign)
 				.addIfNotNull(symbol)
 				.addIfNotNull(description)
 				.addIfNotNull(equation)
@@ -518,6 +527,146 @@ public class FunctionArgumentType extends PharmMLElement implements Symbol {
 			list.add((TreeNode) scalar.getValue());
 		}
 		return list;
+	}
+	
+	@Override
+	public Rhs assign(Constant constant) {
+		Rhs rhs = new Rhs(constant);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Interval interval) {
+		Rhs rhs = new Rhs(interval);
+		setAssign(rhs);
+		return rhs;
+	}
+	
+	@Override
+	public Rhs assign(Binop binop) {
+		Rhs rhs = new Rhs(binop);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Uniop uniop) {
+		Rhs rhs = new Rhs(uniop);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Piecewise piecewise) {
+		Rhs rhs = new Rhs(piecewise);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(FunctionCallType functionCall) {
+		Rhs rhs = new Rhs(functionCall);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Sum sum) {
+		Rhs rhs = new Rhs(sum);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Product product) {
+		Rhs rhs = new Rhs(product);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Delay delay) {
+		Rhs rhs = new Rhs(delay);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(VectorSelector vectorSelector) {
+		Rhs rhs = new Rhs(vectorSelector);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(MatrixSelector matrixSelector) {
+		Rhs rhs = new Rhs(matrixSelector);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(MatrixUniOp matrixUniop) {
+		Rhs rhs = new Rhs(matrixUniop);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Probability probability) {
+		Rhs rhs = new Rhs(probability);
+		setAssign(rhs);
+		return rhs;
+	}
+	
+	@Override
+	public Rhs assign(Scalar scalar) {
+		Rhs rhs = new Rhs(scalar);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Equation equation) {
+		Rhs rhs = new Rhs(equation);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(SymbolRef symbolRef) {
+		Rhs rhs = new Rhs(symbolRef);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Sequence sequence) {
+		Rhs rhs = new Rhs(sequence);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Vector vector) {
+		Rhs rhs = new Rhs(vector);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Interpolation interpolation) {
+		Rhs rhs = new Rhs(interpolation);
+		setAssign(rhs);
+		return rhs;
+	}
+
+	@Override
+	public Rhs assign(Matrix matrix) {
+		Rhs rhs = new Rhs(matrix);
+		setAssign(rhs);
+		return rhs;
 	}
 
 }
