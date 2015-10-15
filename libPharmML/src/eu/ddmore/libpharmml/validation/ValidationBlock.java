@@ -19,6 +19,7 @@
 package eu.ddmore.libpharmml.validation;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -57,6 +58,15 @@ public class ValidationBlock {
 	 */
 	public String getId(){
 		return id;
+	}
+	
+	/**
+	 * Gets all the symbols defined within this block. .add() and .addAll()
+	 * are not supported for this collection.
+	 * @return A {@link Collection} of {@link Symbol}.
+	 */
+	public Collection<Symbol> listOfSymbol(){
+		return symbols.values();
 	}
 	
 	/**

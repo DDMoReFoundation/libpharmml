@@ -231,6 +231,10 @@ public class SymbolResolver {
 		errorHandler.handleError("S2", "Function argument \""+fa.getSymbId()+"\" is not defined within the function \""+functionId+"\".", fa);
 	}
 	
+	private void handleUnusedArgument(FunctionCallType fc, String faId){
+		errorHandler.handleError("S2", "Function argument \""+faId+"\" is not used in FunctionCall \""+fc.getSymbRef().getSymbIdRef()+"\".", fc);
+	}
+	
 	private boolean isIndependentSymbol(String symbId){
 		return (globalBlock.containsSymbol(symbId));
 	}
@@ -277,9 +281,14 @@ public class SymbolResolver {
 			if(fc.getSymbRef() != null && fc.getSymbRef().getSymbIdRef() != null){
 				if(functions.containsKey(fc.getSymbRef().getSymbIdRef())){
 					ValidationBlock functionBlock = functions.get(fc.getSymbRef().getSymbIdRef());
-					for(FunctionArgument fp : fc.getFunctionArgument()){
-						if(!functionBlock.containsSymbol(fp.getSymbId())){
+					for(FunctionArgument fp : fc.getListOfFunctionArgument()){
+						if(fp.getSymbId() != null && !functionBlock.containsSymbol(fp.getSymbId())){
 							handleUnresolvedSymbol(fp,fc.getSymbRef().getSymbIdRef());
+						}
+					}
+					for(Symbol fa : functionBlock.listOfSymbol()){
+						if(!fc.containsFunctionArgument(fa.getSymbId())){
+							handleUnusedArgument(fc, fa.getSymbId());
 						}
 					}
 				} else {

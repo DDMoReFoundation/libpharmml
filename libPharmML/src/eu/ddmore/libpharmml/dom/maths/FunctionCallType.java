@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.commontypes.FunctionDefinition;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolScope;
@@ -86,6 +87,25 @@ public class FunctionCallType
     protected SymbolRef symbRef;
     @XmlElement(name = "FunctionArgument")
     protected List<FunctionCallType.FunctionArgument> functionArgument;
+    
+    /**
+     * Empty constructor
+     */
+    public FunctionCallType(){}
+    
+    public FunctionCallType(String symbolId){
+    	SymbolRef sref = new SymbolRef(symbolId);
+    	this.symbRef = sref;
+    }
+    
+    /**
+     * Constructs a {@link FunctionCallType} to the given {@link FunctionDefinition}.
+     * @param fd The {@link FunctionDefinition} this function call refers to. The
+     * symbId of the function definition has to be defined.
+     */
+    public FunctionCallType(FunctionDefinition fd){
+    	this(fd.getSymbId());
+    }
 
     /**
      * Gets the value of the symbRef property.
@@ -133,11 +153,20 @@ public class FunctionCallType
      * 
      * 
      */
-    public List<FunctionCallType.FunctionArgument> getFunctionArgument() {
+    public List<FunctionCallType.FunctionArgument> getListOfFunctionArgument() {
         if (functionArgument == null) {
             functionArgument = new ArrayList<FunctionCallType.FunctionArgument>();
         }
         return this.functionArgument;
+    }
+    
+    /**
+     * @deprecated Use {@link #getListOfFunctionArgument()}.
+     * @return
+     */
+    @Deprecated
+    public List<FunctionCallType.FunctionArgument> getFunctionArgument() {
+        return getListOfFunctionArgument();
     }
 
 
@@ -165,7 +194,30 @@ public class FunctionCallType
 
 
     }
+    
+    /**
+     * Gets the function argument corresponding to the given id. This argument
+     * is fetched from {@link #getListOfFunctionArgument()}.
+     * @param symbolId The symbolId of the wanted argument.
+     * @return The argument as {@link FunctionArgument}.
+     */
+    public FunctionArgument getFunctionArgument(String symbolId){
+    	for(FunctionArgument fa : getListOfFunctionArgument()){
+    		if(fa.getSymbId() != null && fa.getSymbId().equals(symbolId)){
+    			return fa;
+    		}
+    	}
+    	return null;
+    }
 
+    /**
+     * Tests if the given function argument is defined in this function call.
+     * @param symbolId The symbol id of the wanted argument.
+     * @return True if the function argument is present, else false.
+     */
+    public boolean containsFunctionArgument(String symbolId){
+    	return getFunctionArgument(symbolId) != null;
+    }
 
 	@Override
 	public JAXBElement<FunctionCallType> toJAXBElement() {
