@@ -3,7 +3,7 @@
 			   xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
                xmlns:math="http://www.pharmml.org/pharmml/0.7/Maths"
                xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <jxb:bindings schemaLocation="./src/eu/ddmore/libpharmml/impl/definitions/0_7_1/pharmml.xsd" node="/xs:schema">
+  <jxb:bindings schemaLocation="./src/eu/ddmore/libpharmml/impl/definitions/0_7_3/pharmml.xsd" node="/xs:schema">
 	<jxb:globalBindings choiceContentProperty="false">
 		<!-- This instruction changes the code generation to try and use classes for elements as
 			 much as possible and minimise the use of JAXBElement etc. It also pluralises method
@@ -92,9 +92,17 @@
       </jxb:package>
 	</jxb:schemaBindings>
   </jxb:bindings>
-  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.7/ModellingSteps" node="/xs:schema">
+ <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.7/ModellingSteps" node="/xs:schema">
     <jxb:schemaBindings>
       <jxb:package name="eu.ddmore.libpharmml.dom.modellingsteps">
+        <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
+		</jxb:javadoc>
+      </jxb:package>
+	</jxb:schemaBindings>
+  </jxb:bindings>
+ <jxb:bindings schemaLocation="http://www.pharmml.org/probonto/ProbOnto" node="/xs:schema">
+    <jxb:schemaBindings>
+      <jxb:package name="eu.ddmore.libpharmml.dom.probonto">
         <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
 		</jxb:javadoc>
       </jxb:package>
