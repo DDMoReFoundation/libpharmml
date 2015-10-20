@@ -605,7 +605,7 @@ public class ObjectFactory {
     }
     
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PopulationParameterType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link PopulationParameter }{@code >}}
      * 
      * @since PharmML 0.7
      */

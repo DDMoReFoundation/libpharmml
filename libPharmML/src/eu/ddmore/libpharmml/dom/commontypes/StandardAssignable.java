@@ -90,7 +90,7 @@ public class StandardAssignable
     
     /**
      * For backwards compatiblity only. Do not use.
-     * @return
+     * @return a Rhs version of of this object
      */
     public Rhs toScalarRhs(){
     	Rhs saved_assign = null;

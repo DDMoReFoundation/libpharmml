@@ -162,7 +162,6 @@ public class FunctionCallType
     
     /**
      * @deprecated Use {@link #getListOfFunctionArgument()}.
-     * @return
      */
     @Deprecated
     public List<FunctionCallType.FunctionArgument> getFunctionArgument() {

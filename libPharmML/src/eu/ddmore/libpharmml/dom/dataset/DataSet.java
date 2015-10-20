@@ -141,12 +141,11 @@ public class DataSet
     }
 
     /**
-<<<<<<< HEAD
      * Sets the value of the definition property.
      * 
      * @param value
      *     allowed object is
-     *     {@link HeaderColumnsDefinitionType }
+     *     {@link HeaderColumnsDefinition }
      *     
      */
     public void setDefinition(HeaderColumnsDefinition value) {
@@ -219,7 +218,7 @@ public class DataSet
     }
     
     /**
-     * @deprecated Use {@link #createExternalFile(String, String, Delimiter, String)} instead.
+     * @deprecated Use createExternalFile(String, String, Delimiter, String) instead.
      */
     @Deprecated
     public ExternalFile createImportData(String path, String format, Delimiter delimiter, String oid){

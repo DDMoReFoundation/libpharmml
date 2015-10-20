@@ -155,7 +155,7 @@ public class VariableToReset
      * 
      * @return
      *     possible object is
-     *     {@link RealValueType }
+     *     {@link RealValue }
      *     
      */
     public RealValue getResetTime() {
@@ -167,7 +167,7 @@ public class VariableToReset
      * 
      * @param value
      *     allowed object is
-     *     {@link RealValueType }
+     *     {@link RealValue }
      *     
      */
     public void setResetTime(RealValue value) {

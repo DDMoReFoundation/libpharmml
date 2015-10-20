@@ -128,7 +128,6 @@ public class CodeInjection
     
     /**
      * @deprecated Use {@link #getListOfSymbolMapping()}.
-     * @return
      */
     public List<SymbolMapping> getSymbolMapping() {
         return getListOfSymbolMapping();

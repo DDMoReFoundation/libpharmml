@@ -86,7 +86,9 @@ public class InitialCondition
     /**
      * @deprecated
      * Sets the value of the assign property.
-     * Since version 0.3, PharmML supports additionally the storage of initial time t0 and not only the initial value. Use now {@link #setInitialTime(InitialTime)} and {@link #setInitialValue(InitialValue)} instead.
+     * Since version 0.3, PharmML supports additionally the storage of initial time t0 and 
+     * not only the initial value. Use now {@link #setInitialTime(StandardAssignable)} and
+     *  {@link #setInitialValue(StandardAssignable)} instead.
      * @param value
      *     allowed object is
      *     {@link Rhs }

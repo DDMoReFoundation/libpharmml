@@ -109,9 +109,9 @@ public class Administration
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link DosingRegimenType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BolusType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link InfusionType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link DosingRegimen }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Bolus }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Infusion }{@code >}
      *     
      */
     public JAXBElement<? extends DosingRegimen> getDosingRegimen() {
@@ -123,9 +123,9 @@ public class Administration
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link DosingRegimenType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link BolusType }{@code >}
-     *     {@link JAXBElement }{@code <}{@link InfusionType }{@code >}
+     *     {@link JAXBElement }{@code <}{@link DosingRegimen }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Bolus }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Infusion }{@code >}
      *     
      */
     public void setDosingRegimen(JAXBElement<? extends DosingRegimen> value) {

@@ -347,7 +347,7 @@ public class Rhs
     
     /**
      * Constructs a right-hand side assignment with a {@link Binop}.
-     * @param binop
+     * @param probability
      * 
      * @since PharmML 0.7.1
      */

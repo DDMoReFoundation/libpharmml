@@ -80,7 +80,7 @@ public class RandomEffectMapping
      * 
      * @return
      *     possible object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
     public SymbolRef getSymbRef() {
@@ -92,7 +92,7 @@ public class RandomEffectMapping
      * 
      * @param value
      *     allowed object is
-     *     {@link SymbolRefType }
+     *     {@link SymbolRef }
      *     
      */
     public void setSymbRef(SymbolRef value) {

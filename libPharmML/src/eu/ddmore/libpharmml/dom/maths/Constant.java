@@ -117,10 +117,7 @@ public class Constant extends PharmMLElement implements Operand, ExpressionValue
     /**
      * Sets the value of the op property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param op A {@link ConstantOperator} enum value.
      */
     public void setOp(ConstantOperator op) {
         this.op = op.value();

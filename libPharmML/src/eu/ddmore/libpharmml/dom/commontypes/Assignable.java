@@ -43,7 +43,7 @@ public interface Assignable {
 	
 	/**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param equation The value of the assignment as a {@link Equation}.
+	 * @param equation The value of the assignment as a {@link eu.ddmore.libpharmml.dom.maths.Equation}.
 	 * @return The created {@link Rhs} assign element.
 	 * 
 	 * @deprecated Since PharmML 0.7.1, Equation is not used anymore. Use other assign(...) methods instead.
@@ -108,7 +108,7 @@ public interface Assignable {
 	
 	/**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param interval The value of the assignment as a {@link Binop}.
+	 * @param binop The value of the assignment as a {@link Binop}.
 	 * @return The created {@link Rhs} assign element.
 	 * 
 	 * @since PharmML 0.7.1
@@ -117,7 +117,7 @@ public interface Assignable {
 	
 	/**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param interval The value of the assignment as a {@link Uniop}.
+	 * @param uniop The value of the assignment as a {@link Uniop}.
 	 * @return The created {@link Rhs} assign element.
 	 * 
 	 * @since PharmML 0.7.1
@@ -126,7 +126,7 @@ public interface Assignable {
 	
     /**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param interval The value of the assignment as a {@link Piecewise}.
+	 * @param piecewise The value of the assignment as a {@link Piecewise}.
 	 * @return The created {@link Rhs} assign element.
 	 * 
 	 * @since PharmML 0.7.1
@@ -135,7 +135,7 @@ public interface Assignable {
 
     /**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param interval The value of the assignment as a {@link FunctionCallType}.
+	 * @param functionCall The value of the assignment as a {@link FunctionCallType}.
 	 * @return The created {@link Rhs} assign element.
 	 * 
 	 * @since PharmML 0.7.1
@@ -144,7 +144,7 @@ public interface Assignable {
     
     /**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param interval The value of the assignment as a {@link Sum}.
+	 * @param sum The value of the assignment as a {@link Sum}.
 	 * @return The created {@link Rhs} assign element.
 	 * 
 	 * @since PharmML 0.7.1
@@ -153,7 +153,7 @@ public interface Assignable {
     
     /**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param interval The value of the assignment as a {@link Product}.
+	 * @param product The value of the assignment as a {@link Product}.
 	 * @return The created {@link Rhs} assign element.
 	 * 
 	 * @since PharmML 0.7.1
@@ -162,7 +162,7 @@ public interface Assignable {
     
     /**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param interval The value of the assignment as a {@link Delay}.
+	 * @param delay The value of the assignment as a {@link Delay}.
 	 * @return The created {@link Rhs} assign element.
 	 * 
 	 * @since PharmML 0.7.1
@@ -171,7 +171,7 @@ public interface Assignable {
 	
 	/**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param interval The value of the assignment as a {@link VectorSelector}.
+	 * @param vectorSelector The value of the assignment as a {@link VectorSelector}.
 	 * @return The created {@link Rhs} assign element.
 	 * 
 	 * @since PharmML 0.7.1
@@ -180,7 +180,7 @@ public interface Assignable {
     
     /**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param interval The value of the assignment as a {@link MatrixSelector}.
+	 * @param matrixSelector The value of the assignment as a {@link MatrixSelector}.
 	 * @return The created {@link Rhs} assign element.
 	 * 
 	 * @since PharmML 0.7.1
@@ -189,7 +189,7 @@ public interface Assignable {
 	
     /**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param interval The value of the assignment as a {@link MatrixUniOp}.
+	 * @param matrixUniop The value of the assignment as a {@link MatrixUniOp}.
 	 * @return The created {@link Rhs} assign element.
 	 * 
 	 * @since PharmML 0.7.1
@@ -198,7 +198,7 @@ public interface Assignable {
 
     /**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param interval The value of the assignment as a {@link Probability}.
+	 * @param probability The value of the assignment as a {@link Probability}.
 	 * @return The created {@link Rhs} assign element.
 	 * 
 	 * @since PharmML 0.7.1

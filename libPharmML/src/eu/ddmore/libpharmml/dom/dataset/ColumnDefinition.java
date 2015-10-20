@@ -82,7 +82,6 @@ public class ColumnDefinition
     /**
      * Creates a new column definition with all the required attributes.
      * @param columnId Identifier of the column.
-     * @param columnType Type of the column.
      * @param valueType Type of the values within this column. The scalar elements within
      * this column must fit with this value type.
      * @param columnNum The column number. Needed to map the column into the dataset.

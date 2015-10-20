@@ -698,7 +698,7 @@ public class ObjectFactory {
     }
     
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MissingValueType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link MissingValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = NS_DEFAULT_CT, name = "ALQ", substitutionHeadNamespace = NS_DEFAULT_CT, substitutionHeadName = "Scalar")
@@ -707,7 +707,7 @@ public class ObjectFactory {
     }
     
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MissingValueType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link MissingValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = NS_DEFAULT_CT, name = "plusInf", substitutionHeadNamespace = NS_DEFAULT_CT, substitutionHeadName = "Scalar")
@@ -716,7 +716,7 @@ public class ObjectFactory {
     }
     
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MissingValueType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link MissingValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = NS_DEFAULT_CT, name = "minusInf", substitutionHeadNamespace = NS_DEFAULT_CT, substitutionHeadName = "Scalar")
@@ -725,7 +725,7 @@ public class ObjectFactory {
     }
     
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MissingValueType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link MissingValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = NS_DEFAULT_CT, name = "BLQ", substitutionHeadNamespace = NS_DEFAULT_CT, substitutionHeadName = "Scalar")
@@ -734,7 +734,7 @@ public class ObjectFactory {
     }
     
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MissingValueType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link MissingValue }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = NS_DEFAULT_CT, name = "NA", substitutionHeadNamespace = NS_DEFAULT_CT, substitutionHeadName = "Scalar")
@@ -743,7 +743,7 @@ public class ObjectFactory {
     }
     
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CategoryRefType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CategoryRef }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = NS_DEFAULT_CT, name = "CatRef")
@@ -752,7 +752,7 @@ public class ObjectFactory {
     }
     
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IntervalType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Interval }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = NS_DEFAULT_CT, name = "Interval")

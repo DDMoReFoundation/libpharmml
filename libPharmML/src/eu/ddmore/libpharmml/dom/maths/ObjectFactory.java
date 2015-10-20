@@ -289,7 +289,7 @@ public class ObjectFactory {
 	
 	// PharmML 0.7
 	/**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MatrixUniOpType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link MatrixUniOp }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "MatrixUniop")
@@ -298,7 +298,7 @@ public class ObjectFactory {
     }
     
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OidRefType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link OidRef }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "ArmRef", scope = LogicBinOp.class)

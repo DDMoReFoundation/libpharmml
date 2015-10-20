@@ -108,7 +108,6 @@ public class ContinuousObservation
     
     /**
      * @deprecated Use {@link #getListOfSymbRef()}.
-     * @return
      */
     public List<SymbolRef> getSymbRef(){
     	return getListOfSymbRef();

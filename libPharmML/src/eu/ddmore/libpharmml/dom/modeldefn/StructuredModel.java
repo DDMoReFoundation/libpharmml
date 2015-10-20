@@ -405,7 +405,7 @@ public class StructuredModel
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link CovariateRelationType }
+         * {@link CovariateRelation }
          * 
          * 
          */

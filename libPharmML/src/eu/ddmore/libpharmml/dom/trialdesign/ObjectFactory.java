@@ -449,7 +449,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DiscreteObservationType }
+     * Create an instance of {@link DiscreteObservation }
      * 
      */
     public DiscreteObservation createDiscreteObservationType() {

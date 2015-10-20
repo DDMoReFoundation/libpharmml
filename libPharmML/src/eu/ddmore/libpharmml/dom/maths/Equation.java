@@ -73,7 +73,6 @@ public class Equation
 	/**
 	 * For backwards compatiblity.
 	 * @param rhs
-	 * @return
 	 */
 	public static Equation fromRhs(Rhs rhs){
 		Equation eq = new Equation();
@@ -102,7 +101,6 @@ public class Equation
 	/**
 	 * For backwards compatibility
 	 * @param eq
-	 * @return
 	 */
 	public static Rhs toRhs(Equation eq){
 		Rhs rhs = new Rhs();
