@@ -34,7 +34,7 @@ permissions and limitations under the License.
         schemaLocation="http://www.pharmml.org/pharmml/0.7/Dataset"/>
     
     <xs:import namespace="http://www.pharmml.org/probonto/ProbOnto" 
-        schemaLocation="../probonto/0_2/probOnto.xsd"/>
+        schemaLocation="http://www.pharmml.org/probonto/ProbOnto"/>
     
     <xs:complexType name="BinopType">
         <xs:annotation>
