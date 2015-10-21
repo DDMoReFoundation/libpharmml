@@ -269,6 +269,143 @@
 		</jxb:javadoc>
       </jxb:package>
 	</jxb:schemaBindings>
+    
+<jxb:bindings node="//xs:complexType[@name='AlgorithmType']">                     
+    <jxb:class name="Algorithm"/>                                             
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:simpleType[@name='ApproxAlgoType']">                    
+    <jxb:typesafeEnumClass name="ApproxAlgo"/>                                            
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='ApproximateFIMType']">                
+    <jxb:class name="ApproximateFIM"/>                                        
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:simpleType[@name='builtInFIMfctType']">                 
+    <jxb:typesafeEnumClass name="BuiltInFIMfct"/>                                         
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='CommonModellingStepType']">           
+    <jxb:class name="CommonModellingStep"/>                                   
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:simpleType[@name='ComputeAlgoType']">                   
+    <jxb:typesafeEnumClass name="ComputeAlgo"/>                                           
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='ComputeFIMType']">                    
+    <jxb:class name="ComputeFIM"/>                                            
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='ComputeType']">                       
+    <jxb:class name="Compute"/>                                               
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='CostFunctionType']">                  
+    <jxb:class name="CostFunction"/>                                          
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:simpleType[@name='CostListType']">                      
+    <jxb:typesafeEnumClass name="CostList"/>                                              
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='CostType']">                          
+    <jxb:class name="Cost"/>                                                  
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='CriterionDefType']">                  
+    <jxb:class name="CriterionDef"/>                                          
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:simpleType[@name='CriterionType']">                     
+    <jxb:typesafeEnumClass name="Criterion"/>                                             
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='DependentsType']">                    
+    <jxb:class name="Dependents"/>                                            
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='DesignTypeType']">                    
+    <jxb:class name="DesignType"/>                                            
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='EstimationOperationType']">           
+    <jxb:class name="EstimationOperation"/>                                   
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='EstimationStepType']">                
+    <jxb:class name="EstimationStep"/>                                        
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='ExternalDataSetReferenceType']">      
+    <jxb:class name="ExternalDataSetReference"/>                              
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='FIMfunctionType']">                   
+    <jxb:class name="FIMfunction"/>                                           
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='FIMType']">                           
+    <jxb:class name="FIM"/>                                                   
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='InitialEstimateType']">               
+    <jxb:class name="InitialEstimate"/>                                       
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='InterventionsReferenceType']">        
+    <jxb:class name="InterventionsReference"/>                                
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='MappingType']">                       
+    <jxb:class name="MappingType"/>                                               
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='MethodType']">                        
+    <jxb:class name="Method"/>                                                
+</jxb:bindings>                                                                   
+<jxb:bindings node="//xs:complexType[@name='ModellingStepsType']">                
+    <jxb:class name="ModellingSteps"/>                                        
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='ObservationsReferenceType']">
+    <jxb:class name="ObservationsReference"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='OperationPropertyType']">
+    <jxb:class name="OperationProperty"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='OptimalDesignOperationType']">
+    <jxb:class name="OptimalDesignOperation"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='OptimalDesignStepType']">
+    <jxb:class name="OptimalDesignStep"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:simpleType[@name='OptimAlgoType']">
+    <jxb:typesafeEnumClass name="OptimAlgo"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='OptimiseOnType']">
+    <jxb:class name="OptimiseOn"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='OptimizationAlgorithmType']">
+    <jxb:class name="OptimisationAlgorithm"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:simpleType[@name='OptimizationType']">
+    <jxb:typesafeEnumClass name="Optimisation"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='ParameterEstimateType']">
+    <jxb:class name="ParameterEstimate"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='PriorType']">
+    <jxb:class name="Prior"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='SimulationOperationType']">
+    <jxb:class name="SimulationOperation"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='SimulationStepType']">
+    <jxb:class name="SimulationStep"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='SoftwareSettingsType']">
+    <jxb:class name="SoftwareSettings"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='StepDependencyType']">
+    <jxb:class name="StepDependency"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='StepType']">
+    <jxb:class name="StepType"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='TargetToolReferenceType']">
+    <jxb:class name="TargetToolReference"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='TargetToolType']">
+    <jxb:class name="TargetTool"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='ToEstimateType']">
+    <jxb:class name="ToEstimate"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:complexType[@name='TypeFIMType']">
+    <jxb:class name="TypeFIM"/>
+</jxb:bindings>
+<jxb:bindings node="//xs:simpleType[@name='TypeFIMTypeType']">
+    <jxb:typesafeEnumClass name="TypeFIMType"/>
+</jxb:bindings>
+
   </jxb:bindings>
  <jxb:bindings schemaLocation="http://www.pharmml.org/probonto/ProbOnto" node="/xs:schema">
     <jxb:schemaBindings>
@@ -277,7 +414,22 @@
 		</jxb:javadoc>
       </jxb:package>
 	</jxb:schemaBindings>
-  </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='DistributionBoundType']">
+			      <jxb:class name="DistributionBound"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='DistributionParameterType']">
+			      <jxb:class name="DistributionParameter"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:simpleType[@name='DistroNameType']">
+			      <jxb:typesafeEnumClass name="DistributionName"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:simpleType[@name='ParameterNameType']">
+			      <jxb:typesafeEnumClass name="ParameterName"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='ProbOntoType']">
+			      <jxb:class name="ProbOnto"/>
+	       </jxb:bindings>
+	     </jxb:bindings>
   <jxb:bindings schemaLocation="http://www.uncertml.org/3.0" node="/xs:schema">
     <jxb:schemaBindings>
       <jxb:package name="eu.ddmore.libpharmml.dom.uncertml">
