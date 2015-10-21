@@ -8,7 +8,7 @@ open(IN, $file) or die $!;
 
 while (<IN>) {
     chomp;
-    my ($raw,$trimmed) = split "\t", $_;
+    my ($raw,$trimmed) = split /\s+/, $_;
     $raw =~ s/\.java$//;
     
     print qq
