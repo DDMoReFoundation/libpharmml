@@ -110,6 +110,8 @@ public class PharmML extends PharmMLElement implements Identifiable {
     protected String writtenVersion;
     @XmlAttribute(name = "implementedBy")
     protected String implementedBy;
+    @XmlAttribute(name = "metadataFile")
+    protected String metadataFile;
     @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String id;
@@ -360,6 +362,30 @@ public class PharmML extends PharmMLElement implements Identifiable {
      */
     public void setImplementedBy(String value) {
         this.implementedBy = value;
+    }
+    
+    /**
+     * The relative path to the metadata file that annotates this model.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getMetadataFile() {
+        return metadataFile;
+    }
+
+    /**
+     * The relative path to the metadata file that annotates this model.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setMetadataFile(String value) {
+        this.metadataFile = value;
     }
 
     /**
