@@ -3,13 +3,13 @@
 			   xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
                xmlns:math="http://www.pharmml.org/pharmml/0.7/Maths"
                xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <jxb:bindings schemaLocation="./src/eu/ddmore/libpharmml/impl/definitions/0_7_3/pharmml.xsd" node="/xs:schema">
-	<jxb:globalBindings choiceContentProperty="false">
+	       <jxb:globalBindings choiceContentProperty="false">
 		<!-- This instruction changes the code generation to try and use classes for elements as
 			 much as possible and minimise the use of JAXBElement etc. It also pluralises method
 			 names that return lists. --> 
 		<!--xjc:simple/ -->
 	</jxb:globalBindings> 
+  <jxb:bindings schemaLocation="./src/eu/ddmore/libpharmml/impl/definitions/0_7_3/pharmml.xsd" node="/xs:schema">
      <jxb:schemaBindings>
       <jxb:package name="eu.ddmore.libpharmml.dom">
         <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
@@ -17,14 +17,184 @@
       </jxb:package>
 	</jxb:schemaBindings>
   </jxb:bindings>
-  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.7/CommonTypes" node="/xs:schema">
-    <jxb:schemaBindings>
-      <jxb:package name="eu.ddmore.libpharmml.dom.commontypes">
-        <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
-		</jxb:javadoc>
-      </jxb:package>
-	</jxb:schemaBindings>
-  </jxb:bindings>
+  
+    <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.7/CommonTypes" node="/xs:schema">
+        <jxb:schemaBindings>
+            <jxb:package name="eu.ddmore.libpharmml.dom.commontypes">
+                <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
+                </jxb:javadoc>
+            </jxb:package>
+        </jxb:schemaBindings>
+	       <jxb:bindings node="//xs:complexType[@name='BooleanType']">                    
+			      <jxb:class name="BooleanValue"/>                                           
+	       </jxb:bindings>                                                                
+	       <jxb:bindings node="//xs:complexType[@name='CategoryRefType']">                
+		   <jxb:class name="CategoryRef"/>                                            
+	       </jxb:bindings>                                                                
+	       <jxb:bindings node="//xs:complexType[@name='CommonVariableDefinitionType']">   
+		   <jxb:class name="CommonVariableDefinition"/>                               
+	       </jxb:bindings>                                                                
+	       <jxb:bindings node="//xs:complexType[@name='CovariateModelRefType']">          
+		   <jxb:class name="CovariateModelRef"/>                                      
+	       </jxb:bindings>                                                                
+	       <jxb:bindings node="//xs:complexType[@name='DelayType']">                      
+		   <jxb:class name="Delay"/>                                                  
+	       </jxb:bindings>                                                                
+	       <jxb:bindings node="//xs:complexType[@name='DelayVariableType']">              
+		   <jxb:class name="DelayVariable"/>                                          
+	       </jxb:bindings>                                                                
+	       <jxb:bindings node="//xs:complexType[@name='DerivativeVariableType']">         
+		   <jxb:class name="DerivativeVariable"/>                                     
+	       </jxb:bindings>                                                                
+	       <jxb:bindings node="//xs:complexType[@name='EndpointType']">                   
+		   <jxb:class name="Endpoint"/>                                               
+	       </jxb:bindings>                                                                
+	       <jxb:bindings node="//xs:complexType[@name='FalseBooleanType']">               
+		   <jxb:class name="FalseBoolean"/>                                           
+	       </jxb:bindings>                                                                
+	       <jxb:bindings node="//xs:complexType[@name='FuncParameterDefinitionType']">    
+		   <jxb:class name="FuncParameterDefinition"/>                                
+	       </jxb:bindings>                                                                
+	       <jxb:bindings node="//xs:complexType[@name='FunctionDefinitionType']">         
+		   <jxb:class name="FunctionDefinition"/>                                     
+	       </jxb:bindings>                                                                
+	       <jxb:bindings node="//xs:complexType[@name='HistoryType']">                    
+		   <jxb:class name="History"/>                                                
+	       </jxb:bindings>                                                                
+	       <jxb:bindings node="//xs:complexType[@name='IdValueType']">                    
+		   <jxb:class name="IdValue"/>                                                
+	       </jxb:bindings>                                                                
+	       <jxb:bindings node="//xs:complexType[@name='IndependentVariableReferenceType']">
+		   <jxb:class name="IndependentVariableReference"/>                            
+	       </jxb:bindings>                                                                 
+	       <jxb:bindings node="//xs:complexType[@name='InitialConditionType']">            
+		   <jxb:class name="InitialCondition"/>                                        
+	       </jxb:bindings>                                                                 
+	       <jxb:bindings node="//xs:complexType[@name='InterpolationIVType']">             
+		   <jxb:class name="InterpolationIV"/>                                         
+	       </jxb:bindings>                                                                 
+	       <jxb:bindings node="//xs:complexType[@name='InterpolationType']">               
+		   <jxb:class name="Interpolation"/>                                           
+	       </jxb:bindings>                                                                 
+	       <jxb:bindings node="//xs:complexType[@name='IntervalType']">                    
+		   <jxb:class name="Interval"/>                                                
+	       </jxb:bindings>                                                                 
+	       <jxb:bindings node="//xs:complexType[@name='IntValueType']">                    
+		   <jxb:class name="IntValue"/>                                                
+	       </jxb:bindings>                                                                 
+	       <jxb:bindings node="//xs:complexType[@name='LevelReferenceType']">                               
+		   <jxb:class name="LevelReference"/>                                                                                             
+	       </jxb:bindings>                                                                                                                                                                                                       
+	       <jxb:bindings node="//xs:complexType[@name='LowUpLimitType']">                                                       
+		   <jxb:class name="LowUpLimit"/>                                                                                   
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='MatrixBlockSelectorType']">                                              
+		   <jxb:class name="MatrixBlockSelector"/>                                                                          
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='MatrixBlockType']">                                                      
+		   <jxb:class name="MatrixBlock"/>                                                                                  
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='MatrixCellSelectorType']">                                               
+		   <jxb:class name="MatrixCellSelector"/>                                                                           
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='MatrixCellType']">                                                       
+		   <jxb:class name="MatrixCell"/>                                                                                   
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='MatrixColumnRowNames']">                                                 
+		   <jxb:class name="MatrixColumnRowNames"/>                                                                         
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='MatrixColumnType']">                                                     
+		   <jxb:class name="MatrixColumn"/>                                                                                 
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='MatrixType']">                                                           
+		   <jxb:class name="Matrix"/>                                                                                       
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='MatrixRowType']">                                                        
+		   <jxb:class name="MatrixRow"/>                                                                                    
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='MatrixSelectorType']">                                                   
+		   <jxb:class name="MatrixSelector"/>                                                                               
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='MatrixVectorIndexType']">                                                
+		   <jxb:class name="MatrixVectorIndex"/>                                                                            
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='MissingValueType']">                                                     
+		   <jxb:class name="MissingValue"/>                                                                                 
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='NameType']">                                                             
+		   <jxb:class name="NameType"/>                                                                                     
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='OidRefType']">                                                           
+		   <jxb:class name="OidRef"/>                                                                                       
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='PharmMLRootType']">                                                      
+		   <jxb:class name="PharmMLRootType"/>                                                                              
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='ProductType']">                                                          
+		   <jxb:class name="Product"/>                                                                                      
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='RandomEffectMappingType']">                                              
+		   <jxb:class name="RandomEffectMapping"/>                                                                          
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='RealValueType']">                                                        
+		   <jxb:class name="RealValue"/>                                                                                    
+	       </jxb:bindings>                                                                                                      
+	       <jxb:bindings node="//xs:complexType[@name='Rhs']">                                                                  
+		   <jxb:class name="Rhs"/>                                                                                          
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='SequenceType']">
+		   <jxb:class name="Sequence"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='StandardAssignType']">
+		   <jxb:class name="StandardAssignable"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='StandardExtAssignType']">
+		   <jxb:class name="StandardOptionalAssignable"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='StringValueType']">
+		   <jxb:class name="StringValue"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='SumIndexSetType']">
+		   <jxb:class name="SumIndexSet"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='SumType']">
+		   <jxb:class name="Sum"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='SumProductIndexType']">
+		   <jxb:class name="SumProductIndex"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='SymbolRefType']">
+		   <jxb:class name="SymbolRef"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='TrueBooleanType']">
+		   <jxb:class name="TrueBoolean"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='VariableAssignmentType']">
+		   <jxb:class name="VariableAssignment"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='VariableDefinitionType']">
+		   <jxb:class name="VariableDefinition"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='VectorCellType']">
+		   <jxb:class name="VectorCell"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='VectorElementsType']">
+		   <jxb:class name="VectorElements"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='VectorSegmentSelectorType']">
+		   <jxb:class name="VectorSegmentSelector"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='VectorSegmentType']">
+		   <jxb:class name="VectorSegment"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='VectorSelectorType']">
+		   <jxb:class name="VectorSelector"/>
+	       </jxb:bindings>
+	       <jxb:bindings node="//xs:complexType[@name='VectorType']">
+		   <jxb:class name="Vector"/>
+	       </jxb:bindings>
+    </jxb:bindings>
+	       
   <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.7/Dataset" node="/xs:schema">
     <jxb:schemaBindings>
       <jxb:package name="eu.ddmore.libpharmml.dom.dataset">
