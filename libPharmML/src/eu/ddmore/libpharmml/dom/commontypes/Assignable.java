@@ -41,15 +41,16 @@ public interface Assignable {
 	 */
 	public Rhs assign(Scalar scalar);
 	
-	/**
-	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
-	 * @param equation The value of the assignment as a {@link eu.ddmore.libpharmml.dom.maths.Equation}.
-	 * @return The created {@link Rhs} assign element.
-	 * 
-	 * @deprecated Since PharmML 0.7.1, Equation is not used anymore. Use other assign(...) methods instead.
-	 */
-	@Deprecated
-	public Rhs assign(eu.ddmore.libpharmml.dom.maths.Equation equation);
+	// Removed in libPharmML 0.5.1. May be still implemented in classes for backwards compatiblity.
+//	/**
+//	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
+//	 * @param equation The value of the assignment as a {@link eu.ddmore.libpharmml.dom.maths.Equation}.
+//	 * @return The created {@link Rhs} assign element.
+//	 * 
+//	 * @deprecated Since PharmML 0.7.1, Equation is not used anymore. Use other assign(...) methods instead.
+//	 */
+//	@Deprecated
+//	public Rhs assign(eu.ddmore.libpharmml.dom.maths.Equation equation);
 	
 	/**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.

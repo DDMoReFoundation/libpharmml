@@ -29,7 +29,6 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.Constant;
-import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
 import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
@@ -158,8 +157,8 @@ public class VariableDefinition
 		return rhs;
 	}
 
-	@Override
-	public Rhs assign(Equation equation) {
+    @Deprecated
+	public Rhs assign(eu.ddmore.libpharmml.dom.maths.Equation equation) {
 		Rhs rhs = new Rhs(equation);
 		setAssign(rhs);
 		return rhs;

@@ -627,7 +627,7 @@ public class FunctionArgumentType extends PharmMLElement implements Symbol, Assi
 		return rhs;
 	}
 
-	@Override
+	@Deprecated
 	public Rhs assign(Equation equation) {
 		Rhs rhs = new Rhs(equation);
 		setAssign(rhs);

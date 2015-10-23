@@ -46,7 +46,6 @@ import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.Constant;
-import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
 import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
@@ -227,11 +226,11 @@ public class MacroValue extends PharmMLRootType implements Assignable {
 		return assign;
 	}
 
-	@Override
-	public Rhs assign(Equation equation) {
-		Rhs assign = new Rhs(equation);
-		setAssign(assign);
-		return assign;
+	@Deprecated
+	public Rhs assign(eu.ddmore.libpharmml.dom.maths.Equation equation) {
+		Rhs rhs = new Rhs(equation);
+		setAssign(rhs);
+		return rhs;
 	}
 
 	@Override

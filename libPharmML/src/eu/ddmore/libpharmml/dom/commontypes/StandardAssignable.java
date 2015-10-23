@@ -82,7 +82,7 @@ public class StandardAssignable
     // The following attributes are meant to support the backward compatiblity before version 0.7.1.
     // When ScalarRhs attributes changed to StandardAssignable.
     @XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
-    protected Equation equation;
+    protected eu.ddmore.libpharmml.dom.maths.Equation equation;
     @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected Scalar scalar;
     @XmlElement(name = "SymbRef")
@@ -154,8 +154,8 @@ public class StandardAssignable
 		return this.assign;
 	}
 
-	@Override
-	public Rhs assign(Equation equation) {
+	@Deprecated
+	public Rhs assign(eu.ddmore.libpharmml.dom.maths.Equation equation) {
 		this.assign = new Rhs(equation);
 		return this.assign;
 	}
