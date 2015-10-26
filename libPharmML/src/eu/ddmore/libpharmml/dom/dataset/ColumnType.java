@@ -64,7 +64,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="statPrecision"/>
  *     &lt;enumeration value="strataVariable"/>
  *     &lt;enumeration value="structParameter"/>
- *     &lt;enumeration value="varParameter"/>
+ *     &lt;enumeration value="varParameter_var"/>
+ *     &lt;enumeration value="varParameter_stdev"/>
+ *     &lt;enumeration value="varParameter_cov"/>
+ *     &lt;enumeration value="varParameter_corr"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -168,8 +171,29 @@ public enum ColumnType {
      * @since PharmML 0.7
      */
     @XmlEnumValue("varParameter")
-    VAR_PARAMETER("varParameter");
+    @Deprecated
+    VAR_PARAMETER("varParameter"),
     
+    /**
+     * @since PharmML 0.7.3
+     */
+    @XmlEnumValue("varParameter_var")
+    VAR_PARAMETER_VAR("varParameter_var"),
+    /**
+     * @since PharmML 0.7.3
+     */
+    @XmlEnumValue("varParameter_stdev")
+    VAR_PARAMETER_STDEV("varParameter_stdev"),
+    /**
+     * @since PharmML 0.7.3
+     */
+    @XmlEnumValue("varParameter_cov")
+    VAR_PARAMETER_COV("varParameter_cov"),
+    /**
+     * @since PharmML 0.7.3
+     */
+    @XmlEnumValue("varParameter_corr")
+    VAR_PARAMETER_CORR("varParameter_corr");
     private final String value;
 
     ColumnType(String v) {
