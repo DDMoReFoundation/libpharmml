@@ -84,7 +84,7 @@ public class IgnoreLine
     
     @Override
     public String toString() {
-    	return super.toString()+" - "+symbol;
+    	return super.toString()+" symbol:"+symbol;
     }
 
 }
