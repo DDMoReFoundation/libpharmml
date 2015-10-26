@@ -112,6 +112,16 @@ public class ExternalFile
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
+    
+    public ExternalFile() {
+	}
+    
+    public ExternalFile(String oid, String path, String format, String delimiter){
+    	this.oid = oid;
+    	this.path = path;
+    	this.format = format;
+    	this.delimiter = delimiter;
+    }
 
     /**
      * Gets the value of the name property.

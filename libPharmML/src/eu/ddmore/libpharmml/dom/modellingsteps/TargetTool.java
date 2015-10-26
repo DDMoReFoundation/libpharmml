@@ -104,7 +104,7 @@ public class TargetTool
     protected String targetToolName;
     @XmlElement(name = "ColumnMapping")
     protected List<ColumnMapping> columnMapping;
-    @XmlElement(name = "TargetToolData", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
+    @XmlElement(name = "TargetToolData", namespace = XMLFilter.NS_DEFAULT_DS)
     protected TargetToolDataSet targetToolData;
 //    @XmlElement(name = "CodeInjection")
 //    protected CodeInjection codeInjection;
