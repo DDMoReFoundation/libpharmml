@@ -43,6 +43,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.LinkFunction;
+import eu.ddmore.libpharmml.dom.commontypes.PMFtransform;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
@@ -70,21 +71,23 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="CountPMFType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.7/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;sequence>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}LogicBinop" minOccurs="0"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/Maths}LogicUniop" minOccurs="0"/>
- *           &lt;element name="CurrentState" type="{http://www.pharmml.org/2013/03/ModelDefinition}CommonDiscreteStateType" minOccurs="0"/>
- *           &lt;element name="PreviousState" type="{http://www.pharmml.org/2013/03/ModelDefinition}CommonDiscreteStateType" maxOccurs="unbounded" minOccurs="0"/>
- *           &lt;element name="Condition" type="{http://www.pharmml.org/2013/03/ModelDefinition}CommonDiscreteStateType" maxOccurs="unbounded" minOccurs="0"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}LogicBinop" minOccurs="0"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}LogicUniop" minOccurs="0"/>
+ *           &lt;element name="CurrentState" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}CommonDiscreteStateType" minOccurs="0"/>
+ *           &lt;element name="PreviousState" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}CommonDiscreteStateType" maxOccurs="unbounded" minOccurs="0"/>
+ *           &lt;element name="Condition" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}CommonDiscreteStateType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;/sequence>
  *         &lt;choice>
- *           &lt;element ref="{http://www.uncertml.org/3.0}AbstractDiscreteUnivariateDistribution" minOccurs="0"/>
- *           &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Assign"/>
+ *           &lt;choice>
+ *             &lt;element name="Distribution" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DistributionType"/>
+ *           &lt;/choice>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Assign"/>
  *         &lt;/choice>
  *       &lt;/sequence>
- *       &lt;attribute name="linkFunction" use="required" type="{http://www.pharmml.org/2013/03/CommonTypes}LinkFunctionType" />
+ *       &lt;attribute name="transform" type="{http://www.pharmml.org/pharmml/0.7/CommonTypes}PMFtransformType" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -129,13 +132,23 @@ public class CountPMF
     
     @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Rhs assign;
-    @XmlAttribute(name = "linkFunction", required = true)
+    @XmlAttribute(name = "linkFunction")
+    @Deprecated
     protected LinkFunction linkFunction;
+    
+    // PharmML 0.7.3
+    @XmlAttribute(name = "transform")
+    protected PMFtransform transform;
     
     public CountPMF(){}
     
+    @Deprecated
     public CountPMF(LinkFunction linkFunction){
     	this.linkFunction = linkFunction;
+    }
+    
+    public CountPMF(PMFtransform transform){
+    	this.transform = transform;
     }
     
     /**
@@ -356,7 +369,9 @@ public class CountPMF
      *     possible object is
      *     {@link LinkFunction }
      *     
+     * @deprecated Since PharmML 0.7.3
      */
+    @Deprecated
     public LinkFunction getLinkFunction() {
         return linkFunction;
     }
@@ -368,9 +383,37 @@ public class CountPMF
      *     allowed object is
      *     {@link LinkFunction }
      *     
+     * @deprecated Since PharmML 0.7.3
      */
+    @Deprecated
     public void setLinkFunction(LinkFunction value) {
         this.linkFunction = value;
+    }
+    
+    /**
+     * Gets the value of the transform property (optional).
+     * 
+     * @return
+     *     possible object is
+     *     {@link PMFtransform }
+     *     
+     * @since PharmML 0.7.3
+     */
+    public PMFtransform getTransform() {
+        return transform;
+    }
+
+    /**
+     * Sets the value of the transform property (optional).
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link PMFtransformType }
+     *     
+     * @since PharmML 0.7.3
+     */
+    public void setTransform(PMFtransform value) {
+        this.transform = value;
     }
     
     protected static class Adapter extends XmlAdapter<CountPMF, CountPMF>{
