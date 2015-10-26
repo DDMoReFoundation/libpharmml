@@ -94,7 +94,7 @@ public class DosingVariable
 	@XmlAttribute(name = "inputType")
 	@Deprecated
     protected DoseInputTypeType inputType;
-    @XmlAttribute(name = "inputTarget", required = true)
+    @XmlAttribute(name = "inputTarget", required = false)
     protected DoseInputTarget inputTarget;
 
     /**

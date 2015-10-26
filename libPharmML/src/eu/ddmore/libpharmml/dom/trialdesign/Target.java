@@ -77,7 +77,7 @@ public class Target
 
     @XmlElement(name = "ColumnMapping", required = true)
     protected List<ColumnMapping> columnMapping;
-    @XmlAttribute(name = "inputTarget", required = true)
+    @XmlAttribute(name = "inputTarget", required = false)
     protected DoseInputTarget inputTarget;
 
     /**
