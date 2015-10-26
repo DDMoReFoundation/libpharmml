@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlEnumValue;
  * 
  * <p>Available operators:
  * <ul>
+ * <li>determinant</li>
  * <li>inverse</li>
  * <li>trace</li>
  * <li>transpose</li>
@@ -34,6 +35,8 @@ import javax.xml.bind.annotation.XmlEnumValue;
 @XmlEnum
 public enum MatrixUnioperator {
 	
+	@XmlEnumValue("determinant")
+	DETERMINANT("determinant"),
 	@XmlEnumValue("inverse")
 	INVERSE("inverse"),
 	@XmlEnumValue("trace")
