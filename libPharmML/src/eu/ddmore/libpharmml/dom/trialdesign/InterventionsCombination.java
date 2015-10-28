@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.StandardAssignable;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -50,7 +51,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
  *     &lt;extension base="{http://www.pharmml.org/pharmml/0.7/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;element name="Interventions" type="{http://www.pharmml.org/pharmml/0.7/TrialDesign}SingleInterventionType" maxOccurs="unbounded"/>
- *         &lt;element name="Relative" type="{http://www.pharmml.org/pharmml/0.7/TrialDesign}RelativeType" minOccurs="0"/>
+ *         &lt;element name="Relative" type="{http://www.pharmml.org/pharmml/0.7/CommonTypes}StandardAssignType" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}OidDefnGroup"/>
  *     &lt;/extension>
@@ -72,10 +73,16 @@ public class InterventionsCombination
     @XmlElement(name = "Interventions", required = true)
     protected List<SingleIntervention> listOfInterventions;
     @XmlElement(name = "Relative")
-    protected String relative;
+    protected StandardAssignable relative;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
+    
+    public InterventionsCombination(){}
+    
+    public InterventionsCombination(String oid){
+    	this.oid = oid;
+    }
 
     /**
      * Gets the value of the interventions property.
@@ -111,10 +118,10 @@ public class InterventionsCombination
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link StandardAssignable }
      *     
      */
-    public String getRelative() {
+    public StandardAssignable getRelative() {
         return relative;
     }
 
@@ -123,10 +130,10 @@ public class InterventionsCombination
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link StandardAssignable }
      *     
      */
-    public void setRelative(String value) {
+    public void setRelative(StandardAssignable value) {
         this.relative = value;
     }
 
@@ -157,7 +164,34 @@ public class InterventionsCombination
     @Override
     protected List<TreeNode> listChildren() {
     	return new ChainedList<TreeNode>(super.listChildren())
-    			.addIfNotNull(listOfInterventions);
+    			.addIfNotNull(listOfInterventions)
+    			.addIfNotNull(relative);
     }
+    
+    @Override
+    public String toString() {
+    	return super.toString()+" oid:"+oid;
+    }
+    
+    /**
+     * Creates a new empty {@link SingleIntervention} Interventions element, adds it to the current object and returns it.
+     * @return The created {@link SingleIntervention} object.
+     */
+    public SingleIntervention createInterventions(){
+    	SingleIntervention el = new SingleIntervention();
+    	getListOfInterventions().add(el);
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link StandardAssignable} relative element, adds it to the current object and returns it.
+     * @return The created {@link StandardAssignable} object.
+     */
+    public StandardAssignable createRelative(){
+    	StandardAssignable el = new StandardAssignable();
+    	this.relative = el;
+    	return el;
+    }
+
 
 }
