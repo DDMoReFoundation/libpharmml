@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mml:PharmML xmlns:msteps="http://www.pharmml.org/pharmml/0.7/ModellingSteps"
+             xmlns:po="http://www.pharmml.org/probonto/ProbOnto"
+             xmlns:td="http://www.pharmml.org/pharmml/0.7/TrialDesign"
+             xmlns:uncert="http://www.uncertml.org/3.0"
+             xmlns:ds="http://www.pharmml.org/pharmml/0.7/Dataset"
+             xmlns:mdef="http://www.pharmml.org/pharmml/0.7/ModelDefinition"
+             xmlns:ct="http://www.pharmml.org/pharmml/0.7/CommonTypes"
+             xmlns:math="http://www.pharmml.org/pharmml/0.7/Maths"
+             xmlns:mml="http://www.pharmml.org/pharmml/0.7/PharmML"
+             writtenVersion="0.7.1" id="i1">
+    <ct:Name id="i2">Unit test for Uniop</ct:Name>
+    <mdef:ModelDefinition id="i3">
+        <mdef:ParameterModel blkId="pm1" id="i4">
+            <mdef:PopulationParameter symbId="param1" id="i5">
+                <ct:Assign id="i6">
+                    <math:Uniop op="log" id="i7">
+                        <ct:Real id="i8">33.0</ct:Real>
+                    </math:Uniop>
+                </ct:Assign>
+            </mdef:PopulationParameter>
+            <mdef:PopulationParameter symbId="param2" id="i9">
+                <ct:Assign id="i10">
+                    <math:Uniop op="log" id="i11">
+                        <math:Binop op="plus" id="i12">
+                            <ct:Int id="i13">1</ct:Int>
+                            <ct:Int id="i14">2</ct:Int>
+                        </math:Binop>
+                    </math:Uniop>
+                </ct:Assign>
+            </mdef:PopulationParameter>
+            <mdef:PopulationParameter symbId="param3" id="i15">
+                <ct:Assign id="i16">
+                    <math:Uniop op="log" id="i17">
+                        <math:Constant op="pi"/>
+                    </math:Uniop>
+                </ct:Assign>
+            </mdef:PopulationParameter>
+        </mdef:ParameterModel>
+    </mdef:ModelDefinition>
+</mml:PharmML>

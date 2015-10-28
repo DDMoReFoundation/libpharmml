@@ -194,7 +194,7 @@ public class Uniop
 	
 	protected void beforeMarshal(Marshaller m){
 		init();
-		super.beforeMarshal(m);
+//		super.beforeMarshal(m);
 		if(operator != null){
 			if(getMarshalVersion() != null 
 					&& getMarshalVersion().isBetween(PharmMLVersion.V0_3, PharmMLVersion.V0_3_1)
@@ -207,7 +207,7 @@ public class Uniop
 	}
 	
 	protected void afterUnmarshal(Unmarshaller u, Object parent) {
-		super.afterUnmarshal(u, parent);
+//		super.afterUnmarshal(u, parent);
 		  if(op != null){
 			  operator = Unioperator.fromString(op);
 		  }

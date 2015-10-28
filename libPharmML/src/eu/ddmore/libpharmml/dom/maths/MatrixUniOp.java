@@ -18,8 +18,6 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.dom.maths;
 
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -62,7 +60,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MatrixUniOpType")
 public class MatrixUniOp
-    extends Expression
+    extends Expression implements ExpressionValue
 {
 
 //    @XmlAttribute(name = "op", required = true)
@@ -102,14 +100,14 @@ public class MatrixUniOp
         this.op = value;
     }
     
-    @Override
-    protected void beforeMarshal(Marshaller m) {
-    	super.beforeMarshal(m);
-    }
-    
-    @Override
-    protected void afterUnmarshal(Unmarshaller u, Object parent) {
-    	super.afterUnmarshal(u, parent);
-    }
+//    @Override
+//    protected void beforeMarshal(Marshaller m) {
+//    	super.beforeMarshal(m);
+//    }
+//    
+//    @Override
+//    protected void afterUnmarshal(Unmarshaller u, Object parent) {
+//    	super.afterUnmarshal(u, parent);
+//    }
 
 }
