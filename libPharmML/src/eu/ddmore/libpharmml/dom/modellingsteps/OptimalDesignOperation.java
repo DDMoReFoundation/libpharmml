@@ -65,7 +65,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OptimalDesignOperationType", propOrder = {
     "name",
-    "property",
+    "listOfProperty",
     "algorithm"
 })
 public class OptimalDesignOperation
