@@ -82,16 +82,16 @@ public class OptimalDesignOperation
     @XmlSchemaType(name = "positiveInteger")
     protected Integer order;
     @XmlAttribute(name = "opType", required = true)
-    protected String opType;
+    protected OptimalDesignOpType opType;
     
     public OptimalDesignOperation(){}
     
-    public OptimalDesignOperation(Integer order, String opType){
+    public OptimalDesignOperation(Integer order, OptimalDesignOpType opType){
     	this.order = order;
     	this.opType = opType;
     }
     
-    public OptimalDesignOperation(Integer order, String opType, Name name){
+    public OptimalDesignOperation(Integer order, OptimalDesignOpType opType, Name name){
     	this.order = order;
     	this.opType = opType;
     	this.name = name;
@@ -205,10 +205,10 @@ public class OptimalDesignOperation
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link OptimalDesignOpType }
      *     
      */
-    public String getOpType() {
+    public OptimalDesignOpType getOpType() {
         return opType;
     }
 
@@ -217,10 +217,10 @@ public class OptimalDesignOperation
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link OptimalDesignOpType }
      *     
      */
-    public void setOpType(String value) {
+    public void setOpType(OptimalDesignOpType value) {
         this.opType = value;
     }
     

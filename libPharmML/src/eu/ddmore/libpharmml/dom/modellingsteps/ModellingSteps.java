@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.trialdesign.ExternalDataSet;
 import eu.ddmore.libpharmml.impl.XMLFilter;
@@ -320,78 +321,103 @@ public class ModellingSteps
 		return list;
 	}
     
-//    protected void afterUnmarshal(Unmarshaller unmarshaller, Object parent){
-//    	PharmMLVersion version = getUnmarshalVersion();
-//    	// For versions older than PharmML 0.6, NONMEM and MONOLIX datasets are converted
-//    	// to ExternalDataset instances. Otherwise they are ignored, as they are not supposed
-//    	// to be used anymore.
-//    	if(!version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
-//    		if(listOfMonolixDataset != null){
-//    			for(MONOLIXdataSet ds : listOfMonolixDataset){
-//    				ExternalDataSet eds = new ExternalDataSet(ToolName.MONOLIX, ds.getOid());
-//    				eds.setCodeInjection(ds.getCodeInjection());
-//    				eds.setDataSet(ds.getDataSet());
-//    				eds.setDescription(ds.getDescription());
-//    				eds.setId(ds.getId());
-//    				eds.setUnmarshalVersion(ds.getUnmarshalVersion());
-//    				getListOfExternalDataSet().add(eds);
-//    			}
-//    			listOfMonolixDataset = null;
-//    		}
-//    		if(listOfNonmemDataset != null){
-//    			for(NONMEMdataSet ds : listOfNonmemDataset){
-//    				ExternalDataSet eds = new ExternalDataSet(ToolName.NONMEM, ds.getOid());
-//    				eds.setCodeInjection(ds.getCodeInjection());
-//    				eds.setDataSet(ds.getDataSet());
-//    				eds.setDescription(ds.getDescription());
-//    				eds.setId(ds.getId());
-//    				eds.setUnmarshalVersion(ds.getUnmarshalVersion());
-//    				getListOfExternalDataSet().add(eds);
-//    			}
-//    			listOfNonmemDataset = null;
-//    		}
-//    	}
-//    }
-//    
-//    protected void beforeMarshal(Marshaller m){
-//    	// If version older than 0.6, external datasets are converted to NONMEMdataset
-//    	// or MONOLIXdataset instances, depending on their toolName attribute value.
-//    	LoggerWrapper.getLogger().info("beforeMarshal");
-//    	LoggerWrapper.getLogger().info(m.toString());
-//    	if(m.getListener() instanceof MarshalListener){ // should be
-//    		LoggerWrapper.getLogger().info("beforeMarshal!");
-//    		PharmMLVersion version = ((MarshalListener) m.getListener()).getMarshalVersion();
-//    		if(!version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
-//    			listOfMonolixDataset = new ArrayList<MONOLIXdataSet>();
-//    			listOfNonmemDataset = new ArrayList<NONMEMdataSet>();
-//    			for(ExternalDataSet eds : getListOfExternalDataSet()){
-//    				switch (eds.getToolName()){
-//					case MONOLIX:
-//						MONOLIXdataSet mds = new MONOLIXdataSet();
-//						mds.setCodeInjection(eds.getCodeInjection());
-//						mds.setDataSet(eds.getDataSet());
-//						mds.setDescription(eds.getDescription());
-//						mds.setId(eds.getId());
-//						mds.setOid(eds.getOid());
-//						listOfMonolixDataset.add(mds);
-//						break;
-//					case NONMEM:
-//						NONMEMdataSet nds = new NONMEMdataSet();
-//						nds.setCodeInjection(eds.getCodeInjection());
-//						nds.setDataSet(eds.getDataSet());
-//						nds.setDescription(eds.getDescription());
-//						nds.setId(eds.getId());
-//						nds.setOid(eds.getOid());
-//						listOfNonmemDataset.add(nds);
-//						break;
-//					default:
-//						LoggerWrapper.getLogger().warning("Only MONOLIX or NONMEM datasets are supported in this PharmML version.");
-//						break;		
-//    				}
-//    			}
-//    			getListOfExternalDataSet().clear();
-//    		}
-//    	}
-//    }
+    /**
+     * Creates a new empty {@link TargetTool} targetTool element, adds it to the current object and returns it.
+     * @return The created {@link TargetTool} object.
+     */
+    public TargetTool createTargetTool(){
+    	TargetTool el = new TargetTool();
+    	targetTool.add(el);
+    	return el;
+    }
+    
+    /**
+     * Creates a new empty {@link TargetTool} targetTool element, adds it to the current object and returns it.
+     * @param oid
+     * @param targetToolName
+     * @return The created {@link TargetTool} object.
+     */
+    public TargetTool createTargetTool(String oid, String targetToolName){
+    	TargetTool el = new TargetTool();
+    	el.setOid(oid);
+    	el.setTargetToolName(targetToolName);
+    	targetTool.add(el);
+    	return el;
+    }
+    
+    /**
+     * Creates a new empty {@link OptimalDesignStep} OptimalDesignStep element, adds it to the current object and returns it.
+     * @return The created {@link OptimalDesignStep} object.
+     */
+    public OptimalDesignStep createOptimalDesignStep(){
+    	OptimalDesignStep el = new OptimalDesignStep();
+    	getListOfOptimalDesignStep().add(el);
+    	return el;
+    }
+    
+    /**
+     * Creates a new empty {@link OptimalDesignStep} OptimalDesignStep element, adds it to the current object and returns it.
+     * @param oid
+     * @return The created {@link OptimalDesignStep} object.
+     */
+    public OptimalDesignStep createOptimalDesignStep(String oid){
+    	OptimalDesignStep el = new OptimalDesignStep(oid);
+    	getListOfOptimalDesignStep().add(el);
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link StepDependency} stepDependencies element, adds it to the current object and returns it.
+     * @return The created {@link StepDependency} object.
+     */
+    public StepDependency createStepDependencies(){
+    	StepDependency el = new StepDependency();
+    	this.stepDependencies = el;
+    	return el;
+    }
+    
+    /**
+     * Creates a new empty {@link Estimation} step and adds it to this {@link ModellingSteps} object.
+     * @return The created {@link Estimation} object.
+     */
+    public Estimation createEstimation(){
+    	Estimation estimation = new Estimation();
+    	getCommonModellingStep().add(MasterObjectFactory.MODELLINGSTEPS_OF.createEstimationStep(estimation));
+    	return estimation;
+    }
+    
+    /**
+     * Creates a new {@link Estimation} step and adds it to this {@link ModellingSteps} object.
+     * @param oid Object identifier of the estimation.
+     * @return The created {@link Estimation} object.
+     */
+    public Estimation createEstimation(String oid){
+    	Estimation estimation = new Estimation();
+    	estimation.setOid(oid);
+    	getCommonModellingStep().add(MasterObjectFactory.MODELLINGSTEPS_OF.createEstimationStep(estimation));
+    	return estimation;
+    }
+    
+    /**
+     * Creates a new empty {@link Simulation} step and adds it to this {@link ModellingSteps} object.
+     * @return The created {@link Simulation} object.
+     */
+    public Simulation createSimulation(){
+    	Simulation simulation = new Simulation();
+    	getCommonModellingStep().add(MasterObjectFactory.MODELLINGSTEPS_OF.createSimulationStep(simulation));
+    	return simulation;
+    }
+    
+    /**
+     * Creates a new {@link Simulation} step and adds it to this {@link ModellingSteps} object.
+     * @param oid Object identifier of the simulation.
+     * @return The created {@link Simulation} object.
+     */
+    public Simulation createSimulation(String oid){
+    	Simulation simulation = new Simulation();
+    	simulation.setOid(oid);
+    	getCommonModellingStep().add(MasterObjectFactory.MODELLINGSTEPS_OF.createSimulationStep(simulation));
+    	return simulation;
+    }
 
 }

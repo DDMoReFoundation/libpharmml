@@ -501,7 +501,7 @@ public class OptimalDesignStep
      * @param opType
      * @return The created {@link OptimalDesignOperation} object.
      */
-    public OptimalDesignOperation createOperation(Integer order, String opType){
+    public OptimalDesignOperation createOperation(Integer order, OptimalDesignOpType opType){
             OptimalDesignOperation el = new OptimalDesignOperation(order,opType);
             getListOfOperation().add(el);
             return el;
@@ -514,7 +514,7 @@ public class OptimalDesignStep
      * @param name
      * @return The created {@link OptimalDesignOperation} object.
      */
-    public OptimalDesignOperation createOperation(Integer order, String opType, Name name){
+    public OptimalDesignOperation createOperation(Integer order, OptimalDesignOpType opType, Name name){
             OptimalDesignOperation el = new OptimalDesignOperation(order,opType,name);
             getListOfOperation().add(el);
             return el;
