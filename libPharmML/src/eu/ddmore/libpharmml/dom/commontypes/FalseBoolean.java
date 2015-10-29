@@ -73,4 +73,9 @@ public class FalseBoolean
 		return "false";
 	}
 
+	@Override
+	public boolean booleanValue() {
+		return false;
+	}
+
 }

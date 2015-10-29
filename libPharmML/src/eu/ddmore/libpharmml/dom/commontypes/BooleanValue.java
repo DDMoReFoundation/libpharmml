@@ -78,6 +78,11 @@ public abstract class BooleanValue
 			return new FalseBoolean();
 		}
 	}
+	
+	/**
+	 * @return The corresponding primitive boolean value.
+	 */
+	public abstract boolean booleanValue();
 
 	@Override
 	protected List<TreeNode> listChildren() {

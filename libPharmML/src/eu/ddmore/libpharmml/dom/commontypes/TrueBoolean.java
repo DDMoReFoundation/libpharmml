@@ -73,4 +73,9 @@ public class TrueBoolean
 		return "true";
 	}
 
+	@Override
+	public boolean booleanValue() {
+		return true;
+	}
+
 }
