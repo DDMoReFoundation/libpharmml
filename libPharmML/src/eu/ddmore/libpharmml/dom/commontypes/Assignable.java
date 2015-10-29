@@ -33,6 +33,26 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
  */
 @XmlTransient
 public interface Assignable {
+	
+	/**
+     * Gets the value of the assign property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Rhs }
+     *     
+     */
+	public Rhs getAssign();
+	
+	/**
+     * Sets the value of the assign property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Rhs }
+     *     
+     */
+	public void setAssign(Rhs assign);
 
 	/**
 	 * Creates a new {@link Rhs} element, assigns it to the current element and returns it.
