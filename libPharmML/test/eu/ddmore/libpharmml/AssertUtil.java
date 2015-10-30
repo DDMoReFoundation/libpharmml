@@ -1,13 +1,10 @@
 package eu.ddmore.libpharmml;
 
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
 
 import java.util.Iterator;
+
+import org.junit.Assert;
 
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
@@ -18,7 +15,7 @@ import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
 
-public class AssertUtil {
+public class AssertUtil extends Assert {
 	
 	public static void assertAssignValue(Boolean expected, Rhs actual){
 		assertNotNull(actual);
@@ -84,11 +81,15 @@ public class AssertUtil {
 	}
 	
 	public static void assertValid(IValidationReport report){
-		Iterator<IValidationError> it = report.errorIterator();
-		while(it.hasNext()){
-			System.err.println(it.next());
+		if(!report.isValid()){
+			StringBuilder sb = new StringBuilder("Report contains "+report.numErrors()+" errors:");
+			Iterator<IValidationError> it = report.errorIterator();
+			while(it.hasNext()){
+				sb.append("\n");
+				sb.append(it.next());
+			}
+			fail(sb.toString());
 		}
-		assertTrue("Valid model", report.isValid());
 	}
 	
 	public static void assertInvalid(int expectedNumError, IValidationReport report){
