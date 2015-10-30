@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.DependanceAttribute;
 import eu.ddmore.libpharmml.dom.commontypes.LinkFunction;
+import eu.ddmore.libpharmml.dom.commontypes.PMFtransform;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -493,9 +494,15 @@ public class CountData
     	getListOfPMF().add(pmf);
     	return pmf;
     }
+    @Deprecated
     public CountPMF createPMF(LinkFunction linkFunction){
     	CountPMF pmf = createPMF();
     	pmf.setLinkFunction(linkFunction);
+    	return pmf;
+    }
+    public CountPMF createPMF(PMFtransform transform){
+    	CountPMF pmf = createPMF();
+    	pmf.setTransform(transform);
     	return pmf;
     }
     
