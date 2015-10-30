@@ -148,7 +148,7 @@ public class StepType
 		if(oidRef != null && oidRef.getOidRef() != null){
 			if(sr.containsObject(oidRef.getOidRef())){
 				PharmMLObject object = sr.getObject(oidRef.getOidRef());
-				if(!(object instanceof Simulation || object instanceof Estimation)){
+				if(!(object instanceof Simulation || object instanceof Estimation || object instanceof OptimalDesignStep)){
 					sr.handleIncompatibleObject(oidRef, object, this);
 				}
 			} else {
