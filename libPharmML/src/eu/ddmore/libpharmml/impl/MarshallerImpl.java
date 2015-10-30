@@ -65,6 +65,9 @@ public class MarshallerImpl implements IMarshaller {
 //			}
 //			
 			PharmMLVersion version = PharmMLVersion.getEnum(dom.getWrittenVersion());
+			if(version == null){
+				version = PharmMLVersion.DEFAULT;
+			}
 			setMarshalVersion(dom, version);
 //			MarshalListener mListener;
 //			if(version != null){
