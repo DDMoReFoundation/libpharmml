@@ -94,7 +94,7 @@ import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 })
 @HasElementRenamed(mappedFields = { 
 		@RenamedElement(field = "msteps_codeInjection"),
-		@RenamedElement(field = "design_codeInjection", since = PharmMLVersion.V0_7_1)}, 
+		@RenamedElement(field = "design_codeInjection", since = PharmMLVersion.V0_7_3)}, 
 		transientField = "codeInjection")
 public class TargetTool
     extends PharmMLRootType implements PharmMLObject

@@ -102,7 +102,7 @@ public class StandardAssignableAdapted extends PharmMLRootType implements Adapte
 		@Override
 		public StandardAssignableAdapted marshal(StandardAssignable v) throws Exception {
 			if(v != null){
-				if(v.getMarshalVersion().isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
+				if(v.getMarshalVersion().isEqualOrLaterThan(PharmMLVersion.V0_7_3)){
 					return normal(v);
 				} else {
 					return scalarRhs(v);

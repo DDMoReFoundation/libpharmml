@@ -55,8 +55,8 @@ public class PharmMLVersionFactory {
 			return "examples/0_6";
 		case V0_6_1:
 			return "examples/0_6_1";
-		case V0_7_1:
-			return "examples/0_7";
+		case V0_7_3:
+			return "examples/0_7_3";
 		default:
 			return null;
 		}

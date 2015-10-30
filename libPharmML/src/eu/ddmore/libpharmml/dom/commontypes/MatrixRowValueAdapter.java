@@ -55,7 +55,7 @@ public class MatrixRowValueAdapter extends XmlAdapter<JAXBElement<?>, MatrixRowV
 				jaxbEl = MasterObjectFactory.COMMONTYPES_OF.createSymbRef((SymbolRef) v);
 			} else if (v instanceof Rhs){
 				PharmMLVersion version = ((PharmMLElement)v).getMarshalVersion();
-				if(version.isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
+				if(version.isEqualOrLaterThan(PharmMLVersion.V0_7_3)){
 					jaxbEl = MasterObjectFactory.COMMONTYPES_OF.createAssign((Rhs) v);
 				} else {
 					jaxbEl = MasterObjectFactory.MATHS_OF.createEquation(Equation.fromRhs((Rhs) v));

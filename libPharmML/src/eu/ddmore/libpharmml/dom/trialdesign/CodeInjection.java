@@ -71,11 +71,11 @@ import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 @HasElementsRenamed({
 	@HasElementRenamed(mappedFields = { 
 			@RenamedElement(field = "msteps_listOfSymbolMapping"),
-			@RenamedElement(field = "design_listOfSymbolMapping", since = PharmMLVersion.V0_7_1)}, 
+			@RenamedElement(field = "design_listOfSymbolMapping", since = PharmMLVersion.V0_7_3)}, 
 			transientField = "listOfSymbolMapping"),
 	@HasElementRenamed(mappedFields = { 
 			@RenamedElement(field = "msteps_targetCode"),
-			@RenamedElement(field = "design_targetCode", since = PharmMLVersion.V0_7_1)},
+			@RenamedElement(field = "design_targetCode", since = PharmMLVersion.V0_7_3)},
 			transientField = "targetCode")		
 })
 public class CodeInjection

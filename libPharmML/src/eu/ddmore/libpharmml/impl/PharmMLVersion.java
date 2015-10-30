@@ -63,19 +63,14 @@ public enum PharmMLVersion {
 	V0_6_1("0.6.1","0.6","MarshallerImpl.xmlCatalogLocation.0.6",9),
 	
 	/**
-	 * PharmML 0.7.1
-	 */
-	V0_7_1("0.7.1","0.7","MarshallerImpl.xmlCatalogLocation.0.7.1",10),
-	
-	/**
 	 * PharmML 0.7.3
 	 */
-	V0_7_3("0.7.3","0.7","MarshallerImpl.xmlCatalogLocation.0.7.3",11);
+	V0_7_3("0.7.3","0.7","MarshallerImpl.xmlCatalogLocation.0.7.3",10);
 	
 	/**
-	 * The latest version of PharmML. Current is 0.7.1.
+	 * The latest version of PharmML. Current is 0.7.3.
 	 */
-	public static final PharmMLVersion DEFAULT = PharmMLVersion.V0_7_1;
+	public static final PharmMLVersion DEFAULT = PharmMLVersion.V0_7_3;
 	
 	private final String version;
 	private final String uriVersion;
@@ -128,7 +123,7 @@ public enum PharmMLVersion {
 	 * @return Catalog location
 	 */
 	public String getDefaultCatalogLocation(){
-		if(this.isEqualOrLaterThan(V0_7_1)){ // namespaces are identical
+		if(this.isEqualOrLaterThan(V0_7_3)){ // namespaces are identical
 			return catalogLocation;
 		} else {
 			return catalogLocation.replace("/xmlCatalog.xml", "/default/xmlCatalog.xml");

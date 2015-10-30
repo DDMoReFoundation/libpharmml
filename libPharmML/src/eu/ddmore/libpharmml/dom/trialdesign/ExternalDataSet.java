@@ -352,7 +352,7 @@ public class ExternalDataSet
 				eds.setDataSet(v.dataSet);
 				eds.setOid(v.oid);
 				eds.setToolName(v.toolName);
-				if(version.isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
+				if(version.isEqualOrLaterThan(PharmMLVersion.V0_7_3)){
 					eds.setCodeInjection(v.design_codeInjection);
 					if(v.listOfColumnMappingOrColumnTransformationOrMultipleDVMapping7 != null){
 						eds.getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping().addAll(v.listOfColumnMappingOrColumnTransformationOrMultipleDVMapping7);
@@ -381,7 +381,7 @@ public class ExternalDataSet
 				adapted.dataSet = v.getDataSet();
 				adapted.oid = v.getOid();
 				adapted.toolName = v.getToolName();
-				if(version.isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
+				if(version.isEqualOrLaterThan(PharmMLVersion.V0_7_3)){
 					adapted.listOfColumnMappingOrColumnTransformationOrMultipleDVMapping7 = v.getListOfColumnMappingOrColumnTransformationOrMultipleDVMapping();
 					adapted.design_codeInjection = v.getCodeInjection();
 				} else {

@@ -30,7 +30,7 @@ public class VariableToResetTest {
 	@Before
 	public void setUp() throws Exception {
 		this.libPharmML = PharmMlFactory.getInstance().createLibPharmML();
-		this.resource7 = libPharmML.createDom(PharmMLVersion.V0_7_1);
+		this.resource7 = libPharmML.createDom(PharmMLVersion.V0_7_3);
 		this.resource7.setParameter(IPharmMLResource.AUTOSET_ID, false);
 
 		LoggerWrapper.getLogger().setLevel(Level.INFO);

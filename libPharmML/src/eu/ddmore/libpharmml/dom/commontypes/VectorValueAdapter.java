@@ -43,7 +43,7 @@ public class VectorValueAdapter extends XmlAdapter<JAXBElement<?>, VectorValue>{
 			return of.createSequence((Sequence) v);
 		} else if (v instanceof Rhs){
 			PharmMLVersion version = ((PharmMLElement)v).getMarshalVersion();
-			if(version.isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
+			if(version.isEqualOrLaterThan(PharmMLVersion.V0_7_3)){
 				return MasterObjectFactory.COMMONTYPES_OF.createAssign((Rhs) v);
 			} else {
 				return MasterObjectFactory.MATHS_OF.createEquation(Equation.fromRhs((Rhs) v));

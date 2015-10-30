@@ -93,7 +93,7 @@ import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 @HasElementsRenamed(value = { 
 		@HasElementRenamed(mappedFields = { 
 				@RenamedElement(field = "msteps_columnMapping"),
-				@RenamedElement(field = "td_columnMapping", since = PharmMLVersion.V0_7_1)}, 
+				@RenamedElement(field = "td_columnMapping", since = PharmMLVersion.V0_7_3)}, 
 				transientField = "transient_columnMapping") })
 public class DatasetMapping
     extends PharmMLRootType implements DatasetMap, PharmMLObject

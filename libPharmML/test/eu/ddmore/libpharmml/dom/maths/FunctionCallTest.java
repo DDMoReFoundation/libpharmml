@@ -22,7 +22,7 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 public class FunctionCallTest {
 
-	private final PharmMLVersion VERSION = PharmMLVersion.V0_7_1;
+	private final PharmMLVersion VERSION = PharmMLVersion.V0_7_3;
 
 	private ILibPharmML libPharmML;
 	

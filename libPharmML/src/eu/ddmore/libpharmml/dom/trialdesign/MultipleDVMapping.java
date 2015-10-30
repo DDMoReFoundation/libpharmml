@@ -80,7 +80,7 @@ import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 		@HasElementRenamed(
 						mappedFields = { 
 								@RenamedElement(field = "msteps_piecewise"),
-								@RenamedElement(field = "default_piecewise", since = PharmMLVersion.V0_7_1)}, 
+								@RenamedElement(field = "default_piecewise", since = PharmMLVersion.V0_7_3)}, 
 				transientField = "transient_piecewise") })
 public class MultipleDVMapping
     extends PharmMLRootType

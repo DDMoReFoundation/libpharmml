@@ -66,7 +66,7 @@ import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 @HasElementRenamed(
 		mappedFields = { 
 				@RenamedElement(field = "mapped_equation"),
-				@RenamedElement(field = "mapped_assign", since = PharmMLVersion.V0_7_1)
+				@RenamedElement(field = "mapped_assign", since = PharmMLVersion.V0_7_3)
 				},
 		transientField = "assign")
 public class MatrixVectorIndex extends PharmMLRootType {

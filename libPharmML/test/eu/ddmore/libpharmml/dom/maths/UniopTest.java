@@ -57,7 +57,7 @@ public class UniopTest {
 		
 		return Arrays.asList(new Object[][] {
 				{PharmMLVersion.V0_3},
-				{PharmMLVersion.V0_7_1}
+				{PharmMLVersion.V0_7_3}
 		});
 	}
 	
@@ -71,7 +71,7 @@ public class UniopTest {
 		PharmML dom = resource.getDom();
 		ModelDefinition mdef = dom.createModelDefinition();
 		ParameterModel pm = mdef.createParameterModel("pm1");
-		if(VERSION.isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
+		if(VERSION.isEqualOrLaterThan(PharmMLVersion.V0_7_3)){
 			addLogPopParam(pm, "param1", new RealValue(33));
 			addLogPopParam(pm, "param2", new Binop(Binoperator.PLUS, new IntValue(1), new IntValue(2)));
 			addLogPopParam(pm, "param3", new Constant(ConstantOperator.PI));
@@ -101,7 +101,7 @@ public class UniopTest {
 	public void testUnmarshal() throws Exception {
 		InputStream is = this.getClass().getResourceAsStream(TESTFILE);
 		IPharmMLResource resource = libPharmML.createDomFromResource(is);
-		if(VERSION.equals(PharmMLVersion.V0_7_1)){
+		if(VERSION.equals(PharmMLVersion.V0_7_3)){
 			ModelDefinition mdef = resource.getDom().getModelDefinition();
 			ParameterModel pm = mdef.getListOfParameterModel().get(0);
 			validate((PopulationParameter) pm.getCommonParameterElement().get(0).getValue(), 

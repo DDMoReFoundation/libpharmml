@@ -38,7 +38,7 @@ public class OptimalDesignTest {
 	
 	private static final String TESTFILE = "testOptimalDesign.xml";
 	
-	private static final PharmMLVersion VERSION = PharmMLVersion.V0_7_1;
+	private static final PharmMLVersion VERSION = PharmMLVersion.V0_7_3;
 	
 	@Before
 	public void setUp() throws Exception {

@@ -95,7 +95,7 @@ public class XMLFilter extends XMLFilterImpl {
         	NS_DOC_TD = String.format(NS_PATTERN_TD, writtenVersion.getURIVersion());
         	NS_DOC_MSTEPS = String.format(NS_PATTERN_MSTEPS, writtenVersion.getURIVersion());
         	NS_DOC_MML = String.format(NS_PATTERN_MML, writtenVersion.getURIVersion());
-        	if(writtenVersion.isEqualOrLaterThan(PharmMLVersion.V0_7_1)){
+        	if(writtenVersion.isEqualOrLaterThan(PharmMLVersion.V0_7_3)){
         		NS_DOC_PROBONTO = NS_DEFAULT_PROBONTO;
         	} else {
         		NS_DOC_PROBONTO = NS_DOC_MSTEPS;
