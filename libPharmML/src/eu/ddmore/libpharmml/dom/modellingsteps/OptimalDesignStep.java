@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -79,7 +80,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "listOfOperation"
 })
 public class OptimalDesignStep
-    extends PharmMLRootType
+    extends PharmMLRootType implements PharmMLObject
 {
 
     @XmlElement(name = "TargetToolReference")
@@ -104,8 +105,15 @@ public class OptimalDesignStep
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
     
+    /**
+     * Empty constructor
+     */
     public OptimalDesignStep(){}
     
+    /**
+     * Constructs a new optimal design step with the required object identifier.
+     * @param oid The oid as {@link String}.
+     */
     public OptimalDesignStep(String oid){
     	this.oid = oid;
     }
