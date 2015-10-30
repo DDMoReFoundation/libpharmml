@@ -1,10 +1,11 @@
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import static eu.ddmore.libpharmml.AssertUtil.assertScalarEquals;
+import static eu.ddmore.libpharmml.AssertUtil.assertSymbRefEquals;
 import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
-import static eu.ddmore.libpharmml.AssertUtil.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -21,10 +22,7 @@ import org.junit.runners.Parameterized.Parameters;
 import eu.ddmore.libpharmml.ILibPharmML;
 import eu.ddmore.libpharmml.IPharmMLResource;
 import eu.ddmore.libpharmml.PharmMlFactory;
-import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.dom.commontypes.Matrix.Type;
-import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
-import eu.ddmore.libpharmml.dom.modeldefn.StructuralModel;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 @RunWith(Parameterized.class)
