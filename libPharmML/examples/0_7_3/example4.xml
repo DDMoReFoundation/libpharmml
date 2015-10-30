@@ -8,11 +8,11 @@
     xmlns:design="http://www.pharmml.org/pharmml/0.7/TrialDesign"
     xmlns:mdef="http://www.pharmml.org/pharmml/0.7/ModelDefinition"
     xmlns:po="http://www.pharmml.org/probonto/ProbOnto"
-    implementedBy="MJS" writtenVersion="0.7.1"
+    implementedBy="MJS" writtenVersion="0.7.3"
     metadataFile="example4.rdf" id="i1">
     
     <!-- MODEL NAME -->
-    <ct:Name>Example 4 - estimation with IOV1 and with covariates</ct:Name>
+    <ct:Name>Example 4 - estimation with IOV1 (TrialDesign)</ct:Name>
     
     <ct:Description>Example 4 - estimation with IOV1 and with covariates (TrialDesign)</ct:Description>
     
