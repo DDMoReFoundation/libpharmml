@@ -27,6 +27,11 @@
         <!-- PARAMETER MODEL -->
         <ParameterModel blkId="pm1">
             <PopulationParameter symbId="a"/>
+            <PopulationParameter symbId="tdoseB"/>
+            <PopulationParameter symbId="SEX"/>
+            <PopulationParameter symbId="Genp1"/>
+            <PopulationParameter symbId="FIM1"/>
+            <PopulationParameter symbId="blub"/>
         </ParameterModel>
         
         <StructuralModel blkId="sm1">
@@ -46,7 +51,7 @@
                         </ct:Assign>
                     </ErrorModel>
                     <ResidualError>
-                        <ct:SymbRef symbIdRef="blub"/>
+                        <ct:SymbRef symbIdRef="blub" blkIdRef="pm1"/>
                     </ResidualError>
                 </Standard>
             </ContinuousData>
@@ -165,9 +170,9 @@
                 </NumberSamples>
                 <NumberTimes/>
                 <ObservationTimes/>
-                <ct:SymbRef symbIdRef="tdoseB"/>
-                <ct:SymbRef symbIdRef="SEX"/>
-                <ct:SymbRef symbIdRef="Genp1"/>
+                <ct:SymbRef symbIdRef="tdoseB" blkIdRef="pm1"/>
+                <ct:SymbRef symbIdRef="SEX" blkIdRef="pm1"/>
+                <ct:SymbRef symbIdRef="Genp1" blkIdRef="pm1"/>
             </OptimiseOn>           
             <FIM symbId="FIM1">
                 <ct:Matrix matrixType="Any">
@@ -189,7 +194,7 @@
                     <ct:Assign>
                         <math:MatrixUniop op="trace">
                             <math:MatrixUniop op="inverse">
-                                <ct:SymbRef symbIdRef="FIM1"/>
+                                <ct:SymbRef symbIdRef="FIM1" blkIdRef="pm1"/>
                             </math:MatrixUniop>
                         </math:MatrixUniop>
                     </ct:Assign>
