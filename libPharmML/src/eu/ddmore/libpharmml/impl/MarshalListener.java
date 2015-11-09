@@ -38,6 +38,19 @@ import eu.ddmore.libpharmml.util.annotations.HasElementsRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 import eu.ddmore.libpharmml.validation.exceptions.DuplicateIdentifierException;
 
+/**
+ * Listener used in marshal function performed by {@link MarshallerImpl}.
+ * 
+ * <p>This class performs the critical function of renaming the attributes that have a different name in XML
+ * depending on the PharmML version used. It also generates and registers the "id" attribute values of any
+ * identifiable element in the DOM.
+ * 
+ * <p>If this class is extended, it is important to call the superclass method within any overrided method,
+ * especially {@link #beforeMarshal(Object)} and {@link #afterMarshal(Object)}.
+ * 
+ * @see UnmarshalListener
+ * @author F. Yvon
+ */
 public class MarshalListener extends Listener {
 	
 	PharmMLVersion marshalVersion;
@@ -56,21 +69,9 @@ public class MarshalListener extends Listener {
 
 	@Override
 	public void beforeMarshal(Object source) {
-		Class<?> _class = source.getClass();
-		
+
 		// Checking for renamed elements
-		if(_class.isAnnotationPresent(HasElementRenamed.class)){
-				
-				Annotation annotation = _class.getAnnotation(HasElementRenamed.class);
-				handleAnnotation((HasElementRenamed) annotation, source);
-				
-		}
-		if(_class.isAnnotationPresent(HasElementsRenamed.class)){
-			
-			Annotation annotation = _class.getAnnotation(HasElementsRenamed.class);
-			handleAnnotation((HasElementsRenamed) annotation, source);
-			
-	}
+		checkForRenamedElements(source);
 		
 		if(source instanceof Identifiable && marshalVersion.isEqualOrLaterThan(PharmMLVersion.V0_6)){
 			if(((Identifiable) source).getId() == null && autoset_id){
@@ -87,7 +88,32 @@ public class MarshalListener extends Listener {
 		
 	}
 	
-	private void handleAnnotation(HasElementRenamed hasElRenamedAnnot, Object source){
+	protected final void checkForRenamedElements(Object source){
+		Class<?> _class = source.getClass();
+		checkForRenamedElements(_class, source);
+	}
+	
+	private void checkForRenamedElements(Class<?> _class, Object source){
+		// Checking for renamed elements
+		if(_class.isAnnotationPresent(HasElementRenamed.class)){
+				
+				Annotation annotation = _class.getAnnotation(HasElementRenamed.class);
+				handleAnnotation((HasElementRenamed) annotation, _class, source);
+				
+		}
+		if(_class.isAnnotationPresent(HasElementsRenamed.class)){
+			
+			Annotation annotation = _class.getAnnotation(HasElementsRenamed.class);
+			handleAnnotation((HasElementsRenamed) annotation, _class, source);
+			
+		}
+		Class<?> superclass = _class.getSuperclass();
+		if(superclass != null){
+			checkForRenamedElements(superclass, source);
+		}
+	}
+	
+	private void handleAnnotation(HasElementRenamed hasElRenamedAnnot, Class<?> _class, Object source){
 		
 		try {
 			
@@ -99,7 +125,7 @@ public class MarshalListener extends Listener {
 			for(RenamedElement renamedEl : hasElRenamedAnnot.mappedFields()){
 				versionList.add(renamedEl.since());
 				versionToField.put(renamedEl.since(), renamedEl.field());
-				eraseField(source, renamedEl.field());
+				eraseField(source, _class, renamedEl.field());
 			}
 			
 			Collections.sort(versionList, Collections.reverseOrder());
@@ -107,7 +133,7 @@ public class MarshalListener extends Listener {
 				if(marshalVersion.isEqualOrLaterThan(version)){
 
 						String mappedField = versionToField.get(version);
-						copyField(source, transientField, mappedField, false);
+						copyField(source, _class, transientField, mappedField, false);
 						LoggerWrapper.getLogger().info("Using "+mappedField+" as "+ transientField+" in "+source);
 						break;
 
@@ -115,13 +141,13 @@ public class MarshalListener extends Listener {
 			}
 			
 		} catch (NoSuchFieldException e) {
-			throw new AnnotationException(source, "1 field does not exist.");
+			throw new AnnotationException(source, e.getLocalizedMessage()+" does not exist.");
 		}
 	}
 	
-	private void handleAnnotation(HasElementsRenamed annotation, Object source){
+	private void handleAnnotation(HasElementsRenamed annotation, Class<?> _class, Object source){
 		for(HasElementRenamed elRenamedAnnot : annotation.value()){
-			handleAnnotation(elRenamedAnnot, source);
+			handleAnnotation(elRenamedAnnot, _class, source);
 		}
 	}
 

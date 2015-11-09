@@ -31,6 +31,7 @@ import javax.swing.tree.TreeNode;
 import javax.xml.bind.Unmarshaller.Listener;
 
 import eu.ddmore.libpharmml.IErrorHandler;
+import eu.ddmore.libpharmml.IPharmMLResource;
 import eu.ddmore.libpharmml.IdFactory;
 import eu.ddmore.libpharmml.dom.AbstractTreeNode;
 import eu.ddmore.libpharmml.dom.Identifiable;
@@ -45,6 +46,21 @@ import eu.ddmore.libpharmml.validation.PharmMLValidator;
 import eu.ddmore.libpharmml.validation.Validatable;
 import eu.ddmore.libpharmml.validation.exceptions.DuplicateIdentifierException;
 
+/**
+ * Listener used in unmarshal function performed by {@link MarshallerImpl}.
+ * 
+ * <p>This class performs critical functions required during the unmarshalling process. It checks for potential
+ * elements that has different name depending on the PharmML version used by the model and makes sure that those
+ * elements are made available in their transient attribute in the DOM object. It also stores identifiers for
+ * metadata ("id" attribute) so the method {@link IPharmMLResource#find(String)} can be used. Finally, additional
+ * validation routines are executed at this stage to the potential error appear in the creation report.
+ * 
+ * <p>If this class is extended, it is important to call the superclass method within any overrided method,
+ * especially {@link #beforeUnmarshal(Object, Object)} and {@link #afterUnmarshal(Object, Object)}.
+ * 
+ * @see MarshalListener
+ * @author F. Yvon
+ */
 public class UnmarshalListener extends Listener {
 	
 	private final PharmMLVersion docVersion;
@@ -66,21 +82,8 @@ public class UnmarshalListener extends Listener {
 
 	@Override
 	public void afterUnmarshal(Object target, Object parent) {
-		Class<?> _class = target.getClass();
-		
 		// Checking for renamed elements
-		if(_class.isAnnotationPresent(HasElementRenamed.class)){
-
-				Annotation annotation = _class.getAnnotation(HasElementRenamed.class);
-				handleAnnotation((HasElementRenamed) annotation, target);
-
-		}
-		if(_class.isAnnotationPresent(HasElementsRenamed.class)){
-
-			Annotation annotation = _class.getAnnotation(HasElementsRenamed.class);
-			handleAnnotation((HasElementsRenamed) annotation, target);
-
-	}
+		checkForRenamedElements(target);
 		
 		// Storing id if present
 		if(target instanceof Identifiable){
@@ -116,7 +119,32 @@ public class UnmarshalListener extends Listener {
 		
 	}
 	
-	private void handleAnnotation(HasElementRenamed annotation, Object target){
+	protected final void checkForRenamedElements(Object source){
+		Class<?> _class = source.getClass();
+		checkForRenamedElements(_class, source);
+	}
+	
+	private void checkForRenamedElements(Class<?> _class, Object source){
+		// Checking for renamed elements
+		if(_class.isAnnotationPresent(HasElementRenamed.class)){
+				
+				Annotation annotation = _class.getAnnotation(HasElementRenamed.class);
+				handleAnnotation((HasElementRenamed) annotation, _class, source);
+				
+		}
+		if(_class.isAnnotationPresent(HasElementsRenamed.class)){
+			
+			Annotation annotation = _class.getAnnotation(HasElementsRenamed.class);
+			handleAnnotation((HasElementsRenamed) annotation, _class, source);
+			
+		}
+		Class<?> superclass = _class.getSuperclass();
+		if(superclass != null){
+			checkForRenamedElements(superclass, source);
+		}
+	}
+	
+	private void handleAnnotation(HasElementRenamed annotation, Class<?> _class, Object target){
 		try {
 			
 			String transientField = annotation.transientField();
@@ -134,7 +162,7 @@ public class UnmarshalListener extends Listener {
 				if(docVersion.isEqualOrLaterThan(version)){
 
 						String mappedField = versionToField.get(version);
-						copyField(target, mappedField, transientField, true);
+						copyField(target, _class, mappedField, transientField, true);
 						LoggerWrapper.getLogger().info("Using "+mappedField+" as "+ transientField+" in "+target);
 						break;
 
@@ -146,9 +174,9 @@ public class UnmarshalListener extends Listener {
 		}
 	}
 	
-	private void handleAnnotation(HasElementsRenamed annotation, Object target){
+	private void handleAnnotation(HasElementsRenamed annotation, Class<?> _class, Object target){
 		for(HasElementRenamed singleAnnot : annotation.value()){
-			handleAnnotation(singleAnnot, target);
+			handleAnnotation(singleAnnot, _class, target);
 		}
 	}
 	
