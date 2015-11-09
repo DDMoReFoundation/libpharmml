@@ -35,8 +35,7 @@ class Utils {
 	 * @param move If the value of the "from" has to be set to null or not afterwards.
 	 * @throws NoSuchFieldException
 	 */
-	static void copyField(Object o, String from, String to, boolean move) throws NoSuchFieldException{
-		Class<?> _class = o.getClass();
+	static void copyField(Object o, Class<?> _class, String from, String to, boolean move) throws NoSuchFieldException{
 		
 		try {
 		
@@ -66,9 +65,8 @@ class Utils {
 	 * @param field
 	 * @throws NoSuchFieldException
 	 */
-	static void eraseField(Object o, String field) throws NoSuchFieldException{
+	static void eraseField(Object o, Class<?> _class, String field) throws NoSuchFieldException{
 		try {
-			Class<?> _class = o.getClass();
 			Field fromField = _class.getDeclaredField(field);
 			fromField.setAccessible(true);
 			fromField.set(o, null);
