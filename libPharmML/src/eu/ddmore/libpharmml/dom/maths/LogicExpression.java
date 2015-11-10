@@ -38,10 +38,12 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
+import eu.ddmore.libpharmml.dom.commontypes.CategoryRef;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
+import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Product;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
@@ -65,21 +67,23 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="LogicExprType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
  *       &lt;choice>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/Maths}LogicBinop"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/Maths}LogicUniop"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Scalar"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Constant"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Binop"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Uniop"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/Maths}FunctionCall"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Sum"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Product"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}VectorSelector"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}MatrixSelector"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}Probability"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}LogicBinop"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}LogicUniop"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}Scalar"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}Constant"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}SymbRef"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}CatRef"/>
+ *         &lt;element name="ArmRef" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}OidRefType"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}Binop"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}Uniop"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}FunctionCall"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}Sum"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}Product"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}VectorSelector"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}MatrixSelector"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.6/ModelDefinition}Probability"/>
  *       &lt;/choice>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -95,6 +99,8 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "scalar",
     "constant",
     "symbRef",
+    "catRef",
+    "armRef",
     "binop",
     "uniop",
     "functionCall",
@@ -137,6 +143,12 @@ public class LogicExpression
     protected MatrixSelector matrixSelector;
     @XmlElement(name = "Probability", namespace = XMLFilter.NS_DEFAULT_MDEF)
     protected Probability probability;
+    
+    // PharmML 0.6.2
+    @XmlElement(name = "CatRef", namespace = XMLFilter.NS_DEFAULT_CT)
+    protected CategoryRef catRef;
+    @XmlElement(name = "ArmRef")
+    protected OidRef armRef;
 
     /**
      * Gets the value of the logicBinop property.
@@ -463,6 +475,59 @@ public class LogicExpression
     public void setProbability(Probability value) {
         this.probability = value;
     }
+    
+    /**
+     * Gets the value of the catRef property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CategoryRef }
+     *     
+     * @since PharmML 0.6.2
+     */
+    public CategoryRef getCatRef() {
+        return catRef;
+    }
+
+    /**
+     * Sets the value of the catRef property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CategoryRef }
+     *     
+     * @since PharmML 0.6.2
+     */
+    public void setCatRef(CategoryRef value) {
+        this.catRef = value;
+    }
+
+    /**
+     * Gets the value of the armRef property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link OidRef }
+     *     
+     * @since PharmML 0.6.2
+     */
+    public OidRef getArmRef() {
+        return armRef;
+    }
+
+    /**
+     * Sets the value of the armRef property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link OidRef }
+     *     
+     * @since PharmML 0.6.2
+     */
+    public void setArmRef(OidRef value) {
+        this.armRef = value;
+    }
+
 
     @Override
 	protected List<TreeNode> listChildren() {
@@ -471,6 +536,8 @@ public class LogicExpression
 				.addIfNotNull(logicUniop)
 				.addIfNotNull(constant)
 				.addIfNotNull(symbRef)
+				.addIfNotNull(catRef)
+				.addIfNotNull(armRef)
 				.addIfNotNull(binop)
 				.addIfNotNull(uniop)
 				.addIfNotNull(functionCall)

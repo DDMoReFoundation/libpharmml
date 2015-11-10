@@ -91,6 +91,8 @@ public class ObjectFactory {
     private final static QName _VectorSegmentSelectorTypeSegmentLength_QNAME = new QName(XMLFilter.NS_DEFAULT_CT, "SegmentLength");
     private final static QName _VectorSegmentSelectorTypeStartIndex_QNAME = new QName(XMLFilter.NS_DEFAULT_CT, "StartIndex");
 
+    // PharmML 0.6.2
+    private final static QName _CatRef_QNAME = new QName(XMLFilter.NS_DEFAULT_CT, "CatRef");
     
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.commontypes
@@ -650,4 +652,14 @@ public class ObjectFactory {
     public JAXBElement<MatrixVectorIndex> createVectorSegmentSelectorTypeStartIndex(MatrixVectorIndex value) {
         return new JAXBElement<MatrixVectorIndex>(_VectorSegmentSelectorTypeStartIndex_QNAME, MatrixVectorIndex.class, VectorSegmentSelector.class, value);
     }
+    
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CategoryRef }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_CT, name = "CatRef")
+    public JAXBElement<CategoryRef> createCatRef(CategoryRef value) {
+        return new JAXBElement<CategoryRef>(_CatRef_QNAME, CategoryRef.class, null, value);
+    }
+    
 }
