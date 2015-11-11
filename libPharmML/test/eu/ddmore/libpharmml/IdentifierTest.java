@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,7 +13,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 public class IdentifierTest {
@@ -52,7 +50,7 @@ public class IdentifierTest {
 	@Test
 	public void testAutosetIdOn() throws IOException{
 		File tmpFile = File.createTempFile("tst", ".xml");
-		LoggerWrapper.getLogger().warning(tmpFile.getAbsolutePath());
+//		LoggerWrapper.getLogger().warning(tmpFile.getAbsolutePath());
 		tmpFile.deleteOnExit();
 		testInstance.save(new FileOutputStream(tmpFile), testResource);
 		
@@ -64,7 +62,7 @@ public class IdentifierTest {
 	@Test
 	public void testAutosetIdOff() throws IOException{
 		File tmpFile = File.createTempFile("tst", ".xml");
-		LoggerWrapper.getLogger().warning(tmpFile.getAbsolutePath());
+//		LoggerWrapper.getLogger().warning(tmpFile.getAbsolutePath());
 		tmpFile.deleteOnExit();
 		testResource.setParameter(IPharmMLResource.AUTOSET_ID, false);
 		testInstance.save(new FileOutputStream(tmpFile), testResource);
