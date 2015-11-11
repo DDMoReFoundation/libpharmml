@@ -123,7 +123,11 @@ public enum PharmMLVersion {
 	 * @return Catalog location
 	 */
 	public String getDefaultCatalogLocation(){
-		return catalogLocation.replace("/xmlCatalog.xml", "/default/xmlCatalog.xml");
+		if(this.isEqualOrLaterThan(V0_6)){
+			return catalogLocation;
+		} else {
+			return catalogLocation.replace("/xmlCatalog.xml", "/default/xmlCatalog.xml");
+		}
 	}
 	
 //	public String getPharmmlURI(){
