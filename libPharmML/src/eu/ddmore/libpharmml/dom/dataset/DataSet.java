@@ -248,7 +248,10 @@ public class DataSet
      * @param delimiter Delimiter in the csv file.
      * @param oid Object id of the import data element.
      * @return The created import data as a {@link ExternalFile} object.
+     * 
+     * @deprecated Use {@link #createExternalFile(String, String, Delimiter, String)}.
      */
+    @Deprecated
     public ExternalFile createImportData(String path, String format, Delimiter delimiter, String oid){
     	ExternalFile data = new ExternalFile();
     	data.setPath(path);
@@ -256,6 +259,24 @@ public class DataSet
     	data.setDelimiter(delimiter);
     	data.setOid(oid);
     	setImportData(data);
+    	return data;
+    }
+    
+    /**
+     * Creates a new import data, adds it to the current dataset and returns it.
+     * @param path The URL of the import data file.
+     * @param format Format of the file such as "CSV".
+     * @param delimiter Delimiter in the csv file.
+     * @param oid Object id of the import data element.
+     * @return The created import data as a {@link ExternalFile} object.
+     */
+    public ExternalFile createExternalFile(String path, String format, Delimiter delimiter, String oid){
+    	ExternalFile data = new ExternalFile();
+    	data.setPath(path);
+    	data.setFormat(format);
+    	data.setDelimiter(delimiter);
+    	data.setOid(oid);
+    	setExternalFile(data);
     	return data;
     }
     
