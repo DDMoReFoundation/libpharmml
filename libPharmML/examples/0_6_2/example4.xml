@@ -10,7 +10,7 @@
     metadataFile="example4.rdf" id="i1">
     
     <!-- MODEL NAME -->
-    <ct:Name>Example 4 - estimation with IOV1 (TrialDesign)</ct:Name>
+    <ct:Name>Example 4 - estimation with IOV1 and with covariates</ct:Name>
     
     <ct:Description>Example 4 - estimation with IOV1 and with covariates (TrialDesign)</ct:Description>
     
@@ -97,6 +97,10 @@
             <!-- ka -->
             <SimpleParameter symbId="omega_ka"/>
             <SimpleParameter symbId="pop_ka"/>
+            <SimpleParameter symbId="beta_ka_treatseq"/>
+            <SimpleParameter symbId="k"/>
+            <SimpleParameter symbId="POP_EC_50_FPG_F"/>
+            <SimpleParameter symbId="BETA_EC_50_FPG"/>
             <RandomVariable symbId="eta_ka">
                 <ct:VariabilityReference>
                     <ct:SymbRef blkIdRef="vm1" symbIdRef="indiv"/>
@@ -137,7 +141,7 @@
                                 <ct:SymbRef symbIdRef="POP_EC_50_FPG_F"/>
                                 <math:Condition>
                                     <math:LogicBinop op="eq">
-                                        <ct:SymbRef blkIdRef="cm1" symbIdRef="SEX"/>
+                                        <ct:SymbRef blkIdRef="cm1" symbIdRef="Sex"/>
                                         <ct:CatRef catIdRef="female"/>
                                     </math:LogicBinop>
                                 </math:Condition>
@@ -189,7 +193,7 @@
                             <ct:Assign><ct:SymbRef symbIdRef="pop_V"/></ct:Assign>
                         </PopulationParameter>
                         <Covariate>
-                            <ct:SymbRef blkIdRef="cm1" symbIdRef="sex"/>
+                            <ct:SymbRef blkIdRef="cm1" symbIdRef="Sex"/>
                             <FixedEffect>
                                 <ct:SymbRef symbIdRef="beta_V"/>
                                 <Category catId="F"/>
@@ -257,7 +261,7 @@
                             <ct:Assign><ct:SymbRef symbIdRef="pop_CL"/></ct:Assign>
                         </PopulationParameter>
                         <Covariate>
-                            <ct:SymbRef blkIdRef="cm1" symbIdRef="sex"/>
+                            <ct:SymbRef blkIdRef="cm1" symbIdRef="Sex"/>
                             <FixedEffect>
                                 <ct:SymbRef symbIdRef="beta_CL"/>
                                 <Category catId="F"/>
@@ -309,7 +313,7 @@
                                             </Uniop>
                                             <Binop op="minus">
                                                 <ct:SymbRef symbIdRef="t"/>
-                                                <ct:SymbRef symbIdRef="t_D"/>
+                                                <ct:SymbRef symbIdRef="tD"/>
                                             </Binop>
                                         </Binop>
                                     </Uniop>
@@ -320,7 +324,7 @@
                                             </Uniop>
                                             <Binop op="minus">
                                                 <ct:SymbRef symbIdRef="t"/>
-                                                <ct:SymbRef symbIdRef="t_D"/>
+                                                <ct:SymbRef symbIdRef="tD"/>
                                             </Binop>
                                         </Binop>
                                     </Uniop>
@@ -550,7 +554,7 @@
             
             <ColumnMapping>
                 <ds:ColumnRef columnIdRef="EPOCH"/>
-                <ct:SymbRef symbIdRef="Occasion"/>
+                <ct:SymbRef blkIdRef="cm1" symbIdRef="Occasion"/>
                 <ds:CategoryMapping>
                     <ds:Map dataSymbol="ep1" modelSymbol="occ1"/>
                     <ds:Map dataSymbol="ep3" modelSymbol="occ2"/>
@@ -561,10 +565,10 @@
                 <ds:Definition>
                     <ds:Column columnId="ID" columnType="id" valueType="string" columnNum="1"/>
                     <ds:Column columnId="ARM" columnType="arm" valueType="id" columnNum="2"/>
-                    <ds:Column columnId="SEX" columnType="covariate" valueType="string" columnNum="3"/>
+                    <ds:Column columnId="SEX" columnType="covariate" valueType="id" columnNum="3"/>
                     <ds:Column columnId="EPOCH" columnType="epoch" valueType="id" columnNum="4"/>
-                    <ds:Column columnId="TREAT" columnType="covariate" valueType="string" columnNum="5"/>
-                    <ds:Column columnId="TREATSEQ" columnType="covariate" valueType="string" columnNum="6"/>
+                    <ds:Column columnId="TREAT" columnType="covariate" valueType="id" columnNum="5"/>
+                    <ds:Column columnId="TREATSEQ" columnType="covariate" valueType="id" columnNum="6"/>
                 </ds:Definition>
                 <ds:Table>
                     <!-- arm1 -->
