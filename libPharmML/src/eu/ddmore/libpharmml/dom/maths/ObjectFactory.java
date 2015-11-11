@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
+import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
@@ -60,6 +61,9 @@ public class ObjectFactory {
     private final static QName _Binop_QNAME = new QName(XMLFilter.NS_DEFAULT_MATH, "Binop");
     private final static QName _EquationTypePiecewise_QNAME = new QName(XMLFilter.NS_DEFAULT_MATH, "Piecewise");
     private final static QName _Equation_QNAME = new QName(XMLFilter.NS_DEFAULT_MATH, "Equation");
+    
+    // PharmML 0.6.2
+    private final static QName _LogicBinOpTypeArmRef_QNAME = new QName(XMLFilter.NS_DEFAULT_MATH, "ArmRef");
     
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.maths
@@ -276,6 +280,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MATH, name = "Piecewise", scope = EquationType.class)
     public JAXBElement<Piecewise> createEquationTypePiecewise(Piecewise value) {
         return new JAXBElement<Piecewise>(_EquationTypePiecewise_QNAME, Piecewise.class, EquationType.class, value);
+    }
+	
+	/**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OidRef }{@code >}}
+     * @since PharmML 0.6.2
+     */
+    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MATH, name = "ArmRef", scope = LogicBinOp.class)
+    public JAXBElement<OidRef> createLogicBinOpArmRef(OidRef value) {
+        return new JAXBElement<OidRef>(_LogicBinOpTypeArmRef_QNAME, OidRef.class, LogicBinOp.class, value);
     }
 
 }
