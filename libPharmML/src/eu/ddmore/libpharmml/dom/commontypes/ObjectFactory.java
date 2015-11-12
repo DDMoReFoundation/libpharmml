@@ -104,7 +104,6 @@ public class ObjectFactory {
     
     private static final ObjectFactory instance = new ObjectFactory();
     
-    
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.commontypes
      * 
@@ -670,7 +669,7 @@ public class ObjectFactory {
     public JAXBElement<MatrixVectorIndex> createVectorSegmentSelectorTypeStartIndex(MatrixVectorIndex value) {
         return new JAXBElement<MatrixVectorIndex>(_VectorSegmentSelectorTypeStartIndex_QNAME, MatrixVectorIndex.class, VectorSegmentSelector.class, value);
     }
-    
+
     // PharmML 0.7
     /**
      * Create an instance of {@link MissingValue }
@@ -759,4 +758,5 @@ public class ObjectFactory {
     public JAXBElement<Interval> createInterval(Interval value) {
         return new JAXBElement<Interval>(_Interval_QNAME, Interval.class, null, value);
     }
+
 }

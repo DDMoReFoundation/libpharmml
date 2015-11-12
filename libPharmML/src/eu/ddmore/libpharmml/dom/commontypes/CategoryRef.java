@@ -29,7 +29,6 @@ import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
 
-
 /**
  * <p>Java class for CategoryRefType complex type.
  * 
@@ -46,13 +45,12 @@ import eu.ddmore.libpharmml.validation.SymbolResolver;
  * &lt;/complexType>
  * </pre>
  * 
- * @since PharmML 0.7
+ * @since PharmML 0.6.2
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CategoryRefType")
-public class CategoryRef
-    extends PharmMLRootType implements ReferenceContainer
-{
+public class CategoryRef extends PharmMLRootType implements ReferenceContainer{
+
 
     @XmlAttribute(name = "blkIdRef")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -60,6 +58,17 @@ public class CategoryRef
     @XmlAttribute(name = "catIdRef", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String catIdRef;
+
+    public CategoryRef(){}
+    
+    public CategoryRef(String catIdRef){
+    	this.catIdRef = catIdRef;
+    }
+    
+    public CategoryRef(String catIdRef, String blkIdRef){
+    	this.catIdRef = catIdRef;
+    	this.blkIdRef = blkIdRef;
+    }
 
     /**
      * Gets the value of the blkIdRef property.
@@ -108,11 +117,16 @@ public class CategoryRef
     public void setCatIdRef(String value) {
         this.catIdRef = value;
     }
-
+    
 	@Override
 	public void validateReferences(SymbolResolver sr, IErrorHandler errorHandler) {
 		// TODO Auto-generated method stub
 		
 	}
+    
+    @Override
+    public String toString() {
+    	return super.toString()+" catIdRef:"+catIdRef+" blkIdRef:"+blkIdRef;
+    }
 
 }

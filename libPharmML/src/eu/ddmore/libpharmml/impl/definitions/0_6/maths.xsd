@@ -18,7 +18,7 @@ permissions and limitations under the License.
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     targetNamespace="http://www.pharmml.org/pharmml/0.6/Maths"
     xmlns:math="http://www.pharmml.org/pharmml/0.6/Maths" elementFormDefault="qualified"
-    attributeFormDefault="unqualified" version="0.6"
+    attributeFormDefault="unqualified" version="0.6.2"
     xmlns:ct="http://www.pharmml.org/pharmml/0.6/CommonTypes"
     xmlns:ds="http://www.pharmml.org/pharmml/0.6/Dataset"
     xmlns:mdef="http://www.pharmml.org/pharmml/0.6/ModelDefinition">
@@ -268,6 +268,8 @@ permissions and limitations under the License.
                         <xs:element ref="ct:Scalar"/>
                         <xs:element ref="math:Constant"/>
                         <xs:element ref="ct:SymbRef"/>
+                        <xs:element ref="ct:CatRef"/>
+                        <xs:element name="ArmRef" type="ct:OidRefType"/>
                         <xs:element ref="ds:ColumnRef"/>
                         <xs:element ref="math:Binop"/>
                         <xs:element ref="math:Uniop"/>
@@ -287,6 +289,8 @@ permissions and limitations under the License.
                         <xs:element ref="ct:Scalar"/>
                         <xs:element ref="math:Constant"/>
                         <xs:element ref="ct:SymbRef"/>
+                        <xs:element ref="ct:CatRef"/>
+                        <xs:element name="ArmRef" type="ct:OidRefType"/>
                         <xs:element ref="ds:ColumnRef"/>
                         <xs:element ref="math:Binop"/>
                         <xs:element ref="math:Uniop"/>
@@ -331,6 +335,8 @@ permissions and limitations under the License.
                     <xs:element ref="ct:Scalar"/>
                     <xs:element ref="math:Constant"/>
                     <xs:element ref="ct:SymbRef"/>
+                    <xs:element ref="ct:CatRef"/>
+                    <xs:element name="ArmRef" type="ct:OidRefType"/>            <!-- ADDED -->
                     <xs:element ref="math:Binop"/>
                     <xs:element ref="math:Uniop"/>
                     <xs:element ref="math:FunctionCall"/>

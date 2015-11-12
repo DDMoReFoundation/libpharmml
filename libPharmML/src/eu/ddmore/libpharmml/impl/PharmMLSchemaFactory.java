@@ -95,7 +95,7 @@ public class PharmMLSchemaFactory {
 	public String[] resolveCatalogLocation(PharmMLVersion version, NamespaceType type){
 		String catalogLocation;
 		String systemURI;
-		if(version.isEqualOrLaterThan(PharmMLVersion.DEFAULT)){
+		if(version.isEqualOrLaterThan(PharmMLVersion.V0_6)){ //FIXME: implement a better way to handle schemas and namespaces
 			catalogLocation = version.getCatalogLocation();
 			systemURI = XMLFilter.NS_DEFAULT_MML;
 		} else {

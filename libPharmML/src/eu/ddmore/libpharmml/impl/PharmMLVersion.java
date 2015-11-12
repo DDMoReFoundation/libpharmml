@@ -63,9 +63,14 @@ public enum PharmMLVersion {
 	V0_6_1("0.6.1","0.6","MarshallerImpl.xmlCatalogLocation.0.6",9),
 	
 	/**
+	 * PharmML 0.6.2
+	 */
+	V0_6_2("0.6.2","0.6","MarshallerImpl.xmlCatalogLocation.0.6",10),
+	
+	/**
 	 * PharmML 0.7.3
 	 */
-	V0_7_3("0.7.3","0.7","MarshallerImpl.xmlCatalogLocation.0.7.3",10);
+	V0_7_3("0.7.3","0.7","MarshallerImpl.xmlCatalogLocation.0.7.3",11);
 	
 	/**
 	 * The latest version of PharmML. Current is 0.7.3.

@@ -67,6 +67,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="LogicBinOpType">
  *   &lt;complexContent>
+<<<<<<< HEAD
  *     &lt;extension base="{http://www.pharmml.org/pharmml/0.7/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;choice>
@@ -104,6 +105,45 @@ import eu.ddmore.libpharmml.util.ChainedList;
  *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}VectorSelector"/>
  *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}MatrixSelector"/>
  *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}Probability"/>
+=======
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+ *       &lt;sequence>
+ *         &lt;choice>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}LogicBinop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}LogicUniop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}Scalar"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}Constant"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}SymbRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}CatRef"/>
+ *           &lt;element name="ArmRef" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}OidRefType"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Dataset}ColumnRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}Binop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}Uniop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}FunctionCall"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}Sum"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}Product"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}VectorSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}MatrixSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/ModelDefinition}Probability"/>
+ *         &lt;/choice>
+ *         &lt;choice>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}LogicBinop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}LogicUniop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}Scalar"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}Constant"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}SymbRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}CatRef"/>
+ *           &lt;element name="ArmRef" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}OidRefType"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Dataset}ColumnRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}Binop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}Uniop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}FunctionCall"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}Sum"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}Product"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}VectorSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}MatrixSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/ModelDefinition}Probability"/>
+>>>>>>> pharmml6_ext
  *         &lt;/choice>
  *       &lt;/sequence>
  *       &lt;attribute name="op" use="required">
@@ -152,8 +192,8 @@ public class LogicBinOp
         @XmlElementRef(name = "Product", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
         @XmlElementRef(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
         @XmlElementRef(name = "ColumnRef", namespace = XMLFilter.NS_DEFAULT_DS, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "ArmRef", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
         @XmlElementRef(name = "CatRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "ArmRef", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> content;
     @XmlAttribute(name = "op", required = true)

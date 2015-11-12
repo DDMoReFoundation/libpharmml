@@ -35,6 +35,7 @@ import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import static eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_MATH;
 
 
+
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
@@ -64,6 +65,8 @@ public class ObjectFactory {
     
     // PharmML 0.7
     private final static QName _MatrixUniop_QNAME = new QName(NS_DEFAULT_MATH, "MatrixUniop");
+    
+    // PharmML 0.6.2
     private final static QName _LogicBinOpTypeArmRef_QNAME = new QName(NS_DEFAULT_MATH, "ArmRef");
     
     /**
@@ -296,13 +299,13 @@ public class ObjectFactory {
     public JAXBElement<MatrixUniOp> createMatrixUniop(MatrixUniOp value) {
         return new JAXBElement<MatrixUniOp>(_MatrixUniop_QNAME, MatrixUniOp.class, null, value);
     }
-    
-    /**
+
+	/**
      * Create an instance of {@link JAXBElement }{@code <}{@link OidRef }{@code >}}
-     * 
+     * @since PharmML 0.6.2
      */
     @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "ArmRef", scope = LogicBinOp.class)
-    public JAXBElement<OidRef> createLogicBinOpTypeArmRef(OidRef value) {
+    public JAXBElement<OidRef> createLogicBinOpArmRef(OidRef value) {
         return new JAXBElement<OidRef>(_LogicBinOpTypeArmRef_QNAME, OidRef.class, LogicBinOp.class, value);
     }
 

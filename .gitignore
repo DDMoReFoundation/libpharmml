@@ -10,4 +10,6 @@ jars
 /.project
 /UML
 /.settings
-libPharmML/jaxb_gen
+jaxb_gen
+definitions
+uncertweb

@@ -79,5 +79,5 @@ public abstract class PharmMLElement extends AbstractTreeNode {
     public final void setMarshalVersion(PharmMLVersion version){
     	this.marshalVersion = version;
     }
-    
+
 }
