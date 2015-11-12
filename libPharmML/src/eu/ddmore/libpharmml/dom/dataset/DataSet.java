@@ -249,7 +249,7 @@ public class DataSet
      * @param oid Object id of the import data element.
      * @return The created import data as a {@link ExternalFile} object.
      * 
-     * @deprecated Use {@link #createExternalFile(String, String, Delimiter, String)}.
+     * @deprecated Use createExternalFile(String, String, Delimiter, String).
      */
     @Deprecated
     public ExternalFile createImportData(String path, String format, Delimiter delimiter, String oid){
