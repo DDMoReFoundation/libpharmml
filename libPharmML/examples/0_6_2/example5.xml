@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.pharmml.org/pharmml/0.6/PharmML http://www.pharmml.org/pharmml/0.6/PharmML"
     xmlns:ct="http://www.pharmml.org/pharmml/0.6/CommonTypes"
-    implementedBy="MJS" writtenVersion="0.6.1"
+    implementedBy="MJS" writtenVersion="0.6.2"
     metadataFile="example5_NONMEM.rdf" id="i1">
     
     <!-- MODEL NAME -->
@@ -237,8 +237,6 @@
             </IndividualParameter>
             
             <!-- GAMMA log-normal distributed -->
-            <SimpleParameter symbId="pop_GAMMA"/>
-            <SimpleParameter symbId="omega_GAMMA"/>
             <RandomVariable symbId="eta_GAMMA">
                 <ct:VariabilityReference>
                     <ct:SymbRef blkIdRef="vm1" symbIdRef="indiv"/>
