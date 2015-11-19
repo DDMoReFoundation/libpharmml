@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://www.pharmml.org/pharmml/0.6/PharmML http://www.pharmml.org/pharmml/0.6/PharmML"
     xmlns:math="http://www.pharmml.org/pharmml/0.6/Maths"
     xmlns:ct="http://www.pharmml.org/pharmml/0.6/CommonTypes"
-    implementedBy="MJS" writtenVersion="0.6.2" 
+    implementedBy="MJS" writtenVersion="0.6.1" 
     metadataFile="example2_NONMEM.rdf" id="i1">
     
     <ct:Name>Example 2 - simulation continuous PK (Bonate 2012) with NONMEM dataset</ct:Name>

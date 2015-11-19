@@ -6,7 +6,7 @@
     xmlns:ct="http://www.pharmml.org/pharmml/0.6/CommonTypes"
     xmlns:ds="http://www.pharmml.org/pharmml/0.6/Dataset"
     xmlns:design="http://www.pharmml.org/pharmml/0.6/TrialDesign"
-    implementedBy="MJS" writtenVersion="0.6.2" 
+    implementedBy="MJS" writtenVersion="0.6.1"
     metadataFile="example4_NONMEM.rdf" id="i1">
     
     <!-- MODEL NAME -->
@@ -97,6 +97,7 @@
             <!-- ka -->
             <SimpleParameter symbId="omega_ka"/>
             <SimpleParameter symbId="pop_ka"/>
+            <SimpleParameter symbId="beta_ka_treatseq"/>
             <RandomVariable symbId="eta_ka">
                 <ct:VariabilityReference>
                     <ct:SymbRef blkIdRef="vm1" symbIdRef="indiv"/>
@@ -160,7 +161,7 @@
                             <ct:Assign><ct:SymbRef symbIdRef="pop_V"/></ct:Assign>
                         </PopulationParameter>
                         <Covariate>
-                            <ct:SymbRef blkIdRef="cm1" symbIdRef="sex"/>
+                            <ct:SymbRef blkIdRef="cm1" symbIdRef="Sex"/>
                             <FixedEffect>
                                 <ct:SymbRef symbIdRef="beta_V"/>
                                 <Category catId="F"/>
@@ -228,7 +229,7 @@
                             <ct:Assign><ct:SymbRef symbIdRef="pop_CL"/></ct:Assign>
                         </PopulationParameter>
                         <Covariate>
-                            <ct:SymbRef blkIdRef="cm1" symbIdRef="sex"/>
+                            <ct:SymbRef blkIdRef="cm1" symbIdRef="Sex"/>
                             <FixedEffect>
                                 <ct:SymbRef symbIdRef="beta_CL"/>
                                 <Category catId="F"/>
@@ -249,6 +250,17 @@
                         <ct:SymbRef symbIdRef="kappa_CL"/>
                     </RandomEffects>
                 </GaussianModel>
+            </IndividualParameter>
+            <!-- k -->
+            <IndividualParameter symbId="k">
+                <ct:Assign>
+                    <math:Equation>
+                        <math:Binop op="divide">
+                            <ct:SymbRef symbIdRef="CL"/>
+                            <ct:SymbRef symbIdRef="V"/>
+                        </math:Binop>
+                    </math:Equation>
+                </ct:Assign>
             </IndividualParameter>
         </ParameterModel>
         
@@ -280,7 +292,7 @@
                                             </Uniop>
                                             <Binop op="minus">
                                                 <ct:SymbRef symbIdRef="t"/>
-                                                <ct:SymbRef symbIdRef="t_D"/>
+                                                <ct:SymbRef symbIdRef="tD"/>
                                             </Binop>
                                         </Binop>
                                     </Uniop>
@@ -291,7 +303,7 @@
                                             </Uniop>
                                             <Binop op="minus">
                                                 <ct:SymbRef symbIdRef="t"/>
-                                                <ct:SymbRef symbIdRef="t_D"/>
+                                                <ct:SymbRef symbIdRef="tD"/>
                                             </Binop>
                                         </Binop>
                                     </Uniop>
@@ -360,7 +372,7 @@
                 <ct:SymbRef blkIdRef="vm1" symbIdRef="indiv"/>
             </ColumnMapping>
             <ColumnMapping>
-                <ds:ColumnRef columnIdRef="Time"/>
+                <ds:ColumnRef columnIdRef="TIME"/>
                 <ct:SymbRef symbIdRef="t"/>
             </ColumnMapping>
             <ColumnMapping>
@@ -456,6 +468,12 @@
                 <ParameterEstimation>
                     <ct:SymbRef blkIdRef="pm1" symbIdRef="pop_ka"/>
                     <InitialEstimate fixed="true">
+                        <ct:Real>1.5</ct:Real>
+                    </InitialEstimate>
+                </ParameterEstimation>
+                <ParameterEstimation>
+                    <ct:SymbRef blkIdRef="pm1" symbIdRef="beta_ka_treatseq"/>
+                    <InitialEstimate>
                         <ct:Real>1.5</ct:Real>
                     </InitialEstimate>
                 </ParameterEstimation>

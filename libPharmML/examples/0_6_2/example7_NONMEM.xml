@@ -6,7 +6,7 @@
     xmlns:ct="http://www.pharmml.org/pharmml/0.6/CommonTypes"
     xmlns:ds="http://www.pharmml.org/pharmml/0.6/Dataset"
     xmlns:mstep="http://www.pharmml.org/pharmml/0.6/ModellingSteps"
-    implementedBy="MJS" writtenVersion="0.6.2" id="i1">
+    implementedBy="MJS" writtenVersion="0.6.1" id="i1">
     
     <ct:Name>Example 7 - PK with Categorical - joint model</ct:Name>
     
@@ -26,7 +26,7 @@
             <SimpleParameter symbId="ka"/>
             <SimpleParameter symbId="V"/>
             <SimpleParameter symbId="CL"/>
-            <SimpleParameter symbId="theta0"/>
+            <SimpleParameter symbId="theta2"/>
             <SimpleParameter symbId="theta1"/>
             <!-- individual def with IIV omitted -->
         </ParameterModel>
@@ -205,7 +205,7 @@
                                 <ct:SymbRef symbIdRef="a"/>
                                 <math:Binop op="times">
                                     <ct:SymbRef symbIdRef="b"/>
-                                    <ct:SymbRef blkIdRef="sm1" symbIdRef="C"/>
+                                    <ct:SymbRef blkIdRef="sm1" symbIdRef="Cc"/>
                                 </math:Binop>
                             </math:Binop>
                         </math:Equation>
@@ -280,13 +280,13 @@
             
             <mstep:ParametersToEstimate>
                 <mstep:ParameterEstimation>
-                    <ct:SymbRef blkIdRef="om1" symbIdRef="theta1"/>
+                    <ct:SymbRef blkIdRef="pm1" symbIdRef="theta1"/>
                     <mstep:InitialEstimate>
                         <ct:Real>1</ct:Real>
                     </mstep:InitialEstimate>
                 </mstep:ParameterEstimation>
                 <mstep:ParameterEstimation>
-                    <ct:SymbRef blkIdRef="om1" symbIdRef="theta2"/>
+                    <ct:SymbRef blkIdRef="pm1" symbIdRef="theta2"/>
                     <mstep:InitialEstimate>
                         <ct:Real>1</ct:Real>
                     </mstep:InitialEstimate>

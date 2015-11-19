@@ -7,7 +7,7 @@
     xmlns:ds="http://www.pharmml.org/pharmml/0.6/Dataset"
     xmlns:mdef="http://www.pharmml.org/pharmml/0.6/ModelDefinition"
     xmlns:mstep="http://www.pharmml.org/pharmml/0.6/ModellingSteps"
-    implementedBy="MJS" writtenVersion="0.6.2" 
+    implementedBy="MJS" writtenVersion="0.6.1"
     metadataFile="example1_NONMEM.rdf" id="i1">
     
     <!-- model name -->
@@ -412,8 +412,8 @@
                         <ct:Assign>
                             <Equation xmlns="http://www.pharmml.org/pharmml/0.6/Maths">
                                 <Binop op="divide">
-                                    <ct:SymbRef symbIdRef="Rin"/>
-                                    <ct:SymbRef symbIdRef="kout"/>
+                                    <ct:SymbRef blkIdRef="p1" symbIdRef="Rin"/>
+                                    <ct:SymbRef blkIdRef="p1" symbIdRef="kout"/>
                                 </Binop>
                             </Equation>
                         </ct:Assign>
@@ -431,7 +431,7 @@
                     <Equation xmlns="http://www.pharmml.org/pharmml/0.6/Maths">
                         <Binop op="divide">
                             <ct:SymbRef symbIdRef="Ac"/>
-                            <ct:SymbRef symbIdRef="V"/>
+                            <ct:SymbRef blkIdRef="p1" symbIdRef="V"/>
                         </Binop>
                     </Equation>
                 </ct:Assign>
