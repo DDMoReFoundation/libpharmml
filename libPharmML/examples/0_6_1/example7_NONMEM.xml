@@ -26,9 +26,8 @@
             <SimpleParameter symbId="ka"/>
             <SimpleParameter symbId="V"/>
             <SimpleParameter symbId="CL"/>
-            <SimpleParameter symbId="theta0"/>
-            <SimpleParameter symbId="theta1"/>
             <SimpleParameter symbId="theta2"/>
+            <SimpleParameter symbId="theta1"/>
             <!-- individual def with IIV omitted -->
         </ParameterModel>
         

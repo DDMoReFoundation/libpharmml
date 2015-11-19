@@ -19,7 +19,7 @@
     <IndependentVariable symbId="t"/>
     
     <!-- FUNCTION DEFINITION -->
-    <ct:FunctionDefinition  xmlns="http://www.pharmml.org/pharmml/0.6/CommonTypes" 
+    <ct:FunctionDefinition  xmlns="http://www.pharmml.org/pharmml/0.6/CommonTypes"
         symbId="combinedErrorModel" symbolType="real">
         <FunctionArgument symbolType="real" symbId="a"/>
         <FunctionArgument symbolType="real" symbId="b"/>
@@ -264,7 +264,7 @@
                                                 <math:Binop op="minus">
                                                     <math:Binop op="minus">
                                                         <ct:SymbRef symbIdRef="t"/>
-                                                        <ct:SymbRef blkIdRef="sm1" symbIdRef="tD"/>
+                                                        <ct:SymbRef symbIdRef="tD"/>
                                                     </math:Binop>
                                                     <ct:SymbRef blkIdRef="pm1" symbIdRef="Tlag"/>
                                                 </math:Binop>
@@ -278,7 +278,7 @@
                                                 <math:Binop op="minus">
                                                     <math:Binop op="minus">
                                                         <ct:SymbRef symbIdRef="t"/>
-                                                        <ct:SymbRef blkIdRef="sm1" symbIdRef="tD"/>
+                                                        <ct:SymbRef symbIdRef="tD"/>
                                                     </math:Binop>
                                                     <ct:SymbRef blkIdRef="pm1" symbIdRef="Tlag"/>
                                                 </math:Binop>
