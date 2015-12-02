@@ -36,6 +36,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -70,7 +73,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "symbRef"
 })
 public class DelayVariable
-    extends PharmMLRootType
+    extends PharmMLRootType implements MathExpression
 {
 
 //    @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
@@ -170,6 +173,27 @@ public class DelayVariable
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(scalar)
 				.addIfNotNull(symbRef);
+	}
+
+	@Override
+	public String toMathExpression() {
+		if(scalar != null){
+			return scalar.toMathExpression();
+		} else if(symbRef != null){
+			return symbRef.toMathExpression();
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

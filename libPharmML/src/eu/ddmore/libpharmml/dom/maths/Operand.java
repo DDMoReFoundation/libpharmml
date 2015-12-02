@@ -20,13 +20,15 @@ package eu.ddmore.libpharmml.dom.maths;
 
 import javax.xml.bind.JAXBElement;
 
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
+
 /**
  * Interface implemented by any operand in a binay-operand expression.
  * 
  * @author florent
  *
  */
-public interface Operand {
+public interface Operand extends MathExpression {
 
 	// TODO: experiment, put this method in PharmMLElement
 	/**

@@ -40,6 +40,9 @@ import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -120,7 +123,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 	"vectorCellOrVectorSegment",
     "sequenceOrScalar"
 })
-public class Vector extends AbstractVector {
+public class Vector extends AbstractVector implements MathExpression {
 	
 	// deprecated since 0.3.2
 	@XmlElementRefs({
@@ -384,6 +387,22 @@ public class Vector extends AbstractVector {
 			}
 		}
 		return list;
+	}
+
+	@Override
+	public String toMathExpression() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
     
 

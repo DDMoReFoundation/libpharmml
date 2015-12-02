@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.LinkFunction;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
@@ -47,6 +48,7 @@ import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.dom.maths.LogicUniOp;
 import eu.ddmore.libpharmml.dom.maths.Operand;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -351,6 +353,22 @@ public class Probability
 				.addIfNotNull(currentState)
 				.addIfNotNull(previousState)
 				.addIfNotNull(condition);
+	}
+
+	@Override
+	public String toMathExpression() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

@@ -34,6 +34,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -63,7 +66,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "vector"
 })
 public class SumIndexSet
-    extends PharmMLRootType
+    extends PharmMLRootType implements MathExpression
 {
 	
 	public SumIndexSet(){}
@@ -103,6 +106,25 @@ public class SumIndexSet
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(vector);
+	}
+
+	@Override
+	public String toMathExpression() {
+		if(vector != null){
+			return vector.toMathExpression();
+		} else {
+			return "null";
+		}
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

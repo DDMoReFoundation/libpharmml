@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixCellValue;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixRowValue;
@@ -38,6 +39,7 @@ import eu.ddmore.libpharmml.dom.commontypes.OperationVariable;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 
 
 /**
@@ -129,6 +131,21 @@ public class Equation
 	
 	public void dump(){
 		
+	}
+
+	@Override
+	public String toMathExpression() {
+		return toRhs(this).toMathExpression();
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(toRhs(this));
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(toRhs(this));
 	}
 
 }

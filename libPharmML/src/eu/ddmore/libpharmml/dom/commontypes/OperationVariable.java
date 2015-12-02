@@ -20,12 +20,15 @@ package eu.ddmore.libpharmml.dom.commontypes;
 
 import javax.swing.tree.TreeNode;
 
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
+
 /**
  * Interface implementend by entities that can be affected by sums or products.
  * Possible types:
  * 		{@link SymbolRef},
  * 		{@link Rhs}
  */
-public interface OperationVariable extends TreeNode {
+public interface OperationVariable extends TreeNode, MathExpression {
+
 
 }

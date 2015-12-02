@@ -39,9 +39,12 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.dom.maths.Operand;
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 
 
 /**
@@ -66,7 +69,7 @@ import eu.ddmore.libpharmml.dom.maths.Operand;
 @XmlType(name = "SymbolRefType")
 @XmlRootElement(name = "SymbRef")
 public class SymbolRef
-    extends PharmMLRootType implements VectorCellValue, MatrixCellValue, MatrixRowValue, OperationVariable, Operand, ExpressionValue
+    extends PharmMLRootType implements VectorCellValue, MatrixCellValue, MatrixRowValue, OperationVariable, Operand, ExpressionValue, MathExpression
 {
 
     @XmlAttribute(name = "blkIdRef")
@@ -172,6 +175,21 @@ public class SymbolRef
 	@Override
 	protected List<TreeNode> listChildren() {
 		return Collections.emptyList();
+	}
+
+	@Override
+	public String toMathExpression() {
+		return getSymbIdRef();
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

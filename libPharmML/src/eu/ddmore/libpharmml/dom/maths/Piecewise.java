@@ -35,7 +35,10 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -64,7 +67,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlType(name = "PiecewiseType", propOrder = {
     "piece"
 })
-public class Piecewise extends PharmMLElement {
+public class Piecewise extends PharmMLElement implements MathExpression {
 
     @XmlElement(name = "Piece", required = true)
     protected List<Piece> piece;
@@ -101,6 +104,22 @@ public class Piecewise extends PharmMLElement {
 	@Override
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>().addIfNotNull(piece);
+	}
+
+	@Override
+	public String toMathExpression() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

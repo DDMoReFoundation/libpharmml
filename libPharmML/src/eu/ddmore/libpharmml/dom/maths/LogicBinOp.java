@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
 import eu.ddmore.libpharmml.dom.commontypes.CategoryRef;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
@@ -53,6 +54,8 @@ import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -67,7 +70,6 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="LogicBinOpType">
  *   &lt;complexContent>
-<<<<<<< HEAD
  *     &lt;extension base="{http://www.pharmml.org/pharmml/0.7/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;choice>
@@ -105,45 +107,6 @@ import eu.ddmore.libpharmml.util.ChainedList;
  *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}VectorSelector"/>
  *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}MatrixSelector"/>
  *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}Probability"/>
-=======
- *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
- *       &lt;sequence>
- *         &lt;choice>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}LogicBinop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}LogicUniop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}Scalar"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}Constant"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}SymbRef"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}CatRef"/>
- *           &lt;element name="ArmRef" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}OidRefType"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Dataset}ColumnRef"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}Binop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}Uniop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}FunctionCall"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}Sum"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}Product"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}VectorSelector"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}MatrixSelector"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/ModelDefinition}Probability"/>
- *         &lt;/choice>
- *         &lt;choice>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}LogicBinop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}LogicUniop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}Scalar"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}Constant"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}SymbRef"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}CatRef"/>
- *           &lt;element name="ArmRef" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}OidRefType"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Dataset}ColumnRef"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}Binop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}Uniop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/Maths}FunctionCall"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}Sum"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}Product"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}VectorSelector"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/CommonTypes}MatrixSelector"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.6/ModelDefinition}Probability"/>
->>>>>>> pharmml6_ext
  *         &lt;/choice>
  *       &lt;/sequence>
  *       &lt;attribute name="op" use="required">
@@ -173,7 +136,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "content"
 })
 public class LogicBinOp
-    extends PharmMLRootType
+    extends PharmMLRootType implements MathExpression
 {
 
     @XmlElementRefs({
@@ -293,6 +256,22 @@ public class LogicBinOp
 			}
 		}
 		return list;
+	}
+
+	@Override
+	public String toMathExpression() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

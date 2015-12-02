@@ -35,8 +35,10 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.Operand;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -213,6 +215,21 @@ public class Delay
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(delayVariable)
 				.addIfNotNull(symbRef);
+	}
+
+	@Override
+	public String toMathExpression() {
+		return symbRef.toMathExpression()+"(t-"+delayVariable.toMathExpression()+")";
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

@@ -32,6 +32,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Sum;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
 
 /**
  * Interface implemented by any possible type of value within {@link Expression} objects, such as
@@ -40,7 +41,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
  *
  */
 @XmlJavaTypeAdapter(ExpressionValue.ExpressionValueAdapter.class)
-public interface ExpressionValue extends TreeNode {
+public interface ExpressionValue extends TreeNode,MathExpression {
 	
 	/**
 	 * Adapter class to convert ExpressionValue object to/from mapped JAXBElement objects.
