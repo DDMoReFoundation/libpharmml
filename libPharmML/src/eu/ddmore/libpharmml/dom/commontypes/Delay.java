@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.Operand;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -219,7 +220,7 @@ public class Delay
 
 	@Override
 	public String toMathExpression() {
-		return symbRef.toMathExpression()+"(t-"+delayVariable.toMathExpression()+")";
+		return new MathExpressionConverterToExpression().convert(this);
 	}
 
 	@Override

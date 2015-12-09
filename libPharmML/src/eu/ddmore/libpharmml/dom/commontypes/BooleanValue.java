@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.MathExpressionConverter;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 
 
@@ -99,7 +100,7 @@ public abstract class BooleanValue
 	
 	@Override
 	public String toMathExpression() {
-		return valueToString();
+		return new MathExpressionConverterToExpression().convert(this);
 	}
 	
 	@Override

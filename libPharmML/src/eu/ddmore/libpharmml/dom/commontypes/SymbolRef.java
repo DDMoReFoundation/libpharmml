@@ -44,6 +44,7 @@ import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.dom.maths.Operand;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 
 
@@ -179,7 +180,7 @@ public class SymbolRef
 
 	@Override
 	public String toMathExpression() {
-		return getSymbIdRef();
+		return new MathExpressionConverterToExpression().convert(this);
 	}
 
 	@Override

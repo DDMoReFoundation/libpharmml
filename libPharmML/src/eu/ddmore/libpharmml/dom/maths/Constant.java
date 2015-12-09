@@ -30,6 +30,7 @@ import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 
 
@@ -138,7 +139,7 @@ public class Constant extends PharmMLElement implements Operand, ExpressionValue
 
 	@Override
 	public String toMathExpression() {
-		return op;
+		return new MathExpressionConverterToExpression().convert(this);
 	}
 
 	@Override

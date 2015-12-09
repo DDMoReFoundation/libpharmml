@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
@@ -235,23 +236,7 @@ public class Uniop
 
 	@Override
 	public String toMathExpression() {
-		String content;
-		if(value instanceof MathExpression){
-			content = ((MathExpression) value).toMathExpression();
-		} else {
-			content = String.valueOf(value);
-		}
-		StringBuilder sb = new StringBuilder("(");
-		switch (operator){
-		case MINUS:
-			sb.append("-"+content);
-			break;
-		default:
-			sb.append(operator.value()+"("+content+")");
-			break;
-		}
-		sb.append(")");
-		return sb.toString();
+		return new MathExpressionConverterToExpression().convert(this);
 	}
 
 	@Override

@@ -57,6 +57,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 
@@ -522,58 +523,7 @@ public class Binop
 
 	@Override
 	public String toMathExpression() {
-		String operand1String;
-		String operand2String;
-		if(operand1 instanceof MathExpression){
-			operand1String = ((MathExpression) operand1).toMathExpression();
-		} else {
-			operand1String = String.valueOf(operand1);
-		}
-		if(operand2 instanceof MathExpression){
-			operand2String = ((MathExpression) operand2).toMathExpression();
-		} else {
-			operand2String = String.valueOf(operand2);
-		}
-		String string;
-		switch (operator) {
-			case ATAN2:
-				string = "atan2( "+operand1String+","+operand2String+" )";
-				break;
-			case DIVIDE:
-				string = operand1String+"/"+operand2String;
-				break;
-			case LOGX:
-				string = operand1String+"log "+operand2String;
-				break;
-			case MAX:
-				string = "max{ "+operand1String+","+operand2String+" }";
-				break;
-			case MIN:
-				string = "min{ "+operand1String+","+operand2String+" }";
-				break;
-			case MINUS:
-				string = operand1String+"-"+operand2String;
-				break;
-			case PLUS:
-				string = operand1String+"+"+operand2String;
-				break;
-			case POWER:
-				string = operand1String+"^"+operand2String;
-				break;
-			case REM:
-				string = operand1String+"%"+operand2String;
-				break;
-			case ROOT:
-				string = operand2String+"root( "+operand1String+" )";
-				break;
-			case TIMES:
-				string = operand1String+"*"+operand2String;
-				break;
-			default:
-				string = "" + operand1String + operator + operand2String;
-				break;
-		}
-		return "("+string+")";
+		return new MathExpressionConverterToExpression().convert(this);
 	}
 
 	@Override

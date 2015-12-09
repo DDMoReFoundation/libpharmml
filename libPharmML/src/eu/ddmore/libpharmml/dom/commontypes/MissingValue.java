@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 
 
@@ -117,7 +118,7 @@ public class MissingValue
 	
 	@Override
 	public String toMathExpression() {
-		return valueToString();
+		return new MathExpressionConverterToExpression().convert(this);
 	}
 
 	@Override
