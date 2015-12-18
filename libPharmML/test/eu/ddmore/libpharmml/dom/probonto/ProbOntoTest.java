@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import static org.junit.Assert.assertTrue;
+
 import eu.ddmore.libpharmml.ILibPharmML;
 import eu.ddmore.libpharmml.IPharmMLResource;
 import eu.ddmore.libpharmml.PharmMlFactory;
@@ -104,6 +106,20 @@ public class ProbOntoTest {
 	public void testUnmarshal() throws Exception {
 		PharmML dom = unmarshalResource.getDom();
 		dom.getModelDefinition();
+	}
+	
+	@Test
+	public void testParamPropertiesConsistency() throws Exception {
+		for(DistributionName dn : DistributionName.values()){
+			
+		}
+	}
+
+	@Test
+	public void testParamProperties() throws Exception {
+		for(DistributionName dn : DistributionName.values()){
+			assertTrue(dn+" has parameters defined.", dn.requiredParameters().length > 0);
+		}
 	}
 	
 }

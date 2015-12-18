@@ -293,7 +293,43 @@ public class ProbOnto
 
 	@Override
 	public void validate(IErrorHandler errorHandler) {
-		//TODO: validate parameters based on distribution name
+		if(name != null){
+			ParameterName[] paramNames = name.requiredParameters();
+			for(ParameterName requiredParam : paramNames){
+				if(!this.containsParameter(requiredParam)){
+					errorHandler.handleError("undef", "Parameter \""+requiredParam+"\" is missing in distribution +\""+name+"\".", this);
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Gets the {@link DistributionParameter} defined with the given name. If the parameter is not defined,
+	 * this method returns null.
+	 * @param parameter Name of the parameter
+	 * @return The {@link DistributionParameter} with the given name.
+	 */
+	public DistributionParameter getParameter(ParameterName parameter){
+		for(DistributionParameter dp : getListOfParameter()){
+			if(dp.getName() != null && dp.getName().equals(parameter)){
+				return dp;
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Checks if this distribution contains the given parameter.
+	 * @param parameter Name of the parameter
+	 * @return true if the parameter is defined, else false.
+	 */
+	public boolean containsParameter(ParameterName parameter){
+		for(DistributionParameter dp : getListOfParameter()){
+			if(dp.getName() != null && dp.getName().equals(parameter)){
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

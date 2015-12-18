@@ -18,9 +18,14 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.dom.probonto;
 
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.impl.LoggerWrapper;
 
 
 /**
@@ -231,9 +236,14 @@ public enum DistributionName {
     @XmlEnumValue("MixtureDistribution")
     MIXTURE_DISTRIBUTION("MixtureDistribution");
     private final String value;
+    
+    private final ParameterName[] requiredParameters;
+    
+    private final static String PROPERTIES_PREFIX = "eu.ddmore.libpharmml.dom.probonto.distribution.";
 
     DistributionName(String v) {
         value = v;
+        requiredParameters = resolveRequiredParameters(v);
     }
 
     public String value() {
@@ -247,6 +257,46 @@ public enum DistributionName {
             }
         }
         throw new IllegalArgumentException(v);
+    }
+    
+    /**
+     * Get the list of the parameters required for this distribution.
+     * @return An array of {@link ParameterName} values required for this distribution.
+     */
+    public ParameterName[] requiredParameters(){
+    	return requiredParameters;
+    }
+    
+    private ParameterName[] resolveRequiredParameters(String distribution){    	
+    	String parametersRaw = Properties.getString(PROPERTIES_PREFIX+distribution);
+    	if(parametersRaw == null){
+    		LoggerWrapper.getLogger().warning("Distribution "+distribution+" is not defined in parameters.properties.");
+    		return new ParameterName[]{};
+    	}
+    	String[] parametersArray = parametersRaw.trim().split(",");
+    	ParameterName[] paramNames = new ParameterName[parametersArray.length];
+    	for(int i=0;i<parametersArray.length;i++){
+    		paramNames[0] = ParameterName.fromValue(parametersArray[i]);
+    	}
+    	return paramNames;
+    }
+    
+    static class Properties {
+    	private static final String BUNDLE_NAME = "eu.ddmore.libpharmml.dom.probonto.parameters";
+
+    	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle
+    			.getBundle(BUNDLE_NAME);
+
+    	private Properties() {
+    	}
+
+    	public static String getString(String key) {
+    		try {
+    			return RESOURCE_BUNDLE.getString(key);
+    		} catch (MissingResourceException e) {
+    			return '!' + key + '!';
+    		}
+    	}
     }
 
 }

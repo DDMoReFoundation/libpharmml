@@ -185,5 +185,19 @@ public enum ParameterName {
         }
         throw new IllegalArgumentException(v);
     }
+    
+    /**
+     * Checks if the given value is allowed by the PharmML specification.
+     * @param v The parameter name
+     * @return true if the value is valid, else false.
+     */
+    public static boolean isValidValue(String v){
+    	try {
+    		fromValue(v);
+    	} catch (IllegalArgumentException e) {
+    		return false;
+    	}
+    	return true;
+    }
 
 }
