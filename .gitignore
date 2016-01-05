@@ -11,5 +11,5 @@ jars
 /UML
 /.settings
 jaxb_gen
-definitions
+./definitions
 uncertweb

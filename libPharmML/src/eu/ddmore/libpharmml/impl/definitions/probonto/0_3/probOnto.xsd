@@ -22,7 +22,8 @@ permissions and limitations under the License.
     attributeFormDefault="unqualified"
     xmlns:ct="http://www.pharmml.org/pharmml/0.7/CommonTypes"
     xmlns:ds="http://www.pharmml.org/pharmml/0.7/Dataset"
-    version="0.2">
+    xmlns:design="http://www.pharmml.org/pharmml/0.7/TrialDesign"
+    version="0.3">
 
     <xs:import namespace="http://www.pharmml.org/pharmml/0.7/CommonTypes"
         schemaLocation="http://www.pharmml.org/pharmml/0.7/CommonTypes"/>
@@ -30,7 +31,11 @@ permissions and limitations under the License.
     <xs:import namespace="http://www.pharmml.org/pharmml/0.7/Dataset"
         schemaLocation="http://www.pharmml.org/pharmml/0.7/Dataset"/>
     
-
+    <!-- TEST -->
+    <xs:import namespace="http://www.pharmml.org/pharmml/0.7/TrialDesign"
+        schemaLocation="http://www.pharmml.org/pharmml/0.7/TrialDesign"/>
+    <!-- TEST -->
+    
     <xs:simpleType name="DistroNameType">
         <xs:annotation>
             <xs:documentation>The names of ProbOnto distributions.</xs:documentation>
@@ -38,45 +43,65 @@ permissions and limitations under the License.
         <xs:restriction base="xs:Name">
             <!-- Univariate discrete -->
             <xs:enumeration value="Bernoulli1"/>
+            <xs:enumeration value="BetaBinomial1"/>
             <xs:enumeration value="Binomial1"/>
             <xs:enumeration value="CategoricalOrdered1"/>
             <xs:enumeration value="CategoricalNonordered1"/>
+            <xs:enumeration value="CategoricalOrdered1"/>
+            <xs:enumeration value="ConwayMaxwellPoisson1"/>
+            <xs:enumeration value="DoublePoisson1"/>
+            <xs:enumeration value="GeneralizedNegativeBinomial1"/>
             <xs:enumeration value="GeneralizedPoisson1"/>
+            <xs:enumeration value="GeneralizedPoisson2"/>
+            <xs:enumeration value="GeneralizedPoisson3"/>
             <xs:enumeration value="Geometric1"/>
             <xs:enumeration value="Hypergeometric1"/>
             <xs:enumeration value="InverseBinomial1"/>
             <xs:enumeration value="NegativeBinomial1"/>
             <xs:enumeration value="NegativeBinomial2"/>
+            <xs:enumeration value="NegativeBinomial3"/>
+            <xs:enumeration value="NegativeBinomial4"/>
+            <xs:enumeration value="NegativeBinomial5"/>
             <xs:enumeration value="Poisson1"/>
             <xs:enumeration value="UniformDiscrete1"/>
             <xs:enumeration value="UniformDiscrete2"/>
             <xs:enumeration value="ZeroInflatedNegativeBinomial1"/>
+            <xs:enumeration value="ZeroInflatedGeneralizedPoisson1"/>
             <xs:enumeration value="ZeroInflatedPoisson1"/>
             <!-- Univariate continuous -->
             <xs:enumeration value="Beta1"/>
             <xs:enumeration value="BirnbaumSaunders1"/>
             <xs:enumeration value="Cauchy1"/>
             <xs:enumeration value="ChiSquared1"/>
+            <xs:enumeration value="Erlang1"/>
             <xs:enumeration value="Exponential1"/>
-            <xs:enumeration value="F1"/>                     <!-- aka Fisher-Snedecor -->
+            <xs:enumeration value="Exponential2"/>
+            <xs:enumeration value="F1"/>
+            <xs:enumeration value="F2"/>
             <xs:enumeration value="Gamma1"/>
+            <xs:enumeration value="Gamma2"/>
             <xs:enumeration value="GeneralizedGamma1"/>
             <xs:enumeration value="GeneralizedGamma2"/>
+            <xs:enumeration value="GeneralizedGamma3"/>
             <xs:enumeration value="Gompertz1"/>
-            <xs:enumeration value="Gumbel1"/>                <!-- aka Extreme Value -->
+            <xs:enumeration value="Gumbel1"/>
+            <xs:enumeration value="HalfNormal1"/>
             <xs:enumeration value="InverseGamma1"/>
             <xs:enumeration value="InverseGaussian1"/>
-            <xs:enumeration value="Laplace1"/>              <!-- aka Double-exponential -->
+            <xs:enumeration value="Laplace1"/>
             <xs:enumeration value="Laplace2"/>
             <xs:enumeration value="Logistic1"/>
+            <xs:enumeration value="Logistic2"/>
             <xs:enumeration value="LogLogistic1"/>
+            <xs:enumeration value="LogLogistic2"/>
             <xs:enumeration value="LogNormal1"/>
             <xs:enumeration value="LogNormal2"/>
             <xs:enumeration value="LogNormal3"/>
             <xs:enumeration value="LogNormal4"/>
             <xs:enumeration value="LogNormal5"/>
-            <xs:enumeration value="LogUniform"/>
-            <xs:enumeration value="Nokagami1"/>
+            <xs:enumeration value="LogNormal6"/>
+            <xs:enumeration value="LogUniform1"/>
+            <xs:enumeration value="Nakagami1"/>
             <xs:enumeration value="Normal1"/>
             <xs:enumeration value="Normal2"/>
             <xs:enumeration value="Normal3"/>
@@ -86,6 +111,7 @@ permissions and limitations under the License.
             <xs:enumeration value="StandardNormal1"/>
             <xs:enumeration value="StandardUniform1"/>
             <xs:enumeration value="StudentT1"/>
+            <xs:enumeration value="StudentT2"/>
             <xs:enumeration value="Triangular1"/>
             <xs:enumeration value="TruncatedNormal1"/>
             <xs:enumeration value="Uniform1"/>
@@ -102,8 +128,12 @@ permissions and limitations under the License.
             <xs:enumeration value="MultivariateStudentT2"/>
             <xs:enumeration value="Wishart1"/>
             <xs:enumeration value="Wishart2"/>
-            <!-- Multivariate -->
+            <!-- Mixtures -->
             <xs:enumeration value="MixtureDistribution"/>
+            <!-- Samples -->
+            <xs:enumeration value="RandomSample"/>
+            <xs:enumeration value="StatisticalSample"/>
+            <xs:enumeration value="UnknownSample"/>
         </xs:restriction>
     </xs:simpleType>
     
@@ -121,11 +151,15 @@ permissions and limitations under the License.
             <xs:enumeration value="degreesOfFreedom"/>
             <xs:enumeration value="denominator"/>
             <xs:enumeration value="dispersion"/>
+            <xs:enumeration value="geomStdev"/>
+            <xs:enumeration value="inverseScale"/>
             <xs:enumeration value="inverseScaleMatrix"/>
-            <xs:enumeration value="k"/>
+            <xs:enumeration value="index"/>
             <xs:enumeration value="lambda"/>
             <xs:enumeration value="location"/>
+            <xs:enumeration value="lowerBound"/>
             <xs:enumeration value="lowerLimit"/>
+            <xs:enumeration value="m"/>
             <xs:enumeration value="maximum"/>
             <xs:enumeration value="mean"/>
             <xs:enumeration value="meanLog"/>
@@ -138,13 +172,13 @@ permissions and limitations under the License.
             <xs:enumeration value="numerator"/>
             <xs:enumeration value="overdispersion"/>
             <xs:enumeration value="populationSize"/>
-            <xs:enumeration value="p"/>
             <xs:enumeration value="precision"/>
             <xs:enumeration value="precisionMatrix"/>
             <xs:enumeration value="probability"/>
             <xs:enumeration value="probabilityOfSuccess"/>
             <xs:enumeration value="probabilityOfZero"/>
             <xs:enumeration value="rate"/>
+            <xs:enumeration value="rateOfDecay"/>
             <xs:enumeration value="scale"/>
             <xs:enumeration value="scaleMatrix"/>
             <xs:enumeration value="shape"/>
@@ -154,6 +188,8 @@ permissions and limitations under the License.
             <xs:enumeration value="stdev"/>
             <xs:enumeration value="stdevLog"/>
             <xs:enumeration value="tau"/>
+            <xs:enumeration value="theta"/>
+            <xs:enumeration value="upperBound"/>
             <xs:enumeration value="upperLimit"/>
             <xs:enumeration value="var"/>
             <xs:enumeration value="varLog"/>
@@ -169,10 +205,30 @@ permissions and limitations under the License.
         <xs:complexContent>
             <xs:extension base="ct:PharmMLRootType">
                 <xs:sequence>
-                    <xs:element name="Parameter" maxOccurs="unbounded" type="po:DistributionParameterType"/>
+                    <xs:element name="Parameter" minOccurs="0" maxOccurs="unbounded" type="po:DistributionParameterType"/>
                     <xs:element name="LowerTruncationBound" minOccurs="0" maxOccurs="1" type="po:DistributionBoundType"/>
                     <xs:element name="UpperTruncationBound" minOccurs="0" maxOccurs="1" type="po:DistributionBoundType"/>
                     <xs:element name="MixtureComponent" minOccurs="0" maxOccurs="unbounded" type="po:MixtureComponent"/>
+                    <!-- TEST -->
+                    <xs:sequence minOccurs="0">
+                        <xs:element name="ColumnMapping" minOccurs="0" maxOccurs="unbounded" type="ds:ColumnMappingType">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Defines mapping to the dataset. 
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:sequence>
+                            <xs:element ref="ds:DataSet">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        Data for each subject within the study.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:sequence>
+                    <!-- /TEST -->
                 </xs:sequence>
                 <xs:attribute name="name" use="required" type="po:DistroNameType"/>
             </xs:extension>
@@ -228,7 +284,39 @@ permissions and limitations under the License.
         </xs:complexContent>
     </xs:complexType>      
 
- 
+
+    <!-- TEST -->
+<!--    <xs:complexType name="DataSetType">
+        <xs:annotation>
+            <xs:documentation>
+                A type defining the external type data and task settings.                
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ct:PharmMLRootType">
+                <xs:sequence>
+                    <xs:element name="ColumnMapping" minOccurs="0" maxOccurs="unbounded" type="ds:ColumnMappingType">
+                        <xs:annotation>
+                            <xs:documentation>
+                                Defines mapping to the dataset. 
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:sequence>
+                        <xs:element ref="ds:DataSet">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    Data for each subject within the study.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>-->
+    <!-- /TEST -->
+
     <!-- elements -->
     <xs:element name="ProbOnto" type="po:ProbOntoType">
         <xs:annotation>
@@ -236,5 +324,13 @@ permissions and limitations under the License.
         </xs:annotation>
     </xs:element>
 
+<!--    <xs:element name="DataSet" type="po:DataSetType">
+        <xs:annotation>
+            <xs:documentation>
+                This element specifies a dataset in PharmML. Its children define its structure and the
+                data associate with it.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>    -->
 
 </xs:schema>
