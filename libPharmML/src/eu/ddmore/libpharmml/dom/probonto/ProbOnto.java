@@ -345,6 +345,26 @@ public class ProbOnto
             getListOfMixtureComponent().add(el);
             return el;
     }
+    
+    /**
+     * Creates a new empty {@link ColumnMapping} ColumnMapping element, adds it to the current object and returns it.
+     * @return The created {@link ColumnMapping} object.
+     */
+    public ColumnMapping createColumnMapping(){
+            ColumnMapping el = new ColumnMapping();
+            getListOfColumnMapping().add(el);
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link DataSet} dataSet element, adds it to the current object and returns it.
+     * @return The created {@link DataSet} object.
+     */
+    public DataSet createDataSet(){
+            DataSet el = new DataSet();
+            this.dataSet = el;
+            return el;
+    }
 
     
     @Override
