@@ -30,6 +30,9 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
+import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.validation.Validatable;
 
@@ -50,6 +53,12 @@ import eu.ddmore.libpharmml.validation.Validatable;
  *         &lt;element name="LowerTruncationBound" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DistributionBoundType" minOccurs="0"/>
  *         &lt;element name="UpperTruncationBound" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DistributionBoundType" minOccurs="0"/>
  *         &lt;element name="MixtureComponent" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}MixtureComponent" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;sequence minOccurs="0">
+ *           &lt;element name="ColumnMapping" type="{http://www.pharmml.org/pharmml/0.7/Dataset}ColumnMappingType" maxOccurs="unbounded" minOccurs="0"/>
+ *           &lt;sequence>
+ *             &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Dataset}DataSet"/>
+ *           &lt;/sequence>
+ *         &lt;/sequence>
  *       &lt;/sequence>
  *       &lt;attribute name="name" use="required" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DistroNameType" />
  *     &lt;/extension>
@@ -64,7 +73,9 @@ import eu.ddmore.libpharmml.validation.Validatable;
     "listOfParameter",
     "lowerTruncationBound",
     "upperTruncationBound",
-    "listOfMixtureComponent"
+    "listOfMixtureComponent",
+	"listOfColumnMapping",
+    "dataSet"
 })
 public class ProbOnto
     extends PharmMLRootType implements Validatable
@@ -78,6 +89,10 @@ public class ProbOnto
     protected DistributionBound upperTruncationBound;
     @XmlElement(name = "MixtureComponent")
     protected List<MixtureComponent> listOfMixtureComponent;
+	@XmlElement(name = "ColumnMapping")
+    protected List<ColumnMapping> listOfColumnMapping;
+    @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS)
+    protected DataSet dataSet;
     @XmlAttribute(name = "name", required = true)
     protected DistributionName name;
 
@@ -188,6 +203,61 @@ public class ProbOnto
     }
 
     /**
+     * Gets the value of the columnMapping property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the columnMapping property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListOfColumnMapping().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ColumnMapping }
+     * 
+     * 
+     */
+    public List<ColumnMapping> getListOfColumnMapping() {
+        if (listOfColumnMapping == null) {
+        	listOfColumnMapping = new ArrayList<ColumnMapping>();
+        }
+        return this.listOfColumnMapping;
+    }
+
+    /**
+     * 
+     *                                         Data for each subject within the study.
+     *                                     
+     * 
+     * @return
+     *     possible object is
+     *     {@link DataSet }
+     *     
+     */
+    public DataSet getDataSet() {
+        return dataSet;
+    }
+
+    /**
+     * Sets the value of the dataSet property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DataSet }
+     *     
+     */
+    public void setDataSet(DataSet value) {
+        this.dataSet = value;
+    }
+
+    /**
      * Gets the value of the name property.
      * 
      * @return
@@ -283,7 +353,9 @@ public class ProbOnto
     			.addIfNotNull(listOfParameter)
     			.addIfNotNull(lowerTruncationBound)
     			.addIfNotNull(upperTruncationBound)
-    			.addIfNotNull(listOfMixtureComponent);
+    			.addIfNotNull(listOfMixtureComponent)
+    			.addIfNotNull(listOfColumnMapping)
+    			.addIfNotNull(dataSet);
     }
     
     @Override
