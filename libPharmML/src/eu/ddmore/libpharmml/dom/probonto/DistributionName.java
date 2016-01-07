@@ -307,13 +307,13 @@ public enum DistributionName {
     UNKNOWN_SAMPLE("UnknownSample");
     private final String value;
     
-    private final ParameterName[] requiredParameters;
+//    private final ParameterName[] requiredParameters;
     
     private final static String PROPERTIES_PREFIX = "eu.ddmore.libpharmml.dom.probonto.distribution.";
 
     DistributionName(String v) {
         value = v;
-        requiredParameters = resolveRequiredParameters(v);
+//        requiredParameters = resolveRequiredParameters(v);
     }
 
     public String value() {
@@ -334,19 +334,23 @@ public enum DistributionName {
      * @return An array of {@link ParameterName} values required for this distribution.
      */
     public ParameterName[] requiredParameters(){
-    	return requiredParameters;
+    	return resolveRequiredParameters(value);
     }
     
     private ParameterName[] resolveRequiredParameters(String distribution){    	
     	String parametersRaw = Properties.getString(PROPERTIES_PREFIX+distribution);
     	if(parametersRaw == null){
-    		LoggerWrapper.getLogger().warning("Distribution "+distribution+" is not defined in parameters.properties.");
+    		LoggerWrapper.getLogger().info("Distribution "+distribution+" is not defined in parameters.properties.");
     		return new ParameterName[]{};
     	}
     	String[] parametersArray = parametersRaw.trim().split(",");
     	ParameterName[] paramNames = new ParameterName[parametersArray.length];
     	for(int i=0;i<parametersArray.length;i++){
-    		paramNames[0] = ParameterName.fromValue(parametersArray[i]);
+    		try {
+    			paramNames[0] = ParameterName.fromValue(parametersArray[i]);
+    		} catch (IllegalArgumentException e) {
+    			throw new RuntimeException("Parameter \""+parametersArray[i]+"\" doesn't exist.");
+    		}
     	}
     	return paramNames;
     }
@@ -364,7 +368,7 @@ public enum DistributionName {
     		try {
     			return RESOURCE_BUNDLE.getString(key);
     		} catch (MissingResourceException e) {
-    			return '!' + key + '!';
+    			return null;
     		}
     	}
     }
