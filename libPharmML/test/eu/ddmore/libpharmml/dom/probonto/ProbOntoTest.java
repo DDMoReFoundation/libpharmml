@@ -30,6 +30,8 @@ import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterModel;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
+import static eu.ddmore.libpharmml.AssertUtil.assertValid;
+
 @RunWith(Parameterized.class)
 public class ProbOntoTest {
 
@@ -100,6 +102,8 @@ public class ProbOntoTest {
 		libPharmML.save(baos, resource);
 		
 		System.out.print(baos);
+		
+		assertValid(libPharmML.getValidator().createValidationReport(resource));
 	}
 	
 	@Test

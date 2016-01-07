@@ -40,9 +40,15 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="degreesOfFreedom"/>
  *     &lt;enumeration value="denominator"/>
  *     &lt;enumeration value="dispersion"/>
+ *     &lt;enumeration value="geomStdev"/>
+ *     &lt;enumeration value="inverseScale"/>
  *     &lt;enumeration value="inverseScaleMatrix"/>
+ *     &lt;enumeration value="index"/>
  *     &lt;enumeration value="lambda"/>
  *     &lt;enumeration value="location"/>
+ *     &lt;enumeration value="lowerBound"/>
+ *     &lt;enumeration value="lowerLimit"/>
+ *     &lt;enumeration value="m"/>
  *     &lt;enumeration value="maximum"/>
  *     &lt;enumeration value="mean"/>
  *     &lt;enumeration value="meanLog"/>
@@ -61,15 +67,19 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="probabilityOfSuccess"/>
  *     &lt;enumeration value="probabilityOfZero"/>
  *     &lt;enumeration value="rate"/>
+ *     &lt;enumeration value="rateOfDecay"/>
  *     &lt;enumeration value="scale"/>
  *     &lt;enumeration value="scaleMatrix"/>
  *     &lt;enumeration value="shape"/>
  *     &lt;enumeration value="shape1"/>
  *     &lt;enumeration value="shape2"/>
- *     &lt;enumeration value="sizeParameter"/>
+ *     &lt;enumeration value="spread"/>
  *     &lt;enumeration value="stdev"/>
  *     &lt;enumeration value="stdevLog"/>
  *     &lt;enumeration value="tau"/>
+ *     &lt;enumeration value="theta"/>
+ *     &lt;enumeration value="upperBound"/>
+ *     &lt;enumeration value="upperLimit"/>
  *     &lt;enumeration value="var"/>
  *     &lt;enumeration value="varLog"/>
  *     &lt;enumeration value="weight"/>
@@ -101,12 +111,24 @@ public enum ParameterName {
     DENOMINATOR("denominator"),
     @XmlEnumValue("dispersion")
     DISPERSION("dispersion"),
+    @XmlEnumValue("geomStdev")
+    GEOM_STDEV("geomStdev"),
+    @XmlEnumValue("inverseScale")
+    INVERSE_SCALE("inverseScale"),
     @XmlEnumValue("inverseScaleMatrix")
     INVERSE_SCALE_MATRIX("inverseScaleMatrix"),
+    @XmlEnumValue("index")
+    INDEX("index"),
     @XmlEnumValue("lambda")
     LAMBDA("lambda"),
     @XmlEnumValue("location")
     LOCATION("location"),
+    @XmlEnumValue("lowerBound")
+    LOWER_BOUND("lowerBound"),
+    @XmlEnumValue("lowerLimit")
+    LOWER_LIMIT("lowerLimit"),
+    @XmlEnumValue("m")
+    M("m"),
     @XmlEnumValue("maximum")
     MAXIMUM("maximum"),
     @XmlEnumValue("mean")
@@ -143,6 +165,8 @@ public enum ParameterName {
     PROBABILITY_OF_ZERO("probabilityOfZero"),
     @XmlEnumValue("rate")
     RATE("rate"),
+    @XmlEnumValue("rateOfDecay")
+    RATE_OF_DECAY("rateOfDecay"),
     @XmlEnumValue("scale")
     SCALE("scale"),
     @XmlEnumValue("scaleMatrix")
@@ -153,14 +177,20 @@ public enum ParameterName {
     SHAPE_1("shape1"),
     @XmlEnumValue("shape2")
     SHAPE_2("shape2"),
-    @XmlEnumValue("sizeParameter")
-    SIZE_PARAMETER("sizeParameter"),
+    @XmlEnumValue("spread")
+    SPREAD("spread"),
     @XmlEnumValue("stdev")
     STDEV("stdev"),
     @XmlEnumValue("stdevLog")
     STDEV_LOG("stdevLog"),
     @XmlEnumValue("tau")
     TAU("tau"),
+    @XmlEnumValue("theta")
+    THETA("theta"),
+    @XmlEnumValue("upperBound")
+    UPPER_BOUND("upperBound"),
+    @XmlEnumValue("upperLimit")
+    UPPER_LIMIT("upperLimit"),
     @XmlEnumValue("var")
     VAR("var"),
     @XmlEnumValue("varLog")

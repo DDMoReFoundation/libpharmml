@@ -37,44 +37,64 @@ import eu.ddmore.libpharmml.impl.LoggerWrapper;
  * &lt;simpleType name="DistroNameType">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}Name">
  *     &lt;enumeration value="Bernoulli1"/>
+ *     &lt;enumeration value="BetaBinomial1"/>
  *     &lt;enumeration value="Binomial1"/>
  *     &lt;enumeration value="CategoricalOrdered1"/>
  *     &lt;enumeration value="CategoricalNonordered1"/>
+ *     &lt;enumeration value="CategoricalOrdered1"/>
+ *     &lt;enumeration value="ConwayMaxwellPoisson1"/>
+ *     &lt;enumeration value="DoublePoisson1"/>
+ *     &lt;enumeration value="GeneralizedNegativeBinomial1"/>
  *     &lt;enumeration value="GeneralizedPoisson1"/>
+ *     &lt;enumeration value="GeneralizedPoisson2"/>
+ *     &lt;enumeration value="GeneralizedPoisson3"/>
  *     &lt;enumeration value="Geometric1"/>
  *     &lt;enumeration value="Hypergeometric1"/>
  *     &lt;enumeration value="InverseBinomial1"/>
  *     &lt;enumeration value="NegativeBinomial1"/>
  *     &lt;enumeration value="NegativeBinomial2"/>
+ *     &lt;enumeration value="NegativeBinomial3"/>
+ *     &lt;enumeration value="NegativeBinomial4"/>
+ *     &lt;enumeration value="NegativeBinomial5"/>
  *     &lt;enumeration value="Poisson1"/>
  *     &lt;enumeration value="UniformDiscrete1"/>
  *     &lt;enumeration value="UniformDiscrete2"/>
  *     &lt;enumeration value="ZeroInflatedNegativeBinomial1"/>
+ *     &lt;enumeration value="ZeroInflatedGeneralizedPoisson1"/>
  *     &lt;enumeration value="ZeroInflatedPoisson1"/>
  *     &lt;enumeration value="Beta1"/>
  *     &lt;enumeration value="BirnbaumSaunders1"/>
  *     &lt;enumeration value="Cauchy1"/>
  *     &lt;enumeration value="ChiSquared1"/>
+ *     &lt;enumeration value="Erlang1"/>
  *     &lt;enumeration value="Exponential1"/>
+ *     &lt;enumeration value="Exponential2"/>
  *     &lt;enumeration value="F1"/>
+ *     &lt;enumeration value="F2"/>
  *     &lt;enumeration value="Gamma1"/>
+ *     &lt;enumeration value="Gamma2"/>
  *     &lt;enumeration value="GeneralizedGamma1"/>
  *     &lt;enumeration value="GeneralizedGamma2"/>
+ *     &lt;enumeration value="GeneralizedGamma3"/>
  *     &lt;enumeration value="Gompertz1"/>
  *     &lt;enumeration value="Gumbel1"/>
+ *     &lt;enumeration value="HalfNormal1"/>
  *     &lt;enumeration value="InverseGamma1"/>
  *     &lt;enumeration value="InverseGaussian1"/>
  *     &lt;enumeration value="Laplace1"/>
  *     &lt;enumeration value="Laplace2"/>
  *     &lt;enumeration value="Logistic1"/>
+ *     &lt;enumeration value="Logistic2"/>
  *     &lt;enumeration value="LogLogistic1"/>
+ *     &lt;enumeration value="LogLogistic2"/>
  *     &lt;enumeration value="LogNormal1"/>
  *     &lt;enumeration value="LogNormal2"/>
  *     &lt;enumeration value="LogNormal3"/>
  *     &lt;enumeration value="LogNormal4"/>
  *     &lt;enumeration value="LogNormal5"/>
- *     &lt;enumeration value="LogUniform"/>
- *     &lt;enumeration value="Nokagami1"/>
+ *     &lt;enumeration value="LogNormal6"/>
+ *     &lt;enumeration value="LogUniform1"/>
+ *     &lt;enumeration value="Nakagami1"/>
  *     &lt;enumeration value="Normal1"/>
  *     &lt;enumeration value="Normal2"/>
  *     &lt;enumeration value="Normal3"/>
@@ -84,6 +104,7 @@ import eu.ddmore.libpharmml.impl.LoggerWrapper;
  *     &lt;enumeration value="StandardNormal1"/>
  *     &lt;enumeration value="StandardUniform1"/>
  *     &lt;enumeration value="StudentT1"/>
+ *     &lt;enumeration value="StudentT2"/>
  *     &lt;enumeration value="Triangular1"/>
  *     &lt;enumeration value="TruncatedNormal1"/>
  *     &lt;enumeration value="Uniform1"/>
@@ -99,6 +120,9 @@ import eu.ddmore.libpharmml.impl.LoggerWrapper;
  *     &lt;enumeration value="Wishart1"/>
  *     &lt;enumeration value="Wishart2"/>
  *     &lt;enumeration value="MixtureDistribution"/>
+ *     &lt;enumeration value="RandomSample"/>
+ *     &lt;enumeration value="StatisticalSample"/>
+ *     &lt;enumeration value="UnknownSample"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -111,14 +135,26 @@ public enum DistributionName {
 
     @XmlEnumValue("Bernoulli1")
     BERNOULLI_1("Bernoulli1"),
+    @XmlEnumValue("BetaBinomial1")
+    BETA_BINOMIAL_1("BetaBinomial1"),
     @XmlEnumValue("Binomial1")
     BINOMIAL_1("Binomial1"),
     @XmlEnumValue("CategoricalOrdered1")
     CATEGORICAL_ORDERED_1("CategoricalOrdered1"),
     @XmlEnumValue("CategoricalNonordered1")
     CATEGORICAL_NONORDERED_1("CategoricalNonordered1"),
+    @XmlEnumValue("ConwayMaxwellPoisson1")
+    CONWAY_MAXWELL_POISSON_1("ConwayMaxwellPoisson1"),
+    @XmlEnumValue("DoublePoisson1")
+    DOUBLE_POISSON_1("DoublePoisson1"),
+    @XmlEnumValue("GeneralizedNegativeBinomial1")
+    GENERALIZED_NEGATIVE_BINOMIAL_1("GeneralizedNegativeBinomial1"),
     @XmlEnumValue("GeneralizedPoisson1")
     GENERALIZED_POISSON_1("GeneralizedPoisson1"),
+    @XmlEnumValue("GeneralizedPoisson2")
+    GENERALIZED_POISSON_2("GeneralizedPoisson2"),
+    @XmlEnumValue("GeneralizedPoisson3")
+    GENERALIZED_POISSON_3("GeneralizedPoisson3"),
     @XmlEnumValue("Geometric1")
     GEOMETRIC_1("Geometric1"),
     @XmlEnumValue("Hypergeometric1")
@@ -129,6 +165,12 @@ public enum DistributionName {
     NEGATIVE_BINOMIAL_1("NegativeBinomial1"),
     @XmlEnumValue("NegativeBinomial2")
     NEGATIVE_BINOMIAL_2("NegativeBinomial2"),
+    @XmlEnumValue("NegativeBinomial3")
+    NEGATIVE_BINOMIAL_3("NegativeBinomial3"),
+    @XmlEnumValue("NegativeBinomial4")
+    NEGATIVE_BINOMIAL_4("NegativeBinomial4"),
+    @XmlEnumValue("NegativeBinomial5")
+    NEGATIVE_BINOMIAL_5("NegativeBinomial5"),
     @XmlEnumValue("Poisson1")
     POISSON_1("Poisson1"),
     @XmlEnumValue("UniformDiscrete1")
@@ -137,6 +179,8 @@ public enum DistributionName {
     UNIFORM_DISCRETE_2("UniformDiscrete2"),
     @XmlEnumValue("ZeroInflatedNegativeBinomial1")
     ZERO_INFLATED_NEGATIVE_BINOMIAL_1("ZeroInflatedNegativeBinomial1"),
+    @XmlEnumValue("ZeroInflatedGeneralizedPoisson1")
+    ZERO_INFLATED_GENERALIZED_POISSON_1("ZeroInflatedGeneralizedPoisson1"),
     @XmlEnumValue("ZeroInflatedPoisson1")
     ZERO_INFLATED_POISSON_1("ZeroInflatedPoisson1"),
     @XmlEnumValue("Beta1")
@@ -147,20 +191,32 @@ public enum DistributionName {
     CAUCHY_1("Cauchy1"),
     @XmlEnumValue("ChiSquared1")
     CHI_SQUARED_1("ChiSquared1"),
+    @XmlEnumValue("Erlang1")
+    ERLANG_1("Erlang1"),
     @XmlEnumValue("Exponential1")
     EXPONENTIAL_1("Exponential1"),
+    @XmlEnumValue("Exponential2")
+    EXPONENTIAL_2("Exponential2"),
     @XmlEnumValue("F1")
     F_1("F1"),
+    @XmlEnumValue("F2")
+    F_2("F2"),
     @XmlEnumValue("Gamma1")
     GAMMA_1("Gamma1"),
+    @XmlEnumValue("Gamma2")
+    GAMMA_2("Gamma2"),
     @XmlEnumValue("GeneralizedGamma1")
     GENERALIZED_GAMMA_1("GeneralizedGamma1"),
     @XmlEnumValue("GeneralizedGamma2")
     GENERALIZED_GAMMA_2("GeneralizedGamma2"),
+    @XmlEnumValue("GeneralizedGamma3")
+    GENERALIZED_GAMMA_3("GeneralizedGamma3"),
     @XmlEnumValue("Gompertz1")
     GOMPERTZ_1("Gompertz1"),
     @XmlEnumValue("Gumbel1")
     GUMBEL_1("Gumbel1"),
+    @XmlEnumValue("HalfNormal1")
+    HALF_NORMAL_1("HalfNormal1"),
     @XmlEnumValue("InverseGamma1")
     INVERSE_GAMMA_1("InverseGamma1"),
     @XmlEnumValue("InverseGaussian1")
@@ -171,8 +227,12 @@ public enum DistributionName {
     LAPLACE_2("Laplace2"),
     @XmlEnumValue("Logistic1")
     LOGISTIC_1("Logistic1"),
+    @XmlEnumValue("Logistic2")
+    LOGISTIC_2("Logistic2"),
     @XmlEnumValue("LogLogistic1")
     LOG_LOGISTIC_1("LogLogistic1"),
+    @XmlEnumValue("LogLogistic2")
+    LOG_LOGISTIC_2("LogLogistic2"),
     @XmlEnumValue("LogNormal1")
     LOG_NORMAL_1("LogNormal1"),
     @XmlEnumValue("LogNormal2")
@@ -183,10 +243,12 @@ public enum DistributionName {
     LOG_NORMAL_4("LogNormal4"),
     @XmlEnumValue("LogNormal5")
     LOG_NORMAL_5("LogNormal5"),
-    @XmlEnumValue("LogUniform")
-    LOG_UNIFORM("LogUniform"),
-    @XmlEnumValue("Nokagami1")
-    NOKAGAMI_1("Nokagami1"),
+    @XmlEnumValue("LogNormal6")
+    LOG_NORMAL_6("LogNormal6"),
+    @XmlEnumValue("LogUniform1")
+    LOG_UNIFORM_1("LogUniform1"),
+    @XmlEnumValue("Nakagami1")
+    NAKAGAMI_1("Nakagami1"),
     @XmlEnumValue("Normal1")
     NORMAL_1("Normal1"),
     @XmlEnumValue("Normal2")
@@ -205,6 +267,8 @@ public enum DistributionName {
     STANDARD_UNIFORM_1("StandardUniform1"),
     @XmlEnumValue("StudentT1")
     STUDENT_T_1("StudentT1"),
+    @XmlEnumValue("StudentT2")
+    STUDENT_T_2("StudentT2"),
     @XmlEnumValue("Triangular1")
     TRIANGULAR_1("Triangular1"),
     @XmlEnumValue("TruncatedNormal1")
@@ -234,7 +298,13 @@ public enum DistributionName {
     @XmlEnumValue("Wishart2")
     WISHART_2("Wishart2"),
     @XmlEnumValue("MixtureDistribution")
-    MIXTURE_DISTRIBUTION("MixtureDistribution");
+    MIXTURE_DISTRIBUTION("MixtureDistribution"),
+    @XmlEnumValue("RandomSample")
+    RANDOM_SAMPLE("RandomSample"),
+    @XmlEnumValue("StatisticalSample")
+    STATISTICAL_SAMPLE("StatisticalSample"),
+    @XmlEnumValue("UnknownSample")
+    UNKNOWN_SAMPLE("UnknownSample");
     private final String value;
     
     private final ParameterName[] requiredParameters;

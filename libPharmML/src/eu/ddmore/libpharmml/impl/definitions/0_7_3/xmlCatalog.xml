@@ -12,7 +12,7 @@
     <!-- probonto -->
     <system
         systemId="http://www.pharmml.org/probonto/ProbOnto" 
-        uri="../probonto/0_2/probOnto.xsd"/>
+        uri="../probonto/0_3/probOnto.xsd"/>
     
     <system systemId="http://www.pharmml.org/pharmml/0.7/Dataset" 
         uri="dataset.xsd"/>
