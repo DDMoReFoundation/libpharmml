@@ -347,7 +347,7 @@ public enum DistributionName {
     	ParameterName[] paramNames = new ParameterName[parametersArray.length];
     	for(int i=0;i<parametersArray.length;i++){
     		try {
-    			paramNames[0] = ParameterName.fromValue(parametersArray[i]);
+    			paramNames[i] = ParameterName.fromValue(parametersArray[i]);
     		} catch (IllegalArgumentException e) {
     			throw new RuntimeException("Parameter \""+parametersArray[i]+"\" doesn't exist.");
     		}

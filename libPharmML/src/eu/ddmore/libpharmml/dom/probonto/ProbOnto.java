@@ -34,7 +34,6 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
-import eu.ddmore.libpharmml.validation.Validatable;
 
 
 /**
@@ -78,7 +77,7 @@ import eu.ddmore.libpharmml.validation.Validatable;
     "dataSet"
 })
 public class ProbOnto
-    extends PharmMLRootType implements Validatable
+    extends PharmMLRootType implements IProbOntoDistribution
 {
 
     @XmlElement(name = "Parameter", required = true)
@@ -385,14 +384,7 @@ public class ProbOnto
 
 	@Override
 	public void validate(IErrorHandler errorHandler) {
-		if(name != null){
-			ParameterName[] paramNames = name.requiredParameters();
-			for(ParameterName requiredParam : paramNames){
-				if(!this.containsParameter(requiredParam)){
-					errorHandler.handleError("undef", "Parameter \""+requiredParam+"\" is missing in distribution +\""+name+"\".", this);
-				}
-			}
-		}
+		Util.validateProbOnto(this, errorHandler);
 	}
 	
 	/**

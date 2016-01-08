@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -59,7 +60,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "listOfParameter"
 })
 public class MixtureComponent
-    extends PharmMLRootType
+    extends PharmMLRootType implements IProbOntoDistribution
 {
 
     @XmlElement(name = "Parameter", required = true)
@@ -148,5 +149,39 @@ public class MixtureComponent
         getListOfParameter().add(el);
         return el;
     }
+
+	@Override
+	public void validate(IErrorHandler errorHandler) {
+		Util.validateProbOnto(this, errorHandler);
+	}
+
+	/**
+	 * Gets the {@link DistributionParameter} defined with the given name. If the parameter is not defined,
+	 * this method returns null.
+	 * @param parameter Name of the parameter
+	 * @return The {@link DistributionParameter} with the given name.
+	 */
+	public DistributionParameter getParameter(ParameterName parameter){
+		for(DistributionParameter dp : getListOfParameter()){
+			if(dp.getName() != null && dp.getName().equals(parameter)){
+				return dp;
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Checks if this distribution contains the given parameter.
+	 * @param parameter Name of the parameter
+	 * @return true if the parameter is defined, else false.
+	 */
+	public boolean containsParameter(ParameterName parameter){
+		for(DistributionParameter dp : getListOfParameter()){
+			if(dp.getName() != null && dp.getName().equals(parameter)){
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
