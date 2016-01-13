@@ -49,13 +49,13 @@ public class XMLFilter extends XMLFilterImpl {
 	static final public String NS_PATTERN_MML = NS_PATTERN_ROOT + "PharmML";
 	
 //	static final private PharmMLVersion DEFAULT_VERSION = PharmMLVersion.V0_6;
-	static final public String NS_DEFAULT_CT = "http://www.pharmml.org/pharmml/0.7/CommonTypes";
-	static final public String NS_DEFAULT_DS = "http://www.pharmml.org/pharmml/0.7/Dataset";
-	static final public String NS_DEFAULT_MATH = "http://www.pharmml.org/pharmml/0.7/Maths";
-	static final public String NS_DEFAULT_MDEF = "http://www.pharmml.org/pharmml/0.7/ModelDefinition";
-	static final public String NS_DEFAULT_TD = "http://www.pharmml.org/pharmml/0.7/TrialDesign";
-	static final public String NS_DEFAULT_MSTEPS = "http://www.pharmml.org/pharmml/0.7/ModellingSteps";
-	static final public String NS_DEFAULT_MML = "http://www.pharmml.org/pharmml/0.7/PharmML";
+	static final public String NS_DEFAULT_CT = "http://www.pharmml.org/pharmml/0.8/CommonTypes";
+	static final public String NS_DEFAULT_DS = "http://www.pharmml.org/pharmml/0.8/Dataset";
+	static final public String NS_DEFAULT_MATH = "http://www.pharmml.org/pharmml/0.8/Maths";
+	static final public String NS_DEFAULT_MDEF = "http://www.pharmml.org/pharmml/0.8/ModelDefinition";
+	static final public String NS_DEFAULT_TD = "http://www.pharmml.org/pharmml/0.8/TrialDesign";
+	static final public String NS_DEFAULT_MSTEPS = "http://www.pharmml.org/pharmml/0.8/ModellingSteps";
+	static final public String NS_DEFAULT_MML = "http://www.pharmml.org/pharmml/0.8/PharmML";
 	static final public String NS_DEFAULT_UNCERTML = "http://www.uncertml.org/3.0";
 	static final public String NS_DEFAULT_PROBONTO = "http://www.pharmml.org/probonto/ProbOnto";
 	
