@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 import eu.ddmore.libpharmml.dom.AbstractTreeNode;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -31,6 +32,25 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
  */
 @XmlTransient
 public abstract class PharmMLElement extends AbstractTreeNode {
+	
+	@XmlTransient
+	protected static final String NS_DEFAULT_CT = XMLFilter.NS_DEFAULT_CT;
+	@XmlTransient
+	protected static final String NS_DEFAULT_DS = XMLFilter.NS_DEFAULT_DS;
+	@XmlTransient
+	protected static final String NS_DEFAULT_MATH = XMLFilter.NS_DEFAULT_MATH;
+	@XmlTransient
+	protected static final String NS_DEFAULT_MDEF = XMLFilter.NS_DEFAULT_MDEF;
+	@XmlTransient
+	protected static final String NS_DEFAULT_MML = XMLFilter.NS_DEFAULT_MML;
+	@XmlTransient
+	protected static final String NS_DEFAULT_MSTEPS = XMLFilter.NS_DEFAULT_MSTEPS;
+	@XmlTransient
+	protected static final String NS_DEFAULT_PROBONTO = XMLFilter.NS_DEFAULT_PROBONTO;
+	@XmlTransient
+	protected static final String NS_DEFAULT_TD = XMLFilter.NS_DEFAULT_TD;
+	@XmlTransient
+	protected static final String NS_DEFAULT_UNCERTML = XMLFilter.NS_DEFAULT_UNCERTML;
 	
 	@XmlTransient
     private PharmMLVersion unmarshalVersion = null;
