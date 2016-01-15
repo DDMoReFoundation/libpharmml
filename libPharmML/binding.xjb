@@ -1,7 +1,7 @@
 <jxb:bindings version="1.0"
                xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
 			   xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
-               xmlns:math="http://www.pharmml.org/pharmml/0.7/Maths"
+               xmlns:math="http://www.pharmml.org/pharmml/0.8/Maths"
                xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	       <jxb:globalBindings choiceContentProperty="false">
 		<!-- This instruction changes the code generation to try and use classes for elements as
@@ -9,7 +9,7 @@
 			 names that return lists. --> 
 		<!--xjc:simple/ -->
 	</jxb:globalBindings> 
-  <jxb:bindings schemaLocation="./src/eu/ddmore/libpharmml/impl/definitions/0_7_3/pharmml.xsd" node="/xs:schema">
+  <jxb:bindings schemaLocation="./src/eu/ddmore/libpharmml/impl/definitions/0_8/pharmml.xsd" node="/xs:schema">
      <jxb:schemaBindings>
       <jxb:package name="eu.ddmore.libpharmml.dom">
         <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
@@ -18,7 +18,7 @@
 	</jxb:schemaBindings>
   </jxb:bindings>
   
-    <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.7/CommonTypes" node="/xs:schema">
+    <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.8/CommonTypes" node="/xs:schema">
         <jxb:schemaBindings>
             <jxb:package name="eu.ddmore.libpharmml.dom.commontypes">
                 <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
@@ -195,7 +195,7 @@
 	       </jxb:bindings>
     </jxb:bindings>
 	       
-  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.7/Dataset" node="/xs:schema">
+  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.8/Dataset" node="/xs:schema">
     <jxb:schemaBindings>
       <jxb:package name="eu.ddmore.libpharmml.dom.dataset">
         <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
@@ -203,13 +203,25 @@
       </jxb:package>
 	</jxb:schemaBindings>
   </jxb:bindings>
-  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.7/Maths" node="/xs:schema">
+  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.8/Maths" node="/xs:schema">
     <jxb:schemaBindings>
       <jxb:package name="eu.ddmore.libpharmml.dom.maths">
         <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
 		</jxb:javadoc>
       </jxb:package>
 	</jxb:schemaBindings>
+		<jxb:bindings node="//xs:complexType[@name='ConditionalStatementType']">                     
+		    <jxb:class name="ConditionalStatement"/>                                             
+		</jxb:bindings>
+		<jxb:bindings node="//xs:complexType[@name='ProbabilityFctType']">                     
+		    <jxb:class name="ProbabilityFunction"/>                                             
+		</jxb:bindings>
+		<jxb:bindings node="//xs:complexType[@name='StatsopType']">                     
+		    <jxb:class name="Statsop"/>                                             
+		</jxb:bindings>
+		<jxb:bindings node="//xs:complexType[@name='NaryopType']">                     
+		    <jxb:class name="Naryop"/>                                             
+		</jxb:bindings>
 	<!--jxb:bindings node="//xs:complexType[@name='LogicBinOpType']">
 	  <jxb:bindings node=".//xs:choice[1]">
 	    <jxb:bindings node=".//xs:element[@ref='math:LogicBinop']">
@@ -246,15 +258,24 @@
 	  </jxb:bindings>
 	</jxb:bindings-->
   </jxb:bindings>
-  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.7/ModelDefinition" node="/xs:schema">
+  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.8/ModelDefinition" node="/xs:schema">
     <jxb:schemaBindings>
       <jxb:package name="eu.ddmore.libpharmml.dom.modeldefn">
         <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
 		</jxb:javadoc>
       </jxb:package>
 	</jxb:schemaBindings>
+		<jxb:bindings node="//xs:complexType[@name='TransitionMatrixType']">                     
+		    <jxb:class name="TransitionMatrix"/>                                             
+		</jxb:bindings>
+		<jxb:bindings node="//xs:complexType[@name='SimpleParameterType']">                     
+		    <jxb:class name="Parameter"/>                                             
+		</jxb:bindings>
+		<jxb:bindings node="//xs:complexType[@name='RealisationType']">                     
+		    <jxb:class name="Realisation"/>                                             
+		</jxb:bindings>
   </jxb:bindings>
-  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.7/TrialDesign" node="/xs:schema">
+  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.8/TrialDesign" node="/xs:schema">
     <jxb:schemaBindings>
       <jxb:package name="eu.ddmore.libpharmml.dom.trialdesign">
         <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
@@ -262,7 +283,7 @@
       </jxb:package>
 	</jxb:schemaBindings>
   </jxb:bindings>
- <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.7/ModellingSteps" node="/xs:schema">
+ <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.8/ModellingSteps" node="/xs:schema">
     <jxb:schemaBindings>
       <jxb:package name="eu.ddmore.libpharmml.dom.modellingsteps">
         <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
