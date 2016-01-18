@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.dataset.CategoryMapping;
 import eu.ddmore.libpharmml.dom.modeldefn.UncertML;
+import eu.ddmore.libpharmml.dom.probonto.DistributionName;
 import eu.ddmore.libpharmml.dom.probonto.ProbOnto;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
@@ -43,14 +44,15 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="PieceType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/pharmml/0.7/Maths}ExprType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/Maths}ExprType">
  *       &lt;sequence>
  *         &lt;choice minOccurs="0">
- *           &lt;element name="UncertML" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}UncertMLType"/>
- *           &lt;element name="ProbOnto" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}ProbOntoType"/>
+ *           &lt;element name="UncertML" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}UncertMLType"/>
+ *           &lt;element ref="{http://www.pharmml.org/probonto/ProbOnto}ProbOnto"/>
  *         &lt;/choice>
- *         &lt;element name="CategoryMapping" type="{http://www.pharmml.org/pharmml/0.7/Dataset}CategoryMappingType" minOccurs="0"/>
- *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Condition"/>
+ *         &lt;element name="CategoryMapping" type="{http://www.pharmml.org/pharmml/0.8/Dataset}CategoryMappingType" minOccurs="0"/>
+ *         &lt;element name="Piecewise" type="{http://www.pharmml.org/pharmml/0.8/Maths}PiecewiseType" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}Condition"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -64,6 +66,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 	"uncertML",
     "probOnto",
     "categoryMapping",
+    "piecewise",
     "condition"
 })
 public class Piece
@@ -76,6 +79,8 @@ public class Piece
     protected ProbOnto probOnto;
     @XmlElement(name = "CategoryMapping")
     protected CategoryMapping categoryMapping;
+    @XmlElement(name = "Piecewise")
+    protected Piecewise piecewise;
     @XmlElement(name = "Condition", required = true)
     protected Condition condition;
     
@@ -156,6 +161,31 @@ public class Piece
     public void setCategoryMapping(CategoryMapping value) {
         this.categoryMapping = value;
     }
+    
+    /**
+     * Gets the value of the piecewise property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Piecewise }
+     *     
+     */
+    public Piecewise getPiecewise() {
+        return piecewise;
+    }
+
+    /**
+     * Sets the value of the piecewise property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Piecewise }
+     *     
+     */
+    public void setPiecewise(Piecewise value) {
+        this.piecewise = value;
+    }
+
 
     /**
      * Gets the value of the condition property.
@@ -181,6 +211,69 @@ public class Piece
         this.condition = value;
     }
     
+    /**
+     * Creates a new empty {@link UncertML} uncertML element, adds it to the current object and returns it.
+     * @return The created {@link UncertML} object.
+     */
+    public UncertML createUncertML(){
+    	UncertML el = new UncertML();
+    	this.uncertML = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link ProbOnto} probOnto element, adds it to the current object and returns it.
+     * @return The created {@link ProbOnto} object.
+     */
+    public ProbOnto createProbOnto(){
+    	ProbOnto el = new ProbOnto();
+    	this.probOnto = el;
+    	return el;
+    }
+    
+    /**
+     * Creates a new empty {@link ProbOnto} probOnto element, adds it to the current object and returns it.
+     * @param name Name of the distribution.
+     * @return The created {@link ProbOnto} object.
+     */
+    public ProbOnto createProbOnto(DistributionName name){
+    	ProbOnto el = new ProbOnto();
+    	el.setName(name);
+    	this.probOnto = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link CategoryMapping} categoryMapping element, adds it to the current object and returns it.
+     * @return The created {@link CategoryMapping} object.
+     */
+    public CategoryMapping createCategoryMapping(){
+    	CategoryMapping el = new CategoryMapping();
+    	this.categoryMapping = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link Piecewise} piecewise element, adds it to the current object and returns it.
+     * @return The created {@link Piecewise} object.
+     */
+    public Piecewise createPiecewise(){
+    	Piecewise el = new Piecewise();
+    	this.piecewise = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link Condition} condition element, adds it to the current object and returns it.
+     * @return The created {@link Condition} object.
+     */
+    public Condition createCondition(){
+    	Condition el = new Condition();
+    	this.condition = el;
+    	return el;
+    }
+
+    
 //    protected void beforeMarshal(Marshaller m){
 //		super.beforeMarshal(m);
 //	}
@@ -196,6 +289,7 @@ public class Piece
 				.addIfNotNull(uncertML)
 				.addIfNotNull(probOnto)
 				.addIfNotNull(categoryMapping)
+				.addIfNotNull(piecewise)
 				.addIfNotNull(condition);
 	}
 
