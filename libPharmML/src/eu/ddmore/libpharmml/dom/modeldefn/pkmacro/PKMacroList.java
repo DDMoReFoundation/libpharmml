@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.tags.StructuralModelElement;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -75,7 +76,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "listOfMacro"
 })
 public class PKMacroList
-    extends PharmMLRootType
+    extends PharmMLRootType implements StructuralModelElement
 {
 
     @XmlElements({
