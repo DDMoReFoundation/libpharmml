@@ -63,6 +63,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "listOfDesignParameter",
     "listOfAdministration",
     "listOfIndividualAdministration",
+    "listOfLookupTable",
     "listOfAction",
     "listOfInterventionsCombination"
 })
@@ -76,6 +77,8 @@ public class Interventions
     protected List<Administration> listOfAdministration;
     @XmlElement(name = "IndividualAdministration")
     protected List<IndividualAdministration> listOfIndividualAdministration;
+    @XmlElement(name = "LookupTable")
+    protected List<LookupTable> listOfLookupTable; // PharmML 0.8
     @XmlElement(name = "Action")
     protected List<Action> listOfAction;
     @XmlElement(name = "InterventionsCombination")
@@ -167,6 +170,35 @@ public class Interventions
         }
         return this.listOfIndividualAdministration;
     }
+    
+    /**
+     * Gets the value of the lookupTable property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the lookupTable property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getLookupTable().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link LookupTable }
+     * 
+     * @since PharmML 0.8
+     */
+    public List<LookupTable> getListOfLookupTable() {
+        if (listOfLookupTable == null) {
+        	listOfLookupTable = new ArrayList<LookupTable>();
+        }
+        return this.listOfLookupTable;
+    }
 
     /**
      * Gets the value of the action property.
@@ -232,6 +264,7 @@ public class Interventions
     			.addIfNotNull(listOfDesignParameter)
     			.addIfNotNull(listOfAdministration)
     			.addIfNotNull(listOfIndividualAdministration)
+    			.addIfNotNull(listOfLookupTable)
     			.addIfNotNull(listOfAction)
     			.addIfNotNull(listOfInterventionsCombination);
     }
@@ -308,6 +341,16 @@ public class Interventions
             InterventionsCombination el = new InterventionsCombination();
             getListOfInterventionsCombination().add(el);
             return el;
+    }
+    
+    /**
+     * Creates a new empty {@link LookupTable} element, adds it to the current object and returns it.
+     * @return The created {@link LookupTable} object.
+     */
+    public LookupTable createLookupTable(){
+    	LookupTable lt = new LookupTable();
+    	getListOfLookupTable().add(lt);
+    	return lt;
     }
 
 }
