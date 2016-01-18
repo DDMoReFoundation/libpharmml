@@ -93,7 +93,7 @@ public class ExternalDataSet
     protected DataSet dataSet;
     protected CodeInjection codeInjection;
 
-    protected ToolName toolName;
+    protected String toolName;
     protected String oid;
     
     /**
@@ -106,8 +106,18 @@ public class ExternalDataSet
      * @param toolName The tool this dataset comes from.
      * @param oid Object id of this dataset for refering.
      */
-    public ExternalDataSet(ToolName toolName, String oid){
+    public ExternalDataSet(String toolName, String oid){
     	this.toolName = toolName;
+    	this.oid = oid;
+    }
+    
+    /**
+     * Constructs an external dataset with the required attributes.
+     * @param toolName The tool this dataset comes from.
+     * @param oid Object id of this dataset for refering.
+     */
+    public ExternalDataSet(ToolName toolName, String oid){
+    	setToolName(toolName);
     	this.oid = oid;
     }
 
@@ -197,13 +207,27 @@ public class ExternalDataSet
      * 
      * @return
      *     possible object is
-     *     {@link ToolName }
+     *     {@link String }
      *     
      */
-    public ToolName getToolName() {
+    public String getToolName() {
         return toolName;
     }
 
+    /**
+     * Sets the value of the toolName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *   
+     * @since PharmML 0.8. Tool name can now be a free string.
+     * @see #setToolName(ToolName)
+     */
+    public void setToolName(String value) {
+        this.toolName = value;
+    }
+    
     /**
      * Sets the value of the toolName property.
      * 
@@ -213,7 +237,11 @@ public class ExternalDataSet
      *     
      */
     public void setToolName(ToolName value) {
-        this.toolName = value;
+    	if(value != null){
+    		this.toolName = value.value();
+    	} else {
+    		this.toolName = null;
+    	}
     }
 
     /**
@@ -328,8 +356,8 @@ public class ExternalDataSet
 	    protected CodeInjection design_codeInjection;
 	    
 	    
-	    @XmlAttribute(name = "toolName", required = true)
-	    protected ToolName toolName;
+	    @XmlAttribute(name = "toolName")
+	    protected String toolName;
 	    @XmlAttribute(name = "oid", required = true)
 	    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
 	    protected String oid;
