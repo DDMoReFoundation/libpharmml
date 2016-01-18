@@ -145,6 +145,30 @@ public class IndividualParameter
     extends CommonParameter implements Assignable
 {
 
+	/**
+	 * Empty constructor
+	 */
+	public IndividualParameter() {
+		super();
+	}
+
+	/**
+     * Constructs a parameter that refers to a former declaration within the model. This may be used for parameter assignments within
+     * conditional statements.
+     * @param referredParameter {@link IndividualParameter} referred by this instance.
+     */
+	public IndividualParameter(IndividualParameter referredParameter) {
+		super(referredParameter);
+	}
+
+	/**
+	 * Constructs a new parameter with the given symbol identifier.
+	 * @param symbId Symbol identifier of the parameter that must be unique within its block.
+	 */
+	public IndividualParameter(String symbId) {
+		super(symbId);
+	}
+
 	@Deprecated
     @XmlElement(name = "GaussianModel")
     protected IndividualParameter.GaussianModel gaussianModel;

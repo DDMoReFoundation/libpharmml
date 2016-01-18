@@ -92,7 +92,31 @@ public class PopulationParameter
     extends CommonParameter implements Assignable
 {
 
-    @XmlElement(name = "LHSTransformation")
+	/**
+	 * Empty constructor
+	 */
+    public PopulationParameter() {
+		super();
+	}
+
+    /**
+     * Constructs a parameter that refers to a former declaration within the model. This may be used for parameter assignments within
+     * conditional statements.
+     * @param referredParameter {@link PopulationParameter} referred by this instance.
+     */
+	public PopulationParameter(PopulationParameter referredParameter) {
+		super(referredParameter);
+	}
+
+	/**
+	 * Constructs a new parameter with the given symbol identifier.
+	 * @param symbId Symbol identifier of the parameter that must be unique within its block.
+	 */
+	public PopulationParameter(String symbId) {
+		super(symbId);
+	}
+
+	@XmlElement(name = "LHSTransformation")
     protected LHSTransformationType lhsTransformation;
     @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Rhs assign;

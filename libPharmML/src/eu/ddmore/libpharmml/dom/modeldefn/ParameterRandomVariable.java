@@ -113,7 +113,32 @@ public class ParameterRandomVariable
     extends CommonParameter
 {
 
-	@XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+	/**
+	 * Empty constructor
+	 */
+	public ParameterRandomVariable() {
+		super();
+	}
+
+	/**
+     * Constructs a parameter that refers to a former declaration within the model. This may be used for parameter assignments within
+     * conditional statements.
+     * @param referredParameter {@link ParameterRandomVariable} referred by this instance.
+     */
+	public ParameterRandomVariable(ParameterRandomVariable referredParameter) {
+		super(referredParameter);
+	}
+
+	/**
+	 * Constructs a new parameter with the given symbol identifier.
+	 * @param symbId Symbol identifier of the parameter that must be unique within its block.
+	 */
+	public ParameterRandomVariable(String symbId) {
+		super(symbId);
+	}
+
+
+	@XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT)
     protected List<LevelReference> listOfVariabilityReference;
     @Deprecated
     @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
