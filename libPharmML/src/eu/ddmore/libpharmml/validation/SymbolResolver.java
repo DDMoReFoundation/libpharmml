@@ -28,6 +28,7 @@ import javax.swing.tree.TreeNode;
 
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.AbstractTreeNode;
+import eu.ddmore.libpharmml.dom.IndependentVariable;
 import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.dom.commontypes.Block;
 import eu.ddmore.libpharmml.dom.commontypes.FunctionDefinition;
@@ -81,9 +82,9 @@ public class SymbolResolver {
 	 * @param dom A {@link PharmML} dom instance.
 	 */
 	private void init(PharmML dom){
-		if(dom.getIndependentVariable() != null){
+		for(IndependentVariable iv : dom.getListOfIndependentVariable()){
 			try {
-				globalBlock.addSymbol(dom.getIndependentVariable());
+				globalBlock.addSymbol(iv);
 			} catch (DuplicatedSymbolException e) {
 				handleException(e);
 			}

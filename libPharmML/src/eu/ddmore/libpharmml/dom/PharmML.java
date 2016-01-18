@@ -61,17 +61,18 @@ import eu.ddmore.libpharmml.util.ChainedList;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Name"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Description" minOccurs="0"/>
- *         &lt;element name="IndependentVariable" type="{http://www.pharmml.org/2013/03/PharmML}IndependentVariableType" minOccurs="0"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}FunctionDefinition" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}ModelDefinition"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/TrialDesign}TrialDesign" minOccurs="0"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/ModellingSteps}ModellingSteps" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Name"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Description" minOccurs="0"/>
+ *         &lt;element name="IndependentVariable" type="{http://www.pharmml.org/pharmml/0.8/PharmML}IndependentVariableType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}FunctionDefinition" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}ModelDefinition"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/TrialDesign}TrialDesign" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/ModellingSteps}ModellingSteps" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.pharmml.org/2013/03/CommonTypes}RootAttributesGroup"/>
+ *       &lt;attGroup ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}RootAttributesGroup"/>
  *       &lt;attribute name="writtenVersion" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="implementedBy" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="metadataFile" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -83,7 +84,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlType(name = "", propOrder = {
     "name",
     "description",
-    "independentVariable",
+    "listOfIndependentVariable",
     "listOfFunctionDefinition",
     "modelDefinition",
     "trialDesign",
@@ -97,7 +98,7 @@ public class PharmML extends PharmMLElement implements Identifiable {
     @XmlElement(name = "Description", namespace = XMLFilter.NS_DEFAULT_CT)
     protected AnnotationType description;
     @XmlElement(name = "IndependentVariable")
-    protected IndependentVariable independentVariable;
+    protected List<IndependentVariable> listOfIndependentVariable;
     @XmlElement(name = "FunctionDefinition", namespace = XMLFilter.NS_DEFAULT_CT)
     protected List<FunctionDefinition> listOfFunctionDefinition;
     @XmlElement(name = "ModelDefinition", namespace = XMLFilter.NS_DEFAULT_MDEF, required = true)
@@ -167,25 +168,30 @@ public class PharmML extends PharmMLElement implements Identifiable {
     /**
      * Gets the value of the independentVariable property.
      * 
-     * @return
-     *     possible object is
-     *     {@link IndependentVariable }
-     *     
-     */
-    public IndependentVariable getIndependentVariable() {
-        return independentVariable;
-    }
-
-    /**
-     * Sets the value of the independentVariable property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the independentVariable property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link IndependentVariable }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getIndependentVariable().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link IndependentVariable }
+     * 
+     * @since PharmML 0.8 (as a list)
      */
-    public void setIndependentVariable(IndependentVariable value) {
-        this.independentVariable = value;
+    public List<IndependentVariable> getListOfIndependentVariable() {
+        if (listOfIndependentVariable == null) {
+        	listOfIndependentVariable = new ArrayList<IndependentVariable>();
+        }
+        return this.listOfIndependentVariable;
     }
 
     /**
@@ -442,7 +448,7 @@ public class PharmML extends PharmMLElement implements Identifiable {
      */
     public IndependentVariable createIndependentVariable(){
             IndependentVariable el = new IndependentVariable();
-            this.independentVariable = el;
+            getListOfIndependentVariable().add(el);
             return el;
     }
     /**
@@ -515,7 +521,7 @@ public class PharmML extends PharmMLElement implements Identifiable {
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(name)
 				.addIfNotNull(description)
-				.addIfNotNull(independentVariable)
+				.addIfNotNull(listOfIndependentVariable)
 				.addIfNotNull(listOfFunctionDefinition)
 				.addIfNotNull(modelDefinition)
 				.addIfNotNull(trialDesign)
