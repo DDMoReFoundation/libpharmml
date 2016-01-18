@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.SubList;
 
@@ -125,7 +126,7 @@ import eu.ddmore.libpharmml.util.SubList;
     "matrixRowOrMatrixCellOrMatrixBlock"
 })
 public class Matrix
-    extends PharmMLRootType
+    extends PharmMLRootType implements ExpressionValue
 {
 
     @XmlElement(name = "RowNames")
