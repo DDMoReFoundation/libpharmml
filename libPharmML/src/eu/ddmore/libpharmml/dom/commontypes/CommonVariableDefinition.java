@@ -35,6 +35,8 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.tags.StructuralModelElement;
+
 
 /**
  * 
@@ -71,7 +73,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     FunctionParameter.class
 })
 public abstract class CommonVariableDefinition
-    extends PharmMLRootType implements Symbol
+    extends PharmMLRootType implements Symbol, StructuralModelElement
 {
 
     @XmlElement(name = "Symbol")
