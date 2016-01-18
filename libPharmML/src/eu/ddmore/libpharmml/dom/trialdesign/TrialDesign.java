@@ -513,13 +513,27 @@ public class TrialDesign
     /**
      * Creates a new empty {@link ExternalDataSet} element, adds it to the current object and returns it.
      * @param oid Object id
-     * @param name The name of the external tool this dataset comes from.
+     * @param toolname The name of the external tool this dataset comes from.
      * @return The created {@link ExternalDataSet} object.                                                                     
      */                                                                                                                           
-    public ExternalDataSet createExternalDataSet(String oid, ToolName name){                                                                      
+    public ExternalDataSet createExternalDataSet(String oid, ToolName toolname){                                                                      
             ExternalDataSet el = new ExternalDataSet();     
             el.setOid(oid);
-            el.setToolName(name);
+            el.setToolName(toolname);
+            getListOfExternalDataSet().add(el);                                                                             
+            return el;                                                                                                            
+    }   
+    
+    /**
+     * Creates a new empty {@link ExternalDataSet} element, adds it to the current object and returns it.
+     * @param oid Object id
+     * @param toolname The name of the external tool this dataset comes from.
+     * @return The created {@link ExternalDataSet} object.                                                                     
+     */                                                                                                                           
+    public ExternalDataSet createExternalDataSet(String oid, String toolname){                                                                      
+            ExternalDataSet el = new ExternalDataSet();     
+            el.setOid(oid);
+            el.setToolName(toolname);
             getListOfExternalDataSet().add(el);                                                                             
             return el;                                                                                                            
     }   
