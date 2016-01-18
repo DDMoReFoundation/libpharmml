@@ -25,10 +25,12 @@ import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.LevelReference;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.modeldefn.DesignParameter;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
@@ -44,15 +46,15 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="ObservationsType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/pharmml/0.7/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DesignParameter" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;choice>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/TrialDesign}LookupTable" maxOccurs="unbounded"/>
- *           &lt;element name="IndividualObservations" type="{http://www.pharmml.org/pharmml/0.7/TrialDesign}DatasetMappingType" maxOccurs="unbounded"/>
- *           &lt;element name="Observation" type="{http://www.pharmml.org/pharmml/0.7/TrialDesign}ObservationType" maxOccurs="unbounded"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}DesignParameter" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;choice maxOccurs="unbounded">
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/TrialDesign}LookupTable" maxOccurs="unbounded"/>
+ *           &lt;element name="IndividualObservations" type="{http://www.pharmml.org/pharmml/0.8/TrialDesign}DatasetMappingType" maxOccurs="unbounded"/>
+ *           &lt;element name="Observation" type="{http://www.pharmml.org/pharmml/0.8/TrialDesign}ObservationType" maxOccurs="unbounded"/>
  *         &lt;/choice>
- *         &lt;element name="ObservationsCombination" type="{http://www.pharmml.org/pharmml/0.7/TrialDesign}ObservationsCombinationType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="ObservationsCombination" type="{http://www.pharmml.org/pharmml/0.8/TrialDesign}ObservationsCombinationType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -68,9 +70,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 	    "variabilityReference",
 	    "observationGroup",
     "listOfDesignParameter",
-    "listOfLookupTable",
-    "listOfIndividualObservations",
-    "listOfObservation",
+    "listOfElements",
     "listOfObservationsCombination"
 })
 public class Observations
@@ -91,12 +91,20 @@ public class Observations
 
     @XmlElement(name = "DesignParameter", namespace = XMLFilter.NS_DEFAULT_MDEF)
     protected List<DesignParameter> listOfDesignParameter;
-    @XmlElement(name = "LookupTable")
-    protected List<LookupTable> listOfLookupTable;
-    @XmlElement(name = "IndividualObservations")
-    protected List<DatasetMapping> listOfIndividualObservations;
-    @XmlElement(name = "Observation")
-    protected List<Observation> listOfObservation;
+    
+//    @XmlElement(name = "LookupTable")
+//    protected List<LookupTable> listOfLookupTable;
+//    @XmlElement(name = "IndividualObservations")
+//    protected List<DatasetMapping> listOfIndividualObservations;
+//    @XmlElement(name = "Observation")
+//    protected List<Observation> listOfObservation;
+    @XmlElements({
+        @XmlElement(name = "LookupTable", type = LookupTable.class),
+        @XmlElement(name = "IndividualObservations", type = DatasetMapping.class),
+        @XmlElement(name = "Observation", type = Observation.class)
+    })
+    protected List<PharmMLRootType> listOfElements; // choice element now unbounded (PharmML 0.8)
+    
     @XmlElement(name = "ObservationsCombination")
     protected List<ObservationsCombination> listOfObservationsCombination;
 
@@ -128,92 +136,36 @@ public class Observations
         }
         return this.listOfDesignParameter;
     }
-
+    
     /**
-     * Gets the value of the lookupTable property.
+     * Gets the value of the lookupTableOrIndividualObservationsOrObservation property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the lookupTable property.
+     * This is why there is not a <CODE>set</CODE> method for the lookupTableOrIndividualObservationsOrObservation property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getListOfLookupTable().add(newItem);
+     *    getListOfObservationsElements().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link LookupTable }
-     * 
-     * 
-     */
-    public List<LookupTable> getListOfLookupTable() {
-        if (listOfLookupTable == null) {
-        	listOfLookupTable = new ArrayList<LookupTable>();
-        }
-        return this.listOfLookupTable;
-    }
-
-    /**
-     * Gets the value of the individualObservations property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the individualObservations property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getListOfIndividualObservations().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
      * {@link DatasetMapping }
-     * 
-     * 
-     */
-    public List<DatasetMapping> getListOfIndividualObservations() {
-        if (listOfIndividualObservations == null) {
-        	listOfIndividualObservations = new ArrayList<DatasetMapping>();
-        }
-        return this.listOfIndividualObservations;
-    }
-
-    /**
-     * Gets the value of the observation property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the observation property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getListOfObservation().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
      * {@link Observation }
      * 
-     * 
+     * @since PharmML 0.8
      */
-    public List<Observation> getListOfObservation() {
-        if (listOfObservation == null) {
-        	listOfObservation = new ArrayList<Observation>();
+    public List<PharmMLRootType> getListOfObservationsElements() {
+        if (listOfElements == null) {
+        	listOfElements = new ArrayList<PharmMLRootType>();
         }
-        return this.listOfObservation;
+        return this.listOfElements;
     }
 
     /**
@@ -252,9 +204,7 @@ public class Observations
     			.addIfNotNull(variabilityReference)
     			.addIfNotNull(observationGroup)
     			.addIfNotNull(listOfDesignParameter)
-    			.addIfNotNull(listOfLookupTable)
-    			.addIfNotNull(listOfIndividualObservations)
-    			.addIfNotNull(listOfObservation)
+    			.addIfNotNull(listOfElements)
     			.addIfNotNull(listOfObservationsCombination);
     }
     
