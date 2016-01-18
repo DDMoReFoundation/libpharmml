@@ -98,7 +98,7 @@ public class DataSet
     protected ExternalFile externalFile;
     
     // PharmML 0.7 (reversed from WrappedList stuff)
-    @XmlElement(name = "Definition", required = true)
+    @XmlElement(name = "Definition")
     protected HeaderColumnsDefinition definition;
     @XmlElement(name = "Table")
     protected DataSetTable table;
