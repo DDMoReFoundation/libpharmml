@@ -40,7 +40,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.Symbol;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -56,11 +55,12 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="TTEFunctionType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
- *       &lt;sequence>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Assign"/>
- *       &lt;/sequence>
- *       &lt;attribute name="symbId" use="required" type="{http://www.pharmml.org/2013/03/CommonTypes}SymbolIdType" />
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
+ *       &lt;choice>
+ *         &lt;element name="Distribution" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}DistributionType"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Assign"/>
+ *       &lt;/choice>
+ *       &lt;attribute name="symbId" use="required" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}SymbolIdType" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -70,13 +70,16 @@ import eu.ddmore.libpharmml.util.ChainedList;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TTEFunctionType", propOrder = {
+	"distribution",
     "assign"
 })
 public class TTEFunction
     extends PharmMLRootType implements Symbol
 {
 
-    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+	@XmlElement(name = "Distribution")
+    protected Distribution distribution;
+    @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT, required = true)
     protected Rhs assign;
     @XmlAttribute(name = "symbId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -86,6 +89,32 @@ public class TTEFunction
     
     public TTEFunction(String symbolId){
     	this.symbId = symbolId;
+    }
+    
+    /**
+     * Gets the value of the distribution property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Distribution }
+     *     
+     * @since PharmML 0.8
+     */
+    public Distribution getDistribution() {
+        return distribution;
+    }
+
+    /**
+     * Sets the value of the distribution property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Distribution }
+     *     
+     * @since PharmML 0.8
+     */
+    public void setDistribution(Distribution value) {
+        this.distribution = value;
     }
 
     /**
@@ -138,7 +167,8 @@ public class TTEFunction
     
     @Override
 	protected List<TreeNode> listChildren() {
-		return new ChainedList<TreeNode>()
+		return new ChainedList<TreeNode>(super.listChildren())
+				.addIfNotNull(distribution)
 				.addIfNotNull(assign);
 	}
 
