@@ -38,6 +38,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.DesignParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.GeneralObsError;
 import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.ObservationError;
+import eu.ddmore.libpharmml.dom.modeldefn.Parameter;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomVariable;
 import eu.ddmore.libpharmml.dom.modeldefn.PopulationParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.SimpleParameter;
@@ -254,14 +255,16 @@ public class MasterObjectFactory {
 		JAXBElement<? extends CommonParameter> element;
 		if(param instanceof ParameterRandomVariable){
 			element = MODELDEFN_OF.createRandomVariable((ParameterRandomVariable) param);
-		} else if(param instanceof SimpleParameter){
-			element = MODELDEFN_OF.createSimpleParameter((SimpleParameter) param);
+		} else if(param instanceof Parameter){
+			element = MODELDEFN_OF.createParameter((Parameter) param);
 		} else if(param instanceof IndividualParameter){
 			element = MODELDEFN_OF.createIndividualParameter((IndividualParameter) param);
 		} else if(param instanceof PopulationParameter){
 			element = MODELDEFN_OF.createPopulationParameter((PopulationParameter) param);
 		} else if(param instanceof DesignParameter){
 			element = MODELDEFN_OF.createDesignParameter((DesignParameter) param);
+		} else if(param instanceof SimpleParameter){
+			element = MODELDEFN_OF.createSimpleParameter((SimpleParameter) param);
 		} else {
 			element = MODELDEFN_OF.createCommonParameterElement(param);
 		}
