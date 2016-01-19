@@ -3,10 +3,10 @@
     attributeFormDefault="unqualified"
     targetNamespace="http://www.pharmml.org/2013/03/TrialStructure"
     xmlns:st="http://www.pharmml.org/2013/03/TrialStructure"
-    xmlns:ct="http://www.pharmml.org/pharmml/0.7/CommonTypes">
-    <xs:import namespace="http://www.pharmml.org/pharmml/0.7/CommonTypes"
-        xmlns:ct="http://www.pharmml.org/pharmml/0.7/CommonTypes"
-        schemaLocation="http://www.pharmml.org/pharmml/0.7/CommonTypes"/>
+    xmlns:ct="http://www.pharmml.org/pharmml/0.8/CommonTypes">
+    <xs:import namespace="http://www.pharmml.org/pharmml/0.8/CommonTypes"
+        xmlns:ct="http://www.pharmml.org/pharmml/0.8/CommonTypes"
+        schemaLocation="http://www.pharmml.org/pharmml/0.8/CommonTypes"/>
     <xs:simpleType name="oidType">
         <xs:restriction base="xs:NCName"/>
     </xs:simpleType>
