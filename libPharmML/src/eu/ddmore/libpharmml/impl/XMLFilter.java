@@ -397,6 +397,8 @@ public class XMLFilter extends XMLFilterImpl {
     	while((line = br.readLine()) != null){
     		line = line.replaceAll("xmlns(:\\w+)?=\"http://www.pharmml.org/[^\"]+/([^\"]+)\"",
     				"xmlns$1=\""+ NS_DOC_ROOT +"$2\"");
+    		line = line.replaceAll("xmlns(:\\w+)?=\"http://www.pharmml.org/[^\"]+/ProbOnto\"",
+    				"xmlns$1=\"http://www.pharmml.org/probonto/ProbOnto\""); //TODO: smarter regex to avoid rereplacing
     		line = line.replaceAll("xmlns(:\\w+)?=\"http://www.pharmml.org/2013/03/Dataset",
     				"xmlns$1=\"http://www.pharmml.org/2013/08/Dataset");
     		osw.append(line);
