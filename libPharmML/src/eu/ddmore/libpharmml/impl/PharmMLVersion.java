@@ -133,7 +133,7 @@ public enum PharmMLVersion {
 	 * @return Catalog location
 	 */
 	public String getDefaultCatalogLocation(){
-		if(this.isEqualOrLaterThan(V0_7_3)){ // namespaces are identical
+		if(this.isEqualOrLaterThan(V0_8)){ // namespaces are identical
 			return catalogLocation;
 		} else {
 			return catalogLocation.replace("/xmlCatalog.xml", "/default/xmlCatalog.xml");
@@ -154,6 +154,9 @@ public enum PharmMLVersion {
 			if(version.equals(enumVersion.getValue())){
 				return enumVersion;
 			}
+		}
+		if(version.startsWith("0.7")){ //TODO: implement a generic method for this case
+			return PharmMLVersion.V0_7_3;
 		}
 		return null;
 	}
