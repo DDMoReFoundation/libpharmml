@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -97,12 +98,12 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="VectorType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
- *       &lt;choice>
- *         &lt;element name="VectorElements" type="{http://www.pharmml.org/2013/03/CommonTypes}VectorElementsType"/>
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
+ *       &lt;choice minOccurs="0">
+ *         &lt;element name="VectorElements" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}VectorElementsType"/>
  *         &lt;choice maxOccurs="unbounded">
- *           &lt;element name="VectorCell" type="{http://www.pharmml.org/2013/03/CommonTypes}VectorCellType" maxOccurs="unbounded"/>
- *           &lt;element name="VectorSegment" type="{http://www.pharmml.org/2013/03/CommonTypes}VectorSegmentType" maxOccurs="unbounded"/>
+ *           &lt;element name="VectorCell" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}VectorCellType" maxOccurs="unbounded"/>
+ *           &lt;element name="VectorSegment" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}VectorSegmentType" maxOccurs="unbounded"/>
  *         &lt;/choice>
  *       &lt;/choice>
  *       &lt;attribute name="length" type="{http://www.w3.org/2001/XMLSchema}integer" />
@@ -120,7 +121,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 	"vectorCellOrVectorSegment",
     "sequenceOrScalar"
 })
-public class Vector extends AbstractVector {
+public class Vector extends AbstractVector implements ExpressionValue {
 	
 	// deprecated since 0.3.2
 	@XmlElementRefs({
