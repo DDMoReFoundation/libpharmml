@@ -103,6 +103,11 @@ public class RhsAdapter extends XmlAdapter<Rhs, Rhs>{
 			clone.setVector(v.getVector());
 			clone.setVectorSelector(v.getVectorSelector());
 			
+			clone.setRealisation(v.getRealisation());
+			clone.setProbabilityFunction(v.getProbabilityFunction());
+			clone.setStatsop(v.getStatsop());
+			clone.setNaryop(v.getNaryop());
+			
 			if(v.getMarshalVersion() == null){
 				throw new IllegalStateException("marshalVersion is not set before marshalling in "+v+" (parent:"+v.getParent()+").");
 			}

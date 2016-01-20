@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014,2015 European Molecular Biology Laboratory,
+ * Copyright (c) 2014-2016 European Molecular Biology Laboratory,
  * Heidelberg, Germany.
  * 
  * Licensed under the Apache License, Version 2.0 (the
@@ -26,52 +26,67 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.Constant;
 import eu.ddmore.libpharmml.dom.maths.Equation;
-import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
 import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
+import eu.ddmore.libpharmml.dom.maths.Naryop;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
+import eu.ddmore.libpharmml.dom.maths.ProbabilityFunction;
+import eu.ddmore.libpharmml.dom.maths.Statsop;
 import eu.ddmore.libpharmml.dom.maths.Uniop;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
+import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
 import eu.ddmore.libpharmml.dom.modellingsteps.InitialEstimate;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
  * Class defining a right-hand side assignment in an equation.
  * 
+ * <p>This class proposes multiple single child elements. Although only 1 may be used in the given Rhs ir order to
+ * be valid. If, for any reason, the content of a Rhs has to change, one can use the method {@link #clearContent()}
+ * to make sure that any content is deleted before the new assignment.
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Rhs">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
  *       &lt;choice>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/Maths}Equation"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Scalar"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}SymbRef"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Sequence"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Vector"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Interpolation"/>
- *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Matrix"/>
- *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Interpolation"/>
- *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Binop"/>
- *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Uniop"/>
- *         &lt;element name="Piecewise" type="{http://www.pharmml.org/pharmml/0.7/Maths}PiecewiseType"/>
- *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}FunctionCall"/>
- *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Sum"/>
- *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Product"/>
- *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Delay"/>
- *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}VectorSelector"/>
- *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}MatrixSelector"/>
- *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}MatrixUniop"/>
- *         &lt;element ref="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}Probability"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}Constant"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Scalar"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}SymbRef"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Sequence"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Interval"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Vector"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Matrix"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Interpolation"/>
+ *         &lt;element name="Realisation" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}RealisationType"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}PDF"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}CDF"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}HF"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}SF"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}Statsop"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}Naryop"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}Binop"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}Uniop"/>
+ *         &lt;element name="Piecewise" type="{http://www.pharmml.org/pharmml/0.8/Maths}PiecewiseType"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}FunctionCall"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Sum"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Product"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Delay"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}VectorSelector"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}MatrixSelector"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}MatrixUniop"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}Probability"/>
  *       &lt;/choice>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -80,6 +95,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * 
  * 
  */
+@SuppressWarnings("deprecation")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Rhs", propOrder = {
     "constant",
@@ -90,6 +106,10 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "vector",
     "matrix",
     "interpolation",
+    "realisation", // PharmML 0.8
+    "pf", // PharmML 0.8
+    "statsop", // PharmML 0.8
+    "naryop", // PharmML 0.8
     "binop",
     "uniop",
     "piecewise",
@@ -114,50 +134,73 @@ public class Rhs
 	// Here all the namespaces are specified, as Rhs may be used as math:Equation elements
 	// in versions < 0.7.1.
 	
-	@XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
+	@XmlElement(name = "Equation", namespace = NS_DEFAULT_MATH)
     protected Equation equation;
-    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected Scalar scalar;
-    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT)
     protected SymbolRef symbRef;
-    @XmlElement(name = "Sequence", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Sequence", namespace = NS_DEFAULT_CT)
     protected Sequence sequence;
-    @XmlElement(name = "Vector", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Vector", namespace = NS_DEFAULT_CT)
     protected Vector vector;
-    @XmlElement(name = "Interpolation", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Interpolation", namespace = NS_DEFAULT_CT)
     protected Interpolation interpolation;
-    @XmlElement(name = "Matrix", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Matrix", namespace = NS_DEFAULT_CT)
     protected Matrix matrix;
     
     // PharmML 0.7
-    @XmlElement(name = "Constant", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "Constant", namespace = NS_DEFAULT_MATH)
     protected Constant constant;
-    @XmlElement(name = "Interval", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Interval", namespace = NS_DEFAULT_CT)
     protected Interval interval;
     
     // PharmML 0.7.1
-    @XmlElement(name = "Binop", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "Binop", namespace = NS_DEFAULT_MATH)
     protected Binop binop;
-    @XmlElement(name = "Uniop", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "Uniop", namespace = NS_DEFAULT_MATH)
     protected Uniop uniop;
-    @XmlElement(name = "Piecewise", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Piecewise", namespace = NS_DEFAULT_CT)
     protected Piecewise piecewise;
-    @XmlElement(name = "FunctionCall", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "FunctionCall", namespace = NS_DEFAULT_MATH)
     protected FunctionCallType functionCall;
-    @XmlElement(name = "Sum", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Sum", namespace = NS_DEFAULT_CT)
     protected Sum sum;
-    @XmlElement(name = "Product", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Product", namespace = NS_DEFAULT_CT)
     protected Product product;
-    @XmlElement(name = "Delay", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Delay", namespace = NS_DEFAULT_CT)
     protected Delay delay;
-    @XmlElement(name = "VectorSelector", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "VectorSelector", namespace = NS_DEFAULT_CT)
     protected VectorSelector vectorSelector;
-    @XmlElement(name = "MatrixSelector", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "MatrixSelector", namespace = NS_DEFAULT_CT)
     protected MatrixSelector matrixSelector;
-    @XmlElement(name = "MatrixUniop", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "MatrixUniop", namespace = NS_DEFAULT_MATH)
     protected MatrixUniOp matrixUniop;
-    @XmlElement(name = "Probability", namespace = XMLFilter.NS_DEFAULT_MDEF)
+    @XmlElement(name = "Probability", namespace = NS_DEFAULT_MDEF)
     protected Probability probability;
+    
+    // PharmML 0.8
+    @XmlElement(name = "Realisation")
+    protected Realisation realisation;
+//    @XmlElement(name = "PDF", namespace = NS_DEFAULT_MATH)
+//    protected ProbabilityFunction pdf;
+//    @XmlElement(name = "CDF", namespace = NS_DEFAULT_MATH)
+//    protected ProbabilityFunction cdf;
+//    @XmlElement(name = "HF", namespace = NS_DEFAULT_MATH)
+//    protected ProbabilityFunction hf;
+//    @XmlElement(name = "SF", namespace = NS_DEFAULT_MATH)
+//    protected ProbabilityFunction sf;
+    @XmlElementRefs({
+    		@XmlElementRef(name = "PDF", namespace = NS_DEFAULT_MATH, type = JAXBElement.class),
+    		@XmlElementRef(name = "SF", namespace = NS_DEFAULT_MATH, type = JAXBElement.class),
+    		@XmlElementRef(name = "HF", namespace = NS_DEFAULT_MATH, type = JAXBElement.class),
+    		@XmlElementRef(name = "CDF", namespace = NS_DEFAULT_MATH, type = JAXBElement.class)
+    })
+    protected ProbabilityFunction pf;
+    @XmlElement(name = "Statsop", namespace = NS_DEFAULT_MATH)
+    protected Statsop statsop;
+    @XmlElement(name = "Naryop", namespace = NS_DEFAULT_MATH)
+    protected Naryop naryop;
     
     /**
      * Empty constructor.
@@ -353,6 +396,46 @@ public class Rhs
      */
     public Rhs(Probability probability){
     	this.probability = probability;
+    }
+    
+    /**
+     * Constructs a right-hand side assignment with a {@link Realisation}.
+     * @param realisation
+     * 
+     * @since PharmML 0.8
+     */
+    public Rhs(Realisation realisation){
+    	this.realisation = realisation;
+    }
+    
+    /**
+     * Constructs a right-hand side assignment with a {@link ProbabilityFunction}.
+     * @param probaFunction
+     * 
+     * @since PharmML 0.8
+     */
+    public Rhs(ProbabilityFunction probaFunction){
+    	this.pf = probaFunction;
+    }
+    
+    /**
+     * Constructs a right-hand side assignment with a {@link Statsop}.
+     * @param statsop
+     * 
+     * @since PharmML 0.8
+     */
+    public Rhs(Statsop statsop){
+    	this.statsop = statsop;
+    }
+    
+    /**
+     * Constructs a right-hand side assignment with a {@link Naryop}.
+     * @param naryop
+     * 
+     * @since PharmML 0.8
+     */
+    public Rhs(Naryop naryop){
+    	this.naryop = naryop;
     }
     
     /**
@@ -728,6 +811,110 @@ public class Rhs
 	public void setProbability(Probability probability) {
 		this.probability = probability;
 	}
+	
+	/**
+     * Gets the value of the realisation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Realisation }
+     *    
+     * @since PharmML 0.8
+     */
+    public Realisation getRealisation() {
+        return realisation;
+    }
+
+    /**
+     * Sets the value of the realisation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Realisation }
+     *     
+     * @since PharmML 0.8
+     */
+    public void setRealisation(Realisation value) {
+        this.realisation = value;
+    }
+
+    /**
+     * Gets the value of the probabilityFunction property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ProbabilityFunction }
+     *     
+     * @since PharmML 0.8
+     */
+    public ProbabilityFunction getProbabilityFunction() {
+        return pf;
+    }
+
+    /**
+     * Sets the value of the probabilityFunction property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ProbabilityFunction }
+     *     
+     * @since PharmML 0.8
+     */
+    public void setProbabilityFunction(ProbabilityFunction value) {
+        this.pf = value;
+    }
+
+    /**
+     * Gets the value of the statsop property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Statsop }
+     *     
+     * @since PharmML 0.8
+     */
+    public Statsop getStatsop() {
+        return statsop;
+    }
+
+    /**
+     * Sets the value of the statsop property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Statsop }
+     *     
+     * @since PharmML 0.8
+     */
+    public void setStatsop(Statsop value) {
+        this.statsop = value;
+    }
+
+    /**
+     * Gets the value of the naryop property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Naryop }
+     *     
+     * @since PharmML 0.8
+     */
+    public Naryop getNaryop() {
+        return naryop;
+    }
+
+    /**
+     * Sets the value of the naryop property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Naryop }
+     *     
+     * @since PharmML 0.8
+     */
+    public void setNaryop(Naryop value) {
+        this.naryop = value;
+    }
 
 	/**
      * Gets the unique content of this Rhs. Each mapped attribute is checked and the first checked one
@@ -759,6 +946,10 @@ public class Rhs
     	if(matrixSelector != null) return matrixSelector;
     	if(matrixUniop != null) return matrixUniop;
     	if(probability != null) return probability;
+    	if(realisation != null) return realisation;
+    	if(pf != null) return pf;
+    	if(statsop != null) return statsop;
+    	if(naryop != null) return naryop;
     	if(equation != null) return equation;
     	else return null;
     }
@@ -784,6 +975,10 @@ public class Rhs
 		this.matrixSelector = null;
 		this.matrixUniop = null;
 		this.probability = null;
+		this.realisation = null;
+		this.pf = null;
+		this.statsop = null;
+		this.naryop = null;
     }
 
 	@Override
@@ -808,6 +1003,10 @@ public class Rhs
 				.addIfNotNull(matrixSelector)
 				.addIfNotNull(matrixUniop)
 				.addIfNotNull(probability)
+				.addIfNotNull(realisation)
+				.addIfNotNull(pf)
+				.addIfNotNull(statsop)
+				.addIfNotNull(naryop)
 				.addIfNotNull(equation);
 		return list;
 	}
