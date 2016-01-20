@@ -42,6 +42,8 @@ import eu.ddmore.libpharmml.dom.commontypes.Block;
 import eu.ddmore.libpharmml.dom.commontypes.CovariateModelRef;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.maths.ConditionalStatement;
+import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -58,13 +60,17 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="CovariateModelType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Name" minOccurs="0"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}SimpleParameter" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Covariate" type="{http://www.pharmml.org/2013/03/ModelDefinition}CovariateDefinitionType" maxOccurs="unbounded"/>
+ *         &lt;element name="CovariateModelRef" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}CovariateModelRefType" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Name" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}PopulationParameter" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}Parameter" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}AssignStatement" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="ConditionalStatement" type="{http://www.pharmml.org/pharmml/0.8/Maths}ConditionalStatementType" minOccurs="0"/>
+ *         &lt;element name="Covariate" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}CovariateDefinitionType" maxOccurs="unbounded"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.pharmml.org/2013/03/CommonTypes}BlockDefnGroup"/>
+ *       &lt;attGroup ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}BlockDefnGroup"/>
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -78,7 +84,10 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "name",
     "simpleParameter",
     "listOfPopulationParameter",
-    "covariate"
+    "listOfParameter",
+    "listOfAssignStatement",
+    "conditionalStatement",
+    "listOfCovariate"
 })
 public class CovariateModel
     extends PharmMLRootType implements Block
@@ -96,8 +105,16 @@ public class CovariateModel
     @XmlElement(name = "PopulationParameter")
     protected List<PopulationParameter> listOfPopulationParameter; // PharmML 0.7
     
+    // PharmML 0.8
+    @XmlElement(name = "Parameter")
+    protected List<Parameter> listOfParameter;
+    @XmlElement(name = "AssignStatement", namespace = NS_DEFAULT_CT)
+    protected List<LogicBinOp> listOfAssignStatement;
+    @XmlElement(name = "ConditionalStatement")
+    protected ConditionalStatement conditionalStatement;
+    
     @XmlElement(name = "Covariate", required = true)
-    protected List<CovariateDefinition> covariate;
+    protected List<CovariateDefinition> listOfCovariate;
     @XmlAttribute(name = "blkId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String blkId;
@@ -214,6 +231,90 @@ public class CovariateModel
         }
         return this.listOfPopulationParameter;
     }
+    
+    /**
+     * A parameter definition of the basic type.Gets the value of the parameter property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the parameter property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getParameter().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Parameter }
+     * 
+     * @since PharmML 0.8
+     */
+    public List<Parameter> getListOfParameter() {
+        if (listOfParameter == null) {
+        	listOfParameter = new ArrayList<Parameter>();
+        }
+        return this.listOfParameter;
+    }
+
+    /**
+     * Gets the value of the assignStatement property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the assignStatement property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListOfAssignStatement().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link LogicBinOp }
+     * 
+     * @since PharmML 0.8
+     */
+    public List<LogicBinOp> getListOfAssignStatement() {
+        if (listOfAssignStatement == null) {
+        	listOfAssignStatement = new ArrayList<LogicBinOp>();
+        }
+        return this.listOfAssignStatement;
+    }
+
+    /**
+     * Gets the value of the conditionalStatement property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ConditionalStatement }
+     *     
+     * @since PharmML 0.8
+     */
+    public ConditionalStatement getConditionalStatement() {
+        return conditionalStatement;
+    }
+    
+    /**
+     * Sets the value of the conditionalStatement property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ConditionalStatement }
+     *     
+     * @since PharmML 0.8
+     */
+    public void setConditionalStatement(ConditionalStatement value) {
+        this.conditionalStatement = value;
+    }
 
     /**
      * Gets the value of the covariate property.
@@ -238,10 +339,10 @@ public class CovariateModel
      * 
      */
     public List<CovariateDefinition> getListOfCovariate() {
-        if (covariate == null) {
-            covariate = new ArrayList<CovariateDefinition>();
+        if (listOfCovariate == null) {
+        	listOfCovariate = new ArrayList<CovariateDefinition>();
         }
-        return this.covariate;
+        return this.listOfCovariate;
     }
     
     /**
@@ -283,7 +384,10 @@ public class CovariateModel
 				.addIfNotNull(name)
 				.addIfNotNull(simpleParameter)
 				.addIfNotNull(listOfPopulationParameter)
-				.addIfNotNull(covariate);
+				.addIfNotNull(listOfParameter)
+				.addIfNotNull(listOfAssignStatement)
+				.addIfNotNull(conditionalStatement)
+				.addIfNotNull(listOfCovariate);
 	}
 
 }
