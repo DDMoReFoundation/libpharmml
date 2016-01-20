@@ -52,17 +52,18 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="CategoricalDataType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/ModelDefinition}CommonObservationModelType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}CommonObservationModelType">
  *       &lt;sequence>
- *         &lt;element name="ListOfCategories" type="{http://www.pharmml.org/2013/03/ModelDefinition}ListOfCategoriesType"/>
- *         &lt;element name="CategoryVariable" type="{http://www.pharmml.org/2013/03/ModelDefinition}CommonDiscreteVariableType"/>
- *         &lt;element name="InitialStateVariable" type="{http://www.pharmml.org/2013/03/ModelDefinition}CommonDiscreteVariableType" minOccurs="0"/>
- *         &lt;element name="PreviousStateVariable" type="{http://www.pharmml.org/2013/03/ModelDefinition}CommonDiscreteVariableType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Dependance" type="{http://www.pharmml.org/2013/03/ModelDefinition}DependanceType" minOccurs="0"/>
- *         &lt;element name="ProbabilityAssignment" type="{http://www.pharmml.org/2013/03/ModelDefinition}ProbabilityAssignmentType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="PMF" type="{http://www.pharmml.org/2013/03/ModelDefinition}CategoricalPMFType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="ListOfCategories" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}ListOfCategoriesType"/>
+ *         &lt;element name="CategoryVariable" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}CommonDiscreteVariableType"/>
+ *         &lt;element name="InitialStateVariable" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}CommonDiscreteVariableType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="PreviousStateVariable" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}CommonDiscreteVariableType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Dependance" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}DependanceType" minOccurs="0"/>
+ *         &lt;element name="TransitionMatrix" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}TransitionMatrixType" minOccurs="0"/>
+ *         &lt;element name="ProbabilityAssignment" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}ProbabilityAssignmentType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="PMF" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}CategoricalPMFType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attribute name="ordered" type="{http://www.pharmml.org/2013/03/CommonTypes}OrderedAttributeType" />
+ *       &lt;attribute name="ordered" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}OrderedAttributeType" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -74,9 +75,10 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlType(name = "CategoricalDataType", propOrder = {
     "listOfCategories",
     "categoryVariable",
-    "initialStateVariable",
-    "previousStateVariable",
+    "listOfInitialStateVariable",
+    "listOfPreviousStateVariable",
     "dependance",
+    "transitionMatrix",
     "probabilityAssignment",
     "pmf"
 })
@@ -90,11 +92,13 @@ public class CategoricalData
     @XmlElement(name = "CategoryVariable", required = true)
     protected CommonDiscreteVariable categoryVariable;
     @XmlElement(name = "InitialStateVariable")
-    protected CommonDiscreteVariable initialStateVariable;
+    protected List<CommonDiscreteVariable> listOfInitialStateVariable;
     @XmlElement(name = "PreviousStateVariable")
-    protected List<CommonDiscreteVariable> previousStateVariable;
+    protected List<CommonDiscreteVariable> listOfPreviousStateVariable;
     @XmlElement(name = "Dependance")
     protected Dependance dependance;
+    @XmlElement(name = "TransitionMatrix")
+    protected TransitionMatrix transitionMatrix;
     @XmlElement(name = "ProbabilityAssignment")
     protected List<ProbabilityAssignment> probabilityAssignment;
     @XmlElement(name = "PMF")
@@ -155,25 +159,30 @@ public class CategoricalData
     /**
      * Gets the value of the initialStateVariable property.
      * 
-     * @return
-     *     possible object is
-     *     {@link CommonDiscreteVariable }
-     *     
-     */
-    public CommonDiscreteVariable getInitialStateVariable() {
-        return initialStateVariable;
-    }
-
-    /**
-     * Sets the value of the initialStateVariable property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the initialStateVariable property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link CommonDiscreteVariable }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getInitialStateVariable().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link CommonDiscreteVariable }
+     * 
+     * 
      */
-    public void setInitialStateVariable(CommonDiscreteVariable value) {
-        this.initialStateVariable = value;
+    public List<CommonDiscreteVariable> getListOfInitialStateVariable() {
+        if (listOfInitialStateVariable == null) {
+        	listOfInitialStateVariable = new ArrayList<CommonDiscreteVariable>();
+        }
+        return this.listOfInitialStateVariable;
     }
 
     /**
@@ -199,10 +208,10 @@ public class CategoricalData
      * 
      */
     public List<CommonDiscreteVariable> getListOfPreviousStateVariable() {
-        if (previousStateVariable == null) {
-            previousStateVariable = new ArrayList<CommonDiscreteVariable>();
+        if (listOfPreviousStateVariable == null) {
+        	listOfPreviousStateVariable = new ArrayList<CommonDiscreteVariable>();
         }
-        return this.previousStateVariable;
+        return this.listOfPreviousStateVariable;
     }
 
     /**
@@ -227,6 +236,30 @@ public class CategoricalData
      */
     public void setDependance(Dependance value) {
         this.dependance = value;
+    }
+    
+    /**
+     * Gets the value of the transitionMatrix property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TransitionMatrix }
+     *     
+     */
+    public TransitionMatrix getTransitionMatrix() {
+        return transitionMatrix;
+    }
+
+    /**
+     * Sets the value of the transitionMatrix property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TransitionMatrix }
+     *     
+     */
+    public void setTransitionMatrix(TransitionMatrix value) {
+        this.transitionMatrix = value;
     }
 
     /**
@@ -359,7 +392,7 @@ public class CategoricalData
      */
     public CommonDiscreteVariable createInitialStateVariable(){
             CommonDiscreteVariable el = new CommonDiscreteVariable();
-            this.initialStateVariable = el;
+            getListOfInitialStateVariable().add(el);
             return el;
     }
     
@@ -443,9 +476,10 @@ public class CategoricalData
 				.addIfNotNull(super.listChildren())
 				.addIfNotNull(listOfCategories)
 				.addIfNotNull(categoryVariable)
-				.addIfNotNull(initialStateVariable)
-				.addIfNotNull(previousStateVariable)
+				.addIfNotNull(listOfInitialStateVariable)
+				.addIfNotNull(listOfPreviousStateVariable)
 				.addIfNotNull(dependance)
+				.addIfNotNull(transitionMatrix)
 				.addIfNotNull(probabilityAssignment)
 				.addIfNotNull(pmf);
 	}
