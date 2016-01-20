@@ -37,7 +37,6 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.Block;
-import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -202,106 +201,9 @@ public class ObservationModel
         this.blkId = value;
     }
     
-    
-    // inherited methods : DEPRECATED
-    // TODO: remove them
-    
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Name }
-     *     
-     * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.
-     * See the documentation of {@link ObservationModel}.
-     */
-    @Override
-    @Deprecated
-    public Name getName() {
-        return super.getName();
-    }
-
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Name }
-     *     
-     * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.
-     * See the documentation of {@link ObservationModel}.
-     */
-    @Override
-    @Deprecated
-    public void setName(Name value) {
-        super.setName(value);
-    }
-
-    /**
-     * Gets the value of the commonParameterElement property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the commonParameterElement property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCommonParameterElement().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link SimpleParameter }{@code >}
-     * {@link JAXBElement }{@code <}{@link CommonParameter }{@code >}
-     * {@link JAXBElement }{@code <}{@link IndividualParameter }{@code >}
-     * {@link JAXBElement }{@code <}{@link ParameterRandomVariable }{@code >}
-     * 
-     * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.
-     * See the documentation of {@link ObservationModel}.
-     */
-    @Override
-    @Deprecated
-    public List<JAXBElement<? extends CommonParameter>> getCommonParameterElement() {
-        return super.getCommonParameterElement();
-    }
-
-    /**
-     * Gets the value of the correlation property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the correlation property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCorrelation().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Correlation }
-     * 
-     * @deprecated This property is now specified within {@link ContinuousObservationModel}, or in models from the category {@link Discrete}.
-     * See the documentation of {@link ObservationModel}.
-     */
-    @Override
-    @Deprecated
-    public List<Correlation> getCorrelation() {
-        return super.getCorrelation();
-    }
-    
     @Override
 	protected List<TreeNode> listChildren() {
-		return new ChainedList<TreeNode>()
+		return new ChainedList<TreeNode>(super.listChildren())
 				.addJAXBIfNotNull(observationError)
 				.addIfNotNull(continuousData)
 				.addIfNotNull(discrete);
