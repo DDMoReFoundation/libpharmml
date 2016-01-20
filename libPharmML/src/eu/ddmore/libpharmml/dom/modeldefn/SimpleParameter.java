@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014,2015 European Molecular Biology Laboratory,
+ * Copyright (c) 2014-2016 European Molecular Biology Laboratory,
  * Heidelberg, Germany.
  * 
  * Licensed under the Apache License, Version 2.0 (the
@@ -16,7 +16,6 @@
  * specific language governing permissions and limitations 
  * under the License.
  ******************************************************************************/
-
 package eu.ddmore.libpharmml.dom.modeldefn;
 
 import java.util.List;
@@ -73,17 +72,19 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * &lt;/complexType>
  * </pre>
  * 
- * @deprecated Since PharmML 0.7, {@link SimpleParameter} has been renamed to {@link PopulationParameter}.
+ * @deprecated SimpleParameter was used before PharmML 0.7.3. See {@link IndividualParameter}, {@link PopulationParameter} or
+ * {@link Parameter}.
  */
-@Deprecated
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SimpleParameterType", propOrder = {
     "assign"
 })
+@Deprecated
 public class SimpleParameter
     extends CommonParameter implements Assignable
 {
 
+	// TODO: marshal to SimpleParameter for old versions
     @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Rhs assign;
 
