@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014,2015 European Molecular Biology Laboratory,
+ * Copyright (c) 2014-2016 European Molecular Biology Laboratory,
  * Heidelberg, Germany.
  * 
  * Licensed under the Apache License, Version 2.0 (the
@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
+import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
 import static eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_MATH;
 
 
@@ -68,6 +69,22 @@ public class ObjectFactory {
     
     // PharmML 0.6.2
     private final static QName _LogicBinOpTypeArmRef_QNAME = new QName(NS_DEFAULT_MATH, "ArmRef");
+    
+    // PharmML 0.8
+    private final static QName _HF_QNAME = new QName(NS_DEFAULT_MATH, "HF");
+    private final static QName _CDF_QNAME = new QName(NS_DEFAULT_MATH, "CDF");
+    private final static QName _SF_QNAME = new QName(NS_DEFAULT_MATH, "SF");
+    private final static QName _Naryop_QNAME = new QName(NS_DEFAULT_MATH, "Naryop");
+    private final static QName _PDF_QNAME = new QName(NS_DEFAULT_MATH, "PDF");
+    private final static QName _Statsop_QNAME = new QName(NS_DEFAULT_MATH, "Statsop");
+    private final static QName _BinopTypeRealisation_QNAME = new QName(NS_DEFAULT_MATH, "Realisation");
+    private final static QName _ElseTypeConditionalStatement_QNAME = new QName(NS_DEFAULT_MATH, "ConditionalStatement");
+    
+    private final static ObjectFactory instance = new ObjectFactory();
+    
+    public static ObjectFactory getInstance(){
+    	return instance;
+    }
     
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.maths
@@ -308,5 +325,119 @@ public class ObjectFactory {
     public JAXBElement<OidRef> createLogicBinOpArmRef(OidRef value) {
         return new JAXBElement<OidRef>(_LogicBinOpTypeArmRef_QNAME, OidRef.class, LogicBinOp.class, value);
     }
+    
+    // PharmML 0.8
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProbabilityFunction }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "HF")
+    public JAXBElement<ProbabilityFunction> createHF(ProbabilityFunction value) {
+        return new JAXBElement<ProbabilityFunction>(_HF_QNAME, ProbabilityFunction.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProbabilityFunction }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "CDF")
+    public JAXBElement<ProbabilityFunction> createCDF(ProbabilityFunction value) {
+        return new JAXBElement<ProbabilityFunction>(_CDF_QNAME, ProbabilityFunction.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProbabilityFunction }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "SF")
+    public JAXBElement<ProbabilityFunction> createSF(ProbabilityFunction value) {
+        return new JAXBElement<ProbabilityFunction>(_SF_QNAME, ProbabilityFunction.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Naryop }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "Naryop")
+    public JAXBElement<Naryop> createNaryop(Naryop value) {
+        return new JAXBElement<Naryop>(_Naryop_QNAME, Naryop.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ProbabilityFunction }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "PDF")
+    public JAXBElement<ProbabilityFunction> createPDF(ProbabilityFunction value) {
+        return new JAXBElement<ProbabilityFunction>(_PDF_QNAME, ProbabilityFunction.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Statsop }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "Statsop")
+    public JAXBElement<Statsop> createStatsop(Statsop value) {
+        return new JAXBElement<Statsop>(_Statsop_QNAME, Statsop.class, null, value);
+    }
+
+//    /**
+//     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
+//     * 
+//     */
+//    @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "Otherwise")
+//    public JAXBElement<Object> createOtherwise(Object value) {
+//        return new JAXBElement<Object>(_Otherwise_QNAME, Object.class, null, value);
+//    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Realisation }{@code >}}
+     * 
+     */
+//    @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "Realisation", scope = Binop.class)
+    public JAXBElement<Realisation> createBinopTypeRealisation(Realisation value) {
+        return new JAXBElement<Realisation>(_BinopTypeRealisation_QNAME, Realisation.class, Binop.class, value);
+    }
+
+    /**
+     * @deprecated Use {@link #createLogicBinOpArmRef(OidRef)}
+     */
+    @Deprecated
+    public JAXBElement<OidRef> createLogicBinOpTypeArmRef(OidRef value) {
+        return createLogicBinOpArmRef(value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Realisation }{@code >}}
+     * 
+     */
+//    @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "Realisation", scope = LogicBinOp.class)
+    public JAXBElement<Realisation> createLogicBinOpTypeRealisation(Realisation value) {
+        return new JAXBElement<Realisation>(_BinopTypeRealisation_QNAME, Realisation.class, LogicBinOp.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ConditionalStatement }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "ConditionalStatement", scope = ElseCondition.class)
+    public JAXBElement<ConditionalStatement> createElseTypeConditionalStatement(ConditionalStatement value) {
+        return new JAXBElement<ConditionalStatement>(_ElseTypeConditionalStatement_QNAME, ConditionalStatement.class, ElseCondition.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ConditionalStatement }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "ConditionalStatement", scope = IfElseIfCondition.class)
+    public JAXBElement<ConditionalStatement> createIfElseIfTypeConditionalStatement(ConditionalStatement value) {
+        return new JAXBElement<ConditionalStatement>(_ElseTypeConditionalStatement_QNAME, ConditionalStatement.class, IfElseIfCondition.class, value);
+    }
+
+    // TODO: check
+    @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "Realisation")
+	public JAXBElement<Realisation> createRealisation(Realisation value) {
+		return new JAXBElement<Realisation>(_BinopTypeRealisation_QNAME, Realisation.class, null, value);
+	}
 
 }
