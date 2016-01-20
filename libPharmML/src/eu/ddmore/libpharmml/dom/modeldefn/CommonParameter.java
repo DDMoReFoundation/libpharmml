@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Symbol;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolName;
+import eu.ddmore.libpharmml.dom.tags.StructuralModelElement;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -55,11 +56,12 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="CommonParameterType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Symbol" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Symbol" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attribute name="symbId" use="required" type="{http://www.pharmml.org/2013/03/CommonTypes}SymbolIdType" />
+ *       &lt;attribute name="symbId" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}SymbolIdType" />
+ *       &lt;attribute name="symbIdRef" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}SymbolIdType" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -77,17 +79,31 @@ import eu.ddmore.libpharmml.util.ChainedList;
     SimpleParameter.class,
     DesignParameter.class,
     PopulationParameter.class,
-    IndividualParameter.class
+    IndividualParameter.class,
+    Parameter.class,
 })
 public abstract class CommonParameter
-    extends PharmMLRootType implements Symbol
+    extends PharmMLRootType implements Symbol, StructuralModelElement
 {
 
     @XmlElement(name = "Symbol", namespace = XMLFilter.NS_DEFAULT_CT)
     protected SymbolName symbol;
-    @XmlAttribute(name = "symbId", required = true)
+    @XmlAttribute(name = "symbId")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String symbId;
+    @XmlAttribute(name = "symbIdRef")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String symbIdRef; // PharmML 0.8
+    
+    public CommonParameter(){}
+    
+    public CommonParameter(String symbId){
+    	this.symbId = symbId;
+    }
+    
+    public CommonParameter(CommonParameter referredParameter){
+    	this.symbIdRef = referredParameter.getSymbId();
+    }
 
     /**
      * Gets the value of the symbol property.
@@ -136,6 +152,33 @@ public abstract class CommonParameter
     public void setSymbId(String value) {
         this.symbId = value;
     }
+    
+    /**
+     * Gets the value of the symbIdRef property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     * @since PharmML 0.8
+     */
+    public String getSymbIdRef() {
+        return symbIdRef;
+    }
+
+    /**
+     * Sets the value of the symbIdRef property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     * @since PharmML 0.8
+     */
+    public void setSymbIdRef(String value) {
+        this.symbIdRef = value;
+    }
+
     
     @Override
 	protected List<TreeNode> listChildren() {
