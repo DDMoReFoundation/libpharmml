@@ -86,6 +86,8 @@ public class CovariateDefinition
     protected ContinuousCovariate continuous;
     @XmlElement(name = "Categorical")
     protected CategoricalCovariate categorical;
+    @XmlAttribute(name = "type")
+    protected CovariateType type; // PharmML 0.8
     @XmlAttribute(name = "symbId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String symbId;
@@ -160,6 +162,32 @@ public class CovariateDefinition
      */
     public void setCategorical(CategoricalCovariate value) {
         this.categorical = value;
+    }
+    
+    /**
+     * Gets the value of the type property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CovariateType }
+     *     
+     * @since PharmML 0.8
+     */
+    public CovariateType getType() {
+        return type;
+    }
+
+    /**
+     * Sets the value of the type property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CovariateType }
+     *     
+     * @since PharmML 0.8
+     */
+    public void setType(CovariateType value) {
+        this.type = value;
     }
 
     /**
