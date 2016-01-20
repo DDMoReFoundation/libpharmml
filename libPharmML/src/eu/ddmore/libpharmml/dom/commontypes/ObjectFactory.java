@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
+import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import static eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_CT;
 
 
@@ -101,6 +102,8 @@ public class ObjectFactory {
     private final static QName _BLQ_QNAME = new QName(NS_DEFAULT_CT, "BLQ");
     private final static QName _NA_QNAME = new QName(NS_DEFAULT_CT, "NA");
     
+    // PharmML 0.8
+    private final static QName _AssignStatement_QNAME = new QName(NS_DEFAULT_CT, "AssignStatement");
     
     private static final ObjectFactory instance = new ObjectFactory();
     
@@ -757,6 +760,16 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = NS_DEFAULT_CT, name = "Interval")
     public JAXBElement<Interval> createInterval(Interval value) {
         return new JAXBElement<Interval>(_Interval_QNAME, Interval.class, null, value);
+    }
+    
+    // PharmML 0.8
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LogicBinOp }{@code >}}
+     * @since PharmML 0.8
+     */
+    @XmlElementDecl(namespace = NS_DEFAULT_CT, name = "AssignStatement")
+    public JAXBElement<LogicBinOp> createAssignStatement(LogicBinOp value) {
+        return new JAXBElement<LogicBinOp>(_AssignStatement_QNAME, LogicBinOp.class, null, value);
     }
 
 }
