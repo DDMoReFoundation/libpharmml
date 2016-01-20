@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import javax.xml.bind.JAXBElement;
 import javax.xml.stream.XMLStreamException;
 
 import eu.ddmore.libpharmml.ILibPharmML;
@@ -127,8 +126,7 @@ public class LibPharmMLImpl implements ILibPharmML {
 		VariableDefinition varType = commonFact.createVariableDefinitionType();
 		varType.setSymbId("x");
 		varType.setSymbolType(SymbolType.REAL);
-		JAXBElement<VariableDefinition> var1 = commonFact.createVariable(varType);
-		structModel.getCommonVariable().add(var1);
+		structModel.getListOfStructuralModelElements().add(varType);
 		mdt.getListOfParameterModel().add(pm);
 		mdt.getListOfStructuralModel().add(structModel);
 		mdefnFact.createModelDefinition(mdt);
