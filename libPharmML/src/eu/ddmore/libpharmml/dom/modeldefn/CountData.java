@@ -44,18 +44,19 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="CountDataType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}CommonObservationModelType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}CommonObservationModelType">
  *       &lt;sequence>
- *         &lt;element name="CountVariable" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}CommonDiscreteVariableType"/>
- *         &lt;element name="NumberCounts" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}CommonDiscreteVariableType" minOccurs="0"/>
- *         &lt;element name="PreviousCountVariable" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}CommonDiscreteVariableType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Dependance" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DependanceType" minOccurs="0"/>
- *         &lt;element name="IntensityParameter" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DiscreteDataParameterType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="DispersionParameter" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DiscreteDataParameterType" minOccurs="0"/>
- *         &lt;element name="OverDispersionParameter" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DiscreteDataParameterType" minOccurs="0"/>
- *         &lt;element name="ZeroProbabilityParameter" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DiscreteDataParameterType" minOccurs="0"/>
- *         &lt;element name="MixtureProbabilityParameter" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DiscreteDataParameterType" minOccurs="0"/>
- *         &lt;element name="PMF" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}CountPMFType" maxOccurs="unbounded"/>
+ *         &lt;element name="CountVariable" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}CommonDiscreteVariableType"/>
+ *         &lt;element name="NumberCounts" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}CommonDiscreteVariableType" minOccurs="0"/>
+ *         &lt;element name="PreviousCountVariable" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}CommonDiscreteVariableType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="InitialCountVariable" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}CommonDiscreteVariableType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Dependance" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}DependanceType" minOccurs="0"/>
+ *         &lt;element name="IntensityParameter" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}DiscreteDataParameterType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="DispersionParameter" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}DiscreteDataParameterType" minOccurs="0"/>
+ *         &lt;element name="OverDispersionParameter" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}DiscreteDataParameterType" minOccurs="0"/>
+ *         &lt;element name="ZeroProbabilityParameter" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}DiscreteDataParameterType" minOccurs="0"/>
+ *         &lt;element name="MixtureProbabilityParameter" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}DiscreteDataParameterType" minOccurs="0"/>
+ *         &lt;element name="PMF" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}CountPMFType" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -69,6 +70,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "countVariable",
     "numberCounts",
     "previousCountVariable",
+    "listOfInitialCountVariable",
     "dependance",
     "intensityParameter",
     "dispersionParameter",
@@ -87,6 +89,8 @@ public class CountData
     protected CommonDiscreteVariable numberCounts; // PharmML 0.7
     @XmlElement(name = "PreviousCountVariable")
     protected List<CommonDiscreteVariable> previousCountVariable;
+    @XmlElement(name = "InitialCountVariable")
+    protected List<CommonDiscreteVariable> listOfInitialCountVariable; // PharmML 0.8
     @XmlElement(name = "Dependance")
     protected Dependance dependance;
     @XmlElement(name = "IntensityParameter")
@@ -179,6 +183,35 @@ public class CountData
             previousCountVariable = new ArrayList<CommonDiscreteVariable>();
         }
         return this.previousCountVariable;
+    }
+    
+    /**
+     * Gets the value of the initialCountVariable property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the initialCountVariable property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getInitialCountVariable().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link CommonDiscreteVariable }
+     * 
+     * @since PharmML 0.8
+     */
+    public List<CommonDiscreteVariable> getListOfInitialCountVariable() {
+        if (listOfInitialCountVariable == null) {
+        	listOfInitialCountVariable = new ArrayList<CommonDiscreteVariable>();
+        }
+        return this.listOfInitialCountVariable;
     }
 
     /**
@@ -398,6 +431,16 @@ public class CountData
     	cdv.setSymbId(symbId);
     	return cdv;
     }
+    public CommonDiscreteVariable createInitialCountVariable(){
+    	CommonDiscreteVariable cdv = new CommonDiscreteVariable();
+    	getListOfInitialCountVariable().add(cdv);
+    	return cdv;
+    }
+    public CommonDiscreteVariable createInitialCountVariable(String symbId){
+    	CommonDiscreteVariable cdv = createInitialCountVariable();
+    	cdv.setSymbId(symbId);
+    	return cdv;
+    }
     public Dependance createDependance(DependanceAttribute dependance){
     	Dependance dep = new Dependance();
     	dep.setType(dependance);
@@ -508,11 +551,11 @@ public class CountData
     
     @Override
     protected List<TreeNode> listChildren() {
-    	return new ChainedList<TreeNode>()
-    			.addIfNotNull(super.listChildren())
+    	return new ChainedList<TreeNode>(super.listChildren())
     			.addIfNotNull(countVariable)
     			.addIfNotNull(numberCounts)
     			.addIfNotNull(previousCountVariable)
+    			.addIfNotNull(listOfInitialCountVariable)
     			.addIfNotNull(dependance)
     			.addIfNotNull(intensityParameter)
     			.addIfNotNull(dispersionParameter)
