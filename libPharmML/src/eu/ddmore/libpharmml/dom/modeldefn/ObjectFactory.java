@@ -23,6 +23,8 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
+import eu.ddmore.libpharmml.dom.maths.ConditionalStatement;
+import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKMacroList;
 import static eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_MDEF;;
 
 
@@ -57,6 +59,12 @@ public class ObjectFactory {
     // PharmML 0.7
     private final static QName _DesignParameter_QNAME = new QName(NS_DEFAULT_MDEF, "DesignParameter");
     private final static QName _PopulationParameter_QNAME = new QName(NS_DEFAULT_MDEF, "PopulationParameter");
+    
+    // PharmML 0.8
+    private final static QName _Parameter_QNAME = new QName(NS_DEFAULT_MDEF, "Parameter");
+    private final static QName _CommonObservationModelTypeCorrelation_QNAME = new QName(NS_DEFAULT_MDEF, "Correlation");
+    private final static QName _CommonObservationModelTypeConditionalStatement_QNAME = new QName(NS_DEFAULT_MDEF, "ConditionalStatement");
+    private final static QName _StructuralModelTypePKmacros_QNAME = new QName(NS_DEFAULT_MDEF, "PKmacros"); // existed before but not as ElementRef
     
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.modeldefn
@@ -145,7 +153,7 @@ public class ObjectFactory {
      * 
      */
     @Deprecated
-    public SimpleParameter createSimpleParameterType() {
+    public SimpleParameter createSimpleParameter() {
         return new SimpleParameter();
     }
 
@@ -622,6 +630,45 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = NS_DEFAULT_MDEF, name = "Standard", substitutionHeadNamespace = NS_DEFAULT_MDEF, substitutionHeadName = "ObservationError")
     public JAXBElement<StructuredObsError> createStandard(StructuredObsError value) {
         return new JAXBElement<StructuredObsError>(_Standard_QNAME, StructuredObsError.class, null, value);
+    }
+    
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Parameter }{@code >}}
+     * 
+     * @since PharmML 0.8
+     */
+    @XmlElementDecl(namespace = NS_DEFAULT_MDEF, name = "Parameter", substitutionHeadNamespace = NS_DEFAULT_MDEF, substitutionHeadName = "CommonParameterElement")
+    public JAXBElement<Parameter> createParameter(Parameter value) {
+        return new JAXBElement<Parameter>(_Parameter_QNAME, Parameter.class, null, value);
+    }
+    
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ConditionalStatement }{@code >}}
+     * 
+     * @since PharmML 0.8
+     */
+    @XmlElementDecl(namespace = NS_DEFAULT_MDEF, name = "ConditionalStatement", scope = StructuralModel.class)
+    public JAXBElement<ConditionalStatement> createStructuralModelTypeConditionalStatement(ConditionalStatement value) {
+        return new JAXBElement<ConditionalStatement>(_CommonObservationModelTypeConditionalStatement_QNAME, ConditionalStatement.class, StructuralModel.class, value);
+    }
+    
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CorrelationType }{@code >}}
+     * 
+     * @since PharmML 0.8
+     */
+    @XmlElementDecl(namespace = NS_DEFAULT_MDEF, name = "Correlation", scope = CommonObservationModel.class)
+    public JAXBElement<Correlation> createCommonObservationModelTypeCorrelation(Correlation value) {
+        return new JAXBElement<Correlation>(_CommonObservationModelTypeCorrelation_QNAME, Correlation.class, CommonObservationModel.class, value);
+    }
+    
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PKmacroType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = NS_DEFAULT_MDEF, name = "PKmacros", scope = StructuralModel.class)
+    public JAXBElement<PKMacroList> createStructuralModelTypePKmacros(PKMacroList value) {
+        return new JAXBElement<PKMacroList>(_StructuralModelTypePKmacros_QNAME, PKMacroList.class, StructuralModel.class, value);
     }
 
 }
