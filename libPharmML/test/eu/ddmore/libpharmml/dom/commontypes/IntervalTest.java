@@ -103,7 +103,7 @@ public class IntervalTest {
 		IPharmMLResource testResource = libPharmML.createDomFromResource(is);
 		
 		Interval interval = ((VariableDefinition) testResource.getDom().getModelDefinition()
-				.getListOfStructuralModel().get(0).getCommonVariable().get(0).getValue()).getAssign().getInterval();
+				.getListOfStructuralModel().get(0).getListOfStructuralModelElements().get(0)).getAssign().getInterval();
 		
 		assertNotNull(interval);
 		assertNotNull(interval.getIntervalLength());

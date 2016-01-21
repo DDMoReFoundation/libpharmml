@@ -2,6 +2,10 @@ package eu.ddmore.libpharmml;
 
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Iterator;
 
 import org.junit.Assert;
@@ -102,6 +106,29 @@ public class AssertUtil extends Assert {
 			System.err.println("");
 		}
 		assertEquals(expectedNumError, report.numErrors());
+	}
+	
+	public static void assertSameContent(File file1, File file2) throws IOException{
+		
+		BufferedReader br1 = new BufferedReader(new FileReader(file1));
+		StringBuilder content1 = new StringBuilder();
+		String line1 = null;
+		while ((line1 = br1.readLine()) != null) {
+		   content1.append(line1).append("\n");
+		}
+		br1.close();
+		BufferedReader br2 = new BufferedReader(new FileReader(file2));
+		StringBuilder content2 = new StringBuilder();
+		String line2 = null;
+		while ((line2 = br2.readLine()) != null) {
+		   content2.append(line2).append("\n");
+		}
+		br2.close();
+		
+		if(!content1.toString().equals(content2.toString())){
+			fail("Actual file content:\n"+content2);
+		}
+		
 	}
 	
 }

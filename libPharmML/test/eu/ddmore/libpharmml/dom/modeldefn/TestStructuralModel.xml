@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mml:PharmML xmlns:mdef="http://www.pharmml.org/pharmml/0.8/ModelDefinition" xmlns:po="http://www.pharmml.org/probonto/ProbOnto" xmlns:td="http://www.pharmml.org/pharmml/0.8/TrialDesign" xmlns:ds="http://www.pharmml.org/pharmml/0.8/Dataset" xmlns:math="http://www.pharmml.org/pharmml/0.8/Maths" xmlns:uncert="http://www.uncertml.org/3.0" xmlns:mml="http://www.pharmml.org/pharmml/0.8/PharmML" xmlns:ct="http://www.pharmml.org/pharmml/0.8/CommonTypes" xmlns:msteps="http://www.pharmml.org/pharmml/0.8/ModellingSteps" writtenVersion="0.8">
+    <ct:Name>StructuralModel Test</ct:Name>
+    <mml:IndependentVariable symbId="t"/>
+    <mdef:ModelDefinition>
+        <mdef:StructuralModel blkId="sm1">
+            <ct:DerivativeVariable symbolType="real" symbId="Ac"/>
+            <ct:Variable symbolType="real" symbId="C"/>
+            <mdef:ConditionalStatement>
+                <math:If>
+                    <math:Condition>
+                        <math:LogicBinop op="gt">
+                            <ct:SymbRef symbIdRef="t"/>
+                            <ct:Real>60.0</ct:Real>
+                        </math:LogicBinop>
+                    </math:Condition>
+                </math:If>
+                <math:Else>
+                    <mdef:Parameter symbId="ElseVar"/>
+                </math:Else>
+            </mdef:ConditionalStatement>
+            <mdef:PKmacros>
+                <mdef:Compartment>
+                    <mdef:Value argument="cmt">
+                        <ct:Assign>
+                            <ct:Int>1</ct:Int>
+                        </ct:Assign>
+                    </mdef:Value>
+                    <mdef:Value argument="amount">
+                        <ct:Assign>
+                            <ct:SymbRef symbIdRef="Ac"/>
+                        </ct:Assign>
+                    </mdef:Value>
+                </mdef:Compartment>
+            </mdef:PKmacros>
+        </mdef:StructuralModel>
+    </mdef:ModelDefinition>
+</mml:PharmML>

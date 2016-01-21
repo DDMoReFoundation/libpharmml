@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mml:PharmML xmlns:mdef="http://www.pharmml.org/pharmml/0.8/ModelDefinition" xmlns:po="http://www.pharmml.org/probonto/ProbOnto" xmlns:td="http://www.pharmml.org/pharmml/0.8/TrialDesign" xmlns:ds="http://www.pharmml.org/pharmml/0.8/Dataset" xmlns:math="http://www.pharmml.org/pharmml/0.8/Maths" xmlns:uncert="http://www.uncertml.org/3.0" xmlns:mml="http://www.pharmml.org/pharmml/0.8/PharmML" xmlns:ct="http://www.pharmml.org/pharmml/0.8/CommonTypes" xmlns:msteps="http://www.pharmml.org/pharmml/0.8/ModellingSteps" writtenVersion="0.8">
+    <ct:Name>Stub Model</ct:Name>
+    <mdef:ModelDefinition>
+        <mdef:StructuralModel blkId="sm1">
+            <ct:DerivativeVariable symbolType="real" symbId="Ac">
+                <ct:Assign>
+                    <ct:Piecewise>
+                        <math:Piece>
+                            <math:Condition>
+				<math:LogicUniop op="isDefined">
+				    <math:HF>
+					<math:Distribution>
+					    <po:ProbOnto name="Normal1">
+						<po:Parameter name="mean">
+						    <ct:Assign>
+							<ct:Real>0.0</ct:Real>
+						    </ct:Assign>
+						</po:Parameter>
+						<po:Parameter name="stdev">
+						    <ct:Assign>
+							<ct:Real>1.0</ct:Real>
+						    </ct:Assign>
+						</po:Parameter>
+					    </po:ProbOnto>
+					</math:Distribution>
+				    </math:HF>
+				</math:LogicUniop>
+                            </math:Condition>
+                        </math:Piece>
+                    </ct:Piecewise>
+                </ct:Assign>
+            </ct:DerivativeVariable>
+        </mdef:StructuralModel>
+    </mdef:ModelDefinition>
+</mml:PharmML>
+

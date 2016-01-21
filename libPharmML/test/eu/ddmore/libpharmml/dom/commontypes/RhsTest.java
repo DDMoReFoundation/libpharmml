@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -23,12 +24,16 @@ import eu.ddmore.libpharmml.dom.maths.Binoperator;
 import eu.ddmore.libpharmml.dom.maths.Constant;
 import eu.ddmore.libpharmml.dom.maths.ConstantOperator;
 import eu.ddmore.libpharmml.dom.maths.Equation;
+import eu.ddmore.libpharmml.dom.maths.ProbabilityFunction;
+import eu.ddmore.libpharmml.dom.maths.ProbabilityFunctionType;
+import eu.ddmore.libpharmml.dom.maths.TestMathObjectFactory;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.StructuralModel;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 
+@SuppressWarnings("deprecation")
 public class RhsTest {
 	
 	private ILibPharmML libPharmML;
@@ -38,7 +43,8 @@ public class RhsTest {
 	DerivativeVariable container;
 	DerivativeVariable old_container;
 	
-	private static final String TESTFILE = "testRhs.xml";
+	private static final String TESTFILE = "testRhs_v8.xml";
+	private static final String TESTFILE_V7 = "testRhs.xml";
 	private static final String TESTFILE_OLD = "testRhs_old.xml";
 	
 	@Before
@@ -146,14 +152,29 @@ public class RhsTest {
 	}
 	
 	@Test
-	public void testUnmarshalBinop07() throws Exception {
+	public void testUnmarshal08() throws Exception {
 		InputStream is = this.getClass().getResourceAsStream(TESTFILE);
 		IPharmMLResource res = libPharmML.createDomFromResource(is);
 		assertValid(libPharmML.getValidator().createValidationReport(old_resource));
 		
 		assertNotNull(((DerivativeVariable) res.getDom().getModelDefinition().
-				getListOfStructuralModel().get(0).getCommonVariable().get(0).
-				getValue()).getAssign().getBinop());
+				getListOfStructuralModel().get(0).getListOfStructuralModelElements().get(0)).getAssign().getBinop());
+		
+		ProbabilityFunction pf = ((DerivativeVariable) res.getDom().getModelDefinition().
+				getListOfStructuralModel().get(0).getListOfStructuralModelElements().get(1)).getAssign().getProbabilityFunction();
+		assertNotNull(pf);
+		assertEquals(ProbabilityFunctionType.SF, pf.getType());
+		assertNotNull(pf.getDistribution());
+	}
+	
+	@Test
+	public void testUnmarshalBinop07() throws Exception {
+		InputStream is = this.getClass().getResourceAsStream(TESTFILE_V7);
+		IPharmMLResource res = libPharmML.createDomFromResource(is);
+		assertValid(libPharmML.getValidator().createValidationReport(old_resource));
+		
+		assertNotNull(((DerivativeVariable) res.getDom().getModelDefinition().
+				getListOfStructuralModel().get(0).getListOfStructuralModelElements().get(0)).getAssign().getBinop());
 	}
 	
 	@Test
@@ -163,8 +184,7 @@ public class RhsTest {
 		assertValid(libPharmML.getValidator().createValidationReport(old_resource));
 		
 		assertNotNull(((DerivativeVariable) res.getDom().getModelDefinition().
-				getListOfStructuralModel().get(0).getCommonVariable().get(0).
-				getValue()).getAssign().getBinop());
+				getListOfStructuralModel().get(0).getListOfStructuralModelElements().get(0)).getAssign().getBinop());
 	}
 	
 	@Test
@@ -227,6 +247,47 @@ public class RhsTest {
 		String output = baos.toString();
 		assertThat(output, not(containsString("<math:Equation>")));
 		assertThat(output, containsString("<math:Constant op=\"pi\"/>"));
+
+		assertValid(libPharmML.getValidator().createValidationReport(resource));
+	}
+	
+	public static ProbabilityFunction createValidProbabilityFunction(ProbabilityFunctionType type){
+		return TestMathObjectFactory.createValidProbabilityFunction(type);
+	}
+	
+	@Test
+	public void testMarshalPDFDefault() throws Exception {
+		Rhs rhs = new Rhs();
+		ProbabilityFunction pf = createValidProbabilityFunction(ProbabilityFunctionType.PDF);
+		rhs.setProbabilityFunction(pf);
+		container.setAssign(rhs);
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		libPharmML.save(baos, resource);
+		
+		String output = baos.toString();
+		assertThat(output, not(containsString("<math:Equation>")));
+		assertThat(output, containsString("<math:PDF>"));
+		assertThat(output, containsString("<math:Distribution>"));
+
+		assertValid(libPharmML.getValidator().createValidationReport(resource));
+	}
+	
+	@Test
+	public void testMarshalSFDefault() throws Exception {
+		Rhs rhs = new Rhs();
+		ProbabilityFunction pf = createValidProbabilityFunction(ProbabilityFunctionType.SF);
+		rhs.setProbabilityFunction(pf);
+		container.setAssign(rhs);
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		libPharmML.save(baos, resource);
+		libPharmML.getMarshaller().marshall(resource.getDom(), System.out);
+		
+		String output = baos.toString();
+		assertThat(output, not(containsString("<math:Equation>")));
+		assertThat(output, containsString("<math:SF>"));
+		assertThat(output, containsString("<math:Distribution>"));
 
 		assertValid(libPharmML.getValidator().createValidationReport(resource));
 	}

@@ -19,7 +19,6 @@
 package eu.ddmore.libpharmml;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static eu.ddmore.libpharmml.AssertUtil.assertInvalid;
 
 import java.io.File;

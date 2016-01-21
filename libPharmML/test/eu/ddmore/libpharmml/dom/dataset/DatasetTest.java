@@ -1,7 +1,6 @@
 package eu.ddmore.libpharmml.dom.dataset;
 
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -16,18 +15,12 @@ import eu.ddmore.libpharmml.ILibPharmML;
 import eu.ddmore.libpharmml.IPharmMLResource;
 import eu.ddmore.libpharmml.PharmMlFactory;
 import eu.ddmore.libpharmml.dom.PharmML;
-import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
-import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
-import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
-import eu.ddmore.libpharmml.dom.modeldefn.StructuralModel;
-import eu.ddmore.libpharmml.dom.trialdesign.ContinuousObservation;
 import eu.ddmore.libpharmml.dom.trialdesign.DatasetMapping;
 import eu.ddmore.libpharmml.dom.trialdesign.Observations;
 import eu.ddmore.libpharmml.dom.trialdesign.TrialDesign;
-import eu.ddmore.libpharmml.impl.LibPharmMLImpl;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 @RunWith(Parameterized.class)
@@ -80,7 +73,7 @@ public class DatasetTest {
 		Observations obs = new Observations();
 		td.setObservations(obs);
 		DatasetMapping indObs = new DatasetMapping();
-		obs.getListOfIndividualObservations().add(indObs);
+		obs.getListOfObservationsElements().add(indObs);
 		
 		DataSet ds = indObs.createDataSet();
 		

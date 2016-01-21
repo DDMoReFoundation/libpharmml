@@ -104,7 +104,7 @@ private final PharmMLVersion VERSION;
 		IPharmMLResource resource = libPharmML.createDomFromResource(is);
 		
 		VariableDefinition variable = (VariableDefinition) resource.getDom().getModelDefinition()
-				.getListOfStructuralModel().get(0).getCommonVariable().get(0).getValue();
+				.getListOfStructuralModel().get(0).getListOfStructuralModelElements().get(0);
 		
 		assertNotNull(variable.getAssign());
 		assertNotNull(variable.getAssign().getMatrix());

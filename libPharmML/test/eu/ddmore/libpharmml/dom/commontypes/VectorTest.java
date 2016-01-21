@@ -1,18 +1,16 @@
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import static eu.ddmore.libpharmml.AssertUtil.assertVectorValueEquals;
 import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
-import static eu.ddmore.libpharmml.AssertUtil.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-
-import javax.xml.bind.JAXBElement;
 
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.After;
@@ -139,8 +137,7 @@ public class VectorTest {
 		assertNotNull(mdef);
 		assertNotNull(mdef.getListOfStructuralModel());
 		StructuralModel sm = mdef.getListOfStructuralModel().get(0);
-		JAXBElement<?> jaxb_var = sm.getCommonVariable().get(i);
-		Object var = jaxb_var.getValue();
+		Object var = sm.getListOfStructuralModelElements().get(i);
 		assertThat(var, IsInstanceOf.instanceOf(VariableDefinition.class));
 		return (VariableDefinition) var;
 	}

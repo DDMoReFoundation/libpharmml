@@ -130,14 +130,17 @@ public class MarshallerImplValidDomTest{
 			}
 			@Override
 			public void handleError(String id, String errMsg) {
+				getLogger().severe(errMsg);
 				errorOccurred = true;
 			}
 			@Override
 			public void handleError(String id, String errMsg, ValidationEventLocator locator) {
+				getLogger().severe(errMsg);
 				errorOccurred = true;
 			}
 			@Override
 			public void handleError(String id, String errMsg, AbstractTreeNode invalidObject) {
+				getLogger().severe(errMsg);
 				errorOccurred = true;
 			}
 		};

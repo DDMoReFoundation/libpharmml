@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mml:PharmML xmlns:mdef="http://www.pharmml.org/pharmml/0.8/ModelDefinition" xmlns:po="http://www.pharmml.org/probonto/ProbOnto" xmlns:td="http://www.pharmml.org/pharmml/0.8/TrialDesign" xmlns:ds="http://www.pharmml.org/pharmml/0.8/Dataset" xmlns:math="http://www.pharmml.org/pharmml/0.8/Maths" xmlns:uncert="http://www.uncertml.org/3.0" xmlns:mml="http://www.pharmml.org/pharmml/0.8/PharmML" xmlns:ct="http://www.pharmml.org/pharmml/0.8/CommonTypes" xmlns:msteps="http://www.pharmml.org/pharmml/0.8/ModellingSteps" writtenVersion="0.8">
+    <ct:Name>Model for ConditionalStatement unit test</ct:Name>
+    <mml:IndependentVariable symbId="t"/>
+    <mdef:ModelDefinition>
+        <mdef:StructuralModel blkId="sm1">
+            <mdef:PopulationParameter symbId="p1"/>
+            <mdef:ConditionalStatement>
+                <math:If>
+                    <math:Condition>
+                        <math:LogicBinop op="gt">
+                            <ct:SymbRef symbIdRef="t"/>
+                            <ct:Real>60.0</ct:Real>
+                        </math:LogicBinop>
+                    </math:Condition>
+                    <mdef:PopulationParameter symbIdRef="p1">
+                        <ct:Assign>
+                            <ct:Real>123.0</ct:Real>
+                        </ct:Assign>
+                    </mdef:PopulationParameter>
+                </math:If>
+                <math:ElseIf>
+                    <math:Condition>
+                        <math:LogicBinop op="gt">
+                            <ct:SymbRef symbIdRef="t"/>
+                            <ct:Real>120.0</ct:Real>
+                        </math:LogicBinop>
+                    </math:Condition>
+                    <mdef:PopulationParameter symbIdRef="p1">
+                        <ct:Assign>
+                            <ct:Real>456.0</ct:Real>
+                        </ct:Assign>
+                    </mdef:PopulationParameter>
+                </math:ElseIf>
+                <math:Else>
+                    <mdef:PopulationParameter symbIdRef="p1">
+                        <ct:Assign>
+                            <ct:Real>0.0</ct:Real>
+                        </ct:Assign>
+                    </mdef:PopulationParameter>
+                </math:Else>
+            </mdef:ConditionalStatement>
+        </mdef:StructuralModel>
+    </mdef:ModelDefinition>
+</mml:PharmML>

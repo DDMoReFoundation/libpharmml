@@ -10,8 +10,6 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collection;
 
-import javax.xml.bind.JAXBElement;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -86,17 +84,14 @@ public class ProbOntoTest {
 		ParameterModel pm = dom.createModelDefinition().createParameterModel("pm1");
 		IndividualParameter param = MasterObjectFactory.MODELDEFN_OF.createIndividualParameterType();
 		param.setSymbId("ip1");
-		JAXBElement<IndividualParameter> jaxb_param = MasterObjectFactory.MODELDEFN_OF.createIndividualParameter(param);
-		pm.getCommonParameterElement().add(jaxb_param);
+//		JAXBElement<IndividualParameter> jaxb_param = MasterObjectFactory.MODELDEFN_OF.createIndividualParameter(param);
+//		pm.getCommonParameterElement().add(jaxb_param);
+		pm.getListOfParameterModelElements().add(param);
 		
 		Distribution distrib = param.createDistribution();
 		
-		ProbOnto probonto = distrib.createProbOnto(DistributionName.NORMAL_1);
-		
-		DistributionParameter param1 = probonto.createParameter(ParameterName.MEAN);
-		param1.assign(new RealValue(0));
-		DistributionParameter param2 = probonto.createParameter(ParameterName.STDEV);
-		param2.assign(new RealValue(1));
+		ProbOnto probonto = createValidProbOnto();
+		distrib.setProbOnto(probonto);
 		
 		DistributionBound lower = probonto.createLowerTruncationBound();
 		lower.assign(new RealValue(0));
@@ -141,6 +136,14 @@ public class ProbOntoTest {
 		ProbOnto probOnto = new ProbOnto();
 		probOnto.setName(DistributionName.LAPLACE_1);
 		probOnto.createParameter(ParameterName.LOCATION).assign(new IntValue(2));
+		return probOnto;
+	}
+	
+	public static ProbOnto createValidProbOnto(){
+		ProbOnto probOnto = new ProbOnto();
+		probOnto.setName(DistributionName.NORMAL_1);
+		probOnto.createParameter(ParameterName.MEAN).assign(new RealValue(0));
+		probOnto.createParameter(ParameterName.STDEV).assign(new RealValue(1));
 		return probOnto;
 	}
 	
