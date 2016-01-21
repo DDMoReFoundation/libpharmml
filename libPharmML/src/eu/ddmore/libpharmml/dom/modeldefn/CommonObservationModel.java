@@ -30,22 +30,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
-import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
+import eu.ddmore.libpharmml.dom.maths.ConditionalStatement;
+import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -77,9 +77,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CommonObservationModelType", propOrder = {
     "name",
-    "commonParameterElement",
-    "variable",
-    "correlation"
+    "listOfElements"
 })
 @XmlSeeAlso({
     ContinuousObservationModel.class,
@@ -95,17 +93,41 @@ public abstract class CommonObservationModel
     @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Name name;
     
-    // -----------
-    @XmlElementRef(name = "CommonParameterElement", namespace = XMLFilter.NS_DEFAULT_MDEF, type = JAXBElement.class, required = false)
-    protected List<JAXBElement<? extends CommonParameter>> commonParameterElement;
-    @XmlTransient
-    protected List<CommonParameter> listOfCommonParameterElement;
-    // ------------
+//    // -----------
+//    @XmlElementRef(name = "CommonParameterElement", namespace = XMLFilter.NS_DEFAULT_MDEF, type = JAXBElement.class, required = false)
+//    protected List<JAXBElement<? extends CommonParameter>> commonParameterElement;
+//    @XmlTransient
+//    protected List<CommonParameter> listOfCommonParameterElement;
+//    // ------------
+//    
+//    @XmlElement(name = "Variable", namespace = XMLFilter.NS_DEFAULT_CT)
+//    protected List<VariableDefinition> variable;
+//    @XmlElement(name = "Correlation")
+//    protected List<Correlation> correlation;
     
-    @XmlElement(name = "Variable", namespace = XMLFilter.NS_DEFAULT_CT)
-    protected List<VariableDefinition> variable;
-    @XmlElement(name = "Correlation")
-    protected List<Correlation> correlation;
+//    @XmlElementRefs({
+//        @XmlElementRef(name = "Correlation", namespace = NS_DEFAULT_MDEF, type = JAXBElement.class, required = false),
+//        @XmlElementRef(name = "CommonParameterElement", namespace = NS_DEFAULT_MDEF, type = JAXBElement.class, required = false),
+//        @XmlElementRef(name = "Variable", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+//        @XmlElementRef(name = "ConditionalStatement", namespace = NS_DEFAULT_MDEF, type = JAXBElement.class, required = false),
+//        @XmlElementRef(name = "AssignStatement", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+//    })
+//    protected List<JAXBElement<?>> commonParameterElementAndAssignStatementAndConditionalStatement;
+    
+    @SuppressWarnings("deprecation")
+	@XmlElements({
+    	@XmlElement(name = "Correlation", namespace = NS_DEFAULT_MDEF, type = Correlation.class, required = false),
+        @XmlElement(name = "ConditionalStatement", namespace = NS_DEFAULT_MDEF, type = ConditionalStatement.class, required = false),
+        @XmlElement(name = "PopulationParameter", namespace = NS_DEFAULT_MDEF, type = PopulationParameter.class, required = false),
+        @XmlElement(name = "Parameter", namespace = NS_DEFAULT_MDEF, type = Parameter.class, required = false),
+        @XmlElement(name = "SimpleParameter", namespace = NS_DEFAULT_MDEF, type = SimpleParameter.class, required = false), // BC
+        @XmlElement(name = "AssignStatement", namespace = NS_DEFAULT_CT, type = LogicBinOp.class, required = false),
+        @XmlElement(name = "IndividualParameter", namespace = NS_DEFAULT_MDEF, type = IndividualParameter.class, required = false),
+        @XmlElement(name = "DesignParameter", namespace = NS_DEFAULT_MDEF, type = DesignParameter.class, required = false),
+        @XmlElement(name = "RandomVariable", namespace = NS_DEFAULT_MDEF, type = ParameterRandomVariable.class, required = false),
+        @XmlElement(name = "Variable", namespace = NS_DEFAULT_CT, type = VariableDefinition.class, required = false)
+    })
+    protected List<PharmMLElement> listOfElements;
 
     /**
      * Gets the value of the name property.
@@ -129,6 +151,13 @@ public abstract class CommonObservationModel
      */
     public void setName(Name value) {
         this.name = value;
+    }
+    
+    public List<PharmMLElement> getListOfObservationModelElement(){
+    	if(listOfElements == null){
+    		listOfElements = new ArrayList<PharmMLElement>();
+    	}
+    	return listOfElements;
     }
 
 //    /**
@@ -163,95 +192,95 @@ public abstract class CommonObservationModel
 //        return this.commonParameterElement;
 //    }
     
-    /**
-     * Gets the value of the commonParameterElement property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the commonParameterElement property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCommonParameterElement().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link CommonParameter }
-     * {@link SimpleParameter }
-     * {@link IndividualParameter }
-     * {@link ParameterRandomVariable }
-     * 
-     * 
-     */
-    public List<CommonParameter> getListOfCommonParameterElement() {
-        if (listOfCommonParameterElement == null) {
-        	listOfCommonParameterElement = new ArrayList<CommonParameter>();
-        }
-        return this.listOfCommonParameterElement;
-    }
-
-    /**
-     * A variable definition.Gets the value of the variable property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the variable property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getVariable().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link VariableDefinition }
-     * 
-     * 
-     */
-    public List<VariableDefinition> getListOfVariable() {
-        if (variable == null) {
-            variable = new ArrayList<VariableDefinition>();
-        }
-        return this.variable;
-    }
-
-    /**
-     * Gets the value of the correlation property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the correlation property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCorrelation().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Correlation }
-     * 
-     * 
-     */
-    public List<Correlation> getListOfCorrelation() {
-        if (correlation == null) {
-            correlation = new ArrayList<Correlation>();
-        }
-        return this.correlation;
-    }
+//    /**
+//     * Gets the value of the commonParameterElement property.
+//     * 
+//     * <p>
+//     * This accessor method returns a reference to the live list,
+//     * not a snapshot. Therefore any modification you make to the
+//     * returned list will be present inside the JAXB object.
+//     * This is why there is not a <CODE>set</CODE> method for the commonParameterElement property.
+//     * 
+//     * <p>
+//     * For example, to add a new item, do as follows:
+//     * <pre>
+//     *    getCommonParameterElement().add(newItem);
+//     * </pre>
+//     * 
+//     * 
+//     * <p>
+//     * Objects of the following type(s) are allowed in the list
+//     * {@link CommonParameter }
+//     * {@link SimpleParameter }
+//     * {@link IndividualParameter }
+//     * {@link ParameterRandomVariable }
+//     * 
+//     * 
+//     */
+//    public List<CommonParameter> getListOfCommonParameterElement() {
+//        if (listOfCommonParameterElement == null) {
+//        	listOfCommonParameterElement = new ArrayList<CommonParameter>();
+//        }
+//        return this.listOfCommonParameterElement;
+//    }
+//
+//    /**
+//     * A variable definition.Gets the value of the variable property.
+//     * 
+//     * <p>
+//     * This accessor method returns a reference to the live list,
+//     * not a snapshot. Therefore any modification you make to the
+//     * returned list will be present inside the JAXB object.
+//     * This is why there is not a <CODE>set</CODE> method for the variable property.
+//     * 
+//     * <p>
+//     * For example, to add a new item, do as follows:
+//     * <pre>
+//     *    getVariable().add(newItem);
+//     * </pre>
+//     * 
+//     * 
+//     * <p>
+//     * Objects of the following type(s) are allowed in the list
+//     * {@link VariableDefinition }
+//     * 
+//     * 
+//     */
+//    public List<VariableDefinition> getListOfVariable() {
+//        if (variable == null) {
+//            variable = new ArrayList<VariableDefinition>();
+//        }
+//        return this.variable;
+//    }
+//
+//    /**
+//     * Gets the value of the correlation property.
+//     * 
+//     * <p>
+//     * This accessor method returns a reference to the live list,
+//     * not a snapshot. Therefore any modification you make to the
+//     * returned list will be present inside the JAXB object.
+//     * This is why there is not a <CODE>set</CODE> method for the correlation property.
+//     * 
+//     * <p>
+//     * For example, to add a new item, do as follows:
+//     * <pre>
+//     *    getCorrelation().add(newItem);
+//     * </pre>
+//     * 
+//     * 
+//     * <p>
+//     * Objects of the following type(s) are allowed in the list
+//     * {@link Correlation }
+//     * 
+//     * 
+//     */
+//    public List<Correlation> getListOfCorrelation() {
+//        if (correlation == null) {
+//            correlation = new ArrayList<Correlation>();
+//        }
+//        return this.correlation;
+//    }
     
     /**
      * Creates a new {@link Name} name element, adds it to the current object and returns it.
@@ -271,7 +300,7 @@ public abstract class CommonObservationModel
      */
     public VariableDefinition createVariable(){
             VariableDefinition el = new VariableDefinition();
-            getListOfVariable().add(el);
+            getListOfObservationModelElement().add(el);
             return el;
     }
     
@@ -283,7 +312,7 @@ public abstract class CommonObservationModel
      */
     public VariableDefinition createVariable(String symbolId, SymbolType type){
             VariableDefinition el = new VariableDefinition();
-            getListOfVariable().add(el);
+            getListOfObservationModelElement().add(el);
             el.setSymbId(symbolId);
             el.setSymbolType(type);
             return el;
@@ -295,39 +324,98 @@ public abstract class CommonObservationModel
      */
     public Correlation createCorrelation(){
             Correlation el = new Correlation();
-            getListOfCorrelation().add(el);
+            getListOfObservationModelElement().add(el);
             return el;
     }
     
+    public Parameter createParameter(){
+    	Parameter param = new Parameter();
+    	getListOfObservationModelElement().add(param);
+    	return param;
+    }
+    
+    public Parameter createParameter(String symbId){
+    	Parameter param = createParameter();
+    	param.setSymbId(symbId);
+    	return param;
+    }
+    
+    public IndividualParameter createIndividualParameter(){
+    	IndividualParameter param = new IndividualParameter();
+    	getListOfObservationModelElement().add(param);
+    	return param;
+    }
+    
+    public IndividualParameter createIndividualParameter(String symbId){
+    	IndividualParameter param = createIndividualParameter();
+    	param.setSymbId(symbId);
+    	return param;
+    }
+    
+    public PopulationParameter createPopulationParameter(){
+    	PopulationParameter param = new PopulationParameter();
+    	getListOfObservationModelElement().add(param);
+    	return param;
+    }
+    
+    public PopulationParameter createPopulationParameter(String symbId){
+    	PopulationParameter param = createPopulationParameter();
+    	param.setSymbId(symbId);
+    	return param;
+    }
+    
+    public DesignParameter createDesignParameter(){
+    	DesignParameter dp = new DesignParameter();
+    	getListOfObservationModelElement().add(dp);
+    	return dp;
+    }
+    
+    public DesignParameter createDesignParameter(String symbId){
+    	DesignParameter dp = createDesignParameter();
+    	dp.setSymbId(symbId);
+    	return dp;
+    }
+    
+    public ParameterRandomVariable createParameterRandomVariable(){
+    	ParameterRandomVariable prv = new ParameterRandomVariable();
+    	getListOfObservationModelElement().add(prv);
+    	return prv;
+    }
+    
+    public ParameterRandomVariable createParameterRandomVariable(String symbId){
+    	ParameterRandomVariable prv = new ParameterRandomVariable();
+    	prv.setSymbId(symbId);
+    	getListOfObservationModelElement().add(prv);
+    	return prv;
+    }
+    
     protected void afterUnmarshal(Unmarshaller u, Object parent){
-    	if(commonParameterElement != null){
-			listOfCommonParameterElement = new ArrayList<CommonParameter>();
-			for(JAXBElement<? extends CommonParameter> el : commonParameterElement){
-				listOfCommonParameterElement.add(el.getValue());
-			}
-		} else {
-			listOfCommonParameterElement = null;
-		}
+//    	if(commonParameterElement != null){
+//			listOfCommonParameterElement = new ArrayList<CommonParameter>();
+//			for(JAXBElement<? extends CommonParameter> el : commonParameterElement){
+//				listOfCommonParameterElement.add(el.getValue());
+//			}
+//		} else {
+//			listOfCommonParameterElement = null;
+//		}
     }
     
     protected void beforeMarshal(Marshaller m){
-    	if(listOfCommonParameterElement != null){
-			commonParameterElement = new ArrayList<JAXBElement<? extends CommonParameter>>();
-			for(CommonParameter param : listOfCommonParameterElement){
-				commonParameterElement.add(MasterObjectFactory.createParameter(param));
-			}
-		} else {
-			commonParameterElement = null;
-		}
+//    	if(listOfCommonParameterElement != null){
+//			commonParameterElement = new ArrayList<JAXBElement<? extends CommonParameter>>();
+//			for(CommonParameter param : listOfCommonParameterElement){
+//				commonParameterElement.add(MasterObjectFactory.createParameter(param));
+//			}
+//		} else {
+//			commonParameterElement = null;
+//		}
     }
     
     @Override
     protected List<TreeNode> listChildren() {
-    	return new ChainedList<TreeNode>()
+    	return new ChainedList<TreeNode>(super.listChildren())
     			.addIfNotNull(name)
-    			.addIfNotNull(listOfCommonParameterElement)
-    			.addIfNotNull(variable)
-    			.addIfNotNull(correlation);
+    			.addIfNotNull(listOfElements);
     }
     
 //    protected static class Adapter extends XmlAdapter<CommonObservationModel,CommonObservationModel>{

@@ -30,20 +30,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.Block;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
+import eu.ddmore.libpharmml.dom.maths.ConditionalStatement;
+import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
+import eu.ddmore.libpharmml.dom.maths.LogicOperator;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -58,13 +63,19 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="CommonParameterModelType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/CommonTypes}Name" minOccurs="0"/>
- *         &lt;element ref="{http://www.pharmml.org/2013/03/ModelDefinition}CommonParameterElement" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="Correlation" type="{http://www.pharmml.org/2013/03/ModelDefinition}CorrelationType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Name" minOccurs="0"/>
+ *         &lt;choice maxOccurs="unbounded">
+ *           &lt;sequence>
+ *             &lt;element name="ConditionalStatement" type="{http://www.pharmml.org/pharmml/0.8/Maths}ConditionalStatementType" minOccurs="0"/>
+ *             &lt;element ref="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}CommonParameterElement" maxOccurs="unbounded" minOccurs="0"/>
+ *             &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}AssignStatement" maxOccurs="unbounded" minOccurs="0"/>
+ *             &lt;element name="Correlation" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}CorrelationType" maxOccurs="unbounded" minOccurs="0"/>
+ *           &lt;/sequence>
+ *         &lt;/choice>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.pharmml.org/2013/03/CommonTypes}BlockDefnGroup"/>
+ *       &lt;attGroup ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}BlockDefnGroup"/>
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -75,8 +86,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CommonParameterModelType", propOrder = {
     "name",
-    "commonParameterElement",
-    "correlation"
+    "listOfElements"
 })
 @XmlSeeAlso({
     ParameterModel.class
@@ -87,10 +97,33 @@ public abstract class CommonParameterModel
 
     @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Name name;
-    @XmlElementRef(name = "CommonParameterElement", namespace = XMLFilter.NS_DEFAULT_MDEF, type = JAXBElement.class, required = false)
-    protected List<JAXBElement<? extends CommonParameter>> commonParameterElement;
-    @XmlElement(name = "Correlation")
-    protected List<Correlation> correlation;
+//    @XmlElementRef(name = "CommonParameterElement", namespace = XMLFilter.NS_DEFAULT_MDEF, type = JAXBElement.class, required = false)
+//    protected List<JAXBElement<? extends CommonParameter>> commonParameterElement;
+//    @XmlElement(name = "Correlation")
+//    protected List<Correlation> correlation;
+    
+//    @XmlElementRefs({
+//        @XmlElementRef(name = "CommonParameterElement", namespace = "http://www.pharmml.org/pharmml/0.8/ModelDefinition", type = JAXBElement.class, required = false),
+//        @XmlElementRef(name = "Correlation", namespace = "http://www.pharmml.org/pharmml/0.8/ModelDefinition", type = JAXBElement.class, required = false),
+//        @XmlElementRef(name = "AssignStatement", namespace = "http://www.pharmml.org/pharmml/0.8/CommonTypes", type = JAXBElement.class, required = false),
+//        @XmlElementRef(name = "ConditionalStatement", namespace = "http://www.pharmml.org/pharmml/0.8/ModelDefinition", type = JAXBElement.class, required = false)
+//    })
+//    protected List<JAXBElement<?>> conditionalStatementAndCommonParameterElementAndAssignStatement;
+    
+    @SuppressWarnings("deprecation")
+	@XmlElements({
+    	@XmlElement(name = "Correlation", namespace = NS_DEFAULT_MDEF, type = Correlation.class, required = false),
+        @XmlElement(name = "ConditionalStatement", namespace = NS_DEFAULT_MDEF, type = ConditionalStatement.class, required = false),
+        @XmlElement(name = "PopulationParameter", namespace = NS_DEFAULT_MDEF, type = PopulationParameter.class, required = false),
+        @XmlElement(name = "Parameter", namespace = NS_DEFAULT_MDEF, type = Parameter.class, required = false),
+        @XmlElement(name = "SimpleParameter", namespace = NS_DEFAULT_MDEF, type = SimpleParameter.class, required = false), // BC
+        @XmlElement(name = "AssignStatement", namespace = NS_DEFAULT_CT, type = LogicBinOp.class, required = false),
+        @XmlElement(name = "IndividualParameter", namespace = NS_DEFAULT_MDEF, type = IndividualParameter.class, required = false),
+        @XmlElement(name = "DesignParameter", namespace = NS_DEFAULT_MDEF, type = DesignParameter.class, required = false),
+        @XmlElement(name = "RandomVariable", namespace = NS_DEFAULT_MDEF, type = ParameterRandomVariable.class, required = false)
+    })
+    protected List<PharmMLElement> listOfElements;
+    
     @XmlAttribute(name = "blkId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String blkId;
@@ -119,65 +152,158 @@ public abstract class CommonParameterModel
         this.name = value;
     }
 
-    /**
-     * Gets the value of the commonParameterElement property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the commonParameterElement property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCommonParameterElement().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link SimpleParameter }{@code >}
-     * {@link JAXBElement }{@code <}{@link CommonParameter }{@code >}
-     * {@link JAXBElement }{@code <}{@link IndividualParameter }{@code >}
-     * {@link JAXBElement }{@code <}{@link ParameterRandomVariable }{@code >}
-     * 
-     * 
-     */
-    public List<JAXBElement<? extends CommonParameter>> getCommonParameterElement() {
-        if (commonParameterElement == null) {
-            commonParameterElement = new ArrayList<JAXBElement<? extends CommonParameter>>();
-        }
-        return this.commonParameterElement;
-    }
+//    /**
+//     * Gets the value of the commonParameterElement property.
+//     * 
+//     * <p>
+//     * This accessor method returns a reference to the live list,
+//     * not a snapshot. Therefore any modification you make to the
+//     * returned list will be present inside the JAXB object.
+//     * This is why there is not a <CODE>set</CODE> method for the commonParameterElement property.
+//     * 
+//     * <p>
+//     * For example, to add a new item, do as follows:
+//     * <pre>
+//     *    getCommonParameterElement().add(newItem);
+//     * </pre>
+//     * 
+//     * 
+//     * <p>
+//     * Objects of the following type(s) are allowed in the list
+//     * {@link JAXBElement }{@code <}{@link SimpleParameter }{@code >}
+//     * {@link JAXBElement }{@code <}{@link CommonParameter }{@code >}
+//     * {@link JAXBElement }{@code <}{@link IndividualParameter }{@code >}
+//     * {@link JAXBElement }{@code <}{@link ParameterRandomVariable }{@code >}
+//     * 
+//     * 
+//     */
+//    public List<JAXBElement<? extends CommonParameter>> getCommonParameterElement() {
+//        if (commonParameterElement == null) {
+//            commonParameterElement = new ArrayList<JAXBElement<? extends CommonParameter>>();
+//        }
+//        return this.commonParameterElement;
+//    }
 
-    /**
-     * Gets the value of the correlation property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the correlation property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCorrelation().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Correlation }
-     * 
-     * 
-     */
-    public List<Correlation> getCorrelation() {
-        if (correlation == null) {
-            correlation = new ArrayList<Correlation>();
-        }
-        return this.correlation;
+//    /**
+//     * Gets the value of the correlation property.
+//     * 
+//     * <p>
+//     * This accessor method returns a reference to the live list,
+//     * not a snapshot. Therefore any modification you make to the
+//     * returned list will be present inside the JAXB object.
+//     * This is why there is not a <CODE>set</CODE> method for the correlation property.
+//     * 
+//     * <p>
+//     * For example, to add a new item, do as follows:
+//     * <pre>
+//     *    getCorrelation().add(newItem);
+//     * </pre>
+//     * 
+//     * 
+//     * <p>
+//     * Objects of the following type(s) are allowed in the list
+//     * {@link Correlation }
+//     * 
+//     * 
+//     */
+//    public List<Correlation> getCorrelation() {
+//        if (correlation == null) {
+//            correlation = new ArrayList<Correlation>();
+//        }
+//        return this.correlation;
+//    }
+    
+    public List<PharmMLElement> getListOfParameterModelElements(){
+    	if(listOfElements == null){
+    		listOfElements = new ArrayList<PharmMLElement>();
+    	}
+    	return listOfElements;
+    }
+    
+    public Parameter createParameter(){
+    	Parameter param = new Parameter();
+    	getListOfParameterModelElements().add(param);
+    	return param;
+    }
+    
+    public Parameter createParameter(String symbId){
+    	Parameter param = createParameter();
+    	param.setSymbId(symbId);
+    	return param;
+    }
+    
+    public IndividualParameter createIndividualParameter(){
+    	IndividualParameter param = new IndividualParameter();
+    	getListOfParameterModelElements().add(param);
+    	return param;
+    }
+    
+    public IndividualParameter createIndividualParameter(String symbId){
+    	IndividualParameter param = createIndividualParameter();
+    	param.setSymbId(symbId);
+    	return param;
+    }
+    
+    public PopulationParameter createPopulationParameter(){
+    	PopulationParameter param = new PopulationParameter();
+    	getListOfParameterModelElements().add(param);
+    	return param;
+    }
+    
+    public PopulationParameter createPopulationParameter(String symbId){
+    	PopulationParameter param = createPopulationParameter();
+    	param.setSymbId(symbId);
+    	return param;
+    }
+    
+    public DesignParameter createDesignParameter(){
+    	DesignParameter dp = new DesignParameter();
+    	getListOfParameterModelElements().add(dp);
+    	return dp;
+    }
+    
+    public DesignParameter createDesignParameter(String symbId){
+    	DesignParameter dp = createDesignParameter();
+    	dp.setSymbId(symbId);
+    	return dp;
+    }
+    
+    public ParameterRandomVariable createParameterRandomVariable(){
+    	ParameterRandomVariable prv = new ParameterRandomVariable();
+    	getListOfParameterModelElements().add(prv);
+    	return prv;
+    }
+    
+    public ParameterRandomVariable createParameterRandomVariable(String symbId){
+    	ParameterRandomVariable prv = new ParameterRandomVariable();
+    	prv.setSymbId(symbId);
+    	getListOfParameterModelElements().add(prv);
+    	return prv;
+    }
+    
+    public Correlation createCorrelation(){
+    	Correlation c = new Correlation();
+    	getListOfParameterModelElements().add(c);
+    	return c;
+    }
+    
+    public LogicBinOp createAssignStatement(){
+    	LogicBinOp as = new LogicBinOp(LogicOperator.EQ);
+    	getListOfParameterModelElements().add(as);
+    	return as;
+    }
+    
+    public LogicBinOp createAssignStatement(SymbolRef lhs){
+    	LogicBinOp as = new LogicBinOp(LogicOperator.EQ);
+    	as.getContent().add(MasterObjectFactory.COMMONTYPES_OF.createSymbRef(lhs));
+    	getListOfParameterModelElements().add(as);
+    	return as;
+    }
+    
+    public ConditionalStatement createConditionalStatement(){
+    	ConditionalStatement cs = new ConditionalStatement();
+    	getListOfParameterModelElements().add(cs);
+    	return cs;
     }
 
     /**
@@ -206,12 +332,9 @@ public abstract class CommonParameterModel
     
     @Override
 	protected List<TreeNode> listChildren() {
-		List<TreeNode> list = new ChainedList<TreeNode>()
+		List<TreeNode> list = new ChainedList<TreeNode>(super.listChildren())
 				.addIfNotNull(name)
-				.addIfNotNull(correlation);
-		for(JAXBElement<? extends CommonParameter> el : getCommonParameterElement()){
-			list.add(el.getValue());
-		}
+				.addIfNotNull(listOfElements);
 		return list;
 	}
 
