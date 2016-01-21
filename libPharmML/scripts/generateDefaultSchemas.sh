@@ -2,9 +2,9 @@
 
 def_dir="../src/eu/ddmore/libpharmml/impl/definitions/"
 
-default_version="0.6"
+default_version="0.8"
 
-old_version_dirs=("0_2_1" "0_3" "0_3_1" "0_4" "0_4_1" "0_5" "0_5_1")
+old_version_dirs=("0_2_1" "0_3" "0_3_1" "0_4" "0_4_1" "0_5" "0_5_1" "0_6")
 
 for dir in "${old_version_dirs[@]}"
 do
