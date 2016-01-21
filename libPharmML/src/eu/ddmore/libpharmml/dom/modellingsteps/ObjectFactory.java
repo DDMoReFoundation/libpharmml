@@ -237,7 +237,7 @@ public class ObjectFactory {
      * Create an instance of {@link ToEstimate }
      * 
 	 * @since PharmML0.3
-	 * @deprecatedUse {@link #createToEstimate()}.
+	 * @deprecated Use {@link #createToEstimate()}.
      */
     @Deprecated
     public ToEstimate createToEstimateType() {

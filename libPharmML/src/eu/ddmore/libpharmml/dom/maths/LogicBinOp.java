@@ -37,16 +37,25 @@ import eu.ddmore.libpharmml.dom.commontypes.CategoryRef;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
+import eu.ddmore.libpharmml.dom.commontypes.Matrix;
+import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
 import eu.ddmore.libpharmml.dom.commontypes.MissingValue;
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.Product;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
+import eu.ddmore.libpharmml.dom.commontypes.Sum;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
+import eu.ddmore.libpharmml.dom.commontypes.Vector;
+import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
+import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
 import eu.ddmore.libpharmml.dom.tags.StructuralModelElement;
+import eu.ddmore.libpharmml.dom.uncertml.Probability;
 import eu.ddmore.libpharmml.util.ChainedList;
+
 
 
 /**
@@ -226,14 +235,14 @@ public class LogicBinOp
      * {@link JAXBElement }{@code <}{@link IntValue }{@code >}
      * {@link JAXBElement }{@code <}{@link ProbabilityFunction }{@code >}
      * {@link JAXBElement }{@code <}{@link SymbolRef }{@code >}
-     * {@link JAXBElement }{@code <}{@link ProbabilityType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Probability }{@code >}
      * {@link JAXBElement }{@code <}{@link Statsop }{@code >}
-     * {@link JAXBElement }{@code <}{@link UniopType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Uniop }{@code >}
      * {@link JAXBElement }{@code <}{@link Sum }{@code >}
      * {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
      * {@link JAXBElement }{@code <}{@link VectorSelector }{@code >}
      * {@link JAXBElement }{@code <}{@link LogicBinOp }{@code >}
-     * {@link JAXBElement }{@code <}{@link BinopType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Binop }{@code >}
      * {@link JAXBElement }{@code <}{@link MissingValue }{@code >}
      * {@link JAXBElement }{@code <}{@link ProbabilityFunction }{@code >}
      * {@link JAXBElement }{@code <}{@link ColumnReference }{@code >}

@@ -653,7 +653,7 @@ public class ObjectFactory {
     }
     
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CorrelationType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Correlation }{@code >}}
      * 
      * @since PharmML 0.8
      */
@@ -663,7 +663,7 @@ public class ObjectFactory {
     }
     
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PKmacroType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link PKMacroList }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = NS_DEFAULT_MDEF, name = "PKmacros", scope = StructuralModel.class)

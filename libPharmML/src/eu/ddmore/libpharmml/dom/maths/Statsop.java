@@ -46,6 +46,7 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
+import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -186,20 +187,20 @@ public class Statsop
      * {@link JAXBElement }{@code <}{@link BooleanValue }{@code >}
      * {@link JAXBElement }{@code <}{@link Statsop }{@code >}
      * {@link JAXBElement }{@code <}{@link MissingValue }{@code >}
-     * {@link JAXBElement }{@code <}{@link UniopType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Uniop }{@code >}
      * {@link JAXBElement }{@code <}{@link VectorSelector }{@code >}
      * {@link JAXBElement }{@code <}{@link TrueBoolean }{@code >}
      * {@link JAXBElement }{@code <}{@link Object }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValue }{@code >}
      * {@link JAXBElement }{@code <}{@link Interval }{@code >}
      * {@link JAXBElement }{@code <}{@link MatrixSelector }{@code >}
-     * {@link JAXBElement }{@code <}{@link BinopType }{@code >}
+     * {@link JAXBElement }{@code <}{@link Binop }{@code >}
      * {@link JAXBElement }{@code <}{@link MissingValue }{@code >}
      * {@link JAXBElement }{@code <}{@link MissingValue }{@code >}
      * {@link JAXBElement }{@code <}{@link FalseBoolean }{@code >}
      * {@link JAXBElement }{@code <}{@link Sequence }{@code >}
      * {@link JAXBElement }{@code <}{@link MissingValue }{@code >}
-     * {@link JAXBElement }{@code <}{@link ColumnRefType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ColumnReference }{@code >}
      * 
      * 
      */

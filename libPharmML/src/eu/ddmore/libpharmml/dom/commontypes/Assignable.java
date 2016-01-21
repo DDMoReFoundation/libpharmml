@@ -47,7 +47,7 @@ public interface Assignable {
 	/**
      * Sets the value of the assign property.
      * 
-     * @param value
+     * @param assign
      *     allowed object is
      *     {@link Rhs }
      *     

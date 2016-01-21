@@ -273,7 +273,7 @@ public class CategoricalPMF
      * 
      * @param value
      *     allowed object is
-     *     {@link PMFtransformType }
+     *     {@link PMFtransform }
      *     
      * @since PharmML 0.7.3
      */
