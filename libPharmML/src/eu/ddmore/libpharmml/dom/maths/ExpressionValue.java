@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014,2015 European Molecular Biology Laboratory,
+ * Copyright (c) 2014-2016 European Molecular Biology Laboratory,
  * Heidelberg, Germany.
  * 
  * Licensed under the Apache License, Version 2.0 (the
@@ -24,14 +24,17 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
 import eu.ddmore.libpharmml.dom.commontypes.ObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.Product;
 import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.Sum;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
+import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
+import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
 
 /**
  * Interface implemented by any possible type of value within {@link Expression} objects, such as
@@ -50,11 +53,16 @@ public interface ExpressionValue extends TreeNode {
 		private static ObjectFactory cof = MasterObjectFactory.COMMONTYPES_OF;
 		private static eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory mdof = MasterObjectFactory.MODELDEFN_OF;
 		private static eu.ddmore.libpharmml.dom.maths.ObjectFactory mathof = MasterObjectFactory.MATHS_OF;
-
+		
+		@SuppressWarnings("unchecked")
 		@Override
 		public ExpressionValue unmarshal(JAXBElement<? extends ExpressionValue> v) throws Exception {
 			if(v != null){
-				return v.getValue();
+				if(v.getValue() instanceof ProbabilityFunction){
+					return new ProbabilityFunction.Adapter().unmarshal((JAXBElement<ProbabilityFunction>) v);
+				} else {
+					return v.getValue();
+				}
 			} else {
 				return null;
 			}
@@ -89,6 +97,18 @@ public interface ExpressionValue extends TreeNode {
 					return mathof.createFunctionCall((FunctionCallType) v);
 				} else if(v instanceof MatrixUniOp){
 					return mathof.createMatrixUniop((MatrixUniOp) v);
+				} else if(v instanceof Matrix){
+					return cof.createMatrix((Matrix) v);
+				} else if(v instanceof Vector){
+					return cof.createVector((Vector) v);
+				} else if(v instanceof Realisation){
+					return mathof.createRealisation((Realisation) v);
+				} else if(v instanceof Statsop){
+					return mathof.createStatsop((Statsop) v);
+				} else if(v instanceof Naryop){
+					return mathof.createNaryop((Naryop) v);
+				} else if(v instanceof ProbabilityFunction){
+					return new ProbabilityFunction.Adapter().marshal((ProbabilityFunction) v);
 				} else {
 					throw new RuntimeException("ExpressionValue must be defined in ExpressionValueAdapter");
 				}
