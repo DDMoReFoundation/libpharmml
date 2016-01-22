@@ -18,6 +18,10 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.util;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 public class Util {
@@ -27,6 +31,19 @@ public class Util {
 		to.setId(from.getId());
 		to.setUnmarshalVersion(from.getUnmarshalVersion());
 		to.setMarshalVersion(from.getMarshalVersion());
+	}
+	
+	public static <T> Collection<T> filter(Collection<? super T> list, Class<T> _class){
+		if(list == null){
+			return Collections.emptyList();
+		}
+		Collection<T> collection = new ArrayList<T>();
+		for(Object el : list){
+			if(_class.isInstance(el)){
+				collection.add(_class.cast(el));
+			}
+		}
+		return Collections.unmodifiableCollection(collection);
 	}
 	
 }

@@ -19,6 +19,7 @@
 package eu.ddmore.libpharmml.dom.modeldefn;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
@@ -44,6 +45,7 @@ import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKMacroList;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import static eu.ddmore.libpharmml.util.Util.filter;
 
 
 /**
@@ -122,7 +124,64 @@ public class StructuralModel
         }
         return this.listOfElements;
     }
-
+    
+    /**
+     * Returns an <b><u>immutable</u></b> collection of the {@link PKMacroList} elements of this structural model.
+     * @return An <b><u>immutable</u></b> collection of the {@link PKMacroList} elements of this structural model.
+     */
+    public Collection<PKMacroList> fetchPKMacroLists(){
+    	return filter(listOfElements, PKMacroList.class);
+    }
+    /**
+     * Returns an <b><u>immutable</u></b> collection of the {@link VariableDefinition} elements of this structural model.
+     * @return An <b><u>immutable</u></b> collection of the {@link VariableDefinition} elements of this structural model.
+     */
+    public Collection<VariableDefinition> fetchVariables(){
+    	return filter(listOfElements, VariableDefinition.class);
+    }
+    /**
+     * Returns an <b><u>immutable</u></b> collection of the {@link DerivativeVariable} elements of this structural model.
+     * @return An <b><u>immutable</u></b> collection of the {@link DerivativeVariable} elements of this structural model.
+     */
+    public Collection<DerivativeVariable> fetchDerivativeVariables(){
+    	return filter(listOfElements, DerivativeVariable.class);
+    }
+    /**
+     * Returns an <b><u>immutable</u></b> collection of the {@link IndividualParameter} elements of this structural model.
+     * @return An <b><u>immutable</u></b> collection of the {@link IndividualParameter} elements of this structural model.
+     */
+    public Collection<IndividualParameter> fetchIndividualParameters(){
+    	return filter(listOfElements, IndividualParameter.class);
+    }
+    /**
+     * Returns an <b><u>immutable</u></b> collection of the {@link PopulationParameter} elements of this structural model.
+     * @return An <b><u>immutable</u></b> collection of the {@link PopulationParameter} elements of this structural model.
+     */
+    public Collection<PopulationParameter> fetchPopulationParameters(){
+    	return filter(listOfElements, PopulationParameter.class);
+    }
+    /**
+     * Returns an <b><u>immutable</u></b> collection of the {@link Parameter} elements of this structural model.
+     * @return An <b><u>immutable</u></b> collection of the {@link Parameter} elements of this structural model.
+     */
+    public Collection<Parameter> fetchParameters(){
+    	return filter(listOfElements, Parameter.class);
+    }
+    /**
+     * Returns an <b><u>immutable</u></b> collection of the {@link LogicBinOp} assign statements of this structural model.
+     * @return An <b><u>immutable</u></b> collection of the {@link LogicBinOp} assign statements of this structural model.
+     */
+    public Collection<LogicBinOp> fetchAssignStatements(){
+    	return filter(listOfElements, LogicBinOp.class);
+    }
+    /**
+     * Returns an <b><u>immutable</u></b> collection of the {@link ConditionalStatement} elements of this structural model.
+     * @return An <b><u>immutable</u></b> collection of the {@link ConditionalStatement} elements of this structural model.
+     */
+    public Collection<ConditionalStatement> fetchConditionalStatements(){
+    	return filter(listOfElements, ConditionalStatement.class);
+    }
+    
     /**
      * Gets the value of the name property.
      * 

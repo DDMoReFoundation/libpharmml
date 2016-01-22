@@ -26,7 +26,10 @@
 
 package eu.ddmore.libpharmml.dom.modeldefn;
 
+import static eu.ddmore.libpharmml.util.Util.filter;
+
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
@@ -218,6 +221,63 @@ public abstract class CommonParameterModel
     		listOfElements = new ArrayList<PharmMLElement>();
     	}
     	return listOfElements;
+    }
+    
+    /**
+     * Returns an <b><u>immutable</u></b> collection of the {@link IndividualParameter} elements of this parameter model.
+     * @return An <b><u>immutable</u></b> collection of the {@link IndividualParameter} elements of this parameter model.
+     */
+    public Collection<IndividualParameter> fetchIndividualParameters(){
+    	return filter(listOfElements, IndividualParameter.class);
+    }
+    /**
+     * Returns an <b><u>immutable</u></b> collection of the {@link PopulationParameter} elements of this parameter model.
+     * @return An <b><u>immutable</u></b> collection of the {@link PopulationParameter} elements of this parameter model.
+     */
+    public Collection<PopulationParameter> fetchPopulationParameters(){
+    	return filter(listOfElements, PopulationParameter.class);
+    }
+    /**
+     * Returns an <b><u>immutable</u></b> collection of the {@link Parameter} elements of this parameter model.
+     * @return An <b><u>immutable</u></b> collection of the {@link Parameter} elements of this parameter model.
+     */
+    public Collection<Parameter> fetchParameters(){
+    	return filter(listOfElements, Parameter.class);
+    }
+    /**
+     * Returns an <b><u>immutable</u></b> collection of the {@link ParameterRandomVariable} elements of this parameter model.
+     * @return An <b><u>immutable</u></b> collection of the {@link ParameterRandomVariable} elements of this parameter model.
+     */
+    public Collection<ParameterRandomVariable> fetchParameterRandomVariables(){
+    	return filter(listOfElements, ParameterRandomVariable.class);
+    }
+    /**
+     * Returns an <b><u>immutable</u></b> collection of the {@link DesignParameter} elements of this parameter model.
+     * @return An <b><u>immutable</u></b> collection of the {@link DesignParameter} elements of this parameter model.
+     */
+    public Collection<DesignParameter> fetchDesignParameters(){
+    	return filter(listOfElements, DesignParameter.class);
+    }
+    /**
+     * Returns an <b><u>immutable</u></b> collection of the {@link LogicBinOp} assign statements of this parameter model.
+     * @return An <b><u>immutable</u></b> collection of the {@link LogicBinOp} assign statements of this parameter model.
+     */
+    public Collection<LogicBinOp> fetchAssignStatements(){
+    	return filter(listOfElements, LogicBinOp.class);
+    }
+    /**
+     * Returns an <b><u>immutable</u></b> collection of the {@link ConditionalStatement} elements of this parameter model.
+     * @return An <b><u>immutable</u></b> collection of the {@link ConditionalStatement} elements of this parameter model.
+     */
+    public Collection<ConditionalStatement> fetchConditionalStatements(){
+    	return filter(listOfElements, ConditionalStatement.class);
+    }
+    /**
+     * Returns an <b><u>immutable</u></b> collection of the {@link Correlation} elements of this parameter model.
+     * @return An <b><u>immutable</u></b> collection of the {@link Correlation} elements of this parameter model.
+     */
+    public Collection<Correlation> fetchCorrelations(){
+    	return filter(listOfElements, Correlation.class);
     }
     
     public Parameter createParameter(){

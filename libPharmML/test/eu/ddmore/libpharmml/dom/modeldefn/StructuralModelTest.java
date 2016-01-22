@@ -1,5 +1,7 @@
 package eu.ddmore.libpharmml.dom.modeldefn;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -9,6 +11,7 @@ import java.util.Collection;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.internal.runners.statements.Fail;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
@@ -94,6 +97,9 @@ public class StructuralModelTest {
 		VariableDefinition vd = sm.createVariable();
 		vd.setSymbId("C");
 		vd.setSymbolType(SymbolType.REAL);
+		VariableDefinition vd2 = sm.createVariable();
+		vd2.setSymbId("V");
+		vd2.setSymbolType(SymbolType.REAL);
 		
 		// ConditionalStatement
 		ConditionalStatement cs = sm.createConditionalStatement();
@@ -127,7 +133,7 @@ public class StructuralModelTest {
 		File tmpFile = File.createTempFile("libpharmmltest_", ".xml");
 		tmpFile.deleteOnExit();
 		libPharmML.save(new FileOutputStream(tmpFile), resource);
-		AssertUtil.assertSameContent(tmpFile, new File(this.getClass().getResource(TESTFILE).toURI()));
+		AssertUtil.assertSameContent(new File(this.getClass().getResource(TESTFILE).toURI()), tmpFile);
 	}
 	
 	public void testUnmarshalSMElements() throws Exception {
@@ -138,6 +144,26 @@ public class StructuralModelTest {
 		ModelDefinition mdef = dom.getModelDefinition();
 		StructuralModel sm = mdef.getListOfStructuralModel().get(0);
 		
+	}
+	
+	@Test
+	public void testFetchers() throws Exception {
+		PharmML dom = resource.getDom();
+		ModelDefinition mdef = dom.getModelDefinition();
+		StructuralModel sm = mdef.getListOfStructuralModel().get(0);
+		
+		assertEquals(1, sm.fetchDerivativeVariables().size());
+		assertEquals(2, sm.fetchVariables().size());
+		assertEquals(1, sm.fetchConditionalStatements().size());
+		assertEquals(1, sm.fetchPKMacroLists().size());
+		
+		// Test if immutable
+		try {
+			sm.fetchDerivativeVariables().add(new DerivativeVariable());
+			AssertUtil.fail("Exception is not caught");
+		} catch (UnsupportedOperationException e){
+			System.out.println("It's caught");
+		}
 	}
 
 }

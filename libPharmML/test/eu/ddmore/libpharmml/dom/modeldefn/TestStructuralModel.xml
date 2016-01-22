@@ -6,6 +6,7 @@
         <mdef:StructuralModel blkId="sm1">
             <ct:DerivativeVariable symbolType="real" symbId="Ac"/>
             <ct:Variable symbolType="real" symbId="C"/>
+            <ct:Variable symbolType="real" symbId="V"/>
             <mdef:ConditionalStatement>
                 <math:If>
                     <math:Condition>
