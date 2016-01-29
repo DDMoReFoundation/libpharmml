@@ -14,7 +14,7 @@
 	<property name="libpharmml.name" value="libPharmML"/>
 	<property name="libpharmml.version" value="0.6.1"/>
 	<property name="libpharmml.build" value="1"/>
-	<property name="libpharmml.fullname" value="${libpharmml.name}-${libpharmml.version}-b${libpharmml.build}"/>
+	<property name="libpharmml.fullname" value="${libpharmml.name}-${libpharmml.version}-${libpharmml.build}"/>
 	
 	<property name="src.bin.dir" location="${build.dir}/src"/>
 	<property name="test.bin.dir" location="${build.dir}/test"/>
@@ -164,7 +164,7 @@
         	<manifest>
         		<attribute name="Implementation-Vendor" value="${libpharmml.vendor}"/>
         		<attribute name="Implementation-Title" value="${libpharmml.name}"/>
-        		<attribute name="Implementation-Version" value="${libpharmml.version}-b${libpharmml.build}"/>
+        		<attribute name="Implementation-Version" value="${libpharmml.version}-${libpharmml.build}"/>
         	</manifest>
         	<!--fileset dir="${schema.dir}">
         		<include name="*"/>
