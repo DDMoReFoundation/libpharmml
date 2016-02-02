@@ -39,4 +39,9 @@ public class Otherwise extends PharmMLElement {
 		return Collections.emptyList();
 	}
 
+	@Override
+	public Otherwise clone() {
+		return new Otherwise();
+	}
+
 }

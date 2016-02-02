@@ -27,6 +27,7 @@ import java.util.ListIterator;
 import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlTransient;
 
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 /**
@@ -90,8 +91,8 @@ public class WrappedList<E extends TreeNode> extends PharmMLRootType implements 
 	public int lastIndexOf(Object o) {
 		return list.lastIndexOf(o);
 	}
-	public Object clone() {
-		return list.clone();
+	public PharmMLElement clone() {
+		return (PharmMLElement) list.clone();
 	}
 	public Object[] toArray() {
 		return list.toArray();

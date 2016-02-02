@@ -528,4 +528,34 @@ public class PharmML extends PharmMLElement implements Identifiable {
 				.addIfNotNull(modellingSteps);
 	}
 
+	@Override
+	public PharmML clone() {
+		PharmML clone = new PharmML();
+		if(name != null){
+			clone.setName((Name) name.clone());
+		}
+		if(description != null){
+			clone.setDescription((AnnotationType) description.clone());
+		}
+		if(modelDefinition != null){
+			clone.setModelDefinition((ModelDefinition) modelDefinition.clone());
+		}
+		if(trialDesign != null){
+			clone.setTrialDesign((TrialDesign) trialDesign.clone());
+		}
+		if(modellingSteps != null){
+			clone.setModellingSteps((ModellingSteps) modellingSteps.clone());
+		}
+		clone.setWrittenVersion(writtenVersion);
+		clone.setImplementedBy(implementedBy);
+		clone.setMetadataFile(metadataFile);
+		for(IndependentVariable iv : getListOfIndependentVariable()){
+			clone.getListOfIndependentVariable().add((IndependentVariable) iv.clone());
+		}
+		for(FunctionDefinition fd : getListOfFunctionDefinition()){
+			clone.getListOfFunctionDefinition().add((FunctionDefinition) fd.clone());
+		}
+		return clone;
+	}
+
 }

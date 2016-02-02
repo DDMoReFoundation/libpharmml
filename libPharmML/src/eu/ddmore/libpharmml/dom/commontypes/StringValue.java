@@ -159,4 +159,9 @@ public class StringValue extends PharmMLElement implements Scalar, Identifiable 
 		return value;
 	}
 
+	@Override
+	public PharmMLElement clone() {
+		return clone(StringValue.class, this);
+	}
+
 }

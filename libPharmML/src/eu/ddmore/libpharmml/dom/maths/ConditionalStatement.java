@@ -196,4 +196,9 @@ public class ConditionalStatement extends PharmMLElement implements StructuralMo
     			.addIfNotNull(_else);
     }
 
+	@Override
+	public ConditionalStatement clone() {
+		return clone(ConditionalStatement.class, this);
+	}
+
 }

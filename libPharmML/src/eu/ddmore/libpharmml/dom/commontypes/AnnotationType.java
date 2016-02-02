@@ -131,4 +131,9 @@ public class AnnotationType extends PharmMLElement implements Identifiable {
 		return Collections.emptyList();
 	}
 
+	@Override
+	public PharmMLElement clone() {
+		return clone(AnnotationType.class, this);
+	}
+
 }

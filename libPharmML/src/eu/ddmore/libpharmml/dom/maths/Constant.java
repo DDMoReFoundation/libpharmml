@@ -133,4 +133,9 @@ public class Constant extends PharmMLElement implements Operand, ExpressionValue
 		return this.getOp();
 	}
 
+	@Override
+	public PharmMLElement clone() {
+		return clone(Constant.class, this);
+	}
+
 }

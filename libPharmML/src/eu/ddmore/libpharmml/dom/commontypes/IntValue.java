@@ -158,4 +158,9 @@ public class IntValue extends PharmMLElement implements Scalar, Identifiable{
 		return String.valueOf(value);
 	}
 
+	@Override
+	public PharmMLElement clone() {
+		return clone(IntValue.class, this);
+	}
+
 }

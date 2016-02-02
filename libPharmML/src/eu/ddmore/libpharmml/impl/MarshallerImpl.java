@@ -47,7 +47,7 @@ import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory.NamespaceType;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
 
 public class MarshallerImpl implements IMarshaller {
-	private static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
+	public static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
 	private IErrorHandler errorHandler;
 	
 	@Override

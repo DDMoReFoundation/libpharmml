@@ -122,4 +122,9 @@ public abstract class AbstractUncertaintyType extends PharmMLElement {
     protected List<TreeNode> listChildren() {
     	return Collections.emptyList(); // TODO: deal with uncertML tree nodes
     }
+    
+    @Override
+    public PharmMLElement clone() {
+    	return clone(AbstractUncertaintyType.class, this);
+    }
 }

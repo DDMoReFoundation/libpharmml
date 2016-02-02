@@ -288,5 +288,10 @@ public class Category extends PharmMLElement implements ReferenceContainer {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public PharmMLElement clone() {
+		return clone(Category.class, this);
+	}
 
 }

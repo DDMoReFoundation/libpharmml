@@ -103,4 +103,9 @@ public class Piecewise extends PharmMLElement {
 		return new ChainedList<TreeNode>().addIfNotNull(piece);
 	}
 
+	@Override
+	public PharmMLElement clone() {
+		return clone(Piecewise.class, this);
+	}
+
 }

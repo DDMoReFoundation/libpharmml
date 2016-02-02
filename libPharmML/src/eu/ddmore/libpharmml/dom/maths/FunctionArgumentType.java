@@ -668,5 +668,10 @@ public class FunctionArgumentType extends PharmMLElement implements Symbol, Assi
 		setAssign(rhs);
 		return rhs;
 	}
+	
+	@Override
+	public PharmMLElement clone() {
+		return clone(FunctionArgumentType.class, this);
+	}
 
 }

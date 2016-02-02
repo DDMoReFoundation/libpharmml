@@ -264,6 +264,11 @@ public class StructuredObsError
         			.addIfNotNull(assign);
         }
 
+		@Override
+		public PharmMLElement clone() {
+			return clone(ErrorModel.class, this);
+		}
+
     }
 
 
@@ -324,6 +329,11 @@ public class StructuredObsError
         	return new ChainedList<TreeNode>(super.listChildren())
         			.addIfNotNull(symbRef);
         }
+        
+        @Override
+		public PharmMLElement clone() {
+			return clone(Output.class, this);
+		}
 
     }
 
@@ -385,6 +395,11 @@ public class StructuredObsError
         	return new ChainedList<TreeNode>(super.listChildren())
         			.addIfNotNull(symbRef);
         }
+        
+        @Override
+		public PharmMLElement clone() {
+			return clone(ResidualError.class, this);
+		}
 
     }
     

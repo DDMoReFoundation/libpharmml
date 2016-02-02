@@ -150,4 +150,9 @@ public class RealValue extends PharmMLElement implements Scalar, VectorValue, Id
 		return String.valueOf(value);
 	}
 
+	@Override
+	public PharmMLElement clone() {
+		return clone(RealValue.class, this);
+	}
+
 }
