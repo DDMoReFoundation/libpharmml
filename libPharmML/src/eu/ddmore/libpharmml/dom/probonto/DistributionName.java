@@ -18,8 +18,12 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.dom.probonto;
 
+import java.util.HashSet;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
@@ -310,6 +314,10 @@ public enum DistributionName {
 //    private final ParameterName[] requiredParameters;
     
     private final static String PROPERTIES_PREFIX = "eu.ddmore.libpharmml.dom.probonto.distribution.";
+    
+    private final static Pattern OPTIONAL_PARAM_PATTERN = Pattern.compile("\\(([a-zA-Z0-9]+)\\)");
+    private Set<ParameterName> allowedParameters;
+    private Set<ParameterName> requiredParameters;
 
     DistributionName(String v) {
         value = v;
@@ -334,25 +342,44 @@ public enum DistributionName {
      * @return An array of {@link ParameterName} values required for this distribution.
      */
     public ParameterName[] requiredParameters(){
-    	return resolveRequiredParameters(value);
+    	if(requiredParameters == null){
+    		resolveRequiredParameters(value);
+    	}
+    	return requiredParameters.toArray(new ParameterName[requiredParameters.size()]);
     }
     
-    private ParameterName[] resolveRequiredParameters(String distribution){    	
+    public Set<ParameterName> allowedParameters(){
+    	if(allowedParameters == null){
+    		resolveRequiredParameters(value);
+    	}
+    	return allowedParameters;
+    }
+    
+    private void resolveRequiredParameters(String distribution){
+    	requiredParameters = new HashSet<ParameterName>();
+    	allowedParameters = new HashSet<ParameterName>();
     	String parametersRaw = Properties.getString(PROPERTIES_PREFIX+distribution);
     	if(parametersRaw == null){
     		LoggerWrapper.getLogger().info("Distribution "+distribution+" is not defined in parameters.properties.");
-    		return new ParameterName[]{};
+    	} else {
+    		String[] parametersArray = parametersRaw.trim().split(",");
+        	for(int i=0;i<parametersArray.length;i++){
+        		try {
+        			String rawParamName = parametersArray[i];
+        			Matcher m = OPTIONAL_PARAM_PATTERN.matcher(rawParamName);
+        			String actualParamName;
+        			if(m.find()){ // it's optional
+        				actualParamName = m.group(1);
+        			} else { // it's required
+        				actualParamName = rawParamName;
+        				requiredParameters.add(ParameterName.fromValue(actualParamName));
+        			}
+        			allowedParameters.add(ParameterName.fromValue(actualParamName));
+        		} catch (IllegalArgumentException e) {
+        			throw new RuntimeException("Parameter \""+parametersArray[i]+"\" doesn't exist.");
+        		}
+        	}
     	}
-    	String[] parametersArray = parametersRaw.trim().split(",");
-    	ParameterName[] paramNames = new ParameterName[parametersArray.length];
-    	for(int i=0;i<parametersArray.length;i++){
-    		try {
-    			paramNames[i] = ParameterName.fromValue(parametersArray[i]);
-    		} catch (IllegalArgumentException e) {
-    			throw new RuntimeException("Parameter \""+parametersArray[i]+"\" doesn't exist.");
-    		}
-    	}
-    	return paramNames;
     }
     
     static class Properties {
