@@ -23,6 +23,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
+
 
 /**
  * 
@@ -99,7 +102,23 @@ public class MatrixUniOp
     public void setOp(MatrixUnioperator value) {
         this.op = value;
     }
+
+	@Override
+	public String toMathExpression() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
     
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
+	}
+	
 //    @Override
 //    protected void beforeMarshal(Marshaller m) {
 //    	super.beforeMarshal(m);

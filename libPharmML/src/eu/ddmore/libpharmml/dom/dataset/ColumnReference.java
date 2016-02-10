@@ -38,9 +38,11 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.maths.Operand;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -192,6 +194,22 @@ public class ColumnReference
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(columnRef);
+	}
+
+	@Override
+	public String toMathExpression() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

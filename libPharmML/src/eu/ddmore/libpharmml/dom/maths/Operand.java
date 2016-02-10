@@ -20,13 +20,15 @@ package eu.ddmore.libpharmml.dom.maths;
 
 import javax.xml.bind.JAXBElement;
 
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
+
 /**
  * Interface implemented by any operand in a binay-operand expression.
  * 
  * @author F. Yvon
  *
  */
-public interface Operand {
+public interface Operand extends MathExpression {
 
 	/**
 	 * Converts the object to a JAXBElement for marshalling.

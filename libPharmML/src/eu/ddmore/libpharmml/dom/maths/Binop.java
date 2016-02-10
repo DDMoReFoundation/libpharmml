@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.Delay;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
@@ -47,7 +48,10 @@ import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
@@ -212,7 +216,7 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
     "content"
 })
 public class Binop
-    extends PharmMLRootType implements Operand, ExpressionValue
+    extends PharmMLRootType implements Operand, ExpressionValue, MathExpression
 {
     
 	@XmlElementRefs({
@@ -558,6 +562,21 @@ public class Binop
 			children.add((TreeNode) operand2);
 		}
 		return children;
+	}
+
+	@Override
+	public String toMathExpression() {
+		return new MathExpressionConverterToExpression().convert(this);
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

@@ -26,10 +26,14 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.dataset.CategoryMapping;
 import eu.ddmore.libpharmml.dom.modeldefn.UncertML;
 import eu.ddmore.libpharmml.dom.probonto.DistributionName;
 import eu.ddmore.libpharmml.dom.probonto.ProbOnto;
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -70,7 +74,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "condition"
 })
 public class Piece
-    extends Expression
+    extends Expression implements MathExpression
 {
 
     @XmlElement(name = "UncertML")
@@ -291,6 +295,21 @@ public class Piece
 				.addIfNotNull(categoryMapping)
 				.addIfNotNull(piecewise)
 				.addIfNotNull(condition);
+	}
+
+	@Override
+	public String toMathExpression() {
+		return new MathExpressionConverterToExpression().convert(this);
+	}
+	
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

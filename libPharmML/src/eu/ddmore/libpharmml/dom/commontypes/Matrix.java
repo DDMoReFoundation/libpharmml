@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.SubList;
@@ -760,6 +761,24 @@ public class Matrix
 				.addIfNotNull(rowNames)
 				.addIfNotNull(columnNames)
 				.addIfNotNull(matrixRowOrMatrixCellOrMatrixBlock);
+	}
+
+	@Override
+	public String toMathExpression() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String toMathML() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		// TODO Auto-generated method stub
+		return null;
 	}
         
 }

@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
 import eu.ddmore.libpharmml.dom.commontypes.CategoryRef;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
@@ -52,8 +53,11 @@ import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import eu.ddmore.libpharmml.dom.tags.StructuralModelElement;
 import eu.ddmore.libpharmml.dom.uncertml.Probability;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -68,61 +72,43 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="LogicBinOpType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.7/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;choice>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}LogicBinop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}LogicUniop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Scalar"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}Constant"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}SymbRef"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}CatRef"/>
- *           &lt;element name="ArmRef" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}OidRefType"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Dataset}ColumnRef"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}PDF"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}CDF"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}HF"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}SF"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}Statsop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}Naryop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}Binop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}Uniop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}FunctionCall"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Sum"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Product"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Vector"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Matrix"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}VectorSelector"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}MatrixSelector"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}Probability"/>
- *           &lt;element name="Realisation" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}RealisationType"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}LogicBinop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}LogicUniop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Scalar"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Constant"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}SymbRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}CatRef"/>
+ *           &lt;element name="ArmRef" type="{http://www.pharmml.org/pharmml/0.7/CommonTypes}OidRefType"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Dataset}ColumnRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Binop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Uniop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}FunctionCall"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Sum"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Product"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}VectorSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}MatrixSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}Probability"/>
  *         &lt;/choice>
  *         &lt;choice>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}LogicBinop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}LogicUniop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Scalar"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}Constant"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}SymbRef"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}CatRef"/>
- *           &lt;element name="ArmRef" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}OidRefType"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Dataset}ColumnRef"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}PDF"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}CDF"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}HF"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}SF"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}Statsop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}Naryop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}Binop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}Uniop"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Maths}FunctionCall"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Sum"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Product"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Vector"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Matrix"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}VectorSelector"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}MatrixSelector"/>
- *           &lt;element ref="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}Probability"/>
- *           &lt;element name="Realisation" type="{http://www.pharmml.org/pharmml/0.8/ModelDefinition}RealisationType"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}LogicBinop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}LogicUniop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Scalar"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Constant"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}SymbRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}CatRef"/>
+ *           &lt;element name="ArmRef" type="{http://www.pharmml.org/pharmml/0.7/CommonTypes}OidRefType"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Dataset}ColumnRef"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Binop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}Uniop"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Maths}FunctionCall"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Sum"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}Product"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}VectorSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/CommonTypes}MatrixSelector"/>
+ *           &lt;element ref="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}Probability"/>
  *         &lt;/choice>
  *       &lt;/sequence>
  *       &lt;attribute name="op" use="required">
@@ -152,7 +138,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "content"
 })
 public class LogicBinOp
-    extends PharmMLRootType implements StructuralModelElement
+    extends PharmMLRootType implements MathExpression, StructuralModelElement
 {
 
 	@XmlElementRefs({
@@ -293,6 +279,21 @@ public class LogicBinOp
 			}
 		}
 		return list;
+	}
+
+	@Override
+	public String toMathExpression() {
+		return new MathExpressionConverterToExpression().convert(this);
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

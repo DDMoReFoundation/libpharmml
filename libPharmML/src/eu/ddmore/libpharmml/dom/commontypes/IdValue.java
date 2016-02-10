@@ -40,8 +40,11 @@ import javax.xml.bind.annotation.XmlValue;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 
 
 /**
@@ -162,7 +165,22 @@ public class IdValue extends PharmMLElement implements Scalar, Identifiable {
 
 	@Override
 	public String valueToString() {
-		return String.valueOf(value);
+		return value;
+	}
+
+	@Override
+	public String toMathExpression() {
+		return new MathExpressionConverterToExpression().convert(this);
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 	@Override

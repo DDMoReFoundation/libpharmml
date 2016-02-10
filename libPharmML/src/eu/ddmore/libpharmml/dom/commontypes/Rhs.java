@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.Constant;
 import eu.ddmore.libpharmml.dom.maths.Equation;
@@ -44,6 +45,8 @@ import eu.ddmore.libpharmml.dom.maths.Uniop;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
 import eu.ddmore.libpharmml.dom.modellingsteps.InitialEstimate;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -1014,6 +1017,21 @@ public class Rhs
 	@Override
 	public String asString() {
 		return "Assign:"+String.valueOf(getContent());
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+
+	@Override
+	public String toMathExpression() {
+		return new MathExpressionConverterToExpression().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

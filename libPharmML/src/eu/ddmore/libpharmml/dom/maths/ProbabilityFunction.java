@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.Assignable;
 import eu.ddmore.libpharmml.dom.commontypes.Delay;
@@ -384,6 +385,24 @@ public class ProbabilityFunction
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	@Override
+	public String toMathExpression() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String toMathML() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

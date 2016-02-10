@@ -33,6 +33,11 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
+
 
 /**
  * <p>Java class for LogicUniOpType complex type.
@@ -61,7 +66,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LogicUniOpType")
 public class LogicUniOp
-    extends LogicExpression
+    extends LogicExpression implements MathExpression
 {
 
     @XmlAttribute(name = "op", required = true)
@@ -91,5 +96,20 @@ public class LogicUniOp
     public void setOp(String value) {
         this.op = value;
     }
+
+	@Override
+	public String toMathExpression() {
+		return new MathExpressionConverterToExpression().convert(this);
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
+	}
 
 }

@@ -26,6 +26,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 /**
@@ -217,6 +219,22 @@ public class Sequence
 				.addIfNotNull(stepNumber)
 				.addIfNotNull(end)
 				.addIfNotNull(repetitions);
+	}
+
+	@Override
+	public String toMathExpression() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

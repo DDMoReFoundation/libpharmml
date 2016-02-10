@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
@@ -204,6 +205,24 @@ public class Realisation
 	@Override
 	public JAXBElement<? extends Operand> toJAXBElement() {
 		return MasterObjectFactory.MATHS_OF.createBinopTypeRealisation(this);
+	}
+
+	@Override
+	public String toMathExpression() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String toMathML() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

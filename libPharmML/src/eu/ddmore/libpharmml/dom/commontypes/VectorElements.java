@@ -32,8 +32,11 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.Equation;
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -42,7 +45,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 	    "jaxb_elements"
 	})
 @XmlJavaTypeAdapter(VectorElements.Adapter.class)
-public class VectorElements extends PharmMLRootType implements ScalarContainer {
+public class VectorElements extends PharmMLRootType implements ScalarContainer, MathExpression {
 		
 	//-------
 	@XmlElementRefs({
@@ -176,6 +179,24 @@ public class VectorElements extends PharmMLRootType implements ScalarContainer {
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(elements);
+	}
+
+
+	@Override
+	public String toMathExpression() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 	
 }

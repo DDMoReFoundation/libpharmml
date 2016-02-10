@@ -37,10 +37,13 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -80,7 +83,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     Condition.class
 })
 public class LogicCondition
-    extends PharmMLRootType
+    extends PharmMLRootType implements MathExpression
 {
 
     @XmlElement(name = "LogicBinop")
@@ -215,6 +218,22 @@ public class LogicCondition
 			list.add(_boolean.getValue());
 		}
 		return list;
+	}
+
+	@Override
+	public String toMathExpression() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

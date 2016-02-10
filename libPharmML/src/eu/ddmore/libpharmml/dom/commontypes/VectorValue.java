@@ -21,13 +21,15 @@ package eu.ddmore.libpharmml.dom.commontypes;
 import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
+
 /**
  * Interface for object types that can be used as a value within a vector or a matrix.
  * @author F. Yvon
  *
  */
 @XmlJavaTypeAdapter(VectorValueAdapter.class)
-public interface VectorValue extends TreeNode {
+public interface VectorValue extends TreeNode, MathExpression {
 
 	/**
 	 * Gets a human readable representation of the value.

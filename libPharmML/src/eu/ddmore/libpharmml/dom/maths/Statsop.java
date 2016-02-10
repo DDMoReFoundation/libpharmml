@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
@@ -247,6 +248,24 @@ public class Statsop
 			list.add((TreeNode) jaxbEl.getValue());
 		}
 		return list;
+	}
+
+	@Override
+	public String toMathExpression() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String toMathML() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

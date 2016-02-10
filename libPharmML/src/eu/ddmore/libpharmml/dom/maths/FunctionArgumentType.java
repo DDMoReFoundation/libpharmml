@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
 import eu.ddmore.libpharmml.dom.commontypes.Assignable;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
@@ -58,6 +59,8 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -114,7 +117,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlSeeAlso({
     eu.ddmore.libpharmml.dom.maths.FunctionCallType.FunctionArgument.class
 })
-public class FunctionArgumentType extends PharmMLElement implements Symbol, Assignable {
+public class FunctionArgumentType extends PharmMLElement implements Symbol, Assignable, MathExpression {
 
     @XmlElement(name = "Symbol", namespace = XMLFilter.NS_DEFAULT_CT)
     protected SymbolName symbol;
@@ -672,6 +675,22 @@ public class FunctionArgumentType extends PharmMLElement implements Symbol, Assi
 	@Override
 	public PharmMLElement clone() {
 		return clone(FunctionArgumentType.class, this);
+	}
+
+	@Override
+	public String toMathExpression() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

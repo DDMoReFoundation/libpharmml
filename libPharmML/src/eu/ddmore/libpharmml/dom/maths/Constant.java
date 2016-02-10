@@ -26,8 +26,12 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 
 
 /**
@@ -62,7 +66,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConstantType")
-public class Constant extends PharmMLElement implements Operand, ExpressionValue{
+public class Constant extends PharmMLElement implements Operand, ExpressionValue, MathExpression {
 
     @XmlAttribute(name = "op", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -136,6 +140,20 @@ public class Constant extends PharmMLElement implements Operand, ExpressionValue
 	@Override
 	public PharmMLElement clone() {
 		return clone(Constant.class, this);
+	}
+
+	public String toMathExpression() {
+		return new MathExpressionConverterToExpression().convert(this);
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+	
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }
