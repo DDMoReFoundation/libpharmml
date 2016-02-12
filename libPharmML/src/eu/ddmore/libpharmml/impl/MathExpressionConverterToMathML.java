@@ -1,5 +1,6 @@
 package eu.ddmore.libpharmml.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.JAXBElement;
@@ -11,9 +12,13 @@ import eu.ddmore.libpharmml.dom.commontypes.DelayVariable;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.LowUpLimit;
+import eu.ddmore.libpharmml.dom.commontypes.Matrix;
+import eu.ddmore.libpharmml.dom.commontypes.MatrixRow;
+import eu.ddmore.libpharmml.dom.commontypes.MatrixRowValue;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
 import eu.ddmore.libpharmml.dom.commontypes.MissingValue;
 import eu.ddmore.libpharmml.dom.commontypes.MissingValueSymbol;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Product;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
@@ -38,11 +43,16 @@ import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.dom.maths.LogicCondition;
 import eu.ddmore.libpharmml.dom.maths.LogicUniOp;
 import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
+import eu.ddmore.libpharmml.dom.maths.Naryop;
 import eu.ddmore.libpharmml.dom.maths.Piece;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
+import eu.ddmore.libpharmml.dom.maths.ProbabilityFunction;
+import eu.ddmore.libpharmml.dom.maths.Statsop;
+import eu.ddmore.libpharmml.dom.maths.Statsoperator;
 import eu.ddmore.libpharmml.dom.maths.Uniop;
 import eu.ddmore.libpharmml.dom.maths.Unioperator;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
+import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import static eu.ddmore.libpharmml.impl.LoggerWrapper.getLogger;
 
@@ -54,10 +64,20 @@ import static eu.ddmore.libpharmml.impl.LoggerWrapper.getLogger;
  * 
  * <p>It is possible to extend this class and override the methods that don't have a satisfactory output.
  * 
- * @since libPharmML 0.5.2
+ * <p>Some elements can not be converted byt this class at the moment. Those are:<br>
+ * <ul>
+ * <li>{@link Sequence}</li>
+ * <li>{@link Probability}</li>
+ * <li>{@link ProbabilityFunction}</li>
+ * <li>{@link Realisation}</li>
+ * </ul>
+ * Also, only explicitly encoded {@link Vector} (using {@link VectorElements}) and {@link Matrix} (using unindexed {@link MatrixRow} items) objects can be correctly converted.
+ * 
+ * @since libPharmML 0.6.2
  * @author F. Yvon
  * @see MathExpressionConverter
  * @see MathExpression
+ * @see MathExpressionConverterToExpression
  */
 public class MathExpressionConverterToMathML implements MathExpressionConverter {
 	
@@ -74,6 +94,31 @@ public class MathExpressionConverterToMathML implements MathExpressionConverter 
 			+ "%s"
 			+ "%s"
 			+ "</apply>\n";
+	
+	/**
+	 * Generates a N-ary apply element
+	 */
+	private String apply(String op, List<?> elements){
+		StringBuilder sb = new StringBuilder();
+		sb.append("<apply>\n");
+		sb.append("<"+ op +"/>\n");
+		
+		for(Object o : elements){
+			if(o instanceof MathExpression){
+				sb.append(((MathExpression) o).convert(this));
+			} else {
+				sb.append(NULL_IDENTIFIER);
+			}
+			
+		}
+		
+		sb.append("</apply>\n");
+		return sb.toString();
+	}
+	
+	private static String csymbol(String symbol){
+		return "<csymbol>"+symbol+"</csymbol>";
+	}
 
 	@Override
 	public String convert(RealValue realValue) {
@@ -525,6 +570,122 @@ public class MathExpressionConverterToMathML implements MathExpressionConverter 
 		} else {
 			return NULL_NUMBER;
 		}
+	}
+
+	@Override
+	public String convert(Naryop naryop) {
+		if(naryop == null || naryop.getOp() == null){
+			return NULL_IDENTIFIER;
+		}
+		return apply(naryop.getOp().value(), naryop.getContent());
+	}
+
+	@Override
+	public String convert(Statsop statsop) {
+		if(statsop == null || statsop.getOp() == null){
+			return NULL_IDENTIFIER;
+		}
+		Statsoperator op = statsop.getOp();
+		String operator;
+		switch (op) {
+		
+		case CENTRED_MOMENT:
+			operator = csymbol(op.value()); // unknown function in MathML
+			break;
+		case COEFFICIENT_OF_VARIATION:
+			operator = csymbol(op.value());
+			break;
+		case CORRELATION:
+			operator = csymbol(op.value());
+			break;
+		case DECILE:
+			operator = csymbol(op.value());
+			break;
+		case GEOMETRIC_MEAN:
+			operator = csymbol(op.value());
+			break;
+		case KURTOSIS:
+			operator = csymbol(op.value());
+			break;
+		case MOMENT:
+			operator = csymbol(op.value());
+			break;
+		case PERCENTILE:
+			operator = csymbol(op.value());
+			break;
+		case QUANTILE:
+			operator = csymbol(op.value());
+			break;
+		case QUARTILE:
+			operator = csymbol(op.value());
+			break;
+		case RANGE:
+			operator = csymbol(op.value());
+			break;
+		case SKEWNESS:
+			operator = csymbol(op.value());
+			break;
+		case STANDARD_DEVATION:
+			operator = "sdev";
+			break;
+		default: // supported by MathML
+			operator = op.value();
+			break;
+		}
+		List<Object> elements = new ArrayList<Object>();
+		for(JAXBElement<?> jaxbEl : statsop.getRest()){
+			elements.add(jaxbEl.getValue());
+		}
+		
+		return apply(operator, elements);
+	}
+
+	@Override
+	public String convert(ProbabilityFunction pf) {
+		getLogger().severe("Realisation cannot be converted to MathML");
+		// TODO
+		return NULL_NUMBER;
+	}
+
+	@Override
+	public String convert(Matrix matrix) {
+		if(matrix == null){
+			return NULL_IDENTIFIER;
+		}
+		StringBuilder sb = new StringBuilder();
+		sb.append("<matrix>\n");
+		boolean fullMatrix = true;
+		for(PharmMLRootType el : matrix.getListOfMatrixElements()){
+			if(el instanceof MatrixRow){
+				sb.append(convert((MatrixRow)el));
+			} else {
+				fullMatrix = false;
+			}
+		}
+		if(!fullMatrix){
+			LoggerWrapper.getLogger().severe("Only matrixes with explicit rows can be converted to MathML");
+		}
+		sb.append("</matrix>\n");
+		return sb.toString();
+	}
+	
+	private String convert(MatrixRow matrixRow){
+		StringBuilder sb = new StringBuilder();
+		sb.append("<matrixrow>\n");
+		if(matrixRow != null){
+			for(MatrixRowValue value : matrixRow.getListOfValues()){
+				sb.append(value.convert(this));
+			}
+		}
+		sb.append("</matrixrow>\n");
+		return sb.toString();
+	}
+
+	@Override
+	public String convert(Realisation realisation) {
+		getLogger().severe("Realisation cannot be converted to MathML");
+		// TODO
+		return NULL_NUMBER;
 	}
 
 }

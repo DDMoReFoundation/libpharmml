@@ -48,6 +48,8 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -252,20 +254,17 @@ public class Statsop
 
 	@Override
 	public String toMathExpression() {
-		// TODO Auto-generated method stub
-		return null;
+		return new MathExpressionConverterToExpression().convert(this);
 	}
 
 	@Override
 	public String toMathML() {
-		// TODO Auto-generated method stub
-		return null;
+		return new MathExpressionConverterToMathML().convert(this);
 	}
 
 	@Override
 	public String convert(MathExpressionConverter converter) {
-		// TODO Auto-generated method stub
-		return null;
+		return converter.convert(this);
 	}
 
 }

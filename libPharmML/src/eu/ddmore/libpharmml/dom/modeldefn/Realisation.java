@@ -35,6 +35,8 @@ import eu.ddmore.libpharmml.dom.maths.Operand;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.probonto.DistributionName;
 import eu.ddmore.libpharmml.dom.probonto.ProbOnto;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -209,20 +211,17 @@ public class Realisation
 
 	@Override
 	public String toMathExpression() {
-		// TODO Auto-generated method stub
-		return null;
+		return new MathExpressionConverterToExpression().convert(this);
 	}
 
 	@Override
 	public String toMathML() {
-		// TODO Auto-generated method stub
-		return null;
+		return new MathExpressionConverterToMathML().convert(this);
 	}
 
 	@Override
 	public String convert(MathExpressionConverter converter) {
-		// TODO Auto-generated method stub
-		return null;
+		return converter.convert(this);
 	}
 
 }

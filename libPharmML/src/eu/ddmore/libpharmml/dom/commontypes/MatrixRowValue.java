@@ -22,6 +22,7 @@ import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.maths.Equation;
+import eu.ddmore.libpharmml.dom.tags.MathExpression;
 
 /**
  * Interface for object types that can be used as value within in a matrix value.
@@ -36,6 +37,6 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
  */
 @SuppressWarnings("deprecation")
 @XmlJavaTypeAdapter(MatrixRowValueAdapter.class)
-public interface MatrixRowValue extends TreeNode {
+public interface MatrixRowValue extends TreeNode, MathExpression {
 
 }

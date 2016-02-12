@@ -6,6 +6,7 @@ import eu.ddmore.libpharmml.dom.commontypes.DelayVariable;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.LowUpLimit;
+import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
 import eu.ddmore.libpharmml.dom.commontypes.MissingValue;
 import eu.ddmore.libpharmml.dom.commontypes.Product;
@@ -29,10 +30,14 @@ import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.dom.maths.LogicCondition;
 import eu.ddmore.libpharmml.dom.maths.LogicUniOp;
 import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
+import eu.ddmore.libpharmml.dom.maths.Naryop;
 import eu.ddmore.libpharmml.dom.maths.Piece;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
+import eu.ddmore.libpharmml.dom.maths.ProbabilityFunction;
+import eu.ddmore.libpharmml.dom.maths.Statsop;
 import eu.ddmore.libpharmml.dom.maths.Uniop;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
+import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
 
 public interface MathExpressionConverter {
 
@@ -101,5 +106,15 @@ public interface MathExpressionConverter {
 	String convert(Piecewise piecewise);
 
 	String convert(LowUpLimit lowUpLimit);
+	
+	String convert(Naryop naryop);
+	
+	String convert(Statsop statsop);
+	
+	String convert(ProbabilityFunction pf);
+	
+	String convert(Matrix matrix);
+	
+	String convert(Realisation realisation);
 
 }

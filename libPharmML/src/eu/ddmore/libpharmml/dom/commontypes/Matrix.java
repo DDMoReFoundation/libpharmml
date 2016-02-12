@@ -42,6 +42,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.SubList;
 
@@ -765,20 +767,17 @@ public class Matrix
 
 	@Override
 	public String toMathExpression() {
-		// TODO Auto-generated method stub
-		return null;
+		return new MathExpressionConverterToExpression().convert(this);
 	}
 
 	@Override
 	public String toMathML() {
-		// TODO Auto-generated method stub
-		return null;
+		return new MathExpressionConverterToMathML().convert(this);
 	}
 
 	@Override
 	public String convert(MathExpressionConverter converter) {
-		// TODO Auto-generated method stub
-		return null;
+		return converter.convert(this);
 	}
         
 }

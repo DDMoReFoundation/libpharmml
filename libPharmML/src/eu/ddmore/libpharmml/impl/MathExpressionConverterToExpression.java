@@ -1,6 +1,9 @@
 package eu.ddmore.libpharmml.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.bind.JAXBElement;
 
@@ -11,8 +14,11 @@ import eu.ddmore.libpharmml.dom.commontypes.DelayVariable;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.LowUpLimit;
+import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixBlockSelector;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixCellSelector;
+import eu.ddmore.libpharmml.dom.commontypes.MatrixRow;
+import eu.ddmore.libpharmml.dom.commontypes.MatrixRowValue;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixVectorIndex;
 import eu.ddmore.libpharmml.dom.commontypes.MissingValue;
@@ -43,11 +49,15 @@ import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.dom.maths.LogicCondition;
 import eu.ddmore.libpharmml.dom.maths.LogicUniOp;
 import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
+import eu.ddmore.libpharmml.dom.maths.Naryop;
 import eu.ddmore.libpharmml.dom.maths.Piece;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
+import eu.ddmore.libpharmml.dom.maths.ProbabilityFunction;
+import eu.ddmore.libpharmml.dom.maths.Statsop;
 import eu.ddmore.libpharmml.dom.maths.Uniop;
 import eu.ddmore.libpharmml.dom.maths.Unioperator;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
+import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 
 public class MathExpressionConverterToExpression implements MathExpressionConverter {
@@ -314,7 +324,7 @@ public class MathExpressionConverterToExpression implements MathExpressionConver
 			return NULL;
 		}
 		if(symbolRef.getBlkIdRef() != null){
-			return "["+symbolRef.getSymbIdRef()+"]"+symbolRef.getSymbIdRef();
+			return "["+symbolRef.getBlkIdRef()+"]"+symbolRef.getSymbIdRef();
 		} else {
 			return symbolRef.getSymbIdRef();
 		}
@@ -447,7 +457,7 @@ public class MathExpressionConverterToExpression implements MathExpressionConver
 
 	@Override
 	public String convert(FunctionArgumentType fa) {
-		if(fa == null){
+		if(fa == null || fa.getScalar() == null){
 			return NULL;
 		}
 		Scalar scalar = (Scalar) fa.getScalar().getValue();
@@ -537,7 +547,7 @@ public class MathExpressionConverterToExpression implements MathExpressionConver
 
 	@Override
 	public String convert(Piece piece) {
-		if(piece == null){
+		if(piece == null || piece.getValue() == null){
 			return NULL;
 		}
 		StringBuilder sb = new StringBuilder();
@@ -610,6 +620,138 @@ public class MathExpressionConverterToExpression implements MathExpressionConver
 			return null;
 		}
 		return convertChoice(new MathExpression[]{lowUpLimit.getAssign(),lowUpLimit.getInt(),lowUpLimit.getSymbRef()});
+	}
+
+	@Override
+	public String convert(Naryop naryop) {
+		if(naryop == null || naryop.getOp() == null){
+			return NULL;
+		}
+		FunctionString fct = new FunctionString(naryop.getOp().value());
+		for(PharmMLRootType value : naryop.getContent()){
+			String stringvalue;
+			if(value instanceof MathExpression){
+				stringvalue = ((MathExpression) value).convert(this);
+			} else {
+				stringvalue = String.valueOf(value);
+			}
+			fct.addValue(stringvalue);
+		}
+		return fct.toString();
+	}
+
+	@Override
+	public String convert(Statsop statsop) {
+		if(statsop == null || statsop.getOp() == null){
+			return NULL;
+		}
+		FunctionString fct = new FunctionString(statsop.getOp().value());
+		for(JAXBElement<?> jaxb_value : statsop.getRest()){
+			String stringvalue;
+			Object value = jaxb_value.getValue();
+			if(value instanceof MathExpression){
+				stringvalue = ((MathExpression) value).convert(this);
+			} else {
+				stringvalue = String.valueOf(value);
+			}
+			fct.addValue(stringvalue);
+		}
+		return fct.toString();
+	}
+
+	@Override
+	public String convert(ProbabilityFunction pf) {
+		if(pf == null){
+			return NULL;
+		}
+		FunctionString fct = new FunctionString("probabilityFunction");
+		fct.addArg("distribution", String.valueOf(pf.getDistribution())); //TODO: convert distribution
+		if(pf.getAssign() != null){
+			fct.addValue(pf.getAssign().convert(this));
+		}
+		return fct.toString();
+		
+	}
+
+	@Override
+	public String convert(Matrix matrix) {
+		if(matrix == null){
+			return NULL;
+		}
+		FunctionString fct = new FunctionString("matrix");
+		fct.addArg("type", matrix.getMatrixType());
+		//TODO: other arguments (diagDefault...)
+		StringBuilder matrixSb = new StringBuilder("{");
+		String matrixPrefix = "";
+		for(PharmMLRootType element : matrix.getListOfMatrixElements()){
+			if(element instanceof MatrixRow){
+				StringBuilder sb = new StringBuilder();
+				sb.append(matrixPrefix);
+				sb.append("[");
+				String prefix = "";
+				for(MatrixRowValue value : ((MatrixRow) element).getListOfValues()){
+					sb.append(prefix);
+					sb.append(value.convert(this));
+					prefix = ",";
+				}
+				sb.append("]");
+			}
+			matrixPrefix = ",";
+		}
+		matrixSb.append("}");
+		fct.addValue(matrixSb.toString());
+		return fct.toString();
+	}
+
+	@Override
+	public String convert(Realisation realisation) {
+		if(realisation == null){
+			return NULL;
+		}
+		FunctionString fct = new FunctionString("realisation");
+		if(realisation.getProbOnto() != null){
+			fct.addArg("distribution", realisation.getProbOnto().toString()); //TODO: convert distribution
+		} else if(realisation.getUncertML() != null){
+			fct.addArg("distribution", realisation.getUncertML().toString()); //TODO: convert distribution
+		} else if(realisation.getPiecewise() != null){
+			fct.addArg("piecewise", realisation.getPiecewise().convert(this));
+		}
+		return fct.toString();
+	}
+	
+	private class FunctionString {
+		private final String fct;
+		private final Map<String, String> args;
+		private final List<String> values;
+		FunctionString(String fct){
+			this.fct = fct;
+			args = new HashMap<String,String>();
+			values = new ArrayList<String>();
+		}
+		void addValue(String value){
+			values.add(value);
+		}
+		void addArg(String key, String value){
+			args.put(key, value);
+		}
+		@Override
+		public String toString() {
+			StringBuilder sb = new StringBuilder();
+			sb.append(fct).append("(");
+			String prefix = "";
+			for(Map.Entry<String, String> entry : args.entrySet()){
+				sb.append(prefix);
+				sb.append(entry.getKey()).append("=").append(entry.getValue());
+				prefix = ",";
+			}
+			for(String value : values){
+				sb.append(prefix);
+				sb.append(value);
+				prefix = ",";
+			}
+			sb.append(")");
+			return sb.toString();
+		}
 	}
 
 }
