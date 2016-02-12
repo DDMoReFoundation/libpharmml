@@ -28,6 +28,7 @@ import eu.ddmore.libpharmml.exceptions.UndeclaredInterfaceImplementer;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 
+@SuppressWarnings("deprecation")
 public class MatrixRowValueAdapter extends XmlAdapter<JAXBElement<?>, MatrixRowValue> {
 
 	@Override

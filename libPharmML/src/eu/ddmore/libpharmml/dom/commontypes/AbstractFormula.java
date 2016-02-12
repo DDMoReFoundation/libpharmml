@@ -28,6 +28,7 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
 /**
  * Abstract class for regrouping common properties in formulas.
  */
+@SuppressWarnings("deprecation")
 @XmlTransient
 public abstract class AbstractFormula extends PharmMLRootType {
 	

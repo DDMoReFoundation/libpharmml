@@ -26,6 +26,7 @@ import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.exceptions.UndeclaredInterfaceImplementer;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
+@SuppressWarnings("deprecation")
 public class VectorValueAdapter extends XmlAdapter<JAXBElement<?>, VectorValue>{
 	
 	private static ObjectFactory of = new ObjectFactory();

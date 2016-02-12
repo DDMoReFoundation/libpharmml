@@ -62,6 +62,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * 
  * @since PharmML 0.7
  */
+@SuppressWarnings("deprecation")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "StandardAssignType", propOrder = {
     "assign",

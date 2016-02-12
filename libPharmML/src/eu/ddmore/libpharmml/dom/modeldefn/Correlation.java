@@ -80,6 +80,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * 
  * 
  */
+@SuppressWarnings("deprecation")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CorrelationType", propOrder = {
     "variabilityReference",
