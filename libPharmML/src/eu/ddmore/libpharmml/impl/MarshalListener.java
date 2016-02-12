@@ -31,7 +31,11 @@ import java.util.Map;
 import javax.xml.bind.Marshaller.Listener;
 
 import eu.ddmore.libpharmml.IdFactory;
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.Identifiable;
+import eu.ddmore.libpharmml.dom.commontypes.Assignable;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.Symbol;
 import eu.ddmore.libpharmml.exceptions.AnnotationException;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.HasElementsRenamed;
@@ -57,6 +61,8 @@ public class MarshalListener extends Listener {
 	private IdFactory idFactory;
 	
 	private boolean autoset_id = true;
+	private boolean describe_variables = false;
+	private static MathExpressionConverter descriptionConverter = new MathExpressionConverterToExpression();
 	
 	public MarshalListener(PharmMLVersion version,IdFactory idFactory){
 		this.marshalVersion = version;
@@ -84,6 +90,14 @@ public class MarshalListener extends Listener {
 					LoggerWrapper.getLogger().warning("Attempt to store a duplicate identifier ("+e.getDuplicate().getId()+").");
 				}
 			}
+		}
+		
+		if(describe_variables && source instanceof Symbol && source instanceof Assignable && source instanceof PharmMLRootType){
+			StringBuilder sb = new StringBuilder();
+			sb.append(((Symbol) source).getSymbId());
+			sb.append(" = ");
+			sb.append(descriptionConverter.convert(((Assignable)source).getAssign()));
+			((PharmMLRootType) source).createDescription(sb.toString());
 		}
 		
 	}
@@ -158,6 +172,10 @@ public class MarshalListener extends Listener {
 	
 	public void autosetId(boolean b){
 		autoset_id = b;
+	}
+	
+	public void describeVariables(boolean b){
+		describe_variables = b;
 	}
 
 }

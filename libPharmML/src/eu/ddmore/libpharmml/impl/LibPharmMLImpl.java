@@ -66,6 +66,7 @@ public class LibPharmMLImpl implements ILibPharmML {
 		}
 		
 		mListener.autosetId(resource.getParameter(IPharmMLResource.AUTOSET_ID));
+		mListener.describeVariables(resource.getParameter(IPharmMLResource.DESCRIBE_VARIABLES));
 		
 		this.marshaller.marshall(resource.getDom(), opStr, mListener);
 	}

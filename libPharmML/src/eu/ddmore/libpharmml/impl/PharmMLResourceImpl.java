@@ -43,6 +43,7 @@ public class PharmMLResourceImpl implements IPharmMLResource {
 		// Options
 		parameters = new Hashtable<String, Boolean>();
 		parameters.put(IPharmMLResource.AUTOSET_ID, Boolean.TRUE);
+		parameters.put(IPharmMLResource.DESCRIBE_VARIABLES, Boolean.FALSE);
 	}
 
 	@Override

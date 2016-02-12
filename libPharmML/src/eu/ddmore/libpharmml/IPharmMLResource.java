@@ -27,6 +27,11 @@ public interface IPharmMLResource {
 	 * Autosetting identifiers during marshalling. Default value is true.
 	 */
 	public final static String AUTOSET_ID = "pharmmlresource.param.autoset_id";
+	
+	/**
+	 * Generates a description for the variables and parameters. Default value is false.
+	 */
+	public final static String DESCRIBE_VARIABLES = "pharmmlresource.param.describe_variables";
 
 	/**
 	 * Gets the Domain Object Model of the PharmML resource.
