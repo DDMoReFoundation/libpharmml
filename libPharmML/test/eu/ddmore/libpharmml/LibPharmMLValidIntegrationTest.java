@@ -76,6 +76,7 @@ public class LibPharmMLValidIntegrationTest {
 		final List<IValidationError> errList = Collections.emptyList();
 		final Map<String,Boolean> parameters = new HashMap<String,Boolean>();
 		parameters.put(IPharmMLResource.AUTOSET_ID, true);
+		parameters.put(IPharmMLResource.DESCRIBE_VARIABLES, false);
 		IPharmMLResource res = new IPharmMLResource() {
 			@Override
 			public PharmML getDom() {
