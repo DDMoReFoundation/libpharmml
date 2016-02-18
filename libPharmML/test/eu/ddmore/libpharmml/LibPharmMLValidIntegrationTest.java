@@ -49,7 +49,7 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
 public class LibPharmMLValidIntegrationTest {
 	private static final String VALID_MODEL_FILE = "example4.xml";
 	private String exampleDir;
-	private static final String VALID_MDL_NAME = "Example 4 - estimation with IOV1 and with covariates";
+	private static final String VALID_MDL_NAME = "Example 4 - estimation with IOV1 (TrialDesign)";
 	private ILibPharmML testInstance;
 	private IPharmMLResource testResource;
 	

@@ -86,6 +86,7 @@
         <ParameterModel blkId="pm1">
             <!-- ka -->
             <PopulationParameter symbId="omega_ka"/>
+            <PopulationParameter symbId="gamma_ka"/>
             <PopulationParameter symbId="pop_ka"/>
             <PopulationParameter symbId="beta_ka_treatseq"/>
             <PopulationParameter symbId="k"/>

@@ -50,8 +50,8 @@ public class IdentifierTest {
 	public static Collection<Object[]> parameters(){
 		return Arrays.asList(new Object[][] {
 				{PharmMLVersion.V0_6, 562}, 
-				{PharmMLVersion.V0_7_3, 605},
-				{PharmMLVersion.V0_8, 605},
+				{PharmMLVersion.V0_7_3, 606},
+				{PharmMLVersion.V0_8, 606},
 		});
 	}
 	

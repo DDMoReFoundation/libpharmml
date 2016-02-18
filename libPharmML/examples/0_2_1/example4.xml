@@ -9,7 +9,7 @@
     writtenVersion="0.2.1">
     
     <!-- MODEL NAME -->
-    <ct:Name>Example 4 - estimation with IOV1 and with covariates</ct:Name>
+    <ct:Name>Example 4 - estimation with IOV1 (TrialDesign)</ct:Name>
 
     <!-- INDEPENDENT VARIABLE -->
     <IndependentVariable symbId="t"/>

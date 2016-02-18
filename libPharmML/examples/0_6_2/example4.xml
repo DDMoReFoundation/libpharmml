@@ -10,7 +10,7 @@
     metadataFile="example4.rdf" id="i1">
     
     <!-- MODEL NAME -->
-    <ct:Name>Example 4 - estimation with IOV1 and with covariates</ct:Name>
+    <ct:Name>Example 4 - estimation with IOV1 (TrialDesign)</ct:Name>
     
     <ct:Description>Example 4 - estimation with IOV1 and with covariates (TrialDesign)</ct:Description>
     
