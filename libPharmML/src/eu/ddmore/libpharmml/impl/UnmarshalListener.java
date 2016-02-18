@@ -38,6 +38,7 @@ import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.dataset.DatasetMap;
 import eu.ddmore.libpharmml.dom.modellingsteps.TargetTool;
+import eu.ddmore.libpharmml.dom.tags.AdaptedClass;
 import eu.ddmore.libpharmml.exceptions.AnnotationException;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.HasElementsRenamed;
@@ -89,8 +90,19 @@ public class UnmarshalListener extends Listener {
 		if(target instanceof Identifiable){
 			if(((Identifiable) target).getId() != null){
 				try {
-					idFactory.storeIdentifiable((Identifiable) target);
-					LoggerWrapper.getLogger().info("Stored object with id \""+ ((Identifiable) target).getId() +"\"");
+					Identifiable identifiable;
+					if(target instanceof AdaptedClass){
+						Object POJO = ((AdaptedClass<?>) target).getUnmappedObject();
+						if(POJO instanceof Identifiable){
+							identifiable = (Identifiable) POJO;
+						} else {
+							throw new RuntimeException("POJO \""+ POJO +"\" doesn't implement Identifiable while adapted class does, or is null");
+						}
+					} else {
+						identifiable = (Identifiable) target;
+					}
+					idFactory.storeIdentifiable(identifiable);
+					LoggerWrapper.getLogger().info("Stored object with id \""+ identifiable.getId() +"\"");
 				} catch (DuplicateIdentifierException e) {
 					LoggerWrapper.getLogger().warning("Identifier \""+ e.getDuplicate().getId() +"\" is duplicate.");
 				}

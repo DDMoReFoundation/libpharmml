@@ -36,6 +36,7 @@ import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.dom.commontypes.Assignable;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Symbol;
+import eu.ddmore.libpharmml.dom.tags.AdaptedClass;
 import eu.ddmore.libpharmml.exceptions.AnnotationException;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.HasElementsRenamed;
@@ -81,11 +82,23 @@ public class MarshalListener extends Listener {
 		
 		if(source instanceof Identifiable && marshalVersion.isEqualOrLaterThan(PharmMLVersion.V0_6)){
 			if(((Identifiable) source).getId() == null && autoset_id){
-				String id = idFactory.generateAndStoreIdentifiable((Identifiable) source);
+				Identifiable identifiable = (Identifiable) source;
+				String id = idFactory.generateAndStoreIdentifiable(identifiable);
 				LoggerWrapper.getLogger().info("Assigning id \""+id+"\" to "+source.getClass()+".");
 			} else if (((Identifiable) source).getId() != null ){
 				try {
-					idFactory.storeIdentifiable((Identifiable) source);
+					Identifiable identifiable;
+					if(source instanceof AdaptedClass){
+						Object pojo = ((AdaptedClass<?>) source).getUnmappedObject();
+						if(pojo instanceof Identifiable){
+							identifiable = (Identifiable) pojo;
+						} else {
+							throw new RuntimeException("POJO doesn't implement Identifiable while adapted class does, or is null");
+						}
+					} else {
+						identifiable = (Identifiable) source;
+					}
+					idFactory.storeIdentifiable(identifiable);
 				} catch (DuplicateIdentifierException e) {
 					LoggerWrapper.getLogger().warning("Attempt to store a duplicate identifier ("+e.getDuplicate().getId()+").");
 				}

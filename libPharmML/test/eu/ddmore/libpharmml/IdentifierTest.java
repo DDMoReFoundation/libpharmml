@@ -1,8 +1,10 @@
 package eu.ddmore.libpharmml;
 
+import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,8 +17,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized.Parameters;
 import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
+
+import eu.ddmore.libpharmml.dom.Identifiable;
+import eu.ddmore.libpharmml.dom.PharmML;
+import eu.ddmore.libpharmml.dom.commontypes.FunctionDefinition;
+import eu.ddmore.libpharmml.dom.commontypes.RealValue;
+import eu.ddmore.libpharmml.dom.commontypes.StandardAssignable;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 @RunWith(Parameterized.class)
@@ -41,7 +50,8 @@ public class IdentifierTest {
 	public static Collection<Object[]> parameters(){
 		return Arrays.asList(new Object[][] {
 				{PharmMLVersion.V0_6, 562}, 
-				{PharmMLVersion.V0_7_3, 607}
+				{PharmMLVersion.V0_7_3, 605},
+				{PharmMLVersion.V0_8, 605},
 		});
 	}
 	
@@ -94,6 +104,32 @@ public class IdentifierTest {
 		assertEquals("Number of ids",2, newResource.getIdFactory().getListOfIdentifiable().size());
 		assertNotNull("Previous id found", newResource.find("e1"));
 		assertNull("No new id", newResource.find("i10"));
+	}
+	
+	@Test
+	public void testRegisterAdaptedObject() throws Exception {
+		final String TEST_ID = "testId";
+		IPharmMLResource resource = testInstance.createDom(PharmMLVersion.DEFAULT);
+		PharmML dom = resource.getDom();
+		FunctionDefinition funcDef = dom.createFunctionDefinition("f1", SymbolType.REAL);
+		StandardAssignable definition = funcDef.createDefinition();
+		definition.assign(new RealValue(0));
+		definition.setId(TEST_ID);
+		
+		File tmpFile = File.createTempFile("unitTest", ".xml");
+		tmpFile.deleteOnExit();
+		FileOutputStream fos = new FileOutputStream(tmpFile);
+		testInstance.save(fos, resource); // register ids
+		fos.close();
+		
+		Identifiable identifiable = resource.find(TEST_ID);
+		assertNotNull(identifiable);
+		assertThat(identifiable, instanceOf(StandardAssignable.class));
+		
+		IPharmMLResource unmarshalResource = testInstance.createDomFromResource(new FileInputStream(tmpFile));
+		Identifiable unmarshalIdentifiable = unmarshalResource.find(TEST_ID);
+		assertNotNull(unmarshalIdentifiable);
+		assertThat(unmarshalIdentifiable, instanceOf(StandardAssignable.class));
 	}
 
 }

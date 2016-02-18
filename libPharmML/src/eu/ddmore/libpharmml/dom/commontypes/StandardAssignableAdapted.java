@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 import eu.ddmore.libpharmml.dom.maths.Equation;
-import eu.ddmore.libpharmml.dom.tags.AdaptedObject;
+import eu.ddmore.libpharmml.dom.tags.AdaptedClass;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 
 @SuppressWarnings("deprecation")
-public class StandardAssignableAdapted extends PharmMLRootType implements AdaptedObject<StandardAssignable> {
+public class StandardAssignableAdapted extends PharmMLRootType implements AdaptedClass<StandardAssignable> {
 	
 	@XmlTransient
 	private StandardAssignable unmappedObject;
@@ -74,7 +74,25 @@ public class StandardAssignableAdapted extends PharmMLRootType implements Adapte
 
 	@Override
 	public StandardAssignable getUnmappedObject() {
+		if(unmappedObject == null){
+			unmappedObject = generatesPOJO();
+		}
 		return unmappedObject;
+	}
+	
+	private StandardAssignable generatesPOJO(){
+		StandardAssignable sa = new StandardAssignable();
+		copyRoot(this, sa);
+		if(this.assign != null){
+			sa.setAssign(this.assign);
+		} else if(this.equation != null) {
+			sa.setAssign(Equation.toRhs(this.equation));
+		} else if(this.scalar != null){
+			sa.setAssign(new Rhs(this.scalar));
+		} else if(this.symbRef != null){
+			sa.setAssign(new Rhs(this.symbRef));
+		}
+		return sa;
 	}
 	
 	public static class ScalarRhsAdapter extends XmlAdapter<StandardAssignableAdapted, StandardAssignable>{
@@ -82,18 +100,7 @@ public class StandardAssignableAdapted extends PharmMLRootType implements Adapte
 		@Override
 		public StandardAssignable unmarshal(StandardAssignableAdapted v) throws Exception {
 			if(v != null){
-				StandardAssignable sa = new StandardAssignable();
-				copyRoot(v, sa);
-				if(v.assign != null){
-					sa.setAssign(v.assign);
-				} else if(v.equation != null) {
-					sa.setAssign(Equation.toRhs(v.equation));
-				} else if(v.scalar != null){
-					sa.setAssign(new Rhs(v.scalar));
-				} else if(v.symbRef != null){
-					sa.setAssign(new Rhs(v.symbRef));
-				}
-				return sa;
+				return v.getUnmappedObject();
 			} else {
 				return null;
 			}
@@ -102,11 +109,14 @@ public class StandardAssignableAdapted extends PharmMLRootType implements Adapte
 		@Override
 		public StandardAssignableAdapted marshal(StandardAssignable v) throws Exception {
 			if(v != null){
+				StandardAssignableAdapted adapted;
 				if(v.getMarshalVersion().isEqualOrLaterThan(PharmMLVersion.V0_7_3)){
-					return normal(v);
+					adapted = normal(v);
 				} else {
-					return scalarRhs(v);
+					adapted = scalarRhs(v);
 				}
+				adapted.unmappedObject = v;
+				return adapted;
 			} else {
 				return null;
 			}
