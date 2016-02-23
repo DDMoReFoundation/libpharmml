@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.MathExpressionConverter;
-import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
+import eu.ddmore.libpharmml.dom.maths.ObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.Operand;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.probonto.DistributionName;
@@ -205,8 +205,8 @@ public class Realisation
     }
 
 	@Override
-	public JAXBElement<? extends Operand> toJAXBElement() {
-		return MasterObjectFactory.MATHS_OF.createBinopTypeRealisation(this);
+	public JAXBElement<Realisation> toJAXBElement() {
+		return ObjectFactory.getInstance().createBinopTypeRealisation(this);
 	}
 
 	@Override

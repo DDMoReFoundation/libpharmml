@@ -405,6 +405,11 @@ public class Vector extends AbstractVector implements ExpressionValue, MathExpre
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
 	}
+
+	@Override
+	public JAXBElement<Vector> toJAXBElement() {
+		return ObjectFactory.getInstance().createVector(this);
+	}
     
 
 }

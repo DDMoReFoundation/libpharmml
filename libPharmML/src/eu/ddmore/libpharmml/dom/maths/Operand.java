@@ -31,7 +31,8 @@ import eu.ddmore.libpharmml.dom.tags.MathExpression;
 public interface Operand extends MathExpression {
 
 	/**
-	 * Converts the object to a JAXBElement for marshalling.
+	 * Converts the object to a JAXBElement for marshalling. This method may be used any time the XML element
+	 * is named according to its type. If the XML element has a different name, an other method must be used.
 	 * @return An instance of {@link JAXBElement} that contains the current object.
 	 */
 	public JAXBElement<? extends Operand> toJAXBElement();

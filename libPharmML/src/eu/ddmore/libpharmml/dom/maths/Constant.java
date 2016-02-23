@@ -27,7 +27,6 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.MathExpressionConverter;
-import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
@@ -128,8 +127,8 @@ public class Constant extends PharmMLElement implements Operand, ExpressionValue
     }
 
 	@Override
-	public JAXBElement<? extends Operand> toJAXBElement() {
-		return MasterObjectFactory.MATHS_OF.createConstant(this);
+	public JAXBElement<Constant> toJAXBElement() {
+		return ObjectFactory.getInstance().createConstant(this);
 	}
 	
 	@Override

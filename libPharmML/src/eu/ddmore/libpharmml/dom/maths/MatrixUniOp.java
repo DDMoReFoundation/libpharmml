@@ -18,6 +18,7 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.dom.maths;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -117,6 +118,11 @@ public class MatrixUniOp
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public JAXBElement<MatrixUniOp> toJAXBElement() {
+		return ObjectFactory.getInstance().createMatrixUniop(this);
 	}
 	
 //    @Override

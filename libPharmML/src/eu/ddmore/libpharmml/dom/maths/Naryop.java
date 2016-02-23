@@ -31,7 +31,6 @@ import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.MathExpressionConverter;
-import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Sequence;
@@ -226,8 +225,8 @@ public class Naryop
     }
 
 	@Override
-	public JAXBElement<? extends Operand> toJAXBElement() {
-		return MasterObjectFactory.MATHS_OF.createNaryop(this);
+	public JAXBElement<Naryop> toJAXBElement() {
+		return ObjectFactory.getInstance().createNaryop(this);
 	}
 
 	@Override

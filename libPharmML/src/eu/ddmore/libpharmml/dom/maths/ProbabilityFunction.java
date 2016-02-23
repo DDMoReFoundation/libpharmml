@@ -381,7 +381,7 @@ public class ProbabilityFunction
    	}
 
 	@Override
-	public JAXBElement<? extends Operand> toJAXBElement() {
+	public JAXBElement<ProbabilityFunction> toJAXBElement() {
 		try {
 			return new Adapter().marshal(this);
 		} catch (Exception e) {

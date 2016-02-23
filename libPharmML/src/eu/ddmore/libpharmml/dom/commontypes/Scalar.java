@@ -19,6 +19,7 @@
 package eu.ddmore.libpharmml.dom.commontypes;
 
 import javax.swing.tree.TreeNode;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
@@ -38,5 +39,8 @@ public interface Scalar extends VectorCellValue, MatrixCellValue, MatrixRowValue
 	 * @return The value as a {@link String}.
 	 */
 	String valueToString();
+	
+	@Override
+	public JAXBElement<? extends Scalar> toJAXBElement();
 	
 }

@@ -239,7 +239,7 @@ public class Statsop
     }
 
 	@Override
-	public JAXBElement<? extends Operand> toJAXBElement() {
+	public JAXBElement<Statsop> toJAXBElement() {
 		return MasterObjectFactory.MATHS_OF.createStatsop(this);
 	}
 	
