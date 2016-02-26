@@ -261,6 +261,15 @@ public class Binop
     }
     
     /**
+     * Creates a new binop element with the provided operator.
+     * @param operator
+     */
+    public Binop(Binoperator operator){
+    	this();
+    	this.operator = operator;
+    }
+    
+    /**
      * Creates a new binop element with the provided operands and operator.
      * @param operator
      * @param operand1
@@ -276,7 +285,7 @@ public class Binop
     /**
      * Clears the mapped attributes before setting their values for marshalling.
      */
-    private void init(){
+    protected void init(){
     	content = new ArrayList<JAXBElement<?>>();
     	content.add(null);
     	content.add(null);
