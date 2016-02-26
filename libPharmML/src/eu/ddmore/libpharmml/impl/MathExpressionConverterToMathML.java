@@ -81,6 +81,7 @@ import static eu.ddmore.libpharmml.impl.LoggerWrapper.getLogger;
  */
 public class MathExpressionConverterToMathML implements MathExpressionConverter {
 	
+	public static String MATHML_NAMESPACE = "http://www.w3.org/1998/Math/MathML";
 	public static String NULL_NUMBER = "<cn></cn>\n";
 	public static String NULL_IDENTIFIER = "<ci></ci>\n";
 	
@@ -577,6 +578,12 @@ public class MathExpressionConverterToMathML implements MathExpressionConverter 
 		if(naryop == null || naryop.getOp() == null){
 			return NULL_IDENTIFIER;
 		}
+		if(naryop.getContent().size() == 1 && naryop.getContent().get(0) instanceof Vector){
+			Vector v = (Vector) naryop.getContent().get(0);
+			if(v.getVectorElements() != null){
+				return apply(naryop.getOp().value(), v.getVectorElements().getListOfElements());
+			}
+		}
 		return apply(naryop.getOp().value(), naryop.getContent());
 	}
 
@@ -686,6 +693,10 @@ public class MathExpressionConverterToMathML implements MathExpressionConverter 
 		getLogger().severe("Realisation cannot be converted to MathML");
 		// TODO
 		return NULL_NUMBER;
+	}
+	
+	public static String wrapMathML(String mathML){
+		return "<math xmlns=\""+MATHML_NAMESPACE+"\">"+mathML+"</math>";
 	}
 
 }
