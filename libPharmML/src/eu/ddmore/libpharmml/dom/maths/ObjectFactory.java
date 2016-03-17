@@ -80,6 +80,9 @@ public class ObjectFactory {
     private final static QName _BinopTypeRealisation_QNAME = new QName(NS_DEFAULT_MATH, "Realisation");
     private final static QName _ElseTypeConditionalStatement_QNAME = new QName(NS_DEFAULT_MATH, "ConditionalStatement");
     
+    // PharmML 0.8.1
+    private final static QName _Piecewise_QNAME = new QName(NS_DEFAULT_MATH, "Piecewise");
+    
     private final static ObjectFactory instance = new ObjectFactory();
     
     public static ObjectFactory getInstance(){
@@ -439,5 +442,14 @@ public class ObjectFactory {
 	public JAXBElement<Realisation> createRealisation(Realisation value) {
 		return new JAXBElement<Realisation>(_BinopTypeRealisation_QNAME, Realisation.class, null, value);
 	}
+    
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Piecewise }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = NS_DEFAULT_MATH, name = "Piecewise")
+    public JAXBElement<Piecewise> createPiecewise(Piecewise value) {
+        return new JAXBElement<Piecewise>(_Piecewise_QNAME, Piecewise.class, null, value);
+    }
 
 }
