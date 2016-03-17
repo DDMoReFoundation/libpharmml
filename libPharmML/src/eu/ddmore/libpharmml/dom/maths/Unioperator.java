@@ -32,6 +32,7 @@ public enum Unioperator {
 	EXP("exp"),
 	FACTORIAL("factorial"),
 	FACTLN("factln"),
+	GAMMA("gamma"), // PharmML 0.8.1
 	GAMMALN("gammaln"),
 	LOG("log"),
 	LOG2("log2"),
@@ -102,6 +103,7 @@ public enum Unioperator {
 	 *             &lt;enumeration value="exp"/>
 	 *             &lt;enumeration value="factorial"/>
 	 *             &lt;enumeration value="factln"/>
+	 *             &lt;enumeration value="gamma"/>
 	 *             &lt;enumeration value="gammaln"/>
 	 *             &lt;enumeration value="ln"/>
 	 *             &lt;enumeration value="log"/>
