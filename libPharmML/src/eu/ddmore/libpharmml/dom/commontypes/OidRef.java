@@ -37,6 +37,8 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
+
 
 /**
  * Type used by element referencing an OID.
@@ -78,6 +80,14 @@ public class OidRef
      */
     public OidRef(String oidRef){
     	this.oidRef = oidRef;
+    }
+    
+    /**
+     * Creates a new reference to the given object.
+     * @param object Referred object which must have a defined oid.
+     */
+    public OidRef(PharmMLObject object){
+    	this.oidRef = object.getOid();
     }
 
     /**

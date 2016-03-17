@@ -31,9 +31,12 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableAssignment;
+import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
+import eu.ddmore.libpharmml.dom.trialdesign.ExternalDataSet;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -68,6 +71,8 @@ import eu.ddmore.libpharmml.util.ChainedList;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CommonModellingStepType", propOrder = {
+	"listOfSoftwareSettings",
+	"listOfOutputFile",
     "targetToolReference",
     "externalDataSetReference",
     "monoliXdataSetReference",
@@ -109,6 +114,70 @@ public abstract class CommonModellingStep
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
+    
+    // PharmML 0.8.1
+    @XmlElement(name = "SoftwareSettings")
+    protected List<SoftwareSettings> listOfSoftwareSettings;
+    @XmlElement(name = "OutputFile")
+    protected List<ExternalFile> listOfOutputFile;
+    
+    /**
+     * Gets the value of the softwareSettings property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the softwareSettings property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListOfSoftwareSettings().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link SoftwareSettings }
+     * 
+     * @since PharmML 0.8.1
+     */
+    public List<SoftwareSettings> getListOfSoftwareSettings() {
+        if (listOfSoftwareSettings == null) {
+        	listOfSoftwareSettings = new ArrayList<SoftwareSettings>();
+        }
+        return this.listOfSoftwareSettings;
+    }
+
+    /**
+     * Gets the value of the outputFile property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the outputFile property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListOfOutputFile().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ExternalFile }
+     * 
+     * @since PharmML 0.8.1
+     */
+    public List<ExternalFile> getListOfOutputFile() {
+        if (listOfOutputFile == null) {
+        	listOfOutputFile = new ArrayList<ExternalFile>();
+        }
+        return this.listOfOutputFile;
+    }
 
     /**
      * Gets the value of the targetToolReference property.
@@ -274,7 +343,7 @@ public abstract class CommonModellingStep
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getVariableAssignment().add(newItem);
+     *    getListOfVariableAssignment().add(newItem);
      * </pre>
      * 
      * 
@@ -284,11 +353,19 @@ public abstract class CommonModellingStep
      * 
      * 
      */
-    public List<VariableAssignment> getVariableAssignment() {
+    public List<VariableAssignment> getListOfVariableAssignment() {
         if (variableAssignment == null) {
             variableAssignment = new ArrayList<VariableAssignment>();
         }
         return this.variableAssignment;
+    }
+    
+    /**
+     * @deprecated Use {@link #getListOfVariableAssignment()}.
+     */
+    @Deprecated
+    public List<VariableAssignment> getVariableAssignment() {
+        return getListOfVariableAssignment();
     }
 
     /**
@@ -318,6 +395,8 @@ public abstract class CommonModellingStep
     @Override
     protected List<TreeNode> listChildren() {
     	return new ChainedList<TreeNode>(super.listChildren())
+    			.addIfNotNull(listOfSoftwareSettings)
+    			.addIfNotNull(listOfOutputFile)
     			.addIfNotNull(targetToolReference)
     			.addIfNotNull(monoliXdataSetReference)
     			.addIfNotNull(nonmeMdataSetReference)
@@ -326,5 +405,122 @@ public abstract class CommonModellingStep
     			.addIfNotNull(observationsReference)
     			.addIfNotNull(variableAssignment);
     }
+    
+    /**
+     * Creates a new empty {@link TargetToolReference} targetToolReference element, adds it to the current object and returns it.
+     * @return The created {@link TargetToolReference} object.
+     */
+    public TargetToolReference createTargetToolReference(){
+    	TargetToolReference el = new TargetToolReference();
+    	this.targetToolReference = el;
+    	return el;
+    }
+    
+    /**
+     * Creates a new empty {@link TargetToolReference} targetToolReference element, adds it to the current object and returns it.
+     * @param oidRef Object id of the referred {@link TargetTool}.
+     * @return The created {@link TargetToolReference} object.
+     */
+    public TargetToolReference createTargetToolReference(String oidRef){
+    	TargetToolReference el = new TargetToolReference();
+    	el.setOidRef(new OidRef(oidRef));
+    	this.targetToolReference = el;
+    	return el;
+    }
+    
+    /**
+     * Creates a new {@link TargetToolReference} targetToolReference element, adds it to the current object and returns it.
+     * @param targetTool Referred {@link TargetTool}.
+     * @return The created {@link TargetToolReference} object.
+     */
+    public TargetToolReference createTargetToolReference(TargetTool targetTool){
+    	TargetToolReference el = new TargetToolReference();
+    	el.setOidRef(new OidRef(targetTool));
+    	this.targetToolReference = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new {@link ExternalDataSetReference} externalDataSetReference element, adds it to the current object and returns it.
+     * @return The created {@link ExternalDataSetReference} object.
+     */
+    public ExternalDataSetReference createExternalDataSetReference(){
+    	ExternalDataSetReference el = new ExternalDataSetReference();
+    	this.externalDataSetReference = el;
+    	return el;
+    }
+    
+    /**
+     * Creates a new {@link ExternalDataSetReference} externalDataSetReference element, adds it to the current object and returns it.
+     * @param oidRef Object id of the referred {@link ExternalDataSet}.
+     * @return The created {@link ExternalDataSetReference} object.
+     */
+    public ExternalDataSetReference createExternalDataSetReference(String oidRef){
+    	ExternalDataSetReference el = new ExternalDataSetReference(oidRef);
+    	this.externalDataSetReference = el;
+    	return el;
+    }
+    
+    /**
+     * Creates a new {@link ExternalDataSetReference} externalDataSetReference element, adds it to the current object and returns it.
+     * @param externalDataset Referred {@link ExternalDataSet}.
+     * @return The created {@link ExternalDataSetReference} object.
+     */
+    public ExternalDataSetReference createExternalDataSetReference(ExternalDataSet externalDataset){
+    	ExternalDataSetReference el = new ExternalDataSetReference(externalDataset);
+    	this.externalDataSetReference = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link InterventionsReference} interventionsReference element, adds it to the current object and returns it.
+     * @return The created {@link InterventionsReference} object.
+     */
+    public InterventionsReference createInterventionsReference(){
+    	InterventionsReference el = new InterventionsReference();
+    	this.interventionsReference = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link ObservationsReference} observationsReference element, adds it to the current object and returns it.
+     * @return The created {@link ObservationsReference} object.
+     */
+    public ObservationsReference createObservationsReference(){
+    	ObservationsReference el = new ObservationsReference();
+    	this.observationsReference = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link VariableAssignment} variableAssignment element, adds it to the current object and returns it.
+     * @return The created {@link VariableAssignment} object.
+     */
+    public VariableAssignment createVariableAssignment(){
+    	VariableAssignment el = new VariableAssignment();
+    	getListOfVariableAssignment().add(el);
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link SoftwareSettings} SoftwareSettings element, adds it to the current object and returns it.
+     * @return The created {@link SoftwareSettings} object.
+     */
+    public SoftwareSettings createSoftwareSettings(){
+    	SoftwareSettings el = new SoftwareSettings();
+    	getListOfSoftwareSettings().add(el);
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link ExternalFile} OutputFile element, adds it to the current object and returns it.
+     * @return The created {@link ExternalFile} object.
+     */
+    public ExternalFile createOutputFile(){
+    	ExternalFile el = new ExternalFile();
+    	getListOfOutputFile().add(el);
+    	return el;
+    }
+
 
 }
