@@ -96,9 +96,9 @@ public class MatrixBlock
     @XmlAttribute(name = "offDiagDefault")
     protected Double offDiagDefault;
     @XmlAttribute(name = "numbCols")
-    protected BigInteger numbCols;
+    protected Integer numbCols;
     @XmlAttribute(name = "numbRows")
-    protected BigInteger numbRows;
+    protected Integer numbRows;
     
     public MatrixBlock(){}
     
@@ -278,10 +278,10 @@ public class MatrixBlock
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public BigInteger getNumbCols() {
+    public Integer getNumbCols() {
         return numbCols;
     }
 
@@ -290,11 +290,25 @@ public class MatrixBlock
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public void setNumbCols(BigInteger value) {
+    public void setNumbCols(Integer value) {
         this.numbCols = value;
+    }
+    
+    /**
+     * Sets the value of the numbCols property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     * @deprecated PharmML now uses xs:int values. Use {@link #setNumbCols(Integer)}.
+     */
+    @Deprecated
+    public void setNumbCols(BigInteger value) {
+        this.numbCols = value.intValue();
     }
 
     /**
@@ -302,10 +316,10 @@ public class MatrixBlock
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public BigInteger getNumbRows() {
+    public Integer getNumbRows() {
         return numbRows;
     }
 
@@ -314,12 +328,27 @@ public class MatrixBlock
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public void setNumbRows(BigInteger value) {
+    public void setNumbRows(Integer value) {
         this.numbRows = value;
     }
+    
+    /**
+     * Sets the value of the numbRows property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     * @deprecated PharmML now uses xs:int values. Use {@link #setNumbRows(Integer)}.
+     */
+    @Deprecated
+    public void setNumbRows(BigInteger value) {
+        this.numbRows = value.intValue();
+    }
+
     
     /**
      * Creates a new empty {@link MatrixVectorIndex} blockStartRow element, adds it to the current object and returns it.

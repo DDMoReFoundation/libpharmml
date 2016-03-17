@@ -34,7 +34,6 @@ import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
@@ -69,19 +68,18 @@ public class CommonColumnDefinition
     extends PharmMLRootType
 {
 
-    @XmlAttribute(name = "columnNum", required = true)
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger columnNum;
+    @XmlAttribute(name = "columnNum", required = true) // TODO: must be positive
+    protected Integer columnNum;
 
     /**
      * Gets the value of the columnNum property.
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public BigInteger getColumnNum() {
+    public Integer getColumnNum() {
         return columnNum;
     }
 
@@ -90,11 +88,25 @@ public class CommonColumnDefinition
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public void setColumnNum(BigInteger value) {
+    public void setColumnNum(Integer value) {
         this.columnNum = value;
+    }
+    
+    /**
+     * Sets the value of the columnNum property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     * @deprecated PharmML now uses xs:int values. Use {@link #setColumnNum(Integer)}.
+     */
+    @Deprecated
+    public void setColumnNum(BigInteger value) {
+        this.columnNum = value.intValue();
     }
 
 	@Override

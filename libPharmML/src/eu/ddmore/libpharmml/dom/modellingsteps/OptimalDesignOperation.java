@@ -26,7 +26,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.Name;
@@ -78,8 +77,7 @@ public class OptimalDesignOperation
     protected List<OperationProperty> listOfProperty;
     @XmlElement(name = "Algorithm")
     protected Algorithm algorithm;
-    @XmlAttribute(name = "order", required = true)
-    @XmlSchemaType(name = "positiveInteger")
+    @XmlAttribute(name = "order", required = true) //TODO: must be positive
     protected Integer order;
     @XmlAttribute(name = "opType", required = true)
     protected OptimalDesignOpType opType;

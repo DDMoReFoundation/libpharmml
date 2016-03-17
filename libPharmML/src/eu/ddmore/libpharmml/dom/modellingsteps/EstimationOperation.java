@@ -35,7 +35,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.Name;
@@ -88,8 +87,7 @@ public class EstimationOperation
     @XmlElement(name = "Algorithm")
     protected Algorithm algorithm;
     @XmlAttribute(name = "order", required = true)
-    @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger order;
+    protected Integer order;
     @XmlAttribute(name = "opType", required = true)
     protected String opType;
 
@@ -177,11 +175,23 @@ public class EstimationOperation
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public BigInteger getOrder() {
+    public Integer getOrder() {
         return order;
+    }
+    
+    /**
+     * Sets the value of the order property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setOrder(Integer value) {
+        this.order = value;
     }
 
     /**
@@ -191,9 +201,10 @@ public class EstimationOperation
      *     allowed object is
      *     {@link BigInteger }
      *     
+     * @deprecated PharmML now uses xs:int values. Use {@link #setOrder(Integer)}.
      */
     public void setOrder(BigInteger value) {
-        this.order = value;
+        this.order = value.intValue();
     }
 
     /**

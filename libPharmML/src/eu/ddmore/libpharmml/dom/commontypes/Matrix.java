@@ -149,9 +149,9 @@ public class Matrix
     @XmlAttribute(name = "offDiagDefault")
     protected Double offDiagDefault;
     @XmlAttribute(name = "numbCols")
-    protected BigInteger numbCols;
+    protected Integer numbCols;
     @XmlAttribute(name = "numbRows")
-    protected BigInteger numbRows;
+    protected Integer numbRows;
     @XmlAttribute(name = "matrixType", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String matrixType;
@@ -203,8 +203,8 @@ public class Matrix
 	@Deprecated
 	public Matrix(String symbolId, Matrix.Type type, int numbCols, int numbRows){
 		this(symbolId,type);
-		this.setNumbCols(BigInteger.valueOf(numbCols));
-		this.setNumbRows(BigInteger.valueOf(numbRows));
+		this.setNumbCols(numbCols);
+		this.setNumbRows(numbRows);
 	}
 	/**
 	 * Constructs a matrix with the minimal required attributes for a sparse matrix.
@@ -214,8 +214,8 @@ public class Matrix
 	 */
 	public Matrix(Matrix.Type type, int numbCols, int numbRows){
 		this(type);
-		this.setNumbCols(BigInteger.valueOf(numbCols));
-		this.setNumbRows(BigInteger.valueOf(numbRows));
+		this.setNumbCols(numbCols);
+		this.setNumbRows(numbRows);
 	}
 	
 	/**
@@ -406,10 +406,10 @@ public class Matrix
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public BigInteger getNumbCols() {
+    public Integer getNumbCols() {
         return numbCols;
     }
 
@@ -418,11 +418,25 @@ public class Matrix
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public void setNumbCols(BigInteger value) {
+    public void setNumbCols(Integer value) {
         this.numbCols = value;
+    }
+    
+    /**
+     * Sets the value of the numbCols property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     * @deprecated PharmML now uses xs:int values. Use {@link #setNumbCols(Integer)}.
+     */
+    @Deprecated
+    public void setNumbCols(BigInteger value) {
+        this.numbCols = value.intValue();
     }
 
     /**
@@ -430,10 +444,10 @@ public class Matrix
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public BigInteger getNumbRows() {
+    public Integer getNumbRows() {
         return numbRows;
     }
 
@@ -442,11 +456,25 @@ public class Matrix
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public void setNumbRows(BigInteger value) {
+    public void setNumbRows(Integer value) {
         this.numbRows = value;
+    }
+    
+    /**
+     * Sets the value of the numbRows property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     * @deprecated PharmML now uses xs:int values. Use {@link #setNumbRows(Integer)}.
+     */
+    @Deprecated
+    public void setNumbRows(BigInteger value) {
+        this.numbRows = value.intValue();
     }
 
     /**

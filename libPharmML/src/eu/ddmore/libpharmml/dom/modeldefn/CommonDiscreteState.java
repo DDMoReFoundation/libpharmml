@@ -80,7 +80,7 @@ public class CommonDiscreteState
     @XmlElement(name = "LogicUniop", namespace = XMLFilter.NS_DEFAULT_MATH)
     protected LogicUniOp logicUniop;
     @XmlAttribute(name = "MarkovOrder")
-    protected BigInteger markovOrder;
+    protected Integer markovOrder;
 
     /**
      * Gets the value of the logicBinop property.
@@ -135,11 +135,23 @@ public class CommonDiscreteState
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public BigInteger getMarkovOrder() {
+    public Integer getMarkovOrder() {
         return markovOrder;
+    }
+    
+    /**
+     * Sets the value of the markovOrder property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setMarkovOrder(Integer value) {
+        this.markovOrder = value;
     }
 
     /**
@@ -148,10 +160,12 @@ public class CommonDiscreteState
      * @param value
      *     allowed object is
      *     {@link BigInteger }
-     *     
+     * 
+     * @deprecated PharmML now uses xs:int values. Use {@link #setMarkovOrder(Integer)}.
      */
+    @Deprecated
     public void setMarkovOrder(BigInteger value) {
-        this.markovOrder = value;
+        this.markovOrder = value.intValue();
     }
     
     /**

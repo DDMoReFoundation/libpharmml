@@ -73,19 +73,32 @@ import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 public class IntValue extends PharmMLElement implements Scalar, Identifiable{
 
     @XmlValue
-    protected BigInteger value;
+    protected Integer value;
     @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String id;
     
+    /**
+     * Empty constructor
+     */
     public IntValue(){}
     
+    /**
+     * Constructs an {@link IntValue} with the given value.
+     * @param integer Value as {@link BigInteger}
+     * @deprecated PharmML now uses xs:int values. Use {@link #IntValue(Integer)}.
+     */
+    @Deprecated
 	public IntValue(BigInteger integer){
-		this.value = integer;
+		this.value = integer.intValue();
 	}
 	
+    /**
+     * Constructs an {@link IntValue} with the given value.
+     * @param integer Value as {@link Integer}
+     */
 	public IntValue(Integer integer){
-		this.value = BigInteger.valueOf(integer);
+		this.value = integer;
 	}
 
     /**
@@ -93,10 +106,10 @@ public class IntValue extends PharmMLElement implements Scalar, Identifiable{
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public BigInteger getValue() {
+    public Integer getValue() {
         return value;
     }
 
@@ -105,11 +118,25 @@ public class IntValue extends PharmMLElement implements Scalar, Identifiable{
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public void setValue(BigInteger value) {
+    public void setValue(Integer value) {
         this.value = value;
+    }
+    
+    /**
+     * Sets the value of the value property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     * @deprecated PharmML now uses xs:int values. Use {@link #setValue(Integer)}.
+     */
+    @Deprecated
+    public void setValue(BigInteger value) {
+        setValue(value.intValue());
     }
 
     /**
