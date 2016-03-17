@@ -57,6 +57,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ssPeriod"/>
  *     &lt;enumeration value="time"/>
  *     &lt;enumeration value="undefined"/>
+ *     &lt;enumeration value="varLevel"/>
  *     &lt;enumeration value="indivParameter"/>
  *     &lt;enumeration value="popParameter"/>
  *     &lt;enumeration value="randEffect"/>
@@ -64,10 +65,11 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="statPrecision"/>
  *     &lt;enumeration value="strataVariable"/>
  *     &lt;enumeration value="structParameter"/>
- *     &lt;enumeration value="varParameter_var"/>
- *     &lt;enumeration value="varParameter_stdev"/>
- *     &lt;enumeration value="varParameter_cov"/>
- *     &lt;enumeration value="varParameter_corr"/>
+ *     &lt;enumeration value="varParameter"/>
+ *     &lt;enumeration value="variance"/>
+ *     &lt;enumeration value="stdev"/>
+ *     &lt;enumeration value="covariance"/>
+ *     &lt;enumeration value="correlation"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -171,29 +173,63 @@ public enum ColumnType {
      * @since PharmML 0.7
      */
     @XmlEnumValue("varParameter")
-    @Deprecated
     VAR_PARAMETER("varParameter"),
     
     /**
      * @since PharmML 0.7.3
      */
     @XmlEnumValue("varParameter_var")
+    @Deprecated
     VAR_PARAMETER_VAR("varParameter_var"),
     /**
      * @since PharmML 0.7.3
      */
+    @Deprecated
     @XmlEnumValue("varParameter_stdev")
     VAR_PARAMETER_STDEV("varParameter_stdev"),
     /**
      * @since PharmML 0.7.3
      */
+    @Deprecated
     @XmlEnumValue("varParameter_cov")
     VAR_PARAMETER_COV("varParameter_cov"),
     /**
      * @since PharmML 0.7.3
      */
+    @Deprecated
     @XmlEnumValue("varParameter_corr")
-    VAR_PARAMETER_CORR("varParameter_corr");
+    VAR_PARAMETER_CORR("varParameter_corr"),
+    
+    /**
+     * @since PharmML 0.8.1
+     */
+    @XmlEnumValue("varLevel")
+    VAR_LEVEL("varLevel"),
+    
+    /**
+     * @since PharmML 0.8.1
+     */
+    @XmlEnumValue("variance")
+    VARIANCE("variance"),
+    
+    /**
+     * @since PharmML 0.8.1
+     */
+    @XmlEnumValue("stdev")
+    STDEV("stdev"),
+    
+    /**
+     * @since PharmML 0.8.1
+     */
+    @XmlEnumValue("covariance")
+    COVARIANCE("covariance"),
+    
+    /**
+     * @since PharmML 0.8.1
+     */
+    @XmlEnumValue("correlation")
+    CORRELATION("correlation");
+    
     private final String value;
 
     ColumnType(String v) {
