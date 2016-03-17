@@ -85,7 +85,7 @@ public class DerivativeVariable
     @XmlAttribute(name = "compartmentNo")
     @Deprecated
     protected Integer compartmentNo;
-    @XmlAttribute(name = "symbolType", required = true)
+    @XmlAttribute(name = "symbolType")
     protected SymbolType symbolType;
     
     /**

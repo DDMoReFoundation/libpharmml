@@ -71,7 +71,7 @@ public class VariableDefinition
 
     @XmlElement(name = "Assign")
     protected Rhs assign;
-    @XmlAttribute(name = "symbolType", required = true)
+    @XmlAttribute(name = "symbolType")
     protected SymbolType symbolType;
     @XmlAttribute(name = "regressor")
     protected RegressorType regressor;
@@ -101,19 +101,23 @@ public class VariableDefinition
     }
 
     /**
-     * Gets the value of the symbolType property.
+     * Gets the type of this variable. If the symbol type is not explicitely defined, the default type is "real" 
+     * and this method returns {@link SymbolType#REAL}.
      * 
      * @return
-     *     possible object is
-     *     {@link SymbolType }
+     *     A {@link SymbolType} enum value. Default is {@link SymbolType#REAL}.
      *     
      */
     public SymbolType getSymbolType() {
-        return symbolType;
+    	if(symbolType == null){
+    		return SymbolType.REAL;
+    	} else {
+    		return symbolType;
+    	}
     }
 
     /**
-     * Sets the value of the symbolType property.
+     * Sets the value of the symbolType property. If a null value is assigned, the type is assumed to be "real".
      * 
      * @param value
      *     allowed object is
