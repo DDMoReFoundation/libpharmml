@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mml:PharmML xmlns:mdef="http://www.pharmml.org/pharmml/0.8/ModelDefinition" xmlns:po="http://www.pharmml.org/probonto/ProbOnto" xmlns:td="http://www.pharmml.org/pharmml/0.8/TrialDesign" xmlns:ds="http://www.pharmml.org/pharmml/0.8/Dataset" xmlns:math="http://www.pharmml.org/pharmml/0.8/Maths" xmlns:uncert="http://www.uncertml.org/3.0" xmlns:mml="http://www.pharmml.org/pharmml/0.8/PharmML" xmlns:ct="http://www.pharmml.org/pharmml/0.8/CommonTypes" xmlns:msteps="http://www.pharmml.org/pharmml/0.8/ModellingSteps" writtenVersion="0.8.1">
+    <ct:Name>Stub Model</ct:Name>
+    <mdef:ModelDefinition>
+        <mdef:ParameterModel blkId="p1"/>
+        <mdef:StructuralModel blkId="main">
+            <ct:Variable symbolType="real" symbId="x"/>
+        </mdef:StructuralModel>
+    </mdef:ModelDefinition>
+    <msteps:ModellingSteps>
+        <msteps:OptimalDesignStep oid="od1">
+            <msteps:FIM type="B"/>
+            <msteps:Operation order="1" opType="evaluation">
+                <ct:Name>operation_name</ct:Name>
+                <msteps:Property name="prop1">
+                    <ct:Assign>
+                        <math:Constant op="exponentiale"/>
+                    </ct:Assign>
+                </msteps:Property>
+            </msteps:Operation>
+        </msteps:OptimalDesignStep>
+    </msteps:ModellingSteps>
+</mml:PharmML>

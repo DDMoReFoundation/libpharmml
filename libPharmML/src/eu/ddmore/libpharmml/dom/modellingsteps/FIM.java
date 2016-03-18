@@ -70,13 +70,26 @@ public class FIM
 {
 
     @XmlElement(name = "Matrix", namespace = XMLFilter.NS_DEFAULT_CT)
+    @Deprecated
     protected Matrix matrix;
     @XmlElement(name = "File")
+    @Deprecated
     protected ExternalFile file;
-    @XmlAttribute(name = "symbId", required = true)
+    @XmlAttribute(name = "symbId")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @Deprecated
     protected String symbId;
-
+    
+    // PharmML 0.8.1
+    @XmlAttribute(name = "type", required = true)
+    protected FIMtype type;
+    
+    public FIM(){}
+    
+    public FIM(FIMtype type){
+    	this.type = type;
+    }
+    
     /**
      * Gets the value of the matrix property.
      * 
@@ -84,7 +97,9 @@ public class FIM
      *     possible object is
      *     {@link Matrix }
      *     
+     * @since Since PharmML 0.8.1, FIM is only described with "type".
      */
+    @Deprecated
     public Matrix getMatrix() {
         return matrix;
     }
@@ -96,7 +111,9 @@ public class FIM
      *     allowed object is
      *     {@link Matrix }
      *     
+     * @since Since PharmML 0.8.1, FIM is only described with "type".
      */
+    @Deprecated
     public void setMatrix(Matrix value) {
         this.matrix = value;
     }
@@ -107,8 +124,10 @@ public class FIM
      * @return
      *     possible object is
      *     {@link ExternalFile }
-     *     
+     *    
+     * @since Since PharmML 0.8.1, FIM is only described with "type".
      */
+    @Deprecated
     public ExternalFile getFile() {
         return file;
     }
@@ -120,7 +139,9 @@ public class FIM
      *     allowed object is
      *     {@link ExternalFile }
      *     
+     * @since Since PharmML 0.8.1, FIM is only described with "type".
      */
+    @Deprecated
     public void setFile(ExternalFile value) {
         this.file = value;
     }
@@ -132,7 +153,9 @@ public class FIM
      *     possible object is
      *     {@link String }
      *     
+     * @since Since PharmML 0.8.1, FIM is only described with "type".
      */
+    @Deprecated
     public String getSymbId() {
         return symbId;
     }
@@ -144,10 +167,39 @@ public class FIM
      *     allowed object is
      *     {@link String }
      *     
+     * @since Since PharmML 0.8.1, FIM is only described with "type".
      */
+    @Deprecated
     public void setSymbId(String value) {
         this.symbId = value;
     }
+    
+    /**
+     * Gets the value of the type property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FIMtype }
+     * 
+     * @since PharmML 0.8.1
+     */
+    public FIMtype getType() {
+        return type;
+    }
+
+    /**
+     * Sets the value of the type property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FIMtype }
+     *     
+     * @since PharmML 0.8.1
+     */
+    public void setType(FIMtype value) {
+        this.type = value;
+    }
+
     
     @Override
     protected List<TreeNode> listChildren() {
@@ -203,7 +255,7 @@ public class FIM
     
     @Override
     public String toString() {
-    	return super.toString()+" symbId:"+String.valueOf(symbId);
+    	return super.toString()+" type:"+type;
     }
 
 }
