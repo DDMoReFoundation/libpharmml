@@ -12,8 +12,8 @@
 	<!-- Edit version and build values if needed -->
 	<property name="libpharmml.vendor" value="EMBL-EBI"/>
 	<property name="libpharmml.name" value="libPharmML"/>
-	<property name="libpharmml.version" value="0.6.1"/>
-	<property name="libpharmml.build" value="1"/>
+	<property name="libpharmml.version" value="0.7"/>
+	<property name="libpharmml.build" value="alpha1"/>
 	<property name="libpharmml.fullname" value="${libpharmml.name}-${libpharmml.version}-${libpharmml.build}"/>
 	
 	<property name="src.bin.dir" location="${build.dir}/src"/>
@@ -21,7 +21,7 @@
 	<property name="docs.build.dir" location="${build.dir}/docs"/>
 	<property name="test.output.dir" location="${build.dir}/test_output"/>
 	<property name="jaxb.gen.dir" location="./jaxb_gen"/>
-	<property name="schema.dir" location="${src.dir}/eu/ddmore/libpharmml/impl/definitions/0_8"/>
+	<property name="schema.dir" location="${src.dir}/eu/ddmore/libpharmml/impl/definitions/0_8_1"/>
 	<property name="schema.file" location="${schema.dir}/pharmml.xsd"/>
 	<property name="catalog.file" location="${schema.dir}/xmlCatalog.xml"/>
 	<property name="impl.pkg.path" value="eu/ddmore/libpharmml/impl"/>
