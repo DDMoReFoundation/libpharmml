@@ -55,15 +55,15 @@ import eu.ddmore.libpharmml.util.ChainedList;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CovariatesType", propOrder = {
-    "individualCovariates",
+    "listOfIndividualCovariates",
     "listOfCovariateModel"
 })
 public class Covariates
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "IndividualCovariates")
-    protected IndividualCovariates individualCovariates;
+	@XmlElement(name = "IndividualCovariates")
+    protected List<IndividualCovariates> listOfIndividualCovariates;
     @XmlElement(name = "CovariateModel")
     protected List<TDCovariateModel> listOfCovariateModel;
 
@@ -74,9 +74,15 @@ public class Covariates
      *     possible object is
      *     {@link IndividualCovariates }
      *     
+     * @deprecated This attribute is now a list. Use {@link #getListOfIndividualCovariates()}.
      */
+    @Deprecated
     public IndividualCovariates getIndividualCovariates() {
-        return individualCovariates;
+        if(getListOfIndividualCovariates().size() > 0){
+        	return getListOfIndividualCovariates().get(0);
+        } else {
+        	return null;
+        }
     }
 
     /**
@@ -86,9 +92,41 @@ public class Covariates
      *     allowed object is
      *     {@link IndividualCovariates }
      *     
+     * @deprecated This attribute is now a list. Use {@link #getListOfIndividualCovariates()}.
      */
+    @Deprecated
     public void setIndividualCovariates(IndividualCovariates value) {
-        this.individualCovariates = value;
+        getListOfIndividualCovariates().clear();
+        getListOfIndividualCovariates().add(value);
+    }
+    
+    /**
+     * Gets the value of the individualCovariates property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the individualCovariates property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getIndividualCovariates().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link IndividualCovariates }
+     * 
+     * @since PharmML 0.8.1 (as list)
+     */
+    public List<IndividualCovariates> getListOfIndividualCovariates() {
+        if (listOfIndividualCovariates == null) {
+        	listOfIndividualCovariates = new ArrayList<IndividualCovariates>();
+        }
+        return this.listOfIndividualCovariates;
     }
 
     /**
@@ -123,7 +161,7 @@ public class Covariates
     @Override
     protected List<TreeNode> listChildren() {
     	return new ChainedList<TreeNode>(super.listChildren())
-    			.addIfNotNull(individualCovariates)
+    			.addIfNotNull(listOfIndividualCovariates)
     			.addIfNotNull(listOfCovariateModel);
     }
     
@@ -133,7 +171,7 @@ public class Covariates
      */
     public IndividualCovariates createIndividualCovariates(){
             IndividualCovariates el = new IndividualCovariates();
-            this.individualCovariates = el;
+            getListOfIndividualCovariates().add(el);
             return el;
     }
 
