@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -70,14 +71,16 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OptimalDesignStepType", propOrder = {
     "targetToolReference",
+    "parametersToEstimate",
     "optimiseOn",
     "fim",
     "method",
     "cost",
     "priorInformation",
     "compute",
-    "softwareSettings",
-    "listOfOperation"
+    "listOfSoftwareSettings",
+    "listOfOperation",
+    "listOfOutputFile"
 })
 public class OptimalDesignStep
     extends PharmMLRootType implements PharmMLObject
@@ -85,6 +88,8 @@ public class OptimalDesignStep
 
     @XmlElement(name = "TargetToolReference")
     protected TargetToolReference targetToolReference;
+    @XmlElement(name = "ParametersToEstimate")
+    protected ToEstimate parametersToEstimate;
     @XmlElement(name = "OptimiseOn")
     protected OptimiseOn optimiseOn;
     @XmlElement(name = "FIM")
@@ -98,9 +103,11 @@ public class OptimalDesignStep
     @XmlElement(name = "Compute")
     protected Compute compute;
     @XmlElement(name = "SoftwareSettings")
-    protected SoftwareSettings softwareSettings;
+    protected List<SoftwareSettings> listOfSoftwareSettings;
     @XmlElement(name = "Operation", required = true)
     protected List<OptimalDesignOperation> listOfOperation;
+    @XmlElement(name = "OutputFile")
+    protected List<ExternalFile> listOfOutputFile;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
@@ -140,6 +147,32 @@ public class OptimalDesignStep
      */
     public void setTargetToolReference(TargetToolReference value) {
         this.targetToolReference = value;
+    }
+    
+    /**
+     * Gets the value of the parametersToEstimate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ToEstimate }
+     *     
+     * @since PharmML 0.8.1
+     */
+    public ToEstimate getParametersToEstimate() {
+        return parametersToEstimate;
+    }
+
+    /**
+     * Sets the value of the parametersToEstimate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ToEstimate }
+     *     
+     * @since PharmML 0.8.1
+     */
+    public void setParametersToEstimate(ToEstimate value) {
+        this.parametersToEstimate = value;
     }
 
     /**
@@ -293,9 +326,15 @@ public class OptimalDesignStep
      *     possible object is
      *     {@link SoftwareSettings }
      *     
+     * @deprecated Since PharmML 0.8.1, this attribute is now list. Use {@link #getListOfSoftwareSettings()}.
      */
+    @Deprecated
     public SoftwareSettings getSoftwareSettings() {
-        return softwareSettings;
+        if(getListOfSoftwareSettings().size() > 0){
+        	return getListOfSoftwareSettings().get(0);
+        } else {
+        	return null;
+        }
     }
 
     /**
@@ -304,10 +343,42 @@ public class OptimalDesignStep
      * @param value
      *     allowed object is
      *     {@link SoftwareSettings }
-     *     
+     *    
+     * @deprecated Since PharmML 0.8.1, this attribute is now list. Use {@link #getListOfSoftwareSettings()}.
      */
+    @Deprecated
     public void setSoftwareSettings(SoftwareSettings value) {
-        this.softwareSettings = value;
+        getListOfSoftwareSettings().clear();
+        getListOfSoftwareSettings().add(value);
+    }
+    
+    /**
+     * Gets the value of the softwareSettings property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the softwareSettings property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getSoftwareSettings().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link SoftwareSettings }
+     * 
+     * @since PharmML 0.8.1
+     */
+    public List<SoftwareSettings> getListOfSoftwareSettings() {
+        if (listOfSoftwareSettings == null) {
+        	listOfSoftwareSettings = new ArrayList<SoftwareSettings>();
+        }
+        return this.listOfSoftwareSettings;
     }
 
     /**
@@ -338,6 +409,35 @@ public class OptimalDesignStep
         }
         return this.listOfOperation;
     }
+    
+    /**
+     * Gets the value of the outputFile property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the outputFile property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getOutputFile().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ExternalFile }
+     * 
+     * @since PharmML 0.8.1
+     */
+    public List<ExternalFile> getListOfOutputFile() {
+        if (listOfOutputFile == null) {
+        	listOfOutputFile = new ArrayList<ExternalFile>();
+        }
+        return this.listOfOutputFile;
+    }
 
     /**
      * Gets the value of the oid property.
@@ -367,14 +467,16 @@ public class OptimalDesignStep
     protected List<TreeNode> listChildren() {
     	return new ChainedList<TreeNode>(super.listChildren())
     			.addIfNotNull(targetToolReference)
+    			.addIfNotNull(parametersToEstimate)
     			.addIfNotNull(optimiseOn)
     			.addIfNotNull(fim)
     			.addIfNotNull(method)
     			.addIfNotNull(cost)
     			.addIfNotNull(priorInformation)
     			.addIfNotNull(compute)
-    			.addIfNotNull(softwareSettings)
-    			.addIfNotNull(listOfOperation);
+    			.addIfNotNull(listOfSoftwareSettings)
+    			.addIfNotNull(listOfOperation)
+    			.addIfNotNull(listOfOutputFile);
     }
     
     /**                                                         
@@ -424,11 +526,23 @@ public class OptimalDesignStep
      * @param symbId symbId of the FIM.
      * @return The created {@link FIM} object.
      */
+    @Deprecated
     public FIM createFim(String symbId){
             FIM el = new FIM();
             el.setSymbId(symbId);
             this.fim = el;
             return el;
+    }
+    
+    /**
+     * Creates a new {@link FIM} element, adds it to the current object and returns it.
+     * @param type The type of FIM.
+     * @return The created {@link FIM} object.
+     */
+    public FIM createFim(FIMtype type){
+    	FIM el = new FIM(type);
+        this.fim = el;
+        return el;
     }
 
     /**
@@ -489,7 +603,7 @@ public class OptimalDesignStep
      */
     public SoftwareSettings createSoftwareSettings(){
             SoftwareSettings el = new SoftwareSettings();
-            this.softwareSettings = el;
+            getListOfSoftwareSettings().add(el);
             return el;
     }
 
@@ -526,6 +640,40 @@ public class OptimalDesignStep
             OptimalDesignOperation el = new OptimalDesignOperation(order,opType,name);
             getListOfOperation().add(el);
             return el;
+    }
+    
+    /**
+     * Creates a new empty {@link ToEstimate} parametersToEstimate element, adds it to the current object and returns it.
+     * @return The created {@link ToEstimate} object.
+     */
+    public ToEstimate createParametersToEstimate(){
+    	ToEstimate el = new ToEstimate();
+    	this.parametersToEstimate = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link ExternalFile} OutputFile element, adds it to the current object and returns it.
+     * @return The created {@link ExternalFile} object.
+     */
+    public ExternalFile createOutputFile(){
+    	ExternalFile el = new ExternalFile();
+    	getListOfOutputFile().add(el);
+    	return el;
+    }
+
+    /**
+     * Creates a new {@link ExternalFile} OutputFile element, adds it to the current object and returns it.
+     * @param oid
+     * @param path
+     * @param format
+     * @param delimiter
+     * @return The created {@link ExternalFile} object.
+     */
+    public ExternalFile createOutputFile(String oid, String path, String format, String delimiter){
+    	ExternalFile el = new ExternalFile(oid,path,format,delimiter);
+    	getListOfOutputFile().add(el);
+    	return el;
     }
 
 }
