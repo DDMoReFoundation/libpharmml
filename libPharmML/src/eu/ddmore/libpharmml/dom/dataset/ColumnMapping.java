@@ -33,6 +33,7 @@ import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.Assignable;
@@ -57,8 +58,11 @@ import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.maths.Uniop;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
+import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 
 
 /**
@@ -99,10 +103,15 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "columnRef",
     "assign",
     "symbRef",
-    "piecewise",
+    "piecewise_ds",
+    "piecewise_math",
     "categoryMapping",
     "targetMapping"
 })
+@HasElementRenamed(mappedFields = {
+		@RenamedElement(field = "piecewise_ds"),
+		@RenamedElement(field = "piecewise_math", since = PharmMLVersion.V0_8_1)
+		}, transientField = "piecewise")
 public class ColumnMapping
     extends PharmMLRootType implements Assignable
 {
@@ -113,8 +122,14 @@ public class ColumnMapping
     protected Rhs assign; // PharmML 0.8
     @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
     protected SymbolRef symbRef;
-    @XmlElement(name = "Piecewise")
+    
+    @XmlElement(name = "Piecewise", namespace = NS_DEFAULT_DS)
+    protected Piecewise piecewise_ds;
+    @XmlElement(name = "Piecewise", namespace = NS_DEFAULT_MATH)
+    protected Piecewise piecewise_math;
+    @XmlTransient
     protected Piecewise piecewise;
+    
     @XmlElement(name = "CategoryMapping")
     protected List<CategoryMapping> categoryMapping;
     @XmlElement(name = "TargetMapping")
@@ -319,7 +334,7 @@ public class ColumnMapping
      */
     public SymbolRef createSymbRef(String symbolId){
             SymbolRef el = new SymbolRef();
-            el.setId(symbolId);
+            el.setSymbIdRef(symbolId);
             this.symbRef = el;
             return el;
     }
@@ -332,7 +347,7 @@ public class ColumnMapping
      */
     public SymbolRef createSymbRef(String symbolId, String blkId){
             SymbolRef el = new SymbolRef();
-            el.setId(symbolId);
+            el.setSymbIdRef(symbolId);
             el.setBlkIdRef(blkId);
             this.symbRef = el;
             return el;

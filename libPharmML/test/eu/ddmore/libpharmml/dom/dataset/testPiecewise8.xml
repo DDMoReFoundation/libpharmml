@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mml:PharmML xmlns:mdef="http://www.pharmml.org/pharmml/0.8/ModelDefinition" xmlns:po="http://www.pharmml.org/probonto/ProbOnto" xmlns:td="http://www.pharmml.org/pharmml/0.8/TrialDesign" xmlns:ds="http://www.pharmml.org/pharmml/0.8/Dataset" xmlns:math="http://www.pharmml.org/pharmml/0.8/Maths" xmlns:uncert="http://www.uncertml.org/3.0" xmlns:mml="http://www.pharmml.org/pharmml/0.8/PharmML" xmlns:ct="http://www.pharmml.org/pharmml/0.8/CommonTypes" xmlns:msteps="http://www.pharmml.org/pharmml/0.8/ModellingSteps" writtenVersion="0.8.1">
+    <ct:Name>Stub Model</ct:Name>
+    <mml:IndependentVariable symbId="t"/>
+    <mdef:ModelDefinition>
+        <mdef:ParameterModel blkId="p1"/>
+        <mdef:StructuralModel blkId="main">
+            <ct:Variable symbolType="real" symbId="x"/>
+        </mdef:StructuralModel>
+    </mdef:ModelDefinition>
+    <td:TrialDesign>
+        <td:Observations>
+            <td:IndividualObservations oid="indObs">
+                <td:ColumnMapping>
+                    <ds:ColumnRef columnIdRef="time"/>
+                    <math:Piecewise>
+                        <math:Piece>
+                            <math:Condition>
+<math:Otherwise/>
+                            </math:Condition>
+                        </math:Piece>
+                    </math:Piecewise>
+                </td:ColumnMapping>
+                <ds:DataSet>
+                    <ds:Definition>
+                        <ds:Header name="h1" headerType="mainHeader" rowNumber="1"/>
+                        <ds:Column columnId="ID" columnType="id" valueType="string" columnNum="1"/>
+                        <ds:Column columnId="time" columnType="time" valueType="real" columnNum="2"/>
+                        <ds:Column columnId="dv" columnType="dv" valueType="real" columnNum="3"/>
+                    </ds:Definition>
+                    <ds:Table>
+                        <ds:HeaderRow order="1">
+                            <ct:String>header1</ct:String>
+                            <ct:String>header2</ct:String>
+                            <ct:String>header3</ct:String>
+                        </ds:HeaderRow>
+                        <ds:Row>
+                            <ct:String>1</ct:String>
+                            <ct:Real>1.0</ct:Real>
+                            <ct:Real>1.0</ct:Real>
+                        </ds:Row>
+                        <ds:Row>
+                            <ct:String>2</ct:String>
+                            <ct:Real>2.0</ct:Real>
+                            <ct:Real>1.9</ct:Real>
+                        </ds:Row>
+                    </ds:Table>
+                </ds:DataSet>
+            </td:IndividualObservations>
+        </td:Observations>
+    </td:TrialDesign>
+</mml:PharmML>

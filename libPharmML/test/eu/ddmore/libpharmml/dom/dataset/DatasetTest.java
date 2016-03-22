@@ -26,6 +26,10 @@ import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
+import eu.ddmore.libpharmml.dom.maths.Condition;
+import eu.ddmore.libpharmml.dom.maths.Otherwise;
+import eu.ddmore.libpharmml.dom.maths.Piece;
+import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.trialdesign.DatasetMapping;
 import eu.ddmore.libpharmml.dom.trialdesign.Observation;
 import eu.ddmore.libpharmml.dom.trialdesign.Observations;
@@ -46,6 +50,9 @@ public class DatasetTest {
 	private static final String TESTFILE_COLUMNDEF = "testColumnDefinition.xml";
 	private IPharmMLResource unmarshalColumnDef;
 	
+	private static final String TESTFILE_PIECEWISE7 = "testPiecewise7.xml";
+	private static final String TESTFILE_PIECEWISE8 = "testPiecewise8.xml";
+	
 	public DatasetTest(PharmMLVersion version){
 		this.VERSION = version;
 	}
@@ -55,7 +62,7 @@ public class DatasetTest {
 		this.libPharmML = PharmMlFactory.getInstance().createLibPharmML();
 		this.resource = libPharmML.createDom(VERSION);
 		this.resource.setParameter(IPharmMLResource.AUTOSET_ID, false);
-
+		createValidDataset(this.resource);
 		
 //		InputStream is = this.getClass().getResourceAsStream(TESTFILE);
 //		unmarshalResource = libPharmML.createDomFromResource(is);
@@ -77,7 +84,7 @@ public class DatasetTest {
 		});
 	}
 	
-	public DataSet createValidDataset(){
+	public DataSet createValidDataset(IPharmMLResource resource){
 		PharmML dom = resource.getDom();
 		dom.createIndependentVariable("t");
 		
@@ -116,16 +123,19 @@ public class DatasetTest {
 		row2.getListOfValue().add(new StringValue("2"));
 		row2.getListOfValue().add(new RealValue(2));
 		row2.getListOfValue().add(new RealValue(1.9));
-		
-		libPharmML.save(System.out, resource);
-
 		return ds;
+	}
+	
+	private static DataSet getDataset(IPharmMLResource resource){
+		PharmML dom = resource.getDom();
+		TrialDesign td = dom.getTrialDesign();
+		Observations obs = td.getObservations();
+		DatasetMapping indObs = (DatasetMapping) obs.getListOfObservationsElements().get(0);
+		return indObs.getDataSet();
 	}
 	
 	@Test
 	public void testValidate() throws Exception {
-		createValidDataset();
-		
 		IValidationReport report = libPharmML.getValidator().createValidationReport(resource);
 		assertValid(report);
 	}
@@ -145,6 +155,65 @@ public class DatasetTest {
 		assertEquals("2 types",2 , types.size());
 		assertEquals("type1=dv",ColumnType.DV, types.get(0));
 		assertEquals("type2=occasion",ColumnType.OCCASION, types.get(1));
+	}
+	
+	@Test
+	public void testPiecewiseNS_DefaultVersion() throws Exception {
+		IPharmMLResource resource = libPharmML.createDom(PharmMLVersion.DEFAULT);
+		resource.setParameter(IPharmMLResource.AUTOSET_ID, false);
+		createValidDataset(resource);
+		PharmML dom = resource.getDom();
+		TrialDesign td = dom.getTrialDesign();
+		Observations obs = td.getObservations();
+		DatasetMapping indObs = (DatasetMapping) obs.getListOfObservationsElements().get(0);
+		ColumnMapping cmapping = indObs.getListOfColumnMapping().get(0);
+		cmapping.setSymbRef(null);
+		Piecewise pw = cmapping.createPiecewise();
+		Piece p = new Piece(); pw.getPiece().add(p);
+		Condition condition = new Condition(); p.setCondition(condition);
+		Otherwise otherwise = new Otherwise(); condition.setOtherwise(otherwise);
+		
+		libPharmML.save(System.out, resource);
+		IValidationReport report = libPharmML.getValidator().createValidationReport(resource);
+		assertValid(report);
+		
+		InputStream is = this.getClass().getResourceAsStream(TESTFILE_PIECEWISE8);
+		IPharmMLResource uResource = libPharmML.createDomFromResource(is);
+		PharmML udom = uResource.getDom();
+		TrialDesign utd = udom.getTrialDesign();
+		Observations uobs = utd.getObservations();
+		DatasetMapping uindObs = (DatasetMapping) uobs.getListOfObservationsElements().get(0);
+		assertNotNull(uindObs.getListOfColumnMapping().get(0).getPiecewise());
+	}
+	
+	@Test
+	public void testPiecewiseNS_Version7() throws Exception {
+		IPharmMLResource resource = libPharmML.createDom(PharmMLVersion.V0_7_3);
+		resource.setParameter(IPharmMLResource.AUTOSET_ID, false);
+		DataSet ds = createValidDataset(resource);
+		PharmML dom = resource.getDom();
+		TrialDesign td = dom.getTrialDesign();
+		Observations obs = td.getObservations();
+		DatasetMapping indObs = (DatasetMapping) obs.getListOfObservationsElements().get(0);
+		ColumnMapping cmapping = indObs.getListOfColumnMapping().get(0);
+		cmapping.setSymbRef(null);
+		Piecewise pw = cmapping.createPiecewise();
+		Piece p = new Piece(); pw.getPiece().add(p);
+		Condition condition = new Condition(); p.setCondition(condition);
+		Otherwise otherwise = new Otherwise(); condition.setOtherwise(otherwise);
+		
+		ds.getDefinition().getListOfColumn().get(2).getListOfColumnType().remove(1);
+		
+		IValidationReport report = libPharmML.getValidator().createValidationReport(resource);
+		assertValid(report);
+		
+		InputStream is = this.getClass().getResourceAsStream(TESTFILE_PIECEWISE7);
+		IPharmMLResource uResource = libPharmML.createDomFromResource(is);
+		PharmML udom = uResource.getDom();
+		TrialDesign utd = udom.getTrialDesign();
+		Observations uobs = utd.getObservations();
+		DatasetMapping uindObs = (DatasetMapping) uobs.getListOfObservationsElements().get(0);
+		assertNotNull(uindObs.getListOfColumnMapping().get(0).getPiecewise());
 	}
 	
 }
