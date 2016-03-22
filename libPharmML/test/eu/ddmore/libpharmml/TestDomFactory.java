@@ -30,6 +30,9 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
 import eu.ddmore.libpharmml.dom.PharmML;
+import eu.ddmore.libpharmml.dom.commontypes.DerivativeVariable;
+import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
+import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.StructuralModel;
 import eu.ddmore.libpharmml.impl.IdFactoryImpl;
@@ -89,6 +92,16 @@ public class TestDomFactory {
         } catch (XMLStreamException e) {
         	throw new RuntimeException(e.getMessage(), e);
 		}
+	}
+	
+	public static Piecewise createPiecewise(IPharmMLResource resource){
+		PharmML dom = resource.getDom();
+		ModelDefinition mdef = dom.createModelDefinition();
+		StructuralModel sm = mdef.createStructuralModel("sm1");
+		DerivativeVariable dv = sm.createDerivativeVariable("Ac", SymbolType.REAL);
+		Piecewise pw = new Piecewise();
+		dv.assign(pw);
+		return pw;
 	}
 	
 }
