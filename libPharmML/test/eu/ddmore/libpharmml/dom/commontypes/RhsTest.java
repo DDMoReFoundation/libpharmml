@@ -3,9 +3,9 @@ package eu.ddmore.libpharmml.dom.commontypes;
 import static eu.ddmore.libpharmml.AssertUtil.assertValid;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.StringContains.containsString;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -21,9 +21,12 @@ import eu.ddmore.libpharmml.PharmMlFactory;
 import eu.ddmore.libpharmml.dom.PharmML;
 import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.Binoperator;
+import eu.ddmore.libpharmml.dom.maths.Condition;
 import eu.ddmore.libpharmml.dom.maths.Constant;
 import eu.ddmore.libpharmml.dom.maths.ConstantOperator;
 import eu.ddmore.libpharmml.dom.maths.Equation;
+import eu.ddmore.libpharmml.dom.maths.Otherwise;
+import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.maths.ProbabilityFunction;
 import eu.ddmore.libpharmml.dom.maths.ProbabilityFunctionType;
 import eu.ddmore.libpharmml.dom.maths.TestMathObjectFactory;
@@ -38,9 +41,11 @@ public class RhsTest {
 	
 	private ILibPharmML libPharmML;
 	private IPharmMLResource resource;
+	private IPharmMLResource resource7;
 	private IPharmMLResource old_resource;
 	
 	DerivativeVariable container;
+	DerivativeVariable container7;
 	DerivativeVariable old_container;
 	
 	private static final String TESTFILE = "testRhs_v8.xml";
@@ -52,6 +57,8 @@ public class RhsTest {
 		this.libPharmML = PharmMlFactory.getInstance().createLibPharmML();
 		this.resource = libPharmML.createDom(PharmMLVersion.DEFAULT);
 		this.resource.setParameter(IPharmMLResource.AUTOSET_ID, false);
+		this.resource7 = libPharmML.createDom(PharmMLVersion.V0_7_3);
+		this.resource7.setParameter(IPharmMLResource.AUTOSET_ID, false);
 		this.old_resource = libPharmML.createDom(PharmMLVersion.V0_6);
 		this.old_resource.setParameter(IPharmMLResource.AUTOSET_ID, false);
 		
@@ -59,6 +66,11 @@ public class RhsTest {
 		ModelDefinition mdef = dom.createModelDefinition();
 		StructuralModel sm = mdef.createStructuralModel("sm1");
 		container = sm.createDerivativeVariable("Ac", SymbolType.REAL);
+		
+		PharmML dom7 = resource7.getDom();
+		ModelDefinition mdef7 = dom7.createModelDefinition();
+		StructuralModel sm7 = mdef7.createStructuralModel("sm1");
+		container7 = sm7.createDerivativeVariable("Ac", SymbolType.REAL);
 		
 		PharmML old_dom = old_resource.getDom();
 		ModelDefinition old_mdef = old_dom.createModelDefinition();
@@ -288,6 +300,42 @@ public class RhsTest {
 		assertThat(output, not(containsString("<math:Equation>")));
 		assertThat(output, containsString("<math:SF>"));
 		assertThat(output, containsString("<math:Distribution>"));
+
+		assertValid(libPharmML.getValidator().createValidationReport(resource));
+	}
+	
+	@Test
+	public void testPiecewise7() throws Exception {
+		Rhs rhs = new Rhs();
+		Piecewise pw = new Piecewise(); rhs.setPiecewise(pw);
+		pw.createPiece(new Condition(new Otherwise()), new RealValue(36));
+		container7.setAssign(rhs);
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		libPharmML.save(baos, resource7);
+		libPharmML.getMarshaller().marshall(resource7.getDom(), System.out);
+		
+		String output = baos.toString();
+		assertThat(output, not(containsString("<math:Piecewise>")));
+		assertThat(output, containsString("<ct:Piecewise>"));
+
+		assertValid(libPharmML.getValidator().createValidationReport(resource7));
+	}
+	
+	@Test
+	public void testPiecewise8() throws Exception {
+		Rhs rhs = new Rhs();
+		Piecewise pw = new Piecewise(); rhs.setPiecewise(pw);
+		pw.createPiece(new Condition(new Otherwise()), new RealValue(36));
+		container.setAssign(rhs);
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		libPharmML.save(baos, resource);
+		libPharmML.getMarshaller().marshall(resource.getDom(), System.out);
+		
+		String output = baos.toString();
+		assertThat(output, not(containsString("<ct:Piecewise>")));
+		assertThat(output, containsString("<math:Piecewise>"));
 
 		assertValid(libPharmML.getValidator().createValidationReport(resource));
 	}

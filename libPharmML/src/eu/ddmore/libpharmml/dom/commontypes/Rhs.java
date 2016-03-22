@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -47,7 +48,10 @@ import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
 import eu.ddmore.libpharmml.dom.modellingsteps.InitialEstimate;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
+import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 
 
 /**
@@ -115,7 +119,8 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "naryop", // PharmML 0.8
     "binop",
     "uniop",
-    "piecewise",
+    "piecewise_ct",
+    "piecewise_math",
     "functionCall",
     "sum",
     "product",
@@ -130,6 +135,10 @@ import eu.ddmore.libpharmml.util.ChainedList;
     InitialEstimate.class
 })
 @XmlJavaTypeAdapter(RhsAdapter.class)
+@HasElementRenamed(mappedFields = { 
+		@RenamedElement(field = "piecewise_ct"),
+		@RenamedElement(field = "piecewise_math", since = PharmMLVersion.V0_8_1)}, 
+		transientField = "piecewise") 
 public class Rhs
     extends PharmMLRootType implements MatrixCellValue, MatrixRowValue, OperationVariable, VectorValue
 {
@@ -163,8 +172,14 @@ public class Rhs
     protected Binop binop;
     @XmlElement(name = "Uniop", namespace = NS_DEFAULT_MATH)
     protected Uniop uniop;
+    
     @XmlElement(name = "Piecewise", namespace = NS_DEFAULT_CT)
+    protected Piecewise piecewise_ct;
+    @XmlElement(name = "Piecewise", namespace = NS_DEFAULT_MATH)
+    protected Piecewise piecewise_math;
+    @XmlTransient
     protected Piecewise piecewise;
+    
     @XmlElement(name = "FunctionCall", namespace = NS_DEFAULT_MATH)
     protected FunctionCallType functionCall;
     @XmlElement(name = "Sum", namespace = NS_DEFAULT_CT)
