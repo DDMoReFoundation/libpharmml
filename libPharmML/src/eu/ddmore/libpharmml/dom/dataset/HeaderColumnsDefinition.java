@@ -19,7 +19,6 @@
 
 package eu.ddmore.libpharmml.dom.dataset;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -191,7 +190,7 @@ public class HeaderColumnsDefinition
     	el.setColumnId(columnId);
     	el.setColumnType(columnType);
     	el.setValueType(valueType);
-    	el.setColumnNum(BigInteger.valueOf(columnNum));
+    	el.setColumnNum(columnNum);
         getListOfColumn().add(el);
         return el;
     }
