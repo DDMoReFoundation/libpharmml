@@ -604,7 +604,7 @@ public class MathExpressionConverterToExpression implements MathExpressionConver
 		if(piecewise != null){
 			StringBuilder sb = new StringBuilder();
 			String prefix = "";
-			for(Piece piece : piecewise.getPiece()){
+			for(Piece piece : piecewise.getListOfPiece()){
 				sb.append(prefix).append(piece.convert(this));
 				prefix = ", ";
 			}

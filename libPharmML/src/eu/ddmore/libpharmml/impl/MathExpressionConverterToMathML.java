@@ -548,7 +548,7 @@ public class MathExpressionConverterToMathML implements MathExpressionConverter 
 	public String convert(Piecewise piecewise) {
 		StringBuilder sb = new StringBuilder("<piecewise>\n");
 		if(piecewise != null){
-			for(Piece piece : piecewise.getPiece()){
+			for(Piece piece : piecewise.getListOfPiece()){
 				sb.append(piece.convert(this));
 			}
 		}
