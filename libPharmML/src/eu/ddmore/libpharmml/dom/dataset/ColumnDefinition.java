@@ -213,6 +213,15 @@ public class ColumnDefinition
     }
     
     /**
+     * Checks if this column definition has the given {@link ColumnType}.
+     * @param type The tested {@link ColumnType}.
+     * @return True if the column definition contains the given type, else false.
+     */
+    public boolean hasColumnType(ColumnType type){
+    	return getListOfColumnType().contains(type);
+    }
+    
+    /**
      * Optional attribute to identify var level in SO.
      * 
      * @return

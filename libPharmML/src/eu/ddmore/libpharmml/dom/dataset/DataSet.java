@@ -354,7 +354,7 @@ public class DataSet
 			boolean hasIdColumn = false;
 			List<ColumnDefinition> listOfColumn = getDefinition().getListOfColumn();
 			for(ColumnDefinition col : listOfColumn){
-				if(col.getColumnType() != null && col.getColumnType().equals(ColumnType.ID)){
+				if(col.hasColumnType(ColumnType.ID)){
 					if(hasIdColumn){
 						DS1a = true;
 					} else {
