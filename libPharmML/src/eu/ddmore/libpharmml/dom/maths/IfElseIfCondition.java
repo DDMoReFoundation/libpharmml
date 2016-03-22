@@ -22,15 +22,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.commontypes.DerivativeVariable;
+import eu.ddmore.libpharmml.dom.commontypes.FunctionDefinition;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
-import eu.ddmore.libpharmml.dom.modeldefn.CommonParameter;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.DesignParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.Parameter;
@@ -71,7 +73,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "content"
 })
 public class IfElseIfCondition
-    extends Expression
+    extends PharmMLRootType
 {
 
     @XmlElement(name = "Condition", required = true)
@@ -90,7 +92,10 @@ public class IfElseIfCondition
         @XmlElement(name = "AssignStatement", namespace = NS_DEFAULT_CT, type = LogicBinOp.class, required = false),
         @XmlElement(name = "IndividualParameter", namespace = NS_DEFAULT_MDEF, type = IndividualParameter.class, required = false),
         @XmlElement(name = "DesignParameter", namespace = NS_DEFAULT_MDEF, type = DesignParameter.class, required = false),
-        @XmlElement(name = "RandomVariable", namespace = NS_DEFAULT_MDEF, type = ParameterRandomVariable.class, required = false)
+        @XmlElement(name = "RandomVariable", namespace = NS_DEFAULT_MDEF, type = ParameterRandomVariable.class, required = false),
+        @XmlElement(name = "Variable", namespace = NS_DEFAULT_CT, type = VariableDefinition.class, required = false),
+        @XmlElement(name = "DerivativeVariable", namespace = NS_DEFAULT_CT, type = DerivativeVariable.class, required = false),
+        @XmlElement(name = "FunctionDefinition", namespace = NS_DEFAULT_CT, type = FunctionDefinition.class, required = false)
     })
     protected List<PharmMLElement> content;
     
@@ -145,14 +150,15 @@ public class IfElseIfCondition
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link DesignParameter }{@code >}
-     * {@link JAXBElement }{@code <}{@link PopulationParameter }{@code >}
-     * {@link JAXBElement }{@code <}{@link CommonParameter }{@code >}
-     * {@link JAXBElement }{@code <}{@link LogicBinOp }{@code >}
-     * {@link JAXBElement }{@code <}{@link ConditionalStatement }{@code >}
-     * {@link JAXBElement }{@code <}{@link ParameterRandomVariable }{@code >}
-     * {@link JAXBElement }{@code <}{@link IndividualParameter }{@code >}
-     * 
+     * {@link Parameter },
+     * {@link LogicBinOpType },
+     * {@link DesignParameterType },
+     * {@link ConditionalStatement },
+     * {@link IndividualParameterType },
+     * {@link PopulationParameterType },
+     * {@link ParameterRandomVariableType },
+     * {@link DerivativeVariable },
+     * {@link VariableDefinition }
      * 
      */
     public List<PharmMLElement> getContent() {
@@ -238,6 +244,18 @@ public class IfElseIfCondition
     	ParameterRandomVariable prv = new ParameterRandomVariable(refParam);
     	getContent().add(prv);
     	return prv;
+    }
+    
+    public VariableDefinition createVariableDefinition(){
+    	VariableDefinition var = new VariableDefinition();
+    	getContent().add(var);
+    	return var;
+    }
+    
+    public DerivativeVariable createDerivativeVariable(){
+    	DerivativeVariable var = new DerivativeVariable();
+    	getContent().add(var);
+    	return var;
     }
     
     @Override
