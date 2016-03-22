@@ -102,7 +102,8 @@ import eu.ddmore.libpharmml.validation.SymbolResolver;
     "numberSamples",
     "numberTimes",
     "observationTimes",
-    "assign"
+    "assign",
+    "stageDefinition"
 })
 public class SingleDesignSpace
     extends PharmMLRootType implements ReferenceContainer
@@ -143,6 +144,9 @@ public class SingleDesignSpace
     protected StandardAssignable observationTimes;
     @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
     protected Rhs assign;
+    
+    @XmlElement(name = "StageDefinition")
+    protected StageDefinition stageDefinition;
 
     /**
      * Gets the value of the listOfInterventionRef property.
@@ -525,6 +529,30 @@ public class SingleDesignSpace
     public void setAssign(Rhs value) {
         this.assign = value;
     }
+    
+    /**
+     * Gets the value of the stageDefinition property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link StageDefinition }
+     *     
+     */
+    public StageDefinition getStageDefinition() {
+        return stageDefinition;
+    }
+
+    /**
+     * Sets the value of the stageDefinition property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link StageDefinition }
+     *     
+     */
+    public void setStageDefinition(StageDefinition value) {
+        this.stageDefinition = value;
+    }
 
 	@Override
 	public void validateReferences(SymbolResolver sr, IErrorHandler errorHandler) {
@@ -549,7 +577,8 @@ public class SingleDesignSpace
 				.addIfNotNull(numberSamples)
 				.addIfNotNull(numberTimes)
 				.addIfNotNull(observationTimes)
-				.addIfNotNull(assign);
+				.addIfNotNull(assign)
+				.addIfNotNull(stageDefinition);
 	}
 	
 	/**                                                              
@@ -752,6 +781,16 @@ public class SingleDesignSpace
 	        StandardAssignable el = new StandardAssignable();
 	        this.observationTimes = el;
 	        return el;
+	}
+	
+	/**
+	 * Creates a nes {@link StageDefinition} element, adds it to the current object and returns it.
+	 * @return The created {@link StageDefinition} object.
+	 */
+	public StageDefinition createStageDefinition(){
+		StageDefinition sd = ObjectFactory.getInstance().createStageDefinition();
+		this.stageDefinition = sd;
+		return sd;
 	}
 
 
