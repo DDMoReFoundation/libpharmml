@@ -48,6 +48,7 @@ import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
@@ -216,7 +217,7 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
     "content"
 })
 public class Binop
-    extends PharmMLRootType implements Operand, ExpressionValue, MathExpression
+    extends PharmMLRootType implements Operand, ExpressionValue, MathExpression, LogicBinOperand
 {
     
 	@XmlElementRefs({
@@ -586,6 +587,11 @@ public class Binop
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public JAXBElement<Binop> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createBinop(this);
 	}
 
 }

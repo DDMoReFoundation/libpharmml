@@ -188,4 +188,9 @@ public class IdValue extends PharmMLElement implements Scalar, Identifiable {
 		return clone(IdValue.class, this);
 	}
 
+	@Override
+	public JAXBElement<IdValue> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createId(this);
+	}
+
 }

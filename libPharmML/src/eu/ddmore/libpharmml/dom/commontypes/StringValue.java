@@ -182,4 +182,9 @@ public class StringValue extends PharmMLElement implements Scalar, Identifiable 
 		return clone(StringValue.class, this);
 	}
 
+	@Override
+	public JAXBElement<StringValue> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createString(this);
+	}
+
 }

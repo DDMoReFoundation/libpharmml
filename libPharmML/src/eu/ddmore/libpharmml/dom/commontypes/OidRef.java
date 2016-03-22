@@ -30,6 +30,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -37,6 +38,8 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.maths.ObjectFactory;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 
 
@@ -62,7 +65,7 @@ import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OidRefType")
 public class OidRef
-    extends PharmMLRootType
+    extends PharmMLRootType implements LogicBinOperand
 {
 
     @XmlAttribute(name = "oidRef", required = true)
@@ -117,6 +120,11 @@ public class OidRef
 	@Override
 	protected List<TreeNode> listChildren() {
 		return Collections.emptyList();
+	}
+
+	@Override
+	public JAXBElement<OidRef> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createLogicBinOpArmRef(this);
 	}
 
 }

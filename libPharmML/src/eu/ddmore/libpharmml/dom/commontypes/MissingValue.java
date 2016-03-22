@@ -131,5 +131,10 @@ public class MissingValue
 		return converter.convert(this);
 	}
 
+	@Override
+	public JAXBElement<MissingValue> toJAXBElementOfLogicBinOp() {
+		return toJAXBElement();
+	}
+
 
 }

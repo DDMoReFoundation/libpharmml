@@ -48,6 +48,7 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
@@ -130,7 +131,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "rest"
 })
 public class Statsop
-    extends PharmMLRootType implements ExpressionValue, Operand
+    extends PharmMLRootType implements ExpressionValue, Operand, LogicBinOperand
 {
 
     @XmlElementRefs({
@@ -265,6 +266,11 @@ public class Statsop
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public JAXBElement<Statsop> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createStatsop(this);
 	}
 
 }

@@ -31,8 +31,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
-import eu.ddmore.libpharmml.dom.MasterObjectFactory;
-
 
 /**
  * A literal Boolean value for false.
@@ -65,7 +63,7 @@ public class FalseBoolean
 	
 	@Override
 	public JAXBElement<? extends Scalar> toJAXBElement() {
-		return MasterObjectFactory.createScalar(this);
+		return ObjectFactory.getInstance().createFalse(this);
 	}
 
 	@Override
@@ -76,6 +74,11 @@ public class FalseBoolean
 	@Override
 	public boolean booleanValue() {
 		return false;
+	}
+
+	@Override
+	public JAXBElement<FalseBoolean> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createFalse(this);
 	}
 
 }

@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
@@ -117,7 +118,7 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "UniopType")
 public class Uniop
-    extends Expression implements Operand, ExpressionValue, MathExpression
+    extends Expression implements Operand, ExpressionValue, MathExpression, LogicBinOperand
 {
 
     @XmlAttribute(name = "op", required = true)
@@ -247,6 +248,11 @@ public class Uniop
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public JAXBElement<Uniop> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createUniop(this);
 	}
 
 }

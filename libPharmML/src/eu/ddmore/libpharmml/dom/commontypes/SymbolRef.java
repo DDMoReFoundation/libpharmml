@@ -43,6 +43,7 @@ import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.dom.maths.Operand;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
@@ -70,7 +71,8 @@ import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 @XmlType(name = "SymbolRefType")
 @XmlRootElement(name = "SymbRef")
 public class SymbolRef
-    extends PharmMLRootType implements VectorCellValue, MatrixCellValue, MatrixRowValue, OperationVariable, Operand, ExpressionValue, MathExpression
+    extends PharmMLRootType implements VectorCellValue, MatrixCellValue, MatrixRowValue, OperationVariable,
+    Operand, ExpressionValue, MathExpression, LogicBinOperand
 {
 
     @XmlAttribute(name = "blkIdRef")
@@ -191,6 +193,11 @@ public class SymbolRef
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public JAXBElement<SymbolRef> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createSymbRef(this);
 	}
 
 }

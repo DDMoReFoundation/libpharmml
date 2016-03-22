@@ -66,6 +66,12 @@ public class ObjectFactory {
     private final static QName _CommonObservationModelTypeConditionalStatement_QNAME = new QName(NS_DEFAULT_MDEF, "ConditionalStatement");
     private final static QName _StructuralModelTypePKmacros_QNAME = new QName(NS_DEFAULT_MDEF, "PKmacros"); // existed before but not as ElementRef
     
+    private static ObjectFactory instance = new ObjectFactory();
+    
+    public static ObjectFactory getInstance(){
+    	return instance;
+    }
+    
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.modeldefn
      * 

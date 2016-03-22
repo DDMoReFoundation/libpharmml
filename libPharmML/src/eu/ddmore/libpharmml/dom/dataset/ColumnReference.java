@@ -42,6 +42,7 @@ import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.maths.Operand;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -76,7 +77,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "columnRef"
 })
 public class ColumnReference
-    extends PharmMLRootType implements Operand
+    extends PharmMLRootType implements Operand, LogicBinOperand
 {
 
     @XmlElement(name = "ColumnRef")
@@ -210,6 +211,11 @@ public class ColumnReference
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public JAXBElement<ColumnReference> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createColumnRef(this);
 	}
 
 }

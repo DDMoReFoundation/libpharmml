@@ -43,6 +43,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
@@ -130,7 +131,7 @@ import eu.ddmore.libpharmml.util.SubList;
     "matrixRowOrMatrixCellOrMatrixBlock"
 })
 public class Matrix
-    extends PharmMLRootType implements ExpressionValue
+    extends PharmMLRootType implements ExpressionValue, LogicBinOperand
 {
 
     @XmlElement(name = "RowNames")
@@ -811,6 +812,11 @@ public class Matrix
 
 	@Override
 	public JAXBElement<Matrix> toJAXBElement() {
+		return ObjectFactory.getInstance().createMatrix(this);
+	}
+
+	@Override
+	public JAXBElement<Matrix> toJAXBElementOfLogicBinOp() {
 		return ObjectFactory.getInstance().createMatrix(this);
 	}
         

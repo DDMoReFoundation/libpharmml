@@ -37,6 +37,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Sequence;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
@@ -86,7 +87,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "content"
 })
 public class Naryop
-    extends PharmMLRootType implements ExpressionValue, Operand
+    extends PharmMLRootType implements ExpressionValue, Operand, LogicBinOperand
 {
 
     @XmlElements({
@@ -242,6 +243,11 @@ public class Naryop
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public JAXBElement<Naryop> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createNaryop(this);
 	}
 
 }

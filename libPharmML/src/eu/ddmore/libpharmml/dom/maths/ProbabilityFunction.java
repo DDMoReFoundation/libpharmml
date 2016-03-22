@@ -53,6 +53,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Distribution;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
@@ -90,7 +91,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 })
 @XmlJavaTypeAdapter(ProbabilityFunction.Adapter.class)
 public class ProbabilityFunction
-    extends PharmMLRootType implements Symbol, Assignable, ExpressionValue, Operand
+    extends PharmMLRootType implements Symbol, Assignable, ExpressionValue, Operand, LogicBinOperand
 {
 
 	@XmlTransient
@@ -402,6 +403,15 @@ public class ProbabilityFunction
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public JAXBElement<ProbabilityFunction> toJAXBElementOfLogicBinOp() {
+		try {
+			return new Adapter().marshal(this);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }

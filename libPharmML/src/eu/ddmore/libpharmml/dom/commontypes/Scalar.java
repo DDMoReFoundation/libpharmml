@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.dom.maths.Operand;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 
 /**
@@ -32,7 +33,7 @@ import eu.ddmore.libpharmml.dom.tags.MathExpression;
  *
  */
 @XmlJavaTypeAdapter(ScalarAdapter.class)
-public interface Scalar extends VectorCellValue, MatrixCellValue, MatrixRowValue, Operand, ExpressionValue, TreeNode, MathExpression {
+public interface Scalar extends VectorCellValue, MatrixCellValue, MatrixRowValue, Operand, ExpressionValue, TreeNode, MathExpression, LogicBinOperand {
 
 	/**
 	 * Gets a string representation of the value of this scalar.

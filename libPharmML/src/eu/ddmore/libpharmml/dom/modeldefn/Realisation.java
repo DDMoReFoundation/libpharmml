@@ -35,6 +35,7 @@ import eu.ddmore.libpharmml.dom.maths.Operand;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.probonto.DistributionName;
 import eu.ddmore.libpharmml.dom.probonto.ProbOnto;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.impl.XMLFilter;
@@ -71,7 +72,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "piecewise"
 })
 public class Realisation
-    extends PharmMLRootType implements ExpressionValue, Operand
+    extends PharmMLRootType implements ExpressionValue, Operand, LogicBinOperand
 {
 
     @XmlElement(name = "UncertML")
@@ -222,6 +223,11 @@ public class Realisation
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public JAXBElement<Realisation> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createRealisation(this);
 	}
 
 }

@@ -41,6 +41,7 @@ import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.dom.maths.Operand;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -82,7 +83,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "tail"
 })
 public class VectorSelector
-    extends PharmMLRootType implements Operand, ExpressionValue
+    extends PharmMLRootType implements Operand, ExpressionValue, LogicBinOperand
 {
 
     @XmlElement(name = "SymbRef", required = true)
@@ -330,6 +331,11 @@ public class VectorSelector
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public JAXBElement<VectorSelector> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createVectorSelector(this);
 	}
 
 }

@@ -173,4 +173,9 @@ public class RealValue extends PharmMLElement implements Scalar, VectorValue, Id
 		return clone(RealValue.class, this);
 	}
 
+	@Override
+	public JAXBElement<RealValue> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createReal(this);
+	}
+
 }

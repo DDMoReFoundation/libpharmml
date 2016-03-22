@@ -18,6 +18,7 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -26,6 +27,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.IErrorHandler;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
 
@@ -49,7 +51,7 @@ import eu.ddmore.libpharmml.validation.SymbolResolver;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CategoryRefType")
-public class CategoryRef extends PharmMLRootType implements ReferenceContainer{
+public class CategoryRef extends PharmMLRootType implements ReferenceContainer, LogicBinOperand{
 
 
     @XmlAttribute(name = "blkIdRef")
@@ -128,5 +130,10 @@ public class CategoryRef extends PharmMLRootType implements ReferenceContainer{
     public String toString() {
     	return super.toString()+" catIdRef:"+catIdRef+" blkIdRef:"+blkIdRef;
     }
+
+	@Override
+	public JAXBElement<CategoryRef> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createCatRef(this);
+	}
 
 }

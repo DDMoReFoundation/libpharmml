@@ -39,6 +39,7 @@ import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.dom.maths.Operand;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
 
@@ -137,7 +138,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "sumIndexSet"
 })
 public class Sum
-    extends AbstractFormula implements Operand, ExpressionValue
+    extends AbstractFormula implements Operand, ExpressionValue, LogicBinOperand
 {
 	
 	/**
@@ -279,6 +280,11 @@ public class Sum
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public JAXBElement<Sum> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createSum(this);
 	}
 
 }

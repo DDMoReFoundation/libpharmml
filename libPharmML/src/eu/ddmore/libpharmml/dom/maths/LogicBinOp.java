@@ -53,6 +53,7 @@ import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import eu.ddmore.libpharmml.dom.tags.StructuralModelElement;
 import eu.ddmore.libpharmml.dom.uncertml.Probability;
@@ -138,7 +139,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "content"
 })
 public class LogicBinOp
-    extends PharmMLRootType implements MathExpression, StructuralModelElement
+    extends PharmMLRootType implements MathExpression, StructuralModelElement, LogicBinOperand
 {
 
 	@XmlElementRefs({
@@ -166,7 +167,8 @@ public class LogicBinOp
         @XmlElementRef(name = "LogicBinop", namespace = NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Binop", namespace = NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
         @XmlElementRef(name = "HF", namespace = NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "ColumnRef", namespace = NS_DEFAULT_DS, type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "ColumnRef", namespace = NS_DEFAULT_DS, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Stage", namespace = NS_DEFAULT_TD, type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> content;
     @XmlAttribute(name = "op", required = true)
@@ -180,6 +182,16 @@ public class LogicBinOp
     
     public LogicBinOp(LogicOperator op){
     	this.op = op.value();
+    }
+    
+    public LogicBinOp(LogicOperator op, LogicBinOperand operand1, LogicBinOperand operand2){
+    	this.op = op.value();
+    	if(operand1 != null){
+    		getContent().add(operand1.toJAXBElementOfLogicBinOp());
+    	}
+    	if(operand2 != null){
+    		getContent().add(operand2.toJAXBElementOfLogicBinOp());
+    	}
     }
 
     /**
@@ -294,6 +306,11 @@ public class LogicBinOp
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public JAXBElement<LogicBinOp> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createLogicBinop(this);
 	}
 
 }

@@ -26,6 +26,7 @@
 
 package eu.ddmore.libpharmml.dom.maths;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -34,6 +35,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.MathExpressionConverter;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
@@ -66,7 +68,7 @@ import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LogicUniOpType")
 public class LogicUniOp
-    extends LogicExpression implements MathExpression
+    extends LogicExpression implements MathExpression, LogicBinOperand
 {
 
     @XmlAttribute(name = "op", required = true)
@@ -110,6 +112,11 @@ public class LogicUniOp
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public JAXBElement<LogicUniOp> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createLogicUniop(this);
 	}
 
 }

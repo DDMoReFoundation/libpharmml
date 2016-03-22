@@ -42,6 +42,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.maths.ExpressionValue;
 import eu.ddmore.libpharmml.MathExpressionConverter;
+import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
@@ -125,7 +126,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 	"vectorCellOrVectorSegment",
     "sequenceOrScalar"
 })
-public class Vector extends AbstractVector implements ExpressionValue, MathExpression {
+public class Vector extends AbstractVector implements ExpressionValue, MathExpression, LogicBinOperand {
 	
 	// deprecated since 0.3.2
 	@XmlElementRefs({
@@ -408,6 +409,11 @@ public class Vector extends AbstractVector implements ExpressionValue, MathExpre
 
 	@Override
 	public JAXBElement<Vector> toJAXBElement() {
+		return ObjectFactory.getInstance().createVector(this);
+	}
+
+	@Override
+	public JAXBElement<Vector> toJAXBElementOfLogicBinOp() {
 		return ObjectFactory.getInstance().createVector(this);
 	}
     
