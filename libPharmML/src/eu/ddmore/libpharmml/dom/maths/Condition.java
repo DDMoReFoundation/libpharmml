@@ -31,6 +31,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
+
 
 /**
  * <p>Java class for anonymous complex type.
@@ -55,5 +57,24 @@ public class Condition
     extends LogicCondition
 {
 
+	public Condition() {
+		super();
+	}
+
+	public Condition(BooleanValue _boolean) {
+		super(_boolean);
+	}
+
+	public Condition(LogicBinOp logicBinop) {
+		super(logicBinop);
+	}
+
+	public Condition(LogicUniOp logicUniop) {
+		super(logicUniop);
+	}
+
+	public Condition(Otherwise otherwise) {
+		super(otherwise);
+	}
 
 }

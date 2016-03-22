@@ -66,13 +66,21 @@ import eu.ddmore.libpharmml.util.ChainedList;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PiecewiseType", propOrder = {
-    "piece"
+    "listOfPiece"
 })
 public class Piecewise extends PharmMLElement implements MathExpression {
 
     @XmlElement(name = "Piece", required = true)
-    protected List<Piece> piece;
+    protected List<Piece> listOfPiece;
 
+    /**
+     * @deprecated Use {@link #getListOfPiece()}.
+     */
+    @Deprecated
+    public List<Piece> getPiece() {
+        return getListOfPiece();
+    }
+    
     /**
      * Gets the value of the piece property.
      * 
@@ -85,7 +93,7 @@ public class Piecewise extends PharmMLElement implements MathExpression {
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getPiece().add(newItem);
+     *    getListOfPiece().add(newItem);
      * </pre>
      * 
      * 
@@ -95,16 +103,30 @@ public class Piecewise extends PharmMLElement implements MathExpression {
      * 
      * 
      */
-    public List<Piece> getPiece() {
-        if (piece == null) {
-            piece = new ArrayList<Piece>();
+    public List<Piece> getListOfPiece() {
+        if (listOfPiece == null) {
+        	listOfPiece = new ArrayList<Piece>();
         }
-        return this.piece;
+        return this.listOfPiece;
+    }
+    
+    public Piece createPiece(){
+    	Piece piece = ObjectFactory.getInstance().createPieceType();
+    	getListOfPiece().add(piece);
+    	return piece;
+    }
+    
+    public Piece createPiece(Condition condition, ExpressionValue value){
+    	Piece piece = ObjectFactory.getInstance().createPieceType();
+    	getListOfPiece().add(piece);
+    	piece.setCondition(condition);
+    	piece.setValue(value);
+    	return piece;
     }
 
 	@Override
 	protected List<TreeNode> listChildren() {
-		return new ChainedList<TreeNode>().addIfNotNull(piece);
+		return new ChainedList<TreeNode>().addIfNotNull(listOfPiece);
 	}
 
 	@Override

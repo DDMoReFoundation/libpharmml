@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
 import eu.ddmore.libpharmml.dom.commontypes.FalseBoolean;
+import eu.ddmore.libpharmml.dom.commontypes.ObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
@@ -94,6 +95,30 @@ public class LogicCondition
     protected JAXBElement<? extends BooleanValue> _boolean;
     @XmlElement(name = "Otherwise")
     protected Otherwise otherwise;
+    
+    public LogicCondition(){}
+    
+    public LogicCondition(LogicBinOp logicBinop){
+    	this.logicBinop = logicBinop;
+    }
+    
+    public LogicCondition(LogicUniOp logicUniop){
+    	this.logicUniop = logicUniop;
+    }
+    
+    public LogicCondition(BooleanValue _boolean){
+    	if(_boolean instanceof TrueBoolean){
+    		this._boolean = ObjectFactory.getInstance().createTrue((TrueBoolean) _boolean);
+    	} else if (_boolean instanceof FalseBoolean){
+    		this._boolean = ObjectFactory.getInstance().createFalse((FalseBoolean) _boolean);
+    	} else {
+    		this._boolean = ObjectFactory.getInstance().createBoolean(_boolean);
+    	}
+    }
+    
+    public LogicCondition(Otherwise otherwise){
+    	this.otherwise = otherwise;
+    }
 
     /**
      * Gets the value of the logicBinop property.
