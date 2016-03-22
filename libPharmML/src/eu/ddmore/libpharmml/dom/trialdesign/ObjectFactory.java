@@ -814,13 +814,13 @@ public class ObjectFactory {
     }
     
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Stage }{@code >}}
      * 
      * @since PharmML 0.8.1
      */
     @XmlElementDecl(namespace = NS_DEFAULT_TD, name = "Stage")
-    public JAXBElement<Object> createStage(Object value) {
-        return new JAXBElement<Object>(_Stage_QNAME, Object.class, null, value);
+    public JAXBElement<Stage> createStage(Stage value) {
+        return new JAXBElement<Stage>(_Stage_QNAME, Stage.class, null, value);
     }
     
 }
