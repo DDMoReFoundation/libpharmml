@@ -61,7 +61,7 @@ public class StructuralModelTest {
 	public static Collection<Object[]> parameters(){
 		
 		return Arrays.asList(new Object[][] {
-				{PharmMLVersion.V0_8}
+				{PharmMLVersion.V0_8_1}
 		});
 	}
 	
@@ -133,6 +133,7 @@ public class StructuralModelTest {
 		File tmpFile = File.createTempFile("libpharmmltest_", ".xml");
 		tmpFile.deleteOnExit();
 		libPharmML.save(new FileOutputStream(tmpFile), resource);
+		libPharmML.save(System.out, resource);
 		AssertUtil.assertSameContent(new File(this.getClass().getResource(TESTFILE).toURI()), tmpFile);
 	}
 	
