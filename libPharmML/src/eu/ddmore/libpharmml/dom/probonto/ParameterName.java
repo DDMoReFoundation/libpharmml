@@ -34,18 +34,25 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="alpha"/>
  *     &lt;enumeration value="beta"/>
  *     &lt;enumeration value="categoryProb"/>
+ *     &lt;enumeration value="choleskyFactor"/>
  *     &lt;enumeration value="coefVar"/>
  *     &lt;enumeration value="concentration"/>
  *     &lt;enumeration value="covarianceMatrix"/>
+ *     &lt;enumeration value="cutpoints"/>
  *     &lt;enumeration value="degreesOfFreedom"/>
  *     &lt;enumeration value="denominator"/>
  *     &lt;enumeration value="dispersion"/>
  *     &lt;enumeration value="geomStdev"/>
+ *     &lt;enumeration value="index"/>
  *     &lt;enumeration value="inverseScale"/>
  *     &lt;enumeration value="inverseScaleMatrix"/>
- *     &lt;enumeration value="index"/>
+ *     &lt;enumeration value="kernelMatrix"/>
  *     &lt;enumeration value="lambda"/>
  *     &lt;enumeration value="location"/>
+ *     &lt;enumeration value="locationOfMinimum"/>
+ *     &lt;enumeration value="logitProbability"/>
+ *     &lt;enumeration value="logMean"/>
+ *     &lt;enumeration value="logRate"/>
  *     &lt;enumeration value="lowerBound"/>
  *     &lt;enumeration value="lowerLimit"/>
  *     &lt;enumeration value="m"/>
@@ -54,6 +61,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="meanLog"/>
  *     &lt;enumeration value="median"/>
  *     &lt;enumeration value="minimum"/>
+ *     &lt;enumeration value="noncentrality"/>
  *     &lt;enumeration value="numberOfFailures"/>
  *     &lt;enumeration value="numberOfSuccesses"/>
  *     &lt;enumeration value="numberOfTrials"/>
@@ -63,6 +71,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="populationSize"/>
  *     &lt;enumeration value="precision"/>
  *     &lt;enumeration value="precisionMatrix"/>
+ *     &lt;enumeration value="predictor"/>
  *     &lt;enumeration value="probability"/>
  *     &lt;enumeration value="probabilityOfSuccess"/>
  *     &lt;enumeration value="probabilityOfZero"/>
@@ -76,6 +85,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="spread"/>
  *     &lt;enumeration value="stdev"/>
  *     &lt;enumeration value="stdevLog"/>
+ *     &lt;enumeration value="tailIndex"/>
  *     &lt;enumeration value="tau"/>
  *     &lt;enumeration value="theta"/>
  *     &lt;enumeration value="upperBound"/>
@@ -99,12 +109,16 @@ public enum ParameterName {
     BETA("beta"),
     @XmlEnumValue("categoryProb")
     CATEGORY_PROB("categoryProb"),
+    @XmlEnumValue("choleskyFactor")
+    CHOLESKY_FACTOR("choleskyFactor"),
     @XmlEnumValue("coefVar")
     COEF_VAR("coefVar"),
     @XmlEnumValue("concentration")
     CONCENTRATION("concentration"),
     @XmlEnumValue("covarianceMatrix")
     COVARIANCE_MATRIX("covarianceMatrix"),
+    @XmlEnumValue("cutpoints")
+    CUTPOINTS("cutpoints"),
     @XmlEnumValue("degreesOfFreedom")
     DEGREES_OF_FREEDOM("degreesOfFreedom"),
     @XmlEnumValue("denominator")
@@ -113,16 +127,26 @@ public enum ParameterName {
     DISPERSION("dispersion"),
     @XmlEnumValue("geomStdev")
     GEOM_STDEV("geomStdev"),
+    @XmlEnumValue("index")
+    INDEX("index"),
     @XmlEnumValue("inverseScale")
     INVERSE_SCALE("inverseScale"),
     @XmlEnumValue("inverseScaleMatrix")
     INVERSE_SCALE_MATRIX("inverseScaleMatrix"),
-    @XmlEnumValue("index")
-    INDEX("index"),
+	@XmlEnumValue("kernelMatrix")
+    KERNEL_MATRIX("kernelMatrix"),
     @XmlEnumValue("lambda")
     LAMBDA("lambda"),
     @XmlEnumValue("location")
     LOCATION("location"),
+    @XmlEnumValue("locationOfMinimum")
+    LOCATION_OF_MINIMUM("locationOfMinimum"),
+    @XmlEnumValue("logitProbability")
+    LOGIT_PROBABILITY("logitProbability"),
+    @XmlEnumValue("logMean")
+    LOG_MEAN("logMean"),
+    @XmlEnumValue("logRate")
+    LOG_RATE("logRate"),
     @XmlEnumValue("lowerBound")
     LOWER_BOUND("lowerBound"),
     @XmlEnumValue("lowerLimit")
@@ -139,6 +163,8 @@ public enum ParameterName {
     MEDIAN("median"),
     @XmlEnumValue("minimum")
     MINIMUM("minimum"),
+    @XmlEnumValue("noncentrality")
+    NONCENTRALITY("noncentrality"),
     @XmlEnumValue("numberOfFailures")
     NUMBER_OF_FAILURES("numberOfFailures"),
     @XmlEnumValue("numberOfSuccesses")
@@ -157,6 +183,8 @@ public enum ParameterName {
     PRECISION("precision"),
     @XmlEnumValue("precisionMatrix")
     PRECISION_MATRIX("precisionMatrix"),
+    @XmlEnumValue("predictor")
+    PREDICTOR("predictor"),
     @XmlEnumValue("probability")
     PROBABILITY("probability"),
     @XmlEnumValue("probabilityOfSuccess")
@@ -183,6 +211,8 @@ public enum ParameterName {
     STDEV("stdev"),
     @XmlEnumValue("stdevLog")
     STDEV_LOG("stdevLog"),
+    @XmlEnumValue("tailIndex")
+    TAIL_INDEX("tailIndex"),
     @XmlEnumValue("tau")
     TAU("tau"),
     @XmlEnumValue("theta")
