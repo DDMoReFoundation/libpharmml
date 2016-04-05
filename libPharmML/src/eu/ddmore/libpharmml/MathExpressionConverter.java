@@ -1,6 +1,7 @@
 package eu.ddmore.libpharmml;
 
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
+import eu.ddmore.libpharmml.dom.commontypes.CategoryRef;
 import eu.ddmore.libpharmml.dom.commontypes.Delay;
 import eu.ddmore.libpharmml.dom.commontypes.DelayVariable;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
@@ -9,6 +10,7 @@ import eu.ddmore.libpharmml.dom.commontypes.LowUpLimit;
 import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
 import eu.ddmore.libpharmml.dom.commontypes.MissingValue;
+import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.Product;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
@@ -38,6 +40,7 @@ import eu.ddmore.libpharmml.dom.maths.Statsop;
 import eu.ddmore.libpharmml.dom.maths.Uniop;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
+import eu.ddmore.libpharmml.dom.trialdesign.Stage;
 
 public interface MathExpressionConverter {
 
@@ -116,5 +119,11 @@ public interface MathExpressionConverter {
 	String convert(Matrix matrix);
 	
 	String convert(Realisation realisation);
+	
+	String convert(OidRef oidRef);
+	
+	String convert(CategoryRef categoryRef);
+	
+	String convert(Stage stage);
 
 }

@@ -38,9 +38,12 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.maths.ObjectFactory;
 import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 
 
 /**
@@ -125,6 +128,21 @@ public class OidRef
 	@Override
 	public JAXBElement<OidRef> toJAXBElementOfLogicBinOp() {
 		return ObjectFactory.getInstance().createLogicBinOpArmRef(this);
+	}
+
+	@Override
+	public String toMathExpression() {
+		return new MathExpressionConverterToExpression().convert(this);
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

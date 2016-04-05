@@ -27,8 +27,11 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.IErrorHandler;
+import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
 
 /**
@@ -134,6 +137,21 @@ public class CategoryRef extends PharmMLRootType implements ReferenceContainer, 
 	@Override
 	public JAXBElement<CategoryRef> toJAXBElementOfLogicBinOp() {
 		return ObjectFactory.getInstance().createCatRef(this);
+	}
+	
+	@Override
+	public String toMathExpression() {
+		return new MathExpressionConverterToExpression().convert(this);
+	}
+
+	@Override
+	public String toMathML() {
+		return new MathExpressionConverterToMathML().convert(this);
+	}
+
+	@Override
+	public String convert(MathExpressionConverter converter) {
+		return converter.convert(this);
 	}
 
 }

@@ -7,6 +7,7 @@ import javax.xml.bind.JAXBElement;
 
 import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
+import eu.ddmore.libpharmml.dom.commontypes.CategoryRef;
 import eu.ddmore.libpharmml.dom.commontypes.Delay;
 import eu.ddmore.libpharmml.dom.commontypes.DelayVariable;
 import eu.ddmore.libpharmml.dom.commontypes.IdValue;
@@ -18,6 +19,7 @@ import eu.ddmore.libpharmml.dom.commontypes.MatrixRowValue;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixSelector;
 import eu.ddmore.libpharmml.dom.commontypes.MissingValue;
 import eu.ddmore.libpharmml.dom.commontypes.MissingValueSymbol;
+import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Product;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
@@ -54,6 +56,7 @@ import eu.ddmore.libpharmml.dom.maths.Unioperator;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.dom.trialdesign.Stage;
 import static eu.ddmore.libpharmml.impl.LoggerWrapper.getLogger;
 
 /**
@@ -697,6 +700,30 @@ public class MathExpressionConverterToMathML implements MathExpressionConverter 
 	
 	public static String wrapMathML(String mathML){
 		return "<math xmlns=\""+MATHML_NAMESPACE+"\">"+mathML+"</math>";
+	}
+
+	@Override
+	public String convert(OidRef oidRef) {
+		if(oidRef == null){
+			return NULL_IDENTIFIER;
+		}
+		return "<ci>"+oidRef.getOidRef()+"</ci>\n";
+	}
+
+	@Override
+	public String convert(CategoryRef categoryRef) {
+		if(categoryRef == null){
+			return NULL_IDENTIFIER;
+		}
+		return "<ci>"+categoryRef.getCatIdRef()+"</ci>\n";
+	}
+
+	@Override
+	public String convert(Stage stage) {
+		if(stage == null){
+			return NULL_IDENTIFIER;
+		}
+		return "<ci>stage</ci>\n";
 	}
 
 }

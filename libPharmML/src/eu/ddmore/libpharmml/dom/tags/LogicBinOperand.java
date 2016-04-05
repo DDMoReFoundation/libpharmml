@@ -9,7 +9,7 @@ import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
  *
  * @author F. Yvon
  */
-public interface LogicBinOperand {
+public interface LogicBinOperand extends MathExpression {
 	
 	JAXBElement<? extends LogicBinOperand> toJAXBElementOfLogicBinOp();
 
