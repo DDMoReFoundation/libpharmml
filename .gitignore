@@ -6,8 +6,6 @@ test_output.xml
 build
 ivy_libs
 jars
-/.classpath
-/.project
 /UML
 /.settings
 jaxb_gen

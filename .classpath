@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="libPharmML/wiki"/>
+	<classpathentry kind="src" path="libPharmML/src"/>
+	<classpathentry kind="src" path="libPharmML/test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="libPharmML/ivy_libs/src-build/FastInfoset.jar"/>
+	<classpathentry kind="lib" path="libPharmML/ivy_libs/src-build/istack-commons-runtime.jar"/>
+	<classpathentry kind="lib" path="libPharmML/ivy_libs/src-build/jaxb-api.jar"/>
+	<classpathentry kind="lib" path="libPharmML/ivy_libs/src-build/jaxb-core.jar"/>
+	<classpathentry kind="lib" path="libPharmML/ivy_libs/src-build/jaxb-impl.jar"/>
+	<classpathentry kind="lib" path="libPharmML/ivy_libs/src-build/jsr173_api.jar"/>
+	<classpathentry kind="lib" path="libPharmML/ivy_libs/src-build/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="libPharmML/ivy_libs/src-build/xml-apis.jar"/>
+	<classpathentry kind="lib" path="libPharmML/ivy_libs/src-build/xml-resolver.jar"/>
+	<classpathentry kind="lib" path="libPharmML/ivy_libs/test-build/hamcrest-core.jar"/>
+	<classpathentry kind="lib" path="libPharmML/ivy_libs/test-build/junit.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://junit.sourceforge.net/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libPharmML/ivy_libs/test-build/commons-io.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
