@@ -42,7 +42,6 @@ import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.ScalarContainer;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -78,7 +77,7 @@ public class HeaderRow
     extends PharmMLRootType implements ScalarContainer
 {
 
-	@XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+	@XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
 	protected List<Scalar> listOfScalar;
     @XmlAttribute(name = "order", required = true)
     @XmlSchemaType(name = "positiveInteger")

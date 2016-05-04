@@ -49,7 +49,6 @@ import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -85,15 +84,15 @@ import eu.ddmore.libpharmml.util.ChainedList;
 public class DatasetRow extends PharmMLRootType{
 
 	@XmlElementRefs({
-        @XmlElementRef(name = "Table", namespace = XMLFilter.NS_DEFAULT_DS, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "Table", namespace = NS_DEFAULT_DS, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> scalarOrTable;
 
 //    @XmlElementRef(name = "Scalar", namespace = "http://www.pharmml.org/2013/03/CommonTypes", type = JAXBElement.class, required = false)
 //    protected List<JAXBElement<?>> scalar;
 	
-	@XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+	@XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
 	protected List<Scalar> listOfValues;
 
 

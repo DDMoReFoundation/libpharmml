@@ -45,7 +45,6 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -91,7 +90,7 @@ public class LogicCondition
     protected LogicBinOp logicBinop;
     @XmlElement(name = "LogicUniop")
     protected LogicUniOp logicUniop;
-    @XmlElementRef(name = "Boolean", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Boolean", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends BooleanValue> _boolean;
     @XmlElement(name = "Otherwise")
     protected Otherwise otherwise;

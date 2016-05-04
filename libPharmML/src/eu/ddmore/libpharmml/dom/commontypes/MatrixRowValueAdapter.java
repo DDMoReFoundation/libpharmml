@@ -25,8 +25,8 @@ import javax.xml.namespace.QName;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.exceptions.UndeclaredInterfaceImplementer;
+import eu.ddmore.libpharmml.impl.NamespaceFilter;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 
 @SuppressWarnings("deprecation")
 public class MatrixRowValueAdapter extends XmlAdapter<JAXBElement<?>, MatrixRowValue> {
@@ -62,7 +62,7 @@ public class MatrixRowValueAdapter extends XmlAdapter<JAXBElement<?>, MatrixRowV
 					jaxbEl = MasterObjectFactory.MATHS_OF.createEquation(Equation.fromRhs((Rhs) v));
 				}
 			} else if (v instanceof Equation){
-				jaxbEl = new JAXBElement<Equation>(new QName(XMLFilter.NS_DEFAULT_MATH, "Equation"), Equation.class, (Equation) v);
+				jaxbEl = new JAXBElement<Equation>(new QName(NamespaceFilter.NS_DEFAULT_MATH, "Equation"), Equation.class, (Equation) v);
 			} else {
 				throw new UndeclaredInterfaceImplementer(this, v);
 			}

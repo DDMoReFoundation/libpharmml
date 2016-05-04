@@ -18,6 +18,8 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.dom.modeldefn;
 
+import static eu.ddmore.libpharmml.util.Util.filter;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -43,9 +45,7 @@ import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
 import eu.ddmore.libpharmml.dom.maths.ConditionalStatement;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKMacroList;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
-import static eu.ddmore.libpharmml.util.Util.filter;
 
 
 /**
@@ -92,7 +92,7 @@ public class StructuralModel
     extends PharmMLRootType implements Block
 {
 
-    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Name", namespace = NS_DEFAULT_CT)
     protected Name name;
     @XmlAttribute(name = "blkId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

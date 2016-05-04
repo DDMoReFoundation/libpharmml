@@ -37,7 +37,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.XMLFilterImpl;
 
-public class XMLFilter extends XMLFilterImpl {
+public class NamespaceFilter extends XMLFilterImpl {
 	
 	static final private String NS_PATTERN_ROOT = "http://www.pharmml.org/pharmml/%s/";
 	static final protected String NS_PATTERN_CT = NS_PATTERN_ROOT + "CommonTypes";
@@ -79,7 +79,7 @@ public class XMLFilter extends XMLFilterImpl {
 	static final public String NS_OLD_MSTEPS = NS_OLD_ROOT + "ModellingSteps";
 	static final public String NS_OLD_MML = NS_OLD_ROOT + "PharmML";
 	
-    public XMLFilter(PharmMLVersion writtenVersion) {
+    public NamespaceFilter(PharmMLVersion writtenVersion) {
         super();
         
         if(writtenVersion == null){

@@ -49,7 +49,6 @@ import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
 import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.maths.Uniop;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -172,7 +171,7 @@ public class IndividualParameter
 	@Deprecated
     @XmlElement(name = "GaussianModel")
     protected IndividualParameter.GaussianModel gaussianModel;
-    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT)
     protected Rhs assign;
     
     // PharmML 0.7
@@ -180,7 +179,7 @@ public class IndividualParameter
     protected StructuredModel structuredModel;
     @XmlElement(name = "LHSTransformation")
     protected LHSTransformationType lhsTransformation;
-    @XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "VariabilityReference", namespace = NS_DEFAULT_CT)
     protected List<LevelReference> listOfVariabilityReference;
     @XmlElement(name = "Distribution")
     protected Distribution distribution;
@@ -565,7 +564,7 @@ public class IndividualParameter
             extends PharmMLRootType
         {
 
-            @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+            @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT, required = true)
             protected Rhs assign;
 
             /**
@@ -735,7 +734,7 @@ public class IndividualParameter
                 extends PharmMLRootType
             {
 
-                @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+                @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT, required = true)
                 protected Rhs assign;
 
                 /**

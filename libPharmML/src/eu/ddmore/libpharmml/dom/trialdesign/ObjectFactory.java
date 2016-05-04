@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
-import static eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_TD;
+import static eu.ddmore.libpharmml.impl.NamespaceFilter.NS_DEFAULT_TD;
 
 
 /**

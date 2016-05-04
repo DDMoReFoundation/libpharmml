@@ -37,7 +37,6 @@ import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.maths.Uniop;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -82,9 +81,9 @@ public class StandardAssignable
     
     // The following attributes are meant to support the backward compatiblity before version 0.7.1.
     // When ScalarRhs attributes changed to StandardAssignable.
-    @XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "Equation", namespace = NS_DEFAULT_MATH)
     protected eu.ddmore.libpharmml.dom.maths.Equation equation;
-    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected Scalar scalar;
     @XmlElement(name = "SymbRef")
     protected SymbolRef symbRef;

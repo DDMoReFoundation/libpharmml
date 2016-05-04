@@ -44,7 +44,6 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolScope;
 import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -86,7 +85,7 @@ public class FunctionCallType
     extends PharmMLRootType implements Operand, ExpressionValue, SymbolScope, LogicBinOperand
 {
 
-    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT, required = true)
     protected SymbolRef symbRef;
     @XmlElement(name = "FunctionArgument")
     protected List<FunctionCallType.FunctionArgument> functionArgument;

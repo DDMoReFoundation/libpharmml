@@ -57,7 +57,6 @@ import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -99,7 +98,7 @@ public class ProbabilityFunction
 	
     @XmlElement(name = "Distribution", required = true)
     protected Distribution distribution;
-    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT)
     protected Rhs assign;
     @XmlAttribute(name = "symbId")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

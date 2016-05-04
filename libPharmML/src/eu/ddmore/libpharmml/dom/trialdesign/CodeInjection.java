@@ -30,7 +30,6 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.HasElementsRenamed;
@@ -82,17 +81,17 @@ public class CodeInjection
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "SymbolMapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
+    @XmlElement(name = "SymbolMapping", namespace = NS_DEFAULT_MSTEPS)
     protected List<SymbolMapping> msteps_listOfSymbolMapping;
-    @XmlElement(name = "SymbolMapping", namespace = XMLFilter.NS_DEFAULT_TD)
+    @XmlElement(name = "SymbolMapping", namespace = NS_DEFAULT_TD)
     protected List<SymbolMapping> design_listOfSymbolMapping;
     @XmlTransient
     protected List<SymbolMapping> listOfSymbolMapping;
     
     
-    @XmlElement(name = "TargetCode", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
+    @XmlElement(name = "TargetCode", namespace = NS_DEFAULT_MSTEPS)
     protected GenericCode msteps_targetCode;
-    @XmlElement(name = "TargetCode", namespace = XMLFilter.NS_DEFAULT_TD, required = true)
+    @XmlElement(name = "TargetCode", namespace = NS_DEFAULT_TD, required = true)
     protected GenericCode design_targetCode;
     @XmlTransient
     protected GenericCode targetCode;

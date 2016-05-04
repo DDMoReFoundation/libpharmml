@@ -32,7 +32,6 @@ import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -90,7 +89,7 @@ public class ProbOnto
     protected List<MixtureComponent> listOfMixtureComponent;
 	@XmlElement(name = "ColumnMapping")
     protected List<ColumnMapping> listOfColumnMapping;
-    @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS)
+    @XmlElement(name = "DataSet", namespace = NS_DEFAULT_DS)
     protected DataSet dataSet;
     @XmlAttribute(name = "name", required = true)
     protected DistributionName name;

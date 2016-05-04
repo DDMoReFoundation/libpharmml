@@ -29,7 +29,6 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -76,9 +75,9 @@ public class MatrixCell
     @XmlElement(name = "CellColumn", required = true)
     protected MatrixVectorIndex cellColumn;
     @XmlElementRefs({
-    		@XmlElementRef(name = "VectorCellValue", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class),
-    		@XmlElementRef(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class), // PharmML 0.7.1
-    		@XmlElementRef(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class)
+    		@XmlElementRef(name = "VectorCellValue", namespace = NS_DEFAULT_CT, type = JAXBElement.class),
+    		@XmlElementRef(name = "Assign", namespace = NS_DEFAULT_CT, type = JAXBElement.class), // PharmML 0.7.1
+    		@XmlElementRef(name = "Equation", namespace = NS_DEFAULT_MATH, type = JAXBElement.class)
     })
     protected MatrixCellValue value;
     

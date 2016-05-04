@@ -51,7 +51,6 @@ import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.maths.Uniop;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 /**
@@ -73,11 +72,11 @@ import eu.ddmore.libpharmml.util.ChainedList;
  */
 public class MacroValue extends PharmMLRootType implements Assignable {
 		
-	@XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
+	@XmlElement(name = "Assign", namespace = NS_DEFAULT_CT)
     protected Rhs assign;
-    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT)
     protected SymbolRef symbRef;
-    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected Scalar scalar;
     @XmlAttribute(name = "argument")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

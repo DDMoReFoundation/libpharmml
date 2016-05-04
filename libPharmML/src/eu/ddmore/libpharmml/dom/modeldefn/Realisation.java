@@ -38,7 +38,6 @@ import eu.ddmore.libpharmml.dom.probonto.ProbOnto;
 import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -77,7 +76,7 @@ public class Realisation
 
     @XmlElement(name = "UncertML")
     protected UncertML uncertML;
-    @XmlElement(name = "ProbOnto", namespace = XMLFilter.NS_DEFAULT_PROBONTO)
+    @XmlElement(name = "ProbOnto", namespace = NS_DEFAULT_PROBONTO)
     protected ProbOnto probOnto;
     @XmlElement(name = "Piecewise")
     protected Piecewise piecewise;

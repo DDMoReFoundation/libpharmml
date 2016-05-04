@@ -53,7 +53,6 @@ import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -221,19 +220,19 @@ public class Binop
 {
     
 	@XmlElementRefs({
-        @XmlElementRef(name = "Sum", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-		@XmlElementRef(name = "ColumnRef", namespace = XMLFilter.NS_DEFAULT_DS, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Uniop", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "MatrixSelector", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "FunctionCall", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Constant", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Delay", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "VectorSelector", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Binop", namespace = XMLFilter.NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Probability", namespace = XMLFilter.NS_DEFAULT_MDEF, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Product", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Sum", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+		@XmlElementRef(name = "ColumnRef", namespace = NS_DEFAULT_DS, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Uniop", namespace = NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "MatrixSelector", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "FunctionCall", namespace = NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Constant", namespace = NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Delay", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "VectorSelector", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Binop", namespace = NS_DEFAULT_MATH, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Probability", namespace = NS_DEFAULT_MDEF, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Product", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "SymbRef", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false),
         @XmlElementRef(name = "Realisation", namespace = NS_DEFAULT_MATH, type = JAXBElement.class), // PharmML 0.8
     	@XmlElementRef(name = "Statsop", namespace = NS_DEFAULT_MATH, type = JAXBElement.class), // PharmML 0.8
     	@XmlElementRef(name = "Naryop", namespace = NS_DEFAULT_MATH, type = JAXBElement.class), // PharmML 0.8

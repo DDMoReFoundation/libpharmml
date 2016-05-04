@@ -59,7 +59,6 @@ import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.maths.Uniop;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
@@ -120,7 +119,7 @@ public class ColumnMapping
     protected ColumnReference columnRef;
     @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT)
     protected Rhs assign; // PharmML 0.8
-    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT)
     protected SymbolRef symbRef;
     
     @XmlElement(name = "Piecewise", namespace = NS_DEFAULT_DS)

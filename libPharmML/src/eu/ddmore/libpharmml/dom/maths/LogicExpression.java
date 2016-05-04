@@ -48,7 +48,6 @@ import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -120,11 +119,11 @@ public class LogicExpression
     protected LogicBinOp logicBinop;
     @XmlElement(name = "LogicUniop")
     protected LogicUniOp logicUniop;
-    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected JAXBElement<?> scalar;
     @XmlElement(name = "Constant")
     protected Constant constant;
-    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT)
     protected SymbolRef symbRef;
     @XmlElement(name = "Binop")
     protected Binop binop;
@@ -132,19 +131,19 @@ public class LogicExpression
     protected Uniop uniop;
     @XmlElement(name = "FunctionCall")
     protected FunctionCallType functionCall;
-    @XmlElement(name = "Sum", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Sum", namespace = NS_DEFAULT_CT)
     protected Sum sum;
-    @XmlElement(name = "Product", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Product", namespace = NS_DEFAULT_CT)
     protected Product product;
-    @XmlElement(name = "VectorSelector", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "VectorSelector", namespace = NS_DEFAULT_CT)
     protected VectorSelector vectorSelector;
-    @XmlElement(name = "MatrixSelector", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "MatrixSelector", namespace = NS_DEFAULT_CT)
     protected MatrixSelector matrixSelector;
-    @XmlElement(name = "Probability", namespace = XMLFilter.NS_DEFAULT_MDEF)
+    @XmlElement(name = "Probability", namespace = NS_DEFAULT_MDEF)
     protected Probability probability;
     
     // PharmML 0.6.2
-    @XmlElement(name = "CatRef", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "CatRef", namespace = NS_DEFAULT_CT)
     protected CategoryRef catRef;
     @XmlElement(name = "ArmRef")
     protected OidRef armRef;

@@ -49,7 +49,6 @@ import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.maths.Uniop;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -83,7 +82,7 @@ public class DistributionParameter
     extends PharmMLRootType implements Assignable
 {
 
-    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT, required = true)
     protected Rhs assign;
     @XmlAttribute(name = "name", required = true)
     protected ParameterName name;

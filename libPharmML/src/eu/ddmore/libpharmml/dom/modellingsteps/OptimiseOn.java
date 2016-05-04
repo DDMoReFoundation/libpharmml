@@ -30,7 +30,6 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.StandardOptionalAssignable;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -95,7 +94,7 @@ public class OptimiseOn
     protected StandardOptionalAssignable numberTimes;
     @XmlElement(name = "ObservationTimes")
     protected StandardOptionalAssignable observationTimes;
-    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT)
     protected List<SymbolRef> listOfSymbRef;
 
     /**

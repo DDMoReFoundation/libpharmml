@@ -34,7 +34,6 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.trialdesign.ExternalDataSet;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 //import eu.ddmore.libpharmml.dom.commontypes.ToolName;
 //import eu.ddmore.libpharmml.impl.LoggerWrapper;
 //import eu.ddmore.libpharmml.impl.MarshalListener;
@@ -89,14 +88,14 @@ public class ModellingSteps
     @XmlElement(name = "NONMEMdataSet")
     private List<NONMEMdataSet> listOfNonmemDataset;
     
-    @XmlElement(name = "ExternalDataSet", namespace = XMLFilter.NS_DEFAULT_MSTEPS) // NS < PharmML0.7
+    @XmlElement(name = "ExternalDataSet", namespace = NS_DEFAULT_MSTEPS) // NS < PharmML0.7
     @Deprecated
     protected List<ExternalDataSet> listOfExternalDataset;
     // --------------
     
     @XmlElement(name = "TargetTool")
     protected List<TargetTool> targetTool;
-    @XmlElementRef(name = "CommonModellingStep", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "CommonModellingStep", namespace = NS_DEFAULT_MSTEPS, type = JAXBElement.class, required = false)
     protected List<JAXBElement<? extends CommonModellingStep>> commonModellingStep;
     @XmlElement(name = "OptimalDesignStep")
     protected List<OptimalDesignStep> listOfOptimalDesignStep;

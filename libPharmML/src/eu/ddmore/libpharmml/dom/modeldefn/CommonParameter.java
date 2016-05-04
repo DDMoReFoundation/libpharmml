@@ -42,7 +42,6 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Symbol;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolName;
 import eu.ddmore.libpharmml.dom.tags.StructuralModelElement;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -86,7 +85,7 @@ public abstract class CommonParameter
     extends PharmMLRootType implements Symbol, StructuralModelElement
 {
 
-    @XmlElement(name = "Symbol", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Symbol", namespace = NS_DEFAULT_CT)
     protected SymbolName symbol;
     @XmlAttribute(name = "symbId")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

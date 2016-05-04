@@ -55,7 +55,6 @@ import eu.ddmore.libpharmml.dom.uncertml.GeometricDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.HypergeometricDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.NegativeBinomialDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.PoissonDistribution;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -111,9 +110,9 @@ public class CountPMF
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "LogicBinop", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "LogicBinop", namespace = NS_DEFAULT_MATH)
     protected LogicBinOp logicBinop;
-    @XmlElement(name = "LogicUniop", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "LogicUniop", namespace = NS_DEFAULT_MATH)
     protected LogicUniOp logicUniop;
     @XmlElement(name = "CurrentState")
     protected CommonDiscreteState currentState;
@@ -125,12 +124,12 @@ public class CountPMF
     @XmlElement(name = "Distribution")
     protected Distribution distribution;
     
-    @XmlElementRef(name = "AbstractDiscreteUnivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractDiscreteUnivariateDistribution", namespace = NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractDiscreteUnivariateDistributionType> abstractDiscreteUnivariateDistribution;
     @XmlTransient
     protected AbstractDiscreteUnivariateDistributionType formerDistribution;
     
-    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT)
     protected Rhs assign;
     @XmlAttribute(name = "linkFunction")
     @Deprecated

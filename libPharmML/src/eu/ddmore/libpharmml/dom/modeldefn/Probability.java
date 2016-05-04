@@ -50,7 +50,6 @@ import eu.ddmore.libpharmml.dom.maths.LogicUniOp;
 import eu.ddmore.libpharmml.dom.maths.Operand;
 import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -95,9 +94,9 @@ public class Probability
     extends PharmMLRootType implements Operand, ExpressionValue, Symbol, LogicBinOperand
 {
 
-    @XmlElement(name = "LogicBinop", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "LogicBinop", namespace = NS_DEFAULT_MATH)
     protected LogicBinOp logicBinop;
-    @XmlElement(name = "LogicUniop", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "LogicUniop", namespace = NS_DEFAULT_MATH)
     protected LogicUniOp logicUniop;
     @XmlElement(name = "CurrentState")
     protected CommonDiscreteState currentState;

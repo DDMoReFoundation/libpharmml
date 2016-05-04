@@ -38,7 +38,6 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -79,13 +78,13 @@ public class ProbabilityAssignment
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "LogicBinop", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "LogicBinop", namespace = NS_DEFAULT_MATH)
     protected LogicBinOp logicBinop;
     @XmlElement(name = "Probability")
     protected List<Probability> probability;
     @XmlElement(name = "TransitionRate")
     protected List<TransitionRate> transitionRate;
-    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT)
     protected Rhs assign;
 
     /**

@@ -50,7 +50,6 @@ import eu.ddmore.libpharmml.dom.modellingsteps.MappingType;
 import eu.ddmore.libpharmml.dom.modellingsteps.VariableMapping;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.HasElementsRenamed;
@@ -99,21 +98,21 @@ public class DatasetMapping
     extends PharmMLRootType implements DatasetMap, PharmMLObject
 {
 
-	@XmlElement(name = "VariableAssignment", namespace = XMLFilter.NS_DEFAULT_CT)
+	@XmlElement(name = "VariableAssignment", namespace = NS_DEFAULT_CT)
 	@Deprecated
     protected List<VariableAssignment> variableAssignment;
-	@XmlElementRef(name = "Mapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = JAXBElement.class)
+	@XmlElementRef(name = "Mapping", namespace = NS_DEFAULT_MSTEPS, type = JAXBElement.class)
 	@Deprecated
     protected List<JAXBElement<? extends MappingType>> mapping;
 	
-    @XmlElement(name = "ColumnMapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, required = true)
+    @XmlElement(name = "ColumnMapping", namespace = NS_DEFAULT_MSTEPS, required = true)
     protected List<ColumnMapping> msteps_columnMapping;
     @XmlElement(name = "ColumnMapping", required = true)
     protected List<ColumnMapping> td_columnMapping;
     @XmlTransient
     protected List<ColumnMapping> transient_columnMapping;
     
-    @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
+    @XmlElement(name = "DataSet", namespace = NS_DEFAULT_DS, required = true)
     protected DataSet dataSet;
     
     // PharmML 0.7

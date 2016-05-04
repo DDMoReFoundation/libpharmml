@@ -36,7 +36,6 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -72,7 +71,7 @@ public class MONOLIXdataSetReference
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "OidRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    @XmlElement(name = "OidRef", namespace = NS_DEFAULT_CT, required = true)
     protected OidRef oidRef;
     
     /**

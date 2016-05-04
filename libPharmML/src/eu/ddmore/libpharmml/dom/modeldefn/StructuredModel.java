@@ -29,7 +29,6 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -279,7 +278,7 @@ public class StructuredModel
         extends PharmMLRootType
     {
 
-        @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+        @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT, required = true)
         protected Rhs assign;
 
         /**
@@ -451,7 +450,7 @@ public class StructuredModel
             extends PharmMLRootType
         {
 
-            @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+            @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT, required = true)
             protected Rhs assign;
 
             /**
@@ -516,7 +515,7 @@ public class StructuredModel
         extends PharmMLRootType
     {
 
-        @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+        @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT, required = true)
         protected Rhs assign;
 
         /**

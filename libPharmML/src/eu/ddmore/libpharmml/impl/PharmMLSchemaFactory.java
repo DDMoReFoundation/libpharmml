@@ -97,14 +97,14 @@ public class PharmMLSchemaFactory {
 		String systemURI;
 		if(version.isEqualOrLaterThan(PharmMLVersion.V0_8)){ //FIXME: implement a better way to handle schemas and namespaces
 			catalogLocation = version.getCatalogLocation();
-			systemURI = XMLFilter.NS_DEFAULT_MML;
+			systemURI = NamespaceFilter.NS_DEFAULT_MML;
 		} else {
 			if(type.equals(NamespaceType.DEFAULT)){
 				catalogLocation = version.getDefaultCatalogLocation();
-				systemURI = XMLFilter.NS_DEFAULT_MML;
+				systemURI = NamespaceFilter.NS_DEFAULT_MML;
 			} else {
 				catalogLocation = version.getCatalogLocation();
-				systemURI = new XMLFilter(version).getMMLNamespaceURI();
+				systemURI = new NamespaceFilter(version).getMMLNamespaceURI();
 			}
 		}
 		return new String[] {catalogLocation, systemURI};

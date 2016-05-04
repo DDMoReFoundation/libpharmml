@@ -33,7 +33,6 @@ import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Symbol;
 import eu.ddmore.libpharmml.dom.commontypes.TransitionMatrixAttrType;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -68,7 +67,7 @@ public class TransitionMatrix
     extends PharmMLRootType implements Symbol
 {
 
-    @XmlElement(name = "Matrix", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    @XmlElement(name = "Matrix", namespace = NS_DEFAULT_CT, required = true)
     protected Matrix matrix;
     @XmlAttribute(name = "type")
     protected TransitionMatrixAttrType type;

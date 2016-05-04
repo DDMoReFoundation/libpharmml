@@ -36,7 +36,6 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -71,7 +70,7 @@ public class StudyTimePoint
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Real", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    @XmlElement(name = "Real", namespace = NS_DEFAULT_CT, required = true)
     protected RealValue real;
 
     /**

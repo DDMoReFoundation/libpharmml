@@ -36,7 +36,6 @@ import eu.ddmore.libpharmml.dom.commontypes.StandardAssignable;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.modeldefn.DSCovariateDefinitionType;
 import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
 
@@ -116,7 +115,7 @@ public class SingleDesignSpace
     protected List<OidRef> listOfObservationRef;
     @XmlElement(name = "ArmRef")
     protected List<OidRef> listOfArmRef;
-    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT)
     protected List<SymbolRef> listOfSymbRef;
     /// Sequence
     @XmlElement(name = "CovariateModelRef")
@@ -142,7 +141,7 @@ public class SingleDesignSpace
     protected StandardAssignable numberTimes;
     @XmlElement(name = "ObservationTimes")
     protected StandardAssignable observationTimes;
-    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT)
     protected Rhs assign;
     
     @XmlElement(name = "StageDefinition")

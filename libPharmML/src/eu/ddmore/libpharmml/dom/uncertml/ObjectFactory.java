@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-import eu.ddmore.libpharmml.impl.XMLFilter;
+import static eu.ddmore.libpharmml.impl.NamespaceFilter.NS_DEFAULT_UNCERTML;
 
 
 /**
@@ -53,87 +53,87 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _ConfidenceInterval_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "ConfidenceInterval");
-    private final static QName _AbstractCategoricalDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "AbstractCategoricalDistribution");
-    private final static QName _Quantile_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "Quantile");
-    private final static QName _MultivariateNormalDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "MultivariateNormalDistribution");
-    private final static QName _UniformDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "UniformDistribution");
-    private final static QName _ContinuousUnivariateMixtureModel_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "ContinuousUnivariateMixtureModel");
-    private final static QName _LaplaceDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "LaplaceDistribution");
-    private final static QName _ArrayVar_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "arrayVar");
-    private final static QName _Mode_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "Mode");
-    private final static QName _Skewness_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "Skewness");
-    private final static QName _CredibleInterval_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "CredibleInterval");
-    private final static QName _BernoulliDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "BernoulliDistribution");
-    private final static QName _DiscreteUnivariateMixtureModel_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "DiscreteUnivariateMixtureModel");
-    private final static QName _ConfusionMatrix_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "ConfusionMatrix");
-    private final static QName _BinomialDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "BinomialDistribution");
-    private final static QName _FDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "FDistribution");
-    private final static QName _Kurtosis_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "Kurtosis");
-    private final static QName _WishartDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "WishartDistribution");
-    private final static QName _DiscreteMultivariateMixtureModel_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "DiscreteMultivariateMixtureModel");
-    private final static QName _AbstractDiscreteDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "AbstractDiscreteDistribution");
-    private final static QName _StatisticsCollection_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "StatisticsCollection");
-    private final static QName _StudentTDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "StudentTDistribution");
-    private final static QName _NegativeBinomialDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "NegativeBinomialDistribution");
-    private final static QName _Median_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "Median");
-    private final static QName _WeibullDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "WeibullDistribution");
-    private final static QName _Range_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "Range");
-    private final static QName _UncertML_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "UncertML");
-    private final static QName _AbstractCategoricalUnivariateDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "AbstractCategoricalUnivariateDistribution");
-    private final static QName _AbstractDiscreteMultivariateDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "AbstractDiscreteMultivariateDistribution");
-    private final static QName _StandardDeviation_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "StandardDeviation");
-    private final static QName _Percentile_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "Percentile");
-    private final static QName _GammaDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "GammaDistribution");
-    private final static QName _AbstractSample_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "AbstractSample");
-    private final static QName _Quartile_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "Quartile");
-    private final static QName _DiscreteProbability_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "DiscreteProbability");
-    private final static QName _Decile_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "Decile");
-    private final static QName _ContinuousMultivariateMixtureModel_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "ContinuousMultivariateMixtureModel");
-    private final static QName _AbstractMetric_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "AbstractMetric");
-    private final static QName _NVal_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "nVal");
-    private final static QName _AbstractDiscreteUnivariateDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "AbstractDiscreteUnivariateDistribution");
-    private final static QName _AbstractContinuousMultivariateDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "AbstractContinuousMultivariateDistribution");
-    private final static QName _DiracDeltaDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "DiracDeltaDistribution");
-    private final static QName _BetaDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "BetaDistribution");
-    private final static QName _SystematicSample_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "SystematicSample");
-    private final static QName _MultinomialDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "MultinomialDistribution");
-    private final static QName _Realisation_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "Realisation");
-    private final static QName _ExponentialDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "ExponentialDistribution");
-    private final static QName _AbstractDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "AbstractDistribution");
-    private final static QName _AbstractContinuousUnivariateDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "AbstractContinuousUnivariateDistribution");
-    private final static QName _AbstractSummaryStatistic_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "AbstractSummaryStatistic");
-    private final static QName _CategoricalUnivariateMixtureModel_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "CategoricalUnivariateMixtureModel");
-    private final static QName _CategoricalDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "CategoricalDistribution");
-    private final static QName _NormalInverseGammaDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "NormalInverseGammaDistribution");
-    private final static QName _Correlation_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "Correlation");
-    private final static QName _ParetoDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "ParetoDistribution");
-    private final static QName _Probability_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "Probability");
-    private final static QName _CategoricalMultivariateMixtureModel_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "CategoricalMultivariateMixtureModel");
-    private final static QName _ChiSquareDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "ChiSquareDistribution");
-    private final static QName _Mean_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "Mean");
-    private final static QName _AbstractUncertainty_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "AbstractUncertainty");
-    private final static QName _InverseGammaDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "InverseGammaDistribution");
-    private final static QName _PoissonDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "PoissonDistribution");
-    private final static QName _LogNormalDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "LogNormalDistribution");
-    private final static QName _CovarianceMatrix_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "CovarianceMatrix");
-    private final static QName _AbstractCategoricalMultivariateDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "AbstractCategoricalMultivariateDistribution");
-    private final static QName _HypergeometricDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "HypergeometricDistribution");
-    private final static QName _RandomSample_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "RandomSample");
-    private final static QName _MultivariateStudentTDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "MultivariateStudentTDistribution");
-    private final static QName _DirichletDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "DirichletDistribution");
-    private final static QName _CoefficientOfVariation_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "CoefficientOfVariation");
-    private final static QName _AbstractContinuousDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "AbstractContinuousDistribution");
-    private final static QName _UnknownSample_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "UnknownSample");
-    private final static QName _Moment_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "Moment");
-    private final static QName _InterquartileRange_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "InterquartileRange");
-    private final static QName _NormalDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "NormalDistribution");
-    private final static QName _LogisticDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "LogisticDistribution");
-    private final static QName _CauchyDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "CauchyDistribution");
-    private final static QName _CentredMoment_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "CentredMoment");
-    private final static QName _Var_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "var");
-    private final static QName _Variance_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "Variance");
-    private final static QName _GeometricDistribution_QNAME = new QName(XMLFilter.NS_DEFAULT_UNCERTML, "GeometricDistribution");
+    private final static QName _ConfidenceInterval_QNAME = new QName(NS_DEFAULT_UNCERTML, "ConfidenceInterval");
+    private final static QName _AbstractCategoricalDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "AbstractCategoricalDistribution");
+    private final static QName _Quantile_QNAME = new QName(NS_DEFAULT_UNCERTML, "Quantile");
+    private final static QName _MultivariateNormalDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "MultivariateNormalDistribution");
+    private final static QName _UniformDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "UniformDistribution");
+    private final static QName _ContinuousUnivariateMixtureModel_QNAME = new QName(NS_DEFAULT_UNCERTML, "ContinuousUnivariateMixtureModel");
+    private final static QName _LaplaceDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "LaplaceDistribution");
+    private final static QName _ArrayVar_QNAME = new QName(NS_DEFAULT_UNCERTML, "arrayVar");
+    private final static QName _Mode_QNAME = new QName(NS_DEFAULT_UNCERTML, "Mode");
+    private final static QName _Skewness_QNAME = new QName(NS_DEFAULT_UNCERTML, "Skewness");
+    private final static QName _CredibleInterval_QNAME = new QName(NS_DEFAULT_UNCERTML, "CredibleInterval");
+    private final static QName _BernoulliDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "BernoulliDistribution");
+    private final static QName _DiscreteUnivariateMixtureModel_QNAME = new QName(NS_DEFAULT_UNCERTML, "DiscreteUnivariateMixtureModel");
+    private final static QName _ConfusionMatrix_QNAME = new QName(NS_DEFAULT_UNCERTML, "ConfusionMatrix");
+    private final static QName _BinomialDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "BinomialDistribution");
+    private final static QName _FDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "FDistribution");
+    private final static QName _Kurtosis_QNAME = new QName(NS_DEFAULT_UNCERTML, "Kurtosis");
+    private final static QName _WishartDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "WishartDistribution");
+    private final static QName _DiscreteMultivariateMixtureModel_QNAME = new QName(NS_DEFAULT_UNCERTML, "DiscreteMultivariateMixtureModel");
+    private final static QName _AbstractDiscreteDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "AbstractDiscreteDistribution");
+    private final static QName _StatisticsCollection_QNAME = new QName(NS_DEFAULT_UNCERTML, "StatisticsCollection");
+    private final static QName _StudentTDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "StudentTDistribution");
+    private final static QName _NegativeBinomialDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "NegativeBinomialDistribution");
+    private final static QName _Median_QNAME = new QName(NS_DEFAULT_UNCERTML, "Median");
+    private final static QName _WeibullDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "WeibullDistribution");
+    private final static QName _Range_QNAME = new QName(NS_DEFAULT_UNCERTML, "Range");
+    private final static QName _UncertML_QNAME = new QName(NS_DEFAULT_UNCERTML, "UncertML");
+    private final static QName _AbstractCategoricalUnivariateDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "AbstractCategoricalUnivariateDistribution");
+    private final static QName _AbstractDiscreteMultivariateDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "AbstractDiscreteMultivariateDistribution");
+    private final static QName _StandardDeviation_QNAME = new QName(NS_DEFAULT_UNCERTML, "StandardDeviation");
+    private final static QName _Percentile_QNAME = new QName(NS_DEFAULT_UNCERTML, "Percentile");
+    private final static QName _GammaDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "GammaDistribution");
+    private final static QName _AbstractSample_QNAME = new QName(NS_DEFAULT_UNCERTML, "AbstractSample");
+    private final static QName _Quartile_QNAME = new QName(NS_DEFAULT_UNCERTML, "Quartile");
+    private final static QName _DiscreteProbability_QNAME = new QName(NS_DEFAULT_UNCERTML, "DiscreteProbability");
+    private final static QName _Decile_QNAME = new QName(NS_DEFAULT_UNCERTML, "Decile");
+    private final static QName _ContinuousMultivariateMixtureModel_QNAME = new QName(NS_DEFAULT_UNCERTML, "ContinuousMultivariateMixtureModel");
+    private final static QName _AbstractMetric_QNAME = new QName(NS_DEFAULT_UNCERTML, "AbstractMetric");
+    private final static QName _NVal_QNAME = new QName(NS_DEFAULT_UNCERTML, "nVal");
+    private final static QName _AbstractDiscreteUnivariateDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "AbstractDiscreteUnivariateDistribution");
+    private final static QName _AbstractContinuousMultivariateDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "AbstractContinuousMultivariateDistribution");
+    private final static QName _DiracDeltaDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "DiracDeltaDistribution");
+    private final static QName _BetaDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "BetaDistribution");
+    private final static QName _SystematicSample_QNAME = new QName(NS_DEFAULT_UNCERTML, "SystematicSample");
+    private final static QName _MultinomialDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "MultinomialDistribution");
+    private final static QName _Realisation_QNAME = new QName(NS_DEFAULT_UNCERTML, "Realisation");
+    private final static QName _ExponentialDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "ExponentialDistribution");
+    private final static QName _AbstractDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "AbstractDistribution");
+    private final static QName _AbstractContinuousUnivariateDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "AbstractContinuousUnivariateDistribution");
+    private final static QName _AbstractSummaryStatistic_QNAME = new QName(NS_DEFAULT_UNCERTML, "AbstractSummaryStatistic");
+    private final static QName _CategoricalUnivariateMixtureModel_QNAME = new QName(NS_DEFAULT_UNCERTML, "CategoricalUnivariateMixtureModel");
+    private final static QName _CategoricalDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "CategoricalDistribution");
+    private final static QName _NormalInverseGammaDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "NormalInverseGammaDistribution");
+    private final static QName _Correlation_QNAME = new QName(NS_DEFAULT_UNCERTML, "Correlation");
+    private final static QName _ParetoDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "ParetoDistribution");
+    private final static QName _Probability_QNAME = new QName(NS_DEFAULT_UNCERTML, "Probability");
+    private final static QName _CategoricalMultivariateMixtureModel_QNAME = new QName(NS_DEFAULT_UNCERTML, "CategoricalMultivariateMixtureModel");
+    private final static QName _ChiSquareDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "ChiSquareDistribution");
+    private final static QName _Mean_QNAME = new QName(NS_DEFAULT_UNCERTML, "Mean");
+    private final static QName _AbstractUncertainty_QNAME = new QName(NS_DEFAULT_UNCERTML, "AbstractUncertainty");
+    private final static QName _InverseGammaDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "InverseGammaDistribution");
+    private final static QName _PoissonDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "PoissonDistribution");
+    private final static QName _LogNormalDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "LogNormalDistribution");
+    private final static QName _CovarianceMatrix_QNAME = new QName(NS_DEFAULT_UNCERTML, "CovarianceMatrix");
+    private final static QName _AbstractCategoricalMultivariateDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "AbstractCategoricalMultivariateDistribution");
+    private final static QName _HypergeometricDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "HypergeometricDistribution");
+    private final static QName _RandomSample_QNAME = new QName(NS_DEFAULT_UNCERTML, "RandomSample");
+    private final static QName _MultivariateStudentTDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "MultivariateStudentTDistribution");
+    private final static QName _DirichletDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "DirichletDistribution");
+    private final static QName _CoefficientOfVariation_QNAME = new QName(NS_DEFAULT_UNCERTML, "CoefficientOfVariation");
+    private final static QName _AbstractContinuousDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "AbstractContinuousDistribution");
+    private final static QName _UnknownSample_QNAME = new QName(NS_DEFAULT_UNCERTML, "UnknownSample");
+    private final static QName _Moment_QNAME = new QName(NS_DEFAULT_UNCERTML, "Moment");
+    private final static QName _InterquartileRange_QNAME = new QName(NS_DEFAULT_UNCERTML, "InterquartileRange");
+    private final static QName _NormalDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "NormalDistribution");
+    private final static QName _LogisticDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "LogisticDistribution");
+    private final static QName _CauchyDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "CauchyDistribution");
+    private final static QName _CentredMoment_QNAME = new QName(NS_DEFAULT_UNCERTML, "CentredMoment");
+    private final static QName _Var_QNAME = new QName(NS_DEFAULT_UNCERTML, "var");
+    private final static QName _Variance_QNAME = new QName(NS_DEFAULT_UNCERTML, "Variance");
+    private final static QName _GeometricDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "GeometricDistribution");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.uncertml
@@ -1402,7 +1402,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ConfidenceInterval }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "ConfidenceInterval", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "ConfidenceInterval", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<ConfidenceInterval> createConfidenceInterval(ConfidenceInterval value) {
         return new JAXBElement<ConfidenceInterval>(_ConfidenceInterval_QNAME, ConfidenceInterval.class, null, value);
     }
@@ -1411,7 +1411,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbstractCategoricalDistributionType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "AbstractCategoricalDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "AbstractCategoricalDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
     public JAXBElement<AbstractCategoricalDistributionType> createAbstractCategoricalDistribution(AbstractCategoricalDistributionType value) {
         return new JAXBElement<AbstractCategoricalDistributionType>(_AbstractCategoricalDistribution_QNAME, AbstractCategoricalDistributionType.class, null, value);
     }
@@ -1420,7 +1420,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Quantile }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "Quantile", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "Quantile", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<Quantile> createQuantile(Quantile value) {
         return new JAXBElement<Quantile>(_Quantile_QNAME, Quantile.class, null, value);
     }
@@ -1429,7 +1429,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link MultivariateNormalDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "MultivariateNormalDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousMultivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "MultivariateNormalDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousMultivariateDistribution")
     public JAXBElement<MultivariateNormalDistribution> createMultivariateNormalDistribution(MultivariateNormalDistribution value) {
         return new JAXBElement<MultivariateNormalDistribution>(_MultivariateNormalDistribution_QNAME, MultivariateNormalDistribution.class, null, value);
     }
@@ -1438,7 +1438,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link UniformDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "UniformDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "UniformDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<UniformDistribution> createUniformDistribution(UniformDistribution value) {
         return new JAXBElement<UniformDistribution>(_UniformDistribution_QNAME, UniformDistribution.class, null, value);
     }
@@ -1447,7 +1447,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ContinuousUnivariateMixtureModel }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "ContinuousUnivariateMixtureModel", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "ContinuousUnivariateMixtureModel", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<ContinuousUnivariateMixtureModel> createContinuousUnivariateMixtureModel(ContinuousUnivariateMixtureModel value) {
         return new JAXBElement<ContinuousUnivariateMixtureModel>(_ContinuousUnivariateMixtureModel_QNAME, ContinuousUnivariateMixtureModel.class, null, value);
     }
@@ -1456,7 +1456,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link LaplaceDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "LaplaceDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "LaplaceDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<LaplaceDistribution> createLaplaceDistribution(LaplaceDistribution value) {
         return new JAXBElement<LaplaceDistribution>(_LaplaceDistribution_QNAME, LaplaceDistribution.class, null, value);
     }
@@ -1465,7 +1465,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayVarRefType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "arrayVar")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "arrayVar")
     public JAXBElement<ArrayVarRefType> createArrayVar(ArrayVarRefType value) {
         return new JAXBElement<ArrayVarRefType>(_ArrayVar_QNAME, ArrayVarRefType.class, null, value);
     }
@@ -1474,7 +1474,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Mode }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "Mode", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "Mode", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<Mode> createMode(Mode value) {
         return new JAXBElement<Mode>(_Mode_QNAME, Mode.class, null, value);
     }
@@ -1483,7 +1483,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Skewness }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "Skewness", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "Skewness", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<Skewness> createSkewness(Skewness value) {
         return new JAXBElement<Skewness>(_Skewness_QNAME, Skewness.class, null, value);
     }
@@ -1492,7 +1492,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link CredibleInterval }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "CredibleInterval", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "CredibleInterval", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<CredibleInterval> createCredibleInterval(CredibleInterval value) {
         return new JAXBElement<CredibleInterval>(_CredibleInterval_QNAME, CredibleInterval.class, null, value);
     }
@@ -1501,7 +1501,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link BernoulliDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "BernoulliDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractCategoricalUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "BernoulliDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractCategoricalUnivariateDistribution")
     public JAXBElement<BernoulliDistribution> createBernoulliDistribution(BernoulliDistribution value) {
         return new JAXBElement<BernoulliDistribution>(_BernoulliDistribution_QNAME, BernoulliDistribution.class, null, value);
     }
@@ -1510,7 +1510,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DiscreteUnivariateMixtureModel }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "DiscreteUnivariateMixtureModel", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "DiscreteUnivariateMixtureModel", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteUnivariateDistribution")
     public JAXBElement<DiscreteUnivariateMixtureModel> createDiscreteUnivariateMixtureModel(DiscreteUnivariateMixtureModel value) {
         return new JAXBElement<DiscreteUnivariateMixtureModel>(_DiscreteUnivariateMixtureModel_QNAME, DiscreteUnivariateMixtureModel.class, null, value);
     }
@@ -1519,7 +1519,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ConfusionMatrix }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "ConfusionMatrix", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractMetric")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "ConfusionMatrix", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractMetric")
     public JAXBElement<ConfusionMatrix> createConfusionMatrix(ConfusionMatrix value) {
         return new JAXBElement<ConfusionMatrix>(_ConfusionMatrix_QNAME, ConfusionMatrix.class, null, value);
     }
@@ -1528,7 +1528,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link BinomialDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "BinomialDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "BinomialDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteUnivariateDistribution")
     public JAXBElement<BinomialDistribution> createBinomialDistribution(BinomialDistribution value) {
         return new JAXBElement<BinomialDistribution>(_BinomialDistribution_QNAME, BinomialDistribution.class, null, value);
     }
@@ -1537,7 +1537,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link FDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "FDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "FDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<FDistribution> createFDistribution(FDistribution value) {
         return new JAXBElement<FDistribution>(_FDistribution_QNAME, FDistribution.class, null, value);
     }
@@ -1546,7 +1546,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Kurtosis }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "Kurtosis", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "Kurtosis", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<Kurtosis> createKurtosis(Kurtosis value) {
         return new JAXBElement<Kurtosis>(_Kurtosis_QNAME, Kurtosis.class, null, value);
     }
@@ -1555,7 +1555,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link WishartDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "WishartDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteMultivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "WishartDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteMultivariateDistribution")
     public JAXBElement<WishartDistribution> createWishartDistribution(WishartDistribution value) {
         return new JAXBElement<WishartDistribution>(_WishartDistribution_QNAME, WishartDistribution.class, null, value);
     }
@@ -1564,7 +1564,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DiscreteMultivariateMixtureModel }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "DiscreteMultivariateMixtureModel", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteMultivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "DiscreteMultivariateMixtureModel", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteMultivariateDistribution")
     public JAXBElement<DiscreteMultivariateMixtureModel> createDiscreteMultivariateMixtureModel(DiscreteMultivariateMixtureModel value) {
         return new JAXBElement<DiscreteMultivariateMixtureModel>(_DiscreteMultivariateMixtureModel_QNAME, DiscreteMultivariateMixtureModel.class, null, value);
     }
@@ -1573,7 +1573,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbstractDiscreteDistributionType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "AbstractDiscreteDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "AbstractDiscreteDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
     public JAXBElement<AbstractDiscreteDistributionType> createAbstractDiscreteDistribution(AbstractDiscreteDistributionType value) {
         return new JAXBElement<AbstractDiscreteDistributionType>(_AbstractDiscreteDistribution_QNAME, AbstractDiscreteDistributionType.class, null, value);
     }
@@ -1582,7 +1582,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StatisticsCollection }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "StatisticsCollection", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "StatisticsCollection", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<StatisticsCollection> createStatisticsCollection(StatisticsCollection value) {
         return new JAXBElement<StatisticsCollection>(_StatisticsCollection_QNAME, StatisticsCollection.class, null, value);
     }
@@ -1591,7 +1591,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentTDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "StudentTDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "StudentTDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<StudentTDistribution> createStudentTDistribution(StudentTDistribution value) {
         return new JAXBElement<StudentTDistribution>(_StudentTDistribution_QNAME, StudentTDistribution.class, null, value);
     }
@@ -1600,7 +1600,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link NegativeBinomialDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "NegativeBinomialDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "NegativeBinomialDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteUnivariateDistribution")
     public JAXBElement<NegativeBinomialDistribution> createNegativeBinomialDistribution(NegativeBinomialDistribution value) {
         return new JAXBElement<NegativeBinomialDistribution>(_NegativeBinomialDistribution_QNAME, NegativeBinomialDistribution.class, null, value);
     }
@@ -1609,7 +1609,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Median }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "Median", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "Median", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<Median> createMedian(Median value) {
         return new JAXBElement<Median>(_Median_QNAME, Median.class, null, value);
     }
@@ -1618,7 +1618,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link WeibullDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "WeibullDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "WeibullDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<WeibullDistribution> createWeibullDistribution(WeibullDistribution value) {
         return new JAXBElement<WeibullDistribution>(_WeibullDistribution_QNAME, WeibullDistribution.class, null, value);
     }
@@ -1627,7 +1627,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Range }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "Range", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "Range", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<Range> createRange(Range value) {
         return new JAXBElement<Range>(_Range_QNAME, Range.class, null, value);
     }
@@ -1636,7 +1636,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link UncertMLType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "UncertML")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "UncertML")
     public JAXBElement<UncertMLType> createUncertML(UncertMLType value) {
         return new JAXBElement<UncertMLType>(_UncertML_QNAME, UncertMLType.class, null, value);
     }
@@ -1645,7 +1645,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbstractCategoricalUnivariateDistributionType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "AbstractCategoricalUnivariateDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "AbstractCategoricalUnivariateDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
     public JAXBElement<AbstractCategoricalUnivariateDistributionType> createAbstractCategoricalUnivariateDistribution(AbstractCategoricalUnivariateDistributionType value) {
         return new JAXBElement<AbstractCategoricalUnivariateDistributionType>(_AbstractCategoricalUnivariateDistribution_QNAME, AbstractCategoricalUnivariateDistributionType.class, null, value);
     }
@@ -1654,7 +1654,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbstractDiscreteMultivariateDistributionType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "AbstractDiscreteMultivariateDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "AbstractDiscreteMultivariateDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
     public JAXBElement<AbstractDiscreteMultivariateDistributionType> createAbstractDiscreteMultivariateDistribution(AbstractDiscreteMultivariateDistributionType value) {
         return new JAXBElement<AbstractDiscreteMultivariateDistributionType>(_AbstractDiscreteMultivariateDistribution_QNAME, AbstractDiscreteMultivariateDistributionType.class, null, value);
     }
@@ -1663,7 +1663,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StandardDeviation }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "StandardDeviation", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "StandardDeviation", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<StandardDeviation> createStandardDeviation(StandardDeviation value) {
         return new JAXBElement<StandardDeviation>(_StandardDeviation_QNAME, StandardDeviation.class, null, value);
     }
@@ -1672,7 +1672,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Percentile }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "Percentile", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "Percentile", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<Percentile> createPercentile(Percentile value) {
         return new JAXBElement<Percentile>(_Percentile_QNAME, Percentile.class, null, value);
     }
@@ -1681,7 +1681,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GammaDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "GammaDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "GammaDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<GammaDistribution> createGammaDistribution(GammaDistribution value) {
         return new JAXBElement<GammaDistribution>(_GammaDistribution_QNAME, GammaDistribution.class, null, value);
     }
@@ -1690,7 +1690,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbstractSampleType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "AbstractSample", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractUncertainty")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "AbstractSample", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractUncertainty")
     public JAXBElement<AbstractSampleType> createAbstractSample(AbstractSampleType value) {
         return new JAXBElement<AbstractSampleType>(_AbstractSample_QNAME, AbstractSampleType.class, null, value);
     }
@@ -1699,7 +1699,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Quartile }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "Quartile", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "Quartile", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<Quartile> createQuartile(Quartile value) {
         return new JAXBElement<Quartile>(_Quartile_QNAME, Quartile.class, null, value);
     }
@@ -1708,7 +1708,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DiscreteProbability }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "DiscreteProbability", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "DiscreteProbability", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<DiscreteProbability> createDiscreteProbability(DiscreteProbability value) {
         return new JAXBElement<DiscreteProbability>(_DiscreteProbability_QNAME, DiscreteProbability.class, null, value);
     }
@@ -1717,7 +1717,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Decile }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "Decile", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "Decile", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<Decile> createDecile(Decile value) {
         return new JAXBElement<Decile>(_Decile_QNAME, Decile.class, null, value);
     }
@@ -1726,7 +1726,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ContinuousMultivariateMixtureModel }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "ContinuousMultivariateMixtureModel", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousMultivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "ContinuousMultivariateMixtureModel", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousMultivariateDistribution")
     public JAXBElement<ContinuousMultivariateMixtureModel> createContinuousMultivariateMixtureModel(ContinuousMultivariateMixtureModel value) {
         return new JAXBElement<ContinuousMultivariateMixtureModel>(_ContinuousMultivariateMixtureModel_QNAME, ContinuousMultivariateMixtureModel.class, null, value);
     }
@@ -1735,7 +1735,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbstractMetricType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "AbstractMetric")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "AbstractMetric")
     public JAXBElement<AbstractMetricType> createAbstractMetric(AbstractMetricType value) {
         return new JAXBElement<AbstractMetricType>(_AbstractMetric_QNAME, AbstractMetricType.class, null, value);
     }
@@ -1744,7 +1744,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "nVal")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "nVal")
     public JAXBElement<BigInteger> createNVal(BigInteger value) {
         return new JAXBElement<BigInteger>(_NVal_QNAME, BigInteger.class, null, value);
     }
@@ -1753,7 +1753,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbstractDiscreteUnivariateDistributionType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "AbstractDiscreteUnivariateDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "AbstractDiscreteUnivariateDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
     public JAXBElement<AbstractDiscreteUnivariateDistributionType> createAbstractDiscreteUnivariateDistribution(AbstractDiscreteUnivariateDistributionType value) {
         return new JAXBElement<AbstractDiscreteUnivariateDistributionType>(_AbstractDiscreteUnivariateDistribution_QNAME, AbstractDiscreteUnivariateDistributionType.class, null, value);
     }
@@ -1762,7 +1762,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbstractContinuousMultivariateDistributionType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "AbstractContinuousMultivariateDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "AbstractContinuousMultivariateDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
     public JAXBElement<AbstractContinuousMultivariateDistributionType> createAbstractContinuousMultivariateDistribution(AbstractContinuousMultivariateDistributionType value) {
         return new JAXBElement<AbstractContinuousMultivariateDistributionType>(_AbstractContinuousMultivariateDistribution_QNAME, AbstractContinuousMultivariateDistributionType.class, null, value);
     }
@@ -1771,7 +1771,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DiracDeltaDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "DiracDeltaDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "DiracDeltaDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<DiracDeltaDistribution> createDiracDeltaDistribution(DiracDeltaDistribution value) {
         return new JAXBElement<DiracDeltaDistribution>(_DiracDeltaDistribution_QNAME, DiracDeltaDistribution.class, null, value);
     }
@@ -1780,7 +1780,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link BetaDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "BetaDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "BetaDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<BetaDistribution> createBetaDistribution(BetaDistribution value) {
         return new JAXBElement<BetaDistribution>(_BetaDistribution_QNAME, BetaDistribution.class, null, value);
     }
@@ -1789,7 +1789,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SystematicSample }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "SystematicSample", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSample")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "SystematicSample", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSample")
     public JAXBElement<SystematicSample> createSystematicSample(SystematicSample value) {
         return new JAXBElement<SystematicSample>(_SystematicSample_QNAME, SystematicSample.class, null, value);
     }
@@ -1798,7 +1798,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link MultinomialDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "MultinomialDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteMultivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "MultinomialDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteMultivariateDistribution")
     public JAXBElement<MultinomialDistribution> createMultinomialDistribution(MultinomialDistribution value) {
         return new JAXBElement<MultinomialDistribution>(_MultinomialDistribution_QNAME, MultinomialDistribution.class, null, value);
     }
@@ -1807,7 +1807,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Realisation }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "Realisation", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractUncertainty")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "Realisation", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractUncertainty")
     public JAXBElement<Realisation> createRealisation(Realisation value) {
         return new JAXBElement<Realisation>(_Realisation_QNAME, Realisation.class, null, value);
     }
@@ -1816,7 +1816,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ExponentialDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "ExponentialDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "ExponentialDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<ExponentialDistribution> createExponentialDistribution(ExponentialDistribution value) {
         return new JAXBElement<ExponentialDistribution>(_ExponentialDistribution_QNAME, ExponentialDistribution.class, null, value);
     }
@@ -1825,7 +1825,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbstractDistributionType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "AbstractDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractUncertainty")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "AbstractDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractUncertainty")
     public JAXBElement<AbstractDistributionType> createAbstractDistribution(AbstractDistributionType value) {
         return new JAXBElement<AbstractDistributionType>(_AbstractDistribution_QNAME, AbstractDistributionType.class, null, value);
     }
@@ -1834,7 +1834,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbstractContinuousUnivariateDistributionType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "AbstractContinuousUnivariateDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "AbstractContinuousUnivariateDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
     public JAXBElement<AbstractContinuousUnivariateDistributionType> createAbstractContinuousUnivariateDistribution(AbstractContinuousUnivariateDistributionType value) {
         return new JAXBElement<AbstractContinuousUnivariateDistributionType>(_AbstractContinuousUnivariateDistribution_QNAME, AbstractContinuousUnivariateDistributionType.class, null, value);
     }
@@ -1843,7 +1843,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbstractSummaryStatisticType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "AbstractSummaryStatistic", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractUncertainty")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "AbstractSummaryStatistic", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractUncertainty")
     public JAXBElement<AbstractSummaryStatisticType> createAbstractSummaryStatistic(AbstractSummaryStatisticType value) {
         return new JAXBElement<AbstractSummaryStatisticType>(_AbstractSummaryStatistic_QNAME, AbstractSummaryStatisticType.class, null, value);
     }
@@ -1852,7 +1852,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link CategoricalUnivariateMixtureModel }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "CategoricalUnivariateMixtureModel", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractCategoricalUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "CategoricalUnivariateMixtureModel", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractCategoricalUnivariateDistribution")
     public JAXBElement<CategoricalUnivariateMixtureModel> createCategoricalUnivariateMixtureModel(CategoricalUnivariateMixtureModel value) {
         return new JAXBElement<CategoricalUnivariateMixtureModel>(_CategoricalUnivariateMixtureModel_QNAME, CategoricalUnivariateMixtureModel.class, null, value);
     }
@@ -1861,7 +1861,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link CategoricalDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "CategoricalDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractCategoricalMultivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "CategoricalDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractCategoricalMultivariateDistribution")
     public JAXBElement<CategoricalDistribution> createCategoricalDistribution(CategoricalDistribution value) {
         return new JAXBElement<CategoricalDistribution>(_CategoricalDistribution_QNAME, CategoricalDistribution.class, null, value);
     }
@@ -1870,7 +1870,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link NormalInverseGammaDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "NormalInverseGammaDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousMultivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "NormalInverseGammaDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousMultivariateDistribution")
     public JAXBElement<NormalInverseGammaDistribution> createNormalInverseGammaDistribution(NormalInverseGammaDistribution value) {
         return new JAXBElement<NormalInverseGammaDistribution>(_NormalInverseGammaDistribution_QNAME, NormalInverseGammaDistribution.class, null, value);
     }
@@ -1879,7 +1879,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Correlation }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "Correlation", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "Correlation", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<Correlation> createCorrelation(Correlation value) {
         return new JAXBElement<Correlation>(_Correlation_QNAME, Correlation.class, null, value);
     }
@@ -1888,7 +1888,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ParetoDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "ParetoDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "ParetoDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<ParetoDistribution> createParetoDistribution(ParetoDistribution value) {
         return new JAXBElement<ParetoDistribution>(_ParetoDistribution_QNAME, ParetoDistribution.class, null, value);
     }
@@ -1897,7 +1897,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Probability }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "Probability", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "Probability", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<Probability> createProbability(Probability value) {
         return new JAXBElement<Probability>(_Probability_QNAME, Probability.class, null, value);
     }
@@ -1906,7 +1906,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link CategoricalMultivariateMixtureModel }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "CategoricalMultivariateMixtureModel", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractCategoricalMultivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "CategoricalMultivariateMixtureModel", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractCategoricalMultivariateDistribution")
     public JAXBElement<CategoricalMultivariateMixtureModel> createCategoricalMultivariateMixtureModel(CategoricalMultivariateMixtureModel value) {
         return new JAXBElement<CategoricalMultivariateMixtureModel>(_CategoricalMultivariateMixtureModel_QNAME, CategoricalMultivariateMixtureModel.class, null, value);
     }
@@ -1915,7 +1915,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ChiSquareDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "ChiSquareDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "ChiSquareDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<ChiSquareDistribution> createChiSquareDistribution(ChiSquareDistribution value) {
         return new JAXBElement<ChiSquareDistribution>(_ChiSquareDistribution_QNAME, ChiSquareDistribution.class, null, value);
     }
@@ -1924,7 +1924,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Mean }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "Mean", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "Mean", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<Mean> createMean(Mean value) {
         return new JAXBElement<Mean>(_Mean_QNAME, Mean.class, null, value);
     }
@@ -1933,7 +1933,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbstractUncertaintyType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "AbstractUncertainty")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "AbstractUncertainty")
     public JAXBElement<AbstractUncertaintyType> createAbstractUncertainty(AbstractUncertaintyType value) {
         return new JAXBElement<AbstractUncertaintyType>(_AbstractUncertainty_QNAME, AbstractUncertaintyType.class, null, value);
     }
@@ -1942,7 +1942,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link InverseGammaDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "InverseGammaDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "InverseGammaDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<InverseGammaDistribution> createInverseGammaDistribution(InverseGammaDistribution value) {
         return new JAXBElement<InverseGammaDistribution>(_InverseGammaDistribution_QNAME, InverseGammaDistribution.class, null, value);
     }
@@ -1951,7 +1951,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link PoissonDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "PoissonDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "PoissonDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteUnivariateDistribution")
     public JAXBElement<PoissonDistribution> createPoissonDistribution(PoissonDistribution value) {
         return new JAXBElement<PoissonDistribution>(_PoissonDistribution_QNAME, PoissonDistribution.class, null, value);
     }
@@ -1960,7 +1960,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link LogNormalDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "LogNormalDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "LogNormalDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<LogNormalDistribution> createLogNormalDistribution(LogNormalDistribution value) {
         return new JAXBElement<LogNormalDistribution>(_LogNormalDistribution_QNAME, LogNormalDistribution.class, null, value);
     }
@@ -1969,7 +1969,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link CovarianceMatrix }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "CovarianceMatrix", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "CovarianceMatrix", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<CovarianceMatrix> createCovarianceMatrix(CovarianceMatrix value) {
         return new JAXBElement<CovarianceMatrix>(_CovarianceMatrix_QNAME, CovarianceMatrix.class, null, value);
     }
@@ -1978,7 +1978,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbstractCategoricalMultivariateDistributionType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "AbstractCategoricalMultivariateDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "AbstractCategoricalMultivariateDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
     public JAXBElement<AbstractCategoricalMultivariateDistributionType> createAbstractCategoricalMultivariateDistribution(AbstractCategoricalMultivariateDistributionType value) {
         return new JAXBElement<AbstractCategoricalMultivariateDistributionType>(_AbstractCategoricalMultivariateDistribution_QNAME, AbstractCategoricalMultivariateDistributionType.class, null, value);
     }
@@ -1987,7 +1987,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link HypergeometricDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "HypergeometricDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "HypergeometricDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteUnivariateDistribution")
     public JAXBElement<HypergeometricDistribution> createHypergeometricDistribution(HypergeometricDistribution value) {
         return new JAXBElement<HypergeometricDistribution>(_HypergeometricDistribution_QNAME, HypergeometricDistribution.class, null, value);
     }
@@ -1996,7 +1996,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link RandomSample }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "RandomSample", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSample")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "RandomSample", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSample")
     public JAXBElement<RandomSample> createRandomSample(RandomSample value) {
         return new JAXBElement<RandomSample>(_RandomSample_QNAME, RandomSample.class, null, value);
     }
@@ -2005,7 +2005,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link MultivariateStudentTDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "MultivariateStudentTDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousMultivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "MultivariateStudentTDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousMultivariateDistribution")
     public JAXBElement<MultivariateStudentTDistribution> createMultivariateStudentTDistribution(MultivariateStudentTDistribution value) {
         return new JAXBElement<MultivariateStudentTDistribution>(_MultivariateStudentTDistribution_QNAME, MultivariateStudentTDistribution.class, null, value);
     }
@@ -2014,7 +2014,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DirichletDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "DirichletDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousMultivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "DirichletDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousMultivariateDistribution")
     public JAXBElement<DirichletDistribution> createDirichletDistribution(DirichletDistribution value) {
         return new JAXBElement<DirichletDistribution>(_DirichletDistribution_QNAME, DirichletDistribution.class, null, value);
     }
@@ -2023,7 +2023,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link CoefficientOfVariation }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "CoefficientOfVariation", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "CoefficientOfVariation", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<CoefficientOfVariation> createCoefficientOfVariation(CoefficientOfVariation value) {
         return new JAXBElement<CoefficientOfVariation>(_CoefficientOfVariation_QNAME, CoefficientOfVariation.class, null, value);
     }
@@ -2032,7 +2032,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbstractContinuousDistributionType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "AbstractContinuousDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "AbstractContinuousDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDistribution")
     public JAXBElement<AbstractContinuousDistributionType> createAbstractContinuousDistribution(AbstractContinuousDistributionType value) {
         return new JAXBElement<AbstractContinuousDistributionType>(_AbstractContinuousDistribution_QNAME, AbstractContinuousDistributionType.class, null, value);
     }
@@ -2041,7 +2041,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link UnknownSample }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "UnknownSample", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSample")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "UnknownSample", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSample")
     public JAXBElement<UnknownSample> createUnknownSample(UnknownSample value) {
         return new JAXBElement<UnknownSample>(_UnknownSample_QNAME, UnknownSample.class, null, value);
     }
@@ -2050,7 +2050,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Moment }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "Moment", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "Moment", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<Moment> createMoment(Moment value) {
         return new JAXBElement<Moment>(_Moment_QNAME, Moment.class, null, value);
     }
@@ -2059,7 +2059,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link InterquartileRange }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "InterquartileRange", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "InterquartileRange", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<InterquartileRange> createInterquartileRange(InterquartileRange value) {
         return new JAXBElement<InterquartileRange>(_InterquartileRange_QNAME, InterquartileRange.class, null, value);
     }
@@ -2068,7 +2068,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link NormalDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "NormalDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "NormalDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<NormalDistribution> createNormalDistribution(NormalDistribution value) {
         return new JAXBElement<NormalDistribution>(_NormalDistribution_QNAME, NormalDistribution.class, null, value);
     }
@@ -2077,7 +2077,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link LogisticDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "LogisticDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "LogisticDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<LogisticDistribution> createLogisticDistribution(LogisticDistribution value) {
         return new JAXBElement<LogisticDistribution>(_LogisticDistribution_QNAME, LogisticDistribution.class, null, value);
     }
@@ -2086,7 +2086,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link CauchyDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "CauchyDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "CauchyDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractContinuousUnivariateDistribution")
     public JAXBElement<CauchyDistribution> createCauchyDistribution(CauchyDistribution value) {
         return new JAXBElement<CauchyDistribution>(_CauchyDistribution_QNAME, CauchyDistribution.class, null, value);
     }
@@ -2095,7 +2095,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link CentredMoment }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "CentredMoment", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "CentredMoment", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<CentredMoment> createCentredMoment(CentredMoment value) {
         return new JAXBElement<CentredMoment>(_CentredMoment_QNAME, CentredMoment.class, null, value);
     }
@@ -2104,7 +2104,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link VarRefType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "var")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "var")
     public JAXBElement<VarRefType> createVar(VarRefType value) {
         return new JAXBElement<VarRefType>(_Var_QNAME, VarRefType.class, null, value);
     }
@@ -2113,7 +2113,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Variance }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "Variance", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "Variance", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractSummaryStatistic")
     public JAXBElement<Variance> createVariance(Variance value) {
         return new JAXBElement<Variance>(_Variance_QNAME, Variance.class, null, value);
     }
@@ -2122,7 +2122,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GeometricDistribution }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_UNCERTML, name = "GeometricDistribution", substitutionHeadNamespace = XMLFilter.NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteUnivariateDistribution")
+    @XmlElementDecl(namespace = NS_DEFAULT_UNCERTML, name = "GeometricDistribution", substitutionHeadNamespace = NS_DEFAULT_UNCERTML, substitutionHeadName = "AbstractDiscreteUnivariateDistribution")
     public JAXBElement<GeometricDistribution> createGeometricDistribution(GeometricDistribution value) {
         return new JAXBElement<GeometricDistribution>(_GeometricDistribution_QNAME, GeometricDistribution.class, null, value);
     }

@@ -29,7 +29,6 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -231,7 +230,7 @@ public class StructuredObsError
     })
     public static class ErrorModel extends PharmMLElement {
 
-        @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+        @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT, required = true)
         protected Rhs assign;
 
         /**
@@ -297,7 +296,7 @@ public class StructuredObsError
     })
     public static class Output extends PharmMLElement {
 
-        @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+        @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT, required = true)
         protected SymbolRef symbRef;
 
         /**
@@ -363,7 +362,7 @@ public class StructuredObsError
     })
     public static class ResidualError extends PharmMLElement {
 
-        @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+        @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT, required = true)
         protected SymbolRef symbRef;
 
         /**

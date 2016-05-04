@@ -44,7 +44,6 @@ import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.maths.ConditionalStatement;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -96,7 +95,7 @@ public class CovariateModel
 	@XmlElement(name = "CovariateModelRef")
     protected CovariateModelRef covariateModelRef; // PharmML 0.7
 	
-    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Name", namespace = NS_DEFAULT_CT)
     protected Name name;
     @Deprecated
     @XmlElement(name = "SimpleParameter")

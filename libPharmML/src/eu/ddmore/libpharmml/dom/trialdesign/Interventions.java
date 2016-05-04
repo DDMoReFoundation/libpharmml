@@ -29,7 +29,6 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.modeldefn.DesignParameter;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -71,7 +70,7 @@ public class Interventions
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "DesignParameter", namespace = XMLFilter.NS_DEFAULT_MDEF)
+    @XmlElement(name = "DesignParameter", namespace = NS_DEFAULT_MDEF)
     protected List<DesignParameter> listOfDesignParameter;
     @XmlElement(name = "Administration", required = true)
     protected List<Administration> listOfAdministration;

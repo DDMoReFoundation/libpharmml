@@ -49,7 +49,6 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
 import eu.ddmore.libpharmml.dom.maths.ConditionalStatement;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -93,17 +92,17 @@ public abstract class CommonObservationModel
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Name", namespace = NS_DEFAULT_CT)
     protected Name name;
     
 //    // -----------
-//    @XmlElementRef(name = "CommonParameterElement", namespace = XMLFilter.NS_DEFAULT_MDEF, type = JAXBElement.class, required = false)
+//    @XmlElementRef(name = "CommonParameterElement", namespace = NS_DEFAULT_MDEF, type = JAXBElement.class, required = false)
 //    protected List<JAXBElement<? extends CommonParameter>> commonParameterElement;
 //    @XmlTransient
 //    protected List<CommonParameter> listOfCommonParameterElement;
 //    // ------------
 //    
-//    @XmlElement(name = "Variable", namespace = XMLFilter.NS_DEFAULT_CT)
+//    @XmlElement(name = "Variable", namespace = NS_DEFAULT_CT)
 //    protected List<VariableDefinition> variable;
 //    @XmlElement(name = "Correlation")
 //    protected List<Correlation> correlation;

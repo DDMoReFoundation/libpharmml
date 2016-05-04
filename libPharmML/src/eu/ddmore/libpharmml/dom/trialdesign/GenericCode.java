@@ -30,7 +30,6 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.HasElementsRenamed;
@@ -82,16 +81,16 @@ public class GenericCode
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Symbol", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
+    @XmlElement(name = "Symbol", namespace = NS_DEFAULT_MSTEPS)
     protected List<TargetToolSymbol> msteps_listOfSymbol;
-    @XmlElement(name = "Symbol", namespace = XMLFilter.NS_DEFAULT_TD)
+    @XmlElement(name = "Symbol", namespace = NS_DEFAULT_TD)
     protected List<TargetToolSymbol> design_listOfSymbol;
     @XmlTransient
     protected List<TargetToolSymbol> listOfSymbol;
     
-    @XmlElement(name = "Code", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
+    @XmlElement(name = "Code", namespace = NS_DEFAULT_MSTEPS)
     protected String msteps_code;
-    @XmlElement(name = "Code", namespace = XMLFilter.NS_DEFAULT_TD, required = true)
+    @XmlElement(name = "Code", namespace = NS_DEFAULT_TD, required = true)
     protected String design_code;
     @XmlTransient
     protected String code;

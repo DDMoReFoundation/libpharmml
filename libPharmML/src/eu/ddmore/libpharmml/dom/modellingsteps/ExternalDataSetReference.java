@@ -33,7 +33,6 @@ import eu.ddmore.libpharmml.dom.dataset.TargetToolDataSet;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
 import eu.ddmore.libpharmml.dom.trialdesign.ExternalDataSet;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
 
@@ -69,7 +68,7 @@ public class ExternalDataSetReference
     extends PharmMLRootType implements ReferenceContainer
 {
 
-    @XmlElement(name = "OidRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    @XmlElement(name = "OidRef", namespace = NS_DEFAULT_CT, required = true)
     protected OidRef oidRef;
     
     public ExternalDataSetReference(){}

@@ -29,7 +29,6 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -64,7 +63,7 @@ public class DiscreteObservation
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT, required = true)
     protected List<SymbolRef> listOfSymbRef;
 
     /**

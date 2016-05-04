@@ -9,7 +9,6 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.dom.tags.AdaptedClass;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 
 @SuppressWarnings("deprecation")
 public class StandardAssignableAdapted extends PharmMLRootType implements AdaptedClass<StandardAssignable> {
@@ -22,11 +21,11 @@ public class StandardAssignableAdapted extends PharmMLRootType implements Adapte
     
     // The following attributes are meant to support the backward compatiblity before version 0.7.1.
     // When ScalarRhs attributes changed to StandardAssignable.
-    @XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "Equation", namespace = NS_DEFAULT_MATH)
     protected Equation equation;
-    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class)
+    @XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class)
     protected Scalar scalar;
-    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT)
     protected SymbolRef symbRef;
     
     public StandardAssignableAdapted(){}

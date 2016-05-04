@@ -32,7 +32,6 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.RhsEquationAdapter;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
@@ -79,10 +78,10 @@ public class CovariateTransformation
     @XmlElement(name = "TransformedCovariate", required = true)
     protected TransformedCovariate transformedCovariate;
     
-    @XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "Equation", namespace = NS_DEFAULT_MATH)
     @XmlJavaTypeAdapter(RhsEquationAdapter.class)
     protected Rhs mapped_equation;
-    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT) // PharmML 0.7.1
+    @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT) // PharmML 0.7.1
     protected Rhs mapped_assign;
     @XmlTransient
     protected Rhs assign;

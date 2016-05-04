@@ -39,7 +39,6 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.dom.maths.LogicUniOp;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -75,9 +74,9 @@ public class CommonDiscreteState
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "LogicBinop", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "LogicBinop", namespace = NS_DEFAULT_MATH)
     protected LogicBinOp logicBinop;
-    @XmlElement(name = "LogicUniop", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "LogicUniop", namespace = NS_DEFAULT_MATH)
     protected LogicUniOp logicUniop;
     @XmlAttribute(name = "MarkovOrder")
     protected Integer markovOrder;

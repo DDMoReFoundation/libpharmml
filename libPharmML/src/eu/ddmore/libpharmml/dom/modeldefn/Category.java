@@ -34,7 +34,6 @@ import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
 
@@ -79,9 +78,9 @@ import eu.ddmore.libpharmml.validation.SymbolResolver;
 })
 public class Category extends PharmMLElement implements ReferenceContainer {
 
-    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Name", namespace = NS_DEFAULT_CT)
     protected Name name;
-    @XmlElement(name = "Description", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Description", namespace = NS_DEFAULT_CT)
     protected AnnotationType description;
     @XmlElement(name = "Probability")
     protected Rhs probability;

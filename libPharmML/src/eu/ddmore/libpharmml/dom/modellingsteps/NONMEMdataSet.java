@@ -35,9 +35,8 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.trialdesign.CodeInjection;
-import eu.ddmore.libpharmml.dom.trialdesign.MultipleDVMapping;
 import eu.ddmore.libpharmml.dom.trialdesign.ExternalDataSet;
-import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.dom.trialdesign.MultipleDVMapping;
 
 
 /**
@@ -87,9 +86,9 @@ public class NONMEMdataSet
     protected List<ColumnTransformation> listOfColumnTransformation;
     @XmlElement(name = "MultipleDVMapping")
     protected List<MultipleDVMapping> multipleDVMapping;
-    @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
+    @XmlElement(name = "DataSet", namespace = NS_DEFAULT_DS, required = true)
     protected DataSet dataSet;
-    @XmlElement(name = "CodeInjection", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
+    @XmlElement(name = "CodeInjection", namespace = NS_DEFAULT_MSTEPS)
     protected CodeInjection codeInjection;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

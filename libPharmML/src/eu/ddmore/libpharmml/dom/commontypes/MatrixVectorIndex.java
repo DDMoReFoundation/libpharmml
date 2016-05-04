@@ -29,7 +29,6 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
@@ -71,7 +70,7 @@ import eu.ddmore.libpharmml.util.annotations.RenamedElement;
 		transientField = "assign")
 public class MatrixVectorIndex extends PharmMLRootType {
 	
-	@XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
+	@XmlElement(name = "Equation", namespace = NS_DEFAULT_MATH)
 	@XmlJavaTypeAdapter(RhsEquationAdapter.class)
     protected Rhs mapped_equation;
     @XmlElement(name = "Assign") // PharmML 0.7.1

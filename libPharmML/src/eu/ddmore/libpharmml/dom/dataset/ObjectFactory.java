@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-import static eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_DS;;
+import static eu.ddmore.libpharmml.impl.NamespaceFilter.NS_DEFAULT_DS;;
 
 
 /**

@@ -23,9 +23,9 @@
 // Generated on: 2014.03.24 at 03:18:36 PM GMT 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_MSTEPS,
+@javax.xml.bind.annotation.XmlSchema(namespace = eu.ddmore.libpharmml.impl.NamespaceFilter.NS_DEFAULT_MSTEPS,
 xmlns = {@javax.xml.bind.annotation.XmlNs(
-		namespaceURI = eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_MSTEPS, 
+		namespaceURI = eu.ddmore.libpharmml.impl.NamespaceFilter.NS_DEFAULT_MSTEPS, 
 		prefix = "msteps")},
 elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package eu.ddmore.libpharmml.dom.modellingsteps;

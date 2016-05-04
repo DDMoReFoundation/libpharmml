@@ -25,7 +25,7 @@ import javax.xml.namespace.QName;
 
 import eu.ddmore.libpharmml.dom.maths.ConditionalStatement;
 import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKMacroList;
-import static eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_MDEF;;
+import static eu.ddmore.libpharmml.impl.NamespaceFilter.NS_DEFAULT_MDEF;;
 
 
 /**

@@ -31,7 +31,6 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.ToolName;
 import eu.ddmore.libpharmml.dom.modeldefn.DesignParameter;
 import eu.ddmore.libpharmml.dom.modellingsteps.InterventionsReference;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -135,7 +134,7 @@ public class TrialDesign
     protected List<IndividualDosing> individualDosing;
     
     // PharmML 0.7
-    @XmlElement(name = "DesignParameter", namespace = XMLFilter.NS_DEFAULT_MDEF)
+    @XmlElement(name = "DesignParameter", namespace = NS_DEFAULT_MDEF)
     protected List<DesignParameter> listOfDesignParameter;
     @XmlElement(name = "ExternalDataSet")
     protected List<ExternalDataSet> listOfExternalDataSet;

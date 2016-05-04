@@ -24,9 +24,9 @@
 //
 
 @javax.xml.bind.annotation.XmlSchema(
-		namespace = eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_CT, 
+		namespace = eu.ddmore.libpharmml.impl.NamespaceFilter.NS_DEFAULT_CT, 
 		xmlns = {@javax.xml.bind.annotation.XmlNs(
-				namespaceURI = eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_CT, 
+				namespaceURI = eu.ddmore.libpharmml.impl.NamespaceFilter.NS_DEFAULT_CT, 
 				prefix = "ct")},
 		elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package eu.ddmore.libpharmml.dom.commontypes;

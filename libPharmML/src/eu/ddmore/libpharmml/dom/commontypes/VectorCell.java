@@ -31,7 +31,6 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
@@ -90,7 +89,7 @@ public class VectorCell extends PharmMLRootType implements ScalarContainer {
 	// in this class.
 	protected MatrixVectorIndex index;
 	
-	@XmlElementRef(name = "VectorCellValue", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class)
+	@XmlElementRef(name = "VectorCellValue", namespace = NS_DEFAULT_CT, type = JAXBElement.class)
 	protected VectorCellValue value;
 		
 	// -----------------

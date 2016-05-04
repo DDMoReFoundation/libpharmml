@@ -33,7 +33,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -79,7 +78,7 @@ public class Activity
 
     @XmlElement(name = "LookupTable")
     protected LookupTable lookupTable;
-    @XmlElementRef(name = "DosingRegimen", namespace = XMLFilter.NS_DEFAULT_TD, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "DosingRegimen", namespace = NS_DEFAULT_TD, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends DosingRegimen> dosingRegimen;
     @XmlElement(name = "Washout")
     protected Washout washout;

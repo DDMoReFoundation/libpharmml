@@ -44,7 +44,6 @@ import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -88,13 +87,13 @@ public class Demographic
     extends PharmMLRootType implements PharmMLObject
 {
 
-    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Name", namespace = NS_DEFAULT_CT)
     protected Name name;
-    @XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    @XmlElement(name = "VariabilityReference", namespace = NS_DEFAULT_CT, required = true)
     protected LevelReference variabilityReference;
-    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class)
+    @XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class)
     protected List<JAXBElement<?>> scalar;
-    @XmlElement(name = "ColumnRef", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
+    @XmlElement(name = "ColumnRef", namespace = NS_DEFAULT_DS, required = true)
     protected ColumnReference columnRef;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

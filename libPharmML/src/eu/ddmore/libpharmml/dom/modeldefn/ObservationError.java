@@ -41,7 +41,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Symbol;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolName;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -82,7 +81,7 @@ public abstract class ObservationError
     extends PharmMLRootType implements Symbol
 {
 
-    @XmlElement(name = "Symbol", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Symbol", namespace = NS_DEFAULT_CT)
     protected SymbolName symbol;
     @XmlAttribute(name = "symbId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
