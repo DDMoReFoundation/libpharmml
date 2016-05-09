@@ -20,6 +20,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import eu.ddmore.libpharmml.AssertUtil;
 import eu.ddmore.libpharmml.ILibPharmML;
 import eu.ddmore.libpharmml.IPharmMLResource;
 import eu.ddmore.libpharmml.PharmMlFactory;
@@ -90,14 +91,15 @@ public class VectorTest {
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		libPharmML.save(baos, resource);
-		
 		System.out.print(baos);
 		
-		assertThat(baos.toString(), containsString("<ct:Vector default=\"77.0\" length=\"10\">"));
-		assertThat(baos.toString(), containsString("<ct:ALQ/>"));
-		assertThat(baos.toString(), containsString("<ct:Int>20</ct:Int>"));
-		assertThat(baos.toString(), containsString("<ct:Real>23.3</ct:Real>"));
-		assertThat(baos.toString(), containsString("<ct:String>stringvalue</ct:String>"));
+		String output = baos.toString();
+		assertThat(output, containsString("<ct:Vector default=\"77.0\" length=\"10\">"));
+//		assertThat(output, containsString("<ct:ALQ/?>"));
+		assertThat(output, AssertUtil.containsRegex(".*<ct:ALQ/?>.*"));
+		assertThat(output, containsString("<ct:Int>20</ct:Int>"));
+		assertThat(output, containsString("<ct:Real>23.3</ct:Real>"));
+		assertThat(output, containsString("<ct:String>stringvalue</ct:String>"));
 	}
 	
 	@Test

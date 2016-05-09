@@ -1,7 +1,7 @@
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import static eu.ddmore.libpharmml.AssertUtil.containsRegex;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
-import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
@@ -83,7 +83,7 @@ public class MissingValueTest {
 		rhs.assign(mv);
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		libPharmML.save(baos, resource);
-		assertThat(baos.toString(), containsString("<ct:"+qname+" id=\"mv1\"/>"));
+		assertThat(baos.toString(), containsRegex("<ct:"+qname+" id=\"mv1\"/?>"));
 	}
 	
 	@Test

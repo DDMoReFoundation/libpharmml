@@ -1,6 +1,6 @@
 package eu.ddmore.libpharmml.dom.trialdesign;
 
-import static org.hamcrest.core.StringContains.containsString;
+import static eu.ddmore.libpharmml.AssertUtil.containsRegex;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -56,7 +56,7 @@ public class VariableToResetTest {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		libPharmML.save(baos, resource7);
 		
-		assertThat(baos.toString(), containsString("<td:FullReset/>"));
+		assertThat(baos.toString(), containsRegex("<td:FullReset/?>"));
 		
 //		System.out.println(baos);
 	}
