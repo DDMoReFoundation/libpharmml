@@ -57,6 +57,11 @@ public class ObjectFactory {
     
     // PharmML 0.7.3
     private final static QName _OptimalDesignStep_QNAME = new QName(NS_DEFAULT_MSTEPS, "OptimalDesignStep");
+    
+    private final static ObjectFactory instance = new ObjectFactory();
+    public static ObjectFactory getInstance(){
+    	return instance;
+    }
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.modellingsteps

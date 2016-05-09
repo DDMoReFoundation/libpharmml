@@ -25,7 +25,7 @@ import eu.ddmore.libpharmml.exceptions.UndeclaredInterfaceImplementer;
 
 public class VectorCellValueAdapter extends XmlAdapter<JAXBElement<?>, VectorCellValue>{
 	
-	private ObjectFactory of = new ObjectFactory();
+	private ObjectFactory of = ObjectFactory.getInstance();
 
 	@Override
 	public VectorCellValue unmarshal(JAXBElement<?> v) throws Exception {

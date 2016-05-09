@@ -29,7 +29,7 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
 @SuppressWarnings("deprecation")
 public class VectorValueAdapter extends XmlAdapter<JAXBElement<?>, VectorValue>{
 	
-	private static ObjectFactory of = new ObjectFactory();
+	private static ObjectFactory of = ObjectFactory.getInstance();
 
 	@Override
 	public VectorValue unmarshal(JAXBElement<?> v) throws Exception {

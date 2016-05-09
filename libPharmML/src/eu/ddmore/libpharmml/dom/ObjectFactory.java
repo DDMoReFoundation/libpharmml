@@ -45,6 +45,12 @@ import javax.xml.bind.annotation.XmlRegistry;
  */
 @XmlRegistry
 public class ObjectFactory {
+	
+	private static final ObjectFactory instance = new ObjectFactory();
+	
+	public static ObjectFactory getInstance(){
+		return instance;
+	}
 
 
     /**

@@ -134,6 +134,12 @@ public class ObjectFactory {
     private final static QName _Var_QNAME = new QName(NS_DEFAULT_UNCERTML, "var");
     private final static QName _Variance_QNAME = new QName(NS_DEFAULT_UNCERTML, "Variance");
     private final static QName _GeometricDistribution_QNAME = new QName(NS_DEFAULT_UNCERTML, "GeometricDistribution");
+    
+    private final static ObjectFactory instance = new ObjectFactory();
+    
+    public static ObjectFactory getInstance(){
+    	return instance;
+    }
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.uncertml
