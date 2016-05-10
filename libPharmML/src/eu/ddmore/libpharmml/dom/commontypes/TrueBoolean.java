@@ -31,6 +31,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+
 
 /**
  * A literal Boolean value for true.
@@ -62,8 +64,8 @@ public class TrueBoolean
 	}
 
 	@Override
-	public JAXBElement<? extends Scalar> toJAXBElement() {
-		return ObjectFactory.getInstance().createTrue(this);
+	public JAXBElement<TrueBoolean> toJAXBElement() {
+		return MasterObjectFactory.COMMONTYPES_OF.createTrue(this);
 	}
 
 	@Override

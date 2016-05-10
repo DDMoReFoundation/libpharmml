@@ -174,8 +174,8 @@ public class IntValue extends PharmMLElement implements Scalar, Identifiable{
 	}
 	
 	@Override
-	public JAXBElement<? extends Scalar> toJAXBElement() {
-		return MasterObjectFactory.createScalar(this);
+	public JAXBElement<IntValue> toJAXBElement() {
+		return MasterObjectFactory.COMMONTYPES_OF.createInt(this);
 	}
 
 	@Override

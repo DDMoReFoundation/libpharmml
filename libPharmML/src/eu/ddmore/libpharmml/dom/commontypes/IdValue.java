@@ -154,8 +154,8 @@ public class IdValue extends PharmMLElement implements Scalar, Identifiable {
 	}
 	
 	@Override
-	public JAXBElement<? extends Scalar> toJAXBElement() {
-		return MasterObjectFactory.createScalar(this);
+	public JAXBElement<IdValue> toJAXBElement() {
+		return MasterObjectFactory.COMMONTYPES_OF.createId(this);
 	}
 
 	@Override

@@ -139,8 +139,8 @@ public class RealValue extends PharmMLElement implements Scalar, VectorValue, Id
     }
 
 	@Override
-	public JAXBElement<? extends Scalar> toJAXBElement() {
-		return MasterObjectFactory.createScalar(this);
+	public JAXBElement<RealValue> toJAXBElement() {
+		return MasterObjectFactory.COMMONTYPES_OF.createReal(this);
 	}
 
 	@Override

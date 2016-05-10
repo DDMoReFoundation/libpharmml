@@ -29,7 +29,7 @@ import eu.ddmore.libpharmml.dom.tags.MathExpression;
 
 /**
  * Interface for scalar values
- * @author florent
+ * @author F. Yvon
  *
  */
 @XmlJavaTypeAdapter(ScalarAdapter.class)

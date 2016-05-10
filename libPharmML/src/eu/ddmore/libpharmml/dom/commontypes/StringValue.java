@@ -148,8 +148,8 @@ public class StringValue extends PharmMLElement implements Scalar, Identifiable 
 	}
 	
 	@Override
-	public JAXBElement<? extends Scalar> toJAXBElement() {
-		return MasterObjectFactory.createScalar(this);
+	public JAXBElement<StringValue> toJAXBElement() {
+		return MasterObjectFactory.COMMONTYPES_OF.createString(this);
 	}
 
 	@Override

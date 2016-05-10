@@ -29,13 +29,14 @@ import eu.ddmore.libpharmml.impl.NamespaceFilter;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 @SuppressWarnings("deprecation")
-public class MatrixRowValueAdapter extends XmlAdapter<JAXBElement<?>, MatrixRowValue> {
+public class MatrixRowValueAdapter extends XmlAdapter<JAXBElement<? extends MatrixRowValue>, MatrixRowValue> {
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public MatrixRowValue unmarshal(JAXBElement<?> v) throws Exception {
+	public MatrixRowValue unmarshal(JAXBElement<? extends MatrixRowValue> v) throws Exception {
 		Object el = v.getValue();
 		if(el instanceof Scalar){
-			return new ScalarAdapter().unmarshal(v);
+			return new ScalarAdapter().unmarshal((JAXBElement<? extends Scalar>)el);
 		}
 		if(el instanceof MatrixRowValue){
 			return (MatrixRowValue) el;
@@ -45,8 +46,8 @@ public class MatrixRowValueAdapter extends XmlAdapter<JAXBElement<?>, MatrixRowV
 	}
 
 	@Override
-	public JAXBElement<?> marshal(MatrixRowValue v) throws Exception {
-		JAXBElement<?> jaxbEl;
+	public JAXBElement<? extends MatrixRowValue> marshal(MatrixRowValue v) throws Exception {
+		JAXBElement<? extends MatrixRowValue> jaxbEl;
 		if(v != null){
 			if(v instanceof Scalar){
 				jaxbEl = MasterObjectFactory.createScalar((Scalar) v);
