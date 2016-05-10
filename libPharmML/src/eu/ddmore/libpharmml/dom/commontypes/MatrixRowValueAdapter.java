@@ -36,9 +36,8 @@ public class MatrixRowValueAdapter extends XmlAdapter<JAXBElement<? extends Matr
 	public MatrixRowValue unmarshal(JAXBElement<? extends MatrixRowValue> v) throws Exception {
 		Object el = v.getValue();
 		if(el instanceof Scalar){
-			return new ScalarAdapter().unmarshal((JAXBElement<? extends Scalar>)el);
-		}
-		if(el instanceof MatrixRowValue){
+			return new ScalarAdapter().unmarshal((JAXBElement<? extends Scalar>) v);
+		} else if(el instanceof MatrixRowValue){
 			return (MatrixRowValue) el;
 		} else {
 			return null;
@@ -50,7 +49,7 @@ public class MatrixRowValueAdapter extends XmlAdapter<JAXBElement<? extends Matr
 		JAXBElement<? extends MatrixRowValue> jaxbEl;
 		if(v != null){
 			if(v instanceof Scalar){
-				jaxbEl = MasterObjectFactory.createScalar((Scalar) v);
+				jaxbEl = ((Scalar) v).toJAXBElement();
 			} else if (v instanceof Sequence){
 				jaxbEl = MasterObjectFactory.COMMONTYPES_OF.createSequence((Sequence) v);
 			} else if (v instanceof SymbolRef){
