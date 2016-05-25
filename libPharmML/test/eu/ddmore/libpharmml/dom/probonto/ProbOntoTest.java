@@ -121,13 +121,13 @@ public class ProbOntoTest {
 		assertValid(libPharmML.getValidator().createValidationReport(unmarshalResource));
 	}
 
-	@Test
-	public void testParamProperties() throws Exception {
-		for(DistributionName dn : DistributionName.values()){
-//			System.out.println(dn);
-			assertTrue(dn+" has parameters defined.", dn.allowedParameters().size() > 0);
-		}
-	}
+//	@Test
+//	public void testParamProperties() throws Exception {
+//		for(DistributionName dn : DistributionName.values()){
+////			System.out.println(dn);
+//			assertTrue(dn+" has parameters defined.", dn.allowedParameters().size() > 0);
+//		}
+//	}
 	
 	@Test
 	public void testRequiredParameters() throws Exception {
@@ -163,6 +163,25 @@ public class ProbOntoTest {
 		po.setName(DistributionName.STANDARD_NORMAL_1);
 		po.validate(errorHandler);
 		assertValid(errorHandler.createReport());
+	}
+	
+	@Test
+	public void testValidHyperbolicSecant1() throws Exception {
+		ValidationReportFactory errorHandler = new ValidationReportFactory();
+		ProbOnto po = ObjectFactory.getInstance().createProbOnto();
+		po.setName(DistributionName.HYPERBOLIC_SECANT_1);
+		po.validate(errorHandler);
+		assertValid(errorHandler.createReport());
+	}
+	
+	@Test
+	public void testInvalidHyperbolicSecant1() throws Exception {
+		ValidationReportFactory errorHandler = new ValidationReportFactory();
+		ProbOnto po = ObjectFactory.getInstance().createProbOnto();
+		po.setName(DistributionName.HYPERBOLIC_SECANT_1);
+		po.createParameter(ParameterName.ALPHA).assign(new RealValue(2.0));
+		po.validate(errorHandler);
+		assertInvalid(1,errorHandler.createReport());
 	}
 	
 	public static ProbOnto createInvalidProbOnto(){
