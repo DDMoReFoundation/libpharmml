@@ -428,15 +428,17 @@ public enum DistributionName {
         	for(int i=0;i<parametersArray.length;i++){
         		try {
         			String rawParamName = parametersArray[i];
-        			Matcher m = OPTIONAL_PARAM_PATTERN.matcher(rawParamName);
-        			String actualParamName;
-        			if(m.find()){ // it's optional
-        				actualParamName = m.group(1);
-        			} else { // it's required
-        				actualParamName = rawParamName;
-        				requiredParameters.add(ParameterName.fromValue(actualParamName));
+        			if(!rawParamName.isEmpty()){ // avoiding "" arguments
+        				Matcher m = OPTIONAL_PARAM_PATTERN.matcher(rawParamName);
+            			String actualParamName;
+            			if(m.find()){ // it's optional
+            				actualParamName = m.group(1);
+            			} else { // it's required
+            				actualParamName = rawParamName;
+            				requiredParameters.add(ParameterName.fromValue(actualParamName));
+            			}
+            			allowedParameters.add(ParameterName.fromValue(actualParamName));
         			}
-        			allowedParameters.add(ParameterName.fromValue(actualParamName));
         		} catch (IllegalArgumentException e) {
         			throw new RuntimeException("Parameter \""+parametersArray[i]+"\" doesn't exist.");
         		}
