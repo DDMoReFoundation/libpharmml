@@ -32,6 +32,7 @@ import eu.ddmore.libpharmml.dom.commontypes.ToolName;
 import eu.ddmore.libpharmml.dom.modeldefn.DesignParameter;
 import eu.ddmore.libpharmml.dom.modellingsteps.InterventionsReference;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -596,6 +597,12 @@ public class TrialDesign
             this.arms = el;
             return el;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 
 }

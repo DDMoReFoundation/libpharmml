@@ -39,6 +39,7 @@ import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -227,6 +228,12 @@ public class Realisation
 	@Override
 	public JAXBElement<Realisation> toJAXBElementOfLogicBinOp() {
 		return ObjectFactory.getInstance().createRealisation(this);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

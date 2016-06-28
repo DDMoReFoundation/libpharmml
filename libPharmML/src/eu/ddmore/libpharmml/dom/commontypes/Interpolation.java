@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -148,6 +149,11 @@ public class Interpolation
 	@Override
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>().addIfNotNull(interpIndepVar);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

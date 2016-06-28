@@ -543,7 +543,7 @@ public class MathExpressionConverterToMathML implements MathExpressionConverter 
 	@Override
 	public String convert(Probability probability) {
 		getLogger().severe("Probability cannot be converted to MathML");
-		// TODO Auto-generated method stub
+		// TODO
 		return NULL_NUMBER;
 	}
 

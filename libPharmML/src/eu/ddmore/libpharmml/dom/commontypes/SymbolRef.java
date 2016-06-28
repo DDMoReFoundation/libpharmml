@@ -47,6 +47,7 @@ import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -198,6 +199,11 @@ public class SymbolRef
 	@Override
 	public JAXBElement<SymbolRef> toJAXBElementOfLogicBinOp() {
 		return ObjectFactory.getInstance().createSymbRef(this);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

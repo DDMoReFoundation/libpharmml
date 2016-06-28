@@ -41,6 +41,7 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.dataset.DatasetMap;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -92,7 +93,8 @@ public class LookupTable
     /**
      * @deprecated {@link #getListOfColumnMapping()}.
      */
-    public List<ColumnMapping> getColumnMapping() {
+    @Deprecated
+	public List<ColumnMapping> getColumnMapping() {
         return getListOfColumnMapping();
     }
 
@@ -165,7 +167,8 @@ public class LookupTable
      *     {@link DataSet }
      *     
      */
-    public DataSet getDataSet() {
+    @Override
+	public DataSet getDataSet() {
         return dataSet;
     }
 
@@ -196,6 +199,12 @@ public class LookupTable
             columnMapping = new ArrayList<ColumnMapping>();
         }
         return this.columnMapping;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

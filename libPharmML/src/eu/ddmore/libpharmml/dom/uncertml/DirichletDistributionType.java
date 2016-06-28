@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.visitor.Visitor;
+
 
 /**
  * <p>Java class for DirichletDistributionType complex type.
@@ -97,5 +99,11 @@ public class DirichletDistributionType
     public void setConcentration(PositiveRealValueType value) {
         this.concentration = value;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

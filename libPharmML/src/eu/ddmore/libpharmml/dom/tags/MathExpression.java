@@ -1,13 +1,14 @@
 package eu.ddmore.libpharmml.dom.tags;
 
 import eu.ddmore.libpharmml.MathExpressionConverter;
+import eu.ddmore.libpharmml.dom.PharmMLNode;
 
 /**
  * Interface for any DOM object representing a math expression.
  * @author F. Yvon
  *
  */
-public interface MathExpression {
+public interface MathExpression extends PharmMLNode {
 	
 	/**
 	 * Converts this object to a math expression. All its content is deeply converted via this method if it's available

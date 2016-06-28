@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.visitor.Visitor;
+
 
 /**
  * The type defining a parameter model.
@@ -61,6 +63,12 @@ public class ParameterModel
 	@Override
 	protected List<TreeNode> listChildren() {
 		return super.listChildren();
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 

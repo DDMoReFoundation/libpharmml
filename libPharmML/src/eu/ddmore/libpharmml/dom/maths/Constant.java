@@ -32,6 +32,7 @@ import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -159,6 +160,11 @@ public class Constant extends PharmMLElement implements Operand, ExpressionValue
 	@Override
 	public JAXBElement<Constant> toJAXBElementOfLogicBinOp() {
 		return ObjectFactory.getInstance().createConstant(this);
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

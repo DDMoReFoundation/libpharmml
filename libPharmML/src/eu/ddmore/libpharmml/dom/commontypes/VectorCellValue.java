@@ -18,14 +18,15 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.dom.commontypes;
 
-import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import eu.ddmore.libpharmml.dom.PharmMLNode;
 
 /**
  * Interface for object types that can be used as value within in a vector cell.
  * @author F. Yvon
  */
 @XmlJavaTypeAdapter(VectorCellValueAdapter.class)
-public interface VectorCellValue extends VectorValue, TreeNode {
+public interface VectorCellValue extends VectorValue, PharmMLNode {
 
 }

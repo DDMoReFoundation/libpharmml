@@ -48,6 +48,7 @@ import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.SubList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -306,7 +307,8 @@ public class Matrix
      * 
      * @deprecated
      */
-    public List<MatrixRow> getMatrixRow() {
+    @Deprecated
+	public List<MatrixRow> getMatrixRow() {
 //        if (matrixRow == null) {
 //            matrixRow = new ArrayList<MatrixRowType>();
 //        }
@@ -818,6 +820,11 @@ public class Matrix
 	@Override
 	public JAXBElement<Matrix> toJAXBElementOfLogicBinOp() {
 		return ObjectFactory.getInstance().createMatrix(this);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
         
 }

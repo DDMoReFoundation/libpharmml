@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -60,6 +61,12 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 public class IndividualMapping
     extends MappingType
 {
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 
 }

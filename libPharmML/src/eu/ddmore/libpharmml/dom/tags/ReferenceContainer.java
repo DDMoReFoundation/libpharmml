@@ -19,6 +19,7 @@
 package eu.ddmore.libpharmml.dom.tags;
 
 import eu.ddmore.libpharmml.IErrorHandler;
+import eu.ddmore.libpharmml.dom.PharmMLNode;
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.validation.PharmMLValidator;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
@@ -30,7 +31,7 @@ import eu.ddmore.libpharmml.validation.SymbolResolver;
  * the implementing class and partially within the {@link PharmMLValidator}
  * class.
  */
-public interface ReferenceContainer {
+public interface ReferenceContainer extends PharmMLNode {
 	
 	/**
 	 * Attempt to validate the references within this object.

@@ -43,6 +43,7 @@ import eu.ddmore.libpharmml.dom.commontypes.ScalarContainer;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -193,6 +194,11 @@ public class HeaderRow
 		MissingValue scalar = new MissingValue(symbol);
 		getListOfScalar().add(scalar);
 		return scalar;
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -191,6 +192,11 @@ public class FunctionDefinition
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(functionArgument)
 				.addIfNotNull(definition);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 	
 }

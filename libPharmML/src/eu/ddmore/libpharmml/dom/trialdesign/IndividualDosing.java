@@ -46,6 +46,7 @@ import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -158,7 +159,8 @@ public class IndividualDosing
      *     {@link DataSet }
      *     
      */
-    public DataSet getDataSet() {
+    @Override
+	public DataSet getDataSet() {
         return dataSet;
     }
 
@@ -398,5 +400,11 @@ public class IndividualDosing
 				sr.handleUnresolvedObject(activityRef);
 			}
 		}
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 }

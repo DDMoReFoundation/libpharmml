@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -258,5 +259,11 @@ public class IndividualDefinition
     public void setReplicateMapping(ReplicateMapping value) {
         this.replicateMapping = value;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

@@ -52,6 +52,7 @@ import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -271,6 +272,11 @@ public class Statsop
 	@Override
 	public JAXBElement<Statsop> toJAXBElementOfLogicBinOp() {
 		return ObjectFactory.getInstance().createStatsop(this);
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

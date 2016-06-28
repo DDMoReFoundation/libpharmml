@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -81,6 +82,11 @@ public class TrueBoolean
 	@Override
 	public JAXBElement<TrueBoolean> toJAXBElementOfLogicBinOp() {
 		return ObjectFactory.getInstance().createTrue(this);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

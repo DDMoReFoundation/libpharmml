@@ -43,6 +43,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.HasElementsRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -150,6 +151,12 @@ public class MultipleDVMapping
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(columnRef)
 				.addIfNotNull(transient_piecewise);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

@@ -1,7 +1,7 @@
 package eu.ddmore.libpharmml.dom.tags;
 
-import javax.swing.tree.TreeNode;
+import eu.ddmore.libpharmml.dom.PharmMLNode;
 
-public interface StructuralModelElement extends TreeNode {
+public interface StructuralModelElement extends PharmMLNode {
 
 }

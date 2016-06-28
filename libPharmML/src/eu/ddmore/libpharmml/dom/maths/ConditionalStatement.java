@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.tags.StructuralModelElement;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -199,6 +200,11 @@ public class ConditionalStatement extends PharmMLElement implements StructuralMo
 	@Override
 	public ConditionalStatement clone() {
 		return clone(ConditionalStatement.class, this);
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

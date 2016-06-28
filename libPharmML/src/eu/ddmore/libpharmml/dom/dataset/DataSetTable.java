@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -165,6 +166,11 @@ public class DataSetTable
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(listOfHeaderRow)
 				.addIfNotNull(liftOfRow);
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

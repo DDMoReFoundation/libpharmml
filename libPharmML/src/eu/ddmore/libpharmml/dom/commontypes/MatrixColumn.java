@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -188,5 +189,10 @@ public class MatrixColumn
     	}
     	return list;
     }
+
+    @Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
 
 }

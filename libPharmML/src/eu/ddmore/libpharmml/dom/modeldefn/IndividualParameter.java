@@ -50,6 +50,7 @@ import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.maths.Uniop;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -251,7 +252,8 @@ public class IndividualParameter
      *     {@link Rhs }
      *     
      */
-    public Rhs getAssign() {
+    @Override
+	public Rhs getAssign() {
         return assign;
     }
 
@@ -263,7 +265,8 @@ public class IndividualParameter
      *     {@link Rhs }
      *     
      */
-    public void setAssign(Rhs value) {
+    @Override
+	public void setAssign(Rhs value) {
         this.assign = value;
     }
 
@@ -599,6 +602,12 @@ public class IndividualParameter
         				.addIfNotNull(assign);
         	}
 
+			@Override
+			public void accept(Visitor visitor) {
+				visitor.visit(this);
+				
+			}
+
         }
 
 
@@ -767,9 +776,29 @@ public class IndividualParameter
             				.addIfNotNull(assign);
             	}
 
+				@Override
+				public void accept(Visitor visitor) {
+					visitor.visit(this);
+					
+				}
+
             }
 
+
+			@Override
+			public void accept(Visitor visitor) {
+				visitor.visit(this);
+				
+			}
+
         }
+
+
+		@Override
+		public void accept(Visitor visitor) {
+			visitor.visit(this);
+			
+		}
 
     }
     
@@ -975,6 +1004,12 @@ public class IndividualParameter
 		Rhs rhs = new Rhs(probability);
 		setAssign(rhs);
 		return rhs;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 

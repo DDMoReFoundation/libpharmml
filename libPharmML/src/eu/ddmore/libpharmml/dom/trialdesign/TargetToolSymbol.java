@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Symbol;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -77,7 +78,8 @@ public class TargetToolSymbol
      *     {@link String }
      *     
      */
-    public String getSymbId() {
+    @Override
+	public String getSymbId() {
         return symbId;
     }
 
@@ -89,8 +91,15 @@ public class TargetToolSymbol
      *     {@link String }
      *     
      */
-    public void setSymbId(String value) {
+    @Override
+	public void setSymbId(String value) {
         this.symbId = value;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

@@ -70,6 +70,7 @@ import eu.ddmore.libpharmml.dom.uncertml.UniformDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.WishartDistribution;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -360,5 +361,11 @@ public class UncertML
     			.addJAXBIfNotNull(abstractDiscreteUnivariateDistribution)
     			.addJAXBIfNotNull(abstractDiscreteMultivariateDistribution);
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

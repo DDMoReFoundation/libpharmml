@@ -42,6 +42,7 @@ import eu.ddmore.libpharmml.dom.maths.Operand;
 import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -316,6 +317,11 @@ public class MatrixSelector
 	@Override
 	public JAXBElement<MatrixSelector> toJAXBElementOfLogicBinOp() {
 		return ObjectFactory.getInstance().createMatrixSelector(this);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 

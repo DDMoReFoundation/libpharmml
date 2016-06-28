@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.visitor.Visitor;
+
 
 /**
  * <p>Java class for LogisticDistributionType complex type.
@@ -179,5 +181,11 @@ public class LogisticDistributionType
     public void setTruncationUpperInclusiveBound(ContinuousValueType value) {
         this.truncationUpperInclusiveBound = value;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -112,6 +113,11 @@ public class CommonColumnDefinition
 	@Override
 	protected List<TreeNode> listChildren() {
 		return Collections.emptyList();
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

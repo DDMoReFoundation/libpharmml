@@ -39,6 +39,7 @@ import eu.ddmore.libpharmml.dom.trialdesign.ContinuousObservation;
 import eu.ddmore.libpharmml.dom.trialdesign.DiscreteObservation;
 import eu.ddmore.libpharmml.dom.trialdesign.Timepoints;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -166,6 +167,12 @@ public class Observations
 				.addIfNotNull(timepoints)
 				.addIfNotNull(continuous)
 				.addIfNotNull(discrete);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

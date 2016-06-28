@@ -119,7 +119,8 @@ public abstract class ObservationError
      *     {@link String }
      *     
      */
-    public String getSymbId() {
+    @Override
+	public String getSymbId() {
         return symbId;
     }
 
@@ -131,7 +132,8 @@ public abstract class ObservationError
      *     {@link String }
      *     
      */
-    public void setSymbId(String value) {
+    @Override
+	public void setSymbId(String value) {
         this.symbId = value;
     }
     

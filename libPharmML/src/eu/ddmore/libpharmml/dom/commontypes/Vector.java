@@ -47,6 +47,7 @@ import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -414,6 +415,11 @@ public class Vector extends AbstractVector implements ExpressionValue, MathExpre
 	@Override
 	public JAXBElement<Vector> toJAXBElementOfLogicBinOp() {
 		return ObjectFactory.getInstance().createVector(this);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
     
 

@@ -56,6 +56,7 @@ import eu.ddmore.libpharmml.dom.uncertml.HypergeometricDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.NegativeBinomialDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.PoissonDistribution;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -333,7 +334,8 @@ public class CountPMF
      * @deprecated Since PharmML 0.7, the distribution is uncluded in a {@link Distribution}
      * object. See {@link #getDistribution()}.
      */
-    public void setDistribution(AbstractDiscreteUnivariateDistributionType distribution){
+    @Deprecated
+	public void setDistribution(AbstractDiscreteUnivariateDistributionType distribution){
     	this.formerDistribution = distribution;
     }
 
@@ -499,6 +501,12 @@ public class CountPMF
 				.addJAXBIfNotNull(abstractDiscreteUnivariateDistribution)
 				.addIfNotNull(distribution)
 				.addIfNotNull(assign);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
     

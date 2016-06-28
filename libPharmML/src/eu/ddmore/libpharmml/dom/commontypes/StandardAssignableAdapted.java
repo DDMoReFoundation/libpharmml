@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.dom.tags.AdaptedClass;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 @SuppressWarnings("deprecation")
 public class StandardAssignableAdapted extends PharmMLRootType implements AdaptedClass<StandardAssignable> {
@@ -121,6 +122,11 @@ public class StandardAssignableAdapted extends PharmMLRootType implements Adapte
 			}
 		}
 		
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		//visitor.visit(this); Pointless for adapted classes
 	}
 
 }

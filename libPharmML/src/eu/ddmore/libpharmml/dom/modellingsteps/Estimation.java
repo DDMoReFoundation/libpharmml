@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.trialdesign.DatasetMapping;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -170,6 +171,12 @@ public class Estimation
 				.addIfNotNull(objectiveDataSet)
 				.addIfNotNull(parametersToEstimate)
 				.addIfNotNull(operation);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

@@ -34,6 +34,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.HasElementsRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -128,7 +129,8 @@ public class CodeInjection
     /**
      * @deprecated Use {@link #getListOfSymbolMapping()}.
      */
-    public List<SymbolMapping> getSymbolMapping() {
+    @Deprecated
+	public List<SymbolMapping> getSymbolMapping() {
         return getListOfSymbolMapping();
     }
 
@@ -183,6 +185,12 @@ public class CodeInjection
             this.targetCode = el;
             return el;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 
 }

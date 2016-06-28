@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -148,7 +149,8 @@ public class CovariateRelation
      *   
      * @deprecated Since PharmML 0.7, there can be multiple fixed effects. Use {@link #getListOfFixedEffect()}.
      */
-    public void setFixedEffect(FixedEffectRelation value) {
+    @Deprecated
+	public void setFixedEffect(FixedEffectRelation value) {
     	getListOfFixedEffect().clear();
         getListOfFixedEffect().add(value);
     }
@@ -158,6 +160,12 @@ public class CovariateRelation
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(symbRef)
 				.addIfNotNull(listOfFixedEffect);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

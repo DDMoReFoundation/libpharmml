@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.visitor.Visitor;
+
 
 /**
  * <p>Java class for BetaDistributionType complex type.
@@ -180,5 +182,11 @@ public class BetaDistributionType
     public void setTruncationUpperInclusiveBound(ProbabilityValueType value) {
         this.truncationUpperInclusiveBound = value;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

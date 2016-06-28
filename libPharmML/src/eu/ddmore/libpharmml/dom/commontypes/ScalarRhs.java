@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -167,6 +168,11 @@ public class ScalarRhs
 				.addIfNotNull(scalar)
 				.addIfNotNull(symbRef);
 		return list;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

@@ -20,6 +20,7 @@ package eu.ddmore.libpharmml.dom.commontypes;
 
 import javax.xml.bind.annotation.XmlTransient;
 
+import eu.ddmore.libpharmml.dom.PharmMLNode;
 import eu.ddmore.libpharmml.dom.maths.Binop;
 import eu.ddmore.libpharmml.dom.maths.Constant;
 import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
@@ -32,7 +33,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.Probability;
  * Interface for every element that contains an assign element.
  */
 @XmlTransient
-public interface Assignable {
+public interface Assignable extends PharmMLNode {
 	
 	/**
      * Gets the value of the assign property.

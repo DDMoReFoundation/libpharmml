@@ -37,6 +37,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.trialdesign.CodeInjection;
 import eu.ddmore.libpharmml.dom.trialdesign.ExternalDataSet;
 import eu.ddmore.libpharmml.dom.trialdesign.MultipleDVMapping;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -318,6 +319,12 @@ public class MONOLIXdataSet
             this.codeInjection = el;
             return el;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 
 }

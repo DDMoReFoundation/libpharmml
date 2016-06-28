@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -90,7 +91,8 @@ public class MixtureComponent
      * 
      * 
      */
-    public List<DistributionParameter> getListOfParameter() {
+    @Override
+	public List<DistributionParameter> getListOfParameter() {
         if (listOfParameter == null) {
             listOfParameter = new ArrayList<DistributionParameter>();
         }
@@ -105,7 +107,8 @@ public class MixtureComponent
      *     {@link DistributionName }
      *     
      */
-    public DistributionName getName() {
+    @Override
+	public DistributionName getName() {
         return name;
     }
 
@@ -117,7 +120,8 @@ public class MixtureComponent
      *     {@link DistributionName }
      *     
      */
-    public void setName(DistributionName value) {
+    @Override
+	public void setName(DistributionName value) {
         this.name = value;
     }
     
@@ -161,6 +165,7 @@ public class MixtureComponent
 	 * @param parameter Name of the parameter
 	 * @return The {@link DistributionParameter} with the given name.
 	 */
+	@Override
 	public DistributionParameter getParameter(ParameterName parameter){
 		for(DistributionParameter dp : getListOfParameter()){
 			if(dp.getName() != null && dp.getName().equals(parameter)){
@@ -175,6 +180,7 @@ public class MixtureComponent
 	 * @param parameter Name of the parameter
 	 * @return true if the parameter is defined, else false.
 	 */
+	@Override
 	public boolean containsParameter(ParameterName parameter){
 		for(DistributionParameter dp : getListOfParameter()){
 			if(dp.getName() != null && dp.getName().equals(parameter)){
@@ -182,6 +188,12 @@ public class MixtureComponent
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

@@ -127,7 +127,8 @@ public abstract class StudyEvent
      *     {@link String }
      *     
      */
-    @Deprecated
+    @Override
+	@Deprecated
     public String getOid() {
         return oid;
     }
@@ -140,7 +141,8 @@ public abstract class StudyEvent
      *     {@link String }
      *     
      */
-    @Deprecated
+    @Override
+	@Deprecated
     public void setOid(String value) {
         this.oid = value;
     }

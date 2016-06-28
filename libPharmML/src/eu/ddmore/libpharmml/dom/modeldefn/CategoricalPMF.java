@@ -55,6 +55,7 @@ import eu.ddmore.libpharmml.dom.uncertml.NegativeBinomialDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.PoissonDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.WishartDistribution;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -329,5 +330,11 @@ public class CategoricalPMF
     	return new ChainedList<TreeNode>()
     			.addIfNotNull(distribution);
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

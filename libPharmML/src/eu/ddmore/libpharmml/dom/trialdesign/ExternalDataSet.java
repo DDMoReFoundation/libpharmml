@@ -47,6 +47,7 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.SubList;
 import eu.ddmore.libpharmml.util.Util;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -161,7 +162,8 @@ public class ExternalDataSet
      *     {@link DataSet }
      *     
      */
-    public DataSet getDataSet() {
+    @Override
+	public DataSet getDataSet() {
         return dataSet;
     }
 
@@ -251,7 +253,8 @@ public class ExternalDataSet
      *     {@link String }
      *     
      */
-    public String getOid() {
+    @Override
+	public String getOid() {
         return oid;
     }
 
@@ -263,7 +266,8 @@ public class ExternalDataSet
      *     {@link String }
      *     
      */
-    public void setOid(String value) {
+    @Override
+	public void setOid(String value) {
         this.oid = value;
     }
     
@@ -360,6 +364,10 @@ public class ExternalDataSet
 	    @XmlAttribute(name = "oid", required = true)
 	    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
 	    protected String oid;
+		@Override
+		public void accept(Visitor visitor) {
+			// nothing
+		}
 	    
 	}
 	
@@ -418,6 +426,12 @@ public class ExternalDataSet
 				return adapted;
 			}
 		}
+		
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 		
 	}
 

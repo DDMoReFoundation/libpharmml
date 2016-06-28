@@ -51,6 +51,7 @@ import eu.ddmore.libpharmml.dom.uncertml.StudentTDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.UniformDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -164,7 +165,8 @@ public class ContinuousCovariate
      * @deprecated Since PharmML 0.7. Distributions are included within {@link Distribution} via
      * {@link #setDistribution(Distribution)}.
      */
-    public void setAbstractContinuousUnivariateDistribution(JAXBElement<? extends AbstractContinuousUnivariateDistributionType> value) {
+    @Deprecated
+	public void setAbstractContinuousUnivariateDistribution(JAXBElement<? extends AbstractContinuousUnivariateDistributionType> value) {
         this.abstractContinuousUnivariateDistribution = value;
     }
     
@@ -343,6 +345,12 @@ public class ContinuousCovariate
 				.addIfNotNull(listOfTransformation)
 				.addIfNotNull(interpolation)
 				.addIfNotNull(assign);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

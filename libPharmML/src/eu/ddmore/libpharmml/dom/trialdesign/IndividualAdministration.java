@@ -35,6 +35,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -164,8 +165,7 @@ public class IndividualAdministration
 
 	@Override
 	public void validateReferences(SymbolResolver sr, IErrorHandler errorHandler) {
-		// TODO Auto-generated method stub
-		
+		// TODO
 	}
 	
 	/**
@@ -208,6 +208,12 @@ public class IndividualAdministration
 	        DataSet el = new DataSet();
 	        this.dataSet = el;
 	        return el;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

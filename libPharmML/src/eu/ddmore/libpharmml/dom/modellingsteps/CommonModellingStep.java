@@ -375,7 +375,8 @@ public abstract class CommonModellingStep
      *     {@link String }
      *     
      */
-    public String getOid() {
+    @Override
+	public String getOid() {
         return oid;
     }
 
@@ -387,7 +388,8 @@ public abstract class CommonModellingStep
      *     {@link String }
      *     
      */
-    public void setOid(String value) {
+    @Override
+	public void setOid(String value) {
         this.oid = value;
     }
     

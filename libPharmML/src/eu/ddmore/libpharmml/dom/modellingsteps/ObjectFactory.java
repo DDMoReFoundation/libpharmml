@@ -116,7 +116,8 @@ public class ObjectFactory {
      * Create an instance of {@link OperationProperty }
      * @deprecated Use {@link #createOperationProperty()}.
      */
-    public OperationProperty createOperationPropertyType() {
+    @Deprecated
+	public OperationProperty createOperationPropertyType() {
         return new OperationProperty();
     }
 

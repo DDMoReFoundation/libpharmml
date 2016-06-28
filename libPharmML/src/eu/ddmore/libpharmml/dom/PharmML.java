@@ -48,6 +48,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modellingsteps.ModellingSteps;
 import eu.ddmore.libpharmml.dom.trialdesign.TrialDesign;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -555,6 +556,11 @@ public class PharmML extends PharmMLElement implements Identifiable {
 			clone.getListOfFunctionDefinition().add((FunctionDefinition) fd.clone());
 		}
 		return clone;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

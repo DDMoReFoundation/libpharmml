@@ -49,6 +49,7 @@ import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -655,5 +656,9 @@ public class LogicExpression
 		return list;
 	}
 
+    @Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
 
 }

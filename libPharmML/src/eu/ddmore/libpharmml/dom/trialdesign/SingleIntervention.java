@@ -34,6 +34,7 @@ import eu.ddmore.libpharmml.dom.commontypes.StandardAssignable;
 import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -155,8 +156,7 @@ public class SingleIntervention
 
 	@Override
 	public void validateReferences(SymbolResolver sr, IErrorHandler errorHandler) {
-		// TODO Auto-generated method stub
-		
+		// TODO
 	}
 	
 	/**
@@ -208,6 +208,12 @@ public class SingleIntervention
 				.addIfNotNull(listOfInterventionRef)
 				.addIfNotNull(start)
 				.addIfNotNull(end);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

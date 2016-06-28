@@ -18,11 +18,11 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.dom.maths;
 
-import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.PharmMLNode;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 
 /**
@@ -32,7 +32,7 @@ import eu.ddmore.libpharmml.dom.tags.MathExpression;
  *
  */
 @XmlJavaTypeAdapter(ExpressionValue.ExpressionValueAdapter.class)
-public interface ExpressionValue extends TreeNode,MathExpression {
+public interface ExpressionValue extends PharmMLNode,MathExpression {
 	
 	/**
 	 * Converts the object to a JAXBElement for marshalling. This method may be used any time the XML element

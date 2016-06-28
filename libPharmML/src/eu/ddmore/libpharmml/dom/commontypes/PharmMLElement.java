@@ -34,6 +34,7 @@ import javax.xml.namespace.QName;
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.AbstractTreeNode;
 import eu.ddmore.libpharmml.dom.Identifiable;
+import eu.ddmore.libpharmml.dom.PharmMLNode;
 import eu.ddmore.libpharmml.impl.IdFactoryImpl;
 import eu.ddmore.libpharmml.impl.MarshalListener;
 import eu.ddmore.libpharmml.impl.MarshallerImpl;
@@ -48,7 +49,7 @@ import eu.ddmore.libpharmml.impl.UnmarshalListener;
  * @since libPharmML 0.3
  */
 @XmlTransient
-public abstract class PharmMLElement extends AbstractTreeNode implements Cloneable {
+public abstract class PharmMLElement extends AbstractTreeNode implements Cloneable, PharmMLNode {
 	
 	@XmlTransient
 	protected static final String NS_DEFAULT_CT = NamespaceFilter.NS_DEFAULT_CT;
@@ -124,7 +125,8 @@ public abstract class PharmMLElement extends AbstractTreeNode implements Cloneab
      * 
      * <p>When overriding this method, one can simply use {@link #clone(Class, PharmMLElement)} in the method code.
      */
-    public abstract PharmMLElement clone();
+    @Override
+	public abstract PharmMLElement clone();
     
     /**
      * Utility method for cloning a {@link PharmMLElement} object. This method is meant to factorise the cloning code

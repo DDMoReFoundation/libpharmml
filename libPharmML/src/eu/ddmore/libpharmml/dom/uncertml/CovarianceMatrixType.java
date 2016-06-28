@@ -36,6 +36,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.visitor.Visitor;
+
 
 /**
  * <p>Java class for CovarianceMatrixType complex type.
@@ -128,5 +130,11 @@ public class CovarianceMatrixType
     public void setDimension(BigInteger value) {
         this.dimension = value;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

@@ -34,6 +34,7 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 /**
  * 
@@ -241,4 +242,8 @@ public class VectorCell extends PharmMLRootType implements ScalarContainer {
 				.addIfNotNull(value);
 	}
 
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
 }

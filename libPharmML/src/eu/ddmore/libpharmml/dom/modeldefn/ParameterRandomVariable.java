@@ -69,6 +69,7 @@ import eu.ddmore.libpharmml.dom.uncertml.StudentTDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.UniformDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -458,6 +459,12 @@ public class ParameterRandomVariable
 				.addJAXBIfNotNull(abstractCategoricalMultivariateDistribution)
 				.addIfNotNull(lhsTransformation)
 				.addIfNotNull(distribution);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

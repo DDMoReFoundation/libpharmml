@@ -659,6 +659,15 @@ public class ObjectFactory {
         return new StageDefinition();
     }
     
+    /**
+     * Create an instance of {@link Stage }
+     * 
+     * @since PharmML 0.8.1
+     */
+    public Stage createStage(){
+    	return new Stage();
+    }
+    
     ///////////////////////////
 
     /**

@@ -37,6 +37,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.trialdesign.CodeInjection;
 import eu.ddmore.libpharmml.dom.trialdesign.ExternalDataSet;
 import eu.ddmore.libpharmml.dom.trialdesign.MultipleDVMapping;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -255,5 +256,11 @@ public class NONMEMdataSet
     public void setOid(String value) {
         this.oid = value;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

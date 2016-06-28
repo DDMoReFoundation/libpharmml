@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -202,7 +203,8 @@ public class EstimationOperation
      *     
      * @deprecated PharmML now uses xs:int values. Use {@link #setOrder(Integer)}.
      */
-    public void setOrder(BigInteger value) {
+    @Deprecated
+	public void setOrder(BigInteger value) {
         this.order = value.intValue();
     }
 
@@ -250,6 +252,12 @@ public class EstimationOperation
 				.addIfNotNull(name)
 				.addIfNotNull(property)
 				.addIfNotNull(algorithm);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }
