@@ -70,6 +70,39 @@ public abstract class PKMacro extends PharmMLRootType {
 	}
 	
 	/**
+	 * Gets the value assigned to the given argument. If the argument is not used or if the argument has no assignment,
+	 * this method returns null. This methods loops through all the values returned by {@link #getListOfValue()}, therefore 
+	 * its time efficiency might not be optimal.
+	 * @param argument The argument of the value. Must not be null.
+	 * @return The {@link Rhs} assignment to the given argument, or null if none exists.
+	 */
+	public Rhs getValue(String argument){
+		for(MacroValue value : getListOfValue()){
+			if(argument.equals(resolveArgument(value))){
+				return value.getAssign();
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Returns the argument of the given value. In PharmML, the argument might be simply defined via the attribute
+	 * {@link MacroValue#argument}, but it can also be ommited if a {@link SymbolRef} is assigned to the {@link MacroValue}. 
+	 * In this case the argument is the value of {@link SymbolRef#getSymbIdRef()}.
+	 * @param value The {@link MacroValue} from which we want the argument.
+	 * @return The argument of the value, or null if undefined.
+	 */
+	private static String resolveArgument(MacroValue value){
+		if(value.getArgument() != null){
+			return value.getArgument();
+		} else if (value.getSymbRef() != null){
+			return value.getSymbRef().getSymbIdRef();
+		} else {
+			return null;
+		}
+	}
+	
+	/**
 	 * Creates a new value for this macro with a symbol reference.
 	 * @param symbRef A symbol reference. The refered symbol id must be compliant with
 	 * the macro definition.
