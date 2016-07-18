@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.probonto.DistributionName;
+import eu.ddmore.libpharmml.dom.probonto.DistributionType;
 import eu.ddmore.libpharmml.dom.probonto.ProbOnto;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.util.ChainedList;
@@ -198,6 +199,20 @@ public class Distribution
     public ProbOnto createProbOnto(DistributionName name){
             ProbOnto el = new ProbOnto();
             el.setName(name);
+            this.probOnto = el;
+            return el;
+    }
+    
+    /**
+     * Creates a new empty {@link ProbOnto} probOnto element, adds it to the current object and returns it.
+     * @param name The name of the distribution, compliant with ProbOnto ontology.
+     * @param type The type of the distribution, univariate or multivariate.
+     * @return The created {@link ProbOnto} object.
+     */
+    public ProbOnto createProbOnto(DistributionName name, DistributionType type){
+            ProbOnto el = new ProbOnto();
+            el.setName(name);
+            el.setType(type);
             this.probOnto = el;
             return el;
     }
