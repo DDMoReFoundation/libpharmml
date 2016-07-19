@@ -1,0 +1,10 @@
+## Changelog: 0.7 -> 0.7.1
+
+### Versions supported
+
+libPharmML 0.7.1 provides support for PharmML 0.8.1 and ProbOnto 1.1.1.
+
+### Changes summary
+
+* Added support for ProbOnto 1.1.1 (empirical distributions).
+* Several internal code improvments.

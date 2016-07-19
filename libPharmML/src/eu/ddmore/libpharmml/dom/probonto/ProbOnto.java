@@ -30,6 +30,8 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.Rhs;
+import eu.ddmore.libpharmml.dom.commontypes.StandardAssignable;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.util.ChainedList;
@@ -46,20 +48,29 @@ import eu.ddmore.libpharmml.visitor.Visitor;
  * <pre>
  * &lt;complexType name="ProbOntoType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/pharmml/0.7/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="Parameter" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DistributionParameterType" maxOccurs="unbounded"/>
- *         &lt;element name="LowerTruncationBound" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DistributionBoundType" minOccurs="0"/>
- *         &lt;element name="UpperTruncationBound" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DistributionBoundType" minOccurs="0"/>
- *         &lt;element name="MixtureComponent" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}MixtureComponent" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;sequence minOccurs="0">
- *           &lt;element name="ColumnMapping" type="{http://www.pharmml.org/pharmml/0.7/Dataset}ColumnMappingType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;choice>
  *           &lt;sequence>
- *             &lt;element ref="{http://www.pharmml.org/pharmml/0.7/Dataset}DataSet"/>
+ *             &lt;element name="Realisation" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}StandardAssignType" minOccurs="0"/>
+ *             &lt;element name="Weight" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}StandardAssignType" minOccurs="0"/>
+ *           &lt;/sequence>
+ *           &lt;sequence>
+ *             &lt;element name="Parameter" type="{http://www.pharmml.org/probonto/ProbOnto}DistributionParameterType" maxOccurs="unbounded" minOccurs="0"/>
+ *             &lt;element name="LowerTruncationBound" type="{http://www.pharmml.org/probonto/ProbOnto}DistributionBoundType" minOccurs="0"/>
+ *             &lt;element name="UpperTruncationBound" type="{http://www.pharmml.org/probonto/ProbOnto}DistributionBoundType" minOccurs="0"/>
+ *             &lt;element name="MixtureComponent" type="{http://www.pharmml.org/probonto/ProbOnto}MixtureComponent" maxOccurs="unbounded" minOccurs="0"/>
+ *           &lt;/sequence>
+ *         &lt;/choice>
+ *         &lt;sequence minOccurs="0">
+ *           &lt;element name="ColumnMapping" type="{http://www.pharmml.org/pharmml/0.8/Dataset}ColumnMappingType" maxOccurs="unbounded" minOccurs="0"/>
+ *           &lt;sequence>
+ *             &lt;element ref="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSet"/>
  *           &lt;/sequence>
  *         &lt;/sequence>
  *       &lt;/sequence>
- *       &lt;attribute name="name" use="required" type="{http://www.pharmml.org/pharmml/0.7/ModelDefinition}DistroNameType" />
+ *       &lt;attribute name="type" type="{http://www.pharmml.org/probonto/ProbOnto}DistroType" />
+ *       &lt;attribute name="name" use="required" type="{http://www.pharmml.org/probonto/ProbOnto}DistroNameType" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -69,6 +80,8 @@ import eu.ddmore.libpharmml.visitor.Visitor;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProbOntoType", propOrder = {
+		"realisation",
+		"weight",
     "listOfParameter",
     "lowerTruncationBound",
     "upperTruncationBound",
@@ -80,7 +93,14 @@ public class ProbOnto
     extends PharmMLRootType implements IProbOntoDistribution
 {
 
-    @XmlElement(name = "Parameter", required = true)
+	// Choice 1
+	@XmlElement(name = "Realisation")
+    protected StandardAssignable realisation;
+    @XmlElement(name = "Weight")
+    protected StandardAssignable weight;
+    
+    // Choice 2
+    @XmlElement(name = "Parameter")
     protected List<DistributionParameter> listOfParameter;
     @XmlElement(name = "LowerTruncationBound")
     protected DistributionBound lowerTruncationBound;
@@ -88,12 +108,96 @@ public class ProbOnto
     protected DistributionBound upperTruncationBound;
     @XmlElement(name = "MixtureComponent")
     protected List<MixtureComponent> listOfMixtureComponent;
+    
 	@XmlElement(name = "ColumnMapping")
     protected List<ColumnMapping> listOfColumnMapping;
     @XmlElement(name = "DataSet", namespace = NS_DEFAULT_DS)
     protected DataSet dataSet;
+	@XmlAttribute(name = "type")
+    protected DistributionType type;
     @XmlAttribute(name = "name", required = true)
     protected DistributionName name;
+    
+    /**
+     * Empty constructor.
+     */
+    public ProbOnto(){
+    	
+    }
+    
+    /**
+     * Minimal constructor.
+     * @param name The name of the distribution.
+     */
+    public ProbOnto(DistributionName name){
+    	this.name = name;
+    }
+    
+    /**
+     * Constructs a {@link ProbOnto} distribution with the given name and type.
+     * @param name The name of the distribution (required).
+     * @param type The type of the distribution, univariate or multivariate. Can be null.
+     */
+    public ProbOnto(DistributionName name, DistributionType type){
+    	this.name = name;
+    	this.type = type;
+    }
+
+    /**
+     * Gets the value of the realisation property. Allows assignment of a symbol identifier 
+     * used later for mapping with datacolumns in the dataset.
+     * 
+     * @return
+     *     possible object is
+     *     {@link StandardAssignable }
+     *     
+     * @since ProbOnto 1.1.1
+     */
+    public StandardAssignable getRealisation() {
+        return realisation;
+    }
+
+    /**
+     * Sets the value of the realisation property. Allows assignment of a symbol identifier 
+     * used later for mapping with datacolumns in the dataset.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link StandardAssignable }
+     *     
+     * @since ProbOnto 1.1.1
+     */
+    public void setRealisation(StandardAssignable value) {
+        this.realisation = value;
+    }
+
+    /**
+     * Gets the value of the weight property. Allows assignment of a symbol identifier mapped to the
+	 * weight in the dataset
+     * 
+     * @return
+     *     possible object is
+     *     {@link StandardAssignable }
+     *     
+     * @since ProbOnto 1.1.1
+     */
+    public StandardAssignable getWeight() {
+        return weight;
+    }
+
+    /**
+     * Sets the value of the weight property. Allows assignment of a symbol identifier mapped to the
+	 * weight in the dataset
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link StandardAssignable }
+     *     
+     * @since ProbOnto 1.1.1
+     */
+    public void setWeight(StandardAssignable value) {
+        this.weight = value;
+    }
 
     /**
      * Gets the value of the parameter property.
@@ -258,6 +362,30 @@ public class ProbOnto
     }
 
     /**
+     * Gets the value of the type property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DistributionType }
+     *     
+     */
+    public DistributionType getType() {
+        return type;
+    }
+
+    /**
+     * Sets the value of the type property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DistributionType }
+     *     
+     */
+    public void setType(DistributionType value) {
+        this.type = value;
+    }
+
+    /**
      * Gets the value of the name property.
      * 
      * @return
@@ -367,11 +495,60 @@ public class ProbOnto
             this.dataSet = el;
             return el;
     }
+    
+    /**
+     * Creates a new {@link StandardAssignable} realisation, adds it to the current ProbOnto object and returns it.
+     * @return The created realisation as a {@link StandardAssignable} instance.
+     * @since ProbOnto 1.1.1
+     */
+    public StandardAssignable createRealisation(){
+    	StandardAssignable sa = new StandardAssignable();
+    	this.realisation = sa;
+    	return sa;
+    }
+    
+    /**
+     * Creates a new {@link StandardAssignable} realisation, adds it to the current ProbOnto object and returns it.
+     * @param rhs The {@link Rhs} assignment of the realisation.
+     * @return The created realisation as a {@link StandardAssignable} instance.
+     * @since ProbOnto 1.1.1
+     */
+    public StandardAssignable createRealisation(Rhs rhs){
+    	StandardAssignable sa = new StandardAssignable();
+    	sa.setAssign(rhs);
+    	this.realisation = sa;
+    	return sa;
+    }
 
+    /**
+     * Creates a new {@link StandardAssignable} weight, adds it to the current ProbOnto object and returns it.
+     * @return The created weight as a {@link StandardAssignable} instance.
+     * @since ProbOnto 1.1.1
+     */
+    public StandardAssignable createWeight(){
+    	StandardAssignable sa = new StandardAssignable();
+    	this.weight = sa;
+    	return sa;
+    }
+    
+    /**
+     * Creates a new {@link StandardAssignable} weight, adds it to the current ProbOnto object and returns it.
+     * @param rhs The {@link Rhs} assignment of the weight.
+     * @return The created weight as a {@link StandardAssignable} instance.
+     * @since ProbOnto 1.1.1
+     */
+    public StandardAssignable createWeight(Rhs rhs){
+    	StandardAssignable sa = new StandardAssignable();
+    	sa.setAssign(rhs);
+    	this.weight = sa;
+    	return sa;
+    }
     
     @Override
     protected List<TreeNode> listChildren() {
     	return new ChainedList<TreeNode>(super.listChildren())
+    			.addIfNotNull(realisation)
+    			.addIfNotNull(weight)
     			.addIfNotNull(listOfParameter)
     			.addIfNotNull(lowerTruncationBound)
     			.addIfNotNull(upperTruncationBound)
