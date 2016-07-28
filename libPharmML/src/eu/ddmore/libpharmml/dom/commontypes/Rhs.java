@@ -1049,4 +1049,9 @@ public class Rhs
 		return converter.convert(this);
 	}
 
+	@Override
+	public JAXBElement<Rhs> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createAssign(this);
+	}
+
 }

@@ -83,4 +83,9 @@ public class TrueBoolean
 		return ObjectFactory.getInstance().createTrue(this);
 	}
 
+	@Override
+	public JAXBElement<TrueBoolean> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createTrue(this);
+	}
+
 }

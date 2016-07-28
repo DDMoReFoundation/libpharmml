@@ -83,4 +83,9 @@ public class FalseBoolean
 		return ObjectFactory.getInstance().createFalse(this);
 	}
 
+	@Override
+	public JAXBElement<FalseBoolean> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createFalse(this);
+	}
+
 }

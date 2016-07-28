@@ -213,4 +213,9 @@ public class IntValue extends PharmMLElement implements Scalar, Identifiable{
 		return ObjectFactory.getInstance().createInt(this);
 	}
 
+	@Override
+	public JAXBElement<IntValue> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createInt(this);
+	}
+
 }

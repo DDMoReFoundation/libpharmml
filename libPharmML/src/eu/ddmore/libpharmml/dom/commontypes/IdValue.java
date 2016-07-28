@@ -193,4 +193,9 @@ public class IdValue extends PharmMLElement implements Scalar, Identifiable {
 		return ObjectFactory.getInstance().createId(this);
 	}
 
+	@Override
+	public JAXBElement<IdValue> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createId(this);
+	}
+
 }

@@ -200,4 +200,9 @@ public class SymbolRef
 		return ObjectFactory.getInstance().createSymbRef(this);
 	}
 
+	@Override
+	public JAXBElement<SymbolRef> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createSymbRef(this);
+	}
+
 }

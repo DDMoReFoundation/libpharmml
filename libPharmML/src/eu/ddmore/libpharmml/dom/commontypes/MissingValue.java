@@ -133,7 +133,12 @@ public class MissingValue
 
 	@Override
 	public JAXBElement<MissingValue> toJAXBElementOfLogicBinOp() {
-		return toJAXBElement();
+		return MasterObjectFactory.createMissingValue(this);
+	}
+
+	@Override
+	public JAXBElement<MissingValue> toJAXBElementVectorValue() {
+		return MasterObjectFactory.createMissingValue(this);
 	}
 
 

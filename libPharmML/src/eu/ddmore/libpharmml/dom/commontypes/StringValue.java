@@ -187,4 +187,9 @@ public class StringValue extends PharmMLElement implements Scalar, Identifiable 
 		return ObjectFactory.getInstance().createString(this);
 	}
 
+	@Override
+	public JAXBElement<StringValue> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createString(this);
+	}
+
 }

@@ -21,6 +21,7 @@ package eu.ddmore.libpharmml.dom.commontypes;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -235,6 +236,11 @@ public class Sequence
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public JAXBElement<Sequence> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createSequence(this);
 	}
 
 }
