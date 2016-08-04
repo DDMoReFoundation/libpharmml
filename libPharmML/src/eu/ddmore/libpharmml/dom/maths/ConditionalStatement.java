@@ -27,15 +27,79 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.commontypes.CommonVariableDefinition;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
+import eu.ddmore.libpharmml.dom.modeldefn.CovariateModel;
+import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter;
+import eu.ddmore.libpharmml.dom.modeldefn.ObservationModel;
+import eu.ddmore.libpharmml.dom.modeldefn.ParameterModel;
+import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomVariable;
+import eu.ddmore.libpharmml.dom.modeldefn.PopulationParameter;
+import eu.ddmore.libpharmml.dom.modeldefn.StructuralModel;
 import eu.ddmore.libpharmml.dom.tags.StructuralModelElement;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
- * The schema type defining a conditional statement.
+ * Conditional assignments provide additional flexibility to the language. So far only piecewise statements 
+ * were supported which have the drawback that only single variables are assigned per statement.
  * 
- * <p>Java class for ConditionalStatementType complex type.
+ * <p>Conditional assignments don’t replace the existing piecewise statements, they are an entirely independent structure.
+ * 
+ * <p>The general form of the (nested) conditional statement looks as follows.
+ * 
+ * <pre>if ( condition1 ) then
+ * 	statement1
+ * else if ( condition2 ) then
+ * 	statement2
+ * else if ( conditionN-1 ) then
+ * 	statementN-1
+ * else
+ * 	statementN
+ * end if
+ * </pre>
+ * 
+ * <p>The following definition of the conditional statement has been adapted from the STAN specification v2.9.0.
+ * There must be a single leading if clause, which may be followed by any number of else if clauses, all of
+ * which may be optionally followed by an else clause. Each condition must be a TRUE or FALSE value.
+ * Nested if-then-else as part of each statement are allowed.
+ * The entire sequence of if-then-else clauses forms a single conditional statement for evaluation. The
+ * conditions are evaluated in order until one of the conditions evaluates to a TRUE value, at which point
+ * its corresponding statement is executed and the conditional statement finishes execution. If none of the
+ * conditions evaluates to a TRUE value and there is a final else clause, its statement is executed.
+ * 
+ * <p>Therefore, in order to read a conditional statement, one must use in order:
+ * <ol>
+ * <li>{@link #getIf()}</li>
+ * <li>{@link #getListOfElseIf()}</li>
+ * <li>{@link #getElse()}</li>
+ * </ol>
+ * 
+ * <h3>Rules</h3>
+ * 
+ * <ol>
+ * <li>The conditionals are available in the {@link CovariateModel}, {@link ParameterModel}, {@link StructuralModel} and the 
+ * {@link ObservationModel}, similarly to the assignment statements.</li>
+ * <li>Allowed statement elements are:<br>
+ * 	<ul>
+ * 		<li>{@link IndividualParameter} and {@link PopulationParameter}</li>
+ * 		<li>variables ({@link CommonVariableDefinition}) and {@link ParameterRandomVariable}</li>
+ * 		<li>assignment statements (using {@link LogicBinOp})</li>
+ * 		<li>nested {@link ConditionalStatement}</li>
+ * 	</ul>
+ * </li>
+ * <li>Parameters, variables assigned and/or referred to in a conditional statement must be declared outside the conditional
+ *  in the first level of the according model block.</li>
+ * <li>Parameters or variables assigned within the conditional statement have to be referred to using the attribute 
+ * symbIdRef.</li>
+ * <li>Parameters or variables assigned within the conditional statement cannot be assigned elsewhere unless such assignment
+ * is coupled with its declaration. The assignment of a parameter or variable within a conditional statement has precedence 
+ * over an assignment coupled with a declaration.</li>
+ * <li>Neither PharmML nor libPharmML do process the conditional statements in any way. The order of statements encoded in 
+ * PharmML will be preserved when translating to a target tool.</li>
+ * <li>libPharmML doesn’t have the capability to evaluate conditional statements – it is the responsibility of the user to 
+ * define them in a meaningful and unambiguous way (the condition domains defined should be mutually exclusive).</li>
+ * </ol>
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
@@ -174,6 +238,18 @@ public class ConditionalStatement extends PharmMLElement implements StructuralMo
      */
     public IfElseIfCondition createElseIf(){
             IfElseIfCondition el = new IfElseIfCondition();
+            getListOfElseIf().add(el);
+            return el;
+    }
+    
+    /**
+     * Creates a new {@link IfElseIfCondition} elseIf element, adds it to the current object and returns it.
+     * @param condition The condition of this statement.
+     * @return The created {@link IfElseIfCondition} object.
+     */
+    public IfElseIfCondition createElseIf(Condition condition){
+            IfElseIfCondition el = new IfElseIfCondition();
+            el.setCondition(condition);
             getListOfElseIf().add(el);
             return el;
     }
