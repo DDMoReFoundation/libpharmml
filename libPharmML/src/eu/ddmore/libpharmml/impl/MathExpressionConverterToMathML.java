@@ -437,11 +437,11 @@ public class MathExpressionConverterToMathML implements MathExpressionConverter 
 			return NULL_NUMBER;
 		}
 		List<JAXBElement<?>> content = logicBinOp.getContent();
-		if(content.size() < 2 && logicBinOp.getOp() != null
+		if(content.size() >= 2 && logicBinOp.getOp() != null
 				&& content.get(0).getValue() instanceof MathExpression 
 				&& content.get(1).getValue() instanceof MathExpression){
 			MathExpression operand1 = (MathExpression) content.get(0).getValue();
-			MathExpression operand2 = (MathExpression) content.get(2).getValue();
+			MathExpression operand2 = (MathExpression) content.get(1).getValue();
 			return String.format(mathML_apply2_pattern, logicBinOp.getOp(), operand1.convert(this), operand2.convert(this));
 		} else {
 			return NULL_NUMBER;
@@ -454,9 +454,12 @@ public class MathExpressionConverterToMathML implements MathExpressionConverter 
 			return NULL_NUMBER;
 		}
 		if(logicCondition.getLogicBinop() != null){
+			LoggerWrapper.getLogger().warning(logicCondition.getLogicBinop().toString());
 			return logicCondition.getLogicBinop().convert(this);
 		} else if(logicCondition.getLogicUniop() != null){
 			return logicCondition.getLogicUniop().convert(this);
+		} else if(logicCondition.getBoolean() != null){
+			return logicCondition.getBoolean().getValue().convert(this);
 		} else {
 			return NULL_NUMBER;
 		}
@@ -522,6 +525,8 @@ public class MathExpressionConverterToMathML implements MathExpressionConverter 
 			} else {
 				StringBuilder sb = new StringBuilder("<piece>\n");
 				sb.append(piece.getValue().convert(this));
+//				LoggerWrapper.getLogger().warning(piece.getCondition().getLogicBinop().getOp());
+//				LoggerWrapper.getLogger().warning(piece.getCondition().convert(this));
 				sb.append(piece.getCondition().convert(this));
 				sb.append("</piece>\n");
 				return sb.toString();
