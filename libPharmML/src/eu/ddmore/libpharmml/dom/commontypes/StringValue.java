@@ -194,5 +194,9 @@ public class StringValue extends PharmMLElement implements Scalar, Identifiable 
 	public void accept(Visitor visitor) {
 		visitor.visit(this);
 	}
+	
+	public JAXBElement<StringValue> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createString(this);
+	}
 
 }

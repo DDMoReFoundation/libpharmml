@@ -93,6 +93,14 @@ public enum PharmMLVersion {
 	private final int index;
 //	private final String pharmml_URI;
 	
+	/**
+	 * Minimal constructor.
+	 * @param version The written version of this {@link PharmMLVersion}. Equal to the writtenVersion attribute of the root PharmML
+	 * element. Must contain all the digits.
+	 * @param uriVersion The version as written in the namespaces. Should contain only the first 2 numbers.
+	 * @param catalogMessage The key of the catalog location in the messages.properties file.
+	 * @param index Order of the version, from the oldest to the latest.
+	 */
 	private PharmMLVersion(String version,String uriVersion,String catalogMessage,int index) {
 		this.version = version;
 		this.uriVersion = uriVersion;

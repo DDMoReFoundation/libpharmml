@@ -200,5 +200,9 @@ public class IdValue extends PharmMLElement implements Scalar, Identifiable {
 	public void accept(Visitor visitor) {
 		visitor.visit(this);
 	}
+	
+	public JAXBElement<IdValue> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createId(this);
+	}
 
 }

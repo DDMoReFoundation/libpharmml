@@ -220,5 +220,9 @@ public class IntValue extends PharmMLElement implements Scalar, Identifiable{
 	public void accept(Visitor visitor) {
 		visitor.visit(this);
 	}
+	
+	public JAXBElement<IntValue> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createInt(this);
+	}
 
 }

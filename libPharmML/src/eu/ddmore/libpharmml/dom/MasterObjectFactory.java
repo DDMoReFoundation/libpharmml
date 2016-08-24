@@ -271,6 +271,7 @@ public class MasterObjectFactory {
 		return element;
 	}
 	
+	@Deprecated
 	public static JAXBElement<? extends VectorValue> createVectorValue(VectorValue value){
 		JAXBElement<? extends VectorValue> element;
 		if(value instanceof Scalar){

@@ -18,6 +18,7 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.PharmMLNode;
@@ -36,5 +37,11 @@ public interface VectorValue extends PharmMLNode, MathExpression {
 	 * @return The vector value as a {@link String}.
 	 */
 	public String asString();
+	
+	/**
+	 * Creates a {@link JAXBElement} container for this vector value, in the context of {@link VectorElements}.
+	 * @return A {@link JAXBElement} containing this vector value.
+	 */
+	public JAXBElement<? extends VectorValue> toJAXBElementVectorValue();
 	
 }

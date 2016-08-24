@@ -152,12 +152,12 @@ public class IfElseIfCondition
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Parameter },
-     * {@link LogicBinOpType },
-     * {@link DesignParameterType },
+     * {@link LogicBinOp },
+     * {@link DesignParameter },
      * {@link ConditionalStatement },
-     * {@link IndividualParameterType },
-     * {@link PopulationParameterType },
-     * {@link ParameterRandomVariableType },
+     * {@link IndividualParameter },
+     * {@link PopulationParameter },
+     * {@link ParameterRandomVariable },
      * {@link DerivativeVariable },
      * {@link VariableDefinition }
      * 

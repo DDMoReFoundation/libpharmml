@@ -88,5 +88,9 @@ public class TrueBoolean
 	public void accept(Visitor visitor) {
 		visitor.visit(this);
 	}
+	
+	public JAXBElement<TrueBoolean> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createTrue(this);
+	}
 
 }

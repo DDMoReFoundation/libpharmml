@@ -205,5 +205,9 @@ public class SymbolRef
 	public void accept(Visitor visitor) {
 		visitor.visit(this);
 	}
+	
+	public JAXBElement<SymbolRef> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createSymbRef(this);
+	}
 
 }

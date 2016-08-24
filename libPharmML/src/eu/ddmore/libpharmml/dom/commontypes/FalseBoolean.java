@@ -88,5 +88,9 @@ public class FalseBoolean
 	public void accept(Visitor visitor) {
 		visitor.visit(this);
 	}
+	
+	public JAXBElement<FalseBoolean> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createFalse(this);
+	}
 
 }

@@ -1054,5 +1054,9 @@ public class Rhs
 	public void accept(Visitor visitor) {
 		visitor.visit(this);
 	}
+	
+	public JAXBElement<Rhs> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createAssign(this);
+	}
 
 }

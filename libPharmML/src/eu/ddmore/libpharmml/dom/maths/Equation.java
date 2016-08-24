@@ -26,6 +26,7 @@
 
 package eu.ddmore.libpharmml.dom.maths;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -146,6 +147,11 @@ public class Equation
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(toRhs(this));
+	}
+
+	@Override
+	public JAXBElement<Equation> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createEquation(this);
 	}
 
 }
