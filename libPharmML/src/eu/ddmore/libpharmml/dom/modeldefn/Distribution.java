@@ -30,12 +30,13 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.probonto.DistributionName;
+import eu.ddmore.libpharmml.dom.probonto.DistributionType;
 import eu.ddmore.libpharmml.dom.probonto.ProbOnto;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -81,7 +82,7 @@ public class Distribution
 
     @XmlElement(name = "UncertML")
     protected UncertML uncertML;
-    @XmlElement(name = "ProbOnto", namespace = XMLFilter.NS_DEFAULT_PROBONTO)
+    @XmlElement(name = "ProbOnto", namespace = NS_DEFAULT_PROBONTO)
     protected ProbOnto probOnto;
     
     @XmlElement(name = "Piecewise", namespace = NS_DEFAULT_MDEF)
@@ -202,6 +203,20 @@ public class Distribution
             this.probOnto = el;
             return el;
     }
+    
+    /**
+     * Creates a new empty {@link ProbOnto} probOnto element, adds it to the current object and returns it.
+     * @param name The name of the distribution, compliant with ProbOnto ontology.
+     * @param type The type of the distribution, univariate or multivariate.
+     * @return The created {@link ProbOnto} object.
+     */
+    public ProbOnto createProbOnto(DistributionName name, DistributionType type){
+            ProbOnto el = new ProbOnto();
+            el.setName(name);
+            el.setType(type);
+            this.probOnto = el;
+            return el;
+    }
 
     /**
      * Creates a new empty {@link Piecewise} piecewise element, adds it to the current object and returns it.
@@ -212,6 +227,12 @@ public class Distribution
             this.piecewise = el;
             return el;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 
 }

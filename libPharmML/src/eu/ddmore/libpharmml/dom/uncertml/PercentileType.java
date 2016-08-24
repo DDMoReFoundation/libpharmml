@@ -34,6 +34,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.visitor.Visitor;
+
 
 /**
  * <p>Java class for PercentileType complex type.
@@ -124,5 +126,11 @@ public class PercentileType
     public void setLevel(double value) {
         this.level = value;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

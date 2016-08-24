@@ -35,7 +35,6 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -74,7 +73,7 @@ public abstract class MappingType
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "ColumnRef", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
+    @XmlElement(name = "ColumnRef", namespace = NS_DEFAULT_DS, required = true)
     protected ColumnReference columnRef;
 
     /**

@@ -69,8 +69,8 @@ import eu.ddmore.libpharmml.dom.uncertml.StudentTDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.UniformDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.WishartDistribution;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -112,17 +112,17 @@ public class UncertML
     extends PharmMLRootType
 {
 
-    @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractContinuousUnivariateDistributionType> abstractContinuousUnivariateDistribution;
-    @XmlElementRef(name = "AbstractContinuousMultivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractContinuousMultivariateDistribution", namespace = NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractContinuousMultivariateDistributionType> abstractContinuousMultivariateDistribution;
-    @XmlElementRef(name = "AbstractCategoricalUnivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractCategoricalUnivariateDistribution", namespace = NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractCategoricalUnivariateDistributionType> abstractCategoricalUnivariateDistribution;
-    @XmlElementRef(name = "AbstractCategoricalMultivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractCategoricalMultivariateDistribution", namespace = NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractCategoricalMultivariateDistributionType> abstractCategoricalMultivariateDistribution;
-    @XmlElementRef(name = "AbstractDiscreteUnivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractDiscreteUnivariateDistribution", namespace = NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractDiscreteUnivariateDistributionType> abstractDiscreteUnivariateDistribution;
-    @XmlElementRef(name = "AbstractDiscreteMultivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractDiscreteMultivariateDistribution", namespace = NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractDiscreteMultivariateDistributionType> abstractDiscreteMultivariateDistribution;
 
     /**
@@ -361,5 +361,11 @@ public class UncertML
     			.addJAXBIfNotNull(abstractDiscreteUnivariateDistribution)
     			.addJAXBIfNotNull(abstractDiscreteMultivariateDistribution);
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

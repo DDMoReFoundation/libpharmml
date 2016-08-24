@@ -35,9 +35,9 @@ import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.ColumnTransformation;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.trialdesign.CodeInjection;
-import eu.ddmore.libpharmml.dom.trialdesign.MultipleDVMapping;
 import eu.ddmore.libpharmml.dom.trialdesign.ExternalDataSet;
-import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.dom.trialdesign.MultipleDVMapping;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -87,9 +87,9 @@ public class MONOLIXdataSet
     protected List<ColumnTransformation> listOfColumnTransformation;
     @XmlElement(name = "MultipleDVMapping")
     protected List<MultipleDVMapping> listOfMultipleDVMapping;
-    @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
+    @XmlElement(name = "DataSet", namespace = NS_DEFAULT_DS, required = true)
     protected DataSet dataSet;
-    @XmlElement(name = "CodeInjection", namespace = XMLFilter.NS_DEFAULT_MSTEPS) // NS < PharmML0.7
+    @XmlElement(name = "CodeInjection", namespace = NS_DEFAULT_MSTEPS) // NS < PharmML0.7
     protected CodeInjection codeInjection;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -319,6 +319,12 @@ public class MONOLIXdataSet
             this.codeInjection = el;
             return el;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 
 }

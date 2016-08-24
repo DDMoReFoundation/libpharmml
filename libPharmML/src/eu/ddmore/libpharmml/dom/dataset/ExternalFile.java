@@ -42,6 +42,7 @@ import eu.ddmore.libpharmml.dom.commontypes.MissingDataAttribute;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -358,6 +359,11 @@ public class ExternalFile
 		mdp.setMissingDataType(missingDataType);
 		getListOfMissingData().add(mdp);
 		return mdp;
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

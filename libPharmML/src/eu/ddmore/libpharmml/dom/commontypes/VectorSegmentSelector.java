@@ -35,8 +35,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -78,9 +78,9 @@ public class VectorSegmentSelector
 //    })
 //    protected List<JAXBElement<MatrixVectorIndex>> startIndexAndSegmentLength;
     
-    @XmlElementRef(name = "StartIndex", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class)
+    @XmlElementRef(name = "StartIndex", namespace = NS_DEFAULT_CT, type = JAXBElement.class)
     protected MatrixVectorIndex startIndex;
-    @XmlElementRef(name = "SegmentLength", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class)
+    @XmlElementRef(name = "SegmentLength", namespace = NS_DEFAULT_CT, type = JAXBElement.class)
     protected MatrixVectorIndex segmentLength;
 
     /**
@@ -186,6 +186,11 @@ public class VectorSegmentSelector
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(startIndex)
 				.addIfNotNull(segmentLength);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

@@ -33,13 +33,39 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.MathExpressionConverter;
-import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
+/**
+ * 
+ * This type specifies a vector element - without indexes.
+ *             
+ * 
+ * <p>Java class for VectorElementsType complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType name="VectorElementsType">
+ *   &lt;complexContent>
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
+ *       &lt;choice maxOccurs="unbounded">
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Scalar"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Sequence"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}SymbRef"/>
+ *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Assign"/>
+ *       &lt;/choice>
+ *     &lt;/extension>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ * 
+ * 
+ */
 @SuppressWarnings("deprecation")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VectorElements", propOrder = {
@@ -48,17 +74,19 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlJavaTypeAdapter(VectorElements.Adapter.class)
 public class VectorElements extends PharmMLRootType implements ScalarContainer, MathExpression {
 		
+	// listOfElements is a transient attribute. Its elements are converted to JAXBElements into the jaxb_elements
+	// list which is mapped to XML, during the marshal process. See the VectorElements.Adapter class.
 	//-------
 	@XmlElementRefs({
-        @XmlElementRef(name = "Sequence", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH, type = Equation.class, required = false),
-        @XmlElementRef(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "Sequence", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Equation", namespace = NS_DEFAULT_MATH, type = Equation.class, required = false),
+        @XmlElementRef(name = "SymbRef", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Assign", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     })
 	protected List<JAXBElement<? extends VectorValue>> jaxb_elements;
 	@XmlTransient
-	protected List<VectorValue> elements;
+	protected List<VectorValue> listOfElements;
 	//-------
 	
 	/**
@@ -68,17 +96,17 @@ public class VectorElements extends PharmMLRootType implements ScalarContainer, 
 	
 	
 	public VectorElements(VectorValue []values){
-		elements = new ArrayList<VectorValue>();
+		listOfElements = new ArrayList<VectorValue>();
 		for(VectorValue value : values){
-			elements.add(value);
+			listOfElements.add(value);
 		}
 	}
 	
 	public List<VectorValue> getListOfElements(){
-		if(elements == null){
-			elements = new ArrayList<VectorValue>();
+		if(listOfElements == null){
+			listOfElements = new ArrayList<VectorValue>();
 		}
-		return elements;
+		return listOfElements;
 	}
 
 	@Override
@@ -147,6 +175,16 @@ public class VectorElements extends PharmMLRootType implements ScalarContainer, 
 		return seq;
 	}
 	
+	public Rhs createAssign(){
+		Rhs rhs = new Rhs();
+		getListOfElements().add(rhs);
+		return rhs;
+	}
+	
+	/**
+	 * Adapter for marshaling a VectorElements object. This adapter is used for converting {@link VectorValue} objects
+	 * to {@link JAXBElement} objects.
+	 */
 	protected static class Adapter extends XmlAdapter<VectorElements, VectorElements>{
 
 		@Override
@@ -163,9 +201,11 @@ public class VectorElements extends PharmMLRootType implements ScalarContainer, 
 		public VectorElements marshal(VectorElements v) throws Exception {
 			if(v != null){
 				v.jaxb_elements = new ArrayList<JAXBElement<? extends VectorValue>>();
-				if(v.elements != null){
-					for(VectorValue el : v.elements){
-						v.jaxb_elements.add(MasterObjectFactory.createVectorValue(el));
+				if(v.listOfElements != null){
+					for(VectorValue el : v.listOfElements){
+						if(el != null){
+							v.jaxb_elements.add(el.toJAXBElementVectorValue());
+						}
 					}
 				}
 				return v;
@@ -179,14 +219,13 @@ public class VectorElements extends PharmMLRootType implements ScalarContainer, 
 	@Override
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
-				.addIfNotNull(elements);
+				.addIfNotNull(listOfElements);
 	}
 
 
 	@Override
 	public String toMathExpression() {
-		// TODO Auto-generated method stub
-		return null;
+		return new MathExpressionConverterToExpression().convert(this);
 	}
 
 
@@ -198,6 +237,12 @@ public class VectorElements extends PharmMLRootType implements ScalarContainer, 
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 	
 }

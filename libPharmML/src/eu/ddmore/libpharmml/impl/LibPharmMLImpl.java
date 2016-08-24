@@ -107,8 +107,8 @@ public class LibPharmMLImpl implements ILibPharmML {
 	
 	@Override
 	public IPharmMLResource createDom(PharmMLVersion version) {
-		eu.ddmore.libpharmml.dom.ObjectFactory fact = new eu.ddmore.libpharmml.dom.ObjectFactory();
-		eu.ddmore.libpharmml.dom.commontypes.ObjectFactory commonFact = new eu.ddmore.libpharmml.dom.commontypes.ObjectFactory();
+		eu.ddmore.libpharmml.dom.ObjectFactory fact = eu.ddmore.libpharmml.dom.ObjectFactory.getInstance();
+		eu.ddmore.libpharmml.dom.commontypes.ObjectFactory commonFact = eu.ddmore.libpharmml.dom.commontypes.ObjectFactory.getInstance();
 		final PharmML dom = fact.createPharmML();
 		dom.setWrittenVersion(version.getValue());
 		Name name = commonFact.createNameType();

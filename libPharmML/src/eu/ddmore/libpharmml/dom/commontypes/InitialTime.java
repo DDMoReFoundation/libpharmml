@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -98,6 +99,11 @@ public class InitialTime
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(assign);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

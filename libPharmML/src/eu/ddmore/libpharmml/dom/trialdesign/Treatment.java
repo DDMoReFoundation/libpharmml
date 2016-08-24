@@ -38,7 +38,6 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.AnnotationType;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -74,9 +73,9 @@ public class Treatment
 {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "DosingRegimen", namespace = XMLFilter.NS_DEFAULT_TD, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Description", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "DosingRegimen", namespace = NS_DEFAULT_TD, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Description", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Name", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> rest;
 

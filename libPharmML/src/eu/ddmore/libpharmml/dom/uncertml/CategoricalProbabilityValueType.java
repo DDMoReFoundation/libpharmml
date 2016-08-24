@@ -32,6 +32,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.visitor.Visitor;
+
 
 /**
  * <p>Java class for CategoricalProbabilityValueType complex type.
@@ -121,5 +123,11 @@ public class CategoricalProbabilityValueType
     public void setProbability(ProbabilityValueType value) {
         this.probability = value;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

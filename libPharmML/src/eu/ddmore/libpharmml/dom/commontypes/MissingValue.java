@@ -28,6 +28,7 @@ import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -133,8 +134,19 @@ public class MissingValue
 
 	@Override
 	public JAXBElement<MissingValue> toJAXBElementOfLogicBinOp() {
-		return toJAXBElement();
+		// The name of the marshalled object depends on the value of the #symbol attribute. So we need to call this method.
+		return MasterObjectFactory.createMissingValue(this);
 	}
 
+	@Override
+	public JAXBElement<MissingValue> toJAXBElementVectorValue() {
+		// The name of the marshalled object depends on the value of the #symbol attribute. So we need to call this method.
+		return MasterObjectFactory.createMissingValue(this);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
 
 }

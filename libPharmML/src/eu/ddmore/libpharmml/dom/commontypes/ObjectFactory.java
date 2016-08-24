@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
-import static eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_CT;
+import static eu.ddmore.libpharmml.impl.NamespaceFilter.NS_DEFAULT_CT;
 
 
 /**

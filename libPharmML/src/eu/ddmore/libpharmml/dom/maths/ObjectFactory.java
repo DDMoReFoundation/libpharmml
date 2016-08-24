@@ -33,7 +33,7 @@ import javax.xml.namespace.QName;
 
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.modeldefn.Realisation;
-import static eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_MATH;
+import static eu.ddmore.libpharmml.impl.NamespaceFilter.NS_DEFAULT_MATH;
 
 
 

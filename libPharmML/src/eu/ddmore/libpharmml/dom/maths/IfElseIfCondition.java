@@ -39,6 +39,7 @@ import eu.ddmore.libpharmml.dom.modeldefn.Parameter;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterRandomVariable;
 import eu.ddmore.libpharmml.dom.modeldefn.PopulationParameter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -265,5 +266,10 @@ public class IfElseIfCondition
     			.addIfNotNull(content);
     	return list;
     }
+    
+    @Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
 
 }

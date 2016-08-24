@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-import eu.ddmore.libpharmml.impl.XMLFilter;
+import static eu.ddmore.libpharmml.impl.NamespaceFilter.NS_DEFAULT_MDEF;
 
 
 /**
@@ -51,15 +51,15 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _PKmacroTypeAbsorption_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "Absorption");
-    private final static QName _PKmacroTypeElimination_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "Elimination");
-    private final static QName _PKmacroTypeCompartment_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "Compartment");
-    private final static QName _PKmacroTypeIV_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "IV");
-    private final static QName _PKmacroTypeEffect_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "Effect");
-    private final static QName _PKmacroTypeTransfer_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "Transfer");
-    private final static QName _PKmacroTypePeripheral_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "Peripheral");
-    private final static QName _PKmacroTypeDepot_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "Depot");
-    private final static QName _PKmacroTypeOral_QNAME = new QName(XMLFilter.NS_DEFAULT_MDEF, "Oral");
+    private final static QName _PKmacroTypeAbsorption_QNAME = new QName(NS_DEFAULT_MDEF, "Absorption");
+    private final static QName _PKmacroTypeElimination_QNAME = new QName(NS_DEFAULT_MDEF, "Elimination");
+    private final static QName _PKmacroTypeCompartment_QNAME = new QName(NS_DEFAULT_MDEF, "Compartment");
+    private final static QName _PKmacroTypeIV_QNAME = new QName(NS_DEFAULT_MDEF, "IV");
+    private final static QName _PKmacroTypeEffect_QNAME = new QName(NS_DEFAULT_MDEF, "Effect");
+    private final static QName _PKmacroTypeTransfer_QNAME = new QName(NS_DEFAULT_MDEF, "Transfer");
+    private final static QName _PKmacroTypePeripheral_QNAME = new QName(NS_DEFAULT_MDEF, "Peripheral");
+    private final static QName _PKmacroTypeDepot_QNAME = new QName(NS_DEFAULT_MDEF, "Depot");
+    private final static QName _PKmacroTypeOral_QNAME = new QName(NS_DEFAULT_MDEF, "Oral");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.dom.modeldefn
@@ -72,7 +72,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbsorptionOralMacro }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Absorption", scope = PKMacroList.class)
+    @XmlElementDecl(namespace = NS_DEFAULT_MDEF, name = "Absorption", scope = PKMacroList.class)
     public JAXBElement<AbsorptionOralMacro> createPKmacroTypeAbsorption(AbsorptionOralMacro value) {
         return new JAXBElement<AbsorptionOralMacro>(_PKmacroTypeAbsorption_QNAME, AbsorptionOralMacro.class, PKMacroList.class, value);
     }
@@ -81,7 +81,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link EliminationMacro }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Elimination", scope = PKMacroList.class)
+    @XmlElementDecl(namespace = NS_DEFAULT_MDEF, name = "Elimination", scope = PKMacroList.class)
     public JAXBElement<EliminationMacro> createPKmacroTypeElimination(EliminationMacro value) {
         return new JAXBElement<EliminationMacro>(_PKmacroTypeElimination_QNAME, EliminationMacro.class, PKMacroList.class, value);
     }
@@ -90,7 +90,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link CompartmentMacro }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Compartment", scope = PKMacroList.class)
+    @XmlElementDecl(namespace = NS_DEFAULT_MDEF, name = "Compartment", scope = PKMacroList.class)
     public JAXBElement<CompartmentMacro> createPKmacroTypeCompartment(CompartmentMacro value) {
         return new JAXBElement<CompartmentMacro>(_PKmacroTypeCompartment_QNAME, CompartmentMacro.class, PKMacroList.class, value);
     }
@@ -99,7 +99,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link IVMacro }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "IV", scope = PKMacroList.class)
+    @XmlElementDecl(namespace = NS_DEFAULT_MDEF, name = "IV", scope = PKMacroList.class)
     public JAXBElement<IVMacro> createPKmacroTypeIV(IVMacro value) {
         return new JAXBElement<IVMacro>(_PKmacroTypeIV_QNAME, IVMacro.class, PKMacroList.class, value);
     }
@@ -108,7 +108,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link EffectMacro }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Effect", scope = PKMacroList.class)
+    @XmlElementDecl(namespace = NS_DEFAULT_MDEF, name = "Effect", scope = PKMacroList.class)
     public JAXBElement<EffectMacro> createPKmacroTypeEffect(EffectMacro value) {
         return new JAXBElement<EffectMacro>(_PKmacroTypeEffect_QNAME, EffectMacro.class, PKMacroList.class, value);
     }
@@ -117,7 +117,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link TransferMacro }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Transfer", scope = PKMacroList.class)
+    @XmlElementDecl(namespace = NS_DEFAULT_MDEF, name = "Transfer", scope = PKMacroList.class)
     public JAXBElement<TransferMacro> createPKmacroTypeTransfer(TransferMacro value) {
         return new JAXBElement<TransferMacro>(_PKmacroTypeTransfer_QNAME, TransferMacro.class, PKMacroList.class, value);
     }
@@ -126,7 +126,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link PeripheralMacro }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Peripheral", scope = PKMacroList.class)
+    @XmlElementDecl(namespace = NS_DEFAULT_MDEF, name = "Peripheral", scope = PKMacroList.class)
     public JAXBElement<PeripheralMacro> createPKmacroTypePeripheral(PeripheralMacro value) {
         return new JAXBElement<PeripheralMacro>(_PKmacroTypePeripheral_QNAME, PeripheralMacro.class, PKMacroList.class, value);
     }
@@ -135,7 +135,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DepotMacro }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Depot", scope = PKMacroList.class)
+    @XmlElementDecl(namespace = NS_DEFAULT_MDEF, name = "Depot", scope = PKMacroList.class)
     public JAXBElement<DepotMacro> createPKmacroTypeDepot(DepotMacro value) {
         return new JAXBElement<DepotMacro>(_PKmacroTypeDepot_QNAME, DepotMacro.class, PKMacroList.class, value);
     }
@@ -144,7 +144,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbsorptionOralMacro }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = XMLFilter.NS_DEFAULT_MDEF, name = "Oral", scope = PKMacroList.class)
+    @XmlElementDecl(namespace = NS_DEFAULT_MDEF, name = "Oral", scope = PKMacroList.class)
     public JAXBElement<AbsorptionOralMacro> createPKmacroTypeOral(AbsorptionOralMacro value) {
         return new JAXBElement<AbsorptionOralMacro>(_PKmacroTypeOral_QNAME, AbsorptionOralMacro.class, PKMacroList.class, value);
     }

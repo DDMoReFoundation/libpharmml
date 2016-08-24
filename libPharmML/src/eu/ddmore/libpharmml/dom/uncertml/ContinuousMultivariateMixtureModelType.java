@@ -39,6 +39,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.visitor.Visitor;
+
 
 /**
  * <p>Java class for ContinuousMultivariateMixtureModelType complex type.
@@ -203,5 +205,12 @@ public class ContinuousMultivariateMixtureModelType
         }
 
     }
+
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

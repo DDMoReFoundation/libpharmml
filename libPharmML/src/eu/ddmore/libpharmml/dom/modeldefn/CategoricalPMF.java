@@ -54,8 +54,8 @@ import eu.ddmore.libpharmml.dom.uncertml.MultinomialDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.NegativeBinomialDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.PoissonDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.WishartDistribution;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -101,13 +101,13 @@ public class CategoricalPMF
 {
 
 	// --------
-    @XmlElementRef(name = "AbstractCategoricalUnivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractCategoricalUnivariateDistribution", namespace = NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractCategoricalUnivariateDistributionType> jaxb_abstractCategoricalUnivariateDistribution;
-    @XmlElementRef(name = "AbstractCategoricalMultivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractCategoricalMultivariateDistribution", namespace = NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractCategoricalMultivariateDistributionType> jaxb_abstractCategoricalMultivariateDistribution;
-    @XmlElementRef(name = "AbstractDiscreteUnivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractDiscreteUnivariateDistribution", namespace = NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractDiscreteUnivariateDistributionType> jaxb_abstractDiscreteUnivariateDistribution;
-    @XmlElementRef(name = "AbstractDiscreteMultivariateDistribution", namespace =XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractDiscreteMultivariateDistribution", namespace =NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractDiscreteMultivariateDistributionType> jaxb_abstractDiscreteMultivariateDistribution;
     
     @XmlTransient
@@ -330,5 +330,11 @@ public class CategoricalPMF
     	return new ChainedList<TreeNode>()
     			.addIfNotNull(distribution);
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

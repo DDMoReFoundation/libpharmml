@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.Identifiable;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -111,7 +112,8 @@ public class Name extends PharmMLElement implements Identifiable {
      *     {@link String }
      *     
      */
-    public String getId() {
+    @Override
+	public String getId() {
         return id;
     }
 
@@ -123,7 +125,8 @@ public class Name extends PharmMLElement implements Identifiable {
      *     {@link String }
      *     
      */
-    public void setId(String value) {
+    @Override
+	public void setId(String value) {
         this.id = value;
     }
     
@@ -143,6 +146,11 @@ public class Name extends PharmMLElement implements Identifiable {
 	@Override
 	public PharmMLElement clone() {
 		return clone(Name.class, this);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

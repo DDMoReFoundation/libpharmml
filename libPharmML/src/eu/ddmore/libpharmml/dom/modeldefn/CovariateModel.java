@@ -44,8 +44,8 @@ import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.maths.ConditionalStatement;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -96,7 +96,7 @@ public class CovariateModel
 	@XmlElement(name = "CovariateModelRef")
     protected CovariateModelRef covariateModelRef; // PharmML 0.7
 	
-    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Name", namespace = NS_DEFAULT_CT)
     protected Name name;
     @Deprecated
     @XmlElement(name = "SimpleParameter")
@@ -361,7 +361,8 @@ public class CovariateModel
      *     {@link String }
      *     
      */
-    public String getBlkId() {
+    @Override
+	public String getBlkId() {
         return blkId;
     }
 
@@ -373,7 +374,8 @@ public class CovariateModel
      *     {@link String }
      *     
      */
-    public void setBlkId(String value) {
+    @Override
+	public void setBlkId(String value) {
         this.blkId = value;
     }
 
@@ -388,6 +390,12 @@ public class CovariateModel
 				.addIfNotNull(listOfAssignStatement)
 				.addIfNotNull(conditionalStatement)
 				.addIfNotNull(listOfCovariate);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

@@ -46,8 +46,8 @@ import eu.ddmore.libpharmml.dom.commontypes.Scalar;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -85,9 +85,9 @@ public class FixedEffectRelation
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT)
     protected SymbolRef symbRef;
-    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected Scalar scalar;
     
     /**
@@ -214,6 +214,12 @@ public class FixedEffectRelation
 				.addIfNotNull(symbRef)
 				.addIfNotNull(scalar)
 				.addIfNotNull(category);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

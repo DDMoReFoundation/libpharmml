@@ -71,13 +71,13 @@ import eu.ddmore.libpharmml.dom.uncertml.WishartDistribution;
 public class MasterObjectFactory {
 	
 	public static ObjectFactory ROOT_OF = new ObjectFactory();
-	public static eu.ddmore.libpharmml.dom.commontypes.ObjectFactory COMMONTYPES_OF = new eu.ddmore.libpharmml.dom.commontypes.ObjectFactory();
-	public static eu.ddmore.libpharmml.dom.dataset.ObjectFactory DATASET_OF = new eu.ddmore.libpharmml.dom.dataset.ObjectFactory();
-	public static eu.ddmore.libpharmml.dom.maths.ObjectFactory MATHS_OF = new eu.ddmore.libpharmml.dom.maths.ObjectFactory();
-	public static eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory MODELDEFN_OF = new eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory();
-	public static eu.ddmore.libpharmml.dom.modellingsteps.ObjectFactory MODELLINGSTEPS_OF = new eu.ddmore.libpharmml.dom.modellingsteps.ObjectFactory();
-	public static eu.ddmore.libpharmml.dom.trialdesign.ObjectFactory TRIALDESIGN_OF = new eu.ddmore.libpharmml.dom.trialdesign.ObjectFactory();
-	public static eu.ddmore.libpharmml.dom.uncertml.ObjectFactory UNCERTML_OF = new eu.ddmore.libpharmml.dom.uncertml.ObjectFactory();
+	public static eu.ddmore.libpharmml.dom.commontypes.ObjectFactory COMMONTYPES_OF = eu.ddmore.libpharmml.dom.commontypes.ObjectFactory.getInstance();
+	public static eu.ddmore.libpharmml.dom.dataset.ObjectFactory DATASET_OF = eu.ddmore.libpharmml.dom.dataset.ObjectFactory.getInstance();
+	public static eu.ddmore.libpharmml.dom.maths.ObjectFactory MATHS_OF = eu.ddmore.libpharmml.dom.maths.ObjectFactory.getInstance();
+	public static eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory MODELDEFN_OF = eu.ddmore.libpharmml.dom.modeldefn.ObjectFactory.getInstance();
+	public static eu.ddmore.libpharmml.dom.modellingsteps.ObjectFactory MODELLINGSTEPS_OF = eu.ddmore.libpharmml.dom.modellingsteps.ObjectFactory.getInstance();
+	public static eu.ddmore.libpharmml.dom.trialdesign.ObjectFactory TRIALDESIGN_OF = eu.ddmore.libpharmml.dom.trialdesign.ObjectFactory.getInstance();
+	public static eu.ddmore.libpharmml.dom.uncertml.ObjectFactory UNCERTML_OF = eu.ddmore.libpharmml.dom.uncertml.ObjectFactory.getInstance();
 	
 	/**
 	 * Creates a proper {@link JAXBElement} from {@link Scalar}
@@ -271,6 +271,7 @@ public class MasterObjectFactory {
 		return element;
 	}
 	
+	@Deprecated
 	public static JAXBElement<? extends VectorValue> createVectorValue(VectorValue value){
 		JAXBElement<? extends VectorValue> element;
 		if(value instanceof Scalar){

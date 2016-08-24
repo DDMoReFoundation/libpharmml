@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.DependanceAttribute;
 import eu.ddmore.libpharmml.dom.commontypes.OrderedAttribute;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -482,6 +483,12 @@ public class CategoricalData
 				.addIfNotNull(transitionMatrix)
 				.addIfNotNull(probabilityAssignment)
 				.addIfNotNull(pmf);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 

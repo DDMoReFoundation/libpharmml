@@ -29,8 +29,8 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -279,7 +279,7 @@ public class StructuredModel
         extends PharmMLRootType
     {
 
-        @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+        @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT, required = true)
         protected Rhs assign;
 
         /**
@@ -315,6 +315,12 @@ public class StructuredModel
         	return new ChainedList<TreeNode>()
         			.addIfNotNull(assign);
         }
+
+		@Override
+		public void accept(Visitor visitor) {
+			visitor.visit(this);
+			
+		}
 
     }
 
@@ -451,7 +457,7 @@ public class StructuredModel
             extends PharmMLRootType
         {
 
-            @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+            @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT, required = true)
             protected Rhs assign;
 
             /**
@@ -484,7 +490,20 @@ public class StructuredModel
             			.addIfNotNull(assign);
             }
 
+			@Override
+			public void accept(Visitor visitor) {
+				visitor.visit(this);
+				
+			}
+
         }
+
+
+		@Override
+		public void accept(Visitor visitor) {
+			visitor.visit(this);
+			
+		}
 
     }
 
@@ -516,7 +535,7 @@ public class StructuredModel
         extends PharmMLRootType
     {
 
-        @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+        @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT, required = true)
         protected Rhs assign;
 
         /**
@@ -549,6 +568,12 @@ public class StructuredModel
         			.addIfNotNull(assign);
         }
 
+		@Override
+		public void accept(Visitor visitor) {
+			visitor.visit(this);
+			
+		}
+
     }
     
     @Override
@@ -560,5 +585,10 @@ public class StructuredModel
     			.addIfNotNull(generalCovariate)
     			.addIfNotNull(randomEffects);
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
 
 }

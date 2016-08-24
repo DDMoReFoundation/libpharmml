@@ -52,7 +52,6 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.maths.ConditionalStatement;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.dom.maths.LogicOperator;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -98,9 +97,9 @@ public abstract class CommonParameterModel
     extends PharmMLRootType implements Block
 {
 
-    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Name", namespace = NS_DEFAULT_CT)
     protected Name name;
-//    @XmlElementRef(name = "CommonParameterElement", namespace = XMLFilter.NS_DEFAULT_MDEF, type = JAXBElement.class, required = false)
+//    @XmlElementRef(name = "CommonParameterElement", namespace = NS_DEFAULT_MDEF, type = JAXBElement.class, required = false)
 //    protected List<JAXBElement<? extends CommonParameter>> commonParameterElement;
 //    @XmlElement(name = "Correlation")
 //    protected List<Correlation> correlation;
@@ -374,7 +373,8 @@ public abstract class CommonParameterModel
      *     {@link String }
      *     
      */
-    public String getBlkId() {
+    @Override
+	public String getBlkId() {
         return blkId;
     }
 
@@ -386,7 +386,8 @@ public abstract class CommonParameterModel
      *     {@link String }
      *     
      */
-    public void setBlkId(String value) {
+    @Override
+	public void setBlkId(String value) {
         this.blkId = value;
     }
     

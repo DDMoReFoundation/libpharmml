@@ -33,8 +33,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.LevelReference;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -71,7 +71,7 @@ public class OccasionList
     extends PharmMLRootType implements PharmMLObject
 {
 
-    @XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "VariabilityReference", namespace = NS_DEFAULT_CT)
     protected LevelReference variabilityReference;
     @XmlElement(name = "Occasion", required = true)
     protected List<Occasion> listOfOccasion;
@@ -140,7 +140,8 @@ public class OccasionList
      *     {@link String }
      *     
      */
-    public String getOid() {
+    @Override
+	public String getOid() {
         return oid;
     }
 
@@ -152,7 +153,8 @@ public class OccasionList
      *     {@link String }
      *     
      */
-    public void setOid(String value) {
+    @Override
+	public void setOid(String value) {
         this.oid = value;
     }
     
@@ -182,5 +184,11 @@ public class OccasionList
             getListOfOccasion().add(el);
             return el;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

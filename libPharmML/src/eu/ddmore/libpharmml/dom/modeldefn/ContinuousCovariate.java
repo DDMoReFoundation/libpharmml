@@ -50,8 +50,8 @@ import eu.ddmore.libpharmml.dom.uncertml.ParetoDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.StudentTDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.UniformDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -92,7 +92,7 @@ public class ContinuousCovariate
     extends PharmMLRootType
 {
 
-    @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractContinuousUnivariateDistributionType> abstractContinuousUnivariateDistribution;
     
     @XmlElement(name = "Distribution") // PharmML 0.7
@@ -101,9 +101,9 @@ public class ContinuousCovariate
     protected Realisation realisation; // PharmML 0.8
     @XmlElement(name = "Transformation")
     protected List<CovariateTransformation> listOfTransformation;
-    @XmlElement(name = "Interpolation", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Interpolation", namespace = NS_DEFAULT_CT)
     protected Interpolation interpolation;
-    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT) // PharmML 0.7
+    @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT) // PharmML 0.7
     protected Rhs assign;
 
     /**
@@ -165,7 +165,8 @@ public class ContinuousCovariate
      * @deprecated Since PharmML 0.7. Distributions are included within {@link Distribution} via
      * {@link #setDistribution(Distribution)}.
      */
-    public void setAbstractContinuousUnivariateDistribution(JAXBElement<? extends AbstractContinuousUnivariateDistributionType> value) {
+    @Deprecated
+	public void setAbstractContinuousUnivariateDistribution(JAXBElement<? extends AbstractContinuousUnivariateDistributionType> value) {
         this.abstractContinuousUnivariateDistribution = value;
     }
     
@@ -344,6 +345,12 @@ public class ContinuousCovariate
 				.addIfNotNull(listOfTransformation)
 				.addIfNotNull(interpolation)
 				.addIfNotNull(assign);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

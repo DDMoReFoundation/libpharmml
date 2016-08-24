@@ -2,6 +2,7 @@ package eu.ddmore.libpharmml.dom.trialdesign;
 
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.hamcrest.core.StringContains.containsString;
+import static eu.ddmore.libpharmml.AssertUtil.containsRegex;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
@@ -79,7 +80,7 @@ public class ExternalDatasetTest {
 		
 		assertThat(baos.toString(), containsString("<td:ExternalDataSet toolName=\"BUGS\" oid=\"d1\">"));
 		assertThat(baos.toString(), containsString("<td:CodeInjection>"));
-		assertThat(baos.toString(), containsString("<td:SymbolMapping id=\"smt1\"/>"));
+		assertThat(baos.toString(), containsRegex("<td:SymbolMapping id=\"smt1\"/?>"));
 		assertThat(baos.toString(), containsString("<td:TargetCode>"));
 		assertThat(baos.toString(), containsString("<td:Code>test code;</td:Code>"));
 	}
@@ -124,7 +125,7 @@ public class ExternalDatasetTest {
 		
 		assertThat(baos.toString(), containsString("<td:ExternalDataSet toolName=\"BUGS\" oid=\"d1\">"));
 		assertThat(baos.toString(), containsString("<msteps:CodeInjection>"));
-		assertThat(baos.toString(), containsString("<msteps:SymbolMapping id=\"smt1\"/>"));
+		assertThat(baos.toString(), containsRegex("<msteps:SymbolMapping id=\"smt1\"/?>"));
 		assertThat(baos.toString(), containsString("<msteps:TargetCode>"));
 		assertThat(baos.toString(), containsString("<msteps:Code>test code;</msteps:Code>"));
 	}
@@ -169,7 +170,7 @@ public class ExternalDatasetTest {
 //		System.out.print(baos);
 		
 //		assertThat(baos.toString(), containsString("<td:MultipleDVMapping/>"));
-		assertThat(baos.toString(), containsString("<msteps:MultipleDVMapping/>"));
+		assertThat(baos.toString(), containsRegex("<msteps:MultipleDVMapping/?>"));
 	}
 	
 	@Test
@@ -189,7 +190,7 @@ public class ExternalDatasetTest {
 		
 //		System.out.print(baos);
 		
-		assertThat(baos.toString(), containsString("<td:MultipleDVMapping/>"));
+		assertThat(baos.toString(), containsRegex("<td:MultipleDVMapping/?>"));
 //		assertThat(baos.toString(), containsString("<msteps:MultipleDVMapping/>"));
 	}
 	

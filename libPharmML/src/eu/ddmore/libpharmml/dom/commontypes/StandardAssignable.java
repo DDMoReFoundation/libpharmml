@@ -37,8 +37,8 @@ import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.maths.Uniop;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -82,9 +82,9 @@ public class StandardAssignable
     
     // The following attributes are meant to support the backward compatiblity before version 0.7.1.
     // When ScalarRhs attributes changed to StandardAssignable.
-    @XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "Equation", namespace = NS_DEFAULT_MATH)
     protected eu.ddmore.libpharmml.dom.maths.Equation equation;
-    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected Scalar scalar;
     @XmlElement(name = "SymbRef")
     protected SymbolRef symbRef;
@@ -133,7 +133,8 @@ public class StandardAssignable
      *     {@link Rhs }
      *     
      */
-    public Rhs getAssign() {
+    @Override
+	public Rhs getAssign() {
         return assign;
     }
 
@@ -145,7 +146,8 @@ public class StandardAssignable
      *     {@link Rhs }
      *     
      */
-    public void setAssign(Rhs value) {
+    @Override
+	public void setAssign(Rhs value) {
         this.assign = value;
     }
 
@@ -283,6 +285,11 @@ public class StandardAssignable
 		Rhs rhs = new Rhs(probability);
 		setAssign(rhs);
 		return rhs;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 

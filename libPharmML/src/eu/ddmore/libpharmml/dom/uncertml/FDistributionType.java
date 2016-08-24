@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.visitor.Visitor;
+
 
 /**
  * <p>Java class for FDistributionType complex type.
@@ -180,5 +182,11 @@ public class FDistributionType
     public void setTruncationUpperInclusiveBoundIG(PositiveRealValueType value) {
         this.truncationUpperInclusiveBoundIG = value;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

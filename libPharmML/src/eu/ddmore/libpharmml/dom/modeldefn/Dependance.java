@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.DependanceAttribute;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -105,6 +106,12 @@ public class Dependance
 	@Override
 	protected List<TreeNode> listChildren() {
 		return Collections.emptyList();
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

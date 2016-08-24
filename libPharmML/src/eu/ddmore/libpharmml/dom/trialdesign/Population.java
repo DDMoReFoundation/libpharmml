@@ -40,8 +40,8 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.dataset.DatasetMap;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -84,13 +84,13 @@ public class Population
     extends PharmMLRootType implements DatasetMap
 {
 
-    @XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "VariabilityReference", namespace = NS_DEFAULT_CT)
     protected LevelReference variabilityReference;
     @XmlElement(name = "Demographic")
     protected List<Demographic> demographic;
     @XmlElement(name = "ColumnMapping")
     protected List<ColumnMapping> columnMapping;
-    @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
+    @XmlElement(name = "DataSet", namespace = NS_DEFAULT_DS, required = true)
     protected DataSet dataSet;
 	@XmlElement(name = "IndividualTemplate")
 	@Deprecated
@@ -155,7 +155,8 @@ public class Population
     /**
      * @deprecated Use {@link #getListOfColumnMapping()}.
      */
-    public List<ColumnMapping> getColumnMapping() {
+    @Deprecated
+	public List<ColumnMapping> getColumnMapping() {
         return getListOfColumnMapping();
     }
 	
@@ -196,7 +197,8 @@ public class Population
      *     {@link DataSet }
      *     
      */
-    public DataSet getDataSet() {
+    @Override
+	public DataSet getDataSet() {
         return dataSet;
     }
 
@@ -227,6 +229,12 @@ public class Population
             columnMapping = new ArrayList<ColumnMapping>();
         }
         return this.columnMapping;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

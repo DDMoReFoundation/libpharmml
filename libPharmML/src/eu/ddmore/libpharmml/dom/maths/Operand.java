@@ -20,6 +20,7 @@ package eu.ddmore.libpharmml.dom.maths;
 
 import javax.xml.bind.JAXBElement;
 
+import eu.ddmore.libpharmml.dom.PharmMLNode;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 
 /**
@@ -28,7 +29,7 @@ import eu.ddmore.libpharmml.dom.tags.MathExpression;
  * @author F. Yvon
  *
  */
-public interface Operand extends MathExpression {
+public interface Operand extends MathExpression, PharmMLNode {
 
 	/**
 	 * Converts the object to a JAXBElement for marshalling. This method may be used any time the XML element

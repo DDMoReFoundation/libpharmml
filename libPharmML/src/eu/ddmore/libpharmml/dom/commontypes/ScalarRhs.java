@@ -37,8 +37,8 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.maths.Equation;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -76,9 +76,9 @@ public class ScalarRhs
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "Equation", namespace = NS_DEFAULT_MATH)
     protected Equation equation;
-    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected Scalar scalar;
     @XmlElement(name = "SymbRef")
     protected SymbolRef symbRef;
@@ -168,6 +168,11 @@ public class ScalarRhs
 				.addIfNotNull(scalar)
 				.addIfNotNull(symbRef);
 		return list;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

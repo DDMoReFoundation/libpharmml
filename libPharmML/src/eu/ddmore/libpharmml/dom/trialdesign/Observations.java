@@ -32,8 +32,8 @@ import eu.ddmore.libpharmml.dom.commontypes.LevelReference;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.modeldefn.DesignParameter;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -78,10 +78,10 @@ public class Observations
 {
 	
 	// Before PharmML 0.7
-	@XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
+	@XmlElement(name = "Name", namespace = NS_DEFAULT_CT)
 	@Deprecated
     protected Name name;
-    @XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "VariabilityReference", namespace = NS_DEFAULT_CT)
     @Deprecated
     protected LevelReference variabilityReference;
     @XmlElement(name = "ObservationGroup", required = true)
@@ -89,7 +89,7 @@ public class Observations
     protected List<ObservationsGroup> observationGroup;
 
 
-    @XmlElement(name = "DesignParameter", namespace = XMLFilter.NS_DEFAULT_MDEF)
+    @XmlElement(name = "DesignParameter", namespace = NS_DEFAULT_MDEF)
     protected List<DesignParameter> listOfDesignParameter;
     
 //    @XmlElement(name = "LookupTable")
@@ -303,5 +303,11 @@ public class Observations
         }
         return this.observationGroup;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

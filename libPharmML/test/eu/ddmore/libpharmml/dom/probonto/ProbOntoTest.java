@@ -30,6 +30,7 @@ import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.MissingValue;
 import eu.ddmore.libpharmml.dom.commontypes.MissingValueSymbol;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
+import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.modeldefn.Distribution;
 import eu.ddmore.libpharmml.dom.modeldefn.IndividualParameter;
 import eu.ddmore.libpharmml.dom.modeldefn.ParameterModel;
@@ -119,6 +120,23 @@ public class ProbOntoTest {
 		PharmML dom = unmarshalResource.getDom();
 		dom.getModelDefinition();
 		assertValid(libPharmML.getValidator().createValidationReport(unmarshalResource));
+	}
+
+	@Test
+	public void testMarshalEmpirical() throws Exception {
+		IPharmMLResource resource = libPharmML.createDom(PharmMLVersion.DEFAULT);
+		PharmML dom = resource.getDom();
+		ParameterModel pm = dom.createModelDefinition().createParameterModel("pm1");
+		IndividualParameter param = MasterObjectFactory.MODELDEFN_OF.createIndividualParameterType();
+		param.setSymbId("ip1");
+		pm.getListOfParameterModelElements().add(param);
+		
+		Distribution distrib = param.createDistribution();
+		ProbOnto po = distrib.createProbOnto(DistributionName.STANDARD_NORMAL_1, DistributionType.UNIVARIATE);
+		po.createRealisation(new Rhs(new RealValue(50)));
+		po.createWeight(new Rhs(new RealValue(1)));
+		
+		assertValid(libPharmML.getValidator().createValidationReport(resource));
 	}
 
 //	@Test

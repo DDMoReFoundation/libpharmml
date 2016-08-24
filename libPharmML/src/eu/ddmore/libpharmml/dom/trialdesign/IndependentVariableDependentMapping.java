@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
-import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.impl.NamespaceFilter;
 
 
 /**
@@ -78,13 +78,13 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
 @Deprecated
 public class IndependentVariableDependentMapping {
 
-    @XmlElement(name = "ColumnRef", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
+    @XmlElement(name = "ColumnRef", namespace = NamespaceFilter.NS_DEFAULT_DS, required = true)
     protected ColumnReference columnRef;
     @XmlElement(name = "IndependentVariableMapping")
     protected IndependentVariableMapping independentVariableMapping;
     @XmlElement(name = "EpochMapping")
     protected EpochMapping epochMapping;
-    @XmlElementRef(name = "AttributeMapping", namespace = XMLFilter.NS_DEFAULT_TD, type = JAXBElement.class)
+    @XmlElementRef(name = "AttributeMapping", namespace = NamespaceFilter.NS_DEFAULT_TD, type = JAXBElement.class)
     protected List<JAXBElement<?>> attributeMapping;
 
     /**

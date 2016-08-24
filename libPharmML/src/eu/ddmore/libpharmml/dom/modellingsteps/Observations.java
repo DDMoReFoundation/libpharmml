@@ -38,8 +38,8 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.trialdesign.ContinuousObservation;
 import eu.ddmore.libpharmml.dom.trialdesign.DiscreteObservation;
 import eu.ddmore.libpharmml.dom.trialdesign.Timepoints;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -80,11 +80,11 @@ public class Observations
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Timepoints", namespace = XMLFilter.NS_DEFAULT_MSTEPS, required = true)
+    @XmlElement(name = "Timepoints", namespace = NS_DEFAULT_MSTEPS, required = true)
     protected Timepoints timepoints;
-    @XmlElement(name = "Continuous", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
+    @XmlElement(name = "Continuous", namespace = NS_DEFAULT_MSTEPS)
     protected ContinuousObservation continuous;
-    @XmlElement(name = "Discrete", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
+    @XmlElement(name = "Discrete", namespace = NS_DEFAULT_MSTEPS)
     protected DiscreteObservation discrete;
 
     /**
@@ -167,6 +167,12 @@ public class Observations
 				.addIfNotNull(timepoints)
 				.addIfNotNull(continuous)
 				.addIfNotNull(discrete);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

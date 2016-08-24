@@ -52,6 +52,7 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -1047,6 +1048,15 @@ public class Rhs
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
+	
+	public JAXBElement<Rhs> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createAssign(this);
 	}
 
 }

@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations 
  * under the License.
  ******************************************************************************/
-@javax.xml.bind.annotation.XmlSchema(namespace = eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_MML, 
+@javax.xml.bind.annotation.XmlSchema(namespace = eu.ddmore.libpharmml.impl.NamespaceFilter.NS_DEFAULT_MML, 
 xmlns = {@javax.xml.bind.annotation.XmlNs(
-		namespaceURI = eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_MML, 
+		namespaceURI = eu.ddmore.libpharmml.impl.NamespaceFilter.NS_DEFAULT_MML, 
 		prefix = "mml")},
 elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package eu.ddmore.libpharmml.dom;

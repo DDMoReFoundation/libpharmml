@@ -32,8 +32,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -68,7 +68,7 @@ public class Prior
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Matrix", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Matrix", namespace = NS_DEFAULT_CT)
     protected Matrix matrix;
     @XmlElement(name = "File")
     protected ExternalFile file;
@@ -204,5 +204,11 @@ public class Prior
     public String toString() {
     	return super.toString()+" symbId:"+String.valueOf(symbId);
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

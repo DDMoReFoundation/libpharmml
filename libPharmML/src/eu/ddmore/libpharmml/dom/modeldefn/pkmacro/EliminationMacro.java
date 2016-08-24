@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 /**
  * Type defines an elimination macro.
@@ -94,6 +95,12 @@ public class EliminationMacro
 		public String toString() {
 			return value;
 		}
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

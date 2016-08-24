@@ -30,8 +30,8 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.StandardAssignable;
 import eu.ddmore.libpharmml.dom.modeldefn.DesignParameter;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -81,7 +81,7 @@ public class Arms
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "DesignParameter", namespace = XMLFilter.NS_DEFAULT_MDEF)
+    @XmlElement(name = "DesignParameter", namespace = NS_DEFAULT_MDEF)
     protected List<DesignParameter> listOfDesignParameter;
     @XmlElement(name = "ArmSize")
     protected StandardAssignable armSize;
@@ -490,6 +490,12 @@ public class Arms
             getListOfArm().add(el);
             return el;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 
 }

@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
-import eu.ddmore.libpharmml.impl.XMLFilter;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -72,8 +72,8 @@ public class SymbolMapping
 	//TODO: use an adapter
 	
     @XmlElementRefs({
-        @XmlElementRef(name = "ColumnRef", namespace = XMLFilter.NS_DEFAULT_DS, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "ColumnRef", namespace = NS_DEFAULT_DS, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "SymbRef", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<? extends PharmMLRootType>> rest;
 
@@ -116,5 +116,11 @@ public class SymbolMapping
         }
         return this.rest;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

@@ -40,8 +40,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Symbol;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -77,7 +77,7 @@ public class VariabilityLevelDefinition
     extends PharmMLRootType implements Symbol
 {
 
-    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Name", namespace = NS_DEFAULT_CT)
     protected Name name;
     @XmlElement(name = "ParentLevel")
     protected ParentLevel parentLevel;
@@ -173,7 +173,8 @@ public class VariabilityLevelDefinition
      *     {@link String }
      *     
      */
-    public String getSymbId() {
+    @Override
+	public String getSymbId() {
         return symbId;
     }
 
@@ -185,7 +186,8 @@ public class VariabilityLevelDefinition
      *     {@link String }
      *     
      */
-    public void setSymbId(String value) {
+    @Override
+	public void setSymbId(String value) {
         this.symbId = value;
     }
     
@@ -194,6 +196,12 @@ public class VariabilityLevelDefinition
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(name)
 				.addIfNotNull(parentLevel);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

@@ -39,9 +39,9 @@ import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -75,7 +75,7 @@ public class TargetToolReference
     extends PharmMLRootType implements ReferenceContainer
 {
 
-    @XmlElement(name = "OidRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    @XmlElement(name = "OidRef", namespace = NS_DEFAULT_CT, required = true)
     protected OidRef oidRef;
 
     /**
@@ -120,6 +120,12 @@ public class TargetToolReference
 				sr.handleUnresolvedObject(oidRef);
 			}
 		}
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

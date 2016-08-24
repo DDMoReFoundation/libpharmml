@@ -18,6 +18,8 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.dom.modeldefn;
 
+import static eu.ddmore.libpharmml.util.Util.filter;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -43,9 +45,8 @@ import eu.ddmore.libpharmml.dom.commontypes.VariableDefinition;
 import eu.ddmore.libpharmml.dom.maths.ConditionalStatement;
 import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.dom.modeldefn.pkmacro.PKMacroList;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
-import static eu.ddmore.libpharmml.util.Util.filter;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -92,7 +93,7 @@ public class StructuralModel
     extends PharmMLRootType implements Block
 {
 
-    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Name", namespace = NS_DEFAULT_CT)
     protected Name name;
     @XmlAttribute(name = "blkId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -214,7 +215,8 @@ public class StructuralModel
      *     {@link String }
      *     
      */
-    public String getBlkId() {
+    @Override
+	public String getBlkId() {
         return blkId;
     }
 
@@ -226,7 +228,8 @@ public class StructuralModel
      *     {@link String }
      *     
      */
-    public void setBlkId(String value) {
+    @Override
+	public void setBlkId(String value) {
         this.blkId = value;
     }
     
@@ -353,6 +356,12 @@ public class StructuralModel
 				.addIfNotNull(name)
 				.addIfNotNull(listOfElements);
 		return list;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

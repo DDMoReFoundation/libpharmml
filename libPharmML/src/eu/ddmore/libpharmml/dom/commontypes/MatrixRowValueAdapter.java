@@ -25,19 +25,19 @@ import javax.xml.namespace.QName;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.exceptions.UndeclaredInterfaceImplementer;
+import eu.ddmore.libpharmml.impl.NamespaceFilter;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 
 @SuppressWarnings("deprecation")
-public class MatrixRowValueAdapter extends XmlAdapter<JAXBElement<?>, MatrixRowValue> {
+public class MatrixRowValueAdapter extends XmlAdapter<JAXBElement<? extends MatrixRowValue>, MatrixRowValue> {
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public MatrixRowValue unmarshal(JAXBElement<?> v) throws Exception {
+	public MatrixRowValue unmarshal(JAXBElement<? extends MatrixRowValue> v) throws Exception {
 		Object el = v.getValue();
 		if(el instanceof Scalar){
-			return new ScalarAdapter().unmarshal(v);
-		}
-		if(el instanceof MatrixRowValue){
+			return new ScalarAdapter().unmarshal((JAXBElement<? extends Scalar>) v);
+		} else if(el instanceof MatrixRowValue){
 			return (MatrixRowValue) el;
 		} else {
 			return null;
@@ -45,11 +45,11 @@ public class MatrixRowValueAdapter extends XmlAdapter<JAXBElement<?>, MatrixRowV
 	}
 
 	@Override
-	public JAXBElement<?> marshal(MatrixRowValue v) throws Exception {
-		JAXBElement<?> jaxbEl;
+	public JAXBElement<? extends MatrixRowValue> marshal(MatrixRowValue v) throws Exception {
+		JAXBElement<? extends MatrixRowValue> jaxbEl;
 		if(v != null){
 			if(v instanceof Scalar){
-				jaxbEl = MasterObjectFactory.createScalar((Scalar) v);
+				jaxbEl = ((Scalar) v).toJAXBElement();
 			} else if (v instanceof Sequence){
 				jaxbEl = MasterObjectFactory.COMMONTYPES_OF.createSequence((Sequence) v);
 			} else if (v instanceof SymbolRef){
@@ -62,7 +62,7 @@ public class MatrixRowValueAdapter extends XmlAdapter<JAXBElement<?>, MatrixRowV
 					jaxbEl = MasterObjectFactory.MATHS_OF.createEquation(Equation.fromRhs((Rhs) v));
 				}
 			} else if (v instanceof Equation){
-				jaxbEl = new JAXBElement<Equation>(new QName(XMLFilter.NS_DEFAULT_MATH, "Equation"), Equation.class, (Equation) v);
+				jaxbEl = new JAXBElement<Equation>(new QName(NamespaceFilter.NS_DEFAULT_MATH, "Equation"), Equation.class, (Equation) v);
 			} else {
 				throw new UndeclaredInterfaceImplementer(this, v);
 			}

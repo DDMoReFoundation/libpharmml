@@ -29,8 +29,8 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -70,7 +70,7 @@ public class ParameterEstimate
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT, required = true)
     protected SymbolRef symbRef;
     @XmlElement(name = "InitialEstimate")
     protected InitialEstimate initialEstimate;
@@ -184,6 +184,12 @@ public class ParameterEstimate
 				.addIfNotNull(initialEstimate)
 				.addIfNotNull(lowerBound)
 				.addIfNotNull(upperBound);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

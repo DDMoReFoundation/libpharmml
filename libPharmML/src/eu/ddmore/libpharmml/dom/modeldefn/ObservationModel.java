@@ -37,8 +37,8 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.Block;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -85,7 +85,7 @@ public class ObservationModel
 	//TODO: extends PharmMLRootType. still CommonParameterModelType for backward compatiblity.
 	// All inherited methods are @override and @deprecated
 
-    @XmlElementRef(name = "ObservationError", namespace = XMLFilter.NS_DEFAULT_MDEF, type = JAXBElement.class)
+    @XmlElementRef(name = "ObservationError", namespace = NS_DEFAULT_MDEF, type = JAXBElement.class)
     @Deprecated
     protected JAXBElement<? extends ObservationError> observationError;
 	
@@ -185,7 +185,8 @@ public class ObservationModel
      *     {@link String }
      *     
      */
-    public String getBlkId() {
+    @Override
+	public String getBlkId() {
         return blkId;
     }
 
@@ -197,7 +198,8 @@ public class ObservationModel
      *     {@link String }
      *     
      */
-    public void setBlkId(String value) {
+    @Override
+	public void setBlkId(String value) {
         this.blkId = value;
     }
     
@@ -207,6 +209,12 @@ public class ObservationModel
 				.addJAXBIfNotNull(observationError)
 				.addIfNotNull(continuousData)
 				.addIfNotNull(discrete);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

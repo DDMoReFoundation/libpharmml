@@ -33,9 +33,9 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -73,7 +73,7 @@ public class IndividualAdministration
     protected OidRef interventionRef;
     @XmlElement(name = "ColumnMapping", required = true)
     protected List<ColumnMapping> listOfColumnMapping;
-    @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
+    @XmlElement(name = "DataSet", namespace = NS_DEFAULT_DS, required = true)
     protected DataSet dataSet;
 
     /**
@@ -165,8 +165,7 @@ public class IndividualAdministration
 
 	@Override
 	public void validateReferences(SymbolResolver sr, IErrorHandler errorHandler) {
-		// TODO Auto-generated method stub
-		
+		// TODO
 	}
 	
 	/**
@@ -209,6 +208,12 @@ public class IndividualAdministration
 	        DataSet el = new DataSet();
 	        this.dataSet = el;
 	        return el;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

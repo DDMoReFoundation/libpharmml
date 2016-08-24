@@ -27,8 +27,10 @@ import java.util.ListIterator;
 import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlTransient;
 
+import eu.ddmore.libpharmml.dom.PharmMLNode;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 /**
  * Class for handling wrapped lists in the Domain Object Model. This class implements {@link List},
@@ -52,7 +54,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  * @param <E> The class of the wrapped elements.
  */
 @XmlTransient
-public class WrappedList<E extends TreeNode> extends PharmMLRootType implements List<E>{
+public class WrappedList<E extends PharmMLNode> extends PharmMLRootType implements List<E>{
 	
 	/**
 	 * The list that contains the wrapped elements.
@@ -159,6 +161,11 @@ public class WrappedList<E extends TreeNode> extends PharmMLRootType implements 
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(list);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 		
 }

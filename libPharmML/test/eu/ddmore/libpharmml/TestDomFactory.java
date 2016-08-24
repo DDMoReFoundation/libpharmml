@@ -37,10 +37,10 @@ import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modeldefn.StructuralModel;
 import eu.ddmore.libpharmml.impl.IdFactoryImpl;
 import eu.ddmore.libpharmml.impl.Messages;
+import eu.ddmore.libpharmml.impl.NamespaceFilter;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.UnmarshalListener;
 import eu.ddmore.libpharmml.impl.ValidationReportFactory;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 
 public class TestDomFactory {
 	private static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
@@ -81,7 +81,7 @@ public class TestDomFactory {
 //		};
 		u.setListener(new UnmarshalListener(version, new IdFactoryImpl(), new ValidationReportFactory()));
 		
-		XMLStreamReader xmlsr = new XMLFilter(version).getXMLStreamReader(is);
+		XMLStreamReader xmlsr = new NamespaceFilter(version).getXMLStreamReader(is);
 		
 		PharmML doc = (PharmML)u.unmarshal(xmlsr);
 		return doc;

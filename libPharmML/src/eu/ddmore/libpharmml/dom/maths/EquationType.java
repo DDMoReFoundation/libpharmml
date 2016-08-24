@@ -44,8 +44,8 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.commontypes.TrueBoolean;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -105,9 +105,9 @@ public class EquationType
     extends PharmMLRootType
 {
 
-    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected JAXBElement<?> scalar;
-    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT)
     protected SymbolRef symbRef;
     @XmlElement(name = "Binop")
     protected Binop binop;
@@ -117,19 +117,19 @@ public class EquationType
     protected Piecewise piecewise;
     @XmlElement(name = "FunctionCall")
     protected FunctionCallType functionCall;
-	@XmlElement(name = "Sum", namespace = XMLFilter.NS_DEFAULT_CT)
+	@XmlElement(name = "Sum", namespace = NS_DEFAULT_CT)
     protected Sum sum;
-    @XmlElement(name = "Product", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Product", namespace = NS_DEFAULT_CT)
     protected Product product;
-    @XmlElement(name = "Delay", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Delay", namespace = NS_DEFAULT_CT)
     protected Delay delay;
-    @XmlElement(name = "VectorSelector", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "VectorSelector", namespace = NS_DEFAULT_CT)
     protected VectorSelector vectorSelector;
-    @XmlElement(name = "MatrixSelector", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "MatrixSelector", namespace = NS_DEFAULT_CT)
     protected MatrixSelector matrixSelector;
     @XmlElement(name = "MatrixUniop")
     protected MatrixUniOp matrixUniop;
-    @XmlElement(name = "Probability", namespace = XMLFilter.NS_DEFAULT_MDEF)
+    @XmlElement(name = "Probability", namespace = NS_DEFAULT_MDEF)
     protected Probability probability;
 
     /**
@@ -477,6 +477,11 @@ public class EquationType
 			list.add((TreeNode) scalar.getValue());
 		}
 		return list;
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

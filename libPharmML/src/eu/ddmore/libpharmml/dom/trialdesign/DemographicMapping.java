@@ -35,8 +35,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -71,7 +71,7 @@ public class DemographicMapping
     extends PopulationMapping
 {
 
-    @XmlElement(name = "OidRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    @XmlElement(name = "OidRef", namespace = NS_DEFAULT_CT, required = true)
     protected OidRef oidRef;
 
     /**
@@ -103,5 +103,11 @@ public class DemographicMapping
     	return new ChainedList<TreeNode>()
     			.addIfNotNull(oidRef);
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

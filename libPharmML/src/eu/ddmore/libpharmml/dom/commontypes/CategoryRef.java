@@ -33,6 +33,7 @@ import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 /**
  * <p>Java class for CategoryRefType complex type.
@@ -125,7 +126,7 @@ public class CategoryRef extends PharmMLRootType implements ReferenceContainer, 
     
 	@Override
 	public void validateReferences(SymbolResolver sr, IErrorHandler errorHandler) {
-		// TODO Auto-generated method stub
+		// TODO
 		
 	}
     
@@ -152,6 +153,11 @@ public class CategoryRef extends PharmMLRootType implements ReferenceContainer, 
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

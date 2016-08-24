@@ -20,12 +20,20 @@ package eu.ddmore.libpharmml.dom.modeldefn.pkmacro;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import eu.ddmore.libpharmml.visitor.Visitor;
+
 @XmlRootElement(name = "Absorption")
 public class AbsorptionMacro extends AbsorptionOralMacro {
 
 	@Override
 	public String getName() {
 		return "absorption";
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

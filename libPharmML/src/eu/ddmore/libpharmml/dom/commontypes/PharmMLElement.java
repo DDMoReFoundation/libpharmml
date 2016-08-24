@@ -34,12 +34,13 @@ import javax.xml.namespace.QName;
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.AbstractTreeNode;
 import eu.ddmore.libpharmml.dom.Identifiable;
+import eu.ddmore.libpharmml.dom.PharmMLNode;
 import eu.ddmore.libpharmml.impl.IdFactoryImpl;
 import eu.ddmore.libpharmml.impl.MarshalListener;
 import eu.ddmore.libpharmml.impl.MarshallerImpl;
+import eu.ddmore.libpharmml.impl.NamespaceFilter;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.UnmarshalListener;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -48,26 +49,26 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
  * @since libPharmML 0.3
  */
 @XmlTransient
-public abstract class PharmMLElement extends AbstractTreeNode implements Cloneable {
+public abstract class PharmMLElement extends AbstractTreeNode implements Cloneable, PharmMLNode {
 	
 	@XmlTransient
-	protected static final String NS_DEFAULT_CT = XMLFilter.NS_DEFAULT_CT;
+	protected static final String NS_DEFAULT_CT = NamespaceFilter.NS_DEFAULT_CT;
 	@XmlTransient
-	protected static final String NS_DEFAULT_DS = XMLFilter.NS_DEFAULT_DS;
+	protected static final String NS_DEFAULT_DS = NamespaceFilter.NS_DEFAULT_DS;
 	@XmlTransient
-	protected static final String NS_DEFAULT_MATH = XMLFilter.NS_DEFAULT_MATH;
+	protected static final String NS_DEFAULT_MATH = NamespaceFilter.NS_DEFAULT_MATH;
 	@XmlTransient
-	protected static final String NS_DEFAULT_MDEF = XMLFilter.NS_DEFAULT_MDEF;
+	protected static final String NS_DEFAULT_MDEF = NamespaceFilter.NS_DEFAULT_MDEF;
 	@XmlTransient
-	protected static final String NS_DEFAULT_MML = XMLFilter.NS_DEFAULT_MML;
+	protected static final String NS_DEFAULT_MML = NamespaceFilter.NS_DEFAULT_MML;
 	@XmlTransient
-	protected static final String NS_DEFAULT_MSTEPS = XMLFilter.NS_DEFAULT_MSTEPS;
+	protected static final String NS_DEFAULT_MSTEPS = NamespaceFilter.NS_DEFAULT_MSTEPS;
 	@XmlTransient
-	protected static final String NS_DEFAULT_PROBONTO = XMLFilter.NS_DEFAULT_PROBONTO;
+	protected static final String NS_DEFAULT_PROBONTO = NamespaceFilter.NS_DEFAULT_PROBONTO;
 	@XmlTransient
-	protected static final String NS_DEFAULT_TD = XMLFilter.NS_DEFAULT_TD;
+	protected static final String NS_DEFAULT_TD = NamespaceFilter.NS_DEFAULT_TD;
 	@XmlTransient
-	protected static final String NS_DEFAULT_UNCERTML = XMLFilter.NS_DEFAULT_UNCERTML;
+	protected static final String NS_DEFAULT_UNCERTML = NamespaceFilter.NS_DEFAULT_UNCERTML;
 	
 	@XmlTransient
     private PharmMLVersion unmarshalVersion = null;
@@ -124,7 +125,8 @@ public abstract class PharmMLElement extends AbstractTreeNode implements Cloneab
      * 
      * <p>When overriding this method, one can simply use {@link #clone(Class, PharmMLElement)} in the method code.
      */
-    public abstract PharmMLElement clone();
+    @Override
+	public abstract PharmMLElement clone();
     
     /**
      * Utility method for cloning a {@link PharmMLElement} object. This method is meant to factorise the cloning code

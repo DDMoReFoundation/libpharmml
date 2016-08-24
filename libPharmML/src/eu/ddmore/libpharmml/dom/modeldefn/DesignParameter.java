@@ -46,8 +46,8 @@ import eu.ddmore.libpharmml.dom.maths.FunctionCallType;
 import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.maths.Uniop;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -93,7 +93,7 @@ public class DesignParameter
 		super(symbId);
 	}
 
-	@XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
+	@XmlElement(name = "Assign", namespace = NS_DEFAULT_CT)
     protected Rhs assign;
 
     /**
@@ -104,7 +104,8 @@ public class DesignParameter
      *     {@link Rhs }
      *     
      */
-    public Rhs getAssign() {
+    @Override
+	public Rhs getAssign() {
         return assign;
     }
 
@@ -116,7 +117,8 @@ public class DesignParameter
      *     {@link Rhs }
      *     
      */
-    public void setAssign(Rhs value) {
+    @Override
+	public void setAssign(Rhs value) {
         this.assign = value;
     }
     
@@ -258,5 +260,11 @@ public class DesignParameter
    		setAssign(rhs);
    		return rhs;
    	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

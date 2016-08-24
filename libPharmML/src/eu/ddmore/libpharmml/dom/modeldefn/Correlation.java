@@ -41,8 +41,8 @@ import eu.ddmore.libpharmml.dom.commontypes.LevelReference;
 import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.ScalarRhs;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -95,7 +95,7 @@ public class Correlation
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    @XmlElement(name = "VariabilityReference", namespace = NS_DEFAULT_CT, required = true)
     protected LevelReference variabilityReference;
 	@XmlElement(name = "RandomVariable1", required = true)
 	@Deprecated
@@ -343,6 +343,12 @@ public class Correlation
 				.addIfNotNull(variabilityReference)
 				.addIfNotNull(pairwise)
 				.addIfNotNull(matrix);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

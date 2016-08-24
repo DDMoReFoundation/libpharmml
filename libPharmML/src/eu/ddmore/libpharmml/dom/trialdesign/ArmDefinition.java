@@ -38,6 +38,7 @@ import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -337,7 +338,8 @@ public class ArmDefinition
      *     {@link String }
      *     
      */
-    public String getOid() {
+    @Override
+	public String getOid() {
         return oid;
     }
 
@@ -349,14 +351,14 @@ public class ArmDefinition
      *     {@link String }
      *     
      */
-    public void setOid(String value) {
+    @Override
+	public void setOid(String value) {
         this.oid = value;
     }
 
 	@Override
 	public void validateReferences(SymbolResolver sr, IErrorHandler errorHandler) {
-		// TODO Auto-generated method stub
-		
+		// TODO
 	}
 	
 	@Override
@@ -370,6 +372,12 @@ public class ArmDefinition
 				.addIfNotNull(listOfInterventionSequence)
 				.addIfNotNull(listOfObservationSequence)
 				.addIfNotNull(listOfOccasionSequence);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

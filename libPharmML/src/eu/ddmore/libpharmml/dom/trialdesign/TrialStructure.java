@@ -38,8 +38,8 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -95,7 +95,7 @@ public class TrialStructure
     protected List<SegmentDefinition> segment;
     @XmlElement(name = "Activity", required = true)
     protected List<Activity> activity;
-    @XmlElementRef(name = "StudyEvent", namespace = XMLFilter.NS_DEFAULT_TD, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "StudyEvent", namespace = NS_DEFAULT_TD, type = JAXBElement.class, required = false)
     protected List<JAXBElement<? extends StudyEvent>> studyEvent;
 
     /**
@@ -289,6 +289,12 @@ public class TrialStructure
 			list.add(el.getValue());
 		}
 		return list;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

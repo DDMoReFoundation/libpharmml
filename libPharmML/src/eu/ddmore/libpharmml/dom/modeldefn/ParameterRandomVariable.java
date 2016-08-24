@@ -68,8 +68,8 @@ import eu.ddmore.libpharmml.dom.uncertml.ParetoDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.StudentTDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.UniformDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -138,19 +138,19 @@ public class ParameterRandomVariable
 	}
 
 
-	@XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT)
+	@XmlElement(name = "VariabilityReference", namespace = NS_DEFAULT_CT)
     protected List<LevelReference> listOfVariabilityReference;
     @Deprecated
-    @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractContinuousUnivariateDistributionType> abstractContinuousUnivariateDistribution;
     @Deprecated
-    @XmlElementRef(name = "AbstractContinuousMultivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractContinuousMultivariateDistribution", namespace = NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractContinuousMultivariateDistributionType> abstractContinuousMultivariateDistribution;
     @Deprecated
-    @XmlElementRef(name = "AbstractCategoricalUnivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractCategoricalUnivariateDistribution", namespace = NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractCategoricalUnivariateDistributionType> abstractCategoricalUnivariateDistribution;
     @Deprecated
-    @XmlElementRef(name = "AbstractCategoricalMultivariateDistribution", namespace = XMLFilter.NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "AbstractCategoricalMultivariateDistribution", namespace = NS_DEFAULT_UNCERTML, type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractCategoricalMultivariateDistributionType> abstractCategoricalMultivariateDistribution;
 
     // PharmML 0.7
@@ -459,6 +459,12 @@ public class ParameterRandomVariable
 				.addJAXBIfNotNull(abstractCategoricalMultivariateDistribution)
 				.addIfNotNull(lhsTransformation)
 				.addIfNotNull(distribution);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

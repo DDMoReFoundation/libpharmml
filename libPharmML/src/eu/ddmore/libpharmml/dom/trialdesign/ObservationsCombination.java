@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -144,7 +145,8 @@ public class ObservationsCombination
      *     {@link String }
      *     
      */
-    public String getOid() {
+    @Override
+	public String getOid() {
         return oid;
     }
 
@@ -156,7 +158,8 @@ public class ObservationsCombination
      *     {@link String }
      *     
      */
-    public void setOid(String value) {
+    @Override
+	public void setOid(String value) {
         this.oid = value;
     }
     
@@ -165,5 +168,11 @@ public class ObservationsCombination
     	return new ChainedList<TreeNode>(super.listChildren())
     			.addIfNotNull(listOfObservations);
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

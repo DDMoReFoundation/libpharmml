@@ -17,9 +17,9 @@
  * under the License.
  ******************************************************************************/
 
-@javax.xml.bind.annotation.XmlSchema(namespace = eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_PROBONTO, 
+@javax.xml.bind.annotation.XmlSchema(namespace = eu.ddmore.libpharmml.impl.NamespaceFilter.NS_DEFAULT_PROBONTO, 
 xmlns = {@javax.xml.bind.annotation.XmlNs(
-		namespaceURI = eu.ddmore.libpharmml.impl.XMLFilter.NS_DEFAULT_PROBONTO, 
+		namespaceURI = eu.ddmore.libpharmml.impl.NamespaceFilter.NS_DEFAULT_PROBONTO, 
 		prefix = "po")},
 elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package eu.ddmore.libpharmml.dom.probonto;

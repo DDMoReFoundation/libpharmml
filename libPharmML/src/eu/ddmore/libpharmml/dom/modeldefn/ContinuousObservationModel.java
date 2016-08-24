@@ -31,8 +31,8 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -66,7 +66,7 @@ public class ContinuousObservationModel
 {
 
 	// -------------
-    @XmlElementRef(name = "ObservationError", namespace = XMLFilter.NS_DEFAULT_MDEF, type = JAXBElement.class)
+    @XmlElementRef(name = "ObservationError", namespace = NS_DEFAULT_MDEF, type = JAXBElement.class)
     protected JAXBElement<? extends ObservationError> jaxbObservationError;
     @XmlTransient
     protected ObservationError observationError;
@@ -143,7 +143,8 @@ public class ContinuousObservationModel
      * 
      * @deprecated Use {@link #createStructuredObsError()}.
      */
-    public GaussianObsError createGaussianObsError(){
+    @Deprecated
+	public GaussianObsError createGaussianObsError(){
     	GaussianObsError obsError = new GaussianObsError();
     	this.observationError = obsError;
     	return obsError;
@@ -184,7 +185,8 @@ public class ContinuousObservationModel
     	return obsError;
     }
     
-    protected void afterUnmarshal(Unmarshaller u, Object parent){
+    @Override
+	protected void afterUnmarshal(Unmarshaller u, Object parent){
     	if(jaxbObservationError != null){
 			observationError = jaxbObservationError.getValue();
 		} else {
@@ -193,7 +195,8 @@ public class ContinuousObservationModel
     	super.afterUnmarshal(u, parent);
     }
     
-    protected void beforeMarshal(Marshaller m){
+    @Override
+	protected void beforeMarshal(Marshaller m){
     	if(observationError != null){
 			jaxbObservationError = MasterObjectFactory.createObservationError(observationError);
 		} else {
@@ -208,6 +211,12 @@ public class ContinuousObservationModel
     			.addIfNotNull(super.listChildren())
     			.addIfNotNull(observationError);
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
     
 //    protected static class Adapter extends XmlAdapter<ContinuousObservationModel, ContinuousObservationModel>{
 //

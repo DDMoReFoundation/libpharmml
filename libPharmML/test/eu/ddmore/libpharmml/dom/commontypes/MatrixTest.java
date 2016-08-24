@@ -115,6 +115,7 @@ private final PharmMLVersion VERSION;
 		assertEquals(Matrix.Type.ANY.toString(), matrix.getMatrixType());
 		
 		MatrixRow row1 = (MatrixRow) matrix.getListOfMatrixElements().get(0);
+		assertEquals("Row contains 2 values", 2, row1.getListOfValues().size());
 		IntValue row1_value1 = (IntValue) row1.getListOfValues().get(0);
 		assertEquals(1, row1_value1.getValue().intValue());
 		RealValue row1_value2 = (RealValue) row1.getListOfValues().get(1);

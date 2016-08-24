@@ -7,7 +7,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.regex.Pattern;
 
+import org.hamcrest.BaseMatcher;
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
 import org.junit.Assert;
 
 import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
@@ -129,6 +133,25 @@ public class AssertUtil extends Assert {
 			fail("Actual file content:\n"+content2);
 		}
 		
+	}
+	
+	public static Matcher<String> containsRegex(final String regex){
+		
+		return new BaseMatcher<String>(){
+
+			@Override
+			public boolean matches(Object arg0) {
+				Pattern p = Pattern.compile(".*"+regex+".*", Pattern.DOTALL);
+				java.util.regex.Matcher m = p.matcher((String) arg0);
+				return m.matches();
+			}
+
+			@Override
+			public void describeTo(Description arg0) {
+				arg0.appendText("Text should match ").appendText(regex);
+			}
+			
+		};
 	}
 	
 }

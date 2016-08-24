@@ -45,6 +45,7 @@ import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -147,7 +148,8 @@ public class IntValue extends PharmMLElement implements Scalar, Identifiable{
      *     {@link String }
      *     
      */
-    public String getId() {
+    @Override
+	public String getId() {
         return id;
     }
 
@@ -159,7 +161,8 @@ public class IntValue extends PharmMLElement implements Scalar, Identifiable{
      *     {@link String }
      *     
      */
-    public void setId(String value) {
+    @Override
+	public void setId(String value) {
         this.id = value;
     }
 
@@ -174,8 +177,8 @@ public class IntValue extends PharmMLElement implements Scalar, Identifiable{
 	}
 	
 	@Override
-	public JAXBElement<? extends Scalar> toJAXBElement() {
-		return MasterObjectFactory.createScalar(this);
+	public JAXBElement<IntValue> toJAXBElement() {
+		return MasterObjectFactory.COMMONTYPES_OF.createInt(this);
 	}
 
 	@Override
@@ -210,6 +213,15 @@ public class IntValue extends PharmMLElement implements Scalar, Identifiable{
 
 	@Override
 	public JAXBElement<IntValue> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createInt(this);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
+	
+	public JAXBElement<IntValue> toJAXBElementVectorValue() {
 		return ObjectFactory.getInstance().createInt(this);
 	}
 

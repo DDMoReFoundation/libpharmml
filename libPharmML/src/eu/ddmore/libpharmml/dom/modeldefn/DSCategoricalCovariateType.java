@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -99,5 +100,11 @@ public class DSCategoricalCovariateType
     	return new ChainedList<TreeNode>(super.listChildren())
     			.addIfNotNull(listOfCategory);
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

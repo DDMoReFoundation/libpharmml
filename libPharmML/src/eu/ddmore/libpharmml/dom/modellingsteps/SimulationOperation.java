@@ -39,8 +39,8 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -80,7 +80,7 @@ public class SimulationOperation
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Name", namespace = NS_DEFAULT_CT)
     protected Name name;
     @XmlElement(name = "Property")
     protected List<OperationProperty> property;
@@ -203,7 +203,8 @@ public class SimulationOperation
      *     
      * @deprecated PharmML now uses xs:int values. Use {@link #setOrder(Integer)}.
      */
-    public void setOrder(BigInteger value) {
+    @Deprecated
+	public void setOrder(BigInteger value) {
         this.order = value.intValue();
     }
 
@@ -251,6 +252,12 @@ public class SimulationOperation
 				.addIfNotNull(name)
 				.addIfNotNull(property)
 				.addIfNotNull(algorithm);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

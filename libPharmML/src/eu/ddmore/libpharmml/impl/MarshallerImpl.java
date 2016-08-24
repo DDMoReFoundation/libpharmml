@@ -84,7 +84,7 @@ public class MarshallerImpl implements IMarshaller {
 				// Marshalling into a XMLStreamWriter with filter for namespaces.
 				// Into a ByteArray so it can be inputstreamed again.
 				ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-				XMLFilter filter = new XMLFilter(version);	
+				NamespaceFilter filter = new NamespaceFilter(version);	
 //				XMLStreamWriter xmlsw = filter.getXMLStreamWriter(byteOut);	
 				m.marshal(dom, byteOut);
 				
@@ -170,7 +170,7 @@ public class MarshallerImpl implements IMarshaller {
 			
 			PharmML doc;
 			if(!version.isEqualOrLaterThan(PharmMLVersion.DEFAULT)){
-				XMLStreamReader xmlsr = new XMLFilter(version).getXMLStreamReader(is);
+				XMLStreamReader xmlsr = new NamespaceFilter(version).getXMLStreamReader(is);
 				doc = (PharmML)u.unmarshal(xmlsr);
 			} else {
 				doc = (PharmML)u.unmarshal(is);

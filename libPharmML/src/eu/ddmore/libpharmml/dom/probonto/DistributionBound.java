@@ -49,8 +49,8 @@ import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.maths.Uniop;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -90,7 +90,7 @@ public class DistributionBound
     extends PharmMLRootType implements Assignable
 {
 
-    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT)
     protected Rhs assign;
     @XmlAttribute(name = "type")
     protected String type;
@@ -103,7 +103,8 @@ public class DistributionBound
      *     {@link Rhs }
      *     
      */
-    public Rhs getAssign() {
+    @Override
+	public Rhs getAssign() {
         return assign;
     }
 
@@ -115,7 +116,8 @@ public class DistributionBound
      *     {@link Rhs }
      *     
      */
-    public void setAssign(Rhs value) {
+    @Override
+	public void setAssign(Rhs value) {
         this.assign = value;
     }
 
@@ -291,6 +293,12 @@ public class DistributionBound
 		Rhs rhs = new Rhs(probability);
 		setAssign(rhs);
 		return rhs;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 

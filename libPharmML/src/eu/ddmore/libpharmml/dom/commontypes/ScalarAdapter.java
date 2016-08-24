@@ -21,7 +21,6 @@ package eu.ddmore.libpharmml.dom.commontypes;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 
 /**
@@ -30,14 +29,14 @@ import eu.ddmore.libpharmml.impl.LoggerWrapper;
  * @author F. Yvon
  *
  */
-public class ScalarAdapter extends XmlAdapter<JAXBElement<?>, Scalar>{
+public class ScalarAdapter extends XmlAdapter<JAXBElement<? extends Scalar>, Scalar>{
 	
 	@Override
-	public Scalar unmarshal(JAXBElement<?> v) throws Exception {
+	public Scalar unmarshal(JAXBElement<? extends Scalar> v) throws Exception {
 		if(v == null){
 			return null;
 		} else {
-			Scalar value = (Scalar) v.getValue();
+			Scalar value = v.getValue();
 			if(value instanceof MissingValue){
 				String name = v.getName().getLocalPart(); //TODO: control on namespace too
 				if(name.equals("NaN")){
@@ -61,11 +60,11 @@ public class ScalarAdapter extends XmlAdapter<JAXBElement<?>, Scalar>{
 	}
 
 	@Override
-	public JAXBElement<?> marshal(Scalar v) throws Exception {
+	public JAXBElement<? extends Scalar> marshal(Scalar v) throws Exception {
 		if(v == null){
 			return null;
 		} else {
-			return MasterObjectFactory.createScalar(v);
+			return v.toJAXBElement();
 		}
 	}
 

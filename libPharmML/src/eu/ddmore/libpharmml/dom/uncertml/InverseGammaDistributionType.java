@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.visitor.Visitor;
+
 
 /**
  * <p>Java class for InverseGammaDistributionType complex type.
@@ -179,5 +181,11 @@ public class InverseGammaDistributionType
     public void setTruncationUpperInclusiveBound(PositiveRealValueType value) {
         this.truncationUpperInclusiveBound = value;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

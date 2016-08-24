@@ -33,8 +33,8 @@ import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Symbol;
 import eu.ddmore.libpharmml.dom.commontypes.TransitionMatrixAttrType;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -68,7 +68,7 @@ public class TransitionMatrix
     extends PharmMLRootType implements Symbol
 {
 
-    @XmlElement(name = "Matrix", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    @XmlElement(name = "Matrix", namespace = NS_DEFAULT_CT, required = true)
     protected Matrix matrix;
     @XmlAttribute(name = "type")
     protected TransitionMatrixAttrType type;
@@ -132,7 +132,8 @@ public class TransitionMatrix
      *     {@link String }
      *     
      */
-    public String getSymbId() {
+    @Override
+	public String getSymbId() {
         return symbId;
     }
 
@@ -144,7 +145,8 @@ public class TransitionMatrix
      *     {@link String }
      *     
      */
-    public void setSymbId(String value) {
+    @Override
+	public void setSymbId(String value) {
         this.symbId = value;
     }
     
@@ -153,5 +155,11 @@ public class TransitionMatrix
     	return new ChainedList<TreeNode>(super.listChildren())
     			.addIfNotNull(matrix);
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

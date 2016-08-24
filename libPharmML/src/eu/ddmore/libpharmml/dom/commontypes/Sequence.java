@@ -21,14 +21,17 @@ package eu.ddmore.libpharmml.dom.commontypes;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.MathExpressionConverter;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 /**
 * The definition of a uniform sequence of numbers. It has three forms:
@@ -223,8 +226,7 @@ public class Sequence
 
 	@Override
 	public String toMathExpression() {
-		// TODO Auto-generated method stub
-		return null;
+		return new MathExpressionConverterToExpression().convert(this);
 	}
 
 	@Override
@@ -235,6 +237,15 @@ public class Sequence
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
+	
+	public JAXBElement<Sequence> toJAXBElementVectorValue() {
+		return ObjectFactory.getInstance().createSequence(this);
 	}
 
 }

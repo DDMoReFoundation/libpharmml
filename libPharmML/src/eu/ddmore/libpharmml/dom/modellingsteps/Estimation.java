@@ -36,8 +36,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.trialdesign.DatasetMapping;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -74,7 +74,7 @@ public class Estimation
     extends CommonModellingStep
 {
 
-    @XmlElement(name = "ObjectiveDataSet", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
+    @XmlElement(name = "ObjectiveDataSet", namespace = NS_DEFAULT_MSTEPS)
     @Deprecated
     protected List<DatasetMapping> objectiveDataSet;
     @XmlElement(name = "ParametersToEstimate", required = true)
@@ -171,6 +171,12 @@ public class Estimation
 				.addIfNotNull(objectiveDataSet)
 				.addIfNotNull(parametersToEstimate)
 				.addIfNotNull(operation);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

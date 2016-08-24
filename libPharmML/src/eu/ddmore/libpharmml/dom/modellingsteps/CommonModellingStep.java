@@ -37,7 +37,6 @@ import eu.ddmore.libpharmml.dom.commontypes.VariableAssignment;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.dom.trialdesign.ExternalDataSet;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -109,7 +108,7 @@ public abstract class CommonModellingStep
     protected ObservationsReference observationsReference;
     // ---------------------------------------------
     
-    @XmlElement(name = "VariableAssignment", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "VariableAssignment", namespace = NS_DEFAULT_CT)
     protected List<VariableAssignment> variableAssignment;
     @XmlAttribute(name = "oid", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -376,7 +375,8 @@ public abstract class CommonModellingStep
      *     {@link String }
      *     
      */
-    public String getOid() {
+    @Override
+	public String getOid() {
         return oid;
     }
 
@@ -388,7 +388,8 @@ public abstract class CommonModellingStep
      *     {@link String }
      *     
      */
-    public void setOid(String value) {
+    @Override
+	public void setOid(String value) {
         this.oid = value;
     }
     

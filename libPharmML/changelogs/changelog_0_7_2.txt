@@ -1,0 +1,10 @@
+## Changelog: 0.7.1 -> 0.7.2
+
+### Versions supported
+
+libPharmML 0.7.1 provides support for PharmML 0.8.1 and ProbOnto 1.1.1. (unchanged)
+
+### Changes summary
+
+* Fixed ProbOnto parameters validation concerning RandomSample, SystematicSample and UnknownSample distributions.
+* Added transient attributes to DerivativeVariable for PK Macro translation tracking, required for NONMEM.

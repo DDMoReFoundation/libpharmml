@@ -32,6 +32,7 @@ import eu.ddmore.libpharmml.dom.commontypes.LinkFunction;
 import eu.ddmore.libpharmml.dom.commontypes.PMFtransform;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -564,5 +565,11 @@ public class CountData
     			.addIfNotNull(mixtureProbabilityParameter)
     			.addIfNotNull(pmf);
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
     
 }

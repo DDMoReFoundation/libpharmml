@@ -31,9 +31,9 @@ import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.tags.ReferenceContainer;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.validation.SymbolResolver;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -67,7 +67,7 @@ public class InterventionsReference
     extends PharmMLRootType implements ReferenceContainer
 {
 
-	@XmlElement(name = "OidRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+	@XmlElement(name = "OidRef", namespace = NS_DEFAULT_CT, required = true)
     protected List<OidRef> listOfOidRef;
 
     /**
@@ -106,7 +106,12 @@ public class InterventionsReference
 
 	@Override
 	public void validateReferences(SymbolResolver sr, IErrorHandler errorHandler) {
-		// TODO Auto-generated method stub
+		// TODO
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 		
 	}
 

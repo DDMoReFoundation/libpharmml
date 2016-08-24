@@ -51,8 +51,8 @@ import eu.ddmore.libpharmml.dom.maths.MatrixUniOp;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.dom.maths.Uniop;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -88,10 +88,10 @@ public class Timepoints
     extends PharmMLRootType implements Assignable
 {
 
-    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT)
     protected Rhs assign;
     
-    @XmlElementRef(name = "Arrays", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class)
+    @XmlElementRef(name = "Arrays", namespace = NS_DEFAULT_CT, type = JAXBElement.class)
     @Deprecated
     protected JAXBElement<?> arrays;
 
@@ -105,7 +105,8 @@ public class Timepoints
      *     
      * @since PharmML 0.7
      */
-    public Rhs getAssign() {
+    @Override
+	public Rhs getAssign() {
         return assign;
     }
 
@@ -118,7 +119,8 @@ public class Timepoints
      *     
      * @since PharmML 0.7
      */
-    public void setAssign(Rhs value) {
+    @Override
+	public void setAssign(Rhs value) {
         this.assign = value;
     }
     
@@ -302,6 +304,12 @@ public class Timepoints
 		Rhs rhs = new Rhs(probability);
 		setAssign(rhs);
 		return rhs;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

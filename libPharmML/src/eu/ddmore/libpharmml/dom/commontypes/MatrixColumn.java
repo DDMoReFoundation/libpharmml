@@ -31,8 +31,8 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -77,10 +77,10 @@ public class MatrixColumn
     @XmlElement(name = "ColumnIndex")
     protected MatrixVectorIndex columnIndex;
     @XmlElementRefs({
-        @XmlElementRef(name = "Sequence", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "Sequence", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Assign", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "SymbRef", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     })
     protected List<MatrixRowValue> scalarOrSequenceOrSymbRef;
     @XmlAttribute(name = "default")
@@ -189,5 +189,10 @@ public class MatrixColumn
     	}
     	return list;
     }
+
+    @Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
 
 }

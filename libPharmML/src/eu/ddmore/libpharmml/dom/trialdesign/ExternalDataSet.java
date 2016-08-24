@@ -44,10 +44,10 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.dataset.DatasetMap;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.SubList;
 import eu.ddmore.libpharmml.util.Util;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -162,7 +162,8 @@ public class ExternalDataSet
      *     {@link DataSet }
      *     
      */
-    public DataSet getDataSet() {
+    @Override
+	public DataSet getDataSet() {
         return dataSet;
     }
 
@@ -252,7 +253,8 @@ public class ExternalDataSet
      *     {@link String }
      *     
      */
-    public String getOid() {
+    @Override
+	public String getOid() {
         return oid;
     }
 
@@ -264,7 +266,8 @@ public class ExternalDataSet
      *     {@link String }
      *     
      */
-    public void setOid(String value) {
+    @Override
+	public void setOid(String value) {
         this.oid = value;
     }
     
@@ -332,27 +335,27 @@ public class ExternalDataSet
 	static class ExternalDatasetAdapted extends PharmMLRootType {
 		
 		@XmlElements({
-	        @XmlElement(name = "ColumnMapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = ColumnMapping.class),
-	        @XmlElement(name = "ColumnTransformation", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = ColumnTransformation.class),
-	        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_MSTEPS, type = MultipleDVMapping.class)
+	        @XmlElement(name = "ColumnMapping", namespace = NS_DEFAULT_MSTEPS, type = ColumnMapping.class),
+	        @XmlElement(name = "ColumnTransformation", namespace = NS_DEFAULT_MSTEPS, type = ColumnTransformation.class),
+	        @XmlElement(name = "MultipleDVMapping", namespace = NS_DEFAULT_MSTEPS, type = MultipleDVMapping.class)
 	    })
 	    protected List<PharmMLRootType> listOfColumnMappingOrColumnTransformationOrMultipleDVMapping6;
 		
 		@XmlElements({
-	        @XmlElement(name = "ColumnMapping", namespace = XMLFilter.NS_DEFAULT_TD, type = ColumnMapping.class),
-	        @XmlElement(name = "ColumnTransformation", namespace = XMLFilter.NS_DEFAULT_TD, type = ColumnTransformation.class),
-	        @XmlElement(name = "MultipleDVMapping", namespace = XMLFilter.NS_DEFAULT_TD, type = MultipleDVMapping.class)
+	        @XmlElement(name = "ColumnMapping", namespace = NS_DEFAULT_TD, type = ColumnMapping.class),
+	        @XmlElement(name = "ColumnTransformation", namespace = NS_DEFAULT_TD, type = ColumnTransformation.class),
+	        @XmlElement(name = "MultipleDVMapping", namespace = NS_DEFAULT_TD, type = MultipleDVMapping.class)
 	    })
 	    protected List<PharmMLRootType> listOfColumnMappingOrColumnTransformationOrMultipleDVMapping7;
 		
 		
-	    @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
+	    @XmlElement(name = "DataSet", namespace = NS_DEFAULT_DS, required = true)
 	    protected DataSet dataSet;
 	    
 	    
-	    @XmlElement(name = "CodeInjection", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
+	    @XmlElement(name = "CodeInjection", namespace = NS_DEFAULT_MSTEPS)
 	    protected CodeInjection msteps_codeInjection;
-	    @XmlElement(name = "CodeInjection", namespace = XMLFilter.NS_DEFAULT_TD)
+	    @XmlElement(name = "CodeInjection", namespace = NS_DEFAULT_TD)
 	    protected CodeInjection design_codeInjection;
 	    
 	    
@@ -361,6 +364,10 @@ public class ExternalDataSet
 	    @XmlAttribute(name = "oid", required = true)
 	    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
 	    protected String oid;
+		@Override
+		public void accept(Visitor visitor) {
+			// nothing
+		}
 	    
 	}
 	
@@ -419,6 +426,12 @@ public class ExternalDataSet
 				return adapted;
 			}
 		}
+		
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 		
 	}
 

@@ -30,8 +30,8 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -71,7 +71,7 @@ public class VariableToReset
 
     @XmlElement(name = "FullReset")
     protected FullReset fullReset;
-    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT)
     protected SymbolRef symbRef;
     @XmlElement(name = "ResetValue")
     protected RealValue resetValue;
@@ -278,5 +278,11 @@ public class VariableToReset
     protected static class FullReset {
     	
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

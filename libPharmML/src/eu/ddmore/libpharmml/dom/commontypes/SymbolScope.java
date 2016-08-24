@@ -18,9 +18,11 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.dom.commontypes;
 
+import eu.ddmore.libpharmml.dom.PharmMLNode;
+
 /**
  * Interface implemented by elements that create a new scope for symbols.
  */
-public interface SymbolScope {
+public interface SymbolScope extends PharmMLNode {
 
 }

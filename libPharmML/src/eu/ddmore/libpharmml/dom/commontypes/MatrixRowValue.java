@@ -18,9 +18,9 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.dom.commontypes;
 
-import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.PharmMLNode;
 import eu.ddmore.libpharmml.dom.maths.Equation;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
 
@@ -37,6 +37,6 @@ import eu.ddmore.libpharmml.dom.tags.MathExpression;
  */
 @SuppressWarnings("deprecation")
 @XmlJavaTypeAdapter(MatrixRowValueAdapter.class)
-public interface MatrixRowValue extends TreeNode, MathExpression {
+public interface MatrixRowValue extends PharmMLNode, MathExpression {
 
 }

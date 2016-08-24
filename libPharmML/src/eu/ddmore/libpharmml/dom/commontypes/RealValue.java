@@ -44,6 +44,7 @@ import eu.ddmore.libpharmml.dom.Identifiable;
 import eu.ddmore.libpharmml.dom.MasterObjectFactory;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -113,7 +114,8 @@ public class RealValue extends PharmMLElement implements Scalar, VectorValue, Id
      *     {@link String }
      *     
      */
-    public String getId() {
+    @Override
+	public String getId() {
         return id;
     }
 
@@ -125,11 +127,13 @@ public class RealValue extends PharmMLElement implements Scalar, VectorValue, Id
      *     {@link String }
      *     
      */
-    public void setId(String value) {
+    @Override
+	public void setId(String value) {
         this.id = value;
     }
     
-    public String asString(){
+    @Override
+	public String asString(){
     	return String.valueOf(value);
     }
     
@@ -139,8 +143,8 @@ public class RealValue extends PharmMLElement implements Scalar, VectorValue, Id
     }
 
 	@Override
-	public JAXBElement<? extends Scalar> toJAXBElement() {
-		return MasterObjectFactory.createScalar(this);
+	public JAXBElement<RealValue> toJAXBElement() {
+		return MasterObjectFactory.COMMONTYPES_OF.createReal(this);
 	}
 
 	@Override
@@ -175,6 +179,15 @@ public class RealValue extends PharmMLElement implements Scalar, VectorValue, Id
 
 	@Override
 	public JAXBElement<RealValue> toJAXBElementOfLogicBinOp() {
+		return ObjectFactory.getInstance().createReal(this);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
+
+	public JAXBElement<RealValue> toJAXBElementVectorValue() {
 		return ObjectFactory.getInstance().createReal(this);
 	}
 

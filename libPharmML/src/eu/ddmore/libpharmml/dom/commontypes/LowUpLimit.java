@@ -30,12 +30,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.MathExpressionConverter;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -89,7 +90,7 @@ public class LowUpLimit
 //		this.equation = value;
 //	}
 
-    @XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH)
+    @XmlElement(name = "Equation", namespace = NS_DEFAULT_MATH)
     @XmlJavaTypeAdapter(RhsEquationAdapter.class)
     protected Rhs mapped_equation;
     @XmlElement(name = "Assign") // PharmML 0.7.1
@@ -217,8 +218,7 @@ public class LowUpLimit
 
 	@Override
 	public String toMathExpression() {
-		// TODO Auto-generated method stub
-		return null;
+		return new MathExpressionConverterToExpression().convert(this);
 	}
 
 	@Override
@@ -226,4 +226,8 @@ public class LowUpLimit
 		return converter.convert(this);
 	}
 
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
 }

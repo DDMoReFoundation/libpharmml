@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -408,6 +409,11 @@ public class MatrixBlock
 				.addIfNotNull(blockStartColumn)
 				.addIfNotNull(blockRow)
 				.addIfNotNull(blockCell);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 

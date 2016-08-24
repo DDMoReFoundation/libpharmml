@@ -36,8 +36,8 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.SymbolRef;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -72,7 +72,7 @@ public class VariableMapping
     extends MappingType
 {
 
-    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT, required = true)
     protected SymbolRef symbRef;
 
     /**
@@ -103,6 +103,12 @@ public class VariableMapping
 	protected List<TreeNode> listChildren() {
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(symbRef);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

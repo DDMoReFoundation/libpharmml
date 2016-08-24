@@ -41,6 +41,7 @@ import eu.ddmore.libpharmml.dom.tags.MathExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -146,6 +147,11 @@ public class Piecewise extends PharmMLElement implements MathExpression {
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

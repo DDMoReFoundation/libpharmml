@@ -39,11 +39,11 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnReference;
 import eu.ddmore.libpharmml.dom.maths.Piecewise;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.HasElementsRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -86,10 +86,10 @@ public class MultipleDVMapping
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "ColumnRef", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
+    @XmlElement(name = "ColumnRef", namespace = NS_DEFAULT_DS, required = true)
     protected ColumnReference columnRef;
     
-    @XmlElement(name = "Piecewise", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
+    @XmlElement(name = "Piecewise", namespace = NS_DEFAULT_MSTEPS)
     protected Piecewise msteps_piecewise;
     @XmlElement(name = "Piecewise")
     protected Piecewise default_piecewise;
@@ -151,6 +151,12 @@ public class MultipleDVMapping
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(columnRef)
 				.addIfNotNull(transient_piecewise);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

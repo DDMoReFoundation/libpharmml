@@ -47,8 +47,8 @@ import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.modeldefn.ModelDefinition;
 import eu.ddmore.libpharmml.dom.modellingsteps.ModellingSteps;
 import eu.ddmore.libpharmml.dom.trialdesign.TrialDesign;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -93,19 +93,19 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlRootElement(name = "PharmML")
 public class PharmML extends PharmMLElement implements Identifiable {
 
-    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
+    @XmlElement(name = "Name", namespace = NS_DEFAULT_CT, required = true)
     protected Name name;
-    @XmlElement(name = "Description", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Description", namespace = NS_DEFAULT_CT)
     protected AnnotationType description;
     @XmlElement(name = "IndependentVariable")
     protected List<IndependentVariable> listOfIndependentVariable;
-    @XmlElement(name = "FunctionDefinition", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "FunctionDefinition", namespace = NS_DEFAULT_CT)
     protected List<FunctionDefinition> listOfFunctionDefinition;
-    @XmlElement(name = "ModelDefinition", namespace = XMLFilter.NS_DEFAULT_MDEF, required = true)
+    @XmlElement(name = "ModelDefinition", namespace = NS_DEFAULT_MDEF, required = true)
     protected ModelDefinition modelDefinition;
-    @XmlElement(name = "TrialDesign", namespace = XMLFilter.NS_DEFAULT_TD)
+    @XmlElement(name = "TrialDesign", namespace = NS_DEFAULT_TD)
     protected TrialDesign trialDesign;
-    @XmlElement(name = "ModellingSteps", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
+    @XmlElement(name = "ModellingSteps", namespace = NS_DEFAULT_MSTEPS)
     protected ModellingSteps modellingSteps;
     @XmlAttribute(name = "writtenVersion", required = true)
     protected String writtenVersion;
@@ -556,6 +556,11 @@ public class PharmML extends PharmMLElement implements Identifiable {
 			clone.getListOfFunctionDefinition().add((FunctionDefinition) fd.clone());
 		}
 		return clone;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

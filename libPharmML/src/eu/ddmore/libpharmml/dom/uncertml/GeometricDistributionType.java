@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.visitor.Visitor;
+
 
 /**
  * <p>Java class for GeometricDistributionType complex type.
@@ -151,5 +153,11 @@ public class GeometricDistributionType
     public void setTruncationUpperInclusiveBound(NaturalNumberValueType value) {
         this.truncationUpperInclusiveBound = value;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

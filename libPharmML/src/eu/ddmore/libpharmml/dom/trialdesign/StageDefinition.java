@@ -31,6 +31,7 @@ import eu.ddmore.libpharmml.dom.maths.LogicBinOp;
 import eu.ddmore.libpharmml.dom.maths.LogicOperator;
 import eu.ddmore.libpharmml.dom.maths.ObjectFactory;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -116,5 +117,11 @@ public class StageDefinition
     	return new ChainedList<TreeNode>(super.listChildren())
     			.addIfNotNull(logicBinop);
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

@@ -23,7 +23,6 @@ import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlTransient;
 
 import eu.ddmore.libpharmml.dom.maths.Equation;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 
 /**
  * Abstract class for regrouping common properties in formulas.
@@ -38,8 +37,8 @@ public abstract class AbstractFormula extends PharmMLRootType {
 	// FIXME: Equation conversion
 	@XmlElements({ 
 		@XmlElement(name = "SymbRef", type = SymbolRef.class),
-		@XmlElement(name = "Equation", namespace = XMLFilter.NS_DEFAULT_MATH ,type = Equation.class),
-		@XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT, type = Rhs.class)
+		@XmlElement(name = "Equation", namespace = NS_DEFAULT_MATH ,type = Equation.class),
+		@XmlElement(name = "Assign", namespace = NS_DEFAULT_CT, type = Rhs.class)
 		})
 	public OperationVariable variable;
 	

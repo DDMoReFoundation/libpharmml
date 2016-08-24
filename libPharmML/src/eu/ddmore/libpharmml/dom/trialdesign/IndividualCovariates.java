@@ -31,8 +31,8 @@ import eu.ddmore.libpharmml.dom.commontypes.LevelReference;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnMapping;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -70,11 +70,11 @@ public class IndividualCovariates
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "VariabilityReference", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "VariabilityReference", namespace = NS_DEFAULT_CT)
     protected LevelReference variabilityReference;
     @XmlElement(name = "ColumnMapping")
     protected List<ColumnMapping> listOfColumnMapping;
-    @XmlElement(name = "DataSet", namespace = XMLFilter.NS_DEFAULT_DS, required = true)
+    @XmlElement(name = "DataSet", namespace = NS_DEFAULT_DS, required = true)
     protected DataSet dataSet;
 
     /**
@@ -197,5 +197,11 @@ public class IndividualCovariates
             this.dataSet = el;
             return el;
     }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
 
 }

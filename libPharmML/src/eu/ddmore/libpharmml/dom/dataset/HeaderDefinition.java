@@ -23,7 +23,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -141,5 +143,10 @@ public class HeaderDefinition
     public void setRowNumber(Integer value) {
         this.rowNumber = value;
     }
+    
+    @Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
 
 }

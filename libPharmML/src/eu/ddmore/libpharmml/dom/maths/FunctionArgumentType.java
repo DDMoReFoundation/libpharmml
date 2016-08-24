@@ -60,9 +60,10 @@ import eu.ddmore.libpharmml.dom.commontypes.Vector;
 import eu.ddmore.libpharmml.dom.commontypes.VectorSelector;
 import eu.ddmore.libpharmml.dom.modeldefn.Probability;
 import eu.ddmore.libpharmml.dom.tags.MathExpression;
+import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -119,37 +120,37 @@ import eu.ddmore.libpharmml.util.ChainedList;
 })
 public class FunctionArgumentType extends PharmMLElement implements Symbol, Assignable, MathExpression {
 
-    @XmlElement(name = "Symbol", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Symbol", namespace = NS_DEFAULT_CT)
     protected SymbolName symbol;
-    @XmlElement(name = "Description", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Description", namespace = NS_DEFAULT_CT)
     protected AnnotationType description;
     
-    @XmlElement(name = "Assign", namespace = XMLFilter.NS_DEFAULT_CT) // PharmML 0.7.1
+    @XmlElement(name = "Assign", namespace = NS_DEFAULT_CT) // PharmML 0.7.1
     protected Rhs assign;
     @Deprecated
     @XmlElement(name = "Equation") // < PharmML 0.7.1
     protected Equation equation;
-    @XmlElementRef(name = "Scalar", namespace = XMLFilter.NS_DEFAULT_CT, type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "Scalar", namespace = NS_DEFAULT_CT, type = JAXBElement.class, required = false)
     protected JAXBElement<?> scalar;
     @Deprecated
     @XmlElement(name = "Constant")
     protected Constant constant;
-    @XmlElement(name = "SymbRef", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "SymbRef", namespace = NS_DEFAULT_CT)
     protected SymbolRef symbRef;
     @Deprecated
-    @XmlElement(name = "Sum", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Sum", namespace = NS_DEFAULT_CT)
     protected Sum sum;
     @Deprecated
-    @XmlElement(name = "Product", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Product", namespace = NS_DEFAULT_CT)
     protected Product product;
     @Deprecated
-    @XmlElement(name = "VectorSelector", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "VectorSelector", namespace = NS_DEFAULT_CT)
     protected VectorSelector vectorSelector;
     @Deprecated
-    @XmlElement(name = "MatrixSelector", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "MatrixSelector", namespace = NS_DEFAULT_CT)
     protected MatrixSelector matrixSelector;
     @Deprecated
-    @XmlElement(name = "Probability", namespace = XMLFilter.NS_DEFAULT_MDEF)
+    @XmlElement(name = "Probability", namespace = NS_DEFAULT_MDEF)
     protected Probability probability;
     
     @XmlAttribute(name = "symbId", required = true)
@@ -679,8 +680,7 @@ public class FunctionArgumentType extends PharmMLElement implements Symbol, Assi
 
 	@Override
 	public String toMathExpression() {
-		// TODO Auto-generated method stub
-		return null;
+		return new MathExpressionConverterToExpression().convert(this);
 	}
 
 	@Override
@@ -691,6 +691,11 @@ public class FunctionArgumentType extends PharmMLElement implements Symbol, Assi
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+	
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 }

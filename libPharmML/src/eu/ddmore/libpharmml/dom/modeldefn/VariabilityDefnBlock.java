@@ -41,8 +41,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.Block;
 import eu.ddmore.libpharmml.dom.commontypes.Name;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -78,7 +78,7 @@ public class VariabilityDefnBlock
     extends PharmMLRootType implements Block
 {
 
-    @XmlElement(name = "Name", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Name", namespace = NS_DEFAULT_CT)
     protected Name name;
     @XmlElement(name = "Level", required = true)
     protected List<VariabilityLevelDefinition> level;
@@ -173,7 +173,8 @@ public class VariabilityDefnBlock
      *     {@link String }
      *     
      */
-    public String getBlkId() {
+    @Override
+	public String getBlkId() {
         return blkId;
     }
 
@@ -185,7 +186,8 @@ public class VariabilityDefnBlock
      *     {@link String }
      *     
      */
-    public void setBlkId(String value) {
+    @Override
+	public void setBlkId(String value) {
         this.blkId = value;
     }
     
@@ -194,6 +196,12 @@ public class VariabilityDefnBlock
 		return new ChainedList<TreeNode>()
 				.addIfNotNull(name)
 				.addIfNotNull(level);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

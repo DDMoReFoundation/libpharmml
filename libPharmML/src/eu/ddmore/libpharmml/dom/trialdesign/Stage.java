@@ -7,14 +7,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.MathExpressionConverter;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.dom.tags.LogicBinOperand;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToExpression;
 import eu.ddmore.libpharmml.impl.MathExpressionConverterToMathML;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 @XmlRootElement(name = "Stage")
-public class Stage implements LogicBinOperand {
+public class Stage extends PharmMLElement implements LogicBinOperand {
 
 	@Override
 	public JAXBElement<Stage> toJAXBElementOfLogicBinOp() {
@@ -34,6 +36,16 @@ public class Stage implements LogicBinOperand {
 	@Override
 	public String convert(MathExpressionConverter converter) {
 		return converter.convert(this);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
+
+	@Override
+	public Stage clone() {
+		return ObjectFactory.getInstance().createStage();
 	}
 
 }

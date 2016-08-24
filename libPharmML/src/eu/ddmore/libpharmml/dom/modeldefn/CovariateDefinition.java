@@ -40,8 +40,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.Symbol;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolName;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -80,7 +80,7 @@ public class CovariateDefinition
     extends PharmMLRootType implements Symbol
 {
 
-    @XmlElement(name = "Symbol", namespace = XMLFilter.NS_DEFAULT_CT)
+    @XmlElement(name = "Symbol", namespace = NS_DEFAULT_CT)
     protected SymbolName symbol;
     @XmlElement(name = "Continuous")
     protected ContinuousCovariate continuous;
@@ -198,7 +198,8 @@ public class CovariateDefinition
      *     {@link String }
      *     
      */
-    public String getSymbId() {
+    @Override
+	public String getSymbId() {
         return symbId;
     }
 
@@ -210,7 +211,8 @@ public class CovariateDefinition
      *     {@link String }
      *     
      */
-    public void setSymbId(String value) {
+    @Override
+	public void setSymbId(String value) {
         this.symbId = value;
     }
 
@@ -220,6 +222,12 @@ public class CovariateDefinition
 				.addIfNotNull(symbol)
 				.addIfNotNull(continuous)
 				.addIfNotNull(categorical);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

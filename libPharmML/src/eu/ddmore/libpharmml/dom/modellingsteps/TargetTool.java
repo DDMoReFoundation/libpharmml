@@ -45,10 +45,10 @@ import eu.ddmore.libpharmml.dom.dataset.TargetToolDataSet;
 import eu.ddmore.libpharmml.dom.tags.PharmMLObject;
 import eu.ddmore.libpharmml.dom.trialdesign.CodeInjection;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 import eu.ddmore.libpharmml.util.annotations.HasElementRenamed;
 import eu.ddmore.libpharmml.util.annotations.RenamedElement;
+import eu.ddmore.libpharmml.visitor.Visitor;
 
 
 /**
@@ -104,7 +104,7 @@ public class TargetTool
     protected String targetToolName;
     @XmlElement(name = "ColumnMapping")
     protected List<ColumnMapping> columnMapping;
-    @XmlElement(name = "TargetToolData", namespace = XMLFilter.NS_DEFAULT_DS)
+    @XmlElement(name = "TargetToolData", namespace = NS_DEFAULT_DS)
     protected TargetToolDataSet targetToolData;
 //    @XmlElement(name = "CodeInjection")
 //    protected CodeInjection codeInjection;
@@ -112,9 +112,9 @@ public class TargetTool
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String oid;
     
-    @XmlElement(name = "CodeInjection", namespace = XMLFilter.NS_DEFAULT_MSTEPS)
+    @XmlElement(name = "CodeInjection", namespace = NS_DEFAULT_MSTEPS)
     protected CodeInjection msteps_codeInjection;
-    @XmlElement(name = "CodeInjection", namespace = XMLFilter.NS_DEFAULT_TD)
+    @XmlElement(name = "CodeInjection", namespace = NS_DEFAULT_TD)
     protected CodeInjection design_codeInjection;
     @XmlTransient
     protected CodeInjection codeInjection;
@@ -231,7 +231,8 @@ public class TargetTool
      *     {@link String }
      *     
      */
-    public String getOid() {
+    @Override
+	public String getOid() {
         return oid;
     }
 
@@ -243,7 +244,8 @@ public class TargetTool
      *     {@link String }
      *     
      */
-    public void setOid(String value) {
+    @Override
+	public void setOid(String value) {
         this.oid = value;
     }
     
@@ -253,6 +255,12 @@ public class TargetTool
 				.addIfNotNull(columnMapping)
 				.addIfNotNull(targetToolData)
 				.addIfNotNull(codeInjection);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

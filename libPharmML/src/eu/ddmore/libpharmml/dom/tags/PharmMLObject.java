@@ -18,6 +18,7 @@
  ******************************************************************************/
 package eu.ddmore.libpharmml.dom.tags;
 
+import eu.ddmore.libpharmml.dom.PharmMLNode;
 import eu.ddmore.libpharmml.dom.commontypes.OidRef;
 
 /**
@@ -25,7 +26,7 @@ import eu.ddmore.libpharmml.dom.commontypes.OidRef;
  * conceptual object. Those objects has a oid attribute, and can be
  * referred via a {@link OidRef} element.
  */
-public interface PharmMLObject {
+public interface PharmMLObject extends PharmMLNode {
 	
 	/**
      * Gets the value of the oid property. This property can be used to refer
